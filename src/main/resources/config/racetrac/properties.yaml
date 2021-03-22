@@ -1,0 +1,32 @@
+properties:
+  #Config
+
+  platform: &platform
+    platformName: Android
+
+  emulator_uid: &emulator_uid
+    udid: emulator-5554
+
+  appium_hub: &appium_hub
+    hub: http://127.0.0.1:4723/wd/hub
+
+  appPackage: &appPackage
+    appPackage: com.RaceTrac.Common.dev
+
+  appActivity: &appActivity
+    appActivity: com.RaceTrac.ui.splash.activities.SplashScreenActivity
+
+  config: &config
+    <<: *platform
+    <<: *emulator_uid
+    <<: *appium_hub
+    <<: *appPackage
+    <<: *appActivity
+
+  #test.config
+  dev1-smoke:
+    <<: *config
+
+  qa1-smoke:
+    <<: *config
+

@@ -1,0 +1,7 @@
+target/
+test-output/
+.allure
+**.apk
+**.ipa
+src/main/resources/appium.properties
+src/main/resources/environment.properties§
