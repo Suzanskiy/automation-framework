@@ -21,8 +21,8 @@ import static com.racetrac.mobile.util.allure.AllureEnvironmentUtils.createEnvir
 import static com.racetrac.mobile.util.appium.AppiumDriverUtils.getDriver;
 
 
-@Listeners({BaseTestListenerAdapter.class})
 @ContextConfiguration(classes = MobileContextConfig.class, initializers = CustomContextInitializer.class)
+@Listeners({BaseTestListenerAdapter.class})
 public class BaseTest extends AbstractTestNGSpringContextTests {
 
     private static final Logger LOG = LoggerFactory.getLogger(BaseTest.class);

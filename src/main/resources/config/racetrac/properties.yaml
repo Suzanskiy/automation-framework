@@ -1,14 +1,15 @@
 properties:
   #Config
 
-  platform: &platform
+  appium_hub: &appium_hub
+    hub: http://127.0.0.1:4723/wd/hub
+
+    #Android section
+  platformAndroid: &AndroidPlatform
     platformName: Android
 
   emulator_uid: &emulator_uid
     udid: emulator-5554
-
-  appium_hub: &appium_hub
-    hub: http://127.0.0.1:4723/wd/hub
 
   appPackage: &appPackage
     appPackage: com.RaceTrac.Common.dev
@@ -16,17 +17,33 @@ properties:
   appActivity: &appActivity
     appActivity: com.RaceTrac.ui.splash.activities.SplashScreenActivity
 
-  config: &config
-    <<: *platform
+  AndTestProfile: &AndroidTestProfile
+    test.profile: android
+
+  AndroidConfig: &androidConfig
+    <<: *AndroidPlatform
     <<: *emulator_uid
     <<: *appium_hub
     <<: *appPackage
     <<: *appActivity
+    <<: *AndroidTestProfile
+
+  #iOS section
+  platformIos: &iOsPlatform
+    platformName: ios
+    platformVersion: 14.4
+    deviceName: iPhone 11
+    test.profile: ios
+    bundleId: com.racetrac.QA.ams
+
+  iosConfig: &iosConfig
+    <<: *iOsPlatform
+    <<: *appium_hub
 
   #test.config
-  dev1-smoke:
-    <<: *config
+  ios:
+    <<: *iosConfig
 
-  qa1-smoke:
-    <<: *config
+  android:
+    <<: *androidConfig
 

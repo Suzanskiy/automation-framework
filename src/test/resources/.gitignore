@@ -4,4 +4,4 @@ test-output/
 **.apk
 **.ipa
 src/main/resources/appium.properties
-src/main/resources/environment.properties§
+src/main/resources/environment.properties

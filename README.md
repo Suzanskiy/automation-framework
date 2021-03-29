@@ -1,11 +1,11 @@
 # Introduction 
-Test automation framework for ReceTrac application both Android&iOS app
+Test automation framework for RaceTrac application both Android&iOS app
 
 # Getting Started
-1.  Create emulator and install app
-2.  Make sure you have up and running Appium server
-3.	mvn clean compile -Dbanner=racetrac -Dtest.config=qa1-smoke
+1.  Create an emulator and install app
+2.  Make sure you have upпо and running Appium server
+3.	mvn clean test -Dtest.config=android or ios
 4.	mvn allure:serve to get report 
 
 # Contribute
-Contact Serhii Suzanskyi to get aknowledged about contributing
+Contact Serhii Suzanskyi to get acknowledged about contributing

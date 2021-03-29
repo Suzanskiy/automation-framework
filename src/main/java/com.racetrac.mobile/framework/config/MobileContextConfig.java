@@ -7,7 +7,6 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Scope;
 import org.springframework.context.expression.BeanFactoryResolver;
-import org.springframework.expression.spel.standard.SpelExpressionParser;
 import org.springframework.expression.spel.support.StandardEvaluationContext;
 import org.springframework.retry.annotation.EnableRetry;
 
@@ -21,11 +20,6 @@ public class MobileContextConfig {
 
     @Autowired
     private BeanFactory beanFactory;
-
-    @Bean
-    public SpelExpressionParser getSpelExpressionParser() {
-        return new SpelExpressionParser();
-    }
 
     @Bean
     public BeanFactoryResolver getBeanFactoryResolver() {

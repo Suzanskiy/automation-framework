@@ -7,6 +7,7 @@
     <artifactId>RacetracMobileTFA</artifactId>
     <version>1.0-SNAPSHOT</version>
     <properties>
+        <maven.build.timestamp.format>yyyy-MM-dd_HH-mm-ss</maven.build.timestamp.format>
         <maven.compiler.source>8</maven.compiler.source>
         <maven.compiler.target>8</maven.compiler.target>
         <aspectj.version>1.8.10</aspectj.version>
@@ -14,6 +15,9 @@
         <spring.version>5.1.5.RELEASE</spring.version>
         <org.assertj.assertj-core.version>3.11.1</org.assertj.assertj-core.version>
         <org.apache.commons.commons-lang3.version>3.3.2</org.apache.commons.commons-lang3.version>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <aspectj.version>1.8.10</aspectj.version>
+        <banner>racetrac</banner>
     </properties>
     <packaging>jar</packaging>
     <build>
@@ -55,11 +59,6 @@
                 </dependencies>
             </plugin>
             <plugin>
-                <groupId>io.qameta.allure</groupId>
-                <artifactId>allure-maven</artifactId>
-                <version>2.10.0</version>
-            </plugin>
-            <plugin>
                 <groupId>org.codehaus.gmaven</groupId>
                 <artifactId>groovy-maven-plugin</artifactId>
                 <version>2.1</version>
@@ -90,6 +89,11 @@
         </plugins>
     </build>
     <dependencies>
+        <dependency>
+            <groupId>io.qameta.allure</groupId>
+            <artifactId>allure-testng</artifactId>
+            <version>2.13.8</version>
+        </dependency>
         <dependency>
             <groupId>commons-io</groupId>
             <artifactId>commons-io</artifactId>
@@ -174,23 +178,8 @@
             <version>1.18.2</version>
         </dependency>
         <dependency>
-            <groupId>junit</groupId>
-            <artifactId>junit</artifactId>
-            <version>4.12</version>
-        </dependency>
-        <dependency>
             <groupId>io.qameta.allure</groupId>
             <artifactId>allure-java-commons</artifactId>
-            <version>${allure.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>io.qameta.allure</groupId>
-            <artifactId>allure-cucumber4-jvm</artifactId>
-            <version>${allure.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>io.qameta.allure</groupId>
-            <artifactId>allure-junit4</artifactId>
             <version>${allure.version}</version>
         </dependency>
         <dependency>
@@ -212,10 +201,16 @@
         </dependency>
         <dependency>
             <groupId>org.testng</groupId>
+            <artifactId>testng</artifactId>
+            <version>6.14.3</version>
+            <scope>compile</scope>
+        </dependency>
+<!--        <dependency>
+            <groupId>org.testng</groupId>
             <artifactId>reportng</artifactId>
             <version>1.2.2</version>
             <scope>test</scope>
-        </dependency>
+        </dependency>-->
         <dependency>
             <groupId>com.google.guava</groupId>
             <artifactId>guava</artifactId>
@@ -230,12 +225,6 @@
             <groupId>org.aspectj</groupId>
             <artifactId>aspectjweaver</artifactId>
             <version>${aspectj.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.testng</groupId>
-            <artifactId>testng</artifactId>
-            <version>6.14.3</version>
-            <scope>compile</scope>
         </dependency>
         <dependency>
             <groupId>org.projectlombok</groupId>
@@ -253,27 +242,22 @@
             <artifactId>slf4j-simple</artifactId>
             <version>1.7.30</version>
         </dependency>
-        <dependency>
-            <groupId>org.apache.commons</groupId>
-            <artifactId>commons-lang3</artifactId>
-            <version>${org.apache.commons.commons-lang3.version}</version>
-        </dependency>
     </dependencies>
 
     <profiles>
         <profile>
-            <id>smoke</id>
+            <id>ios</id>
             <activation>
                 <activeByDefault>true</activeByDefault>
             </activation>
             <properties>
-                <test.group>smoke</test.group>
+                <test.group>ios</test.group>
             </properties>
         </profile>
         <profile>
-            <id>regression</id>
+            <id>android</id>
             <properties>
-                <test.group>regression</test.group>
+                <test.group>android</test.group>
             </properties>
         </profile>
     </profiles>

@@ -1,5 +1,13 @@
 package com.racetrac.mobile.framework.appium;
 
+import com.racetrac.mobile.framework.enums.Exceptions;
+import org.openqa.selenium.logging.LogType;
+import org.openqa.selenium.logging.LoggingPreferences;
+import org.openqa.selenium.remote.DesiredCapabilities;
+
+import java.util.logging.Level;
+
+import static com.racetrac.mobile.framework.appium.Platform.valueOf;
 import static io.appium.java_client.remote.MobileCapabilityType.ACCEPT_SSL_CERTS;
 import static io.appium.java_client.remote.MobileCapabilityType.AUTOMATION_NAME;
 import static io.appium.java_client.remote.MobileCapabilityType.DEVICE_NAME;
@@ -8,14 +16,6 @@ import static io.appium.java_client.remote.MobileCapabilityType.PLATFORM_VERSION
 import static io.appium.java_client.remote.MobileCapabilityType.UDID;
 import static org.apache.commons.lang3.StringUtils.isNotBlank;
 import static org.openqa.selenium.remote.CapabilityType.PLATFORM_NAME;
-import static com.racetrac.mobile.framework.appium.Platform.valueOf;
-
-import java.util.logging.Level;
-
-import com.racetrac.mobile.framework.enums.Exceptions;
-import org.openqa.selenium.logging.LogType;
-import org.openqa.selenium.logging.LoggingPreferences;
-import org.openqa.selenium.remote.DesiredCapabilities;
 
 
 public final class AppiumConfiguration {
@@ -24,6 +24,7 @@ public final class AppiumConfiguration {
     private static final String APP_PACKAGE = "appPackage";
     private static final String APP_ACTIVITY = "appActivity";
     private static final String HUB = "hub";
+    private static final String BUNDLE_ID = "bundleId";
 
     private AppiumConfiguration() {
     }
@@ -60,6 +61,10 @@ public final class AppiumConfiguration {
         return getFileProperty(HUB);
     }
 
+    public static String getBundleId() {
+        return getFileProperty(BUNDLE_ID);
+    }
+
     public static DesiredCapabilities getDesiredCapabilities() {
         final DesiredCapabilities capabilities = new DesiredCapabilities();
         capabilities.setCapability(ACCEPT_SSL_CERTS, true);
@@ -86,6 +91,7 @@ public final class AppiumConfiguration {
                 capabilities.setCapability(PLATFORM_VERSION, getPlatformVersion());
                 capabilities.setCapability(AUTOMATION_NAME, "XCUITest");
                 capabilities.setCapability(DEVICE_NAME, getDeviceName());
+                capabilities.setCapability(BUNDLE_ID, getBundleId());
                 break;
             }
             default: {
