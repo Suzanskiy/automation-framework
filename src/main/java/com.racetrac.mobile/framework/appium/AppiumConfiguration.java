@@ -80,7 +80,9 @@ public final class AppiumConfiguration {
                 throw new IllegalArgumentException(Exceptions.WRONG_NAME.message);
             }
         }
-
+        capabilities.setCapability("isHeadless", true);
+        capabilities.setCapability("avd", "Pixel_3a_API_30_x86");
+        capabilities.setCapability("avdLaunchTimeout", "150000");
         switch (getTestPlatform()) {
             case ANDROID: {
                 capabilities.setCapability(APP_PACKAGE, getAppPackage());

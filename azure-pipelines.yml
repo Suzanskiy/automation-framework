@@ -2,18 +2,157 @@
 # Start with a minimal pipeline that you can customize to build and deploy your code.
 # Add steps that build, run tests, deploy, and more:
 # https://aka.ms/yaml
-
-trigger:
-- master
+name: $(Date:yyyyMMdd)$(Rev:.r)
+resources:
+  repositories:
+    - repository: self
+      type: git
+      name: RaceTrac Portfolio/mobile-taf
+      ref: azure-pipelines
+      trigger:
+        - azure-pipelines
+    - repository: racetrac-android-app
+      type: git
+      name: RaceTrac Portfolio/racetrac-android-app
+      ref: Physical_Card_and_debit_card_changes
+      trigger:
+        branches:
+          include:
+            - Physical_Card_and_debit_card_changes
 
 pool:
-  vmImage: 'ubuntu-latest'
+  name: Default
+  demands:
+    - AndroidSDK
+    - java
+    - JDK
 
-steps:
-- script: echo Hello, world!
-  displayName: 'Run a one-line script'
+stages:
+  - stage: Build
+    jobs:
+      - job: BuildJob
+        steps:
+          - script: echo Building!
+          - checkout: racetrac-android-app
+          - script: dir
+          - task: Gradle@2
+            inputs:
+              gradleWrapperFile: gradlew.bat
+              options: '--info'
+              tasks: 'clean assembleDevDebug'
+              publishJUnitResults: false
+          - task: CopyFiles@2
+            inputs:
+              contents: '**/*.apk'
+              targetFolder: '$(build.artifactStagingDirectory)'
+              displayName: Copy .apk files to artifact staging directory
+          - script: |
+              @echo off
+              %ANDROID_HOME%/emulator/emulator -list-avds
+              echo " emualator starting "
+              echo %ANDROID_HOME%
+              adb devices
+              start /b %ANDROID_HOME%/emulator/emulator -avd Pixel_3a_API_30_x86 -no-snapshot-load -noaudio
+              ping 127.0.0.1 -n 120 > nul
+              adb devices
+              adb install $(build.artifactStagingDirectory)\presentation\build\outputs\apk\dev\debug\presentation-dev-debug.apk
+              echo " app installed and ready"
 
-- script: |
-    echo Add other tasks to build, test, and deploy your project.
-    echo See https://aka.ms/yaml
-  displayName: 'Run a multi-line script'
+  - stage: Test
+    jobs:
+      - job: Test
+        steps:
+          - script: dir
+          - script: start C:\Users\s-RTTFSRELEASEPRD\AppData\Roaming\npm\appium
+          - task: Maven@3
+            inputs:
+              mavenPomFile: 'pom.xml'
+              goals: 'clean test -Dtest.config=android'
+              publishJUnitResults: true
+              testResultsFiles: '**/surefire-reports/TEST-*.xml'
+              javaHomeOption: 'JDKVersion'
+              mavenVersionOption: 'Default'
+              mavenAuthenticateFeed: false
+              effectivePomSkip: false
+              sonarQubeRunAnalysis: false
+
+
+
+
+
+            #  - stage: Test
+            #      jobs:
+            #        - job: TestOnWindows
+            #          steps:
+            #            - task: DownloadBuildArtifacts@0
+            #              inputs:
+            #                buildType: 'current'
+            #                downloadType: 'specific'
+            #                itemPattern: '**/*.apk'
+            #                downloadPath: '$(System.ArtifactsDirectory)'
+            #            - script: start C:\Users\s-RTTFSRELEASEPRD\AppData\Roaming\npm\appium
+            #            - task: Maven@3
+            #              inputs:
+            #                mavenPomFile: 'pom.xml'
+            #                goals: 'clean test -Dtest.config=android'
+            #                publishJUnitResults: true
+            #                testResultsFiles: '**/surefire-reports/TEST-*.xml'
+            #                javaHomeOption: 'JDKVersion'
+            #                mavenVersionOption: 'Default'
+            #                mavenAuthenticateFeed: false
+            #                effectivePomSkip: false
+            #                sonarQubeRunAnalysis: false
+            #  - stage: Testing
+            #    jobs:
+            #      - job: TestOnWindows
+            #        steps:
+            #          - script: start C:\Users\s-RTTFSRELEASEPRD\AppData\Roaming\npm\appium
+            #          - task: Maven@3
+            #            inputs:
+            #              mavenPomFile: 'pom.xml'
+            #              goals: 'clean test -Dtest.config=android'
+            #              publishJUnitResults: true
+            #              testResultsFiles: '**/surefire-reports/TEST-*.xml'
+            #              javaHomeOption: 'JDKVersion'
+            #              mavenVersionOption: 'Default'
+            #              mavenAuthenticateFeed: false
+            #              effectivePomSkip: false
+            #              sonarQubeRunAnalysis: false
+            #- stage: Clean_up
+            #  jobs:
+            #    - job: KillEmulator
+            #      steps:
+            #   - script: sc.exe delete ANDROID_SERVICE
+#steps:
+#- checkout: racetrac-android-app
+#- script: dir
+#
+##- task: Gradle@2
+##  inputs:
+##    gradleWrapperFile: gradlew.bat
+##    options: '--info'
+##    tasks: 'clean assemblePreprodRelease'
+##    publishJUnitResults: false
+#
+#- script: start /B '%ANDROID_HOME%/emulator/emulator -avd Pixel_3a_API_30_x86 -no-window -no-snapshot -no-boot-anim -noaudio & sleep 90'
+#
+#- script: '%ANDROID_HOME%/emulator/emulator -list-avds'
+#
+#
+#
+#
+#- script: '%ANDROID_HOME%/platform-tools/adb devices'
+#
+#- script: adb install $(system.defaultworkingdirectory)/presentation/build/outputs/apk/preprod/release/presentation-preprod-release.apk
+#
+#- task: Maven@3
+#  inputs:
+#    mavenPomFile: 'pom.xml'
+#    goals: 'clean compile -Dtest.config=ios'
+#    publishJUnitResults: true
+#    testResultsFiles: '**/surefire-reports/TEST-*.xml'
+#    javaHomeOption: 'JDKVersion'
+#    mavenVersionOption: 'Default'
+#    mavenAuthenticateFeed: false
+#    effectivePomSkip: false
+#    sonarQubeRunAnalysis: false
