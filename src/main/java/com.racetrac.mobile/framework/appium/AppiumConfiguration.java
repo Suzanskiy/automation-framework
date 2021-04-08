@@ -5,6 +5,7 @@ import org.openqa.selenium.logging.LogType;
 import org.openqa.selenium.logging.LoggingPreferences;
 import org.openqa.selenium.remote.DesiredCapabilities;
 
+import java.io.File;
 import java.util.logging.Level;
 
 import static com.racetrac.mobile.framework.appium.Platform.valueOf;
@@ -65,6 +66,16 @@ public final class AppiumConfiguration {
         return getFileProperty(BUNDLE_ID);
     }
 
+    public static String getAppAbsolutePath() {
+
+        File[] files = new File(getAutPackage())
+                .listFiles((dir, name) -> name.toLowerCase().endsWith(getTestPlatform().extension));
+        if (files == null || files.length == 0) {
+            throw new IllegalArgumentException(String.format("%s; %s", Exceptions.UNCLEAR_TYPE.message,
+                    new File(getAutPackage()).getAbsolutePath()));
+        }
+        return files[0].getAbsolutePath();
+    }
     public static DesiredCapabilities getDesiredCapabilities() {
         final DesiredCapabilities capabilities = new DesiredCapabilities();
         capabilities.setCapability(ACCEPT_SSL_CERTS, true);
@@ -82,7 +93,9 @@ public final class AppiumConfiguration {
         }
         capabilities.setCapability("isHeadless", true);
         capabilities.setCapability("avd", "Pixel_3a_API_30_x86");
-        capabilities.setCapability("avdLaunchTimeout", "150000");
+        capabilities.setCapability("avdLaunchTimeout", "300000");
+        capabilities.setCapability("avdReadyTimeout", "300000");
+        capabilities.setCapability("app", getAppAbsolutePath());
         switch (getTestPlatform()) {
             case ANDROID: {
                 capabilities.setCapability(APP_PACKAGE, getAppPackage());

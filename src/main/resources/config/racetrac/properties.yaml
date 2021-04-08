@@ -16,6 +16,7 @@ properties:
 
   appActivity: &appActivity
     appActivity: com.RaceTrac.ui.splash.activities.SplashScreenActivity
+    autPackage: src/main/resources/apk
 
   AndTestProfile: &AndroidTestProfile
     test.profile: android

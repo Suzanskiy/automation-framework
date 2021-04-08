@@ -46,24 +46,37 @@ stages:
               contents: '**/*.apk'
               targetFolder: '$(build.artifactStagingDirectory)'
               displayName: Copy .apk files to artifact staging directory
-          - script: |
-              @echo off
-              %ANDROID_HOME%/emulator/emulator -list-avds
-              echo " emualator starting "
-              echo %ANDROID_HOME%
-              adb devices
-              start /b %ANDROID_HOME%/emulator/emulator -avd Pixel_3a_API_30_x86 -no-snapshot-load -noaudio
-              ping 127.0.0.1 -n 120 > nul
-              adb devices
-              adb install $(build.artifactStagingDirectory)\presentation\build\outputs\apk\dev\debug\presentation-dev-debug.apk
-              echo " app installed and ready"
+          - task: PublishBuildArtifacts@1
+            inputs:
+              pathtoPublish: '$(Build.ArtifactStagingDirectory)/presentation/build/outputs/apk/dev/debug/'
+              artifactName: 'apk'
+              publishLocation: 'container'
+  #          - script: adb kill-server
+  #          - script: adb devices
+  #          - script: |
+  #              @echo off
+  #              %ANDROID_HOME%/emulator/emulator -list-avds
+  #              echo " emualator starting "
+  #              echo %ANDROID_HOME%
+  #          - script: |
+  #             start %ANDROID_HOME%/emulator/emulator -avd Pixel_3a_API_30_x86 -verbose -no-snapshot-load -noaudio -no-boot-anim -wipe-data
+  #          - script: |
+  #              adb devices
+  #              adb install $(build.artifactStagingDirectory)\presentation\build\outputs\apk\dev\debug\presentation-dev-debug.apk
 
   - stage: Test
     jobs:
       - job: Test
         steps:
+          - task: DownloadBuildArtifacts@0
+            displayName: 'Download Build Artifacts'
+            inputs:
+              artifactName: apk
+              downloadPath: '$(Agent.BuildDirectory)/s/src/main/resources'
           - script: dir
-          - script: start C:\Users\s-RTTFSRELEASEPRD\AppData\Roaming\npm\appium
+          - script: start /b appium > 1.txt
+          - script: start /b %ANDROID_HOME%/emulator/emulator -avd Pixel_3a_API_30_x86 -no-window -no-snapshot -no-boot-anim -noaudio > 2.txt
+          - script: more 2.txt
           - task: Maven@3
             inputs:
               mavenPomFile: 'pom.xml'
@@ -74,85 +87,6 @@ stages:
               mavenVersionOption: 'Default'
               mavenAuthenticateFeed: false
               effectivePomSkip: false
-              sonarQubeRunAnalysis: false
-
-
-
-
-
-            #  - stage: Test
-            #      jobs:
-            #        - job: TestOnWindows
-            #          steps:
-            #            - task: DownloadBuildArtifacts@0
-            #              inputs:
-            #                buildType: 'current'
-            #                downloadType: 'specific'
-            #                itemPattern: '**/*.apk'
-            #                downloadPath: '$(System.ArtifactsDirectory)'
-            #            - script: start C:\Users\s-RTTFSRELEASEPRD\AppData\Roaming\npm\appium
-            #            - task: Maven@3
-            #              inputs:
-            #                mavenPomFile: 'pom.xml'
-            #                goals: 'clean test -Dtest.config=android'
-            #                publishJUnitResults: true
-            #                testResultsFiles: '**/surefire-reports/TEST-*.xml'
-            #                javaHomeOption: 'JDKVersion'
-            #                mavenVersionOption: 'Default'
-            #                mavenAuthenticateFeed: false
-            #                effectivePomSkip: false
-            #                sonarQubeRunAnalysis: false
-            #  - stage: Testing
-            #    jobs:
-            #      - job: TestOnWindows
-            #        steps:
-            #          - script: start C:\Users\s-RTTFSRELEASEPRD\AppData\Roaming\npm\appium
-            #          - task: Maven@3
-            #            inputs:
-            #              mavenPomFile: 'pom.xml'
-            #              goals: 'clean test -Dtest.config=android'
-            #              publishJUnitResults: true
-            #              testResultsFiles: '**/surefire-reports/TEST-*.xml'
-            #              javaHomeOption: 'JDKVersion'
-            #              mavenVersionOption: 'Default'
-            #              mavenAuthenticateFeed: false
-            #              effectivePomSkip: false
-            #              sonarQubeRunAnalysis: false
-            #- stage: Clean_up
-            #  jobs:
-            #    - job: KillEmulator
-            #      steps:
-            #   - script: sc.exe delete ANDROID_SERVICE
-#steps:
-#- checkout: racetrac-android-app
-#- script: dir
-#
-##- task: Gradle@2
-##  inputs:
-##    gradleWrapperFile: gradlew.bat
-##    options: '--info'
-##    tasks: 'clean assemblePreprodRelease'
-##    publishJUnitResults: false
-#
-#- script: start /B '%ANDROID_HOME%/emulator/emulator -avd Pixel_3a_API_30_x86 -no-window -no-snapshot -no-boot-anim -noaudio & sleep 90'
-#
-#- script: '%ANDROID_HOME%/emulator/emulator -list-avds'
-#
-#
-#
-#
-#- script: '%ANDROID_HOME%/platform-tools/adb devices'
-#
-#- script: adb install $(system.defaultworkingdirectory)/presentation/build/outputs/apk/preprod/release/presentation-preprod-release.apk
-#
-#- task: Maven@3
-#  inputs:
-#    mavenPomFile: 'pom.xml'
-#    goals: 'clean compile -Dtest.config=ios'
-#    publishJUnitResults: true
-#    testResultsFiles: '**/surefire-reports/TEST-*.xml'
-#    javaHomeOption: 'JDKVersion'
-#    mavenVersionOption: 'Default'
-#    mavenAuthenticateFeed: false
-#    effectivePomSkip: false
-#    sonarQubeRunAnalysis: false
+              sonarQubeRunAnalysis: fals
+          - script: more 1.txt
+          - script: more 2.txt
