@@ -17,4 +17,7 @@ public class HomePage extends BaseMobilePage {
     @iOSXCUITFindBy(accessibility = "IconSettings blue")
     @AndroidFindBy(accessibility = "Account Settings")
     private MobileElement iconSettings;
+
+    @AndroidFindBy(accessibility = "Open navigation drawer")
+    private MobileElement drawer;
 }

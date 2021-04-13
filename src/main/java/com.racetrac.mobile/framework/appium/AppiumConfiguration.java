@@ -92,14 +92,15 @@ public final class AppiumConfiguration {
             }
         }
         capabilities.setCapability("isHeadless", true);
-        capabilities.setCapability("avd", "Pixel_3a_API_30_x86");
-        capabilities.setCapability("avdLaunchTimeout", "300000");
-        capabilities.setCapability("avdReadyTimeout", "300000");
-        capabilities.setCapability("app", getAppAbsolutePath());
+
         switch (getTestPlatform()) {
             case ANDROID: {
+                capabilities.setCapability("app", getAppAbsolutePath());
                 capabilities.setCapability(APP_PACKAGE, getAppPackage());
                 capabilities.setCapability(APP_ACTIVITY, getAppActivity());
+                capabilities.setCapability("avd", getDeviceName());
+                capabilities.setCapability("avdLaunchTimeout", "150000");
+                capabilities.setCapability("avdReadyTimeout", "150000");
                 break;
             }
             case IOS: {
