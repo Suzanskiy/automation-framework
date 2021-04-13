@@ -2,18 +2,91 @@
 # Start with a minimal pipeline that you can customize to build and deploy your code.
 # Add steps that build, run tests, deploy, and more:
 # https://aka.ms/yaml
-
-trigger:
-- master
+name: $(Date:yyyyMMdd)$(Rev:.r)
+resources:
+  repositories:
+    - repository: self
+      type: git
+      name: RaceTrac Portfolio/mobile-taf
+      ref: azure-pipelines
+      trigger:
+        - azure-pipelines
+    - repository: racetrac-android-app
+      type: git
+      name: RaceTrac Portfolio/racetrac-android-app
+      ref: Physical_Card_and_debit_card_changes
+      trigger:
+        branches:
+          include:
+            - Physical_Card_and_debit_card_changes
 
 pool:
-  vmImage: 'ubuntu-latest'
+  name: Default
+  demands:
+    - AndroidSDK
+    - java
+    - JDK
 
-steps:
-- script: echo Hello, world!
-  displayName: 'Run a one-line script'
+stages:
+  - stage: Build
+    jobs:
+      - job: BuildJob
+        steps:
+          - script: echo Building!
+          - checkout: racetrac-android-app
+          - script: dir
+          - task: Gradle@2
+            inputs:
+              gradleWrapperFile: gradlew.bat
+              options: '--info'
+              tasks: 'clean assembleDevDebug'
+              publishJUnitResults: false
+          - task: CopyFiles@2
+            inputs:
+              contents: '**/*.apk'
+              targetFolder: '$(build.artifactStagingDirectory)'
+              displayName: Copy .apk files to artifact staging directory
+          - task: PublishBuildArtifacts@1
+            inputs:
+              pathtoPublish: '$(Build.ArtifactStagingDirectory)/presentation/build/outputs/apk/dev/debug/'
+              artifactName: 'apk'
+              publishLocation: 'container'
+  #          - script: adb kill-server
+  #          - script: adb devices
+  #          - script: |
+  #              @echo off
+  #              %ANDROID_HOME%/emulator/emulator -list-avds
+  #              echo " emualator starting "
+  #              echo %ANDROID_HOME%
+  #          - script: |
+  #             start %ANDROID_HOME%/emulator/emulator -avd Pixel_3a_API_30_x86 -verbose -no-snapshot-load -noaudio -no-boot-anim -wipe-data
+  #          - script: |
+  #              adb devices
+  #              adb install $(build.artifactStagingDirectory)\presentation\build\outputs\apk\dev\debug\presentation-dev-debug.apk
 
-- script: |
-    echo Add other tasks to build, test, and deploy your project.
-    echo See https://aka.ms/yaml
-  displayName: 'Run a multi-line script'
+  - stage: Test
+    jobs:
+      - job: Test
+        steps:
+          - task: DownloadBuildArtifacts@0
+            displayName: 'Download Build Artifacts'
+            inputs:
+              artifactName: apk
+              downloadPath: '$(Agent.BuildDirectory)/s/src/main/resources'
+          - script: dir
+          - script: start /b appium > 1.txt
+          - script: start /b %ANDROID_HOME%/emulator/emulator -avd Pixel_3a_API_30_x86 -no-window -no-snapshot -no-boot-anim -noaudio > 2.txt
+          - script: more 2.txt
+          - task: Maven@3
+            inputs:
+              mavenPomFile: 'pom.xml'
+              goals: 'clean test -Dtest.config=android'
+              publishJUnitResults: true
+              testResultsFiles: '**/surefire-reports/TEST-*.xml'
+              javaHomeOption: 'JDKVersion'
+              mavenVersionOption: 'Default'
+              mavenAuthenticateFeed: false
+              effectivePomSkip: false
+              sonarQubeRunAnalysis: fals
+          - script: more 1.txt
+          - script: more 2.txt

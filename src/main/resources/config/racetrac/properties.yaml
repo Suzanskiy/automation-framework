@@ -4,29 +4,15 @@ properties:
   appium_hub: &appium_hub
     hub: http://127.0.0.1:4723/wd/hub
 
-    #Android section
+  #Android section
   platformAndroid: &AndroidPlatform
     platformName: Android
-
-  emulator_uid: &emulator_uid
-    udid: emulator-5554
-
-  appPackage: &appPackage
     appPackage: com.RaceTrac.Common.dev
-
-  appActivity: &appActivity
-    appActivity: com.RaceTrac.ui.splash.activities.SplashScreenActivity
-
-  AndTestProfile: &AndroidTestProfile
+    deviceName: Pixel_3a_API_30_x86
     test.profile: android
-
-  AndroidConfig: &androidConfig
-    <<: *AndroidPlatform
-    <<: *emulator_uid
-    <<: *appium_hub
-    <<: *appPackage
-    <<: *appActivity
-    <<: *AndroidTestProfile
+    autPackage: src/main/resources/apk
+    appActivity: com.RaceTrac.ui.splash.activities.SplashScreenActivity
+    udid: emulator-5554
 
   #iOS section
   platformIos: &iOsPlatform
@@ -40,10 +26,14 @@ properties:
     <<: *iOsPlatform
     <<: *appium_hub
 
+  AndroidConfig: &AndroidConfig
+    <<: *AndroidPlatform
+    <<: *appium_hub
+
   #test.config
   ios:
     <<: *iosConfig
 
   android:
-    <<: *androidConfig
+    <<: *AndroidConfig
 

@@ -10,14 +10,9 @@ import org.springframework.stereotype.Component;
 
 @Component
 @Getter
-public class TurnOnLocationPage extends BaseMobilePage {
+public class StoresPage extends BaseMobilePage {
     @PageLoading
-    @AndroidFindBy(id = "notNowButton")
-    @iOSXCUITFindBy(xpath = "//XCUIElementTypeButton[@name=\"NOT NOW\"]")
-    private MobileElement notNowBtn;
-    
-    @PageLoading
-    @iOSXCUITFindBy(xpath = "//XCUIElementTypeButton[@name=\"TURN ON\"]")
-    @AndroidFindBy(id = "turnOnButton")
-    private MobileElement turnOnBtn;
+    @iOSXCUITFindBy(xpath = "//XCUIElementTypeStaticText[@name=\"Stores\"]")
+    @AndroidFindBy(accessibility = "Google Map")
+    private MobileElement root;
 }

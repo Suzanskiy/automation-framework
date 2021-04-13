@@ -1,0 +1,40 @@
+package com.racetrac.mobile.anonymous.bottomNavigation;
+
+import com.racetrac.mobile.BaseTest;
+import com.racetrac.mobile.multisite.racetrac.flow.NavigationFlow;
+import com.racetrac.mobile.multisite.racetrac.flow.WelcomeFlow;
+import com.racetrac.mobile.multisite.racetrac.flow.common.LocationRequestFlow;
+import io.qameta.allure.Description;
+import io.qameta.allure.TmsLink;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.testng.annotations.Test;
+
+import static org.testng.Assert.assertTrue;
+
+public class BottomNavigationTest extends BaseTest {
+
+    @Autowired
+    WelcomeFlow welcomeFlow;
+    @Autowired
+    NavigationFlow navigationFlow;
+    @Autowired
+    LocationRequestFlow locationRequestFlow;
+
+    @TmsLink("1794")
+    @Description("Anonymous - Is user able to open application")
+    @Test
+    public void isHomePageOpenedTest() {
+        assertTrue(welcomeFlow.isHomePageOpened(), "Welcome page is not opened");
+    }
+
+    @TmsLink("1796")
+    @Description("Anonymous is user able to navigate to Store Tab without Location service")
+    @Test
+    public void isStoreTabOpenedTest() {
+        assertTrue(welcomeFlow.isHomePageOpened(), "Welcome page is not opened");
+        navigationFlow.navigateToStores();
+        locationRequestFlow.clickNotNow();
+        assertTrue(navigationFlow.isStoresTabOpened(), "Stores page is not opened");
+    }
+
+}
