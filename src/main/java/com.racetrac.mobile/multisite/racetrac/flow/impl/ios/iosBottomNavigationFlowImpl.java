@@ -54,11 +54,11 @@ public class iosBottomNavigationFlowImpl extends BaseFlow implements NavigationF
 
     @Override
     public boolean isCardsTabOpened() {
-        return false;
+        return getCardsPage().isOpened();
     }
 
     @Override
     public boolean isInboxTabOpened() {
-        return false;
+        return getInboxPage().isOpened();
     }
 }

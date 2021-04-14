@@ -1,7 +1,9 @@
 package com.racetrac.mobile.multisite.racetrac.flow;
 
+import com.racetrac.mobile.multisite.racetrac.page.CardsPage;
 import com.racetrac.mobile.multisite.racetrac.page.CouponsPage;
 import com.racetrac.mobile.multisite.racetrac.page.HomePage;
+import com.racetrac.mobile.multisite.racetrac.page.InboxPage;
 import com.racetrac.mobile.multisite.racetrac.page.PriceDisclaimerPage;
 import com.racetrac.mobile.multisite.racetrac.page.StoresPage;
 import com.racetrac.mobile.multisite.racetrac.page.TurnOnLocationPage;
@@ -19,10 +21,32 @@ public class BaseFlow {
     StoresPage storesPage;
     PriceDisclaimerPage priceDisclaimerPage;
     CouponsPage couponsPage;
+    CardsPage cardsPage;
+    InboxPage inboxPage;
     //    SECTIONS
     NavigationDrawer navigationDrawer;
     AndroidNavBar androidNavBar;
     IosNavBar iosNavBar;
+
+    public InboxPage getInboxPage() {
+        inboxPage.waitUntilIsOpened();
+        return inboxPage;
+    }
+
+    @Autowired
+    public void setInboxPage(final InboxPage inboxPage) {
+        this.inboxPage = inboxPage;
+    }
+
+    public CardsPage getCardsPage() {
+        cardsPage.waitUntilIsOpened();
+        return cardsPage;
+    }
+
+    @Autowired
+    public void setCardsPage(final CardsPage cardsPage) {
+        this.cardsPage = cardsPage;
+    }
 
     public NavigationDrawer getNavigationDrawer() {
         navigationDrawer.waitUntilIsOpened();
