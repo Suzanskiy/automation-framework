@@ -54,4 +54,13 @@ public class BottomNavigationTest extends BaseTest {
         navigationFlow.navigateToCards();
         assertTrue(navigationFlow.isCardsTabOpened(), "Cards tab is not opened");
     }
+
+    @TmsLink("2320")
+    @Description("Anonymous - is user able navigate to Inbox screen via navbar")
+    @Test
+    public void isInboxScreenOpenedTest() {
+        assertTrue(welcomeFlow.isHomePageOpened(), "Welcome page is not opened");
+        navigationFlow.navigateToInbox();
+        assertTrue(navigationFlow.isInboxTabOpened());
+    }
 }

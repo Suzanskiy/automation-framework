@@ -60,11 +60,11 @@ public class AndroidDrawerNavigationFlowImpl extends BaseFlow implements Navigat
 
     @Override
     public boolean isCardsTabOpened() {
-        return false;
+        return getCardsPage().isOpened();
     }
 
     @Override
     public boolean isInboxTabOpened() {
-        return false;
+        return getInboxPage().isOpened();
     }
 }
