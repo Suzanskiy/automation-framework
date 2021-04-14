@@ -13,29 +13,34 @@ public class AndroidDrawerNavigationFlowImpl extends BaseFlow implements Navigat
 
     @Override
     public void navigateToHome() {
-
+        getNavigationDrawer().getDrawer().click();
+        getAndroidNavBar().getHomeTab().click();
     }
 
     @Override
     public void navigateToStores() {
-        getHomePage().getDrawer().click();
+        getNavigationDrawer().getDrawer().click();
         getAndroidNavBar().getStoresTab().click();
         getPriceDisclaimerPage().getOkButton().click();
     }
 
     @Override
     public void navigateToCoupons() {
+        getNavigationDrawer().getDrawer().click();
+        getAndroidNavBar().getCouponsTab().click();
 
     }
 
     @Override
     public void navigateToCards() {
-
+        getNavigationDrawer().getDrawer().click();
+        getAndroidNavBar().getCardsTab().click();
     }
 
     @Override
     public void navigateToInbox() {
-
+        getNavigationDrawer().getDrawer().click();
+        getAndroidNavBar().getInboxTab().click();
     }
 
     @Override
@@ -50,7 +55,7 @@ public class AndroidDrawerNavigationFlowImpl extends BaseFlow implements Navigat
 
     @Override
     public boolean isCouponsTabOpened() {
-        return false;
+        return getCouponsPage().isOpened();
     }
 
     @Override

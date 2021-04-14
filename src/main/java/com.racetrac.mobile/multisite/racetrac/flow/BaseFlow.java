@@ -1,11 +1,13 @@
 package com.racetrac.mobile.multisite.racetrac.flow;
 
+import com.racetrac.mobile.multisite.racetrac.page.CouponsPage;
 import com.racetrac.mobile.multisite.racetrac.page.HomePage;
 import com.racetrac.mobile.multisite.racetrac.page.PriceDisclaimerPage;
 import com.racetrac.mobile.multisite.racetrac.page.StoresPage;
 import com.racetrac.mobile.multisite.racetrac.page.TurnOnLocationPage;
 import com.racetrac.mobile.multisite.racetrac.views.AndroidNavBar;
 import com.racetrac.mobile.multisite.racetrac.views.IosNavBar;
+import com.racetrac.mobile.multisite.racetrac.views.NavigationDrawer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -16,9 +18,31 @@ public class BaseFlow {
     TurnOnLocationPage turnOnLocationPage;
     StoresPage storesPage;
     PriceDisclaimerPage priceDisclaimerPage;
+    CouponsPage couponsPage;
     //    SECTIONS
+    NavigationDrawer navigationDrawer;
     AndroidNavBar androidNavBar;
     IosNavBar iosNavBar;
+
+    public NavigationDrawer getNavigationDrawer() {
+        navigationDrawer.waitUntilIsOpened();
+        return navigationDrawer;
+    }
+
+    @Autowired
+    public void setNavigationDrawer(final NavigationDrawer navigationDrawer) {
+        this.navigationDrawer = navigationDrawer;
+    }
+
+    public CouponsPage getCouponsPage() {
+        couponsPage.waitUntilIsOpened();
+        return couponsPage;
+    }
+
+    @Autowired
+    public void setCouponsPage(final CouponsPage couponsPage) {
+        this.couponsPage = couponsPage;
+    }
 
     public TurnOnLocationPage getTurnOnLocationPage() {
         turnOnLocationPage.waitUntilIsOpened();

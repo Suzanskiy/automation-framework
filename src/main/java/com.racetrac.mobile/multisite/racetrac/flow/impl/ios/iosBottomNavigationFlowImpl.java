@@ -13,7 +13,7 @@ public class iosBottomNavigationFlowImpl extends BaseFlow implements NavigationF
 
     @Override
     public void navigateToHome() {
-
+        getIosNavBar().getHomeTab().click();
     }
 
     @Override
@@ -24,17 +24,17 @@ public class iosBottomNavigationFlowImpl extends BaseFlow implements NavigationF
 
     @Override
     public void navigateToCoupons() {
-
+        getIosNavBar().getCouponsTab().click();
     }
 
     @Override
     public void navigateToCards() {
-
+        getIosNavBar().getCardsTab().click();
     }
 
     @Override
     public void navigateToInbox() {
-
+        getIosNavBar().getInboxTab().click();
     }
 
     @Override
@@ -49,7 +49,7 @@ public class iosBottomNavigationFlowImpl extends BaseFlow implements NavigationF
 
     @Override
     public boolean isCouponsTabOpened() {
-        return false;
+        return getCouponsPage().isOpened();
     }
 
     @Override

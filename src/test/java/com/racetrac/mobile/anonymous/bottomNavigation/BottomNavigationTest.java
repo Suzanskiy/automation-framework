@@ -37,4 +37,12 @@ public class BottomNavigationTest extends BaseTest {
         assertTrue(navigationFlow.isStoresTabOpened(), "Stores page is not opened");
     }
 
+    @TmsLink("1798")
+    @Description("Anonymous - is user able navigate to Coupons tab")
+    @Test
+    public void isCouponsTabOpenedTest() {
+        assertTrue(welcomeFlow.isHomePageOpened(), "Welcome page is not opened");
+        navigationFlow.navigateToCoupons();
+        assertTrue(navigationFlow.isCouponsTabOpened(), "Coupons tab is not opened");
+    }
 }
