@@ -10,6 +10,7 @@ import com.racetrac.mobile.multisite.racetrac.page.SignUpPage;
 import com.racetrac.mobile.multisite.racetrac.page.StoresPage;
 import com.racetrac.mobile.multisite.racetrac.page.TurnOnLocationPage;
 import com.racetrac.mobile.multisite.racetrac.views.AndroidNavBar;
+import com.racetrac.mobile.multisite.racetrac.views.ErrorMessageVIew;
 import com.racetrac.mobile.multisite.racetrac.views.IosNavBar;
 import com.racetrac.mobile.multisite.racetrac.views.NavigationDrawer;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,6 +32,17 @@ public class BaseFlow {
     NavigationDrawer navigationDrawer;
     AndroidNavBar androidNavBar;
     IosNavBar iosNavBar;
+    ErrorMessageVIew errorMessageVIew;
+
+    public ErrorMessageVIew getErrorMessageVIew() {
+        errorMessageVIew.waitUntilIsOpened();
+        return errorMessageVIew;
+    }
+
+    @Autowired
+    public void setErrorMessageVIew(final ErrorMessageVIew errorMessageVIew) {
+        this.errorMessageVIew = errorMessageVIew;
+    }
 
     public EmailConfirmationPage getEmailConfirmationPage() {
         emailConfirmationPage.waitUntilIsOpened();

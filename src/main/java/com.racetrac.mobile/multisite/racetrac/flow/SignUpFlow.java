@@ -11,4 +11,13 @@ public interface SignUpFlow {
 
     void enterCredentials(CustomerDto customerDto);
 
+    void returnBackToSignUp();
+
+    void clickCreateAccountBtn();
+
+    boolean isErrorMessageShown();
+
+    void closeErrorMessage();
+
+    String getErrorMessageText();
 }

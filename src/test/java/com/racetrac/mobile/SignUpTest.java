@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
+import static org.testng.Assert.assertEquals;
 import static org.testng.Assert.assertTrue;
 
 public class SignUpTest extends BaseTest {
@@ -19,20 +20,34 @@ public class SignUpTest extends BaseTest {
     SignUpFlow signUpFlow;
     CustomerDto customerDto;
 
-    @BeforeMethod
+    @BeforeMethod(alwaysRun = true)
     public void preconditions() {
         customerDto = testData.generateNewCustomer();
-
+        assertTrue(welcomeFlow.isHomePageOpened(), "Welcome page is not opened");
+        signUpFlow.openSignUpPage();
+        assertTrue(signUpFlow.isSignUpPageOpened(), "SignUp page is not opened");
     }
 
     @TmsLink("")
     @Description("")
     @Test
     public void signUpTest() {
-        assertTrue(welcomeFlow.isHomePageOpened(), "Welcome page is not opened");
-        signUpFlow.openSignUpPage();
-        assertTrue(signUpFlow.isSignUpPageOpened(), "SignUp page is not opened");
         signUpFlow.enterCredentials(customerDto);
         signUpFlow.isEmailConfirmationPageOpened();
+    }
+
+    @TmsLink("")
+    @Description("")
+    @Test
+    public void isErrorMessageAppearWhenEmailIsUsedTest() {
+        signUpFlow.enterCredentials(customerDto);
+        assertTrue(signUpFlow.isEmailConfirmationPageOpened(), "Email Confirmation screen is not opened");
+        signUpFlow.returnBackToSignUp();
+        assertTrue(signUpFlow.isSignUpPageOpened(), "SignUp page is not opened");
+        signUpFlow.clickCreateAccountBtn();
+        assertTrue(signUpFlow.isErrorMessageShown(), "Error message not shown");
+        assertEquals(signUpFlow.getErrorMessageText(),
+                "This email is already linked to an existing account! Try signing in or sign up using another email address.");
+        signUpFlow.closeErrorMessage();
     }
 }

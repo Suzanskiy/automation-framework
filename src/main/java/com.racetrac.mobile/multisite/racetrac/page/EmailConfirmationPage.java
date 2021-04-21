@@ -16,4 +16,8 @@ public class EmailConfirmationPage extends BaseMobilePage {
     @iOSXCUITFindBy(xpath = "//XCUIElementTypeButton[@name=\"GO TO EMAIL\"]")
     @AndroidFindBy(id = "com.RaceTrac.Common.qa:id/goToEmailBtn")
     private MobileElement gotoEmailBtn;
+
+    @iOSXCUITFindBy(accessibility = "Try again")
+    @AndroidFindBy(id = "com.RaceTrac.Common.qa:id/emailWrong")
+    private MobileElement retryEmailBtn;
 }
