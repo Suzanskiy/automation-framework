@@ -6,7 +6,6 @@ import io.appium.java_client.MobileElement;
 import io.appium.java_client.pagefactory.AndroidFindBy;
 import io.appium.java_client.pagefactory.iOSXCUITFindBy;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
 import org.springframework.stereotype.Component;
 
 @Component
@@ -15,16 +14,16 @@ public class CouponsPage extends BaseMobilePage {
 
     @PageLoading
     @iOSXCUITFindBy(xpath = "//XCUIElementTypeStaticText[@name=\"Coupons\"]")
-    @AndroidFindBy(id = "com.RaceTrac.Common.dev:id/textViewCardViewTitle")
+    @AndroidFindBy(id = "com.RaceTrac.Common.qa:id/textViewCardViewTitle")
     private MobileElement header;
 
     @PageLoading
     @iOSXCUITFindBy(xpath = "//XCUIElementTypeButton[@name=\"LOG IN\"]")
-    @AndroidFindBy(id = "com.RaceTrac.Common.dev:id/signInButton")
+    @AndroidFindBy(id = "com.RaceTrac.Common.qa:id/signInButton")
     private MobileElement loginBtn;
 
     @PageLoading
     @iOSXCUITFindBy(xpath = "//XCUIElementTypeButton[@name=\"SIGN UP\"]")
-    @AndroidFindBy(id = "com.RaceTrac.Common.dev:id/signUpButton")
+    @AndroidFindBy(id = "com.RaceTrac.Common.qa:id/signUpButton")
     private MobileElement singUpBtn;
 }

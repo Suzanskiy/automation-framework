@@ -2,9 +2,11 @@ package com.racetrac.mobile.multisite.racetrac.flow;
 
 import com.racetrac.mobile.multisite.racetrac.page.CardsPage;
 import com.racetrac.mobile.multisite.racetrac.page.CouponsPage;
+import com.racetrac.mobile.multisite.racetrac.page.EmailConfirmationPage;
 import com.racetrac.mobile.multisite.racetrac.page.HomePage;
 import com.racetrac.mobile.multisite.racetrac.page.InboxPage;
 import com.racetrac.mobile.multisite.racetrac.page.PriceDisclaimerPage;
+import com.racetrac.mobile.multisite.racetrac.page.SignUpPage;
 import com.racetrac.mobile.multisite.racetrac.page.StoresPage;
 import com.racetrac.mobile.multisite.racetrac.page.TurnOnLocationPage;
 import com.racetrac.mobile.multisite.racetrac.views.AndroidNavBar;
@@ -23,10 +25,32 @@ public class BaseFlow {
     CouponsPage couponsPage;
     CardsPage cardsPage;
     InboxPage inboxPage;
+    SignUpPage signUpPage;
+    EmailConfirmationPage emailConfirmationPage;
     //    SECTIONS
     NavigationDrawer navigationDrawer;
     AndroidNavBar androidNavBar;
     IosNavBar iosNavBar;
+
+    public EmailConfirmationPage getEmailConfirmationPage() {
+        emailConfirmationPage.waitUntilIsOpened();
+        return emailConfirmationPage;
+    }
+
+    @Autowired
+    public void setEmailConfirmationPage(final EmailConfirmationPage emailConfirmationPage) {
+        this.emailConfirmationPage = emailConfirmationPage;
+    }
+
+    public SignUpPage getSignUpPage() {
+        signUpPage.waitUntilIsOpened();
+        return signUpPage;
+    }
+
+    @Autowired
+    public void setSignUpPage(final SignUpPage signUpPage) {
+        this.signUpPage = signUpPage;
+    }
 
     public InboxPage getInboxPage() {
         inboxPage.waitUntilIsOpened();

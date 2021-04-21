@@ -1,9 +1,9 @@
 package com.racetrac.mobile.anonymous.bottomNavigation;
 
 import com.racetrac.mobile.BaseTest;
+import com.racetrac.mobile.multisite.racetrac.flow.LocationRequestFlow;
 import com.racetrac.mobile.multisite.racetrac.flow.NavigationFlow;
 import com.racetrac.mobile.multisite.racetrac.flow.WelcomeFlow;
-import com.racetrac.mobile.multisite.racetrac.flow.common.LocationRequestFlow;
 import io.qameta.allure.Description;
 import io.qameta.allure.TmsLink;
 import org.springframework.beans.factory.annotation.Autowired;

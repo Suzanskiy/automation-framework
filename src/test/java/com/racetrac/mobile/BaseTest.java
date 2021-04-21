@@ -3,9 +3,11 @@ package com.racetrac.mobile;
 
 import com.racetrac.mobile.framework.CustomContextInitializer;
 import com.racetrac.mobile.framework.config.MobileContextConfig;
+import com.racetrac.mobile.multisite.racetrac.data.TestData;
 import com.racetrac.mobile.util.listeners.BaseTestListenerAdapter;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.testng.AbstractTestNGSpringContextTests;
 import org.testng.ITestResult;
@@ -26,6 +28,8 @@ import static com.racetrac.mobile.util.appium.AppiumDriverUtils.getDriver;
 public class BaseTest extends AbstractTestNGSpringContextTests {
 
     private static final Logger LOG = LoggerFactory.getLogger(BaseTest.class);
+    @Autowired
+    TestData testData;
 
     @BeforeSuite(alwaysRun = true)
     public void beforeSuite() {
