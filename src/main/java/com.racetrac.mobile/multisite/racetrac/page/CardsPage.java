@@ -14,16 +14,16 @@ public class CardsPage extends BaseMobilePage {
 
     @PageLoading
     @iOSXCUITFindBy(xpath = "//XCUIElementTypeStaticText[@name=\"Cards\"]")
-    @AndroidFindBy(id = "com.RaceTrac.Common.dev:id/textViewCardViewTitle")
+    @AndroidFindBy(id = "com.RaceTrac.Common.qa:id/textViewCardViewTitle")
     private MobileElement header;
 
     @PageLoading
     @iOSXCUITFindBy(xpath = "//XCUIElementTypeButton[@name=\"LOG IN\"]")
-    @AndroidFindBy(id = "com.RaceTrac.Common.dev:id/signInButton")
+    @AndroidFindBy(id = "com.RaceTrac.Common.qa:id/signInButton")
     private MobileElement loginBtn;
 
     @PageLoading
     @iOSXCUITFindBy(xpath = "//XCUIElementTypeButton[@name=\"SIGN UP\"]")
-    @AndroidFindBy(id = "com.RaceTrac.Common.dev:id/signUpButton")
+    @AndroidFindBy(id = "com.RaceTrac.Common.qa:id/signUpButton")
     private MobileElement singUpBtn;
 }
