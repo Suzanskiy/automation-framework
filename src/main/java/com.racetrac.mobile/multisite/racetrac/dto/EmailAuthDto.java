@@ -9,7 +9,6 @@ import lombok.NoArgsConstructor;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class CustomerDto {
-    private PersonalInfoDto personalInfo;
-    private EmailAuthDto emailAuth;
+public class EmailAuthDto {
+    private String password;
 }

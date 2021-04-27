@@ -5,6 +5,7 @@ import com.racetrac.mobile.multisite.racetrac.page.CouponsPage;
 import com.racetrac.mobile.multisite.racetrac.page.EmailConfirmationPage;
 import com.racetrac.mobile.multisite.racetrac.page.HomePage;
 import com.racetrac.mobile.multisite.racetrac.page.InboxPage;
+import com.racetrac.mobile.multisite.racetrac.page.LoginPage;
 import com.racetrac.mobile.multisite.racetrac.page.PriceDisclaimerPage;
 import com.racetrac.mobile.multisite.racetrac.page.SignUpPage;
 import com.racetrac.mobile.multisite.racetrac.page.StoresPage;
@@ -28,11 +29,22 @@ public class BaseFlow {
     InboxPage inboxPage;
     SignUpPage signUpPage;
     EmailConfirmationPage emailConfirmationPage;
+    LoginPage loginPage;
     //    SECTIONS
     NavigationDrawer navigationDrawer;
     AndroidNavBar androidNavBar;
     IosNavBar iosNavBar;
     ErrorMessageVIew errorMessageVIew;
+
+    public LoginPage getLoginPage() {
+        loginPage.waitUntilIsOpened();
+        return loginPage;
+    }
+
+    @Autowired
+    public void setLoginPage(final LoginPage loginPage) {
+        this.loginPage = loginPage;
+    }
 
     public ErrorMessageVIew getErrorMessageVIew() {
         errorMessageVIew.waitUntilIsOpened();
