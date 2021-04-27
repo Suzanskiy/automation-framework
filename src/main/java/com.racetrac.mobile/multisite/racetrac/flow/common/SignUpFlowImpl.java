@@ -6,10 +6,15 @@ import com.racetrac.mobile.multisite.racetrac.flow.SignUpFlow;
 import io.qameta.allure.Step;
 import org.springframework.stereotype.Component;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
 @Component
 public class SignUpFlowImpl extends BaseFlow implements SignUpFlow {
+    private static final String BACKEND_DATE_PATTERN = "yyyy-MM-dd";
+    public static final String MOBILE_DATE_PATTERN = "MM/dd/yyyy";
+
     @Step
     @Override
     public void openSignUpPage() {
@@ -31,10 +36,13 @@ public class SignUpFlowImpl extends BaseFlow implements SignUpFlow {
     @Step(value = "Prepare user and enter credentials")
     @Override
     public void enterCredentials(final CustomerDto customerDto) {
-        getSignUpPage().getEmailInput().setValue(customerDto.getEmail());
-        getSignUpPage().getPasswordInput().setValue(customerDto.getPassword());
-        getSignUpPage().getPhoneInput().setValue(customerDto.getPhoneNumber());
-        getSignUpPage().getBirthDayInput().setValue(customerDto.getBirthDate().format(DateTimeFormatter.ofPattern("MM/dd/yyyy")));
+        getSignUpPage().getEmailInput().setValue(customerDto.getPersonalInfo().getEmail());
+        getSignUpPage().getPasswordInput().clear();
+        getSignUpPage().getPasswordInput().setValue(customerDto.getEmailAuth().getPassword());
+        getSignUpPage().getPhoneInput().setValue(customerDto.getPersonalInfo().getPhone());
+        getSignUpPage().getBirthDayInput().setValue(LocalDate.parse(customerDto
+                .getPersonalInfo().getBirthday(),DateTimeFormatter.ofPattern(BACKEND_DATE_PATTERN)
+                ).format(DateTimeFormatter.ofPattern(MOBILE_DATE_PATTERN)));
         getSignUpPage().getCreateAccountBtn().click();
     }
 

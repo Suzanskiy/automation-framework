@@ -9,6 +9,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
+import java.util.stream.Stream;
+
 import static org.testng.Assert.assertEquals;
 import static org.testng.Assert.assertTrue;
 
@@ -28,16 +30,16 @@ public class SignUpTest extends BaseTest {
         assertTrue(signUpFlow.isSignUpPageOpened(), "SignUp page is not opened");
     }
 
-    @TmsLink("")
-    @Description("")
+    @TmsLink("1001")
+    @Description("Is user able to proceed signUp procedure")
     @Test
     public void signUpTest() {
         signUpFlow.enterCredentials(customerDto);
         signUpFlow.isEmailConfirmationPageOpened();
     }
 
-    @TmsLink("")
-    @Description("")
+    @TmsLink("1002")
+    @Description("Is error message appear when email is used by UI")
     @Test
     public void isErrorMessageAppearWhenEmailIsUsedTest() {
         signUpFlow.enterCredentials(customerDto);
@@ -45,6 +47,17 @@ public class SignUpTest extends BaseTest {
         signUpFlow.returnBackToSignUp();
         assertTrue(signUpFlow.isSignUpPageOpened(), "SignUp page is not opened");
         signUpFlow.clickCreateAccountBtn();
+        assertTrue(signUpFlow.isErrorMessageShown(), "Error message not shown");
+        assertEquals(signUpFlow.getErrorMessageText(),
+                "This email is already linked to an existing account! Try signing in or sign up using another email address.");
+        signUpFlow.closeErrorMessage();
+    }
+
+    @TmsLink("1003")
+    @Description("Is error message appear when email is used by API")
+    @Test
+    public void isErrorMessageAppearWhenEmailRegisteredByApiTest() {
+        signUpFlow.enterCredentials(testData.registerNewCustomer());
         assertTrue(signUpFlow.isErrorMessageShown(), "Error message not shown");
         assertEquals(signUpFlow.getErrorMessageText(),
                 "This email is already linked to an existing account! Try signing in or sign up using another email address.");
