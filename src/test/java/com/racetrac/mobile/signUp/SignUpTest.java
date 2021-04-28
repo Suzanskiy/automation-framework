@@ -1,5 +1,6 @@
-package com.racetrac.mobile;
+package com.racetrac.mobile.signUp;
 
+import com.racetrac.mobile.BaseTest;
 import com.racetrac.mobile.multisite.racetrac.dto.CustomerDto;
 import com.racetrac.mobile.multisite.racetrac.flow.SignUpFlow;
 import com.racetrac.mobile.multisite.racetrac.flow.WelcomeFlow;
@@ -8,8 +9,6 @@ import io.qameta.allure.TmsLink;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
-
-import java.util.stream.Stream;
 
 import static org.testng.Assert.assertEquals;
 import static org.testng.Assert.assertTrue;
@@ -30,7 +29,7 @@ public class SignUpTest extends BaseTest {
         assertTrue(signUpFlow.isSignUpPageOpened(), "SignUp page is not opened");
     }
 
-    @TmsLink("1001")
+    @TmsLink("2714")
     @Description("Is user able to proceed signUp procedure")
     @Test
     public void signUpTest() {
@@ -38,7 +37,7 @@ public class SignUpTest extends BaseTest {
         signUpFlow.isEmailConfirmationPageOpened();
     }
 
-    @TmsLink("1002")
+    @TmsLink("2715")
     @Description("Is error message appear when email is used by UI")
     @Test
     public void isErrorMessageAppearWhenEmailIsUsedTest() {
@@ -53,7 +52,7 @@ public class SignUpTest extends BaseTest {
         signUpFlow.closeErrorMessage();
     }
 
-    @TmsLink("1003")
+    @TmsLink("2716")
     @Description("Is error message appear when email is used by API")
     @Test
     public void isErrorMessageAppearWhenEmailRegisteredByApiTest() {

@@ -1,5 +1,6 @@
 package com.racetrac.mobile.multisite.racetrac.flow;
 
+import com.racetrac.mobile.multisite.racetrac.page.AccountPage;
 import com.racetrac.mobile.multisite.racetrac.page.CardsPage;
 import com.racetrac.mobile.multisite.racetrac.page.CouponsPage;
 import com.racetrac.mobile.multisite.racetrac.page.EmailConfirmationPage;
@@ -11,6 +12,7 @@ import com.racetrac.mobile.multisite.racetrac.page.SignUpPage;
 import com.racetrac.mobile.multisite.racetrac.page.StoresPage;
 import com.racetrac.mobile.multisite.racetrac.page.TurnOnLocationPage;
 import com.racetrac.mobile.multisite.racetrac.views.AndroidNavBar;
+import com.racetrac.mobile.multisite.racetrac.views.CouponsView;
 import com.racetrac.mobile.multisite.racetrac.views.ErrorMessageVIew;
 import com.racetrac.mobile.multisite.racetrac.views.IosNavBar;
 import com.racetrac.mobile.multisite.racetrac.views.NavigationDrawer;
@@ -30,11 +32,33 @@ public class BaseFlow {
     SignUpPage signUpPage;
     EmailConfirmationPage emailConfirmationPage;
     LoginPage loginPage;
+    AccountPage accountPage;
     //    SECTIONS
     NavigationDrawer navigationDrawer;
     AndroidNavBar androidNavBar;
     IosNavBar iosNavBar;
     ErrorMessageVIew errorMessageVIew;
+    CouponsView couponsView;
+
+    public AccountPage getAccountPage() {
+        accountPage.waitUntilIsOpened();
+        return accountPage;
+    }
+
+    @Autowired
+    public void setAccountPage(final AccountPage accountPage) {
+        this.accountPage = accountPage;
+    }
+
+    public CouponsView getCouponsView() {
+        couponsView.waitUntilIsOpened();
+        return couponsView;
+    }
+
+    @Autowired
+    public void setCouponsView(final CouponsView couponsView) {
+        this.couponsView = couponsView;
+    }
 
     public LoginPage getLoginPage() {
         loginPage.waitUntilIsOpened();
