@@ -4,6 +4,12 @@ import com.racetrac.mobile.multisite.racetrac.dto.CustomerDto;
 
 public interface SignInFlow {
     void openLoginInPage();
+
     boolean isLoginPageOpened();
+
     void authorize(CustomerDto customerDto);
+
+    boolean isCouponsViewOpened();
+
+    void clickGotItBtn();
 }

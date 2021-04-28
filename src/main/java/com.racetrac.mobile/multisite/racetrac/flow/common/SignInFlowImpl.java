@@ -15,16 +15,29 @@ public class SignInFlowImpl extends BaseFlow implements SignInFlow {
         getHomePage().getLoginBtn().click();
     }
 
+    @Step
     @Override
     public boolean isLoginPageOpened() {
         return getLoginPage().isOpened();
     }
 
+    @Step
     @Override
     public void authorize(final CustomerDto customerDto) {
         getLoginPage().getEmailInput().setValue(customerDto.getPersonalInfo().getEmail());
         getLoginPage().getPasswordInput().clear();
         getLoginPage().getPasswordInput().setValue(customerDto.getEmailAuth().getPassword());
         getLoginPage().getLoginBtn().click();
+    }
+
+    @Step
+    @Override
+    public boolean isCouponsViewOpened() {
+        return getCouponsView().isOpened();
+    }
+
+    @Override
+    public void clickGotItBtn() {
+        getCouponsView().getGotItBtn().click();
     }
 }
