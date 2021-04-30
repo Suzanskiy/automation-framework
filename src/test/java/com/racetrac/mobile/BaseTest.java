@@ -28,8 +28,9 @@ import static com.racetrac.mobile.util.appium.AppiumDriverUtils.getDriver;
 public class BaseTest extends AbstractTestNGSpringContextTests {
 
     private static final Logger LOG = LoggerFactory.getLogger(BaseTest.class);
+
     @Autowired
-    TestData testData;
+    protected TestData testData;
 
     @BeforeSuite(alwaysRun = true)
     public void beforeSuite() {

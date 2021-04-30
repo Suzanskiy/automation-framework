@@ -18,4 +18,9 @@ public class AndroidWelcomeFlowImpl extends BaseFlow implements WelcomeFlow {
         getTurnOnLocationPage().getNotNowBtn().click();
         return getHomePage().isOpened();
     }
+
+    @Override
+    public boolean isHomePageOpenedAfterSignIn() {
+        return getHomePage().isOpened();
+    }
 }

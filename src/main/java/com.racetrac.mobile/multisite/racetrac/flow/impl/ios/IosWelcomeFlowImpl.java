@@ -17,4 +17,9 @@ public class IosWelcomeFlowImpl extends BaseFlow implements WelcomeFlow {
     public boolean isHomePageOpened() {
         return getHomePage().isOpened();
     }
+
+    @Override
+    public boolean isHomePageOpenedAfterSignIn() {
+        return isHomePageOpened();
+    }
 }
