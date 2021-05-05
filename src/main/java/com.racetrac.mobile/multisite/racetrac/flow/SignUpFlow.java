@@ -20,4 +20,8 @@ public interface SignUpFlow {
     void closeErrorMessage();
 
     String getErrorMessageText();
+
+    void enterSpecificCredentials(String fraudMail, CustomerDto customerDto);
+
+    boolean isFraudErrorMessageShown();
 }

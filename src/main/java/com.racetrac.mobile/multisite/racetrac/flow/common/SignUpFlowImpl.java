@@ -7,7 +7,6 @@ import io.qameta.allure.Step;
 import org.springframework.stereotype.Component;
 
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
 @Component
@@ -37,13 +36,28 @@ public class SignUpFlowImpl extends BaseFlow implements SignUpFlow {
     @Override
     public void enterCredentials(final CustomerDto customerDto) {
         getSignUpPage().getEmailInput().setValue(customerDto.getPersonalInfo().getEmail());
+        enterPassword(customerDto);
+        enterPhone(customerDto);
+        enterBirthDay(customerDto);
+        getSignUpPage().getCreateAccountBtn().click();
+    }
+
+    @Step
+    private void enterBirthDay(final CustomerDto customerDto) {
+        getSignUpPage().getBirthDayInput().setValue(LocalDate.parse(customerDto
+                .getPersonalInfo().getBirthday(), DateTimeFormatter.ofPattern(BACKEND_DATE_PATTERN)
+        ).format(DateTimeFormatter.ofPattern(MOBILE_DATE_PATTERN)));
+    }
+
+    @Step
+    private void enterPhone(final CustomerDto customerDto) {
+        getSignUpPage().getPhoneInput().setValue(customerDto.getPersonalInfo().getPhone());
+    }
+
+    @Step
+    private void enterPassword(final CustomerDto customerDto) {
         getSignUpPage().getPasswordInput().clear();
         getSignUpPage().getPasswordInput().setValue(customerDto.getEmailAuth().getPassword());
-        getSignUpPage().getPhoneInput().setValue(customerDto.getPersonalInfo().getPhone());
-        getSignUpPage().getBirthDayInput().setValue(LocalDate.parse(customerDto
-                .getPersonalInfo().getBirthday(),DateTimeFormatter.ofPattern(BACKEND_DATE_PATTERN)
-                ).format(DateTimeFormatter.ofPattern(MOBILE_DATE_PATTERN)));
-        getSignUpPage().getCreateAccountBtn().click();
     }
 
     @Step
@@ -74,5 +88,21 @@ public class SignUpFlowImpl extends BaseFlow implements SignUpFlow {
     @Override
     public String getErrorMessageText() {
         return getErrorMessageVIew().getErrorMessage().getText();
+    }
+
+    @Step
+    @Override
+    public void enterSpecificCredentials(final String fraudMail, final CustomerDto customerDto) {
+        getSignUpPage().getEmailInput().setValue(fraudMail);
+        enterPassword(customerDto);
+        enterPhone(customerDto);
+        enterBirthDay(customerDto);
+        getSignUpPage().getCreateAccountBtn().click();
+    }
+
+    @Step
+    @Override
+    public boolean isFraudErrorMessageShown() {
+        return getFraudErrorMessageView().isOpened();
     }
 }

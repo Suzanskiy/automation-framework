@@ -14,6 +14,7 @@ import com.racetrac.mobile.multisite.racetrac.page.TurnOnLocationPage;
 import com.racetrac.mobile.multisite.racetrac.views.AndroidNavBar;
 import com.racetrac.mobile.multisite.racetrac.views.CouponsView;
 import com.racetrac.mobile.multisite.racetrac.views.ErrorMessageVIew;
+import com.racetrac.mobile.multisite.racetrac.views.FraudErrorMessageView;
 import com.racetrac.mobile.multisite.racetrac.views.IosNavBar;
 import com.racetrac.mobile.multisite.racetrac.views.NavigationDrawer;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -39,6 +40,17 @@ public class BaseFlow {
     IosNavBar iosNavBar;
     ErrorMessageVIew errorMessageVIew;
     CouponsView couponsView;
+    FraudErrorMessageView fraudErrorMessageView;
+
+    public FraudErrorMessageView getFraudErrorMessageView() {
+        fraudErrorMessageView.waitUntilIsOpened();
+        return fraudErrorMessageView;
+    }
+
+    @Autowired
+    public void setFraudErrorMessageView(final FraudErrorMessageView fraudErrorMessageView) {
+        this.fraudErrorMessageView = fraudErrorMessageView;
+    }
 
     public AccountPage getAccountPage() {
         accountPage.waitUntilIsOpened();
