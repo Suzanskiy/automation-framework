@@ -13,17 +13,17 @@ import org.springframework.stereotype.Component;
 public class LoginPage extends BaseMobilePage {
 
     @PageLoading
-    @iOSXCUITFindBy(xpath = "//XCUIElementTypeApplication[@name=\"RaceTrac QA\"]/XCUIElementTypeWindow[1]/XCUIElementTypeOther/XCUIElementTypeOther[2]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeTextField")
+    @iOSXCUITFindBy(accessibility = "textfield.email")
     @AndroidFindBy(id = "com.RaceTrac.Common.qa:id/sign_in_user_email_field")
     private MobileElement emailInput;
 
     @PageLoading
     @AndroidFindBy(id = "com.RaceTrac.Common.qa:id/sign_in_user_password_field")
-    @iOSXCUITFindBy(xpath = "//XCUIElementTypeApplication[@name=\"RaceTrac QA\"]/XCUIElementTypeWindow[1]/XCUIElementTypeOther/XCUIElementTypeOther[2]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeSecureTextField")
+    @iOSXCUITFindBy(accessibility = "textfield.password")
     private MobileElement passwordInput;
 
     @PageLoading
     @AndroidFindBy(id = "com.RaceTrac.Common.qa:id/sign_in_done_button")
-    @iOSXCUITFindBy(xpath = "//XCUIElementTypeButton[@name=\"SIGN IN\"]")
+    @iOSXCUITFindBy(accessibility = "button.sign_in")
     private MobileElement loginBtn;
 }

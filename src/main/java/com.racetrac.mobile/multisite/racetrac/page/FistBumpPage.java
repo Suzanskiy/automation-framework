@@ -12,13 +12,12 @@ import org.springframework.stereotype.Component;
 @Getter
 public class FistBumpPage extends BaseMobilePage {
 
-    @PageLoading
-    @iOSXCUITFindBy(accessibility = "Fist bump for creating an account!")
-    @AndroidFindBy(id = "1")
-    private MobileElement fistBumpTxt;
+    @iOSXCUITFindBy(accessibility = "Confetti")
+    @AndroidFindBy(id = "com.RaceTrac.Common.qa:id/bump_image")
+    private MobileElement confetti;
 
     @PageLoading
-    @iOSXCUITFindBy(xpath = "//XCUIElementTypeButton[@name=\"GET STARTED\"]")
-    @AndroidFindBy(id = "")
+    @iOSXCUITFindBy(accessibility = "GET STARTED")
+    @AndroidFindBy(id = "com.RaceTrac.Common.qa:id/getStartedButton")
     private MobileElement getStartedBtn;
 }
