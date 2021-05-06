@@ -3,7 +3,7 @@ package com.racetrac.mobile.multisite.racetrac.flow;
 import com.racetrac.mobile.multisite.racetrac.page.AccountPage;
 import com.racetrac.mobile.multisite.racetrac.page.CardsPage;
 import com.racetrac.mobile.multisite.racetrac.page.CouponsPage;
-import com.racetrac.mobile.multisite.racetrac.page.EmailConfirmationPage;
+import com.racetrac.mobile.multisite.racetrac.page.FistBumpPage;
 import com.racetrac.mobile.multisite.racetrac.page.HomePage;
 import com.racetrac.mobile.multisite.racetrac.page.InboxPage;
 import com.racetrac.mobile.multisite.racetrac.page.LoginPage;
@@ -31,7 +31,7 @@ public class BaseFlow {
     CardsPage cardsPage;
     InboxPage inboxPage;
     SignUpPage signUpPage;
-    EmailConfirmationPage emailConfirmationPage;
+    FistBumpPage fistBumpPage;
     LoginPage loginPage;
     AccountPage accountPage;
     //    SECTIONS
@@ -41,6 +41,16 @@ public class BaseFlow {
     ErrorMessageVIew errorMessageVIew;
     CouponsView couponsView;
     FraudErrorMessageView fraudErrorMessageView;
+
+    public FistBumpPage getFistBumpPage() {
+        fistBumpPage.waitUntilIsOpened();
+        return fistBumpPage;
+    }
+
+    @Autowired
+    public void setFistBumpPage(final FistBumpPage fistBumpPage) {
+        this.fistBumpPage = fistBumpPage;
+    }
 
     public FraudErrorMessageView getFraudErrorMessageView() {
         fraudErrorMessageView.waitUntilIsOpened();
@@ -92,14 +102,14 @@ public class BaseFlow {
         this.errorMessageVIew = errorMessageVIew;
     }
 
-    public EmailConfirmationPage getEmailConfirmationPage() {
-        emailConfirmationPage.waitUntilIsOpened();
-        return emailConfirmationPage;
+    public FistBumpPage getEmailConfirmationPage() {
+        fistBumpPage.waitUntilIsOpened();
+        return fistBumpPage;
     }
 
     @Autowired
-    public void setEmailConfirmationPage(final EmailConfirmationPage emailConfirmationPage) {
-        this.emailConfirmationPage = emailConfirmationPage;
+    public void setEmailConfirmationPage(final FistBumpPage fistBumpPage) {
+        this.fistBumpPage = fistBumpPage;
     }
 
     public SignUpPage getSignUpPage() {

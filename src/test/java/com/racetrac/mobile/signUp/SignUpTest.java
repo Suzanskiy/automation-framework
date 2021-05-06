@@ -2,6 +2,7 @@ package com.racetrac.mobile.signUp;
 
 import com.racetrac.mobile.BaseTest;
 import com.racetrac.mobile.multisite.racetrac.dto.CustomerDto;
+import com.racetrac.mobile.multisite.racetrac.flow.SignOutFlow;
 import com.racetrac.mobile.multisite.racetrac.flow.SignUpFlow;
 import com.racetrac.mobile.multisite.racetrac.flow.WelcomeFlow;
 import io.qameta.allure.Description;
@@ -14,12 +15,14 @@ import static org.testng.Assert.assertEquals;
 import static org.testng.Assert.assertTrue;
 
 public class SignUpTest extends BaseTest {
-
     @Autowired
     WelcomeFlow welcomeFlow;
     @Autowired
     SignUpFlow signUpFlow;
+    @Autowired
+    SignOutFlow signOutFlow;
     CustomerDto customerDto;
+
 
     @BeforeMethod(alwaysRun = true)
     public void preconditions() {
@@ -34,7 +37,7 @@ public class SignUpTest extends BaseTest {
     @Test
     public void signUpTest() {
         signUpFlow.enterCredentials(customerDto);
-        signUpFlow.isEmailConfirmationPageOpened();
+        signUpFlow.isFistBumpPageOpened();
     }
 
     @TmsLink("2715")
@@ -42,10 +45,12 @@ public class SignUpTest extends BaseTest {
     @Test
     public void isErrorMessageAppearWhenEmailIsUsedTest() {
         signUpFlow.enterCredentials(customerDto);
-        assertTrue(signUpFlow.isEmailConfirmationPageOpened(), "Email Confirmation screen is not opened");
-        signUpFlow.returnBackToSignUp();
+        assertTrue(signUpFlow.isFistBumpPageOpened(), "Fist Bump screen is not opened");
+        signUpFlow.clickGetStartedBtn();
+        signOutFlow.doSignOut();
+        signUpFlow.openSignUpPage();
         assertTrue(signUpFlow.isSignUpPageOpened(), "SignUp page is not opened");
-        signUpFlow.clickCreateAccountBtn();
+        signUpFlow.enterCredentials(customerDto);
         assertTrue(signUpFlow.isErrorMessageShown(), "Error message not shown");
         assertEquals(signUpFlow.getErrorMessageText(),
                 "This email is already linked to an existing account! Try signing in or sign up using another email address.");
