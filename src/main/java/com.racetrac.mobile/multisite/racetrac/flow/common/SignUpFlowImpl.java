@@ -28,8 +28,8 @@ public class SignUpFlowImpl extends BaseFlow implements SignUpFlow {
 
     @Step
     @Override
-    public boolean isEmailConfirmationPageOpened() {
-        return getEmailConfirmationPage().isOpened();
+    public boolean isFistBumpPageOpened() {
+        return getFistBumpPage().isOpened();
     }
 
     @Step(value = "Prepare user and enter credentials")
@@ -41,6 +41,7 @@ public class SignUpFlowImpl extends BaseFlow implements SignUpFlow {
         enterBirthDay(customerDto);
         getSignUpPage().getCreateAccountBtn().click();
     }
+
 
     @Step
     private void enterBirthDay(final CustomerDto customerDto) {
@@ -60,11 +61,6 @@ public class SignUpFlowImpl extends BaseFlow implements SignUpFlow {
         getSignUpPage().getPasswordInput().setValue(customerDto.getEmailAuth().getPassword());
     }
 
-    @Step
-    @Override
-    public void returnBackToSignUp() {
-        getEmailConfirmationPage().getRetryEmailBtn().click();
-    }
 
     @Step
     @Override
@@ -104,5 +100,10 @@ public class SignUpFlowImpl extends BaseFlow implements SignUpFlow {
     @Override
     public boolean isFraudErrorMessageShown() {
         return getFraudErrorMessageView().isOpened();
+    }
+
+    @Override
+    public void clickGetStartedBtn() {
+        getFistBumpPage().getGetStartedBtn().click();
     }
 }

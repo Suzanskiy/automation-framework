@@ -10,14 +10,14 @@ import org.springframework.stereotype.Component;
 
 @Component
 @Getter
-public class EmailConfirmationPage extends BaseMobilePage {
+public class FistBumpPage extends BaseMobilePage {
+
+    @iOSXCUITFindBy(accessibility = "Confetti")
+    @AndroidFindBy(id = "com.RaceTrac.Common.qa:id/bump_image")
+    private MobileElement confetti;
 
     @PageLoading
-    @iOSXCUITFindBy(xpath = "//XCUIElementTypeButton[@name=\"GO TO EMAIL\"]")
-    @AndroidFindBy(id = "com.RaceTrac.Common.qa:id/goToEmailBtn")
-    private MobileElement gotoEmailBtn;
-
-    @iOSXCUITFindBy(accessibility = "Try again")
-    @AndroidFindBy(id = "com.RaceTrac.Common.qa:id/emailWrong")
-    private MobileElement retryEmailBtn;
+    @iOSXCUITFindBy(accessibility = "GET STARTED")
+    @AndroidFindBy(id = "com.RaceTrac.Common.qa:id/getStartedButton")
+    private MobileElement getStartedBtn;
 }

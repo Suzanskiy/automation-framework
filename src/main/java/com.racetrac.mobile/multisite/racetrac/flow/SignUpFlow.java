@@ -7,11 +7,9 @@ public interface SignUpFlow {
 
     boolean isSignUpPageOpened();
 
-    boolean isEmailConfirmationPageOpened();
+    boolean isFistBumpPageOpened();
 
     void enterCredentials(CustomerDto customerDto);
-
-    void returnBackToSignUp();
 
     void clickCreateAccountBtn();
 
@@ -24,4 +22,6 @@ public interface SignUpFlow {
     void enterSpecificCredentials(String fraudMail, CustomerDto customerDto);
 
     boolean isFraudErrorMessageShown();
+
+    void clickGetStartedBtn();
 }

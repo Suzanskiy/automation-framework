@@ -17,27 +17,27 @@ public class SignUpPage extends BaseMobilePage {
     private MobileElement closeBtn;
 
     @PageLoading
-    @iOSXCUITFindBy(accessibility = "Sign Up")
+    @iOSXCUITFindBy(accessibility = "text.title")
     @AndroidFindBy(id = "com.RaceTrac.Common.qa:id/top_view")
     private MobileElement pageTitle;
 
-    @iOSXCUITFindBy(xpath = "//XCUIElementTypeApplication[@name=\"RaceTrac QA\"]/XCUIElementTypeWindow[1]/XCUIElementTypeOther/XCUIElementTypeOther[2]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeScrollView/XCUIElementTypeOther[1]/XCUIElementTypeTextField[1]")
+    @iOSXCUITFindBy(accessibility = "textfield.email")
     @AndroidFindBy(id = "com.RaceTrac.Common.qa:id/sign_up_user_email_field")
     private MobileElement emailInput;
 
-    @iOSXCUITFindBy(xpath = "//XCUIElementTypeApplication[@name=\"RaceTrac QA\"]/XCUIElementTypeWindow[1]/XCUIElementTypeOther/XCUIElementTypeOther[2]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeScrollView/XCUIElementTypeOther[1]/XCUIElementTypeSecureTextField")
+    @iOSXCUITFindBy(accessibility = "textfield.password")
     @AndroidFindBy(id = "com.RaceTrac.Common.qa:id/sign_up_user_password_field")
     private MobileElement passwordInput;
 
-    @iOSXCUITFindBy(xpath = "//XCUIElementTypeApplication[@name=\"RaceTrac QA\"]/XCUIElementTypeWindow[1]/XCUIElementTypeOther/XCUIElementTypeOther[2]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeScrollView/XCUIElementTypeOther[1]/XCUIElementTypeTextField[2]")
+    @iOSXCUITFindBy(accessibility = "textfield.phone_number")
     @AndroidFindBy(id = "com.RaceTrac.Common.qa:id/sign_up_user_phone_field")
     private MobileElement phoneInput;
 
-    @iOSXCUITFindBy(xpath = "//XCUIElementTypeApplication[@name=\"RaceTrac QA\"]/XCUIElementTypeWindow[1]/XCUIElementTypeOther/XCUIElementTypeOther[2]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeScrollView/XCUIElementTypeOther[1]/XCUIElementTypeTextField[3]")
+    @iOSXCUITFindBy(accessibility = "textfield.birthday")
     @AndroidFindBy(id = "com.RaceTrac.Common.qa:id/sign_up_user_birthday_field")
     private MobileElement birthDayInput;
 
-    @iOSXCUITFindBy(xpath = "//XCUIElementTypeButton[@name=\"CREATE ACCOUNT\"]")
+    @iOSXCUITFindBy(accessibility = "button.create_account")
     @AndroidFindBy(id = "com.RaceTrac.Common.qa:id/sign_up_done_button")
     private MobileElement createAccountBtn;
 
