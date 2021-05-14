@@ -23,7 +23,7 @@ class FrameworkPropertyGenerator extends PropertyGenerator {
     static final String BANNER_PROPERTY = "banner"
     static final String CONFIG_PROPERTY = "test.config"
     static final String DEFAULT_BANNER = "racetrac"
-    static final String DEFAULT_CONFIG = "qa1-smoke"
+    static final String DEFAULT_CONFIG = "ios"
 
     String targetBanner
     String targetEnvConfig

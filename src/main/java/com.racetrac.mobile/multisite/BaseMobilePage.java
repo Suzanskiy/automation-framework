@@ -49,35 +49,16 @@ public abstract class BaseMobilePage implements MobilePage {
         LOG.info("Checking if page " + getClass().getSimpleName() + " is opened.");
         for (final String mobileElementName : getMobileElementsNamesWithAnnotationPageLoading()) {
             try {
-                final String methodName = mobileElementName + "IsDisplayed";
+                final String methodName = "get" + mobileElementName.substring(0, 1).toUpperCase() + mobileElementName.substring(1);
                 LOG.info("Invoke method " + methodName + "()");
-                final Boolean isDisplayed = (Boolean) getClass().getMethod(methodName).invoke(this);
-                LOG.info("-----> (" + isDisplayed + ")");
+                final MobileElement element = (MobileElement) getClass().getMethod(methodName).invoke(this);
+                final boolean elementDisplayed = element.isDisplayed();
+                LOG.info("-----> (" + elementDisplayed + ")");
 
-                if (!isDisplayed) {
+                if (!elementDisplayed) {
                     return false;
                 }
-            } catch (final NoSuchMethodException noIsDisplayedMethodException) {
-                try {
-                    final String methodName = "get" + mobileElementName.substring(0, 1).toUpperCase() + mobileElementName.substring(1);
-                    LOG.info("Invoke method " + methodName + "()");
-                    final MobileElement element = (MobileElement) getClass().getMethod(methodName).invoke(this);
-                    LOG.info("-----> (" + element.isDisplayed() + ")");
-                    if (!element.isDisplayed()) {
-                        return false;
-                    }
-                } catch (final NoSuchMethodException noGetterException) {
-                    noGetterException.printStackTrace();
-                    noIsDisplayedMethodException.printStackTrace();
-                    throw new RuntimeException("No method to check visibility of " + mobileElementName + " on " + getClass().getName() + "\n" +
-                            "Please, implement method public " + mobileElementName + "IsDisplayed()" + " OR " + "public get" +
-                            mobileElementName.substring(0, 1).toUpperCase() + mobileElementName.substring(1) + "()" + " OR " +
-                            "use @Getter annotation from lombok");
-                } catch (final IllegalAccessException | InvocationTargetException | NoSuchElementException | StaleElementReferenceException e) {
-                    LOG.info("-----> " + e.getMessage());
-                    return false;
-                }
-            } catch (final IllegalAccessException | InvocationTargetException | NoSuchElementException | StaleElementReferenceException e) {
+            } catch (final IllegalAccessException | InvocationTargetException | NoSuchElementException | StaleElementReferenceException | NoSuchMethodException e) {
                 LOG.info("-----> " + e.getMessage());
                 return false;
             }

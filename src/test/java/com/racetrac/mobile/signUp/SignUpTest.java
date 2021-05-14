@@ -38,6 +38,9 @@ public class SignUpTest extends BaseTest {
     public void signUpTest() {
         signUpFlow.enterCredentials(customerDto);
         signUpFlow.isFistBumpPageOpened();
+        signUpFlow.clickGetStartedBtn();
+        signOutFlow.doSignOut();
+        assertTrue(welcomeFlow.isHomePageOpened(), "Welcome page is not opened");
     }
 
     @TmsLink("2715")

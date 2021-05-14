@@ -17,11 +17,15 @@ import com.racetrac.mobile.multisite.racetrac.views.ErrorMessageVIew;
 import com.racetrac.mobile.multisite.racetrac.views.FraudErrorMessageView;
 import com.racetrac.mobile.multisite.racetrac.views.IosNavBar;
 import com.racetrac.mobile.multisite.racetrac.views.NavigationDrawer;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 @Component
 public class BaseFlow {
+    public static final Logger LOG = LoggerFactory.getLogger(BaseFlow.class);
+
     //     PAGES
     HomePage homePage;
     TurnOnLocationPage turnOnLocationPage;
@@ -42,124 +46,11 @@ public class BaseFlow {
     CouponsView couponsView;
     FraudErrorMessageView fraudErrorMessageView;
 
-    public FistBumpPage getFistBumpPage() {
-        fistBumpPage.waitUntilIsOpened();
-        return fistBumpPage;
-    }
+    //Getters
 
-    @Autowired
-    public void setFistBumpPage(final FistBumpPage fistBumpPage) {
-        this.fistBumpPage = fistBumpPage;
-    }
-
-    public FraudErrorMessageView getFraudErrorMessageView() {
-        fraudErrorMessageView.waitUntilIsOpened();
-        return fraudErrorMessageView;
-    }
-
-    @Autowired
-    public void setFraudErrorMessageView(final FraudErrorMessageView fraudErrorMessageView) {
-        this.fraudErrorMessageView = fraudErrorMessageView;
-    }
-
-    public AccountPage getAccountPage() {
-        accountPage.waitUntilIsOpened();
-        return accountPage;
-    }
-
-    @Autowired
-    public void setAccountPage(final AccountPage accountPage) {
-        this.accountPage = accountPage;
-    }
-
-    public CouponsView getCouponsView() {
-        couponsView.waitUntilIsOpened();
-        return couponsView;
-    }
-
-    @Autowired
-    public void setCouponsView(final CouponsView couponsView) {
-        this.couponsView = couponsView;
-    }
-
-    public LoginPage getLoginPage() {
-        loginPage.waitUntilIsOpened();
-        return loginPage;
-    }
-
-    @Autowired
-    public void setLoginPage(final LoginPage loginPage) {
-        this.loginPage = loginPage;
-    }
-
-    public ErrorMessageVIew getErrorMessageVIew() {
-        errorMessageVIew.waitUntilIsOpened();
-        return errorMessageVIew;
-    }
-
-    @Autowired
-    public void setErrorMessageVIew(final ErrorMessageVIew errorMessageVIew) {
-        this.errorMessageVIew = errorMessageVIew;
-    }
-
-    public FistBumpPage getEmailConfirmationPage() {
-        fistBumpPage.waitUntilIsOpened();
-        return fistBumpPage;
-    }
-
-    @Autowired
-    public void setEmailConfirmationPage(final FistBumpPage fistBumpPage) {
-        this.fistBumpPage = fistBumpPage;
-    }
-
-    public SignUpPage getSignUpPage() {
-        signUpPage.waitUntilIsOpened();
-        return signUpPage;
-    }
-
-    @Autowired
-    public void setSignUpPage(final SignUpPage signUpPage) {
-        this.signUpPage = signUpPage;
-    }
-
-    public InboxPage getInboxPage() {
-        inboxPage.waitUntilIsOpened();
-        return inboxPage;
-    }
-
-    @Autowired
-    public void setInboxPage(final InboxPage inboxPage) {
-        this.inboxPage = inboxPage;
-    }
-
-    public CardsPage getCardsPage() {
-        cardsPage.waitUntilIsOpened();
-        return cardsPage;
-    }
-
-    @Autowired
-    public void setCardsPage(final CardsPage cardsPage) {
-        this.cardsPage = cardsPage;
-    }
-
-    public NavigationDrawer getNavigationDrawer() {
-        navigationDrawer.waitUntilIsOpened();
-        return navigationDrawer;
-    }
-
-    @Autowired
-    public void setNavigationDrawer(final NavigationDrawer navigationDrawer) {
-        this.navigationDrawer = navigationDrawer;
-    }
-
-    public CouponsPage getCouponsPage() {
-        couponsPage.waitUntilIsOpened();
-        return couponsPage;
-    }
-
-    @Autowired
-    public void setCouponsPage(final CouponsPage couponsPage) {
-        this.couponsPage = couponsPage;
+    public HomePage getHomePage() {
+        homePage.waitUntilIsOpened();
+        return homePage;
     }
 
     public TurnOnLocationPage getTurnOnLocationPage() {
@@ -167,49 +58,9 @@ public class BaseFlow {
         return turnOnLocationPage;
     }
 
-    @Autowired
-    public void setTurnOnLocationPage(final TurnOnLocationPage turnOnLocationPage) {
-        this.turnOnLocationPage = turnOnLocationPage;
-    }
-
-    public HomePage getHomePage() {
-        homePage.waitUntilIsOpened();
-        return homePage;
-    }
-
-    @Autowired
-    public void setHomePage(final HomePage homePage) {
-        this.homePage = homePage;
-    }
-
     public StoresPage getStoresPage() {
         storesPage.waitUntilIsOpened();
         return storesPage;
-    }
-
-    @Autowired
-    public void setStoresPage(final StoresPage storesPage) {
-        this.storesPage = storesPage;
-    }
-
-    public AndroidNavBar getAndroidNavBar() {
-        androidNavBar.waitUntilIsOpened();
-        return androidNavBar;
-    }
-
-    @Autowired
-    public void setAndroidNavBar(final AndroidNavBar androidNavBar) {
-        this.androidNavBar = androidNavBar;
-    }
-
-    public IosNavBar getIosNavBar() {
-        iosNavBar.waitUntilIsOpened();
-        return iosNavBar;
-    }
-
-    @Autowired
-    public void setIosNavBar(final IosNavBar iosNavBar) {
-        this.iosNavBar = iosNavBar;
     }
 
     public PriceDisclaimerPage getPriceDisclaimerPage() {
@@ -217,8 +68,155 @@ public class BaseFlow {
         return priceDisclaimerPage;
     }
 
+    public CouponsPage getCouponsPage() {
+        couponsPage.waitUntilIsOpened();
+        return couponsPage;
+    }
+
+    public CardsPage getCardsPage() {
+        cardsPage.waitUntilIsOpened();
+        return cardsPage;
+    }
+
+    public InboxPage getInboxPage() {
+        inboxPage.waitUntilIsOpened();
+        return inboxPage;
+    }
+
+    public SignUpPage getSignUpPage() {
+        signUpPage.waitUntilIsOpened();
+        return signUpPage;
+    }
+
+    public FistBumpPage getFistBumpPage() {
+        fistBumpPage.waitUntilIsOpened();
+        return fistBumpPage;
+    }
+
+    public LoginPage getLoginPage() {
+        loginPage.waitUntilIsOpened();
+        return loginPage;
+    }
+
+    public AccountPage getAccountPage() {
+        accountPage.waitUntilIsOpened();
+        return accountPage;
+    }
+
+    public NavigationDrawer getNavigationDrawer() {
+        navigationDrawer.waitUntilIsOpened();
+        return navigationDrawer;
+    }
+
+    public AndroidNavBar getAndroidNavBar() {
+        androidNavBar.waitUntilIsOpened();
+        return androidNavBar;
+    }
+
+    public IosNavBar getIosNavBar() {
+        iosNavBar.waitUntilIsOpened();
+        return iosNavBar;
+    }
+
+    public ErrorMessageVIew getErrorMessageVIew() {
+        errorMessageVIew.waitUntilIsOpened();
+        return errorMessageVIew;
+    }
+
+    public CouponsView getCouponsView() {
+        couponsView.waitUntilIsOpened();
+        return couponsView;
+    }
+
+    public FraudErrorMessageView getFraudErrorMessageView() {
+        fraudErrorMessageView.waitUntilIsOpened();
+        return fraudErrorMessageView;
+    }
+
+    //Setters
+
+    @Autowired
+    public void setHomePage(final HomePage homePage) {
+        this.homePage = homePage;
+    }
+
+    @Autowired
+    public void setTurnOnLocationPage(final TurnOnLocationPage turnOnLocationPage) {
+        this.turnOnLocationPage = turnOnLocationPage;
+    }
+
+    @Autowired
+    public void setStoresPage(final StoresPage storesPage) {
+        this.storesPage = storesPage;
+    }
+
     @Autowired
     public void setPriceDisclaimerPage(final PriceDisclaimerPage priceDisclaimerPage) {
         this.priceDisclaimerPage = priceDisclaimerPage;
+    }
+
+    @Autowired
+    public void setCouponsPage(final CouponsPage couponsPage) {
+        this.couponsPage = couponsPage;
+    }
+
+    @Autowired
+    public void setCardsPage(final CardsPage cardsPage) {
+        this.cardsPage = cardsPage;
+    }
+
+    @Autowired
+    public void setInboxPage(final InboxPage inboxPage) {
+        this.inboxPage = inboxPage;
+    }
+
+    @Autowired
+    public void setSignUpPage(final SignUpPage signUpPage) {
+        this.signUpPage = signUpPage;
+    }
+
+    @Autowired
+    public void setFistBumpPage(final FistBumpPage fistBumpPage) {
+        this.fistBumpPage = fistBumpPage;
+    }
+
+    @Autowired
+    public void setLoginPage(final LoginPage loginPage) {
+        this.loginPage = loginPage;
+    }
+
+    @Autowired
+    public void setAccountPage(final AccountPage accountPage) {
+        this.accountPage = accountPage;
+    }
+
+    @Autowired
+    public void setNavigationDrawer(final NavigationDrawer navigationDrawer) {
+        this.navigationDrawer = navigationDrawer;
+    }
+
+    @Autowired
+    public void setAndroidNavBar(final AndroidNavBar androidNavBar) {
+        this.androidNavBar = androidNavBar;
+    }
+
+    @Autowired
+    public void setIosNavBar(final IosNavBar iosNavBar) {
+        this.iosNavBar = iosNavBar;
+    }
+
+    @Autowired
+    public void setErrorMessageVIew(final ErrorMessageVIew errorMessageVIew) {
+        this.errorMessageVIew = errorMessageVIew;
+    }
+
+    @Autowired
+    public void setCouponsView(final CouponsView couponsView) {
+        this.couponsView = couponsView;
+    }
+
+    @Autowired
+    public void setFraudErrorMessageView(final FraudErrorMessageView fraudErrorMessageView) {
+        this.fraudErrorMessageView = fraudErrorMessageView;
     }
 }
