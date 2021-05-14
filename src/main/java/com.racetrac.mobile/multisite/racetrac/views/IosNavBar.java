@@ -24,7 +24,7 @@ public class IosNavBar extends BaseMobilePage {
     private MobileElement couponsTab;
 
     @PageLoading
-    @iOSXCUITFindBy(id = "Cards")
+    @iOSXCUITFindBy(accessibility = "Cards")
     private MobileElement cardsTab;
 
     @PageLoading

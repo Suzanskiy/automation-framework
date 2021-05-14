@@ -3,6 +3,7 @@ package com.racetrac.mobile.multisite.racetrac.flow.impl.ios;
 import com.racetrac.mobile.multisite.racetrac.flow.BaseFlow;
 import com.racetrac.mobile.multisite.racetrac.flow.NavigationFlow;
 import io.qameta.allure.Step;
+import org.openqa.selenium.TimeoutException;
 import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Component;
 
@@ -16,47 +17,61 @@ public class iosBottomNavigationFlowImpl extends BaseFlow implements NavigationF
     public void navigateToHome() {
         getIosNavBar().getHomeTab().click();
     }
+
     @Step
     @Override
     public void navigateToStores() {
         getIosNavBar().getStoresTab().click();
-        getPriceDisclaimerPage().getOkButton().click();
+        try {
+            getPriceDisclaimerPage().getOkButton().click();
+        } catch (
+                TimeoutException e) {
+            LOG.info("Price disclaimer Page is not opened, but it is OK");
+        }
     }
+
     @Step
     @Override
     public void navigateToCoupons() {
         getIosNavBar().getCouponsTab().click();
     }
+
     @Step
     @Override
     public void navigateToCards() {
         getIosNavBar().getCardsTab().click();
     }
+
     @Step
     @Override
     public void navigateToInbox() {
         getIosNavBar().getInboxTab().click();
     }
+
     @Step
     @Override
     public boolean isHomeTabOpened() {
         return getHomePage().isOpened();
     }
+
     @Step
     @Override
     public boolean isStoresTabOpened() {
         return getStoresPage().isOpened();
     }
+
     @Step
     @Override
     public boolean isCouponsTabOpened() {
         return getCouponsPage().isOpened();
     }
+
     @Step
     @Override
     public boolean isCardsTabOpened() {
         return getCardsPage().isOpened();
     }
+
     @Step
     @Override
     public boolean isInboxTabOpened() {
