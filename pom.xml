@@ -258,6 +258,7 @@
             <id>android</id>
             <properties>
                 <test.group>android</test.group>
+                <test.config>android</test.config>
             </properties>
         </profile>
     </profiles>

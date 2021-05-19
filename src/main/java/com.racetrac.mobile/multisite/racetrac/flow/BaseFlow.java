@@ -4,6 +4,7 @@ import com.racetrac.mobile.multisite.racetrac.page.AccountPage;
 import com.racetrac.mobile.multisite.racetrac.page.CardsPage;
 import com.racetrac.mobile.multisite.racetrac.page.CouponsPage;
 import com.racetrac.mobile.multisite.racetrac.page.FistBumpPage;
+import com.racetrac.mobile.multisite.racetrac.page.ForgotPassPage;
 import com.racetrac.mobile.multisite.racetrac.page.HomePage;
 import com.racetrac.mobile.multisite.racetrac.page.InboxPage;
 import com.racetrac.mobile.multisite.racetrac.page.LoginPage;
@@ -38,6 +39,7 @@ public class BaseFlow {
     FistBumpPage fistBumpPage;
     LoginPage loginPage;
     AccountPage accountPage;
+    ForgotPassPage forgotPassPage;
     //    SECTIONS
     NavigationDrawer navigationDrawer;
     AndroidNavBar androidNavBar;
@@ -47,6 +49,11 @@ public class BaseFlow {
     FraudErrorMessageView fraudErrorMessageView;
 
     //Getters
+
+    public ForgotPassPage getForgotPassPage() {
+        forgotPassPage.waitUntilIsOpened();
+        return forgotPassPage;
+    }
 
     public HomePage getHomePage() {
         homePage.waitUntilIsOpened();
@@ -134,6 +141,11 @@ public class BaseFlow {
     }
 
     //Setters
+
+    @Autowired
+    public void setForgotPassPage(final ForgotPassPage forgotPassPage) {
+        this.forgotPassPage = forgotPassPage;
+    }
 
     @Autowired
     public void setHomePage(final HomePage homePage) {

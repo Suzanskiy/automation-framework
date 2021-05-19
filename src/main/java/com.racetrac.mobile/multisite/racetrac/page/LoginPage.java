@@ -26,4 +26,9 @@ public class LoginPage extends BaseMobilePage {
     @AndroidFindBy(id = "com.RaceTrac.Common.qa:id/sign_in_done_button")
     @iOSXCUITFindBy(accessibility = "button.sign_in")
     private MobileElement loginBtn;
+
+    @PageLoading
+    @iOSXCUITFindBy(accessibility = "button.forgot_password")
+    @AndroidFindBy(id = "com.RaceTrac.Common.qa:id/sign_in_user_forgot_password")
+    private MobileElement forgotPassBtn;
 }

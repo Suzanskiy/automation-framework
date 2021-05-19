@@ -2,17 +2,19 @@ package com.racetrac.mobile.multisite.racetrac.api;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-
-import java.io.IOException;
-import java.util.Objects;
-import java.util.logging.Logger;
-
+import com.racetrac.mobile.framework.Configuration;
+import okhttp3.Headers;
 import okhttp3.MediaType;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.RequestBody;
 import okhttp3.Response;
 
+import java.io.IOException;
+import java.util.Objects;
+import java.util.logging.Logger;
+
+import static com.racetrac.mobile.multisite.racetrac.api.UrlUtils.API_SUBSCRIPTION_KEY;
 import static java.net.HttpURLConnection.HTTP_CREATED;
 import static java.net.HttpURLConnection.HTTP_NO_CONTENT;
 import static java.net.HttpURLConnection.HTTP_OK;
@@ -24,9 +26,16 @@ public abstract class HttpClient {
     protected final MediaType TEXT_RAW = MediaType.parse("text/plain");
     protected Logger LOGGER;
     private Gson gson;
-    public static final String authorization = "Authorization";
-    public static final String bearer = "Bearer ";
-    public static final String accept = "Accept";
+
+/*    @Value("${spring.profiles.active}")
+    private String X_PLATFORM_HEADER;*/
+
+    public Headers getRequiredHttpHeaders() {
+        return new Headers.Builder()
+                .add("Ocp-Apim-Subscription-Key", API_SUBSCRIPTION_KEY)
+                .add("X-Platform", Configuration.getProfile())
+                .build();
+    }
 
     private static OkHttpClient okHttpClient;
 
