@@ -52,13 +52,15 @@ public class SignUpFlowImpl extends BaseFlow implements SignUpFlow {
 
     @Step
     private void enterPhone(final CustomerDto customerDto) {
-        getSignUpPage().getPhoneInput().setValue(customerDto.getPersonalInfo().getPhone());
+        final String phone = customerDto.getPersonalInfo().getPhone();
+        getSignUpPage().getPhoneInput().setValue(phone);
     }
 
     @Step
     private void enterPassword(final CustomerDto customerDto) {
+        final String password = customerDto.getEmailAuth().getPassword();
         getSignUpPage().getPasswordInput().clear();
-        getSignUpPage().getPasswordInput().setValue(customerDto.getEmailAuth().getPassword());
+        getSignUpPage().getPasswordInput().setValue(password);
     }
 
 

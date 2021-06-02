@@ -32,9 +32,9 @@ public class ForgotPasswordTest extends BaseTest {
                 "aaa.aaa.aaa",
                 "aaa@aaa",
                 "aaa@aaa.@",
-                "my@.mail.com",
-                "my@mail..com",
                 "https://my@mail.com",
+                "http://my@mail.com",
+                "http://your@mail.com",
         };
     }
 

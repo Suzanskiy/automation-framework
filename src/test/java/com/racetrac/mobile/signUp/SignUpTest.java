@@ -2,6 +2,7 @@ package com.racetrac.mobile.signUp;
 
 import com.racetrac.mobile.BaseTest;
 import com.racetrac.mobile.multisite.racetrac.dto.CustomerDto;
+import com.racetrac.mobile.multisite.racetrac.flow.SignInFlow;
 import com.racetrac.mobile.multisite.racetrac.flow.SignOutFlow;
 import com.racetrac.mobile.multisite.racetrac.flow.SignUpFlow;
 import com.racetrac.mobile.multisite.racetrac.flow.WelcomeFlow;
@@ -21,6 +22,8 @@ public class SignUpTest extends BaseTest {
     SignUpFlow signUpFlow;
     @Autowired
     SignOutFlow signOutFlow;
+    @Autowired
+    SignInFlow signInFlow;
     CustomerDto customerDto;
 
 
@@ -39,6 +42,7 @@ public class SignUpTest extends BaseTest {
         signUpFlow.enterCredentials(customerDto);
         signUpFlow.isFistBumpPageOpened();
         signUpFlow.clickGetStartedBtn();
+        signInFlow.clickGotItBtn();
         signOutFlow.doSignOut();
         assertTrue(welcomeFlow.isHomePageOpened(), "Welcome page is not opened");
     }
@@ -50,6 +54,7 @@ public class SignUpTest extends BaseTest {
         signUpFlow.enterCredentials(customerDto);
         assertTrue(signUpFlow.isFistBumpPageOpened(), "Fist Bump screen is not opened");
         signUpFlow.clickGetStartedBtn();
+        signInFlow.clickGotItBtn();
         signOutFlow.doSignOut();
         signUpFlow.openSignUpPage();
         assertTrue(signUpFlow.isSignUpPageOpened(), "SignUp page is not opened");
