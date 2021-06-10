@@ -2,7 +2,6 @@ package com.racetrac.mobile.multisite;
 
 
 import com.racetrac.mobile.framework.annotations.PageLoading;
-import com.racetrac.mobile.framework.appium.AppiumDriverProvider;
 import com.racetrac.mobile.util.appium.AppiumWaitingUtils;
 import io.appium.java_client.MobileElement;
 import io.appium.java_client.pagefactory.AppiumFieldDecorator;
@@ -17,13 +16,15 @@ import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import static com.racetrac.mobile.framework.enums.Exceptions.NO_PAGE_LOADING;
 import static com.racetrac.mobile.util.appium.AppiumDriverUtils.getDriver;
 
 public abstract class BaseMobilePage implements MobilePage {
 
-    private static final Logger LOG = LoggerFactory.getLogger(AppiumDriverProvider.class);
+    private static final Logger LOG = LoggerFactory.getLogger(BaseMobilePage.class);
+    final int timeout = 10;
 
     public BaseMobilePage() {
         PageFactory.initElements(new AppiumFieldDecorator(getDriver()), this);
@@ -36,7 +37,7 @@ public abstract class BaseMobilePage implements MobilePage {
 
     @Override
     public boolean waitUntilIsOpened() {
-        return AppiumWaitingUtils.waitUntilIsTrue(this::isOpened);
+        return AppiumWaitingUtils.waitUntilIsTrue(this::isOpened, 10);
     }
 
     /**
@@ -46,43 +47,45 @@ public abstract class BaseMobilePage implements MobilePage {
      */
     @Override
     public boolean isOpened() {
-        LOG.info("Checking if page " + getClass().getSimpleName() + " is opened.");
-        for (final String mobileElementName : getMobileElementsNamesWithAnnotationPageLoading()) {
-            try {
-                final String methodName = "get" + mobileElementName.substring(0, 1).toUpperCase() + mobileElementName.substring(1);
-                LOG.info("Invoke method " + methodName + "()");
-                final MobileElement element = (MobileElement) getClass().getMethod(methodName).invoke(this);
-                final boolean elementDisplayed = element.isDisplayed();
-                LOG.info("-----> (" + elementDisplayed + ")");
-
-                if (!elementDisplayed) {
-                    return false;
-                }
-            } catch (final IllegalAccessException | InvocationTargetException | NoSuchElementException | StaleElementReferenceException | NoSuchMethodException e) {
-                LOG.info("-----> " + e.getMessage());
-                return false;
-            }
-        }
-        return true;
+        return AppiumWaitingUtils.waitUntilIsTrue(this::checkAllElementsOfPage, timeout);
     }
 
-    // TODO There is another way to wait until all elements becomes ready. Need to be refactored asap
+    private boolean checkAllElementsOfPage() {
+        LOG.info("Checking if page " + getClass().getSimpleName() + " is opened.");
+        List<Field> annotatedItems = getMobileElementsNamesWithAnnotationPageLoading();
+        List<Field> foundItems = new ArrayList<>();
+
+        annotatedItems.stream().forEach(field ->
+                {
+                    try {
+                        final String methodName = "get" + field.getName().substring(0, 1).toUpperCase() + field.getName().substring(1);
+
+                        final MobileElement element = (MobileElement) getClass().getMethod(methodName).invoke(this); // invoke getObject method
+                        final boolean elementDisplayed = element.isDisplayed(); // check if displayed
+                        LOG.info("Checking element: " + field.getName() + "---------->>>>>" + "(" + elementDisplayed + ")");
+
+                        if (elementDisplayed) {
+                            foundItems.add(field);
+                        }
+                    } catch (final IllegalAccessException | InvocationTargetException | NoSuchElementException | StaleElementReferenceException | NoSuchMethodException e) {
+                        LOG.info("---------->>>>> " + e.getMessage());
+                    }
+                }
+        );
+        return foundItems.size() == annotatedItems.size();
+    }
+
 
     /**
      * Returns names of private MobileElements with @PageLoading
      */
-    private List<String> getMobileElementsNamesWithAnnotationPageLoading() {
-        final Object[] objects = Arrays.stream(getClass().getDeclaredFields()).filter(field -> field.getType().isAssignableFrom(MobileElement.class))
-                .filter(field -> field.isAnnotationPresent(PageLoading.class)).toArray();
-        final List<String> list = new ArrayList<>();
-        if (objects.length == 0) {
+    private List<Field> getMobileElementsNamesWithAnnotationPageLoading() {
+        final List<Field> objects = Arrays.stream(getClass().getDeclaredFields()).filter(field -> field.getType().isAssignableFrom(MobileElement.class))
+                .filter(field -> field.isAnnotationPresent(PageLoading.class)).collect(Collectors.toList());
+        if (objects.size() == 0) {
             throw new RuntimeException(NO_PAGE_LOADING.message);
         } else {
-            for (final Object object : objects) {
-                list.add(((Field) object).getName());
-            }
+            return objects;
         }
-        LOG.info("Elements to be visible: " + list.toString());
-        return list;
     }
 }

@@ -16,7 +16,7 @@ public class SignUpFlowImpl extends BaseFlow implements SignUpFlow {
 
     @Step
     @Override
-    public void openSignUpPage() {
+    public void openSignUpSelectorPage() {
         getHomePage().getSignUpBtn().click();
     }
 
@@ -35,30 +35,36 @@ public class SignUpFlowImpl extends BaseFlow implements SignUpFlow {
     @Step(value = "Prepare user and enter credentials")
     @Override
     public void enterCredentials(final CustomerDto customerDto) {
-        getSignUpPage().getEmailInput().setValue(customerDto.getPersonalInfo().getEmail());
-        enterPassword(customerDto);
-        enterPhone(customerDto);
-        enterBirthDay(customerDto);
+        enterEmail(customerDto.getPersonalInfo().getEmail());
+        enterPassword(customerDto.getEmailAuth().getPassword());
+        enterPhone(customerDto.getPersonalInfo().getPhone());
+        enterBirthDay(customerDto.getPersonalInfo().getBirthday());
         getSignUpPage().getCreateAccountBtn().click();
+    }
+
+    @Step
+    private void enterEmail(final String email) {
+        getSignUpPage().getEmailInput().clear();
+        getSignUpPage().getEmailInput().setValue(email);
     }
 
 
     @Step
-    private void enterBirthDay(final CustomerDto customerDto) {
-        getSignUpPage().getBirthDayInput().setValue(LocalDate.parse(customerDto
-                .getPersonalInfo().getBirthday(), DateTimeFormatter.ofPattern(BACKEND_DATE_PATTERN)
+    private void enterBirthDay(final String birthday) {
+        getSignUpPage().getBirthDayInput().setValue(LocalDate.parse(birthday, DateTimeFormatter.ofPattern(BACKEND_DATE_PATTERN)
         ).format(DateTimeFormatter.ofPattern(MOBILE_DATE_PATTERN)));
     }
 
     @Step
-    private void enterPhone(final CustomerDto customerDto) {
-        getSignUpPage().getPhoneInput().setValue(customerDto.getPersonalInfo().getPhone());
+    private void enterPhone(String phone) {
+        getSignUpPage().getPhoneInput().clear();
+        getSignUpPage().getPhoneInput().setValue(phone);
     }
 
     @Step
-    private void enterPassword(final CustomerDto customerDto) {
+    private void enterPassword(final String password) {
         getSignUpPage().getPasswordInput().clear();
-        getSignUpPage().getPasswordInput().setValue(customerDto.getEmailAuth().getPassword());
+        getSignUpPage().getPasswordInput().setValue(password);
     }
 
 
@@ -66,6 +72,11 @@ public class SignUpFlowImpl extends BaseFlow implements SignUpFlow {
     @Override
     public void clickCreateAccountBtn() {
         getSignUpPage().getCreateAccountBtn().click();
+    }
+
+    @Override
+    public void selectSignUpWithEmail() {
+        getSignUpSelectorPage().getSignUpWithEmailBtn().click();
     }
 
     @Step
@@ -89,10 +100,14 @@ public class SignUpFlowImpl extends BaseFlow implements SignUpFlow {
     @Step
     @Override
     public void enterSpecificCredentials(final String fraudMail, final CustomerDto customerDto) {
-        getSignUpPage().getEmailInput().setValue(fraudMail);
-        enterPassword(customerDto);
-        enterPhone(customerDto);
-        enterBirthDay(customerDto);
+        String pass = customerDto.getEmailAuth().getPassword();
+        String phone = customerDto.getPersonalInfo().getPhone();
+        String birth = customerDto.getPersonalInfo().getBirthday();
+
+        enterEmail(fraudMail);
+        enterPassword(pass);
+        enterPhone(phone);
+        enterBirthDay(birth);
         getSignUpPage().getCreateAccountBtn().click();
     }
 
@@ -105,5 +120,11 @@ public class SignUpFlowImpl extends BaseFlow implements SignUpFlow {
     @Override
     public void clickGetStartedBtn() {
         getFistBumpPage().getGetStartedBtn().click();
+    }
+
+    @Step
+    @Override
+    public boolean isSignUpSelectorPageOpened() {
+        return getSignUpSelectorPage().isOpened();
     }
 }

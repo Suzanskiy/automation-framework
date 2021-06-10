@@ -13,8 +13,6 @@ public class RegisterCustomerClient extends HttpClient {
     public CustomerDto registerAccount(CustomerDto customerDto) {
         Request registerRequest = new Request.Builder()
                 .url(API_URL + API_USERS_ENDPOINT)
-//                .addHeader("Ocp-Apim-Subscription-Key", API_SUBSCRIPTION_KEY)
-                // .addHeader("Content-Type", "application/json")
                 .headers(getRequiredHttpHeaders())
                 .post(createRequestBody(getGson().toJson(customerDto)))
                 .build();

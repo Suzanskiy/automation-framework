@@ -21,6 +21,7 @@ properties:
     deviceName: iPhone 11
     test.profile: ios
     bundleId: com.racetrac.QA.ams
+    autPackage: src/main/resources/apk
 
   iosConfig: &iosConfig
     <<: *iOsPlatform

@@ -32,9 +32,9 @@ public class ForgotPasswordTest extends BaseTest {
                 "aaa.aaa.aaa",
                 "aaa@aaa",
                 "aaa@aaa.@",
-                "my@.mail.com",
-                "my@mail..com",
                 "https://my@mail.com",
+                "http://my@mail.com",
+                "http://your@mail.com",
         };
     }
 
@@ -73,6 +73,7 @@ public class ForgotPasswordTest extends BaseTest {
     public void isUserAbleToRequestForgottenPasswordToEmailTest() {
         forgotPassFlow.enterEmail(customerDto.getPersonalInfo().getEmail());
         forgotPassFlow.clickResetPassBtn();
+        assertTrue(forgotPassFlow.isCompleteMessageShown(), "Complete message is not shown");
         assertEquals(forgotPassFlow.getForgotPasswordCompleteTxt(), FORGOT_PASS_COMPLETE_TEXT);
         forgotPassFlow.clickDoneBtn();
     }

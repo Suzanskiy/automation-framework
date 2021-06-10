@@ -35,7 +35,9 @@ public class EmailScoreTest extends BaseTest {
     public void preconditions() {
         customerDto = testData.generateNewCustomer();
         assertTrue(welcomeFlow.isHomePageOpened(), "Welcome page is not opened");
-        signUpFlow.openSignUpPage();
+        signUpFlow.openSignUpSelectorPage();
+        assertTrue(signUpFlow.isSignUpSelectorPageOpened(), "SignUpSelector page is not opened");
+        signUpFlow.selectSignUpWithEmail();
         assertTrue(signUpFlow.isSignUpPageOpened(), "SignUp page is not opened");
     }
 

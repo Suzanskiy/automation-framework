@@ -3,7 +3,7 @@ package com.racetrac.mobile.multisite.racetrac.flow.impl.ios;
 import com.racetrac.mobile.multisite.racetrac.flow.BaseFlow;
 import com.racetrac.mobile.multisite.racetrac.flow.NavigationFlow;
 import io.qameta.allure.Step;
-import org.openqa.selenium.TimeoutException;
+import org.openqa.selenium.NoSuchElementException;
 import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Component;
 
@@ -25,7 +25,7 @@ public class iosBottomNavigationFlowImpl extends BaseFlow implements NavigationF
         try {
             getPriceDisclaimerPage().getOkButton().click();
         } catch (
-                TimeoutException e) {
+                NoSuchElementException e) {
             LOG.info("Price disclaimer Page is not opened, but it is OK");
         }
     }
