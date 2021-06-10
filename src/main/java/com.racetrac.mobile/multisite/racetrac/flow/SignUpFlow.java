@@ -3,25 +3,30 @@ package com.racetrac.mobile.multisite.racetrac.flow;
 import com.racetrac.mobile.multisite.racetrac.dto.CustomerDto;
 
 public interface SignUpFlow {
-    void openSignUpPage();
-
-    boolean isSignUpPageOpened();
-
-    boolean isFistBumpPageOpened();
+    void openSignUpSelectorPage();
 
     void enterCredentials(CustomerDto customerDto);
 
     void clickCreateAccountBtn();
 
-    boolean isErrorMessageShown();
+    void selectSignUpWithEmail();
 
     void closeErrorMessage();
 
-    String getErrorMessageText();
-
     void enterSpecificCredentials(String fraudMail, CustomerDto customerDto);
+
+    void clickGetStartedBtn();
+
+    boolean isSignUpSelectorPageOpened();
+
+    boolean isSignUpPageOpened();
+
+    boolean isFistBumpPageOpened();
 
     boolean isFraudErrorMessageShown();
 
-    void clickGetStartedBtn();
+    boolean isErrorMessageShown();
+
+    String getErrorMessageText();
+
 }

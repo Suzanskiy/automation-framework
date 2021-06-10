@@ -14,4 +14,6 @@ public interface ForgotPassFlow {
     boolean isForgotPassPageOpened();
 
     boolean isResetPasswordBtnDisabled();
+
+    boolean isCompleteMessageShown();
 }

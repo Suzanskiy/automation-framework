@@ -10,8 +10,10 @@ import com.racetrac.mobile.multisite.racetrac.page.InboxPage;
 import com.racetrac.mobile.multisite.racetrac.page.LoginPage;
 import com.racetrac.mobile.multisite.racetrac.page.PriceDisclaimerPage;
 import com.racetrac.mobile.multisite.racetrac.page.SignUpPage;
+import com.racetrac.mobile.multisite.racetrac.page.SignUpSelectorPage;
 import com.racetrac.mobile.multisite.racetrac.page.StoresPage;
 import com.racetrac.mobile.multisite.racetrac.page.TurnOnLocationPage;
+import com.racetrac.mobile.multisite.racetrac.page.TurnOnNotificationPage;
 import com.racetrac.mobile.multisite.racetrac.views.AndroidNavBar;
 import com.racetrac.mobile.multisite.racetrac.views.CouponsView;
 import com.racetrac.mobile.multisite.racetrac.views.ErrorMessageVIew;
@@ -40,6 +42,8 @@ public class BaseFlow {
     LoginPage loginPage;
     AccountPage accountPage;
     ForgotPassPage forgotPassPage;
+    SignUpSelectorPage signUpSelectorPage;
+    TurnOnNotificationPage turnOnNotificationPage;
     //    SECTIONS
     NavigationDrawer navigationDrawer;
     AndroidNavBar androidNavBar;
@@ -50,97 +54,92 @@ public class BaseFlow {
 
     //Getters
 
-    public ForgotPassPage getForgotPassPage() {
-        forgotPassPage.waitUntilIsOpened();
-        return forgotPassPage;
+    public TurnOnNotificationPage getTurnOnNotificationPage() {
+        return turnOnNotificationPage;
     }
 
     public HomePage getHomePage() {
-        homePage.waitUntilIsOpened();
         return homePage;
     }
 
     public TurnOnLocationPage getTurnOnLocationPage() {
-        turnOnLocationPage.waitUntilIsOpened();
         return turnOnLocationPage;
     }
 
     public StoresPage getStoresPage() {
-        storesPage.waitUntilIsOpened();
         return storesPage;
     }
 
     public PriceDisclaimerPage getPriceDisclaimerPage() {
-        priceDisclaimerPage.waitUntilIsOpened();
         return priceDisclaimerPage;
     }
 
     public CouponsPage getCouponsPage() {
-        couponsPage.waitUntilIsOpened();
         return couponsPage;
     }
 
     public CardsPage getCardsPage() {
-        cardsPage.waitUntilIsOpened();
         return cardsPage;
     }
 
     public InboxPage getInboxPage() {
-        inboxPage.waitUntilIsOpened();
         return inboxPage;
     }
 
     public SignUpPage getSignUpPage() {
-        signUpPage.waitUntilIsOpened();
         return signUpPage;
     }
 
     public FistBumpPage getFistBumpPage() {
-        fistBumpPage.waitUntilIsOpened();
         return fistBumpPage;
     }
 
     public LoginPage getLoginPage() {
-        loginPage.waitUntilIsOpened();
         return loginPage;
     }
 
     public AccountPage getAccountPage() {
-        accountPage.waitUntilIsOpened();
         return accountPage;
     }
 
+    public ForgotPassPage getForgotPassPage() {
+        return forgotPassPage;
+    }
+
+    public SignUpSelectorPage getSignUpSelectorPage() {
+        return signUpSelectorPage;
+    }
+
     public NavigationDrawer getNavigationDrawer() {
-        navigationDrawer.waitUntilIsOpened();
         return navigationDrawer;
     }
 
     public AndroidNavBar getAndroidNavBar() {
-        androidNavBar.waitUntilIsOpened();
         return androidNavBar;
     }
 
     public IosNavBar getIosNavBar() {
-        iosNavBar.waitUntilIsOpened();
         return iosNavBar;
     }
 
     public ErrorMessageVIew getErrorMessageVIew() {
-        errorMessageVIew.waitUntilIsOpened();
         return errorMessageVIew;
     }
 
     public CouponsView getCouponsView() {
-        couponsView.waitUntilIsOpened();
         return couponsView;
     }
 
     public FraudErrorMessageView getFraudErrorMessageView() {
-        fraudErrorMessageView.waitUntilIsOpened();
         return fraudErrorMessageView;
     }
 
     //Setters
+
+    @Autowired
+    public void setSignUpSelectorPage(final SignUpSelectorPage signUpSelectorPage) {
+        this.signUpSelectorPage = signUpSelectorPage;
+    }
 
     @Autowired
     public void setForgotPassPage(final ForgotPassPage forgotPassPage) {
@@ -200,6 +199,11 @@ public class BaseFlow {
     @Autowired
     public void setAccountPage(final AccountPage accountPage) {
         this.accountPage = accountPage;
+    }
+
+    @Autowired
+    public void setTurnOnNotificationPage(final TurnOnNotificationPage turnOnNotificationPage) {
+        this.turnOnNotificationPage = turnOnNotificationPage;
     }
 
     @Autowired

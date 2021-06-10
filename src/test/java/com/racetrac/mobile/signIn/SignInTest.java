@@ -2,6 +2,8 @@ package com.racetrac.mobile.signIn;
 
 import com.racetrac.mobile.BaseTest;
 import com.racetrac.mobile.multisite.racetrac.dto.CustomerDto;
+import com.racetrac.mobile.multisite.racetrac.flow.LocationRequestFlow;
+import com.racetrac.mobile.multisite.racetrac.flow.NotificationRequestFlow;
 import com.racetrac.mobile.multisite.racetrac.flow.SignInFlow;
 import com.racetrac.mobile.multisite.racetrac.flow.SignOutFlow;
 import com.racetrac.mobile.multisite.racetrac.flow.WelcomeFlow;
@@ -22,6 +24,10 @@ public class SignInTest extends BaseTest {
     SignInFlow signInFlow;
     @Autowired
     SignOutFlow signOutFlow;
+    @Autowired
+    LocationRequestFlow locationRequestFlow;
+    @Autowired
+    NotificationRequestFlow notificationRequestFlow;
     CustomerDto customerDto;
 
     @BeforeMethod
@@ -38,6 +44,8 @@ public class SignInTest extends BaseTest {
         assertTrue(signInFlow.isLoginPageOpened(), "Login page is not opened");
         signInFlow.authorize(customerDto);
         assertTrue(signInFlow.isCouponsViewOpened(), "Coupons view is not opened after signUp");
+        locationRequestFlow.clickNotNow();
+        notificationRequestFlow.clickNotNow();
         signInFlow.clickGotItBtn();
         assertTrue(welcomeFlow.isHomePageOpenedAfterSignIn(), "Welcome page is not opened after sign in");
     }

@@ -26,21 +26,31 @@ public class ForgotPassImpl extends BaseFlow implements ForgotPassFlow {
         getForgotPassPage().getResetPassBtn().click();
     }
 
+    @Step
     @Override
     public boolean isForgotPassPageOpened() {
         return getForgotPassPage().isOpened();
     }
 
+    @Step
     @Override
     public boolean isResetPasswordBtnDisabled() {
         return !getForgotPassPage().getResetPassBtn().isEnabled();
     }
 
     @Override
+    public boolean isCompleteMessageShown() {
+        getForgotPassPage().waitUntilIsOpened();
+        return getForgotPassPage().getCompleteMsg().isDisplayed();
+    }
+
+    @Step
+    @Override
     public String getForgotPasswordCompleteTxt() {
         return getForgotPassPage().getCompleteMsg().getText();
     }
 
+    @Step
     @Override
     public void clickDoneBtn() {
         getForgotPassPage().getDoneBtn().click();

@@ -73,6 +73,7 @@ public class ForgotPasswordTest extends BaseTest {
     public void isUserAbleToRequestForgottenPasswordToEmailTest() {
         forgotPassFlow.enterEmail(customerDto.getPersonalInfo().getEmail());
         forgotPassFlow.clickResetPassBtn();
+        assertTrue(forgotPassFlow.isCompleteMessageShown(), "Complete message is not shown");
         assertEquals(forgotPassFlow.getForgotPasswordCompleteTxt(), FORGOT_PASS_COMPLETE_TEXT);
         forgotPassFlow.clickDoneBtn();
     }
