@@ -43,7 +43,7 @@ public class SignOutTest extends BaseTest {
         assertTrue(welcomeFlow.isHomePageOpenedAfterSignIn(), "Welcome page is not opened after sign in");
     }
 
-    @TmsLink("1")
+    @TmsLink("5463")
     @Description("Is user able to successfully sign out")
     @Test
     public void isUserAbleToSignOutTest() {

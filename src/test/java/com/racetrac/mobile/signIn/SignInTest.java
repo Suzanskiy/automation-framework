@@ -43,15 +43,15 @@ public class SignInTest extends BaseTest {
         signInFlow.openLoginInPage();
         assertTrue(signInFlow.isLoginPageOpened(), "Login page is not opened");
         signInFlow.authorize(customerDto);
-        assertTrue(signInFlow.isCouponsViewOpened(), "Coupons view is not opened after signUp");
         locationRequestFlow.clickNotNow();
         notificationRequestFlow.clickNotNow();
+        assertTrue(signInFlow.isCouponsViewOpened(), "Coupons view is not opened after signUp");
         signInFlow.clickGotItBtn();
         assertTrue(welcomeFlow.isHomePageOpenedAfterSignIn(), "Welcome page is not opened after sign in");
     }
 
     @AfterMethod
-    public void tearDown() {
+    public void logOut() {
         signOutFlow.doSignOut();
         assertTrue(welcomeFlow.isHomePageOpened(), "Welcome page is not opened");
     }

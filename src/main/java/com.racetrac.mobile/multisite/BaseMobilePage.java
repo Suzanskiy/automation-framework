@@ -24,7 +24,7 @@ import static com.racetrac.mobile.util.appium.AppiumDriverUtils.getDriver;
 public abstract class BaseMobilePage implements MobilePage {
 
     private static final Logger LOG = LoggerFactory.getLogger(BaseMobilePage.class);
-    final int timeout = 10;
+    final int timeout = 30;
 
     public BaseMobilePage() {
         PageFactory.initElements(new AppiumFieldDecorator(getDriver()), this);
@@ -55,14 +55,14 @@ public abstract class BaseMobilePage implements MobilePage {
         List<Field> annotatedItems = getMobileElementsNamesWithAnnotationPageLoading();
         List<Field> foundItems = new ArrayList<>();
 
-        annotatedItems.stream().forEach(field ->
+        annotatedItems.stream().parallel().forEach(field ->
                 {
                     try {
                         final String methodName = "get" + field.getName().substring(0, 1).toUpperCase() + field.getName().substring(1);
 
                         final MobileElement element = (MobileElement) getClass().getMethod(methodName).invoke(this); // invoke getObject method
                         final boolean elementDisplayed = element.isDisplayed(); // check if displayed
-                        LOG.info("Checking element: " + field.getName() + "---------->>>>>" + "(" + elementDisplayed + ")");
+                        LOG.info("Checking element: " + field.getName() + " ---------->>>>> " + "(" + elementDisplayed + ")");
 
                         if (elementDisplayed) {
                             foundItems.add(field);

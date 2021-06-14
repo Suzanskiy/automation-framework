@@ -1,6 +1,7 @@
 package com.racetrac.mobile.multisite.racetrac.flow;
 
 import com.racetrac.mobile.multisite.racetrac.page.AccountPage;
+import com.racetrac.mobile.multisite.racetrac.page.BecomeFuelVipPage;
 import com.racetrac.mobile.multisite.racetrac.page.CardsPage;
 import com.racetrac.mobile.multisite.racetrac.page.CouponsPage;
 import com.racetrac.mobile.multisite.racetrac.page.FistBumpPage;
@@ -9,6 +10,7 @@ import com.racetrac.mobile.multisite.racetrac.page.HomePage;
 import com.racetrac.mobile.multisite.racetrac.page.InboxPage;
 import com.racetrac.mobile.multisite.racetrac.page.LoginPage;
 import com.racetrac.mobile.multisite.racetrac.page.PriceDisclaimerPage;
+import com.racetrac.mobile.multisite.racetrac.page.PromotionalOffersPage;
 import com.racetrac.mobile.multisite.racetrac.page.SignUpPage;
 import com.racetrac.mobile.multisite.racetrac.page.SignUpSelectorPage;
 import com.racetrac.mobile.multisite.racetrac.page.StoresPage;
@@ -44,6 +46,8 @@ public class BaseFlow {
     ForgotPassPage forgotPassPage;
     SignUpSelectorPage signUpSelectorPage;
     TurnOnNotificationPage turnOnNotificationPage;
+    PromotionalOffersPage promotionalOffersPage;
+    BecomeFuelVipPage becomeFuelVipPage;
     //    SECTIONS
     NavigationDrawer navigationDrawer;
     AndroidNavBar androidNavBar;
@@ -54,8 +58,8 @@ public class BaseFlow {
 
     //Getters
 
-    public TurnOnNotificationPage getTurnOnNotificationPage() {
-        return turnOnNotificationPage;
+    public BecomeFuelVipPage getBecomeFuelVipPage() {
+        return becomeFuelVipPage;
     }
 
     public HomePage getHomePage() {
@@ -80,6 +84,10 @@ public class BaseFlow {
 
     public CardsPage getCardsPage() {
         return cardsPage;
+    }
+
+    public PromotionalOffersPage getPromotionalOffersPage() {
+        return promotionalOffersPage;
     }
 
     public InboxPage getInboxPage() {
@@ -110,6 +118,10 @@ public class BaseFlow {
         return signUpSelectorPage;
     }
 
+    public TurnOnNotificationPage getTurnOnNotificationPage() {
+        return turnOnNotificationPage;
+    }
+
     public NavigationDrawer getNavigationDrawer() {
         return navigationDrawer;
     }
@@ -134,17 +146,9 @@ public class BaseFlow {
         return fraudErrorMessageView;
     }
 
+
     //Setters
 
-    @Autowired
-    public void setSignUpSelectorPage(final SignUpSelectorPage signUpSelectorPage) {
-        this.signUpSelectorPage = signUpSelectorPage;
-    }
-
-    @Autowired
-    public void setForgotPassPage(final ForgotPassPage forgotPassPage) {
-        this.forgotPassPage = forgotPassPage;
-    }
 
     @Autowired
     public void setHomePage(final HomePage homePage) {
@@ -199,6 +203,26 @@ public class BaseFlow {
     @Autowired
     public void setAccountPage(final AccountPage accountPage) {
         this.accountPage = accountPage;
+    }
+
+    @Autowired
+    public void setForgotPassPage(final ForgotPassPage forgotPassPage) {
+        this.forgotPassPage = forgotPassPage;
+    }
+
+    @Autowired
+    public void setSignUpSelectorPage(final SignUpSelectorPage signUpSelectorPage) {
+        this.signUpSelectorPage = signUpSelectorPage;
+    }
+
+    @Autowired
+    public void setPromotionalOffersPage(final PromotionalOffersPage promotionalOffersPage) {
+        this.promotionalOffersPage = promotionalOffersPage;
+    }
+
+    @Autowired
+    public void setBecomeFuelVipPage(final BecomeFuelVipPage becomeFuelVipPage) {
+        this.becomeFuelVipPage = becomeFuelVipPage;
     }
 
     @Autowired
