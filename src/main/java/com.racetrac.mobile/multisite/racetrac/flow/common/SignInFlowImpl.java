@@ -39,6 +39,7 @@ public class SignInFlowImpl extends BaseFlow implements SignInFlow {
     @Step
     @Override
     public void clickGotItBtn() {
+        getCouponsView().waitUntilIsOpened();
         getCouponsView().getGotItBtn().click();
     }
 }

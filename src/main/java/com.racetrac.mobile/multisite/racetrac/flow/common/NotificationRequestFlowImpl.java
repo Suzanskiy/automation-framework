@@ -17,7 +17,6 @@ public class NotificationRequestFlowImpl extends BaseFlow implements Notificatio
         } catch (
                 NoSuchElementException e) {
             LOG.warn("Notification page is not opened here, It might create a problem soon");
-            e.printStackTrace();
         }catch (StaleElementReferenceException e)
         {
             LOG.warn("Page was recreated");
@@ -29,6 +28,5 @@ public class NotificationRequestFlowImpl extends BaseFlow implements Notificatio
     @Override
     public void clickTurnOn() {
         getTurnOnNotificationPage().getTurnOnBtn().click();
-
     }
 }

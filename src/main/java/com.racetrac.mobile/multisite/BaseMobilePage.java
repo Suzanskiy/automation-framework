@@ -51,55 +51,51 @@ public abstract class BaseMobilePage implements MobilePage {
         return AppiumWaitingUtils.waitUntilIsTrue(this::checkAllElementsOfPage, timeout);
     }
 
+    private List<Field> checkElementToBeVisible(List<Field> elements) {
+        return elements
+                .stream()
+                .parallel()
+                .filter(field -> {
+                            MobileElement element = null;
+                            final String methodName = getMethodNameByField(field);
+                            try {
+                                element = (MobileElement) invokeGetMethodOfElement(methodName); // invoke getObject method
+                                LOG.info("Checking element: " + field.getName() + " ---------->>>>> " + "(" + element.isDisplayed() + ")");
+                                return element.isDisplayed();
+                            } catch (NoSuchElementException e) {
+                                LOG.info("!!!! Element [ " + field.getName() + " ] on " + getClass().getSimpleName() + " not exists !!!! ");
+                            } catch (IllegalAccessException | InvocationTargetException | StaleElementReferenceException | NoSuchMethodException e) {
+                                LOG.info("---------->>>>> " + e.getMessage());
+                            }
+                            return false;
+                        }
+                )
+                .collect(Collectors.toList());
+    }
+
     private boolean checkAllElementsOfPage() {
         LOG.info("Checking if page " + getClass().getSimpleName() + " is opened.");
-        List<Field> elementsToSearchIn = getMobileElementsNamesWithAnnotationPageLoading();
+        List<Field> pageObjectFields = getMobileElementsNamesWithAnnotationPageLoading();
 
-        List<Field> foundItems = new ArrayList<>();
+        List<Field> foundItems = checkElementToBeVisible(pageObjectFields);
         List<Field> notFoundItems = new ArrayList<>();
 
-        elementsToSearchIn.stream().parallel().forEach(field ->
-                {
-                    MobileElement element = null;
-                    final String methodName = getMethodNameByField(field);
-                    try {
-                        element = (MobileElement) invokeGetMethodOfElement(methodName); // invoke getObject method
-                        LOG.info("Checking element: " + field.getName() + " ---------->>>>> " + "(" + element.isDisplayed() + ")");
-
-                        if (element.isDisplayed()) {
-                            foundItems.add(field);
-                        } else {
-                            notFoundItems.add(field);
-                        }
-                    } catch (NoSuchElementException e) {
-                        LOG.info("\n\n!!!! Element [ " + field.getName() + " ] on " + getClass().getSimpleName() + " not exists !!!! \n");
-                    } catch (IllegalAccessException | InvocationTargetException | StaleElementReferenceException | NoSuchMethodException e) {
-                        LOG.info("---------->>>>> " + e.getMessage());
+        final List<Field> finalFoundItems = foundItems;
+        pageObjectFields.forEach(
+                x -> {
+                    if (!finalFoundItems.contains(x)) {
+                        notFoundItems.add(x);
                     }
                 }
         );
 
         if (notFoundItems.size() > 0) {
             swipeUP();
-            LOG.info("Checking elements, that wasn't found first time");
-            notFoundItems.stream().parallel().forEach(field -> {
-                MobileElement element = null;
-                final String methodName = getMethodNameByField(field);
-                try {
-                    element = (MobileElement) invokeGetMethodOfElement(methodName); // invoke getObject method
-                    LOG.info("Checking  element: " + field.getName() + " ---------->>>>> " + "(" + element.isDisplayed() + ")");
 
-                    if (element.isDisplayed()) {
-                        foundItems.add(field);
-                    }
-                } catch (NoSuchElementException e) {
-                    LOG.info("\n\n!!!! Element [ " + field.getName() + " ] on " + getClass().getSimpleName() + " not exists !!!! \n");
-                } catch (IllegalAccessException | InvocationTargetException | StaleElementReferenceException | NoSuchMethodException e) {
-                    LOG.info("---------->>>>> " + e.getMessage());
-                }
-            });
+            foundItems.addAll(checkElementToBeVisible(notFoundItems));  // recheck
         }
-        return foundItems.size() == elementsToSearchIn.size();
+
+        return foundItems.size() == pageObjectFields.size();
     }
 
     private Object invokeGetMethodOfElement(final String methodName) throws IllegalAccessException, InvocationTargetException, NoSuchMethodException {

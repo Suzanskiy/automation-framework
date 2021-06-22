@@ -28,6 +28,8 @@ public class EmailScoreTest extends BaseTest {
                 "testAutomation@BasicMail.host",
                 "testAutomation@EasyOnlineMail.net",
                 "testAutomation@IncorporatedMail.com",
+                "ta@IncorporatedMail.com",
+                "admin@IncorporatedMail.com",
         };
     }
 

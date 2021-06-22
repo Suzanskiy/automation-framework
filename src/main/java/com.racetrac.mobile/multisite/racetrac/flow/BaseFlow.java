@@ -1,6 +1,6 @@
 package com.racetrac.mobile.multisite.racetrac.flow;
 
-import com.racetrac.mobile.multisite.racetrac.page.AccountPage;
+import com.racetrac.mobile.multisite.racetrac.page.AccountSettingsPage;
 import com.racetrac.mobile.multisite.racetrac.page.BecomeFuelVipPage;
 import com.racetrac.mobile.multisite.racetrac.page.CardsPage;
 import com.racetrac.mobile.multisite.racetrac.page.CouponsPage;
@@ -16,12 +16,14 @@ import com.racetrac.mobile.multisite.racetrac.page.SignUpSelectorPage;
 import com.racetrac.mobile.multisite.racetrac.page.StoresPage;
 import com.racetrac.mobile.multisite.racetrac.page.TurnOnLocationPage;
 import com.racetrac.mobile.multisite.racetrac.page.TurnOnNotificationPage;
+import com.racetrac.mobile.multisite.racetrac.page.diff.AccountSettingsPageAuthorised;
 import com.racetrac.mobile.multisite.racetrac.views.AndroidNavBar;
 import com.racetrac.mobile.multisite.racetrac.views.CouponsView;
 import com.racetrac.mobile.multisite.racetrac.views.ErrorMessageVIew;
 import com.racetrac.mobile.multisite.racetrac.views.FraudErrorMessageView;
 import com.racetrac.mobile.multisite.racetrac.views.IosNavBar;
 import com.racetrac.mobile.multisite.racetrac.views.NavigationDrawer;
+import com.racetrac.mobile.multisite.racetrac.views.PointsAndLevelsView;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -42,7 +44,8 @@ public class BaseFlow {
     SignUpPage signUpPage;
     FistBumpPage fistBumpPage;
     LoginPage loginPage;
-    AccountPage accountPage;
+    AccountSettingsPage accountSettingsPage;
+    AccountSettingsPageAuthorised accountSettingsPageAuthorised;
     ForgotPassPage forgotPassPage;
     SignUpSelectorPage signUpSelectorPage;
     TurnOnNotificationPage turnOnNotificationPage;
@@ -55,6 +58,7 @@ public class BaseFlow {
     ErrorMessageVIew errorMessageVIew;
     CouponsView couponsView;
     FraudErrorMessageView fraudErrorMessageView;
+    PointsAndLevelsView pointsAndLevelsView;
 
     //Getters
 
@@ -62,8 +66,16 @@ public class BaseFlow {
         return becomeFuelVipPage;
     }
 
+    public PointsAndLevelsView getPointsAndLevelsView() {
+        return pointsAndLevelsView;
+    }
+
     public HomePage getHomePage() {
         return homePage;
+    }
+
+    public AccountSettingsPageAuthorised getAccountSettingsPageAuthorised() {
+        return accountSettingsPageAuthorised;
     }
 
     public TurnOnLocationPage getTurnOnLocationPage() {
@@ -106,8 +118,8 @@ public class BaseFlow {
         return loginPage;
     }
 
-    public AccountPage getAccountPage() {
-        return accountPage;
+    public AccountSettingsPage getAccountSettingsPage() {
+        return accountSettingsPage;
     }
 
     public ForgotPassPage getForgotPassPage() {
@@ -186,6 +198,21 @@ public class BaseFlow {
     }
 
     @Autowired
+    public void setAccountSettingsPage(final AccountSettingsPage accountSettingsPage) {
+        this.accountSettingsPage = accountSettingsPage;
+    }
+
+    @Autowired
+    public void setPointsAndLevelsView(final PointsAndLevelsView pointsAndLevelsView) {
+        this.pointsAndLevelsView = pointsAndLevelsView;
+    }
+
+    @Autowired
+    public void setAccountSettingsPageAuthorised(final AccountSettingsPageAuthorised accountSettingsPageAuthorised) {
+        this.accountSettingsPageAuthorised = accountSettingsPageAuthorised;
+    }
+
+    @Autowired
     public void setSignUpPage(final SignUpPage signUpPage) {
         this.signUpPage = signUpPage;
     }
@@ -198,11 +225,6 @@ public class BaseFlow {
     @Autowired
     public void setLoginPage(final LoginPage loginPage) {
         this.loginPage = loginPage;
-    }
-
-    @Autowired
-    public void setAccountPage(final AccountPage accountPage) {
-        this.accountPage = accountPage;
     }
 
     @Autowired
