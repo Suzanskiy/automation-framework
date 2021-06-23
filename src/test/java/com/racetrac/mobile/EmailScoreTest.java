@@ -28,12 +28,14 @@ public class EmailScoreTest extends BaseTest {
                 "testAutomation@BasicMail.host",
                 "testAutomation@EasyOnlineMail.net",
                 "testAutomation@IncorporatedMail.com",
+                "ta@IncorporatedMail.com",
+                "admin@IncorporatedMail.com",
         };
     }
 
     @BeforeMethod(alwaysRun = true)
     public void preconditions() {
-        customerDto = testData.generateNewCustomer();
+        customerDto = testData.generateDefaultCustomer();
         assertTrue(welcomeFlow.isHomePageOpened(), "Welcome page is not opened");
         signUpFlow.openSignUpSelectorPage();
         assertTrue(signUpFlow.isSignUpSelectorPageOpened(), "SignUpSelector page is not opened");

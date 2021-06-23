@@ -17,7 +17,6 @@ public class CouponsView extends BaseMobilePage {
     @AndroidFindBy(id = "com.RaceTrac.Common.qa:id/rewardsTutorialMessage")
     private MobileElement root;
 
-    @PageLoading
     @iOSXCUITFindBy(xpath = "//XCUIElementTypeButton[@name=\"GOT IT\"]")
     @AndroidFindBy(id = "com.RaceTrac.Common.qa:id/rewardsTutorialGotItButton")
     private MobileElement gotItBtn;

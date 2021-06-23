@@ -10,14 +10,10 @@ import org.springframework.stereotype.Component;
 
 @Component
 @Getter
-public class AccountPage extends BaseMobilePage {
+public class EditPasswordPage extends BaseMobilePage {
 
     @PageLoading
-    @iOSXCUITFindBy(accessibility = "Account")
-    @AndroidFindBy(id = "com.RaceTrac.Common.qa:id/account_title")
-    private MobileElement title;
-
-    @iOSXCUITFindBy(xpath = "//XCUIElementTypeButton[@name=\"SIGN OUT\"]")
-    @AndroidFindBy(id = "com.RaceTrac.Common.qa:id/sign_out_button")
-    private MobileElement signOutBtn;
+    @iOSXCUITFindBy(accessibility = "1")
+    @AndroidFindBy(id = "com.RaceTrac.Common.qa:id/top_header_edit_password")
+    private MobileElement topHeader;
 }

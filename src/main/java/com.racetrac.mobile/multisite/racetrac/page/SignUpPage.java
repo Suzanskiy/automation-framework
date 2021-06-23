@@ -18,27 +18,35 @@ public class SignUpPage extends BaseMobilePage {
 
     @PageLoading
     @iOSXCUITFindBy(accessibility = "text.title")
-    @AndroidFindBy(id = "com.RaceTrac.Common.qa:id/top_view")
+    @AndroidFindBy(id =
+            "com.RaceTrac.Common.qa:id/topView")
     private MobileElement pageTitle;
 
     @iOSXCUITFindBy(accessibility = "textfield.email")
-    @AndroidFindBy(id = "com.RaceTrac.Common.qa:id/sign_up_user_email_field")
+    @AndroidFindBy(id =
+            "com.RaceTrac.Common.qa:id/emailField")
     private MobileElement emailInput;
 
     @iOSXCUITFindBy(accessibility = "textfield.password")
-    @AndroidFindBy(id = "com.RaceTrac.Common.qa:id/sign_up_user_password_field")
+    @AndroidFindBy(id = "com.RaceTrac.Common.qa:id/passwordField")
     private MobileElement passwordInput;
 
     @iOSXCUITFindBy(accessibility = "textfield.phone_number")
-    @AndroidFindBy(id = "com.RaceTrac.Common.qa:id/sign_up_user_phone_field")
+    @AndroidFindBy(id = "com.RaceTrac.Common.qa:id/phoneField")
     private MobileElement phoneInput;
 
     @iOSXCUITFindBy(accessibility = "textfield.birthday")
-    @AndroidFindBy(id = "com.RaceTrac.Common.qa:id/sign_up_user_birthday_field")
+    @AndroidFindBy(id =
+            "com.RaceTrac.Common.qa:id/birthdayField")
     private MobileElement birthDayInput;
 
+    @AndroidFindBy(id = "com.RaceTrac.Common.qa:id/noBtnPhysicalCard")
+    private MobileElement noCardButton;
+    @AndroidFindBy(id = "com.RaceTrac.Common.qa:id/yesBtnPhysicalCard")
+    private MobileElement yesCardButton;
+
     @iOSXCUITFindBy(accessibility = "button.create_account")
-    @AndroidFindBy(id = "com.RaceTrac.Common.qa:id/sign_up_done_button")
+    @AndroidFindBy(id = "com.RaceTrac.Common.qa:id/signupDoneButton")
     private MobileElement createAccountBtn;
 
 }

@@ -14,7 +14,6 @@ public class LocationRequestFlowImpl extends BaseFlow implements LocationRequest
             getTurnOnLocationPage().getNotNowBtn().click();
         } catch (NoSuchElementException e) {
             LOG.warn("Location page is not opened here, It might create a problem soon");
-            e.printStackTrace();
         }
     }
 

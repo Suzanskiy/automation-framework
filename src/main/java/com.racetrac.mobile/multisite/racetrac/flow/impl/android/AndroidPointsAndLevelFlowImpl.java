@@ -1,6 +1,7 @@
 package com.racetrac.mobile.multisite.racetrac.flow.impl.android;
 
 import com.racetrac.mobile.multisite.racetrac.flow.BaseFlow;
+import com.racetrac.mobile.multisite.racetrac.flow.PointsAndLevelsFlow;
 import com.racetrac.mobile.multisite.racetrac.flow.WelcomeFlow;
 import io.qameta.allure.Step;
 import org.springframework.context.annotation.Profile;
@@ -10,18 +11,11 @@ import static com.racetrac.mobile.framework.constants.PlatformsConstants.ANDROID
 
 @Profile(ANDROID)
 @Component
-public class AndroidWelcomeFlowImpl extends BaseFlow implements WelcomeFlow {
+public class AndroidPointsAndLevelFlowImpl extends BaseFlow implements PointsAndLevelsFlow {
 
     @Override
-    @Step
-    public boolean isHomePageOpened() {
-        getTurnOnLocationPage().waitUntilIsOpened();
-        getTurnOnLocationPage().getNotNowBtn().click();
-        return getHomePage().isOpened();
-    }
-
-    @Override
-    public boolean isHomePageOpenedAfterSignIn() {
-        return getHomePage().isOpened();
+    public void clickGotItBtn() {
+        getPointsAndLevelsView().waitUntilIsOpened();
+        getPointsAndLevelsView().getPointsGotItBtn().click();
     }
 }

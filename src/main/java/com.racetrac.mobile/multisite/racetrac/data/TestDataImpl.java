@@ -15,6 +15,8 @@ import java.util.Random;
 @Component
 public class TestDataImpl implements TestData {
 
+    public static final String CUSTOMER_DEFAULT_NAME = "Automation";
+    public static final String CUSTOMER_DEFAULT_LASTNAME = "Engineer";
     @Autowired
     RegisterCustomerClient registerCustomerClient;
 
@@ -24,14 +26,18 @@ public class TestDataImpl implements TestData {
     public static final int CUSTOMER_AGE = 25;
     public static final int DEFAULT_NUMBER_OF_DIGITS_IN_MOBILE_NUMBER = 10;
 
+    private String computeBirthDateByAge(final int age) {
+        return LocalDate.now().minusYears(age).format(DateTimeFormatter.ofPattern("yyyy-MM-dd"));
+    }
+    
     @Override
-    public CustomerDto generateNewCustomer() {
+    public CustomerDto generateDefaultCustomer() {
         return CustomerDto.builder().personalInfo(
                 PersonalInfoDto.builder()
-                        .birthday(LocalDate.now().minusYears(CUSTOMER_AGE).format(DateTimeFormatter.ofPattern("yyyy-MM-dd")))
+                        .birthday(computeBirthDateByAge(CUSTOMER_AGE))
                         .email(CommonUtils.generateEmail(EMAIL_DOMAIN))
-                        .firstName("Automation")
-                        .lastName("Engineer")
+                        .firstName(CUSTOMER_DEFAULT_NAME)
+                        .lastName(CUSTOMER_DEFAULT_LASTNAME)
                         .phone(CommonUtils.generatePhoneNumber(DEFAULT_PHONE_NUMBER_PREFIX,
                                 DEFAULT_NUMBER_OF_DIGITS_IN_MOBILE_NUMBER))
                         .hasEmailSubscription(new Random().nextBoolean())
@@ -43,7 +49,32 @@ public class TestDataImpl implements TestData {
     }
 
     @Override
+    public CustomerDto generateCustomer(final int age) {
+        return CustomerDto.builder().personalInfo(
+                PersonalInfoDto.builder()
+                        .birthday(computeBirthDateByAge(age))
+                        .email(CommonUtils.generateEmail(EMAIL_DOMAIN))
+                        .firstName(CUSTOMER_DEFAULT_NAME)
+                        .lastName(CUSTOMER_DEFAULT_LASTNAME)
+                        .phone(CommonUtils.generatePhoneNumber(DEFAULT_PHONE_NUMBER_PREFIX,
+                                DEFAULT_NUMBER_OF_DIGITS_IN_MOBILE_NUMBER))
+                        .hasEmailSubscription(new Random().nextBoolean())
+                        .build()
+        )
+                .emailAuth(EmailAuthDto.builder()
+                        .password(DEFAULT_PASSWORD).build()
+                ).build();
+    }
+
+
+    @Override
     public CustomerDto registerNewCustomer() {
-        return registerCustomerClient.registerAccount(generateNewCustomer());
+        return registerCustomerClient.registerAccount(generateDefaultCustomer());
+    }
+
+    @Override
+    public CustomerDto registerNewCustomer(final int age) {
+
+        return registerCustomerClient.registerAccount(generateCustomer(age));
     }
 }

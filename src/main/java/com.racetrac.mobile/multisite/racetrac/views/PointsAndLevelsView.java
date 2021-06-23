@@ -1,4 +1,4 @@
-package com.racetrac.mobile.multisite.racetrac.page;
+package com.racetrac.mobile.multisite.racetrac.views;
 
 import com.racetrac.mobile.framework.annotations.PageLoading;
 import com.racetrac.mobile.multisite.BaseMobilePage;
@@ -10,10 +10,10 @@ import org.springframework.stereotype.Component;
 
 @Component
 @Getter
-public class SignUpSelectorPage extends BaseMobilePage {
+public class PointsAndLevelsView extends BaseMobilePage {
 
     @PageLoading
-    @iOSXCUITFindBy(xpath = "//XCUIElementTypeButton[@name=\"SIGN UP WITH EMAIL\"]")
-    @AndroidFindBy(id = "com.RaceTrac.Common.qa:id/emailSignupButton")
-    private MobileElement signUpWithEmailBtn;
+    @iOSXCUITFindBy(xpath = "//XCUIElementTypeButton[@name=AndroidWelcomeFlowImplGOT IT\"]")
+    @AndroidFindBy(id = "com.RaceTrac.Common.qa:id/pointsAndLevelsTutorialGotItButton")
+    private MobileElement pointsGotItBtn;
 }

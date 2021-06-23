@@ -2,7 +2,10 @@ package com.racetrac.mobile.signUp;
 
 import com.racetrac.mobile.BaseTest;
 import com.racetrac.mobile.multisite.racetrac.dto.CustomerDto;
+import com.racetrac.mobile.multisite.racetrac.flow.BecomeFuelVipFlow;
 import com.racetrac.mobile.multisite.racetrac.flow.LocationRequestFlow;
+import com.racetrac.mobile.multisite.racetrac.flow.NotificationRequestFlow;
+import com.racetrac.mobile.multisite.racetrac.flow.PromotionalOffersFlow;
 import com.racetrac.mobile.multisite.racetrac.flow.SignInFlow;
 import com.racetrac.mobile.multisite.racetrac.flow.SignOutFlow;
 import com.racetrac.mobile.multisite.racetrac.flow.SignUpFlow;
@@ -27,12 +30,18 @@ public class SignUpTest extends BaseTest {
     SignInFlow signInFlow;
     @Autowired
     LocationRequestFlow locationRequestFlow;
+    @Autowired
+    NotificationRequestFlow notificationRequestFlow;
+    @Autowired
+    BecomeFuelVipFlow becomeFuelVipFlow;
+    @Autowired
+    PromotionalOffersFlow promotionalOffersFlow;
     CustomerDto customerDto;
 
 
     @BeforeMethod(alwaysRun = true)
     public void preconditions() {
-        customerDto = testData.generateNewCustomer();
+        customerDto = testData.generateDefaultCustomer();
         assertTrue(welcomeFlow.isHomePageOpened(), "Welcome page is not opened");
         signUpFlow.openSignUpSelectorPage();
         assertTrue(signUpFlow.isSignUpSelectorPageOpened(), "SignUpSelector page is not opened");
@@ -47,7 +56,10 @@ public class SignUpTest extends BaseTest {
         signUpFlow.enterCredentials(customerDto);
         signUpFlow.isFistBumpPageOpened();
         signUpFlow.clickGetStartedBtn();
+        promotionalOffersFlow.skipPromotions();
         locationRequestFlow.clickNotNow();
+        notificationRequestFlow.clickNotNow();
+        becomeFuelVipFlow.clickNotRightNow();
         signInFlow.clickGotItBtn();
         signOutFlow.doSignOut();
         assertTrue(welcomeFlow.isHomePageOpened(), "Welcome page is not opened");
@@ -60,7 +72,10 @@ public class SignUpTest extends BaseTest {
         signUpFlow.enterCredentials(customerDto);
         assertTrue(signUpFlow.isFistBumpPageOpened(), "Fist Bump screen is not opened");
         signUpFlow.clickGetStartedBtn();
+        promotionalOffersFlow.skipPromotions();
         locationRequestFlow.clickNotNow();
+        notificationRequestFlow.clickNotNow();
+        becomeFuelVipFlow.clickNotRightNow();
         signInFlow.clickGotItBtn();
         signOutFlow.doSignOut();
         assertTrue(welcomeFlow.isHomePageOpened(), "Welcome page is not opened");
@@ -85,4 +100,5 @@ public class SignUpTest extends BaseTest {
                 "This email is already linked to an existing account! Try signing in or sign up using another email address.");
         signUpFlow.closeErrorMessage();
     }
+
 }

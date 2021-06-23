@@ -35,12 +35,15 @@ public class ForgotPasswordTest extends BaseTest {
                 "https://my@mail.com",
                 "http://my@mail.com",
                 "http://your@mail.com",
+                "https://new-mail@mail.com",
+                "https://old-mail@htttps.com",
+
         };
     }
 
     @BeforeMethod(alwaysRun = true)
     public void setUp() {
-        customerDto = testData.generateNewCustomer();
+        customerDto = testData.generateDefaultCustomer();
         assertTrue(welcomeFlow.isHomePageOpened(), "Welcome page is not opened");
         signInFlow.openLoginInPage();
         assertTrue(signInFlow.isLoginPageOpened(), "Login page is not opened");

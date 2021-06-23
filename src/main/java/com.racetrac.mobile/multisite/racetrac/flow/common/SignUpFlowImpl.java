@@ -39,7 +39,19 @@ public class SignUpFlowImpl extends BaseFlow implements SignUpFlow {
         enterPassword(customerDto.getEmailAuth().getPassword());
         enterPhone(customerDto.getPersonalInfo().getPhone());
         enterBirthDay(customerDto.getPersonalInfo().getBirthday());
+        chooseNoRewardCard();
         getSignUpPage().getCreateAccountBtn().click();
+    }
+
+    @Step
+    private void chooseNoRewardCard() {
+        try {
+            getSignUpPage().getNoCardButton().click();
+        }catch (Exception e)
+        {
+            LOG.warn("Not Implemented on IOS");
+            // FIXME: 14.06.2021 Remove try block when ios will be ready
+        }
     }
 
     @Step
@@ -108,6 +120,7 @@ public class SignUpFlowImpl extends BaseFlow implements SignUpFlow {
         enterPassword(pass);
         enterPhone(phone);
         enterBirthDay(birth);
+        chooseNoRewardCard();
         getSignUpPage().getCreateAccountBtn().click();
     }
 

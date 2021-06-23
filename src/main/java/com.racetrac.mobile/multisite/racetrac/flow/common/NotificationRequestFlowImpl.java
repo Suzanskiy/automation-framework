@@ -4,6 +4,7 @@ import com.racetrac.mobile.multisite.racetrac.flow.BaseFlow;
 import com.racetrac.mobile.multisite.racetrac.flow.NotificationRequestFlow;
 import io.qameta.allure.Step;
 import org.openqa.selenium.NoSuchElementException;
+import org.openqa.selenium.StaleElementReferenceException;
 import org.springframework.stereotype.Component;
 
 @Component
@@ -16,7 +17,10 @@ public class NotificationRequestFlowImpl extends BaseFlow implements Notificatio
         } catch (
                 NoSuchElementException e) {
             LOG.warn("Notification page is not opened here, It might create a problem soon");
-            e.printStackTrace();
+        }catch (StaleElementReferenceException e)
+        {
+            LOG.warn("Page was recreated");
+            clickNotNow();
         }
     }
 
@@ -24,6 +28,5 @@ public class NotificationRequestFlowImpl extends BaseFlow implements Notificatio
     @Override
     public void clickTurnOn() {
         getTurnOnNotificationPage().getTurnOnBtn().click();
-
     }
 }

@@ -20,11 +20,13 @@ import java.util.stream.Collectors;
 
 import static com.racetrac.mobile.framework.enums.Exceptions.NO_PAGE_LOADING;
 import static com.racetrac.mobile.util.appium.AppiumDriverUtils.getDriver;
+import static com.racetrac.mobile.util.appium.AppiumDriverUtils.swipeDown;
+import static com.racetrac.mobile.util.appium.AppiumDriverUtils.swipeUP;
 
 public abstract class BaseMobilePage implements MobilePage {
 
     private static final Logger LOG = LoggerFactory.getLogger(BaseMobilePage.class);
-    final int timeout = 10;
+    final int timeout = 30;
 
     public BaseMobilePage() {
         PageFactory.initElements(new AppiumFieldDecorator(getDriver()), this);
@@ -50,29 +52,59 @@ public abstract class BaseMobilePage implements MobilePage {
         return AppiumWaitingUtils.waitUntilIsTrue(this::checkAllElementsOfPage, timeout);
     }
 
+    private List<Field> checkElementToBeVisible(List<Field> elements) {
+        return elements
+                .stream()
+                .parallel()
+                .filter(field -> {
+                            MobileElement element = null;
+                            final String methodName = getMethodNameByField(field);
+                            try {
+                                element = (MobileElement) invokeGetMethodOfElement(methodName); // invoke getObject method
+                                LOG.info("Checking element: " + field.getName() + " ---------->>>>> " + "(" + element.isDisplayed() + ")");
+                                return element.isDisplayed();
+                            } catch (NoSuchElementException e) {
+                                LOG.info("!!!! Element [ " + field.getName() + " ] on " + getClass().getSimpleName() + " not exists !!!! ");
+                            } catch (IllegalAccessException | InvocationTargetException | StaleElementReferenceException | NoSuchMethodException e) {
+                                LOG.info("---------->>>>> " + e.getMessage());
+                            }
+                            return false;
+                        }
+                )
+                .collect(Collectors.toList());
+    }
+
     private boolean checkAllElementsOfPage() {
         LOG.info("Checking if page " + getClass().getSimpleName() + " is opened.");
-        List<Field> annotatedItems = getMobileElementsNamesWithAnnotationPageLoading();
-        List<Field> foundItems = new ArrayList<>();
+        List<Field> pageObjectFields = getMobileElementsNamesWithAnnotationPageLoading();
 
-        annotatedItems.stream().forEach(field ->
-                {
-                    try {
-                        final String methodName = "get" + field.getName().substring(0, 1).toUpperCase() + field.getName().substring(1);
+        List<Field> foundItems = checkElementToBeVisible(pageObjectFields);
+        List<Field> notFoundItems = new ArrayList<>();
 
-                        final MobileElement element = (MobileElement) getClass().getMethod(methodName).invoke(this); // invoke getObject method
-                        final boolean elementDisplayed = element.isDisplayed(); // check if displayed
-                        LOG.info("Checking element: " + field.getName() + "---------->>>>>" + "(" + elementDisplayed + ")");
-
-                        if (elementDisplayed) {
-                            foundItems.add(field);
-                        }
-                    } catch (final IllegalAccessException | InvocationTargetException | NoSuchElementException | StaleElementReferenceException | NoSuchMethodException e) {
-                        LOG.info("---------->>>>> " + e.getMessage());
+        final List<Field> finalFoundItems = foundItems;
+        pageObjectFields.forEach(
+                x -> {
+                    if (!finalFoundItems.contains(x)) {
+                        notFoundItems.add(x);
                     }
                 }
         );
-        return foundItems.size() == annotatedItems.size();
+
+        if (notFoundItems.size() > 0) {
+            swipeUP();
+            foundItems.addAll(checkElementToBeVisible(notFoundItems));  // recheck
+            swipeDown();
+        }
+
+        return foundItems.size() == pageObjectFields.size();
+    }
+
+    private Object invokeGetMethodOfElement(final String methodName) throws IllegalAccessException, InvocationTargetException, NoSuchMethodException {
+        return getClass().getMethod(methodName).invoke(this);
+    }
+
+    private String getMethodNameByField(final Field field) {
+        return "get" + field.getName().substring(0, 1).toUpperCase() + field.getName().substring(1);
     }
 
 
@@ -80,12 +112,18 @@ public abstract class BaseMobilePage implements MobilePage {
      * Returns names of private MobileElements with @PageLoading
      */
     private List<Field> getMobileElementsNamesWithAnnotationPageLoading() {
-        final List<Field> objects = Arrays.stream(getClass().getDeclaredFields()).filter(field -> field.getType().isAssignableFrom(MobileElement.class))
-                .filter(field -> field.isAnnotationPresent(PageLoading.class)).collect(Collectors.toList());
+        final List<Field> objects = new ArrayList<>();
+        objects.addAll(Arrays.asList(getClass().getSuperclass().getDeclaredFields()));
+        objects.addAll(Arrays.asList(getClass().getDeclaredFields()));
+
         if (objects.size() == 0) {
             throw new RuntimeException(NO_PAGE_LOADING.message);
         } else {
-            return objects;
+            return objects.stream()
+                    .filter(field -> field.getType().isAssignableFrom(MobileElement.class))
+                    .filter(field -> field.isAnnotationPresent(PageLoading.class))
+                    .collect(Collectors.toList());
+
         }
     }
 }

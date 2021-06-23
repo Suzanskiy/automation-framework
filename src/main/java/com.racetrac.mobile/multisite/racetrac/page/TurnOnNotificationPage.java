@@ -12,12 +12,12 @@ import org.springframework.stereotype.Component;
 @Getter
 public class TurnOnNotificationPage extends BaseMobilePage {
     @PageLoading
-    @AndroidFindBy(id = "1")
+    @AndroidFindBy(id = "notNowButton")
     @iOSXCUITFindBy(xpath = "//XCUIElementTypeButton[@name=\"NOT NOW\"]")
     private MobileElement notNowBtn;
 
     @PageLoading
     @iOSXCUITFindBy(xpath = "//XCUIElementTypeButton[@name=\"TURN ON\"]")
-    @AndroidFindBy(id = "1")
+    @AndroidFindBy(id = "notNowButton")
     private MobileElement turnOnBtn;
 }
