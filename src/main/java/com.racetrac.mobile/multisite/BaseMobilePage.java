@@ -20,6 +20,7 @@ import java.util.stream.Collectors;
 
 import static com.racetrac.mobile.framework.enums.Exceptions.NO_PAGE_LOADING;
 import static com.racetrac.mobile.util.appium.AppiumDriverUtils.getDriver;
+import static com.racetrac.mobile.util.appium.AppiumDriverUtils.swipeDown;
 import static com.racetrac.mobile.util.appium.AppiumDriverUtils.swipeUP;
 
 public abstract class BaseMobilePage implements MobilePage {
@@ -91,8 +92,8 @@ public abstract class BaseMobilePage implements MobilePage {
 
         if (notFoundItems.size() > 0) {
             swipeUP();
-
             foundItems.addAll(checkElementToBeVisible(notFoundItems));  // recheck
+            swipeDown();
         }
 
         return foundItems.size() == pageObjectFields.size();

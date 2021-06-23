@@ -41,7 +41,7 @@ public class SignUpTest extends BaseTest {
 
     @BeforeMethod(alwaysRun = true)
     public void preconditions() {
-        customerDto = testData.generateNewCustomer();
+        customerDto = testData.generateDefaultCustomer();
         assertTrue(welcomeFlow.isHomePageOpened(), "Welcome page is not opened");
         signUpFlow.openSignUpSelectorPage();
         assertTrue(signUpFlow.isSignUpSelectorPageOpened(), "SignUpSelector page is not opened");

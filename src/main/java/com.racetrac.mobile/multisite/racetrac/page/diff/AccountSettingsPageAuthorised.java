@@ -17,33 +17,26 @@ public class AccountSettingsPageAuthorised extends AccountSettingsPage {
     @AndroidFindBy(uiAutomator = "new UiSelector().text(\"Account\")")
     private MobileElement accountCategory;
 
-    @PageLoading
     @iOSXCUITFindBy(accessibility = "Profile")
     @AndroidFindBy(uiAutomator = "new UiSelector().text(\"Profile\")")
     private MobileElement profile;
 
-    @PageLoading
     @iOSXCUITFindBy(accessibility = "Rewards + Debit Card")
     @AndroidFindBy(uiAutomator = "new UiSelector().text(\"Rewards + Debit Card\")")
     private MobileElement rewardsAndDebitCard;
 
-    @PageLoading
     @iOSXCUITFindBy(accessibility = "Purchase History")
     @AndroidFindBy(uiAutomator = "new UiSelector().text(\"Purchase History\")")
     private MobileElement purchaseHistory;
-
-    @PageLoading
     @iOSXCUITFindBy(accessibility = "Promo Codes")
     @AndroidFindBy(uiAutomator = "new UiSelector().text(\"Promo Code\")")
     private MobileElement promoCodes;
 
-    @PageLoading
     @iOSXCUITFindBy(xpath = "//XCUIElementTypeStaticText[@name=\"Preferences\"]")
     @AndroidFindBy(uiAutomator = "new UiSelector().text(\"Preferences\")")
 
     private MobileElement preferencesCategory;
 
-    @PageLoading
     @iOSXCUITFindBy(xpath = "//XCUIElementTypeStaticText[@name=\"Notifications\"]")
     @AndroidFindBy(uiAutomator = "new UiSelector().text(\"Notifications\")")
     private MobileElement notifications;

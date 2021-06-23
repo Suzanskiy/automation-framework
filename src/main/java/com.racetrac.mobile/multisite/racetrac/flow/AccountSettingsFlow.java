@@ -6,7 +6,11 @@ public interface AccountSettingsFlow {
 
     boolean isAccountSettingsAuthorisedUserScreenOpened();
 
+    boolean isProfileScreenOpened();
+
     void navigateToAccountSettings();
 
     void closeAccountSettingsScreen();
+
+    void navigateToProfile();
 }

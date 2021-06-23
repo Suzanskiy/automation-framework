@@ -19,6 +19,11 @@ public class AccountSettingsFlowImpl extends BaseFlow implements AccountSettings
         return getAccountSettingsPageAuthorised().waitUntilIsOpened();
     }
 
+    @Override
+    public boolean isProfileScreenOpened() {
+        return getProfilePage().waitUntilIsOpened();
+    }
+
     @Step
     @Override
     public void navigateToAccountSettings() {
@@ -29,4 +34,10 @@ public class AccountSettingsFlowImpl extends BaseFlow implements AccountSettings
     public void closeAccountSettingsScreen() {
         getAccountSettingsPage().getNavBarCloseBtn().click();
     }
+
+    @Override
+    public void navigateToProfile() {
+        getAccountSettingsPageAuthorised().getProfile().click();
+    }
+
 }
