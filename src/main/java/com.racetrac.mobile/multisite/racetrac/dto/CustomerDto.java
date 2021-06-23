@@ -10,7 +10,6 @@ import org.springframework.stereotype.Component;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-@Component
 public class CustomerDto {
     private PersonalInfoDto personalInfo;
     private EmailAuthDto emailAuth;

@@ -12,6 +12,7 @@ public class SignOutFlowImpl extends BaseFlow implements SignOutFlow {
     @Step
     @Override
     public void doSignOut() {
+        getHomePage().waitUntilIsOpened();
         getHomePage().getIconSettings().click();
         getAccountSettingsPage().waitUntilIsOpened();
         swipeUP();

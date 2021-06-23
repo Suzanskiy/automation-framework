@@ -3,6 +3,7 @@ package com.racetrac.mobile.accountSettings.password;
 import com.racetrac.mobile.BaseTest;
 import com.racetrac.mobile.multisite.racetrac.dto.CustomerDto;
 import com.racetrac.mobile.multisite.racetrac.flow.AccountSettingsFlow;
+import com.racetrac.mobile.multisite.racetrac.flow.EditPasswordFlow;
 import com.racetrac.mobile.multisite.racetrac.flow.LocationRequestFlow;
 import com.racetrac.mobile.multisite.racetrac.flow.NotificationRequestFlow;
 import com.racetrac.mobile.multisite.racetrac.flow.PointsAndLevelsFlow;
@@ -34,11 +35,13 @@ public class AccountSettingsChangePasswordTest extends BaseTest {
     @Autowired
     NotificationRequestFlow notificationRequestFlow;
     @Autowired
-    CustomerDto customerDto;
-    @Autowired
     ProfileFlow profileFlow;
     @Autowired
     PointsAndLevelsFlow pointsAndLevelsFlow;
+    @Autowired
+    EditPasswordFlow editPasswordFlow;
+
+    CustomerDto customerDto;
 
 
     @BeforeMethod
@@ -65,14 +68,31 @@ public class AccountSettingsChangePasswordTest extends BaseTest {
     @Description("Log in after password change")
     @Test
     public void loginAfterPasswordChangeTest() {
+        final String password = "NewPassword123!";
+
         accountSettingsFlow.navigateToProfile();
         assertTrue(accountSettingsFlow.isProfileScreenOpened(), "Profile screen is not opened");
         profileFlow.navigateToPasswordChange();
         assertTrue(profileFlow.isPasswordChangeScreenOpened(), "Password Change screen is not opened");
+
+        this.customerDto = editPasswordFlow.editPassword(customerDto, password);
+        assertTrue(accountSettingsFlow.isProfileScreenOpened(), "Profile screen is not opened");
+
         pressBackBtn();
         pressBackBtn();
-        pressBackBtn();
+        //   pressBackBtn();
         pointsAndLevelsFlow.clickGotItBtn();
+        signOutFlow.doSignOut();
+        locationRequestFlow.clickNotNow();
+        welcomeFlow.isHomePageOpenedAfterSignIn();
+        signInFlow.openLoginInPage();
+        assertTrue(signInFlow.isLoginPageOpened(), "Login page is not opened");
+        signInFlow.authorize(customerDto);
+        locationRequestFlow.clickNotNow();
+        notificationRequestFlow.clickNotNow();
+        assertTrue(signInFlow.isCouponsViewOpened(), "Coupons view is not opened after signUp");
+        signInFlow.clickGotItBtn();
+        assertTrue(welcomeFlow.isHomePageOpenedAfterSignIn(), "Welcome page is not opened after sign in");
     }
 
     @AfterMethod(alwaysRun = true)
