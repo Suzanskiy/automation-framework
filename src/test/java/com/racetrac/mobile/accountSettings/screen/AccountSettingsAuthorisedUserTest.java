@@ -34,7 +34,6 @@ public class AccountSettingsAuthorisedUserTest extends BaseTest {
     LocationRequestFlow locationRequestFlow;
     @Autowired
     NotificationRequestFlow notificationRequestFlow;
-    @Autowired
     CustomerDto customerDto;
     @Autowired
     PointsAndLevelsFlow pointsAndLevelsFlow;

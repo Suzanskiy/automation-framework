@@ -4,6 +4,7 @@ import com.racetrac.mobile.multisite.racetrac.page.AccountSettingsPage;
 import com.racetrac.mobile.multisite.racetrac.page.BecomeFuelVipPage;
 import com.racetrac.mobile.multisite.racetrac.page.CardsPage;
 import com.racetrac.mobile.multisite.racetrac.page.CouponsPage;
+import com.racetrac.mobile.multisite.racetrac.page.EditEmailPage;
 import com.racetrac.mobile.multisite.racetrac.page.EditPasswordPage;
 import com.racetrac.mobile.multisite.racetrac.page.FistBumpPage;
 import com.racetrac.mobile.multisite.racetrac.page.ForgotPassPage;
@@ -26,9 +27,7 @@ import com.racetrac.mobile.multisite.racetrac.views.FraudErrorMessageView;
 import com.racetrac.mobile.multisite.racetrac.views.IosNavBar;
 import com.racetrac.mobile.multisite.racetrac.views.NavigationDrawer;
 import com.racetrac.mobile.multisite.racetrac.views.PointsAndLevelsView;
-import lombok.AllArgsConstructor;
 import lombok.Getter;
-import lombok.RequiredArgsConstructor;
 import lombok.Setter;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -61,6 +60,7 @@ public class BaseFlow {
     BecomeFuelVipPage becomeFuelVipPage;
     ProfilePage profilePage;
     EditPasswordPage editPasswordPage;
+    EditEmailPage editEmailPage;
     //    SECTIONS
     NavigationDrawer navigationDrawer;
     AndroidNavBar androidNavBar;

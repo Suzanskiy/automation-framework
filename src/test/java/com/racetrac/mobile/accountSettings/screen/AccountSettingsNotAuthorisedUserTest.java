@@ -38,6 +38,7 @@ public class AccountSettingsNotAuthorisedUserTest extends BaseTest {
     BecomeFuelVipFlow becomeFuelVipFlow;
     @Autowired
     PromotionalOffersFlow promotionalOffersFlow;
+
     CustomerDto customerDto;
 
     @BeforeMethod

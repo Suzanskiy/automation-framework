@@ -6,6 +6,7 @@ import io.qameta.allure.Step;
 import org.springframework.stereotype.Component;
 
 @Component
+
 public class ProfileFlowImpl extends BaseFlow implements ProfileFlow {
 
     @Step
@@ -14,8 +15,21 @@ public class ProfileFlowImpl extends BaseFlow implements ProfileFlow {
         getProfilePage().getPasswordBtn().click();
     }
 
+    @Step
     @Override
     public boolean isPasswordChangeScreenOpened() {
         return getEditPasswordPage().waitUntilIsOpened();
+    }
+
+    @Step
+    @Override
+    public void navigateToEmailChange() {
+        getProfilePage().getEmailBtn().click();
+    }
+
+    @Step
+    @Override
+    public boolean isEmailChangeScreenOpened() {
+        return getEditEmailPage().waitUntilIsOpened();
     }
 }
