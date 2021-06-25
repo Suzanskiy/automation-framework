@@ -34,7 +34,6 @@ public class AccountSettingsPageAuthorised extends AccountSettingsPage {
 
     @iOSXCUITFindBy(xpath = "//XCUIElementTypeStaticText[@name=\"Preferences\"]")
     @AndroidFindBy(uiAutomator = "new UiSelector().text(\"Preferences\")")
-
     private MobileElement preferencesCategory;
 
     @iOSXCUITFindBy(xpath = "//XCUIElementTypeStaticText[@name=\"Notifications\"]")

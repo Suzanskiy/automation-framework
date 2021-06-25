@@ -16,4 +16,9 @@ public class ProfilePage extends BaseMobilePage {
     @iOSXCUITFindBy(xpath = "//XCUIElementTypeApplication[@name=\"RaceTrac QA\"]/XCUIElementTypeWindow[1]/XCUIElementTypeOther/XCUIElementTypeOther[2]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeScrollView/XCUIElementTypeOther[1]/XCUIElementTypeSecureTextField")
     @AndroidFindBy(id = "com.RaceTrac.Common.qa:id/edit_password")
     private MobileElement passwordBtn;
+
+    @PageLoading
+    @iOSXCUITFindBy(accessibility = "1")
+    @AndroidFindBy(id = "com.RaceTrac.Common.qa:id/edit_email")
+    private MobileElement emailBtn;
 }

@@ -2,7 +2,7 @@ package com.racetrac.mobile.multisite.racetrac.flow;
 
 import com.racetrac.mobile.multisite.racetrac.dto.CustomerDto;
 
-public interface EditPasswordFlow {
+public interface EditEmailFlow {
 
-    CustomerDto editPassword(CustomerDto customerDto, final String password);
+    CustomerDto editEmail(CustomerDto customerDto, final String email);
 }
