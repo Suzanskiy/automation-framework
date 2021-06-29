@@ -36,4 +36,9 @@ public class iosPromotionalOffersFlowImpl extends BaseFlow implements Promotiona
     public void skipPromotions() {
         LOG.warn("Promotional offers is not implemented on iOS");
     }
+
+    @Override
+    public boolean isPromotionalOffersScreenOpened() {
+        return false;
+    }
 }

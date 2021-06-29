@@ -40,4 +40,9 @@ public class AccountSettingsFlowImpl extends BaseFlow implements AccountSettings
         getAccountSettingsPageAuthorised().getProfile().click();
     }
 
+    @Override
+    public void navigateToPromotionalSettings() {
+        getAccountSettingsPageAuthorised().getPromotionalSettings().click();
+    }
+
 }

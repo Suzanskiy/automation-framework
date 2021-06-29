@@ -38,4 +38,9 @@ public class AndroidPromotionalOffersFlowImpl extends BaseFlow implements Promot
         chooseNoLottery();
         clickNextBtn();
     }
+
+    @Override
+    public boolean isPromotionalOffersScreenOpened() {
+        return getPromotionalOffersPage().waitUntilIsOpened();
+    }
 }

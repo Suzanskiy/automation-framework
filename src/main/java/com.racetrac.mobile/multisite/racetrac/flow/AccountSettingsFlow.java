@@ -13,4 +13,7 @@ public interface AccountSettingsFlow {
     void closeAccountSettingsScreen();
 
     void navigateToProfile();
+
+    void navigateToPromotionalSettings();
+
 }

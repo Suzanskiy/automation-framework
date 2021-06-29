@@ -13,18 +13,12 @@ import org.springframework.stereotype.Component;
 public class EditEmailPage extends BaseMobilePage {
 
     @PageLoading
-    @iOSXCUITFindBy(accessibility = "1")
-    @AndroidFindBy(id = "com.RaceTrac.Common.qa:id/tv_title_edit_email")
-    private MobileElement topHeader;
-
-    @PageLoading
-    @iOSXCUITFindBy(accessibility = "1")
+    @iOSXCUITFindBy(xpath = "//XCUIElementTypeApplication[@name=\"RaceTrac QA\"]/XCUIElementTypeWindow[1]/XCUIElementTypeOther/XCUIElementTypeOther[2]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeTextField[2]")
     @AndroidFindBy(id = "com.RaceTrac.Common.qa:id/user_new_email_field")
     private MobileElement newEmailField;
 
     @PageLoading
-    @iOSXCUITFindBy(accessibility = "1")
-    @AndroidFindBy(id =
-            "com.RaceTrac.Common.qa:id/change_email_button")
+    @iOSXCUITFindBy(xpath = "//XCUIElementTypeButton[@name=\"UPDATE EMAIL\"]")
+    @AndroidFindBy(id = "com.RaceTrac.Common.qa:id/change_email_button")
     private MobileElement changeEmailBtn;
 }

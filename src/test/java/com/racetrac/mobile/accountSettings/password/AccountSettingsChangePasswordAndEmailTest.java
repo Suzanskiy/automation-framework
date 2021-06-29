@@ -11,6 +11,7 @@ import com.racetrac.mobile.multisite.racetrac.flow.PointsAndLevelsFlow;
 import com.racetrac.mobile.multisite.racetrac.flow.ProfileFlow;
 import com.racetrac.mobile.multisite.racetrac.flow.SignInFlow;
 import com.racetrac.mobile.multisite.racetrac.flow.SignOutFlow;
+import com.racetrac.mobile.multisite.racetrac.flow.SignUpFlow;
 import com.racetrac.mobile.multisite.racetrac.flow.WelcomeFlow;
 import com.racetrac.mobile.multisite.racetrac.util.CommonUtils;
 import io.qameta.allure.Description;
@@ -24,7 +25,7 @@ import static com.racetrac.mobile.multisite.racetrac.data.TestDataImpl.EMAIL_DOM
 import static com.racetrac.mobile.util.appium.AppiumDriverUtils.pressBackBtn;
 import static org.testng.Assert.assertTrue;
 
-public class AccountSettingsChangePasswordTest extends BaseTest {
+public class AccountSettingsChangePasswordAndEmailTest extends BaseTest {
     @Autowired
     WelcomeFlow welcomeFlow;
     @Autowired
@@ -33,6 +34,8 @@ public class AccountSettingsChangePasswordTest extends BaseTest {
     SignOutFlow signOutFlow;
     @Autowired
     SignInFlow signInFlow;
+    @Autowired
+    SignUpFlow signUpFlow;
     @Autowired
     LocationRequestFlow locationRequestFlow;
     @Autowired
@@ -76,7 +79,7 @@ public class AccountSettingsChangePasswordTest extends BaseTest {
         final String password = "NewPassword123!";
 
         accountSettingsFlow.navigateToProfile();
-        assertTrue(accountSettingsFlow.isProfileScreenOpened(), "Profile screen is not opened");
+        assertTrue(accountSettingsFlow.isProfileScreenOpened(), "Profile screen is not opened"); // FIXME: 29.06.2021 IOS wait for selectors
         profileFlow.navigateToPasswordChange();
         assertTrue(profileFlow.isPasswordChangeScreenOpened(), "Password Change screen is not opened");
 
@@ -86,7 +89,6 @@ public class AccountSettingsChangePasswordTest extends BaseTest {
         pressBackBtn();
         pressBackBtn();
 
-        //   pressBackBtn();
         pointsAndLevelsFlow.clickGotItBtn();
         signOutFlow.doSignOut();
         locationRequestFlow.clickNotNow();
@@ -118,7 +120,6 @@ public class AccountSettingsChangePasswordTest extends BaseTest {
         pressBackBtn();
 
         pointsAndLevelsFlow.clickGotItBtn();
-
         signOutFlow.doSignOut();
         locationRequestFlow.clickNotNow();
         welcomeFlow.isHomePageOpenedAfterSignIn();
@@ -132,6 +133,25 @@ public class AccountSettingsChangePasswordTest extends BaseTest {
         assertTrue(welcomeFlow.isHomePageOpenedAfterSignIn(), "Welcome page is not opened after sign in");
     }
 
+    @TmsLink("5875")
+    @Description("User cannot change email to an existing one")
+    @Test
+    public void userCannotChangeEmailToAnExistingOneTest() { // not working on IOS passwordBtn emailBtn no selectors
+        final String usedEmail = "admin@epam.com";
+
+        accountSettingsFlow.navigateToProfile();
+        assertTrue(accountSettingsFlow.isProfileScreenOpened(), "Profile screen is not opened");
+        profileFlow.navigateToEmailChange();
+        assertTrue(profileFlow.isEmailChangeScreenOpened(), "Email Change screen is not opened");
+
+        this.customerDto = editEmailFlow.editEmail(customerDto, usedEmail);
+        assertTrue(signUpFlow.isErrorMessageShown(), "Error message not shown");
+// FIXME: 29.06.2021 add error message validation when error massage will be changed
+        pressBackBtn();
+        pressBackBtn();
+        pressBackBtn();
+        pointsAndLevelsFlow.clickGotItBtn();
+    }
 
     @AfterMethod(alwaysRun = true)
     public void logOut() {
