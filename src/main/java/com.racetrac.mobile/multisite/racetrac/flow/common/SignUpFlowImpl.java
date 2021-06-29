@@ -94,7 +94,7 @@ public class SignUpFlowImpl extends BaseFlow implements SignUpFlow {
     @Step
     @Override
     public boolean isErrorMessageShown() {
-        return getErrorMessageVIew().isOpened();
+        return getErrorMessageVIew().waitUntilIsOpened();
     }
 
     @Step

@@ -26,6 +26,7 @@ import com.racetrac.mobile.multisite.racetrac.views.ErrorMessageVIew;
 import com.racetrac.mobile.multisite.racetrac.views.FraudErrorMessageView;
 import com.racetrac.mobile.multisite.racetrac.views.IosNavBar;
 import com.racetrac.mobile.multisite.racetrac.views.NavigationDrawer;
+import com.racetrac.mobile.multisite.racetrac.views.NotAdultNotice;
 import com.racetrac.mobile.multisite.racetrac.views.PointsAndLevelsView;
 import lombok.Getter;
 import lombok.Setter;
@@ -69,5 +70,6 @@ public class BaseFlow {
     CouponsView couponsView;
     FraudErrorMessageView fraudErrorMessageView;
     PointsAndLevelsView pointsAndLevelsView;
+    NotAdultNotice notAdultNotice;
 
 }
