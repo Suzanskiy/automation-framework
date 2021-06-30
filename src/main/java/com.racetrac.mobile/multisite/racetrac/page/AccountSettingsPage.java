@@ -12,12 +12,12 @@ import org.springframework.stereotype.Component;
 @Getter
 public class AccountSettingsPage extends BaseMobilePage {
     @PageLoading
-    @iOSXCUITFindBy(accessibility = "NavBarClose")
+    @iOSXCUITFindBy(accessibility = "button.close")
     @AndroidFindBy(id = "com.RaceTrac.Common.qa:id/account_close_btn")
     private MobileElement navBarCloseBtn;
 
     @PageLoading
-    @iOSXCUITFindBy(accessibility = "Account")
+    @iOSXCUITFindBy(accessibility = "text.title")
     @AndroidFindBy(id = "com.RaceTrac.Common.qa:id/account_title")
     private MobileElement title;
 

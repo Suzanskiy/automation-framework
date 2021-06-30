@@ -12,7 +12,7 @@ public class ProfileFlowImpl extends BaseFlow implements ProfileFlow {
     @Step
     @Override
     public void navigateToPasswordChange() {
-        getProfilePage().getPasswordBtn().click();
+        getProfilePage().getEditPasswordBtn().click();
     }
 
     @Step
@@ -24,7 +24,7 @@ public class ProfileFlowImpl extends BaseFlow implements ProfileFlow {
     @Step
     @Override
     public void navigateToEmailChange() {
-        getProfilePage().getEmailBtn().click();
+        getProfilePage().getEditEmailBtn().click();
     }
 
     @Step
