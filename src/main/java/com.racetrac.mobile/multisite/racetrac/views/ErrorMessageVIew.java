@@ -13,7 +13,7 @@ import org.springframework.stereotype.Component;
 public class ErrorMessageVIew extends BaseMobilePage {
 
     @PageLoading
-    @iOSXCUITFindBy(xpath = "//XCUIElementTypeAlert[@name=\"This email is already linked to an existing account! Try signing in or sign up using another email address.\"]")
+    @iOSXCUITFindBy(xpath = "//XCUIElementTypeAlert[@name=\"This email is already linked to an existing account! Try using another email address.\"]")
     @AndroidFindBy(id = "android:id/message")
     private MobileElement errorMessage;
 

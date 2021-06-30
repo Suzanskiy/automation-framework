@@ -17,6 +17,9 @@ public class EditEmailPage extends BaseMobilePage {
     @AndroidFindBy(id = "com.RaceTrac.Common.qa:id/user_new_email_field")
     private MobileElement newEmailField;
 
+    @iOSXCUITFindBy(accessibility = "button.back")
+    @AndroidFindBy(id = "1")
+    private MobileElement backBtn;
     @PageLoading
     @iOSXCUITFindBy(accessibility = "button.update_email")
     @AndroidFindBy(id = "com.RaceTrac.Common.qa:id/change_email_button")

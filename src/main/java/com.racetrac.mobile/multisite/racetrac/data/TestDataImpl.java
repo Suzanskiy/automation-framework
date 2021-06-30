@@ -1,5 +1,6 @@
 package com.racetrac.mobile.multisite.racetrac.data;
 
+import com.racetrac.mobile.framework.enums.CustomerAge;
 import com.racetrac.mobile.multisite.racetrac.api.RegisterCustomerClient;
 import com.racetrac.mobile.multisite.racetrac.dto.CustomerDto;
 import com.racetrac.mobile.multisite.racetrac.dto.EmailAuthDto;
@@ -23,18 +24,21 @@ public class TestDataImpl implements TestData {
     public static final String EMAIL_DOMAIN = "qateam.com";
     public static final String DEFAULT_PASSWORD = "password123!";
     public static final String DEFAULT_PHONE_NUMBER_PREFIX = "1";
-    public static final int CUSTOMER_AGE = 25;
+    public static final int CUSTOMER_ADULT_AGE = 25;
+    public static final int CUSTOMER_CHILD_AGE = 16;
     public static final int DEFAULT_NUMBER_OF_DIGITS_IN_MOBILE_NUMBER = 10;
+    public static final String API_BIRTHDATE_PATTERN = "yyyy-MM-dd";
+    public static final String ANDROID_UI_BIRTHDATE_PATTERN = "MM/dd/yyyy";
 
     private String computeBirthDateByAge(final int age) {
-        return LocalDate.now().minusYears(age).format(DateTimeFormatter.ofPattern("yyyy-MM-dd"));
+        return LocalDate.now().minusYears(age).format(DateTimeFormatter.ofPattern(API_BIRTHDATE_PATTERN));
     }
-    
+
     @Override
     public CustomerDto generateDefaultCustomer() {
         return CustomerDto.builder().personalInfo(
                 PersonalInfoDto.builder()
-                        .birthday(computeBirthDateByAge(CUSTOMER_AGE))
+                        .birthday(computeBirthDateByAge(CUSTOMER_ADULT_AGE))
                         .email(CommonUtils.generateEmail(EMAIL_DOMAIN))
                         .firstName(CUSTOMER_DEFAULT_NAME)
                         .lastName(CUSTOMER_DEFAULT_LASTNAME)
@@ -50,20 +54,9 @@ public class TestDataImpl implements TestData {
 
     @Override
     public CustomerDto generateCustomer(final int age) {
-        return CustomerDto.builder().personalInfo(
-                PersonalInfoDto.builder()
-                        .birthday(computeBirthDateByAge(age))
-                        .email(CommonUtils.generateEmail(EMAIL_DOMAIN))
-                        .firstName(CUSTOMER_DEFAULT_NAME)
-                        .lastName(CUSTOMER_DEFAULT_LASTNAME)
-                        .phone(CommonUtils.generatePhoneNumber(DEFAULT_PHONE_NUMBER_PREFIX,
-                                DEFAULT_NUMBER_OF_DIGITS_IN_MOBILE_NUMBER))
-                        .hasEmailSubscription(new Random().nextBoolean())
-                        .build()
-        )
-                .emailAuth(EmailAuthDto.builder()
-                        .password(DEFAULT_PASSWORD).build()
-                ).build();
+        CustomerDto customerDto = generateDefaultCustomer();
+        customerDto.getPersonalInfo().setBirthday(computeBirthDateByAge(age));
+        return customerDto;
     }
 
 
@@ -73,8 +66,28 @@ public class TestDataImpl implements TestData {
     }
 
     @Override
-    public CustomerDto registerNewCustomer(final int age) {
+    public CustomerDto registerNewCustomer(final CustomerAge age) {
+        CustomerDto customerDto;
+        switch (age) {
+            case ADULT:
+                customerDto = generateCustomer(CUSTOMER_ADULT_AGE);
+                break;
+            case UNDER_21:
+                customerDto = generateCustomer(CUSTOMER_CHILD_AGE);
+                break;
+            case NOT_SPECIFIED_BIRTHDATE:
+                customerDto = generateDefaultCustomer();
+                customerDto.getPersonalInfo().setBirthday("");
+                break;
+            default:
+                customerDto = generateDefaultCustomer();
 
-        return registerCustomerClient.registerAccount(generateCustomer(age));
+        }
+        return registerCustomerClient.registerAccount(customerDto);
+    }
+
+    @Override
+    public String generateDateBirth() {
+        return LocalDate.now().minusYears(CUSTOMER_ADULT_AGE).format(DateTimeFormatter.ofPattern(ANDROID_UI_BIRTHDATE_PATTERN));
     }
 }

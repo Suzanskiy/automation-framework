@@ -12,6 +12,14 @@ import org.springframework.stereotype.Component;
 @Getter
 public class ProfilePage extends BaseMobilePage {
 
+    @iOSXCUITFindBy(accessibility = "button.back")
+    @AndroidFindBy(id = "1")
+    private MobileElement buttonBack;
+    @PageLoading
+    @iOSXCUITFindBy(accessibility = "textfield.birthday")
+    @AndroidFindBy(id = "com.RaceTrac.Common.qa:id/edit_user_birthday_field")
+    private MobileElement birthDay;
+
     @PageLoading
     @iOSXCUITFindBy(accessibility = "button.edit_password")
     @AndroidFindBy(id = "com.RaceTrac.Common.qa:id/edit_password")
@@ -24,6 +32,6 @@ public class ProfilePage extends BaseMobilePage {
 
     @PageLoading
     @iOSXCUITFindBy(accessibility = "button.save")
-    @AndroidFindBy(id = "1")
+    @AndroidFindBy(id = "com.RaceTrac.Common.qa:id/save_profile_button")
     private MobileElement buttonSave;
 }

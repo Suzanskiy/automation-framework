@@ -18,6 +18,8 @@ import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
+import static com.racetrac.mobile.framework.enums.CustomerAge.ADULT;
+import static com.racetrac.mobile.framework.enums.CustomerAge.UNDER_21;
 import static com.racetrac.mobile.multisite.racetrac.data.ComparableStrings.NOT_ADULT_USER_TEXT;
 import static com.racetrac.mobile.util.appium.AppiumDriverUtils.pressBackBtn;
 import static org.testng.Assert.assertEquals;
@@ -76,7 +78,7 @@ public class AccountSettingsAuthorisedUserTest extends BaseTest {
     @Description("")
     @Test
     public void promotionsForAdultCustomerTest() {
-        customerDto = testData.registerNewCustomer(21);
+        customerDto = testData.registerNewCustomer(ADULT);
         signInFlow.openLoginInPage();
         assertTrue(signInFlow.isLoginPageOpened(), "Login page is not opened");
         signInFlow.authorize(customerDto);
@@ -101,7 +103,7 @@ public class AccountSettingsAuthorisedUserTest extends BaseTest {
     @Description("")
     @Test
     public void promotionsForUserUnder21Test() {
-        customerDto = testData.registerNewCustomer(16);
+        customerDto = testData.registerNewCustomer(UNDER_21);
         signInFlow.openLoginInPage();
         assertTrue(signInFlow.isLoginPageOpened(), "Login page is not opened");
         signInFlow.authorize(customerDto);

@@ -20,9 +20,10 @@ public class EditPasswordFlowImpl extends BaseFlow implements EditPasswordFlow {
         reEnterNewPassword(newPassword);
         getEditPasswordPage().getNewPasswordEye().click();
 
-        if (getEditPasswordPage().getChangePasswordBtn().isEnabled()) {
-            clickChangePasswordBtn();
+        if (!getEditPasswordPage().getChangePasswordBtn().isEnabled()) {
+            getEditPasswordPage().getCurrentPassword().click();
         }
+        clickChangePasswordBtn();
 
         customerDto.getEmailAuth().setPassword(newPassword);
 

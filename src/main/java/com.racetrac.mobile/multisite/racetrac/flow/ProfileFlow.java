@@ -1,6 +1,6 @@
 package com.racetrac.mobile.multisite.racetrac.flow;
 
-public interface ProfileFlow {
+public interface ProfileFlow extends NavigateFlow {
     void navigateToPasswordChange();
 
     boolean isPasswordChangeScreenOpened();
@@ -8,4 +8,8 @@ public interface ProfileFlow {
     void navigateToEmailChange();
 
     boolean isEmailChangeScreenOpened();
+
+    void clickOnBirthDayField();
+
+    void enterBirthDate(String customerBirth);
 }
