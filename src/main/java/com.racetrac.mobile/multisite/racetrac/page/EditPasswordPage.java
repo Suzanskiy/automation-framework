@@ -13,37 +13,35 @@ import org.springframework.stereotype.Component;
 public class EditPasswordPage extends BaseMobilePage {
 
     @PageLoading
-    @iOSXCUITFindBy(accessibility = "Edit Password")
+    @iOSXCUITFindBy(accessibility = "text.title")
     @AndroidFindBy(id = "com.RaceTrac.Common.qa:id/top_header_edit_password")
     private MobileElement topHeader;
 
-    @iOSXCUITFindBy(xpath = "//XCUIElementTypeApplication[@name=\"RaceTrac QA\"]/XCUIElementTypeWindow/XCUIElementTypeOther/XCUIElementTypeOther[2]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther[2]/XCUIElementTypeSecureTextField[1]")
+    @iOSXCUITFindBy(accessibility = "textfield.current_password")
     @AndroidFindBy(id = "com.RaceTrac.Common.qa:id/currentPasswordField")
     private MobileElement currentPassword;
 
-    @iOSXCUITFindBy(xpath = "//XCUIElementTypeApplication[@name=\"RaceTrac QA\"]/XCUIElementTypeWindow/XCUIElementTypeOther/XCUIElementTypeOther[2]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther[2]/XCUIElementTypeSecureTextField[2]")
+    @iOSXCUITFindBy(accessibility = "textfield.new_password")
     @AndroidFindBy(id = "com.RaceTrac.Common.qa:id/newPasswordField")
     private MobileElement newPassword;
 
-    @iOSXCUITFindBy(xpath = "//XCUIElementTypeApplication[@name=\"RaceTrac QA\"]/XCUIElementTypeWindow/XCUIElementTypeOther/XCUIElementTypeOther[2]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther[2]/XCUIElementTypeSecureTextField[3]")
+    @iOSXCUITFindBy(accessibility = "textfield.confirmation_password")
     @AndroidFindBy(id = "com.RaceTrac.Common.qa:id/reenterNewPasswordField")
     private MobileElement reEnterPassword;
 
-    @iOSXCUITFindBy(xpath = "//XCUIElementTypeButton[@name=\"CHANGE PASSWORD\"]")
+    @iOSXCUITFindBy(accessibility = "button.change_password")
     @AndroidFindBy(id = "com.RaceTrac.Common.qa:id/changePassword")
     private MobileElement changePasswordBtn;
 
-    @iOSXCUITFindBy(xpath =
-            "(//XCUIElementTypeButton[@name=\"passwordShow\"])[1]")
+    @iOSXCUITFindBy(accessibility = "button.show_current_password")
     @AndroidFindBy(xpath = "(//android.widget.ImageButton[@content-desc=\"Show password\"])[1]")
     private MobileElement currentPasswordEye;
 
-    @iOSXCUITFindBy(xpath =
-            "(//XCUIElementTypeButton[@name=\"passwordShow\"])[2]")
+    @iOSXCUITFindBy(accessibility = "button.show_new_password")
     @AndroidFindBy(xpath = "(//android.widget.ImageButton[@content-desc=\"Show password\"])[2]")
     private MobileElement newPasswordEye;
 
-    @iOSXCUITFindBy(xpath = "(//XCUIElementTypeButton[@name=\"passwordShow\"])[3]")
+    @iOSXCUITFindBy(accessibility = "button.show_confirmation_password")
     @AndroidFindBy(xpath = "(//android.widget.ImageButton[@content-desc=\"Show password\"])[3]")
     private MobileElement reenterPasswordEye;
 }

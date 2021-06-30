@@ -1,12 +1,16 @@
-package com.racetrac.mobile.multisite.racetrac.flow.common;
+package com.racetrac.mobile.multisite.racetrac.flow.impl.ios;
 
 import com.racetrac.mobile.multisite.racetrac.dto.CustomerDto;
 import com.racetrac.mobile.multisite.racetrac.flow.BaseFlow;
 import com.racetrac.mobile.multisite.racetrac.flow.EditEmailFlow;
+import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Component;
 
+import static com.racetrac.mobile.framework.constants.PlatformsConstants.IOS;
+
 @Component
-public class EditEmailFlowImpl extends BaseFlow implements EditEmailFlow {
+@Profile(IOS)
+public class iosEditEmailFlowImpl extends BaseFlow implements EditEmailFlow {
 
     @Override
     public CustomerDto editEmail(final CustomerDto customerDto, final String email) {
@@ -14,5 +18,10 @@ public class EditEmailFlowImpl extends BaseFlow implements EditEmailFlow {
         getEditEmailPage().getChangeEmailBtn().click();
         customerDto.getPersonalInfo().setEmail(email);
         return customerDto;
+    }
+
+    @Override
+    public void navigateBack() {
+        getEditEmailPage().getBackBtn().click();
     }
 }

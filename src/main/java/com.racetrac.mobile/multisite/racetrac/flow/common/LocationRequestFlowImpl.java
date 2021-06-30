@@ -4,6 +4,7 @@ import com.racetrac.mobile.multisite.racetrac.flow.BaseFlow;
 import com.racetrac.mobile.multisite.racetrac.flow.LocationRequestFlow;
 import io.qameta.allure.Step;
 import org.openqa.selenium.NoSuchElementException;
+import org.openqa.selenium.TimeoutException;
 import org.springframework.stereotype.Component;
 
 @Component
@@ -12,7 +13,7 @@ public class LocationRequestFlowImpl extends BaseFlow implements LocationRequest
     public void clickNotNow() {
         try {
             getTurnOnLocationPage().getNotNowBtn().click();
-        } catch (NoSuchElementException e) {
+        } catch (NoSuchElementException | TimeoutException e) {
             LOG.warn("Location page is not opened here, It might create a problem soon");
         }
     }

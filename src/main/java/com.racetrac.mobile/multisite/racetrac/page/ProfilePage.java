@@ -12,13 +12,26 @@ import org.springframework.stereotype.Component;
 @Getter
 public class ProfilePage extends BaseMobilePage {
 
+    @iOSXCUITFindBy(accessibility = "button.back")
+    @AndroidFindBy(id = "1")
+    private MobileElement buttonBack;
     @PageLoading
-    @iOSXCUITFindBy(xpath = "//XCUIElementTypeApplication[@name=\"RaceTrac QA\"]/XCUIElementTypeWindow[1]/XCUIElementTypeOther/XCUIElementTypeOther[2]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeScrollView/XCUIElementTypeOther[1]/XCUIElementTypeSecureTextField")
-    @AndroidFindBy(id = "com.RaceTrac.Common.qa:id/edit_password")
-    private MobileElement passwordBtn;
+    @iOSXCUITFindBy(accessibility = "textfield.birthday")
+    @AndroidFindBy(id = "com.RaceTrac.Common.qa:id/edit_user_birthday_field")
+    private MobileElement birthDay;
 
     @PageLoading
-    @iOSXCUITFindBy(xpath = "//XCUIElementTypeApplication[@name=\"RaceTrac QA\"]/XCUIElementTypeWindow[1]/XCUIElementTypeOther/XCUIElementTypeOther[2]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeScrollView/XCUIElementTypeOther[1]/XCUIElementTypeTextField[5]")
+    @iOSXCUITFindBy(accessibility = "button.edit_password")
+    @AndroidFindBy(id = "com.RaceTrac.Common.qa:id/edit_password")
+    private MobileElement editPasswordBtn;
+
+    @PageLoading
+    @iOSXCUITFindBy(accessibility = "button.edit_email")
     @AndroidFindBy(id = "com.RaceTrac.Common.qa:id/edit_email")
-    private MobileElement emailBtn;
+    private MobileElement editEmailBtn;
+
+    @PageLoading
+    @iOSXCUITFindBy(accessibility = "button.save")
+    @AndroidFindBy(id = "com.RaceTrac.Common.qa:id/save_profile_button")
+    private MobileElement buttonSave;
 }

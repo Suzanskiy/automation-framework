@@ -1,6 +1,6 @@
 package com.racetrac.mobile.multisite.racetrac.flow;
 
-public interface AccountSettingsFlow {
+public interface AccountSettingsFlow extends NavigateFlow{
 
     boolean isAccountSettingsScreenOpened();
 

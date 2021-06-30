@@ -20,8 +20,8 @@ import java.util.stream.Collectors;
 
 import static com.racetrac.mobile.framework.enums.Exceptions.NO_PAGE_LOADING;
 import static com.racetrac.mobile.util.appium.AppiumDriverUtils.getDriver;
-import static com.racetrac.mobile.util.appium.AppiumDriverUtils.swipeDown;
-import static com.racetrac.mobile.util.appium.AppiumDriverUtils.swipeUP;
+import static com.racetrac.mobile.util.appium.AppiumDriverUtils.swipeDownGently;
+import static com.racetrac.mobile.util.appium.AppiumDriverUtils.swipeUPGently;
 
 public abstract class BaseMobilePage implements MobilePage {
 
@@ -61,7 +61,7 @@ public abstract class BaseMobilePage implements MobilePage {
                             final String methodName = getMethodNameByField(field);
                             try {
                                 element = (MobileElement) invokeGetMethodOfElement(methodName); // invoke getObject method
-                                LOG.info("Checking element: " + field.getName() + " ---------->>>>> " + "(" + element.isDisplayed() + ")");
+                                //   LOG.info("Checking element: " + field.getName() + " ---------->>>>> " + "(" + element.isDisplayed() + ")");
                                 return element.isDisplayed();
                             } catch (NoSuchElementException e) {
                                 LOG.info("!!!! Element [ " + field.getName() + " ] on " + getClass().getSimpleName() + " not exists !!!! ");
@@ -91,9 +91,9 @@ public abstract class BaseMobilePage implements MobilePage {
         );
 
         if (notFoundItems.size() > 0) {
-            swipeUP();
+            swipeUPGently();
             foundItems.addAll(checkElementToBeVisible(notFoundItems));  // recheck
-            swipeDown();
+            swipeDownGently();
         }
 
         return foundItems.size() == pageObjectFields.size();

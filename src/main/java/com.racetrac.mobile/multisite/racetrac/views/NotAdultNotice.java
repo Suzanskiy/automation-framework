@@ -10,15 +10,20 @@ import org.springframework.stereotype.Component;
 
 @Component
 @Getter
-public class ErrorMessageVIew extends BaseMobilePage {
+public class NotAdultNotice extends BaseMobilePage {
 
     @PageLoading
-    @iOSXCUITFindBy(xpath = "//XCUIElementTypeAlert[@name=\"This email is already linked to an existing account! Try using another email address.\"]")
-    @AndroidFindBy(id = "android:id/message")
-    private MobileElement errorMessage;
+    @iOSXCUITFindBy(accessibility = "1")
+    @AndroidFindBy(id = "com.RaceTrac.Common.qa:id/dialogHeader")
+    private MobileElement dialogHeader;
 
     @PageLoading
-    @iOSXCUITFindBy(accessibility = "Ok")
-    @AndroidFindBy(id = "android:id/button1")
+    @iOSXCUITFindBy(accessibility = "1")
+    @AndroidFindBy(id = "com.RaceTrac.Common.qa:id/dialogSubtitle")
+    private MobileElement subtitle;
+
+    @PageLoading
+    @iOSXCUITFindBy(accessibility = "1")
+    @AndroidFindBy(id = "com.RaceTrac.Common.qa:id/ok_button")
     private MobileElement okButton;
 }

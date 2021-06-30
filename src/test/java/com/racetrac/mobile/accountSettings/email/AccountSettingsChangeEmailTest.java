@@ -1,16 +1,18 @@
-package com.racetrac.mobile.accountSettings.screen;
+package com.racetrac.mobile.accountSettings.email;
 
 import com.racetrac.mobile.BaseTest;
 import com.racetrac.mobile.multisite.racetrac.dto.CustomerDto;
 import com.racetrac.mobile.multisite.racetrac.flow.AccountSettingsFlow;
+import com.racetrac.mobile.multisite.racetrac.flow.EditEmailFlow;
 import com.racetrac.mobile.multisite.racetrac.flow.LocationRequestFlow;
-import com.racetrac.mobile.multisite.racetrac.flow.NotAdultNoticeFlow;
 import com.racetrac.mobile.multisite.racetrac.flow.NotificationRequestFlow;
 import com.racetrac.mobile.multisite.racetrac.flow.PointsAndLevelsFlow;
-import com.racetrac.mobile.multisite.racetrac.flow.PromotionalOffersFlow;
+import com.racetrac.mobile.multisite.racetrac.flow.ProfileFlow;
 import com.racetrac.mobile.multisite.racetrac.flow.SignInFlow;
 import com.racetrac.mobile.multisite.racetrac.flow.SignOutFlow;
+import com.racetrac.mobile.multisite.racetrac.flow.SignUpFlow;
 import com.racetrac.mobile.multisite.racetrac.flow.WelcomeFlow;
+import com.racetrac.mobile.multisite.racetrac.util.CommonUtils;
 import io.qameta.allure.Description;
 import io.qameta.allure.TmsLink;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,14 +20,10 @@ import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
-import static com.racetrac.mobile.framework.enums.CustomerAge.ADULT;
-import static com.racetrac.mobile.framework.enums.CustomerAge.UNDER_21;
-import static com.racetrac.mobile.multisite.racetrac.data.ComparableStrings.NOT_ADULT_USER_TEXT;
-import static com.racetrac.mobile.util.appium.AppiumDriverUtils.pressBackBtn;
-import static org.testng.Assert.assertEquals;
+import static com.racetrac.mobile.multisite.racetrac.data.TestDataImpl.EMAIL_DOMAIN;
 import static org.testng.Assert.assertTrue;
 
-public class AccountSettingsAuthorisedUserTest extends BaseTest {
+public class AccountSettingsChangeEmailTest extends BaseTest {
     @Autowired
     WelcomeFlow welcomeFlow;
     @Autowired
@@ -35,27 +33,25 @@ public class AccountSettingsAuthorisedUserTest extends BaseTest {
     @Autowired
     SignInFlow signInFlow;
     @Autowired
+    SignUpFlow signUpFlow;
+    @Autowired
     LocationRequestFlow locationRequestFlow;
     @Autowired
     NotificationRequestFlow notificationRequestFlow;
-    CustomerDto customerDto;
+    @Autowired
+    ProfileFlow profileFlow;
     @Autowired
     PointsAndLevelsFlow pointsAndLevelsFlow;
     @Autowired
-    PromotionalOffersFlow promotionalOffersFlow;
-    @Autowired
-    NotAdultNoticeFlow notAdultNoticeFlow;
+    EditEmailFlow editEmailFlow;
+
+    CustomerDto customerDto;
+
 
     @BeforeMethod
     public void setUp() {
         assertTrue(welcomeFlow.isHomePageOpened(), "Welcome page is not opened");
-    }
 
-
-    @TmsLink("5469")
-    @Description("Account Settings screen for registered user")
-    @Test
-    public void accountSettingsScreenForLoggedInUserTest() {
         customerDto = testData.registerNewCustomer();
 
         signInFlow.openLoginInPage();
@@ -70,61 +66,60 @@ public class AccountSettingsAuthorisedUserTest extends BaseTest {
 
         accountSettingsFlow.navigateToAccountSettings();
         assertTrue(accountSettingsFlow.isAccountSettingsAuthorisedUserScreenOpened(), " Account screen for Logged in User is not opened");
-        accountSettingsFlow.closeAccountSettingsScreen();
-        pointsAndLevelsFlow.clickGotItBtn();
     }
 
-    @TmsLink("")
-    @Description("")
+
+    @TmsLink("5585")
+    @Description("Log in after email change")
     @Test
-    public void promotionsForAdultCustomerTest() {
-        customerDto = testData.registerNewCustomer(ADULT);
+    public void loginAfterEmailChangeTest() {
+        final String newEmail = CommonUtils.generateEmail(EMAIL_DOMAIN);
+
+        accountSettingsFlow.navigateToProfile();
+        assertTrue(accountSettingsFlow.isProfileScreenOpened(), "Profile screen is not opened");
+        profileFlow.navigateToEmailChange();
+        assertTrue(profileFlow.isEmailChangeScreenOpened(), "Email Change screen is not opened");
+
+        this.customerDto = editEmailFlow.editEmail(customerDto, newEmail);
+        assertTrue(accountSettingsFlow.isProfileScreenOpened(), "Profile screen is not opened");
+
+        profileFlow.navigateBack();
+        accountSettingsFlow.navigateBack();
+
+        pointsAndLevelsFlow.clickGotItBtn();
+        signOutFlow.doSignOut();
+        locationRequestFlow.clickNotNow();
+        welcomeFlow.isHomePageOpenedAfterSignIn();
         signInFlow.openLoginInPage();
         assertTrue(signInFlow.isLoginPageOpened(), "Login page is not opened");
         signInFlow.authorize(customerDto);
         locationRequestFlow.clickNotNow();
         notificationRequestFlow.clickNotNow();
-
         assertTrue(signInFlow.isCouponsViewOpened(), "Coupons view is not opened after signUp");
         signInFlow.clickGotItBtn();
         assertTrue(welcomeFlow.isHomePageOpenedAfterSignIn(), "Welcome page is not opened after sign in");
-
-        accountSettingsFlow.navigateToAccountSettings();
-        assertTrue(accountSettingsFlow.isAccountSettingsAuthorisedUserScreenOpened(), " Account screen for Logged in User is not opened");
-        accountSettingsFlow.navigateToPromotionalSettings();
-        assertTrue(promotionalOffersFlow.isPromotionalOffersScreenOpened(), "Promotions Page is not opened");
-        pressBackBtn();
-        pressBackBtn();
-
-        pointsAndLevelsFlow.clickGotItBtn();
     }
 
-    @TmsLink("")
-    @Description("")
+    @TmsLink("5875")
+    @Description("User cannot change email to an existing one")
     @Test
-    public void promotionsForUserUnder21Test() {
-        customerDto = testData.registerNewCustomer(UNDER_21);
-        signInFlow.openLoginInPage();
-        assertTrue(signInFlow.isLoginPageOpened(), "Login page is not opened");
-        signInFlow.authorize(customerDto);
-        locationRequestFlow.clickNotNow();
-        notificationRequestFlow.clickNotNow();
+    public void userCannotChangeEmailToAnExistingOneTest() { // not working on IOS passwordBtn emailBtn no selectors
+        final String usedEmail = "admin@epam.com";
 
-        assertTrue(signInFlow.isCouponsViewOpened(), "Coupons view is not opened after signUp");
-        signInFlow.clickGotItBtn();
-        assertTrue(welcomeFlow.isHomePageOpenedAfterSignIn(), "Welcome page is not opened after sign in");
+        accountSettingsFlow.navigateToProfile();
+        assertTrue(accountSettingsFlow.isProfileScreenOpened(), "Profile screen is not opened");
+        profileFlow.navigateToEmailChange();
+        assertTrue(profileFlow.isEmailChangeScreenOpened(), "Email Change screen is not opened");
 
-        accountSettingsFlow.navigateToAccountSettings();
-        assertTrue(accountSettingsFlow.isAccountSettingsAuthorisedUserScreenOpened(), " Account screen for Logged in User is not opened");
-        accountSettingsFlow.navigateToPromotionalSettings();
+        this.customerDto = editEmailFlow.editEmail(customerDto, usedEmail);
+        assertTrue(signUpFlow.isErrorMessageShown(), "Error message not shown");
+        signUpFlow.closeErrorMessage();
+// FIXME: 29.06.2021 add error message validation when error massage will be changed
+        editEmailFlow.navigateBack();
+        profileFlow.navigateBack();
+        accountSettingsFlow.navigateBack();
 
-        assertTrue(notAdultNoticeFlow.isNotAdultNoticeDisplayed(), "Not adult notice not displayed");
-
-        assertEquals(notAdultNoticeFlow.getNotAdultNoticeMessage(), NOT_ADULT_USER_TEXT);
-        notAdultNoticeFlow.clickOK();
-        pressBackBtn();
         pointsAndLevelsFlow.clickGotItBtn();
-
     }
 
     @AfterMethod(alwaysRun = true)

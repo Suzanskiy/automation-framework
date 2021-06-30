@@ -25,7 +25,7 @@ import static com.racetrac.mobile.multisite.racetrac.data.TestDataImpl.EMAIL_DOM
 import static com.racetrac.mobile.util.appium.AppiumDriverUtils.pressBackBtn;
 import static org.testng.Assert.assertTrue;
 
-public class AccountSettingsChangePasswordAndEmailTest extends BaseTest {
+public class AccountSettingsChangePasswordTest extends BaseTest {
     @Autowired
     WelcomeFlow welcomeFlow;
     @Autowired
@@ -101,56 +101,6 @@ public class AccountSettingsChangePasswordAndEmailTest extends BaseTest {
         assertTrue(signInFlow.isCouponsViewOpened(), "Coupons view is not opened after signUp");
         signInFlow.clickGotItBtn();
         assertTrue(welcomeFlow.isHomePageOpenedAfterSignIn(), "Welcome page is not opened after sign in");
-    }
-
-    @TmsLink("5585")
-    @Description("Log in after email change")
-    @Test
-    public void loginAfterEmailChangeTest() {
-        final String newEmail = CommonUtils.generateEmail(EMAIL_DOMAIN);
-
-        accountSettingsFlow.navigateToProfile();
-        assertTrue(accountSettingsFlow.isProfileScreenOpened(), "Profile screen is not opened");
-        profileFlow.navigateToEmailChange();
-        assertTrue(profileFlow.isEmailChangeScreenOpened(), "Email Change screen is not opened");
-
-        this.customerDto = editEmailFlow.editEmail(customerDto, newEmail);
-        assertTrue(accountSettingsFlow.isProfileScreenOpened(), "Profile screen is not opened");
-        pressBackBtn();
-        pressBackBtn();
-
-        pointsAndLevelsFlow.clickGotItBtn();
-        signOutFlow.doSignOut();
-        locationRequestFlow.clickNotNow();
-        welcomeFlow.isHomePageOpenedAfterSignIn();
-        signInFlow.openLoginInPage();
-        assertTrue(signInFlow.isLoginPageOpened(), "Login page is not opened");
-        signInFlow.authorize(customerDto);
-        locationRequestFlow.clickNotNow();
-        notificationRequestFlow.clickNotNow();
-        assertTrue(signInFlow.isCouponsViewOpened(), "Coupons view is not opened after signUp");
-        signInFlow.clickGotItBtn();
-        assertTrue(welcomeFlow.isHomePageOpenedAfterSignIn(), "Welcome page is not opened after sign in");
-    }
-
-    @TmsLink("5875")
-    @Description("User cannot change email to an existing one")
-    @Test
-    public void userCannotChangeEmailToAnExistingOneTest() { // not working on IOS passwordBtn emailBtn no selectors
-        final String usedEmail = "admin@epam.com";
-
-        accountSettingsFlow.navigateToProfile();
-        assertTrue(accountSettingsFlow.isProfileScreenOpened(), "Profile screen is not opened");
-        profileFlow.navigateToEmailChange();
-        assertTrue(profileFlow.isEmailChangeScreenOpened(), "Email Change screen is not opened");
-
-        this.customerDto = editEmailFlow.editEmail(customerDto, usedEmail);
-        assertTrue(signUpFlow.isErrorMessageShown(), "Error message not shown");
-// FIXME: 29.06.2021 add error message validation when error massage will be changed
-        pressBackBtn();
-        pressBackBtn();
-        pressBackBtn();
-        pointsAndLevelsFlow.clickGotItBtn();
     }
 
     @AfterMethod(alwaysRun = true)

@@ -1,12 +1,18 @@
-package com.racetrac.mobile.multisite.racetrac.flow.common;
+package com.racetrac.mobile.multisite.racetrac.flow.impl.android;
 
 import com.racetrac.mobile.multisite.racetrac.flow.AccountSettingsFlow;
 import com.racetrac.mobile.multisite.racetrac.flow.BaseFlow;
 import io.qameta.allure.Step;
+import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Component;
 
+import static com.racetrac.mobile.framework.constants.PlatformsConstants.ANDROID;
+import static com.racetrac.mobile.util.appium.AppiumDriverUtils.pressBackBtn;
+
+@Profile(ANDROID)
 @Component
-public class AccountSettingsFlowImpl extends BaseFlow implements AccountSettingsFlow {
+public class AndroidAccountSettingsFlowImpl extends BaseFlow implements AccountSettingsFlow {
+
     @Step
     @Override
     public boolean isAccountSettingsScreenOpened() {
@@ -45,4 +51,8 @@ public class AccountSettingsFlowImpl extends BaseFlow implements AccountSettings
         getAccountSettingsPageAuthorised().getPromotionalSettings().click();
     }
 
+    @Override
+    public void navigateBack() {
+        pressBackBtn();
+    }
 }
