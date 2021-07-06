@@ -28,7 +28,7 @@ public class TestDataImpl implements TestData {
     public static final int CUSTOMER_CHILD_AGE = 16;
     public static final int DEFAULT_NUMBER_OF_DIGITS_IN_MOBILE_NUMBER = 10;
     public static final String API_BIRTHDATE_PATTERN = "yyyy-MM-dd";
-    public static final String ANDROID_UI_BIRTHDATE_PATTERN = "MM/dd/yyyy";
+    public static final String UI_BIRTHDATE_PATTERN = "MM/dd/yyyy";
 
     private String computeBirthDateByAge(final int age) {
         return LocalDate.now().minusYears(age).format(DateTimeFormatter.ofPattern(API_BIRTHDATE_PATTERN));
@@ -88,6 +88,6 @@ public class TestDataImpl implements TestData {
 
     @Override
     public String generateDateBirth() {
-        return LocalDate.now().minusYears(CUSTOMER_ADULT_AGE).format(DateTimeFormatter.ofPattern(ANDROID_UI_BIRTHDATE_PATTERN));
+        return LocalDate.now().minusYears(CUSTOMER_ADULT_AGE).format(DateTimeFormatter.ofPattern(UI_BIRTHDATE_PATTERN));
     }
 }

@@ -101,8 +101,8 @@ public class AccountSettingsChangeBirthDayTest extends BaseTest {
 
     @AfterMethod(alwaysRun = true)
     public void logOut() {
-        pressBackBtn();
-        pressBackBtn();
+        profileFlow.navigateBack();
+        accountSettingsFlow.navigateBack();
         pointsAndLevelsFlow.clickGotItBtn();
         signOutFlow.doSignOut();
         assertTrue(welcomeFlow.isHomePageOpened(), "Welcome page is not opened");
