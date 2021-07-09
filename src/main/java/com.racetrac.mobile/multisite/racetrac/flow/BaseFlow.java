@@ -8,6 +8,7 @@ import com.racetrac.mobile.multisite.racetrac.page.EditEmailPage;
 import com.racetrac.mobile.multisite.racetrac.page.EditPasswordPage;
 import com.racetrac.mobile.multisite.racetrac.page.FistBumpPage;
 import com.racetrac.mobile.multisite.racetrac.page.ForgotPassPage;
+import com.racetrac.mobile.multisite.racetrac.page.FuelVipPage;
 import com.racetrac.mobile.multisite.racetrac.page.HomePage;
 import com.racetrac.mobile.multisite.racetrac.page.InboxPage;
 import com.racetrac.mobile.multisite.racetrac.page.LoginPage;
@@ -19,6 +20,9 @@ import com.racetrac.mobile.multisite.racetrac.page.SignUpSelectorPage;
 import com.racetrac.mobile.multisite.racetrac.page.StoresPage;
 import com.racetrac.mobile.multisite.racetrac.page.TurnOnLocationPage;
 import com.racetrac.mobile.multisite.racetrac.page.TurnOnNotificationPage;
+import com.racetrac.mobile.multisite.racetrac.page.chrome.ChromeAcceptTermsPage;
+import com.racetrac.mobile.multisite.racetrac.page.chrome.ChromeMainPage;
+import com.racetrac.mobile.multisite.racetrac.page.chrome.TurnOnSyncNowPage;
 import com.racetrac.mobile.multisite.racetrac.page.diff.AccountSettingsPageAuthorised;
 import com.racetrac.mobile.multisite.racetrac.views.AndroidNavBar;
 import com.racetrac.mobile.multisite.racetrac.views.CouponsView;
@@ -62,6 +66,10 @@ public class BaseFlow {
     ProfilePage profilePage;
     EditPasswordPage editPasswordPage;
     EditEmailPage editEmailPage;
+    FuelVipPage fuelVipPage;
+    ChromeAcceptTermsPage chromeAcceptTermsPage;
+    TurnOnSyncNowPage turnOnSyncNowPage;
+    ChromeMainPage chromeMainPage;
     //    SECTIONS
     NavigationDrawer navigationDrawer;
     AndroidNavBar androidNavBar;

@@ -27,9 +27,6 @@ public abstract class HttpClient {
     protected Logger LOGGER;
     private Gson gson;
 
-/*    @Value("${spring.profiles.active}")
-    private String X_PLATFORM_HEADER;*/
-
     public Headers getRequiredHttpHeaders() {
         return new Headers.Builder()
                 .add("Ocp-Apim-Subscription-Key", API_SUBSCRIPTION_KEY)

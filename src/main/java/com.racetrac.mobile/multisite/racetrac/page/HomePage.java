@@ -26,4 +26,9 @@ public class HomePage extends BaseMobilePage {
     @iOSXCUITFindBy(xpath = "//XCUIElementTypeButton[@name=\"SIGN UP\"]")
     @AndroidFindBy(id = "com.RaceTrac.Common.qa:id/signUpButtonHomeGuest")
     private MobileElement signUpBtn;
+
+    @PageLoading
+    @iOSXCUITFindBy(xpath = "//XCUIElementTypeButton[@name=\"VIP\"]")
+    @AndroidFindBy(accessibility = "VIP")
+    private MobileElement vipSection;
 }
