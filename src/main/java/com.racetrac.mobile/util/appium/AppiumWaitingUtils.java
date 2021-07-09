@@ -64,25 +64,25 @@ public class AppiumWaitingUtils {
 		return waitUntilIsTrue(action, LONG_TIMEOUT);
 	}
 
-	public static Boolean waitUntilIsTrue(Action<Boolean> action, boolean throwable) {
+    public static Boolean waitUntilIsTrue(Action<Boolean> action, boolean throwable) {
         return waitUntilIsTrue(action, LONG_TIMEOUT, throwable);
     }
 
-	public static Boolean waitUntilIsTrue(Action<Boolean> action, final long timeout) {
-		return waitUntilIsTrue(action, timeout, true);
-	}
+    public static Boolean waitUntilIsTrue(Action<Boolean> action, final long timeout) {
+        return waitUntilIsTrue(action, timeout, true);
+    }
 
-	public static Boolean waitUntilIsTrue(Action<Boolean> action, final long timeout, boolean throwable) {
-		try {
-			return AppiumWaitingUtils.waitForCondition(driver -> action.execute(), timeout);
-		} catch (TimeoutException e) {
-			if (throwable) {
-				throw e;
-			} else {
-				return false;
-			}
-		}
-	}
+    public static Boolean waitUntilIsTrue(Action<Boolean> action, final long timeout, boolean throwable) {
+        try {
+            return AppiumWaitingUtils.waitForCondition(driver -> action.execute(), timeout);
+        } catch (TimeoutException e) {
+            if (throwable) {
+                throw e;
+            } else {
+                return false;
+            }
+        }
+    }
 
     public static void waitUntil(org.openqa.selenium.support.ui.ExpectedCondition<WebElement> conditions) {
         WebDriverWait wait = new WebDriverWait(getDriver(), LONG_TIMEOUT);

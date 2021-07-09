@@ -20,6 +20,7 @@ public class FuelVipFlowImpl extends BaseFlow implements FuelVipFlow {
     @Override
     public void clickLearnMoreNoSubscription() {
         getFuelVipPage().getNotMemberLearMoreBtn().click();
+        handleBrowserOpening();
     }
 
     @Step
@@ -33,5 +34,12 @@ public class FuelVipFlowImpl extends BaseFlow implements FuelVipFlow {
         } catch (TimeoutException e) {
             LOG.debug("Chrome not showed first run page. Its ok");
         }
+    }
+
+    @Step
+    @Override
+    public void clickVipProgramDetails() {
+        getFuelVipPage().getFuelVIPProgramDetailsSection().click();
+        handleBrowserOpening();
     }
 }

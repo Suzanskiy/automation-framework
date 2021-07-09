@@ -1,6 +1,7 @@
 package com.racetrac.mobile.fuelVIP;
 
 import com.racetrac.mobile.BaseTest;
+import com.racetrac.mobile.multisite.racetrac.api.SubscriptionRequestClient;
 import com.racetrac.mobile.multisite.racetrac.dto.CustomerDto;
 import com.racetrac.mobile.multisite.racetrac.flow.FuelVipFlow;
 import com.racetrac.mobile.multisite.racetrac.flow.LocationRequestFlow;
@@ -19,6 +20,7 @@ import org.testng.annotations.Test;
 
 import java.io.IOException;
 
+import static com.racetrac.mobile.util.appium.AppiumDriverUtils.swipeDown;
 import static org.testng.Assert.assertEquals;
 import static org.testng.Assert.assertTrue;
 
@@ -37,6 +39,8 @@ public class FuelVIPTest extends BaseTest {
     ChromeBrowserHandler chromeBrowserHandler;
     @Autowired
     FuelVipFlow fuelVipFlow;
+    @Autowired
+    SubscriptionRequestClient subscriptionRequestClient;
 
     CustomerDto customerDto;
 
@@ -69,6 +73,21 @@ public class FuelVIPTest extends BaseTest {
         fuelVipFlow.navigateToFuelVipSection();
         fuelVipFlow.clickLearnMoreNoSubscription();
         final String openedUrl = chromeBrowserHandler.getUrl();
+        assertEquals(openedUrl, desiredRedirectUrl);
+    }
+
+    @TmsLink("6200")
+    @Description("Authorized User with purchased active subscription")
+    @Test
+    public void redirectForUnauthorisedUserWithActiveSubscriptionTest() throws InterruptedException {
+        final String desiredRedirectUrl = "https://punwebappqa.azurewebsites.net/Rewards/Account/VipMembership";
+
+        subscriptionRequestClient.requestDefaultSubscriptionPlan(customerDto);
+        fuelVipFlow.navigateToFuelVipSection();
+        swipeDown();//update page
+        fuelVipFlow.clickVipProgramDetails();
+        final String openedUrl = chromeBrowserHandler.getUrl();
+
         assertEquals(openedUrl, desiredRedirectUrl);
     }
 

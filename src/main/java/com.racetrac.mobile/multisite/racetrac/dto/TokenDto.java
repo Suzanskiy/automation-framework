@@ -1,6 +1,5 @@
 package com.racetrac.mobile.multisite.racetrac.dto;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -10,9 +9,6 @@ import lombok.NoArgsConstructor;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class CustomerDto {
-    private PersonalInfoDto personalInfo;
-    private EmailAuthDto emailAuth;
-    @JsonIgnore
-    private String accessToken;
+public class TokenDto {
+    String accessToken;
 }
