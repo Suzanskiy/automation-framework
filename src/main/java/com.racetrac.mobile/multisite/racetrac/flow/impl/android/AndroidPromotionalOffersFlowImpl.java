@@ -2,6 +2,7 @@ package com.racetrac.mobile.multisite.racetrac.flow.impl.android;
 
 import com.racetrac.mobile.multisite.racetrac.flow.BaseFlow;
 import com.racetrac.mobile.multisite.racetrac.flow.PromotionalOffersFlow;
+import lombok.extern.java.Log;
 import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Component;
 
@@ -42,5 +43,10 @@ public class AndroidPromotionalOffersFlowImpl extends BaseFlow implements Promot
     @Override
     public boolean isPromotionalOffersScreenOpened() {
         return getPromotionalOffersPage().waitUntilIsOpened();
+    }
+
+    @Override
+    public void skipIOSPromotions() {
+        LOG.debug("Promotions not showing on Android");
     }
 }

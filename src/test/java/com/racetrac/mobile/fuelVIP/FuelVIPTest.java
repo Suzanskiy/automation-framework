@@ -6,6 +6,7 @@ import com.racetrac.mobile.multisite.racetrac.dto.CustomerDto;
 import com.racetrac.mobile.multisite.racetrac.flow.FuelVipFlow;
 import com.racetrac.mobile.multisite.racetrac.flow.LocationRequestFlow;
 import com.racetrac.mobile.multisite.racetrac.flow.NotificationRequestFlow;
+import com.racetrac.mobile.multisite.racetrac.flow.PromotionalOffersFlow;
 import com.racetrac.mobile.multisite.racetrac.flow.SignInFlow;
 import com.racetrac.mobile.multisite.racetrac.flow.SignOutFlow;
 import com.racetrac.mobile.multisite.racetrac.flow.WelcomeFlow;
@@ -40,6 +41,8 @@ public class FuelVIPTest extends BaseTest {
     @Autowired
     FuelVipFlow fuelVipFlow;
     @Autowired
+    PromotionalOffersFlow promotionalOffersFlow;
+    @Autowired
     SubscriptionRequestClient subscriptionRequestClient;
 
     CustomerDto customerDto;
@@ -58,6 +61,7 @@ public class FuelVIPTest extends BaseTest {
         signInFlow.authorize(customerDto);
         locationRequestFlow.clickNotNow();
         notificationRequestFlow.clickNotNow();
+        promotionalOffersFlow.skipIOSPromotions();
         assertTrue(signInFlow.isCouponsViewOpened(), "Coupons view is not opened after signUp");
         signInFlow.clickGotItBtn();
         assertTrue(welcomeFlow.isHomePageOpenedAfterSignIn(), "Welcome page is not opened after sign in");
@@ -69,26 +73,23 @@ public class FuelVIPTest extends BaseTest {
     @Test
     public void redirectForAuthorisedUserWithoutSubscriptionTest() throws InterruptedException {
         // TODO: 06.07.2021 Change desiredRedirect url to racetrac.com when migrated
-        final String desiredRedirectUrl = "https://rtwebappdev.azurewebsites.net/Rewards/RaceTrac-Rewards-Vip?utm_source=app&utm_medium=VIPtab&utm_campaign=vip";
         fuelVipFlow.navigateToFuelVipSection();
         fuelVipFlow.clickLearnMoreNoSubscription();
         final String openedUrl = chromeBrowserHandler.getUrl();
-        assertEquals(openedUrl, desiredRedirectUrl);
+        assertEquals(openedUrl, chromeBrowserHandler.getDesiredRedirectUrlNoSubscription());
     }
 
     @TmsLink("6200")
     @Description("Authorized User with purchased active subscription")
     @Test
     public void redirectForUnauthorisedUserWithActiveSubscriptionTest() throws InterruptedException {
-        final String desiredRedirectUrl = "https://punwebappqa.azurewebsites.net/Rewards/Account/VipMembership";
 
         subscriptionRequestClient.requestDefaultSubscriptionPlan(customerDto);
         fuelVipFlow.navigateToFuelVipSection();
         swipeDown();//update page
         fuelVipFlow.clickVipProgramDetails();
         final String openedUrl = chromeBrowserHandler.getUrl();
-
-        assertEquals(openedUrl, desiredRedirectUrl);
+        assertEquals(openedUrl, chromeBrowserHandler.getDesiredRedirectUrlActiveSubscription());
     }
 
     @AfterMethod(alwaysRun = true)

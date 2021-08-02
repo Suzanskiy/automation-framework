@@ -1,13 +1,19 @@
-package com.racetrac.mobile.multisite.racetrac.flow.common;
+package com.racetrac.mobile.multisite.racetrac.flow.impl.android;
 
+import com.racetrac.mobile.multisite.racetrac.flow.AccountSettingsFlow;
 import com.racetrac.mobile.multisite.racetrac.flow.BaseFlow;
 import com.racetrac.mobile.multisite.racetrac.flow.FuelVipFlow;
 import io.qameta.allure.Step;
 import org.openqa.selenium.TimeoutException;
+import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Component;
 
+import static com.racetrac.mobile.framework.constants.PlatformsConstants.ANDROID;
+import static com.racetrac.mobile.util.appium.AppiumDriverUtils.pressBackBtn;
+
+@Profile(ANDROID)
 @Component
-public class FuelVipFlowImpl extends BaseFlow implements FuelVipFlow {
+public class AndroidFuelVipFlowImpl extends BaseFlow implements FuelVipFlow {
 
     @Step
     @Override
@@ -24,8 +30,7 @@ public class FuelVipFlowImpl extends BaseFlow implements FuelVipFlow {
     }
 
     @Step
-    @Override
-    public void handleBrowserOpening() {
+    private void handleBrowserOpening() {
         try {
             getChromeAcceptTermsPage().waitUntilIsOpened();
             getChromeAcceptTermsPage().getTermsAcceptBtn().click();

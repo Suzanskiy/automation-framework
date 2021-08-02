@@ -13,6 +13,7 @@ public class NotificationRequestFlowImpl extends BaseFlow implements Notificatio
     @Override
     public void clickNotNow() {
         try {
+            getTurnOnNotificationPage().waitUntilIsOpened();
             getTurnOnNotificationPage().getNotNowBtn().click();
         } catch (
                 NoSuchElementException e) {
