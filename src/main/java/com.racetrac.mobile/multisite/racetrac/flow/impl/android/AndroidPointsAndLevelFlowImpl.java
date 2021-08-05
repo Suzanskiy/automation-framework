@@ -2,8 +2,8 @@ package com.racetrac.mobile.multisite.racetrac.flow.impl.android;
 
 import com.racetrac.mobile.multisite.racetrac.flow.BaseFlow;
 import com.racetrac.mobile.multisite.racetrac.flow.PointsAndLevelsFlow;
-import com.racetrac.mobile.multisite.racetrac.flow.WelcomeFlow;
-import io.qameta.allure.Step;
+import org.openqa.selenium.NoSuchElementException;
+import org.openqa.selenium.TimeoutException;
 import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Component;
 
@@ -15,7 +15,11 @@ public class AndroidPointsAndLevelFlowImpl extends BaseFlow implements PointsAnd
 
     @Override
     public void clickGotItBtn() {
-        getPointsAndLevelsView().waitUntilIsOpened();
-        getPointsAndLevelsView().getPointsGotItBtn().click();
+        try {
+            getPointsAndLevelsView().waitUntilIsOpened();
+            getPointsAndLevelsView().getPointsGotItBtn().click();
+        } catch (NoSuchElementException | TimeoutException e) {
+            LOG.warn("Points and Levels screen not opened, skipping..");
+        }
     }
 }

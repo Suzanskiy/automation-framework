@@ -13,32 +13,40 @@ public class iosPromotionalOffersFlowImpl extends BaseFlow implements Promotiona
 
     @Override
     public void chooseNoAlcohol() {
-        LOG.warn("Promotional offers is not implemented on iOS");
+        getPromotionalOffersPage().getNoAlcohol().click();
     }
 
     @Override
     public void chooseNoTobacco() {
-        LOG.warn("Promotional offers is not implemented on iOS");
-
+        getPromotionalOffersPage().getNoTobacco().click();
     }
 
     @Override
     public void chooseNoLottery() {
-        LOG.warn("Promotional offers is not implemented on iOS");
+        getPromotionalOffersPage().getNoLottery().click();
     }
 
     @Override
     public void clickNextBtn() {
-        LOG.warn("Promotional offers is not implemented on iOS");
+        getPromotionalOffersPage().getNextBtn().click();
     }
 
     @Override
     public void skipPromotions() {
-        LOG.warn("Promotional offers is not implemented on iOS");
+        getPromotionalOffersPage().waitUntilIsOpened();
+        chooseNoAlcohol();
+        chooseNoTobacco();
+        chooseNoLottery();
+        clickNextBtn();
     }
 
     @Override
     public boolean isPromotionalOffersScreenOpened() {
-        return false;
+        return getPromotionalOffersPage().waitUntilIsOpened();
+    }
+
+    @Override
+    public void skipIOSPromotions() {
+        skipPromotions();
     }
 }

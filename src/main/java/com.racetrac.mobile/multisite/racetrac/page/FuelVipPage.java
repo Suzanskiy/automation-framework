@@ -12,15 +12,15 @@ import org.springframework.stereotype.Component;
 @Getter
 public class FuelVipPage extends BaseMobilePage {
     @PageLoading
-    @iOSXCUITFindBy(accessibility = "1")
+    @iOSXCUITFindBy(iOSClassChain = "**/XCUIElementTypeButton[`label == \"VIP\"`]")
     @AndroidFindBy(accessibility = "VIP")
     private MobileElement vipSection;
 
-    @iOSXCUITFindBy(accessibility = "1")
+    @iOSXCUITFindBy(xpath = "//XCUIElementTypeButton[@name=\"LEARN MORE\"]")
     @AndroidFindBy(id = "com.RaceTrac.Common.qa:id/non_member_learn_more")
     private MobileElement notMemberLearMoreBtn;
 
-    @iOSXCUITFindBy(accessibility = "")
+    @iOSXCUITFindBy(accessibility = "IvanExpired VIP Member")
     @AndroidFindBy(id = "com.RaceTrac.Common.qa:id/fuelVIPProgramDetails")
     private MobileElement fuelVIPProgramDetailsSection;
 }

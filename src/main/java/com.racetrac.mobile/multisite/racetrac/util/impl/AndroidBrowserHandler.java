@@ -22,6 +22,9 @@ public class AndroidBrowserHandler extends BaseFlow implements ChromeBrowserHand
     public static final String NATIVE_APP = "NATIVE_APP";
     public static final String CHROME_APP_PACKAGE = "com.android.chrome";
     public static final String COM_RACE_TRAC_COMMON_QA = "com.RaceTrac.Common.qa";
+    public static final String ANDROID_FUEL_VIP_REDIRECT_DESIRED_URL_NO_SUBSCRIPTION = "https://punwebappqa.azurewebsites.net/Rewards/RaceTrac-Rewards-Vip?utm_source=app&utm_medium=VIPtab&utm_campaign=vip";
+    private static final String ANDROID_FUEL_VIP_REDIRECT_DESIRED_URL_ACTIVE_SUBSCRIPTION = "https://punwebappqa.azurewebsites.net/Rewards/Account/VipMembership";
+
 
     @Override
     public void prepareBrowser() throws IOException {
@@ -55,5 +58,15 @@ public class AndroidBrowserHandler extends BaseFlow implements ChromeBrowserHand
     @Override
     public void returnBackToApp() {
         getDriver().activateApp(COM_RACE_TRAC_COMMON_QA);
+    }
+
+    @Override
+    public String getDesiredRedirectUrlNoSubscription() {
+        return ANDROID_FUEL_VIP_REDIRECT_DESIRED_URL_NO_SUBSCRIPTION;
+    }
+
+    @Override
+    public String getDesiredRedirectUrlActiveSubscription() {
+        return ANDROID_FUEL_VIP_REDIRECT_DESIRED_URL_ACTIVE_SUBSCRIPTION;
     }
 }

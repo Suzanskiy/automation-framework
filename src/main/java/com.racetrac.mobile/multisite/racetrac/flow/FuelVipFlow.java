@@ -5,7 +5,5 @@ public interface FuelVipFlow {
 
     void clickLearnMoreNoSubscription();
 
-    void handleBrowserOpening();
-
     void clickVipProgramDetails();
 }

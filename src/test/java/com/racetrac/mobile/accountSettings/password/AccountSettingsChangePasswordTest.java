@@ -63,7 +63,6 @@ public class AccountSettingsChangePasswordTest extends BaseTest {
         signInFlow.authorize(customerDto);
         locationRequestFlow.clickNotNow();
         notificationRequestFlow.clickNotNow();
-
         assertTrue(signInFlow.isCouponsViewOpened(), "Coupons view is not opened after signUp");
         signInFlow.clickGotItBtn();
         assertTrue(welcomeFlow.isHomePageOpenedAfterSignIn(), "Welcome page is not opened after sign in");

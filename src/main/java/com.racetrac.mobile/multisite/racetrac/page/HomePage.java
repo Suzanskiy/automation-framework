@@ -28,7 +28,7 @@ public class HomePage extends BaseMobilePage {
     private MobileElement signUpBtn;
 
     @PageLoading
-    @iOSXCUITFindBy(xpath = "//XCUIElementTypeButton[@name=\"VIP\"]")
+    @iOSXCUITFindBy(iOSClassChain = "**/XCUIElementTypeButton[`label == \"VIP\"`]")
     @AndroidFindBy(accessibility = "VIP")
     private MobileElement vipSection;
 }

@@ -52,6 +52,6 @@ public class AccountSettingsPage extends BaseMobilePage {
     private MobileElement accessibility;
 
     @iOSXCUITFindBy(xpath = "//XCUIElementTypeButton[@name=\"SIGN OUT\"]")
-    @AndroidFindBy(id = "com.RaceTrac.Common.qa:id/sign_out_button")
+    @AndroidFindBy(id = "com.RaceTrac.Common.qa:id/signOutButton")
     private MobileElement signOutBtn;
 }
