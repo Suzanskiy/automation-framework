@@ -11,6 +11,7 @@ public final class TimeoutConstants {
     public static final int SLEEP_IN_MILLIS = 1000;
 
     public static final int LONG_TIMEOUT = 30;
+    public static final int MIDDLE_TIMEOUT = 15;
     public static final int CLP_PRODUCT_LOAD_TIMEOUT = 60;
     public static final int ASSERT_TIMEOUT = 5;
     public static final int LONG_ASSERT_TIMEOUT = 10;

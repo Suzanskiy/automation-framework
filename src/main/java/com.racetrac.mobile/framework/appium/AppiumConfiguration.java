@@ -91,11 +91,11 @@ public final class AppiumConfiguration {
                 throw new IllegalArgumentException(Exceptions.WRONG_NAME.message);
             }
         }
-        capabilities.setCapability("isHeadless", true);
+      //  capabilities.setCapability("isHeadless", true);
+        capabilities.setCapability("app", getAppAbsolutePath());
 
         switch (getTestPlatform()) {
             case ANDROID: {
-                capabilities.setCapability("app", getAppAbsolutePath());
                 capabilities.setCapability(APP_PACKAGE, getAppPackage());
                 capabilities.setCapability(APP_ACTIVITY, getAppActivity());
                 capabilities.setCapability("avd", getDeviceName());

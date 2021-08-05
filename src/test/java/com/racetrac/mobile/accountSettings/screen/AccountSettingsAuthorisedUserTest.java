@@ -123,6 +123,7 @@ public class AccountSettingsAuthorisedUserTest extends BaseTest {
         assertEquals(notAdultNoticeFlow.getNotAdultNoticeMessage(), NOT_ADULT_USER_TEXT);
         notAdultNoticeFlow.clickOK();
         pressBackBtn();
+        pressBackBtn();
         pointsAndLevelsFlow.clickGotItBtn();
 
     }

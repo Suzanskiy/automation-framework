@@ -54,7 +54,8 @@ public class AccountSettingsChangeBirthDayTest extends BaseTest {
     @TmsLink("6096")
     @Description("\"Birthday\" field is not editable for Users who set birthday")
     @Test
-    public void BirthDateNotEditableTest() {
+    public void BirthDateNotEditableTest() { // FIXME: 04.08.2021 rewards + coupons view
+
         customerDto = testData.registerNewCustomer();
         signInFlow.authorize(customerDto);
         locationRequestFlow.clickNotNow();

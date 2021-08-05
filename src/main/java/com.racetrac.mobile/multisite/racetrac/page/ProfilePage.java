@@ -27,7 +27,7 @@ public class ProfilePage extends BaseMobilePage {
 
     @PageLoading
     @iOSXCUITFindBy(accessibility = "button.edit_email")
-    @AndroidFindBy(id = "com.RaceTrac.Common.qa:id/edit_email")
+    @AndroidFindBy(id = "com.RaceTrac.Common.qa:id/edit_email_button")
     private MobileElement editEmailBtn;
 
     @PageLoading
