@@ -47,4 +47,5 @@ public class AndroidFuelVipFlowImpl extends BaseFlow implements FuelVipFlow {
         getFuelVipPage().getFuelVIPProgramDetailsSection().click();
         handleBrowserOpening();
     }
+
 }
