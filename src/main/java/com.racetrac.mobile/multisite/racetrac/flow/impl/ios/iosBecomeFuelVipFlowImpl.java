@@ -17,4 +17,24 @@ public class iosBecomeFuelVipFlowImpl extends BaseFlow implements BecomeFuelVipF
         getBecomeFuelVipPage().waitUntilIsOpened();
         getBecomeFuelVipPage().getNotRightNowBtn().click();
     }
+
+    @Override
+    public void clickLearnMoreBtn() {
+        getBecomeFuelVipPage().getLearnMoreBtn().click();
+    }
+
+    @Override
+    public void clickGetStartedBtn() {
+        getBecomeFuelVipPage().getGetStartedBtn().click();
+    }
+
+    @Override
+    public void clickNotRightNowBtn() {
+        getBecomeFuelVipPage().getNotRightNowBtn().click();
+    }
+
+    @Override
+    public boolean checkAllElementsIsLoaded() {
+        return getBecomeFuelVipPage().waitUntilIsOpened();
+    }
 }

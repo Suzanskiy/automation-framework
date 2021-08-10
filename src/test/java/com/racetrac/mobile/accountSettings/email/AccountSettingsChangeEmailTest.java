@@ -116,7 +116,7 @@ public class AccountSettingsChangeEmailTest extends BaseTest {
         editEmailFlow.navigateBack();
         profileFlow.navigateBack();
         accountSettingsFlow.navigateBack();
-
+        accountSettingsFlow.navigateBack();
         pointsAndLevelsFlow.clickGotItBtn();
     }
 

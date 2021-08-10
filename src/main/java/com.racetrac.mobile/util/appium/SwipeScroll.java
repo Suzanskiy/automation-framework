@@ -40,7 +40,7 @@ public class SwipeScroll {
 
     public void swipeScreen(Direction dir) {
         System.out.println("swipeScreen(): dir: '" + dir + "'");
-        int edgeBorder = 10;
+        int edgeBorder = 5;
 
         PointOption pointOptionStart, pointOptionEnd;
         // init screen variables
