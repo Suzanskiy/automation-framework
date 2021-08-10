@@ -91,8 +91,8 @@ public class AccountSettingsAuthorisedUserTest extends BaseTest {
         assertTrue(accountSettingsFlow.isAccountSettingsAuthorisedUserScreenOpened(), " Account screen for Logged in User is not opened");
         accountSettingsFlow.navigateToPromotionalSettings();
         assertTrue(promotionalOffersFlow.isPromotionalOffersScreenOpened(), "Promotions Page is not opened");
-        pressBackBtn();
-        pressBackBtn();
+        promotionalOffersFlow.navigateBack();
+        accountSettingsFlow.navigateBack();
 
         pointsAndLevelsFlow.clickGotItBtn();
     }
@@ -119,8 +119,7 @@ public class AccountSettingsAuthorisedUserTest extends BaseTest {
 
         assertEquals(notAdultNoticeFlow.getNotAdultNoticeMessage(), NOT_ADULT_USER_TEXT);
         notAdultNoticeFlow.clickOK();
-        pressBackBtn();
-        pressBackBtn();
+
         accountSettingsFlow.navigateBack();
 
         pointsAndLevelsFlow.clickGotItBtn();

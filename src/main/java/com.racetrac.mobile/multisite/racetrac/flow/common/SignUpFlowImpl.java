@@ -23,13 +23,13 @@ public class SignUpFlowImpl extends BaseFlow implements SignUpFlow {
     @Step
     @Override
     public boolean isSignUpPageOpened() {
-        return getSignUpPage().isOpened();
+        return getSignUpPage().waitUntilIsOpened();
     }
 
     @Step
     @Override
     public boolean isFistBumpPageOpened() {
-        return getFistBumpPage().isOpened();
+        return getFistBumpPage().waitUntilIsOpened();
     }
 
     @Step(value = "Prepare user and enter credentials")
@@ -47,8 +47,7 @@ public class SignUpFlowImpl extends BaseFlow implements SignUpFlow {
     private void chooseNoRewardCard() {
         try {
             getSignUpPage().getNoCardButton().click();
-        }catch (Exception e)
-        {
+        } catch (Exception e) {
             LOG.warn("Not Implemented on IOS");
             // FIXME: 14.06.2021 Remove try block when ios will be ready
         }
@@ -127,11 +126,12 @@ public class SignUpFlowImpl extends BaseFlow implements SignUpFlow {
     @Step
     @Override
     public boolean isFraudErrorMessageShown() {
-        return getFraudErrorMessageView().isOpened();
+        return getFraudErrorMessageView().waitUntilIsOpened();
     }
 
     @Override
     public void clickGetStartedBtn() {
+        getFistBumpPage().waitUntilIsOpened();
         getFistBumpPage().getGetStartedBtn().click();
     }
 

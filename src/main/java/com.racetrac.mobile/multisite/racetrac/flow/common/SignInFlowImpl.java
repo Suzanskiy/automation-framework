@@ -20,7 +20,7 @@ public class SignInFlowImpl extends BaseFlow implements SignInFlow {
     @Step
     @Override
     public boolean isLoginPageOpened() {
-        return getLoginPage().isOpened();
+        return getLoginPage().waitUntilIsOpened();
     }
 
     @Step

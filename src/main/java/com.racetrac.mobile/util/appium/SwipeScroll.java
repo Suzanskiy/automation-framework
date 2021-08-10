@@ -12,7 +12,7 @@ import java.time.Duration;
 @AllArgsConstructor
 public class SwipeScroll {
 
-    final int ANIMATION_TIME = 200; // ms
+    final int ANIMATION_TIME = 400; // ms
     final int PRESS_TIME = 200; // ms
 
     AppiumDriver appiumDriver;
@@ -34,14 +34,8 @@ public class SwipeScroll {
                     .release().perform();
         } catch (Exception e) {
             System.err.println("swipeScreen(): TouchAction FAILED\n" + e.getMessage());
-            return;
         }
-        // always allow swipe action to complete
-        try {
-            Thread.sleep(ANIMATION_TIME);
-        } catch (InterruptedException e) {
-            // ignore
-        }
+
     }
 
     public void swipeScreen(Direction dir) {

@@ -20,6 +20,7 @@ import static org.testng.Assert.assertEquals;
 import static org.testng.Assert.assertTrue;
 
 public class SignUpTest extends BaseTest {
+    public static final String EMAIL_LINKED_MESSAGE = "This email is already linked to an existing account! Try signing in or sign up using another email address.";
     @Autowired
     WelcomeFlow welcomeFlow;
     @Autowired
@@ -54,12 +55,12 @@ public class SignUpTest extends BaseTest {
     @Test
     public void signUpTest() {
         signUpFlow.enterCredentials(customerDto);
-        signUpFlow.isFistBumpPageOpened();
         signUpFlow.clickGetStartedBtn();
-        promotionalOffersFlow.skipPromotions();
-        locationRequestFlow.clickNotNow();
         notificationRequestFlow.clickNotNow();
         becomeFuelVipFlow.clickNotRightNow();
+
+        promotionalOffersFlow.skipPromotions();
+        locationRequestFlow.clickNotNow();
         signInFlow.clickGotItBtn();
         signOutFlow.doSignOut();
         assertTrue(welcomeFlow.isHomePageOpened(), "Welcome page is not opened");
@@ -86,7 +87,7 @@ public class SignUpTest extends BaseTest {
         signUpFlow.enterCredentials(customerDto);
         assertTrue(signUpFlow.isErrorMessageShown(), "Error message not shown");
         assertEquals(signUpFlow.getErrorMessageText(),
-                "This email is already linked to an existing account! Try signing in or sign up using another email address.");
+                EMAIL_LINKED_MESSAGE);
         signUpFlow.closeErrorMessage();
     }
 
@@ -97,8 +98,7 @@ public class SignUpTest extends BaseTest {
         signUpFlow.enterCredentials(testData.registerNewCustomer());
         assertTrue(signUpFlow.isErrorMessageShown(), "Error message not shown");
         assertEquals(signUpFlow.getErrorMessageText(),
-                "This email is already linked to an existing account! Try signing in or sign up using another email address.");
+                EMAIL_LINKED_MESSAGE);
         signUpFlow.closeErrorMessage();
     }
-
 }

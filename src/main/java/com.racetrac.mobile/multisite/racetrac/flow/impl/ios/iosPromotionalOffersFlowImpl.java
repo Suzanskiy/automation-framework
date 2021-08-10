@@ -37,13 +37,21 @@ public class iosPromotionalOffersFlowImpl extends BaseFlow implements Promotiona
     public void skipPromotions() {
         try {
             getPromotionalOffersPage().waitUntilIsOpened();
-            chooseNoAlcohol();
-            chooseNoTobacco();
-            chooseNoLottery();
-            clickNextBtn();
-        } catch (TimeoutException | NoSuchElementException e) {
-            LOG.warn("Unable to skip promotions, because it's not opened");
+            executeCLickProcedure();
+        } catch (TimeoutException e) {
+            LOG.warn("Time out exception on skipping promotions, refreshing");
+            getPromotionalOffersPage().refresh();
+        } catch (NoSuchElementException ex) {
+            //ignore
         }
+
+    }
+
+    private void executeCLickProcedure() {
+        chooseNoAlcohol();
+        chooseNoTobacco();
+        chooseNoLottery();
+        clickNextBtn();
     }
 
     @Override
@@ -54,5 +62,10 @@ public class iosPromotionalOffersFlowImpl extends BaseFlow implements Promotiona
     @Override
     public void skipIOSPromotions() {
         skipPromotions();
+    }
+
+    @Override
+    public void navigateBack() {
+        getPromotionalOffersPage().getNavigateBackBtn().click();
     }
 }

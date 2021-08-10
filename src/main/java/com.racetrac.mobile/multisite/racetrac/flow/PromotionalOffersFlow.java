@@ -14,4 +14,6 @@ public interface PromotionalOffersFlow {
     boolean isPromotionalOffersScreenOpened();
 
     void skipIOSPromotions();
+
+    void navigateBack();
 }

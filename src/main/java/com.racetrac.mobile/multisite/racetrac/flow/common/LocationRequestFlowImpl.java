@@ -15,7 +15,8 @@ public class LocationRequestFlowImpl extends BaseFlow implements LocationRequest
             getTurnOnLocationPage().waitUntilIsOpened();
             getTurnOnLocationPage().getNotNowBtn().click();
         } catch (TimeoutException | NoSuchElementException e) {
-            LOG.warn("Location page is not opened here, It might create a problem soon");
+
+            LOG.warn("Location page is not opened here, refreshing");
         }
     }
 
