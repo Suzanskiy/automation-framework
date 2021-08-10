@@ -138,6 +138,6 @@ public class SignUpFlowImpl extends BaseFlow implements SignUpFlow {
     @Step
     @Override
     public boolean isSignUpSelectorPageOpened() {
-        return getSignUpSelectorPage().isOpened();
+        return getSignUpSelectorPage().waitUntilIsOpened();
     }
 }

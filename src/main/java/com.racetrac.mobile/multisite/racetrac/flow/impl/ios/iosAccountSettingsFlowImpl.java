@@ -3,6 +3,8 @@ package com.racetrac.mobile.multisite.racetrac.flow.impl.ios;
 import com.racetrac.mobile.multisite.racetrac.flow.AccountSettingsFlow;
 import com.racetrac.mobile.multisite.racetrac.flow.BaseFlow;
 import io.qameta.allure.Step;
+import org.openqa.selenium.NoSuchElementException;
+import org.openqa.selenium.TimeoutException;
 import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Component;
 
@@ -51,6 +53,10 @@ public class iosAccountSettingsFlowImpl extends BaseFlow implements AccountSetti
 
     @Override
     public void navigateBack() {
-        getAccountSettingsPage().getNavBarCloseBtn().click();
+        try {
+            getAccountSettingsPage().getNavBarCloseBtn().click();
+        } catch (NoSuchElementException | TimeoutException e) {
+            LOG.warn("Can't navigate back");
+        }
     }
 }

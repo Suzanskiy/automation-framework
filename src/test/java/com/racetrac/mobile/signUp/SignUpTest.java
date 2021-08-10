@@ -72,10 +72,10 @@ public class SignUpTest extends BaseTest {
         signUpFlow.enterCredentials(customerDto);
         assertTrue(signUpFlow.isFistBumpPageOpened(), "Fist Bump screen is not opened");
         signUpFlow.clickGetStartedBtn();
-        promotionalOffersFlow.skipPromotions();
-        locationRequestFlow.clickNotNow();
         notificationRequestFlow.clickNotNow();
         becomeFuelVipFlow.clickNotRightNow();
+        promotionalOffersFlow.skipPromotions();
+        locationRequestFlow.clickNotNow();
         signInFlow.clickGotItBtn();
         signOutFlow.doSignOut();
         assertTrue(welcomeFlow.isHomePageOpened(), "Welcome page is not opened");

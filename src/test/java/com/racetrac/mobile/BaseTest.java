@@ -12,11 +12,12 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.testng.AbstractTestNGSpringContextTests;
 import org.testng.ITestResult;
 import org.testng.annotations.AfterMethod;
+import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeMethod;
-import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.Listeners;
 
 import java.util.Arrays;
+import java.util.concurrent.TimeUnit;
 
 import static com.racetrac.mobile.util.allure.AllureEnvironmentUtils.copyEnvPropToAllureResults;
 import static com.racetrac.mobile.util.allure.AllureEnvironmentUtils.createEnvironmentProperties;
@@ -32,15 +33,11 @@ public class BaseTest extends AbstractTestNGSpringContextTests {
     @Autowired
     protected TestData testData;
 
-    @BeforeSuite(alwaysRun = true)
-    public void beforeSuite() {
-        createEnvironmentProperties();
-        copyEnvPropToAllureResults();
-    }
-
     @BeforeMethod(alwaysRun = true)
     public void launch() {
         LOG.info("Launch application");
+        getDriver().manage().timeouts().implicitlyWait(1, TimeUnit.SECONDS);
+
         getDriver().launchApp();
     }
 
@@ -58,6 +55,12 @@ public class BaseTest extends AbstractTestNGSpringContextTests {
     @AfterMethod(alwaysRun = true)
     public void loggingAfter(ITestResult iTestResult) {
         LOG.info(commonAfterTestMethod(iTestResult).toString());
+    }
+
+    @AfterSuite(alwaysRun = true)
+    public void beforeSuite() {
+        createEnvironmentProperties();
+        copyEnvPropToAllureResults();
     }
 
     /**

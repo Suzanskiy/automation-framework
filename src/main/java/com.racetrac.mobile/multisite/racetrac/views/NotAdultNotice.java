@@ -13,17 +13,17 @@ import org.springframework.stereotype.Component;
 public class NotAdultNotice extends BaseMobilePage {
 
     @PageLoading
-    @iOSXCUITFindBy(accessibility = "1")
+    @iOSXCUITFindBy(accessibility = "Notice")
     @AndroidFindBy(id = "com.RaceTrac.Common.qa:id/dialogHeader")
     private MobileElement dialogHeader;
 
     @PageLoading
-    @iOSXCUITFindBy(accessibility = "1")
+    @iOSXCUITFindBy(accessibility = "You must be 21 or older to participate.")
     @AndroidFindBy(id = "com.RaceTrac.Common.qa:id/dialogSubtitle")
     private MobileElement subtitle;
 
     @PageLoading
-    @iOSXCUITFindBy(accessibility = "1")
+    @iOSXCUITFindBy(xpath = "//XCUIElementTypeButton[@name=\"OK\"]")
     @AndroidFindBy(id = "com.RaceTrac.Common.qa:id/ok_button")
     private MobileElement okButton;
 }

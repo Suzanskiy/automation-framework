@@ -3,6 +3,8 @@ package com.racetrac.mobile.multisite.racetrac.flow.impl.ios;
 import com.racetrac.mobile.multisite.racetrac.dto.CustomerDto;
 import com.racetrac.mobile.multisite.racetrac.flow.BaseFlow;
 import com.racetrac.mobile.multisite.racetrac.flow.EditEmailFlow;
+import org.openqa.selenium.NoSuchElementException;
+import org.openqa.selenium.TimeoutException;
 import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Component;
 
@@ -22,6 +24,10 @@ public class iosEditEmailFlowImpl extends BaseFlow implements EditEmailFlow {
 
     @Override
     public void navigateBack() {
-        getEditEmailPage().getBackBtn().click();
+        try {
+            getEditEmailPage().getBackBtn().click();
+        } catch (NoSuchElementException | TimeoutException e) {
+            LOG.warn("Can't navigate back");
+        }
     }
 }

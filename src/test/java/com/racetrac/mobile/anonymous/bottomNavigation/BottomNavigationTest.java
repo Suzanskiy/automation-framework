@@ -33,9 +33,8 @@ public class BottomNavigationTest extends BaseTest {
     public void isStoreTabOpenedTest() {
         assertTrue(welcomeFlow.isHomePageOpened(), "Welcome page is not opened");
         navigationFlow.navigateToStores();
-        locationRequestFlow.isLocationRequestOpened();
         locationRequestFlow.clickNotNow();
-        assertTrue(navigationFlow.isStoresTabOpened(), "Stores page is not opened");
+       assertTrue(navigationFlow.isStoresTabOpened(), "Stores page is not opened");
     }
 
     @TmsLink("1798")
