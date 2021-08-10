@@ -28,7 +28,7 @@ public class PromotionalOffersPage extends BaseMobilePage {
     private MobileElement noLottery;
 
     @PageLoading
-    @iOSXCUITFindBy(xpath = "//XCUIElementTypeButton[@name=\"NEXT\"]")
+    @iOSXCUITFindBy(xpath = "//XCUIElementTypeButton[@name=\"SAVE\"]")
     @AndroidFindBy(id = "com.RaceTrac.Common.qa:id/confirmButton")
     private MobileElement nextBtn;
 }

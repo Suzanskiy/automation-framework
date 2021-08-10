@@ -4,6 +4,8 @@ import com.racetrac.mobile.multisite.racetrac.flow.BaseFlow;
 import com.racetrac.mobile.multisite.racetrac.flow.NavigateFlow;
 import com.racetrac.mobile.multisite.racetrac.flow.ProfileFlow;
 import io.qameta.allure.Step;
+import org.openqa.selenium.NoSuchElementException;
+import org.openqa.selenium.TimeoutException;
 import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Component;
 
@@ -16,7 +18,11 @@ public class iosProfileFlowImpl extends BaseFlow implements ProfileFlow, Navigat
 
     @Override
     public void navigateBack() {
-        getProfilePage().getButtonBack().click();
+        try {
+            getProfilePage().getButtonBack().click();
+        } catch (NoSuchElementException | TimeoutException e) {
+            LOG.warn("Can't navigate back");
+        }
     }
 
     @Step

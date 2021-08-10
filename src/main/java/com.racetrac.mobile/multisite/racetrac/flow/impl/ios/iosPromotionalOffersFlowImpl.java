@@ -2,6 +2,8 @@ package com.racetrac.mobile.multisite.racetrac.flow.impl.ios;
 
 import com.racetrac.mobile.multisite.racetrac.flow.BaseFlow;
 import com.racetrac.mobile.multisite.racetrac.flow.PromotionalOffersFlow;
+import org.openqa.selenium.NoSuchElementException;
+import org.openqa.selenium.TimeoutException;
 import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Component;
 
@@ -33,11 +35,15 @@ public class iosPromotionalOffersFlowImpl extends BaseFlow implements Promotiona
 
     @Override
     public void skipPromotions() {
-        getPromotionalOffersPage().waitUntilIsOpened();
-        chooseNoAlcohol();
-        chooseNoTobacco();
-        chooseNoLottery();
-        clickNextBtn();
+        try {
+            getPromotionalOffersPage().waitUntilIsOpened();
+            chooseNoAlcohol();
+            chooseNoTobacco();
+            chooseNoLottery();
+            clickNextBtn();
+        } catch (TimeoutException | NoSuchElementException e) {
+            LOG.warn("Unable to skip promotions, because it's not opened");
+        }
     }
 
     @Override

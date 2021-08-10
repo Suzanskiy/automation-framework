@@ -46,8 +46,7 @@ public class AccountSettingsChangePasswordTest extends BaseTest {
     PointsAndLevelsFlow pointsAndLevelsFlow;
     @Autowired
     EditPasswordFlow editPasswordFlow;
-    @Autowired
-    EditEmailFlow editEmailFlow;
+
 
     CustomerDto customerDto;
 
@@ -63,7 +62,6 @@ public class AccountSettingsChangePasswordTest extends BaseTest {
         signInFlow.authorize(customerDto);
         locationRequestFlow.clickNotNow();
         notificationRequestFlow.clickNotNow();
-        assertTrue(signInFlow.isCouponsViewOpened(), "Coupons view is not opened after signUp");
         signInFlow.clickGotItBtn();
         assertTrue(welcomeFlow.isHomePageOpenedAfterSignIn(), "Welcome page is not opened after sign in");
 
@@ -97,7 +95,6 @@ public class AccountSettingsChangePasswordTest extends BaseTest {
         signInFlow.authorize(customerDto);
         locationRequestFlow.clickNotNow();
         notificationRequestFlow.clickNotNow();
-        assertTrue(signInFlow.isCouponsViewOpened(), "Coupons view is not opened after signUp");
         signInFlow.clickGotItBtn();
         assertTrue(welcomeFlow.isHomePageOpenedAfterSignIn(), "Welcome page is not opened after sign in");
     }

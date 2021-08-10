@@ -4,6 +4,8 @@ import com.racetrac.mobile.multisite.racetrac.dto.CustomerDto;
 import com.racetrac.mobile.multisite.racetrac.flow.BaseFlow;
 import com.racetrac.mobile.multisite.racetrac.flow.SignInFlow;
 import io.qameta.allure.Step;
+import org.openqa.selenium.NoSuchElementException;
+import org.openqa.selenium.TimeoutException;
 import org.springframework.stereotype.Component;
 
 @Component
@@ -33,13 +35,17 @@ public class SignInFlowImpl extends BaseFlow implements SignInFlow {
     @Step
     @Override
     public boolean isCouponsViewOpened() {
-        return getCouponsView().isOpened();
+        return getCouponsView().waitUntilIsOpened();
     }
 
     @Step
     @Override
     public void clickGotItBtn() {
-        getCouponsView().waitUntilIsOpened();
-        getCouponsView().getGotItBtn().click();
+        try {
+            getCouponsView().waitUntilIsOpened();
+            getCouponsView().getGotItBtn().click();
+        } catch (NoSuchElementException | TimeoutException e) {
+            LOG.warn("Unable to click got it btn, because it's not shown");
+        }
     }
 }

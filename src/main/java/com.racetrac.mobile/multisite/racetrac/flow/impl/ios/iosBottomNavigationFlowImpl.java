@@ -63,7 +63,7 @@ public class iosBottomNavigationFlowImpl extends BaseFlow implements NavigationF
     @Step
     @Override
     public boolean isCouponsTabOpened() {
-        return getCouponsPage().isOpened();
+        return getCouponsPage().waitUntilIsOpened();
     }
 
     @Step
