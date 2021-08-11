@@ -21,8 +21,8 @@ import java.util.stream.Collectors;
 import static com.racetrac.mobile.framework.constants.TimeoutConstants.SHORT_TIMEOUT;
 import static com.racetrac.mobile.framework.enums.Exceptions.NO_PAGE_LOADING;
 import static com.racetrac.mobile.util.appium.AppiumDriverUtils.getDriver;
-import static com.racetrac.mobile.util.appium.AppiumDriverUtils.swipeDown;
-import static com.racetrac.mobile.util.appium.AppiumDriverUtils.swipeUP;
+import static com.racetrac.mobile.util.appium.AppiumDriverUtils.swipeDownGently;
+import static com.racetrac.mobile.util.appium.AppiumDriverUtils.swipeUPGently;
 
 public abstract class BaseMobilePage implements MobilePage {
 
@@ -37,18 +37,13 @@ public abstract class BaseMobilePage implements MobilePage {
         PageFactory.initElements(new AppiumFieldDecorator(getDriver()), this);
     }
 
-    @Override
-    public boolean waitUntilIsOpened() {
-        return AppiumWaitingUtils.waitUntilIsTrue(this::isOpened, 10);
-    }
-
     /**
      * checks if all necessary elements are displayed on the page
      *
      * @return true is all necessary elements are displayed
      */
     @Override
-    public boolean isOpened() {
+    public boolean waitUntilIsOpened() {
         return AppiumWaitingUtils.waitUntilIsTrue(this::checkAllElementsOfPage, SHORT_TIMEOUT);
     }
 
@@ -90,10 +85,16 @@ public abstract class BaseMobilePage implements MobilePage {
                 }
         );
 
-        if (notFoundItems.size() > 0) {
-            swipeUP();
+        if (notFoundItems.size() == 1) {
+            if (pageObjectFields.size() > 5) //if page has a lot of elements, last not found may be hidden
+            {
+                swipeUPGently();
+            }
+            foundItems.addAll(checkElementToBeVisible(notFoundItems));  // recheck without scrolling
+        } else if (notFoundItems.size() >= 2) {
+            swipeUPGently();
             foundItems.addAll(checkElementToBeVisible(notFoundItems));  // recheck
-            swipeDown();
+            swipeDownGently();
         }
 
         return foundItems.size() == pageObjectFields.size();

@@ -3,7 +3,6 @@ package com.racetrac.mobile.accountSettings.password;
 import com.racetrac.mobile.BaseTest;
 import com.racetrac.mobile.multisite.racetrac.dto.CustomerDto;
 import com.racetrac.mobile.multisite.racetrac.flow.AccountSettingsFlow;
-import com.racetrac.mobile.multisite.racetrac.flow.EditEmailFlow;
 import com.racetrac.mobile.multisite.racetrac.flow.EditPasswordFlow;
 import com.racetrac.mobile.multisite.racetrac.flow.LocationRequestFlow;
 import com.racetrac.mobile.multisite.racetrac.flow.NotificationRequestFlow;
@@ -13,7 +12,6 @@ import com.racetrac.mobile.multisite.racetrac.flow.SignInFlow;
 import com.racetrac.mobile.multisite.racetrac.flow.SignOutFlow;
 import com.racetrac.mobile.multisite.racetrac.flow.SignUpFlow;
 import com.racetrac.mobile.multisite.racetrac.flow.WelcomeFlow;
-import com.racetrac.mobile.multisite.racetrac.util.CommonUtils;
 import io.qameta.allure.Description;
 import io.qameta.allure.TmsLink;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,8 +19,6 @@ import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
-import static com.racetrac.mobile.multisite.racetrac.data.TestDataImpl.EMAIL_DOMAIN;
-import static com.racetrac.mobile.util.appium.AppiumDriverUtils.pressBackBtn;
 import static org.testng.Assert.assertTrue;
 
 public class AccountSettingsChangePasswordTest extends BaseTest {
@@ -83,8 +79,8 @@ public class AccountSettingsChangePasswordTest extends BaseTest {
         this.customerDto = editPasswordFlow.editPassword(customerDto, password);
         assertTrue(accountSettingsFlow.isProfileScreenOpened(), "Profile screen is not opened");
 
-        pressBackBtn();
-        pressBackBtn();
+        profileFlow.navigateBack();
+        accountSettingsFlow.navigateBack();
 
         pointsAndLevelsFlow.clickGotItBtn();
         signOutFlow.doSignOut();

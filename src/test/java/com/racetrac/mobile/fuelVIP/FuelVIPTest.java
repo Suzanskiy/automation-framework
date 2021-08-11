@@ -71,7 +71,7 @@ public class FuelVIPTest extends BaseTest {
     @Description("Authorized User with no subscription")
     @Test
     public void redirectForAuthorisedUserWithoutSubscriptionTest() throws InterruptedException {
-        // TODO: 06.07.2021 Change desiredRedirect url to racetrac.com when migrated
+        // TODO: 06.07.2021 Change desiredRedirect url to racetrac.com when migrate
         fuelVipFlow.navigateToFuelVipSection();
         fuelVipFlow.clickLearnMoreNoSubscription();
         final String openedUrl = chromeBrowserHandler.getUrl();

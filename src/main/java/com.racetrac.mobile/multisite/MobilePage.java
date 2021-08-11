@@ -4,7 +4,5 @@ public interface MobilePage {
 
     boolean waitUntilIsOpened();
 
-    boolean isOpened();
-
     void refresh();
 }

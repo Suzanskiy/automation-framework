@@ -18,6 +18,6 @@ public class TurnOnNotificationPage extends BaseMobilePage {
 
     @PageLoading
     @iOSXCUITFindBy(xpath = "//XCUIElementTypeButton[@name=\"TURN ON\"]")
-    @AndroidFindBy(id = "notNowButton")
+    @AndroidFindBy(id = "notNowButton")//fixme wrong selectors on android
     private MobileElement turnOnBtn;
 }

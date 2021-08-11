@@ -51,13 +51,13 @@ public class iosBottomNavigationFlowImpl extends BaseFlow implements NavigationF
     @Step
     @Override
     public boolean isHomeTabOpened() {
-        return getHomePage().isOpened();
+        return getHomePage().waitUntilIsOpened();
     }
 
     @Step
     @Override
     public boolean isStoresTabOpened() {
-        return getStoresPage().isOpened();
+        return getStoresPage().waitUntilIsOpened();
     }
 
     @Step
@@ -69,12 +69,12 @@ public class iosBottomNavigationFlowImpl extends BaseFlow implements NavigationF
     @Step
     @Override
     public boolean isCardsTabOpened() {
-        return getCardsPage().isOpened();
+        return getCardsPage().waitUntilIsOpened();
     }
 
     @Step
     @Override
     public boolean isInboxTabOpened() {
-        return getInboxPage().isOpened();
+        return getInboxPage().waitUntilIsOpened();
     }
 }

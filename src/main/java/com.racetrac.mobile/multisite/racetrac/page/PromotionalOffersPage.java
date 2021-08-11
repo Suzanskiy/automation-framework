@@ -27,8 +27,14 @@ public class PromotionalOffersPage extends BaseMobilePage {
     @AndroidFindBy(xpath = "/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.RelativeLayout/android.widget.LinearLayout[2]/android.widget.LinearLayout/androidx.recyclerview.widget.RecyclerView/android.view.ViewGroup[3]/android.widget.Button[2]")
     private MobileElement noLottery;
 
-    @PageLoading
-    @iOSXCUITFindBy(xpath = "//XCUIElementTypeButton[@name=\"SAVE\"]")
+    @iOSXCUITFindBy(xpath = "//XCUIElementTypeButton[@name=\"NEXT\"]")
     @AndroidFindBy(id = "com.RaceTrac.Common.qa:id/confirmButton")
     private MobileElement nextBtn;
+
+    @iOSXCUITFindBy(xpath = "//XCUIElementTypeButton[@name=\"SAVE\"]")
+    @AndroidFindBy(id = "com.RaceTrac.Common.qa:id/confirmButton")
+    private MobileElement saveBtn;
+
+    @iOSXCUITFindBy(accessibility = "NavBarBack")
+    private MobileElement navigateBackBtn;
 }

@@ -29,7 +29,7 @@ public class ForgotPassImpl extends BaseFlow implements ForgotPassFlow {
     @Step
     @Override
     public boolean isForgotPassPageOpened() {
-        return getForgotPassPage().isOpened();
+        return getForgotPassPage().waitUntilIsOpened();
     }
 
     @Step

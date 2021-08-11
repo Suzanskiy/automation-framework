@@ -36,7 +36,6 @@ public class BaseTest extends AbstractTestNGSpringContextTests {
     @BeforeMethod(alwaysRun = true)
     public void launch() {
         LOG.info("Launch application");
-        getDriver().manage().timeouts().implicitlyWait(1, TimeUnit.SECONDS);
 
         getDriver().launchApp();
     }

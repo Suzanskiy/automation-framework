@@ -29,9 +29,9 @@ public class iOSBrowserHandler extends BaseFlow implements ChromeBrowserHandler 
     @Override
     public String getUrl() {
         getSafariBrowserPage().waitUntilIsOpened();
-        getSafariBrowserPage().getUrl().click();
         getSafariBrowserPage().refresh();
         getSafariBrowserPage().waitUntilIsOpened();
+        getSafariBrowserPage().getUrl().click();
         return getSafariBrowserPage().getUrl().getAttribute("value");
     }
 

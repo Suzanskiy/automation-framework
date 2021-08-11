@@ -4,10 +4,12 @@ import com.racetrac.mobile.BaseTest;
 import com.racetrac.mobile.framework.enums.CustomerAge;
 import com.racetrac.mobile.multisite.racetrac.dto.CustomerDto;
 import com.racetrac.mobile.multisite.racetrac.flow.AccountSettingsFlow;
+import com.racetrac.mobile.multisite.racetrac.flow.BecomeFuelVipFlow;
 import com.racetrac.mobile.multisite.racetrac.flow.LocationRequestFlow;
 import com.racetrac.mobile.multisite.racetrac.flow.NotificationRequestFlow;
 import com.racetrac.mobile.multisite.racetrac.flow.PointsAndLevelsFlow;
 import com.racetrac.mobile.multisite.racetrac.flow.ProfileFlow;
+import com.racetrac.mobile.multisite.racetrac.flow.PromotionalOffersFlow;
 import com.racetrac.mobile.multisite.racetrac.flow.SignInFlow;
 import com.racetrac.mobile.multisite.racetrac.flow.SignOutFlow;
 import com.racetrac.mobile.multisite.racetrac.flow.WelcomeFlow;
@@ -38,7 +40,10 @@ public class AccountSettingsChangeBirthDayTest extends BaseTest {
     ProfileFlow profileFlow;
     @Autowired
     PointsAndLevelsFlow pointsAndLevelsFlow;
-
+    @Autowired
+    BecomeFuelVipFlow becomeFuelVipFlow;
+    @Autowired
+    PromotionalOffersFlow promotionalOffersFlow;
 
     CustomerDto customerDto;
 
@@ -58,9 +63,14 @@ public class AccountSettingsChangeBirthDayTest extends BaseTest {
 
         customerDto = testData.registerNewCustomer();
         signInFlow.authorize(customerDto);
+
+/*        notificationRequestFlow.clickNotNow();
+        becomeFuelVipFlow.clickNotRightNow();
+        promotionalOffersFlow.skipPromotions();
         locationRequestFlow.clickNotNow();
-        notificationRequestFlow.clickNotNow();
-        signInFlow.clickGotItBtn();
+
+        signInFlow.clickGotItBtn();*/
+        // TODO: 10.08.2021 Check code above on Android, because on ios those line not needed
         assertTrue(welcomeFlow.isHomePageOpenedAfterSignIn(), "Welcome page is not opened after sign in");
         accountSettingsFlow.navigateToAccountSettings();
         assertTrue(accountSettingsFlow.isAccountSettingsAuthorisedUserScreenOpened(), " Account screen for Logged in User is not opened");
@@ -78,9 +88,10 @@ public class AccountSettingsChangeBirthDayTest extends BaseTest {
         customerDto = testData.registerNewCustomer(CustomerAge.NOT_SPECIFIED_BIRTHDATE);
 
         signInFlow.authorize(customerDto);
-        locationRequestFlow.clickNotNow();
+       /* locationRequestFlow.clickNotNow();
         notificationRequestFlow.clickNotNow();
-        signInFlow.clickGotItBtn();
+        signInFlow.clickGotItBtn();*/
+        // TODO: 10.08.2021 same
         assertTrue(welcomeFlow.isHomePageOpenedAfterSignIn(), "Welcome page is not opened after sign in");
         accountSettingsFlow.navigateToAccountSettings();
         assertTrue(accountSettingsFlow.isAccountSettingsAuthorisedUserScreenOpened(), " Account screen for Logged in User is not opened");

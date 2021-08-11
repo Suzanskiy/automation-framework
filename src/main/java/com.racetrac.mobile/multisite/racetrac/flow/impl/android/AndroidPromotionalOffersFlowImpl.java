@@ -7,6 +7,7 @@ import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Component;
 
 import static com.racetrac.mobile.framework.constants.PlatformsConstants.ANDROID;
+import static com.racetrac.mobile.util.appium.AppiumDriverUtils.pressBackBtn;
 
 @Profile(ANDROID)
 @Component
@@ -48,5 +49,10 @@ public class AndroidPromotionalOffersFlowImpl extends BaseFlow implements Promot
     @Override
     public void skipIOSPromotions() {
         LOG.debug("Promotions not showing on Android");
+    }
+
+    @Override
+    public void navigateBack() {
+        pressBackBtn();
     }
 }
