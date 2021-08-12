@@ -18,7 +18,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import static com.racetrac.mobile.framework.constants.TimeoutConstants.SHORT_TIMEOUT;
+import static com.racetrac.mobile.framework.constants.TimeoutConstants.MIDDLE_TIMEOUT;
 import static com.racetrac.mobile.framework.enums.Exceptions.NO_PAGE_LOADING;
 import static com.racetrac.mobile.util.appium.AppiumDriverUtils.getDriver;
 import static com.racetrac.mobile.util.appium.AppiumDriverUtils.swipeDownGently;
@@ -44,8 +44,9 @@ public abstract class BaseMobilePage implements MobilePage {
      */
     @Override
     public boolean waitUntilIsOpened() {
-        return AppiumWaitingUtils.waitUntilIsTrue(this::checkAllElementsOfPage, SHORT_TIMEOUT);
+        return AppiumWaitingUtils.waitUntilIsTrue(this::checkAllElementsOfPage, MIDDLE_TIMEOUT);
     }
+
 
     private List<Field> checkElementToBeVisible(List<Field> elements) {
         return elements

@@ -23,6 +23,7 @@ public class AndroidDrawerNavigationFlowImpl extends BaseFlow implements Navigat
     public void navigateToStores() {
         getNavigationDrawer().getDrawer().click();
         getAndroidNavBar().getStoresTab().click();
+        getPriceDisclaimerPage().waitUntilIsOpened();
         getPriceDisclaimerPage().getOkButton().click();
     }
 

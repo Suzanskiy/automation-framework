@@ -13,4 +13,9 @@ public interface ChromeBrowserHandler {
     String getDesiredRedirectUrlNoSubscription();
 
     String getDesiredRedirectUrlActiveSubscription();
+
+    String getLearnMoreRedirectUrl();
+
+    String getGetStartedRedirectUrl();
+
 }
