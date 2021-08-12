@@ -47,7 +47,6 @@ public abstract class BaseMobilePage implements MobilePage {
         return AppiumWaitingUtils.waitUntilIsTrue(this::checkAllElementsOfPage, MIDDLE_TIMEOUT);
     }
 
-
     private List<Field> checkElementToBeVisible(List<Field> elements) {
         return elements
                 .stream()

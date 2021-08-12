@@ -62,8 +62,10 @@ public class SignUpFlowImpl extends BaseFlow implements SignUpFlow {
 
     @Step
     private void enterBirthDay(final String birthday) {
-        getSignUpPage().getBirthDayInput().setValue(LocalDate.parse(birthday, DateTimeFormatter.ofPattern(BACKEND_DATE_PATTERN)
-        ).format(DateTimeFormatter.ofPattern(MOBILE_DATE_PATTERN)));
+        if (!birthday.isEmpty()) {
+            getSignUpPage().getBirthDayInput().setValue(LocalDate.parse(birthday, DateTimeFormatter.ofPattern(BACKEND_DATE_PATTERN)
+            ).format(DateTimeFormatter.ofPattern(MOBILE_DATE_PATTERN)));
+        }
     }
 
     @Step
