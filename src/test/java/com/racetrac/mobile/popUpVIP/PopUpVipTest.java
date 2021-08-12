@@ -38,7 +38,6 @@ public class PopUpVipTest extends BaseTest {
     LocationRequestFlow locationRequestFlow;
     @Autowired
     BecomeFuelVipFlow becomeFuelVipFlow;
-
     @Autowired
     ChromeBrowserHandler chromeBrowserHandler;
     @Autowired
