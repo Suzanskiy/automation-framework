@@ -58,7 +58,12 @@ public class TestDataImpl implements TestData {
         customerDto.getPersonalInfo().setBirthday(computeBirthDateByAge(age));
         return customerDto;
     }
-
+    @Override
+    public CustomerDto generateCustomerWithoutBirthdate() {
+        CustomerDto customerDto = generateDefaultCustomer();
+        customerDto.getPersonalInfo().setBirthday("");
+        return customerDto;
+    }
 
     @Override
     public CustomerDto registerNewCustomer() {
