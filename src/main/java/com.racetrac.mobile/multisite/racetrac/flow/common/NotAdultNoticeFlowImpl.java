@@ -22,4 +22,9 @@ public class NotAdultNoticeFlowImpl extends BaseFlow implements NotAdultNoticeFl
     public void clickOK() {
         getNotAdultNotice().getOkButton().click();
     }
+
+    @Override
+    public void clickCheckBirthdayBtn() {
+        getNotAdultNotice().getCheckBirthdayBtn().click();
+    }
 }

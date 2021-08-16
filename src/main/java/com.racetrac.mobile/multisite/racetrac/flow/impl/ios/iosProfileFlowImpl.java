@@ -25,6 +25,11 @@ public class iosProfileFlowImpl extends BaseFlow implements ProfileFlow, Navigat
         }
     }
 
+    @Override
+    public boolean isProfilePageOpened() {
+        return false;
+    }
+
     @Step
     @Override
     public void navigateToPasswordChange() {
@@ -53,6 +58,11 @@ public class iosProfileFlowImpl extends BaseFlow implements ProfileFlow, Navigat
     @Override
     public void clickOnBirthDayField() {
         getProfilePage().getBirthDay().click();
+    }
+
+    @Override
+    public String isBirthdayFieldEditable() {
+        return null;
     }
 
     @Step

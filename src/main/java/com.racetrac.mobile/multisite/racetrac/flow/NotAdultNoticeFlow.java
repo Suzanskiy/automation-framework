@@ -6,4 +6,6 @@ public interface NotAdultNoticeFlow {
     boolean isNotAdultNoticeDisplayed();
 
     void clickOK();
+
+    void clickCheckBirthdayBtn();
 }

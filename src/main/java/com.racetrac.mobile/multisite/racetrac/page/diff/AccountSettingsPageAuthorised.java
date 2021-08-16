@@ -43,4 +43,7 @@ public class AccountSettingsPageAuthorised extends AccountSettingsPage {
     @iOSXCUITFindBy(xpath = "//XCUIElementTypeStaticText[@name=\"Notifications\"]")
     @AndroidFindBy(uiAutomator = "new UiSelector().text(\"Notifications\")")
     private MobileElement notifications;
+
+    @AndroidFindBy(id = "com.RaceTrac.Common.qa:id/account_section_item_image")
+    private MobileElement settingsIcon;
 }
