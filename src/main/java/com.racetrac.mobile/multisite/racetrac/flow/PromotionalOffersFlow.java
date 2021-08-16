@@ -7,6 +7,16 @@ public interface PromotionalOffersFlow {
 
     void chooseNoLottery();
 
+    void chooseYesAlcohol();
+
+    void chooseYesTobacco();
+
+    void chooseYesLottery();
+
+    void acceptPromotions();
+
+    void clickSaveBtn();
+
     void clickNextBtn();
 
     void skipPromotions();

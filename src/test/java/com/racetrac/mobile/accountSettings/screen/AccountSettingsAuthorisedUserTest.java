@@ -112,12 +112,9 @@ public class AccountSettingsAuthorisedUserTest extends BaseTest {
         assertEquals(notAdultNoticeFlow.getNotAdultNoticeMessage(), NOT_ADULT_USER_TEXT);
         notAdultNoticeFlow.clickOK();
 
-
         accountSettingsFlow.navigateBack();
-
-
-
     }
+
     @TmsLink("")
     @Description("")
     @Test
@@ -144,7 +141,36 @@ public class AccountSettingsAuthorisedUserTest extends BaseTest {
         assertEquals(profileFlow.isBirthdayFieldEditable(), "false");
 
         accountSettingsFlow.navigateBack();
+    }
 
+    /* Impossible to check the "Yes" button after saving promotions settings
+    due to the absence of the corresponding attribute */
+    @TmsLink("")
+    @Description("Promotional Settings\" can be changed by User older than 21")
+    @Test
+    public void promotionsSettingsTapedYesBtnSavedAfterClick() {
+        customerDto = testData.registerNewCustomer(ADULT);
+        signInFlow.openLoginInPage();
+        assertTrue(signInFlow.isLoginPageOpened(), "Login page is not opened");
+        signInFlow.authorize(customerDto);
+        locationRequestFlow.clickNotNow();
+        notificationRequestFlow.clickNotNow();
+
+        signInFlow.clickGotItBtn();
+        assertTrue(welcomeFlow.isHomePageOpenedAfterSignIn(), "Welcome page is not opened after sign in");
+
+        accountSettingsFlow.navigateToAccountSettings();
+        assertTrue(accountSettingsFlow.isAccountSettingsAuthorisedUserScreenOpened(), " Account screen for Logged in User is not opened");
+        accountSettingsFlow.navigateToPromotionalSettings();
+        assertTrue(promotionalOffersFlow.isPromotionalOffersScreenOpened(), "Promotions Page is not opened");
+        promotionalOffersFlow.acceptPromotions();
+
+        assertTrue(accountSettingsFlow.isAccountSettingsAuthorisedUserScreenOpened());
+        accountSettingsFlow.navigateToPromotionalSettings();
+        assertTrue(promotionalOffersFlow.isPromotionalOffersScreenOpened(), "Promotions Page is not opened");
+        promotionalOffersFlow.navigateBack();
+
+        accountSettingsFlow.navigateBack();
     }
 
     @AfterMethod(alwaysRun = true)

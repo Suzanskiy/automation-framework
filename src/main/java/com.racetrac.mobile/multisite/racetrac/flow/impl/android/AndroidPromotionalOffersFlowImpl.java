@@ -29,6 +29,34 @@ public class AndroidPromotionalOffersFlowImpl extends BaseFlow implements Promot
     }
 
     @Override
+    public void chooseYesAlcohol() {
+        getPromotionalOffersPage().getYesAlcohol().click();
+    }
+
+    @Override
+    public void chooseYesTobacco() {
+        getPromotionalOffersPage().getYesTobacco().click();
+    }
+
+    @Override
+    public void chooseYesLottery() {
+        getPromotionalOffersPage().getYesLottery().click();
+    }
+
+    @Override
+    public void acceptPromotions() {
+        chooseYesAlcohol();
+        chooseYesTobacco();
+        chooseYesLottery();
+        clickSaveBtn();
+    }
+
+    @Override
+    public void clickSaveBtn() {
+        getPromotionalOffersPage().getSaveBtn().click();
+    }
+
+    @Override
     public void clickNextBtn() {
         getPromotionalOffersPage().getNextBtn().click();
     }

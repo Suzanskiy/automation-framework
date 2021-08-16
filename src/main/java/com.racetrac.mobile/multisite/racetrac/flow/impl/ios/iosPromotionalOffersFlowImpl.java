@@ -29,6 +29,31 @@ public class iosPromotionalOffersFlowImpl extends BaseFlow implements Promotiona
     }
 
     @Override
+    public void chooseYesAlcohol() {
+        //TODO IOS Impl
+    }
+
+    @Override
+    public void chooseYesTobacco() {
+        //TODO IOS Impl
+    }
+
+    @Override
+    public void chooseYesLottery() {
+        //TODO IOS Impl
+    }
+
+    @Override
+    public void acceptPromotions() {
+        //TODO IOS Impl
+    }
+
+    @Override
+    public void clickSaveBtn() {
+        //TODO IOS Impl
+    }
+
+    @Override
     public void clickNextBtn() {
         getPromotionalOffersPage().getNextBtn().click();
     }
