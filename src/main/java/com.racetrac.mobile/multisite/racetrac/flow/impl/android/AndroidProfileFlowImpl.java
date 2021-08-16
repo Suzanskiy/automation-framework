@@ -55,9 +55,14 @@ public class AndroidProfileFlowImpl extends BaseFlow implements ProfileFlow, Nav
     }
 
     @Override
-    public String isBirthdayFieldEditable(){
-        return getProfilePage().getBirthDay().getAttribute("enabled");
+    public boolean isBirthdayFieldEditable() {
+        final String attribute = getProfilePage().getBirthDay().getAttribute("enabled");
+        if (attribute.equals("false")) {
+            return false;
+        }
+        return true;
     }
+
     @Override
     public void enterBirthDate(final String customerBirth) {
         getProfilePage().getBirthDay().setValue(customerBirth);

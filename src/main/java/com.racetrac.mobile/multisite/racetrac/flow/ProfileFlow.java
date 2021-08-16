@@ -13,7 +13,7 @@ public interface ProfileFlow extends NavigateFlow {
 
     void clickOnBirthDayField();
 
-    String isBirthdayFieldEditable();
+    boolean isBirthdayFieldEditable();
 
     void enterBirthDate(String customerBirth);
 }

@@ -61,8 +61,8 @@ public class iosProfileFlowImpl extends BaseFlow implements ProfileFlow, Navigat
     }
 
     @Override
-    public String isBirthdayFieldEditable() {
-        return null;
+    public boolean isBirthdayFieldEditable() {
+        return false;
     }
 
     @Step

@@ -93,4 +93,29 @@ public class iosPromotionalOffersFlowImpl extends BaseFlow implements Promotiona
     public void navigateBack() {
         getPromotionalOffersPage().getNavigateBackBtn().click();
     }
+
+    @Override
+    public void clickOkBtnInEnterBirthdayPopUp() {
+        //TODO IOS Impl
+    }
+
+    @Override
+    public void clickCancelBtnOnTheBirthdayPopUpField() {
+        //TODO IOS Impl
+    }
+
+    @Override
+    public boolean isPopUpDescriptionDisplayed() {
+        return false;
+    }
+
+    @Override
+    public boolean isOkFieldEditable() {
+        return false;
+    }
+
+    @Override
+    public void enterBirthDate(String customerBirth) {
+
+    }
 }

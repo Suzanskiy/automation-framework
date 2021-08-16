@@ -104,6 +104,7 @@ public class AccountSettingsChangeBirthDayTest extends BaseTest {
         profileFlow.clickOnBirthDayField();
         assertTrue(accountSettingsFlow.isProfileScreenOpened(), "Profile screen is not opened");
 
+
     }
 
     @AfterMethod(alwaysRun = true)

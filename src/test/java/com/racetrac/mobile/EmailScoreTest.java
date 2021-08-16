@@ -23,7 +23,7 @@ public class EmailScoreTest extends BaseTest {
     @DataProvider()
     public Object[] emailFraudProvider() {
         return new String[]{
-                "fraud@fraud.com",
+                "1",
                 "testAutomation@AppMailer.org",
                 "testAutomation@BasicMail.host",
                 "testAutomation@EasyOnlineMail.net",

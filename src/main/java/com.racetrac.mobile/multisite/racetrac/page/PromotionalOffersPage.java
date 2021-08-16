@@ -11,6 +11,8 @@ import org.springframework.stereotype.Component;
 @Component
 @Getter
 public class PromotionalOffersPage extends BaseMobilePage {
+    private static final String POP_UP_FIELD = "Please enter your birthday to continue.";
+
     @PageLoading
     @iOSXCUITFindBy(xpath = "(//XCUIElementTypeButton[@name=\"No\"])[1]")
 
@@ -49,4 +51,16 @@ public class PromotionalOffersPage extends BaseMobilePage {
 
     @iOSXCUITFindBy(accessibility = "NavBarBack")
     private MobileElement navigateBackBtn;
+
+    @AndroidFindBy(id = "com.RaceTrac.Common.qa:id/birthdayTextInput")
+    private MobileElement enterBirthdayPopUpField;
+
+    @AndroidFindBy(id = "com.RaceTrac.Common.qa:id/confirmBirthday")
+    private MobileElement okBirthdayPopUpFieldBtn;
+
+    @AndroidFindBy(id = "com.RaceTrac.Common.qa:id/cancelBirthday")
+    private MobileElement cancelBirthdayPopUpFieldBtn;
+
+    @AndroidFindBy(uiAutomator = "new UiSelector().text(\"" + POP_UP_FIELD + "\")")
+    private MobileElement descriptionText;
 }

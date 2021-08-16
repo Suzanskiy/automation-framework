@@ -10,8 +10,7 @@ import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
-import static com.racetrac.mobile.framework.enums.CustomerAge.ADULT;
-import static com.racetrac.mobile.framework.enums.CustomerAge.UNDER_21;
+import static com.racetrac.mobile.framework.enums.CustomerAge.*;
 import static com.racetrac.mobile.multisite.racetrac.data.ComparableStrings.NOT_ADULT_USER_TEXT;
 import static com.racetrac.mobile.util.appium.AppiumDriverUtils.pressBackBtn;
 import static org.testng.Assert.*;
@@ -39,11 +38,11 @@ public class AccountSettingsAuthorisedUserTest extends BaseTest {
     @Autowired
     ProfileFlow profileFlow;
 
+
     @BeforeMethod
     public void setUp() {
         assertTrue(welcomeFlow.isHomePageOpened(), "Welcome page is not opened");
     }
-
 
     @TmsLink("5469")
     @Description("Account Settings screen for registered user")
@@ -137,8 +136,9 @@ public class AccountSettingsAuthorisedUserTest extends BaseTest {
         assertEquals(notAdultNoticeFlow.getNotAdultNoticeMessage(), NOT_ADULT_USER_TEXT);
         notAdultNoticeFlow.clickCheckBirthdayBtn();
 
-        assertTrue(profileFlow.isProfilePageOpened());
-        assertEquals(profileFlow.isBirthdayFieldEditable(), "false");
+        assertTrue(profileFlow.isProfilePageOpened(), "Profile page is not opened");
+        assertFalse(profileFlow.isBirthdayFieldEditable(), "Birthday Field is editable");
+
 
         accountSettingsFlow.navigateBack();
     }
@@ -165,7 +165,52 @@ public class AccountSettingsAuthorisedUserTest extends BaseTest {
         assertTrue(promotionalOffersFlow.isPromotionalOffersScreenOpened(), "Promotions Page is not opened");
         promotionalOffersFlow.acceptPromotions();
 
-        assertTrue(accountSettingsFlow.isAccountSettingsAuthorisedUserScreenOpened());
+        assertTrue(accountSettingsFlow.isAccountSettingsAuthorisedUserScreenOpened(), "Account settings screen not opened");
+        accountSettingsFlow.navigateToPromotionalSettings();
+        assertTrue(promotionalOffersFlow.isPromotionalOffersScreenOpened(), "Promotions Page is not opened");
+        promotionalOffersFlow.navigateBack();
+
+        accountSettingsFlow.navigateBack();
+    }
+
+    @TmsLink("6245")
+    @Description(" User enters age 21 or more after tap \"Promotional Settings\" if birthday field was empty")
+    @Test
+    public void acceptanceToChangePromotionalSettingsAfterFillTheBirthdayFieldTest() {
+        customerDto = testData.registerNewCustomer(NOT_SPECIFIED_BIRTHDATE);
+        signInFlow.openLoginInPage();
+        assertTrue(signInFlow.isLoginPageOpened(), "Login page is not opened");
+        signInFlow.authorize(customerDto);
+        locationRequestFlow.clickNotNow();
+        notificationRequestFlow.clickNotNow();
+
+        signInFlow.clickGotItBtn();
+        //points level got it
+        pointsAndLevelsFlow.clickGotItBtn();
+        assertTrue(welcomeFlow.isHomePageOpenedAfterSignIn(), "Welcome page is not opened after sign in");
+
+        accountSettingsFlow.navigateToAccountSettings();
+        assertTrue(accountSettingsFlow.isAccountSettingsAuthorisedUserScreenOpened(), " Account screen for Logged in User is not opened");
+        accountSettingsFlow.navigateToPromotionalSettings();
+        assertFalse(promotionalOffersFlow.isOkFieldEditable(), "Ok field is editable");
+        assertTrue(promotionalOffersFlow.isPopUpDescriptionDisplayed(), "Pop up description is not displayed");
+
+        String customerBirth = testData.generateDateBirth();
+        promotionalOffersFlow.enterBirthDate(customerBirth);
+        promotionalOffersFlow.clickCancelBtnOnTheBirthdayPopUpField();
+        assertTrue(accountSettingsFlow.isAccountSettingsAuthorisedUserScreenOpened(), "Account settings screen is not opened");
+
+        accountSettingsFlow.navigateToPromotionalSettings();
+        assertTrue(promotionalOffersFlow.isPopUpDescriptionDisplayed(), "Pop up description is not shown");
+        assertFalse(promotionalOffersFlow.isOkFieldEditable(), "Ok field is editable");
+
+        promotionalOffersFlow.enterBirthDate(customerBirth);
+        promotionalOffersFlow.clickOkBtnInEnterBirthdayPopUp();
+
+        assertTrue(promotionalOffersFlow.isPromotionalOffersScreenOpened(), "Promotions Page is not opened");
+        promotionalOffersFlow.acceptPromotions();
+        assertTrue(accountSettingsFlow.isAccountSettingsAuthorisedUserScreenOpened(), " Account screen for Logged in User is not opened");
+
         accountSettingsFlow.navigateToPromotionalSettings();
         assertTrue(promotionalOffersFlow.isPromotionalOffersScreenOpened(), "Promotions Page is not opened");
         promotionalOffersFlow.navigateBack();
