@@ -11,6 +11,7 @@ import org.springframework.stereotype.Component;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.time.temporal.ChronoUnit;
 import java.util.Random;
 
 @Component
@@ -94,5 +95,20 @@ public class TestDataImpl implements TestData {
     @Override
     public String generateDateBirth() {
         return LocalDate.now().minusYears(CUSTOMER_ADULT_AGE).format(DateTimeFormatter.ofPattern(UI_BIRTHDATE_PATTERN));
+    }
+    @Override
+    public String generateDateBirthPlus(int amount, ChronoUnit unitType) {
+        LocalDate date = LocalDate.now();
+        switch (unitType) {
+            case DAYS:
+                date = date.plusDays(amount);
+                break;
+            case MONTHS:
+                date = date.plusMonths(amount);
+                break;
+            case YEARS:
+                date = date.plusYears(amount);
+        }
+        return date.format(DateTimeFormatter.ofPattern(UI_BIRTHDATE_PATTERN));
     }
 }

@@ -109,6 +109,7 @@ public class AndroidPromotionalOffersFlowImpl extends BaseFlow implements Promot
 
     @Override
     public void enterBirthDate(final String customerBirth) {
+        getPromotionalOffersPage().getEnterBirthdayPopUpField().clear();
         getPromotionalOffersPage().getEnterBirthdayPopUpField().setValue(customerBirth);
     }
 
