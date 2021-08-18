@@ -46,4 +46,7 @@ public class AccountSettingsPageAuthorised extends AccountSettingsPage {
 
     @AndroidFindBy(id = "com.RaceTrac.Common.qa:id/account_section_item_image")
     private MobileElement settingsIcon;
+
+    @AndroidFindBy(uiAutomator = "new UiSelector().text(\"Receive Emails?\")")
+    private MobileElement receiveEmailsSwitchBtn;
 }

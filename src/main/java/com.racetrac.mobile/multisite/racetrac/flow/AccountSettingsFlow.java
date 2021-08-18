@@ -1,6 +1,6 @@
 package com.racetrac.mobile.multisite.racetrac.flow;
 
-public interface AccountSettingsFlow extends NavigateFlow{
+public interface AccountSettingsFlow extends NavigateFlow {
 
     boolean isAccountSettingsScreenOpened();
 
@@ -15,5 +15,7 @@ public interface AccountSettingsFlow extends NavigateFlow{
     void navigateToProfile();
 
     void navigateToPromotionalSettings();
+
+    boolean isReceiveEmailsDisplayed();
 
 }

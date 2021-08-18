@@ -52,6 +52,11 @@ public class iosAccountSettingsFlowImpl extends BaseFlow implements AccountSetti
     }
 
     @Override
+    public boolean isReceiveEmailsDisplayed() {
+        return false;
+    }
+
+    @Override
     public void navigateBack() {
         try {
             getAccountSettingsPage().getNavBarCloseBtn().click();

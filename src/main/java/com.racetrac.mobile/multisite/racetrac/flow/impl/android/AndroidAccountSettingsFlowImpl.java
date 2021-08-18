@@ -2,7 +2,9 @@ package com.racetrac.mobile.multisite.racetrac.flow.impl.android;
 
 import com.racetrac.mobile.multisite.racetrac.flow.AccountSettingsFlow;
 import com.racetrac.mobile.multisite.racetrac.flow.BaseFlow;
+import io.appium.java_client.MobileElement;
 import io.qameta.allure.Step;
+import org.openqa.selenium.NoSuchElementException;
 import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Component;
 
@@ -49,6 +51,16 @@ public class AndroidAccountSettingsFlowImpl extends BaseFlow implements AccountS
     @Override
     public void navigateToPromotionalSettings() {
         getAccountSettingsPageAuthorised().getPromotionalSettings().click();
+    }
+
+    @Step
+    @Override
+    public boolean isReceiveEmailsDisplayed() {
+        try {
+            return getAccountSettingsPageAuthorised().getReceiveEmailsSwitchBtn().isDisplayed();
+        } catch (NoSuchElementException e) {
+            return false;
+        }
     }
 
     @Override
