@@ -64,6 +64,12 @@ public class AndroidAccountSettingsFlowImpl extends BaseFlow implements AccountS
     }
 
     @Override
+    public boolean receiveEmailsSwitcherPosition() {
+        return Boolean.parseBoolean(getAccountSettingsPageAuthorised().
+                getReceiveEmailsSwitchBtn().getAttribute("checked"));
+    }
+
+    @Override
     public void navigateBack() {
         pressBackBtn();
     }

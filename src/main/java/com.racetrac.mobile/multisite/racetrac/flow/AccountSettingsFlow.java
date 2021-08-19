@@ -18,4 +18,6 @@ public interface AccountSettingsFlow extends NavigateFlow {
 
     boolean isReceiveEmailsDisplayed();
 
+    boolean receiveEmailsSwitcherPosition();
+
 }

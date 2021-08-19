@@ -49,4 +49,6 @@ public class SignUpPage extends BaseMobilePage {
     @AndroidFindBy(id = "com.RaceTrac.Common.qa:id/signupDoneButton")
     private MobileElement createAccountBtn;
 
+    @AndroidFindBy(id = "com.RaceTrac.Common.qa:id/optionemailcheckbox")
+    private MobileElement receiveEmailsConfirmationBtn;
 }
