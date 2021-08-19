@@ -16,6 +16,7 @@ public class AccountSettingsPage extends BaseMobilePage {
     @AndroidFindBy(id = "com.RaceTrac.Common.qa:id/account_close_btn")
     private MobileElement navBarCloseBtn;
 
+
     @PageLoading
     @iOSXCUITFindBy(accessibility = "text.title")
     @AndroidFindBy(id = "com.RaceTrac.Common.qa:id/account_title")

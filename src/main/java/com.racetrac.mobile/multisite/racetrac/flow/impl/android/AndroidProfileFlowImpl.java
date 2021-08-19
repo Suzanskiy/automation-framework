@@ -19,6 +19,11 @@ public class AndroidProfileFlowImpl extends BaseFlow implements ProfileFlow, Nav
         pressBackBtn();
     }
 
+    @Override
+    public boolean isProfilePageOpened() {
+        return getProfilePage().waitUntilIsOpened();
+    }
+
     @Step
     @Override
     public void navigateToPasswordChange() {
@@ -47,6 +52,15 @@ public class AndroidProfileFlowImpl extends BaseFlow implements ProfileFlow, Nav
     @Override
     public void clickOnBirthDayField() {
         getProfilePage().getBirthDay().click();
+    }
+
+    @Override
+    public boolean isBirthdayFieldEditable() {
+        final String attribute = getProfilePage().getBirthDay().getAttribute("enabled");
+        if (attribute.equals("false")) {
+            return false;
+        }
+        return true;
     }
 
     @Override

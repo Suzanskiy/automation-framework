@@ -29,6 +29,31 @@ public class iosPromotionalOffersFlowImpl extends BaseFlow implements Promotiona
     }
 
     @Override
+    public void chooseYesAlcohol() {
+        //TODO IOS Impl
+    }
+
+    @Override
+    public void chooseYesTobacco() {
+        //TODO IOS Impl
+    }
+
+    @Override
+    public void chooseYesLottery() {
+        //TODO IOS Impl
+    }
+
+    @Override
+    public void acceptPromotions() {
+        //TODO IOS Impl
+    }
+
+    @Override
+    public void clickSaveBtn() {
+        //TODO IOS Impl
+    }
+
+    @Override
     public void clickNextBtn() {
         getPromotionalOffersPage().getNextBtn().click();
     }
@@ -67,5 +92,30 @@ public class iosPromotionalOffersFlowImpl extends BaseFlow implements Promotiona
     @Override
     public void navigateBack() {
         getPromotionalOffersPage().getNavigateBackBtn().click();
+    }
+
+    @Override
+    public void clickOkBtnInEnterBirthdayPopUp() {
+        //TODO IOS Impl
+    }
+
+    @Override
+    public void clickCancelBtnOnTheBirthdayPopUpField() {
+        //TODO IOS Impl
+    }
+
+    @Override
+    public boolean isPopUpDescriptionDisplayed() {
+        return false;
+    }
+
+    @Override
+    public boolean isOkFieldEditable() {
+        return false;
+    }
+
+    @Override
+    public void enterBirthDate(String customerBirth) {
+
     }
 }

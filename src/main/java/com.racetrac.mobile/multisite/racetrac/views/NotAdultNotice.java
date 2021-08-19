@@ -26,4 +26,8 @@ public class NotAdultNotice extends BaseMobilePage {
     @iOSXCUITFindBy(xpath = "//XCUIElementTypeButton[@name=\"OK\"]")
     @AndroidFindBy(id = "com.RaceTrac.Common.qa:id/ok_button")
     private MobileElement okButton;
+
+    @PageLoading
+    @AndroidFindBy(id = "com.RaceTrac.Common.qa:id/checkBirthday")
+    private MobileElement checkBirthdayBtn;
 }

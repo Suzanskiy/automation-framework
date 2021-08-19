@@ -7,6 +7,16 @@ public interface PromotionalOffersFlow {
 
     void chooseNoLottery();
 
+    void chooseYesAlcohol();
+
+    void chooseYesTobacco();
+
+    void chooseYesLottery();
+
+    void acceptPromotions();
+
+    void clickSaveBtn();
+
     void clickNextBtn();
 
     void skipPromotions();
@@ -16,4 +26,14 @@ public interface PromotionalOffersFlow {
     void skipIOSPromotions();
 
     void navigateBack();
+
+    void clickOkBtnInEnterBirthdayPopUp();
+
+    void clickCancelBtnOnTheBirthdayPopUpField();
+
+    boolean isPopUpDescriptionDisplayed();
+
+    boolean isOkFieldEditable();
+
+    void enterBirthDate(String customerBirth);
 }

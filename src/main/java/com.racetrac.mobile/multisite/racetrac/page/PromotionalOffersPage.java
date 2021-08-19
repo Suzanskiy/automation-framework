@@ -11,6 +11,8 @@ import org.springframework.stereotype.Component;
 @Component
 @Getter
 public class PromotionalOffersPage extends BaseMobilePage {
+    private static final String POP_UP_FIELD = "Please enter your birthday to continue.";
+
     @PageLoading
     @iOSXCUITFindBy(xpath = "(//XCUIElementTypeButton[@name=\"No\"])[1]")
 
@@ -27,6 +29,18 @@ public class PromotionalOffersPage extends BaseMobilePage {
     @AndroidFindBy(xpath = "/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.RelativeLayout/android.widget.LinearLayout[2]/android.widget.LinearLayout/androidx.recyclerview.widget.RecyclerView/android.view.ViewGroup[3]/android.widget.Button[2]")
     private MobileElement noLottery;
 
+    @PageLoading
+    @AndroidFindBy(xpath = "/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.RelativeLayout/android.widget.LinearLayout[2]/android.widget.LinearLayout/androidx.recyclerview.widget.RecyclerView/android.view.ViewGroup[1]/android.widget.Button[1]")
+    private MobileElement yesAlcohol;
+
+    @PageLoading
+    @AndroidFindBy(xpath = "/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.RelativeLayout/android.widget.LinearLayout[2]/android.widget.LinearLayout/androidx.recyclerview.widget.RecyclerView/android.view.ViewGroup[2]/android.widget.Button[1]")
+    private MobileElement YesTobacco;
+
+    @PageLoading
+    @AndroidFindBy(xpath = "/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.RelativeLayout/android.widget.LinearLayout[2]/android.widget.LinearLayout/androidx.recyclerview.widget.RecyclerView/android.view.ViewGroup[3]/android.widget.Button[1]")
+    private MobileElement yesLottery;
+
     @iOSXCUITFindBy(xpath = "//XCUIElementTypeButton[@name=\"NEXT\"]")
     @AndroidFindBy(id = "com.RaceTrac.Common.qa:id/confirmButton")
     private MobileElement nextBtn;
@@ -37,4 +51,16 @@ public class PromotionalOffersPage extends BaseMobilePage {
 
     @iOSXCUITFindBy(accessibility = "NavBarBack")
     private MobileElement navigateBackBtn;
+
+    @AndroidFindBy(id = "com.RaceTrac.Common.qa:id/birthdayTextInput")
+    private MobileElement enterBirthdayPopUpField;
+
+    @AndroidFindBy(id = "com.RaceTrac.Common.qa:id/confirmBirthday")
+    private MobileElement okBirthdayPopUpFieldBtn;
+
+    @AndroidFindBy(id = "com.RaceTrac.Common.qa:id/cancelBirthday")
+    private MobileElement cancelBirthdayPopUpFieldBtn;
+
+    @AndroidFindBy(uiAutomator = "new UiSelector().text(\"" + POP_UP_FIELD + "\")")
+    private MobileElement descriptionText;
 }

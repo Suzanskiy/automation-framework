@@ -63,13 +63,10 @@ public class AccountSettingsChangeBirthDayTest extends BaseTest {
 
         customerDto = testData.registerNewCustomer();
         signInFlow.authorize(customerDto);
-
-/*        notificationRequestFlow.clickNotNow();
-        becomeFuelVipFlow.clickNotRightNow();
-        promotionalOffersFlow.skipPromotions();
         locationRequestFlow.clickNotNow();
+        notificationRequestFlow.clickNotNow();
+        signInFlow.clickGotItBtn();
 
-        signInFlow.clickGotItBtn();*/
         // TODO: 10.08.2021 Check code above on Android, because on ios those line not needed
         assertTrue(welcomeFlow.isHomePageOpenedAfterSignIn(), "Welcome page is not opened after sign in");
         accountSettingsFlow.navigateToAccountSettings();
@@ -88,9 +85,9 @@ public class AccountSettingsChangeBirthDayTest extends BaseTest {
         customerDto = testData.registerNewCustomer(CustomerAge.NOT_SPECIFIED_BIRTHDATE);
 
         signInFlow.authorize(customerDto);
-       /* locationRequestFlow.clickNotNow();
+        locationRequestFlow.clickNotNow();
         notificationRequestFlow.clickNotNow();
-        signInFlow.clickGotItBtn();*/
+        signInFlow.clickGotItBtn();
         // TODO: 10.08.2021 same
         assertTrue(welcomeFlow.isHomePageOpenedAfterSignIn(), "Welcome page is not opened after sign in");
         accountSettingsFlow.navigateToAccountSettings();
@@ -106,6 +103,7 @@ public class AccountSettingsChangeBirthDayTest extends BaseTest {
 
         profileFlow.clickOnBirthDayField();
         assertTrue(accountSettingsFlow.isProfileScreenOpened(), "Profile screen is not opened");
+
 
     }
 
