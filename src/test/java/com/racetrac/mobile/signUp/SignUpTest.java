@@ -2,14 +2,7 @@ package com.racetrac.mobile.signUp;
 
 import com.racetrac.mobile.BaseTest;
 import com.racetrac.mobile.multisite.racetrac.dto.CustomerDto;
-import com.racetrac.mobile.multisite.racetrac.flow.BecomeFuelVipFlow;
-import com.racetrac.mobile.multisite.racetrac.flow.LocationRequestFlow;
-import com.racetrac.mobile.multisite.racetrac.flow.NotificationRequestFlow;
-import com.racetrac.mobile.multisite.racetrac.flow.PromotionalOffersFlow;
-import com.racetrac.mobile.multisite.racetrac.flow.SignInFlow;
-import com.racetrac.mobile.multisite.racetrac.flow.SignOutFlow;
-import com.racetrac.mobile.multisite.racetrac.flow.SignUpFlow;
-import com.racetrac.mobile.multisite.racetrac.flow.WelcomeFlow;
+import com.racetrac.mobile.multisite.racetrac.flow.*;
 import io.qameta.allure.Description;
 import io.qameta.allure.TmsLink;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -38,6 +31,9 @@ public class SignUpTest extends BaseTest {
     @Autowired
     PromotionalOffersFlow promotionalOffersFlow;
     CustomerDto customerDto;
+    @Autowired
+    PointsAndLevelsFlow pointsAndLevelsFlow;
+
 
 
     @BeforeMethod(alwaysRun = true)
@@ -61,7 +57,9 @@ public class SignUpTest extends BaseTest {
 
         promotionalOffersFlow.skipPromotions();
         locationRequestFlow.clickNotNow();
+        becomeFuelVipFlow.clickNotRightNow();
         signInFlow.clickGotItBtn();
+        pointsAndLevelsFlow.clickGotItBtn();
         signOutFlow.doSignOut();
         assertTrue(welcomeFlow.isHomePageOpened(), "Welcome page is not opened");
     }
@@ -77,8 +75,11 @@ public class SignUpTest extends BaseTest {
         becomeFuelVipFlow.clickNotRightNow();
         promotionalOffersFlow.skipPromotions();
         locationRequestFlow.clickNotNow();
+        becomeFuelVipFlow.clickNotRightNow();
         signInFlow.clickGotItBtn();
+        pointsAndLevelsFlow.clickGotItBtn();
         signOutFlow.doSignOut();
+        locationRequestFlow.clickNotNow();
         assertTrue(welcomeFlow.isHomePageOpened(), "Welcome page is not opened");
         signUpFlow.openSignUpSelectorPage();
         assertTrue(signUpFlow.isSignUpSelectorPageOpened(), "SignUpSelector page is not opened");

@@ -3,13 +3,7 @@ package com.racetrac.mobile.fuelVIP;
 import com.racetrac.mobile.BaseTest;
 import com.racetrac.mobile.multisite.racetrac.api.SubscriptionRequestClient;
 import com.racetrac.mobile.multisite.racetrac.dto.CustomerDto;
-import com.racetrac.mobile.multisite.racetrac.flow.FuelVipFlow;
-import com.racetrac.mobile.multisite.racetrac.flow.LocationRequestFlow;
-import com.racetrac.mobile.multisite.racetrac.flow.NotificationRequestFlow;
-import com.racetrac.mobile.multisite.racetrac.flow.PromotionalOffersFlow;
-import com.racetrac.mobile.multisite.racetrac.flow.SignInFlow;
-import com.racetrac.mobile.multisite.racetrac.flow.SignOutFlow;
-import com.racetrac.mobile.multisite.racetrac.flow.WelcomeFlow;
+import com.racetrac.mobile.multisite.racetrac.flow.*;
 import com.racetrac.mobile.multisite.racetrac.util.ChromeBrowserHandler;
 import io.qameta.allure.Description;
 import io.qameta.allure.TmsLink;
@@ -44,6 +38,8 @@ public class FuelVIPTest extends BaseTest {
     PromotionalOffersFlow promotionalOffersFlow;
     @Autowired
     SubscriptionRequestClient subscriptionRequestClient;
+    @Autowired
+    PointsAndLevelsFlow pointsAndLevelsFlow;
 
     CustomerDto customerDto;
 
@@ -63,8 +59,8 @@ public class FuelVIPTest extends BaseTest {
         notificationRequestFlow.clickNotNow();
         promotionalOffersFlow.skipIOSPromotions();
         signInFlow.clickGotItBtn();
+        pointsAndLevelsFlow.clickGotItBtn();
         assertTrue(welcomeFlow.isHomePageOpenedAfterSignIn(), "Welcome page is not opened after sign in");
-
     }
 
     @TmsLink("6157")
