@@ -2,11 +2,7 @@ package com.racetrac.mobile.signOut;
 
 import com.racetrac.mobile.BaseTest;
 import com.racetrac.mobile.multisite.racetrac.dto.CustomerDto;
-import com.racetrac.mobile.multisite.racetrac.flow.LocationRequestFlow;
-import com.racetrac.mobile.multisite.racetrac.flow.NotificationRequestFlow;
-import com.racetrac.mobile.multisite.racetrac.flow.SignInFlow;
-import com.racetrac.mobile.multisite.racetrac.flow.SignOutFlow;
-import com.racetrac.mobile.multisite.racetrac.flow.WelcomeFlow;
+import com.racetrac.mobile.multisite.racetrac.flow.*;
 import io.qameta.allure.Description;
 import io.qameta.allure.TmsLink;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,6 +24,8 @@ public class SignOutTest extends BaseTest {
     @Autowired
     NotificationRequestFlow notificationRequestFlow;
     CustomerDto customerDto;
+    @Autowired
+    PointsAndLevelsFlow pointsAndLevelsFlow;
 
     @BeforeMethod
     public void setUp() {
@@ -40,6 +38,7 @@ public class SignOutTest extends BaseTest {
         notificationRequestFlow.clickNotNow();
    //     assertTrue(signInFlow.isCouponsViewOpened(), "Coupons view is not opened after signUp");
         signInFlow.clickGotItBtn();
+        pointsAndLevelsFlow.clickGotItBtn();
         assertTrue(welcomeFlow.isHomePageOpenedAfterSignIn(), "Welcome page is not opened after sign in");
     }
 
