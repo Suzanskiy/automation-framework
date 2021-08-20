@@ -7,6 +7,10 @@ public interface SignUpFlow {
 
     void enterCredentials(CustomerDto customerDto);
 
+    void enterCredentialsWithoutEmailReceive(final CustomerDto customerDto);
+
+    void clickOnReceiveEmailBtn();
+
     void clickCreateAccountBtn();
 
     void selectSignUpWithEmail();

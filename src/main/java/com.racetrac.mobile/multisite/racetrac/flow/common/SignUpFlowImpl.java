@@ -42,6 +42,21 @@ public class SignUpFlowImpl extends BaseFlow implements SignUpFlow {
         chooseNoRewardCard();
         getSignUpPage().getCreateAccountBtn().click();
     }
+    @Override
+    public void enterCredentialsWithoutEmailReceive(final CustomerDto customerDto) {
+        enterEmail(customerDto.getPersonalInfo().getEmail());
+        enterPassword(customerDto.getEmailAuth().getPassword());
+        enterPhone(customerDto.getPersonalInfo().getPhone());
+        enterBirthDay(customerDto.getPersonalInfo().getBirthday());
+        chooseNoRewardCard();
+        clickOnReceiveEmailBtn();
+        getSignUpPage().getCreateAccountBtn().click();
+    }
+
+    @Override
+    public void clickOnReceiveEmailBtn() {
+        getSignUpPage().getReceiveEmailsConfirmationBtn().click();
+    }
 
     @Step
     private void chooseNoRewardCard() {

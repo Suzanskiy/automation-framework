@@ -44,6 +44,10 @@ public class AccountSettingsPageAuthorised extends AccountSettingsPage {
     @AndroidFindBy(uiAutomator = "new UiSelector().text(\"Notifications\")")
     private MobileElement notifications;
 
+    @AndroidFindBy(xpath = "//android.widget.TextView[@text=\"Receive Emails?\"]/../android.widget.Switch[@resource-id=\"com.RaceTrac.Common.qa:id/account_section_item_switch\"]")
+    private MobileElement receiveEmailsSwitchBtn;
+
     @AndroidFindBy(id = "com.RaceTrac.Common.qa:id/account_section_item_image")
     private MobileElement settingsIcon;
+
 }
