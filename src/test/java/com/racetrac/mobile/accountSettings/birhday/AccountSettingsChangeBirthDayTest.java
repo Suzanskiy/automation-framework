@@ -66,6 +66,7 @@ public class AccountSettingsChangeBirthDayTest extends BaseTest {
         locationRequestFlow.clickNotNow();
         notificationRequestFlow.clickNotNow();
         signInFlow.clickGotItBtn();
+        pointsAndLevelsFlow.clickGotItBtn();
 
         // TODO: 10.08.2021 Check code above on Android, because on ios those line not needed
         assertTrue(welcomeFlow.isHomePageOpenedAfterSignIn(), "Welcome page is not opened after sign in");
@@ -88,6 +89,7 @@ public class AccountSettingsChangeBirthDayTest extends BaseTest {
         locationRequestFlow.clickNotNow();
         notificationRequestFlow.clickNotNow();
         signInFlow.clickGotItBtn();
+        pointsAndLevelsFlow.clickGotItBtn();
         // TODO: 10.08.2021 same
         assertTrue(welcomeFlow.isHomePageOpenedAfterSignIn(), "Welcome page is not opened after sign in");
         accountSettingsFlow.navigateToAccountSettings();
