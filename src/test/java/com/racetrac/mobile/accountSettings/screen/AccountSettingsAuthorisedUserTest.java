@@ -3,8 +3,13 @@ package com.racetrac.mobile.accountSettings.screen;
 import com.racetrac.mobile.BaseTest;
 import com.racetrac.mobile.multisite.racetrac.dto.CustomerDto;
 import com.racetrac.mobile.multisite.racetrac.flow.*;
+import com.racetrac.mobile.util.appium.AppiumWaitingUtils;
+import io.appium.java_client.AppiumDriver;
+import io.appium.java_client.MobileElement;
 import io.qameta.allure.Description;
 import io.qameta.allure.TmsLink;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
@@ -12,7 +17,7 @@ import org.testng.annotations.Test;
 
 import static com.racetrac.mobile.framework.enums.CustomerAge.*;
 import static com.racetrac.mobile.multisite.racetrac.data.ComparableStrings.NOT_ADULT_USER_TEXT;
-import static com.racetrac.mobile.util.appium.AppiumDriverUtils.pressBackBtn;
+import static com.racetrac.mobile.util.appium.AppiumDriverUtils.getDriver;
 import static org.testng.Assert.*;
 
 public class AccountSettingsAuthorisedUserTest extends BaseTest {
@@ -48,15 +53,15 @@ public class AccountSettingsAuthorisedUserTest extends BaseTest {
     @Description("Account Settings screen for registered user")
     @Test
     public void accountSettingsScreenForLoggedInUserTest() {
-        customerDto = testData.registerNewCustomer();
-
         signInFlow.openLoginInPage();
         assertTrue(signInFlow.isLoginPageOpened(), "Login page is not opened");
+        customerDto = testData.registerNewCustomer();
         signInFlow.authorize(customerDto);
         locationRequestFlow.clickNotNow();
         notificationRequestFlow.clickNotNow();
 
         signInFlow.clickGotItBtn();
+        pointsAndLevelsFlow.clickGotItBtn();
         assertTrue(welcomeFlow.isHomePageOpenedAfterSignIn(), "Welcome page is not opened after sign in");
 
         accountSettingsFlow.navigateToAccountSettings();
@@ -69,14 +74,15 @@ public class AccountSettingsAuthorisedUserTest extends BaseTest {
     @Description("")
     @Test
     public void promotionsForAdultCustomerTest() {
-        customerDto = testData.registerNewCustomer(ADULT);
         signInFlow.openLoginInPage();
         assertTrue(signInFlow.isLoginPageOpened(), "Login page is not opened");
+        customerDto = testData.registerNewCustomer(ADULT);
         signInFlow.authorize(customerDto);
         locationRequestFlow.clickNotNow();
         notificationRequestFlow.clickNotNow();
 
         signInFlow.clickGotItBtn();
+        pointsAndLevelsFlow.clickGotItBtn();
         assertTrue(welcomeFlow.isHomePageOpenedAfterSignIn(), "Welcome page is not opened after sign in");
 
         accountSettingsFlow.navigateToAccountSettings();
@@ -92,14 +98,15 @@ public class AccountSettingsAuthorisedUserTest extends BaseTest {
     @Description("")
     @Test
     public void promotionsForUserUnder21Test() {
-        customerDto = testData.registerNewCustomer(UNDER_21);
         signInFlow.openLoginInPage();
         assertTrue(signInFlow.isLoginPageOpened(), "Login page is not opened");
+        customerDto = testData.registerNewCustomer(UNDER_21);
         signInFlow.authorize(customerDto);
         locationRequestFlow.clickNotNow();
         notificationRequestFlow.clickNotNow();
 
         signInFlow.clickGotItBtn();
+        pointsAndLevelsFlow.clickGotItBtn();
         assertTrue(welcomeFlow.isHomePageOpenedAfterSignIn(), "Welcome page is not opened after sign in");
 
         accountSettingsFlow.navigateToAccountSettings();
@@ -118,14 +125,15 @@ public class AccountSettingsAuthorisedUserTest extends BaseTest {
     @Description("")
     @Test
     public void promotionsSettingsAndBirthdayChangesAreDisabledForUserUnder21Test() {
-        customerDto = testData.registerNewCustomer(UNDER_21);
         signInFlow.openLoginInPage();
         assertTrue(signInFlow.isLoginPageOpened(), "Login page is not opened");
+        customerDto = testData.registerNewCustomer(UNDER_21);
         signInFlow.authorize(customerDto);
         locationRequestFlow.clickNotNow();
         notificationRequestFlow.clickNotNow();
 
         signInFlow.clickGotItBtn();
+        pointsAndLevelsFlow.clickGotItBtn();
         assertTrue(welcomeFlow.isHomePageOpenedAfterSignIn(), "Welcome page is not opened after sign in");
 
         accountSettingsFlow.navigateToAccountSettings();
@@ -143,8 +151,6 @@ public class AccountSettingsAuthorisedUserTest extends BaseTest {
         accountSettingsFlow.navigateBack();
     }
 
-    /* Impossible to check the "Yes" button after saving promotions settings
-    due to the absence of the corresponding attribute */
     @TmsLink("")
     @Description("Promotional Settings\" can be changed by User older than 21")
     @Test
@@ -157,6 +163,7 @@ public class AccountSettingsAuthorisedUserTest extends BaseTest {
         notificationRequestFlow.clickNotNow();
 
         signInFlow.clickGotItBtn();
+        pointsAndLevelsFlow.clickGotItBtn();
         assertTrue(welcomeFlow.isHomePageOpenedAfterSignIn(), "Welcome page is not opened after sign in");
 
         accountSettingsFlow.navigateToAccountSettings();
@@ -168,6 +175,7 @@ public class AccountSettingsAuthorisedUserTest extends BaseTest {
         assertTrue(accountSettingsFlow.isAccountSettingsAuthorisedUserScreenOpened(), "Account settings screen not opened");
         accountSettingsFlow.navigateToPromotionalSettings();
         assertTrue(promotionalOffersFlow.isPromotionalOffersScreenOpened(), "Promotions Page is not opened");
+        assertTrue(promotionalOffersFlow.isAcceptedPromotionsSaved(),"Promotions \"Yes\" position is not saved");
         promotionalOffersFlow.navigateBack();
 
         accountSettingsFlow.navigateBack();
@@ -177,6 +185,7 @@ public class AccountSettingsAuthorisedUserTest extends BaseTest {
     @Description(" User enters age 21 or more after tap \"Promotional Settings\" if birthday field was empty")
     @Test
     public void acceptanceToChangePromotionalSettingsAfterFillTheBirthdayFieldTest() {
+
         customerDto = testData.registerNewCustomer(NOT_SPECIFIED_BIRTHDATE);
         signInFlow.openLoginInPage();
         assertTrue(signInFlow.isLoginPageOpened(), "Login page is not opened");
@@ -185,7 +194,6 @@ public class AccountSettingsAuthorisedUserTest extends BaseTest {
         notificationRequestFlow.clickNotNow();
 
         signInFlow.clickGotItBtn();
-        //points level got it
         pointsAndLevelsFlow.clickGotItBtn();
         assertTrue(welcomeFlow.isHomePageOpenedAfterSignIn(), "Welcome page is not opened after sign in");
 
@@ -201,11 +209,31 @@ public class AccountSettingsAuthorisedUserTest extends BaseTest {
         assertTrue(accountSettingsFlow.isAccountSettingsAuthorisedUserScreenOpened(), "Account settings screen is not opened");
 
         accountSettingsFlow.navigateToPromotionalSettings();
-        assertTrue(promotionalOffersFlow.isPopUpDescriptionDisplayed(), "Pop up description is not shown");
         assertFalse(promotionalOffersFlow.isOkFieldEditable(), "Ok field is editable");
+        assertTrue(promotionalOffersFlow.isPopUpDescriptionDisplayed(), "Pop up description is not shown");
 
         promotionalOffersFlow.enterBirthDate(customerBirth);
-        promotionalOffersFlow.clickOkBtnInEnterBirthdayPopUp();
+        promotionalOffersFlow.clickOkBtnOnTheEnterBirthdayPopUp();
+
+        promotionalOffersFlow.waitUntilOkBtnAvailable();
+        promotionalOffersFlow.clickCancelBtnOnTheBirthdayPopUpField();
+        assertTrue(accountSettingsFlow.isAccountSettingsAuthorisedUserScreenOpened());
+        signOutFlow.clickOnSignOutBtn();
+        locationRequestFlow.clickNotNow();
+
+        signInFlow.openLoginInPage();
+        assertTrue(signInFlow.isLoginPageOpened(), "Login page is not opened");
+        signInFlow.authorize(customerDto);
+        locationRequestFlow.clickNotNow();
+        notificationRequestFlow.clickNotNow();
+
+        signInFlow.clickGotItBtn();
+        pointsAndLevelsFlow.clickGotItBtn();
+        assertTrue(welcomeFlow.isHomePageOpenedAfterSignIn(), "Welcome page is not opened after sign in");
+
+        accountSettingsFlow.navigateToAccountSettings();
+        assertTrue(accountSettingsFlow.isAccountSettingsAuthorisedUserScreenOpened(), " Account screen for Logged in User is not opened");
+        accountSettingsFlow.navigateToPromotionalSettings();
 
         assertTrue(promotionalOffersFlow.isPromotionalOffersScreenOpened(), "Promotions Page is not opened");
         promotionalOffersFlow.acceptPromotions();

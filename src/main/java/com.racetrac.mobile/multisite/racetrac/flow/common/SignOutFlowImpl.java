@@ -26,4 +26,9 @@ public class SignOutFlowImpl extends BaseFlow implements SignOutFlow {
             LOG.warn("Unable to do sign out");
         }
     }
+
+    @Override
+    public void clickOnSignOutBtn() {
+        getAccountSettingsPage().getSignOutBtn().click();
+    }
 }

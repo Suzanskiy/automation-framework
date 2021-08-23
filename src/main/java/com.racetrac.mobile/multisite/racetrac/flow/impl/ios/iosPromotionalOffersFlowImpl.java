@@ -14,6 +14,11 @@ import static com.racetrac.mobile.framework.constants.PlatformsConstants.IOS;
 public class iosPromotionalOffersFlowImpl extends BaseFlow implements PromotionalOffersFlow {
 
     @Override
+    public void waitUntilOkBtnAvailable() {
+
+    }
+
+    @Override
     public void chooseNoAlcohol() {
         getPromotionalOffersPage().getNoAlcohol().click();
     }
@@ -46,6 +51,26 @@ public class iosPromotionalOffersFlowImpl extends BaseFlow implements Promotiona
     @Override
     public void acceptPromotions() {
         //TODO IOS Impl
+    }
+
+    @Override
+    public boolean isAcceptedPromotionsSaved() {
+        return false;
+    }
+
+    @Override
+    public boolean isYesAlcoholSaved() {
+        return false;
+    }
+
+    @Override
+    public boolean isYesLotterySaved() {
+        return false;
+    }
+
+    @Override
+    public boolean isYesTobaccoSaved() {
+        return false;
     }
 
     @Override
@@ -95,7 +120,7 @@ public class iosPromotionalOffersFlowImpl extends BaseFlow implements Promotiona
     }
 
     @Override
-    public void clickOkBtnInEnterBirthdayPopUp() {
+    public void clickOkBtnOnTheEnterBirthdayPopUp() {
         //TODO IOS Impl
     }
 
