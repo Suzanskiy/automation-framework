@@ -3,6 +3,8 @@ package com.racetrac.mobile.multisite.racetrac.flow.impl.ios;
 import com.racetrac.mobile.multisite.racetrac.flow.BaseFlow;
 import com.racetrac.mobile.multisite.racetrac.flow.BecomeFuelVipFlow;
 import io.qameta.allure.Step;
+import org.openqa.selenium.NoSuchElementException;
+import org.openqa.selenium.TimeoutException;
 import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Component;
 
@@ -14,8 +16,12 @@ public class iosBecomeFuelVipFlowImpl extends BaseFlow implements BecomeFuelVipF
     @Step
     @Override
     public void clickNotRightNow() {
-        getBecomeFuelVipPage().waitUntilIsOpened();
-        getBecomeFuelVipPage().getNotRightNowBtn().click();
+        try {
+            getBecomeFuelVipPage().waitUntilIsOpened();
+            clickNotRightNowBtn();
+        } catch (NoSuchElementException | TimeoutException e) {
+            e.printStackTrace();
+        }
     }
 
     @Step
@@ -35,6 +41,7 @@ public class iosBecomeFuelVipFlowImpl extends BaseFlow implements BecomeFuelVipF
     public void clickNotRightNowBtn() {
         getBecomeFuelVipPage().getNotRightNowBtn().click();
     }
+
     @Step
     @Override
     public boolean checkAllElementsIsLoaded() {

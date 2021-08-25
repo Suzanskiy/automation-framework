@@ -34,6 +34,7 @@ public class iOSBrowserHandler extends BaseFlow implements ChromeBrowserHandler 
         getSafariBrowserPage().getUrl().sendKeys(Keys.ENTER);
         getSafariBrowserPage().refresh();
         getSafariBrowserPage().waitUntilIsOpened();
+        getSafariBrowserPage().getUrl().click();
         return getSafariBrowserPage().getUrl().getAttribute("value");
     }
 

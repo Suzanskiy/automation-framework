@@ -3,7 +3,16 @@ package com.racetrac.mobile.fuelVIP;
 import com.racetrac.mobile.BaseTest;
 import com.racetrac.mobile.multisite.racetrac.api.SubscriptionRequestClient;
 import com.racetrac.mobile.multisite.racetrac.dto.CustomerDto;
-import com.racetrac.mobile.multisite.racetrac.flow.*;
+import com.racetrac.mobile.multisite.racetrac.flow.BecomeFuelVipFlow;
+import com.racetrac.mobile.multisite.racetrac.flow.FuelVipFlow;
+import com.racetrac.mobile.multisite.racetrac.flow.LocationRequestFlow;
+import com.racetrac.mobile.multisite.racetrac.flow.NotificationRequestFlow;
+import com.racetrac.mobile.multisite.racetrac.flow.PointsAndLevelsFlow;
+import com.racetrac.mobile.multisite.racetrac.flow.PromotionalOffersFlow;
+import com.racetrac.mobile.multisite.racetrac.flow.RewardsPopupFlow;
+import com.racetrac.mobile.multisite.racetrac.flow.SignInFlow;
+import com.racetrac.mobile.multisite.racetrac.flow.SignOutFlow;
+import com.racetrac.mobile.multisite.racetrac.flow.WelcomeFlow;
 import com.racetrac.mobile.multisite.racetrac.util.ChromeBrowserHandler;
 import io.qameta.allure.Description;
 import io.qameta.allure.TmsLink;
@@ -40,6 +49,10 @@ public class FuelVIPTest extends BaseTest {
     SubscriptionRequestClient subscriptionRequestClient;
     @Autowired
     PointsAndLevelsFlow pointsAndLevelsFlow;
+    @Autowired
+    RewardsPopupFlow rewardsPopupFlow;
+    @Autowired
+    BecomeFuelVipFlow becomeFuelVipFlow;
 
     CustomerDto customerDto;
 
@@ -59,6 +72,7 @@ public class FuelVIPTest extends BaseTest {
         notificationRequestFlow.clickNotNow();
         promotionalOffersFlow.skipIOSPromotions();
         signInFlow.clickGotItBtn();
+        rewardsPopupFlow.clickGotItBtn();
         pointsAndLevelsFlow.clickGotItBtn();
         assertTrue(welcomeFlow.isHomePageOpenedAfterSignIn(), "Welcome page is not opened after sign in");
     }
@@ -71,6 +85,10 @@ public class FuelVIPTest extends BaseTest {
         fuelVipFlow.navigateToFuelVipSection();
         fuelVipFlow.clickLearnMoreNoSubscription();
         final String openedUrl = chromeBrowserHandler.getUrl();
+        chromeBrowserHandler.returnBackToApp();
+        locationRequestFlow.clickNotNow();
+        rewardsPopupFlow.clickGotItBtn();
+        pointsAndLevelsFlow.clickGotItBtn();
         assertEquals(openedUrl, chromeBrowserHandler.getDesiredRedirectUrlNoSubscription());
     }
 
@@ -84,12 +102,15 @@ public class FuelVIPTest extends BaseTest {
         swipeDown();//update page
         fuelVipFlow.clickVipProgramDetails();
         final String openedUrl = chromeBrowserHandler.getUrl();
+        chromeBrowserHandler.returnBackToApp();
+        locationRequestFlow.clickNotNow();
+        rewardsPopupFlow.clickGotItBtn();
+        pointsAndLevelsFlow.clickGotItBtn();
         assertEquals(openedUrl, chromeBrowserHandler.getDesiredRedirectUrlActiveSubscription());
     }
 
     @AfterMethod(alwaysRun = true)
     public void logOut() {
-        chromeBrowserHandler.returnBackToApp();
         signOutFlow.doSignOut();
         assertTrue(welcomeFlow.isHomePageOpened(), "Welcome page is not opened");
     }

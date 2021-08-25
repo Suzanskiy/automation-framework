@@ -6,6 +6,7 @@ import com.racetrac.mobile.multisite.racetrac.flow.BecomeFuelVipFlow;
 import com.racetrac.mobile.multisite.racetrac.flow.LocationRequestFlow;
 import com.racetrac.mobile.multisite.racetrac.flow.PointsAndLevelsFlow;
 import com.racetrac.mobile.multisite.racetrac.flow.PromotionalOffersFlow;
+import com.racetrac.mobile.multisite.racetrac.flow.RewardsPopupFlow;
 import com.racetrac.mobile.multisite.racetrac.flow.SignInFlow;
 import com.racetrac.mobile.multisite.racetrac.flow.SignOutFlow;
 import com.racetrac.mobile.multisite.racetrac.flow.SignUpFlow;
@@ -44,6 +45,8 @@ public class PopUpVipTest extends BaseTest {
     PromotionalOffersFlow promotionalOffersFlow;
     @Autowired
     PointsAndLevelsFlow pointsAndLevelsFlow;
+    @Autowired
+    RewardsPopupFlow rewardsPopupFlow;
 
     CustomerDto customerDto;
 
@@ -75,10 +78,14 @@ public class PopUpVipTest extends BaseTest {
     public void redirectionAfterLearnMoreBtn() throws InterruptedException {
         becomeFuelVipFlow.clickLearnMoreBtn();
         final String openedUrl = chromeBrowserHandler.getUrl();
-        assertEquals(openedUrl, chromeBrowserHandler.getLearnMoreRedirectUrl());
         chromeBrowserHandler.returnBackToApp();
         promotionalOffersFlow.skipIOSPromotions();
         locationRequestFlow.clickNotNow();
+        rewardsPopupFlow.clickGotItBtn();
+        pointsAndLevelsFlow.clickGotItBtn();
+
+        assertEquals(openedUrl, chromeBrowserHandler.getLearnMoreRedirectUrl());
+
     }
 
     @TmsLink("6413")
@@ -87,8 +94,13 @@ public class PopUpVipTest extends BaseTest {
     public void redirectionAfterGetStartBtn() throws InterruptedException {
         becomeFuelVipFlow.clickGetStartedBtn();
         final String openedUrl = chromeBrowserHandler.getUrl();
-        assertEquals(openedUrl, chromeBrowserHandler.getGetStartedRedirectUrl());// FIXME: 10.08.2021 change url to actual
         chromeBrowserHandler.returnBackToApp();
+        promotionalOffersFlow.skipIOSPromotions();
+        locationRequestFlow.clickNotNow();
+        rewardsPopupFlow.clickGotItBtn();
+        pointsAndLevelsFlow.clickGotItBtn();
+
+        assertEquals(openedUrl, chromeBrowserHandler.getGetStartedRedirectUrl());// FIXME: 10.08.2021 change url to actual
     }
 
     @TmsLink("6414")
@@ -96,7 +108,9 @@ public class PopUpVipTest extends BaseTest {
     @Test
     public void tapNotRightNowTest() {
         becomeFuelVipFlow.clickNotRightNowBtn();
-        signInFlow.clickGotItBtn();
+        promotionalOffersFlow.skipIOSPromotions();
+        locationRequestFlow.clickNotNow();
+        rewardsPopupFlow.clickGotItBtn();
         pointsAndLevelsFlow.clickGotItBtn();
         assertTrue(welcomeFlow.isHomePageOpened());
     }

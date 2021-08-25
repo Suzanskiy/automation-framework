@@ -1,5 +1,6 @@
-package com.racetrac.mobile;
+package com.racetrac.mobile.forgotPasword;
 
+import com.racetrac.mobile.BaseTest;
 import com.racetrac.mobile.multisite.racetrac.dto.CustomerDto;
 import com.racetrac.mobile.multisite.racetrac.flow.ForgotPassFlow;
 import com.racetrac.mobile.multisite.racetrac.flow.SignInFlow;
