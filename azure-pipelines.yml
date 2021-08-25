@@ -12,14 +12,14 @@ pool:
   name: default
 
 stages:
-  - stage: Test Android compiliance
+  - stage: Test_Android
     jobs:
       - job: Compile
         steps:
           - script: mvn clean compile -Dtest.config=android
   
   
-  - stage: Test IOS compiliance
+  - stage: Test_IOS
     jobs:
       - job: Test
         steps:
