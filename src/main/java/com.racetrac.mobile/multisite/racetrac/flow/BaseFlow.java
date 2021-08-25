@@ -15,6 +15,7 @@ import com.racetrac.mobile.multisite.racetrac.page.LoginPage;
 import com.racetrac.mobile.multisite.racetrac.page.PriceDisclaimerPage;
 import com.racetrac.mobile.multisite.racetrac.page.ProfilePage;
 import com.racetrac.mobile.multisite.racetrac.page.PromotionalOffersPage;
+import com.racetrac.mobile.multisite.racetrac.page.RewardsPopupPage;
 import com.racetrac.mobile.multisite.racetrac.page.SignUpPage;
 import com.racetrac.mobile.multisite.racetrac.page.SignUpSelectorPage;
 import com.racetrac.mobile.multisite.racetrac.page.StoresPage;
@@ -81,5 +82,6 @@ public class BaseFlow {
     FraudErrorMessageView fraudErrorMessageView;
     PointsAndLevelsView pointsAndLevelsView;
     NotAdultNotice notAdultNotice;
+    RewardsPopupPage rewardsPopupPage;
 
 }

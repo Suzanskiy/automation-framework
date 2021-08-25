@@ -33,6 +33,8 @@ public class SignUpTest extends BaseTest {
     CustomerDto customerDto;
     @Autowired
     PointsAndLevelsFlow pointsAndLevelsFlow;
+    @Autowired
+    RewardsPopupFlow rewardsPopupFlow;
 
 
 
@@ -59,6 +61,8 @@ public class SignUpTest extends BaseTest {
         locationRequestFlow.clickNotNow();
         becomeFuelVipFlow.clickNotRightNow();
         signInFlow.clickGotItBtn();
+        rewardsPopupFlow.clickGotItBtn();
+
         pointsAndLevelsFlow.clickGotItBtn();
         signOutFlow.doSignOut();
         assertTrue(welcomeFlow.isHomePageOpened(), "Welcome page is not opened");
@@ -77,6 +81,8 @@ public class SignUpTest extends BaseTest {
         locationRequestFlow.clickNotNow();
         becomeFuelVipFlow.clickNotRightNow();
         signInFlow.clickGotItBtn();
+        rewardsPopupFlow.clickGotItBtn();
+
         pointsAndLevelsFlow.clickGotItBtn();
         signOutFlow.doSignOut();
         locationRequestFlow.clickNotNow();

@@ -2,7 +2,14 @@ package com.racetrac.mobile.fuelVipPopUpWithDifferentAge;
 
 import com.racetrac.mobile.BaseTest;
 import com.racetrac.mobile.multisite.racetrac.dto.CustomerDto;
-import com.racetrac.mobile.multisite.racetrac.flow.*;
+import com.racetrac.mobile.multisite.racetrac.flow.BecomeFuelVipFlow;
+import com.racetrac.mobile.multisite.racetrac.flow.LocationRequestFlow;
+import com.racetrac.mobile.multisite.racetrac.flow.PointsAndLevelsFlow;
+import com.racetrac.mobile.multisite.racetrac.flow.PromotionalOffersFlow;
+import com.racetrac.mobile.multisite.racetrac.flow.RewardsPopupFlow;
+import com.racetrac.mobile.multisite.racetrac.flow.SignOutFlow;
+import com.racetrac.mobile.multisite.racetrac.flow.SignUpFlow;
+import com.racetrac.mobile.multisite.racetrac.flow.WelcomeFlow;
 import io.qameta.allure.Description;
 import io.qameta.allure.TmsLink;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,6 +35,10 @@ public class FuelVipPopUpWithDifferentAgeTest extends BaseTest {
     BecomeFuelVipFlow becomeFuelVipFlow;
     @Autowired
     PromotionalOffersFlow promotionalOffersFlow;
+    @Autowired
+    RewardsPopupFlow rewardsPopupFlow;
+    @Autowired
+    PointsAndLevelsFlow pointsAndLevelsFlow;
 
     CustomerDto customerDto;
 
@@ -50,6 +61,11 @@ public class FuelVipPopUpWithDifferentAgeTest extends BaseTest {
         signUpFlow.clickGetStartedBtn();
         locationRequestFlow.clickNotNow();
         assertTrue(becomeFuelVipFlow.checkAllElementsIsLoaded(), "Elements are not loaded");
+        becomeFuelVipFlow.clickNotRightNow();
+        locationRequestFlow.clickNotNow();
+        rewardsPopupFlow.clickGotItBtn();
+        pointsAndLevelsFlow.clickGotItBtn();
+
     }
 
     @TmsLink("6414")
@@ -63,6 +79,10 @@ public class FuelVipPopUpWithDifferentAgeTest extends BaseTest {
         promotionalOffersFlow.skipPromotions();
         locationRequestFlow.clickNotNow();
         assertTrue(becomeFuelVipFlow.checkAllElementsIsLoaded(), "Elements are not loaded");
+        becomeFuelVipFlow.clickNotRightNow();
+        locationRequestFlow.clickNotNow();
+        rewardsPopupFlow.clickGotItBtn();
+        pointsAndLevelsFlow.clickGotItBtn();
     }
 
     @AfterMethod(alwaysRun = true)

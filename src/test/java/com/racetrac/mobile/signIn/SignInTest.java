@@ -26,6 +26,8 @@ public class SignInTest extends BaseTest {
     NotificationRequestFlow notificationRequestFlow;
     @Autowired
     PointsAndLevelsFlow pointsAndLevelsFlow;
+    @Autowired
+            RewardsPopupFlow rewardsPopupFlow;
     CustomerDto customerDto;
 
     @BeforeMethod
@@ -44,6 +46,7 @@ public class SignInTest extends BaseTest {
         locationRequestFlow.clickNotNow();
         notificationRequestFlow.clickNotNow();
         signInFlow.clickGotItBtn();
+        rewardsPopupFlow.clickGotItBtn();
         pointsAndLevelsFlow.clickGotItBtn();
         assertTrue(welcomeFlow.isHomePageOpenedAfterSignIn(), "Welcome page is not opened after sign in");
     }

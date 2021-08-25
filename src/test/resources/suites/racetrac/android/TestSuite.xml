@@ -1,9 +1,52 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
 
 <suite name="Regression" verbose="1" configfailurepolicy="continue">
-    <test name="All">
+
+    <test name="Account settings tests">
         <packages>
-            <package name="com.racetrac.mobile.*"/>
+            <package name="com.racetrac.mobile.accountSettings"/>
+        </packages>
+    </test>
+
+    <test name="Bottom navigation  tests">
+        <packages>
+            <package name="com.racetrac.mobile.anonymous.bottomNavigation"/>
+        </packages>
+    </test>
+    <test name="Fuel vip tests">
+        <packages>
+            <package name="com.racetrac.mobile.fuelVipPopUpWithDifferentAge"/>
+            <package name="com.racetrac.mobile.fuelVIP"/>
+            <package name="com.racetrac.mobile.popUpVIP"/>
+        </packages>
+    </test>
+
+    <test name="Sign in test">
+        <packages>
+            <package name="com.racetrac.mobile.signIn"/>
+        </packages>
+    </test>
+    <test name="Sign out test">
+        <packages>
+            <package name="com.racetrac.mobile.signOut"/>
+        </packages>
+    </test>
+
+    <test name="Sign up test">
+        <packages>
+            <package name="com.racetrac.mobile.signUp"/>
+        </packages>
+    </test>
+
+    <test name="Email score test">
+        <packages>
+            <package name="com.racetrac.mobile.emailScore"/>
+        </packages>
+    </test>
+
+    <test name="Forgot password  test">
+        <packages>
+            <package name="com.racetrac.mobile.forgotPasword"/>
         </packages>
     </test>
 </suite>

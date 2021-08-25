@@ -1,4 +1,4 @@
-package com.racetrac.mobile.multisite.racetrac.views;
+package com.racetrac.mobile.multisite.racetrac.page;
 
 import com.racetrac.mobile.framework.annotations.PageLoading;
 import com.racetrac.mobile.multisite.BaseMobilePage;
@@ -10,10 +10,10 @@ import org.springframework.stereotype.Component;
 
 @Component
 @Getter
-public class PointsAndLevelsView extends BaseMobilePage {
+public class RewardsPopupPage extends BaseMobilePage {
 
     @PageLoading
     @iOSXCUITFindBy(xpath = "//XCUIElementTypeButton[@name=\"GOT IT\"]")
-    @AndroidFindBy(id = "com.RaceTrac.Common.qa:id/pointsAndLevelsTutorialGotItButton")
-    private MobileElement pointsGotItBtn;
+    @AndroidFindBy(id = "1")
+    private MobileElement gotItBtn;
 }
