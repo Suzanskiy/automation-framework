@@ -20,9 +20,8 @@ import java.util.stream.Collectors;
 
 import static com.racetrac.mobile.framework.constants.TimeoutConstants.MIDDLE_TIMEOUT;
 import static com.racetrac.mobile.framework.enums.Exceptions.NO_PAGE_LOADING;
-import static com.racetrac.mobile.util.appium.AppiumDriverUtils.getDriver;
-import static com.racetrac.mobile.util.appium.AppiumDriverUtils.swipeDownGently;
-import static com.racetrac.mobile.util.appium.AppiumDriverUtils.swipeUPGently;
+import static com.racetrac.mobile.util.appium.AppiumDriverUtils.*;
+import static com.racetrac.mobile.util.appium.AppiumDriverUtils.swipeDown;
 
 public abstract class BaseMobilePage implements MobilePage {
 
@@ -86,15 +85,16 @@ public abstract class BaseMobilePage implements MobilePage {
         );
 
         if (notFoundItems.size() == 1) {
-            if (pageObjectFields.size() > 5) //if page has a lot of elements, last not found may be hidden
+            if (pageObjectFields.size() >= 4) //if page has a lot of elements, last not found may be hidden
             {
                 swipeUPGently();
+                swipeDownGently();
             }
             foundItems.addAll(checkElementToBeVisible(notFoundItems));  // recheck without scrolling
         } else if (notFoundItems.size() >= 2) {
-            swipeUPGently();
+            swipeUP();
             foundItems.addAll(checkElementToBeVisible(notFoundItems));  // recheck
-            swipeDownGently();
+            swipeDown();
         }
 
         return foundItems.size() == pageObjectFields.size();

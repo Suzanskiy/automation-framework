@@ -59,6 +59,7 @@ public class AccountSettingsChangePasswordTest extends BaseTest {
         locationRequestFlow.clickNotNow();
         notificationRequestFlow.clickNotNow();
         signInFlow.clickGotItBtn();
+        pointsAndLevelsFlow.clickGotItBtn();
         assertTrue(welcomeFlow.isHomePageOpenedAfterSignIn(), "Welcome page is not opened after sign in");
 
         accountSettingsFlow.navigateToAccountSettings();
@@ -92,6 +93,7 @@ public class AccountSettingsChangePasswordTest extends BaseTest {
         locationRequestFlow.clickNotNow();
         notificationRequestFlow.clickNotNow();
         signInFlow.clickGotItBtn();
+        pointsAndLevelsFlow.clickGotItBtn();
         assertTrue(welcomeFlow.isHomePageOpenedAfterSignIn(), "Welcome page is not opened after sign in");
     }
 
