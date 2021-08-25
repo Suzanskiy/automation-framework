@@ -1,6 +1,8 @@
 package com.racetrac.mobile.multisite.racetrac.flow;
 
 public interface PromotionalOffersFlow {
+    void waitUntilOkBtnAvailable();
+
     void chooseNoAlcohol();
 
     void chooseNoTobacco();
@@ -15,6 +17,14 @@ public interface PromotionalOffersFlow {
 
     void acceptPromotions();
 
+    boolean isAcceptedPromotionsSaved();
+
+    boolean isYesAlcoholSaved();
+
+    boolean isYesLotterySaved();
+
+    boolean isYesTobaccoSaved();
+
     void clickSaveBtn();
 
     void clickNextBtn();
@@ -27,7 +37,7 @@ public interface PromotionalOffersFlow {
 
     void navigateBack();
 
-    void clickOkBtnInEnterBirthdayPopUp();
+    void clickOkBtnOnTheEnterBirthdayPopUp();
 
     void clickCancelBtnOnTheBirthdayPopUpField();
 

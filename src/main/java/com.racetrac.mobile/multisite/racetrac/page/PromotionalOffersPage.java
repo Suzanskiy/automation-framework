@@ -30,15 +30,15 @@ public class PromotionalOffersPage extends BaseMobilePage {
     private MobileElement noLottery;
 
     @PageLoading
-    @AndroidFindBy(xpath = "/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.RelativeLayout/android.widget.LinearLayout[2]/android.widget.LinearLayout/androidx.recyclerview.widget.RecyclerView/android.view.ViewGroup[1]/android.widget.Button[1]")
+    @AndroidFindBy(xpath = "//android.widget.TextView[@text=\"Alcohol\"]/../android.widget.Button[@resource-id=\"com.RaceTrac.Common.qa:id/yesBtn\"]")
     private MobileElement yesAlcohol;
 
     @PageLoading
-    @AndroidFindBy(xpath = "/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.RelativeLayout/android.widget.LinearLayout[2]/android.widget.LinearLayout/androidx.recyclerview.widget.RecyclerView/android.view.ViewGroup[2]/android.widget.Button[1]")
+    @AndroidFindBy(xpath = "//android.widget.TextView[@text=\"Tobacco\"]/../android.widget.Button[@resource-id=\"com.RaceTrac.Common.qa:id/yesBtn\"]")
     private MobileElement YesTobacco;
 
     @PageLoading
-    @AndroidFindBy(xpath = "/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.RelativeLayout/android.widget.LinearLayout[2]/android.widget.LinearLayout/androidx.recyclerview.widget.RecyclerView/android.view.ViewGroup[3]/android.widget.Button[1]")
+    @AndroidFindBy(xpath = "//android.widget.TextView[@text=\"Lottery\"]/../android.widget.Button[@resource-id=\"com.RaceTrac.Common.qa:id/yesBtn\"]")
     private MobileElement yesLottery;
 
     @iOSXCUITFindBy(xpath = "//XCUIElementTypeButton[@name=\"NEXT\"]")
