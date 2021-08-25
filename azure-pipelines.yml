@@ -14,31 +14,14 @@ pool:
 stages:
   - stage: Test Android compiliance
     jobs:
+      - job: Compile
+        steps:
+          - script: mvn clean compile -Dtest.config=android
+  
+  
+  - stage: Test IOS compiliance
+    jobs:
       - job: Test
         steps:
-          - task: Maven@3
-              inputs:
-                mavenPomFile: 'pom.xml'
-                goals: 'clean compile -Dtest.config=android'
-                publishJUnitResults: false
-                testResultsFiles: '**/surefire-reports/TEST-*.xml'
-                javaHomeOption: 'JDKVersion'
-                mavenVersionOption: 'Default'
-                mavenAuthenticateFeed: false
-                effectivePomSkip: false
-                sonarQubeRunAnalysis: false
-  - stage: Test IOS compiliance
-      jobs:
-          - job: Test
-            steps:
-              - task: Maven@3
-                  inputs:
-                    mavenPomFile: 'pom.xml'
-                    goals: 'clean compile -Dtest.config=ios'
-                    publishJUnitResults: false
-                    testResultsFiles: '**/surefire-reports/TEST-*.xml'
-                    javaHomeOption: 'JDKVersion'
-                    mavenVersionOption: 'Default'
-                    mavenAuthenticateFeed: false
-                    effectivePomSkip: false
-                    sonarQubeRunAnalysis: false
+          - script: mvn clean compile -Dtest.config=ios
+              
