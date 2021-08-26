@@ -64,7 +64,6 @@ public class PopUpVipTest extends BaseTest {
         signUpFlow.selectSignUpWithEmail();
         assertTrue(signUpFlow.isSignUpPageOpened(), "SignUp page is not opened");
         signUpFlow.enterCredentials(customerDto);
-        signUpFlow.isFistBumpPageOpened();
         signUpFlow.clickGetStartedBtn();
         promotionalOffersFlow.skipPromotions();
         locationRequestFlow.clickNotNow();

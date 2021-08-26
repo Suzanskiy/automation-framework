@@ -20,7 +20,7 @@ public class iosBecomeFuelVipFlowImpl extends BaseFlow implements BecomeFuelVipF
             getBecomeFuelVipPage().waitUntilIsOpened();
             clickNotRightNowBtn();
         } catch (NoSuchElementException | TimeoutException e) {
-            e.printStackTrace();
+
         }
     }
 
