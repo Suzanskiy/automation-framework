@@ -13,7 +13,7 @@ import static org.testng.Assert.assertEquals;
 import static org.testng.Assert.assertTrue;
 
 public class SignUpTest extends BaseTest {
-    public static final String EMAIL_LINKED_MESSAGE = "This email is already linked to an existing account! Try signing in or sign up using another email address.";
+    public static final String EMAIL_LINKED_MESSAGE = "Sorry, the information entered is not valid. Please try again. If you need further assistance, email guest@racetrac.com.";
     @Autowired
     WelcomeFlow welcomeFlow;
     @Autowired
