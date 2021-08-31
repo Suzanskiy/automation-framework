@@ -14,6 +14,6 @@ public class RewardsPopupPage extends BaseMobilePage {
 
     @PageLoading
     @iOSXCUITFindBy(xpath = "//XCUIElementTypeButton[@name=\"GOT IT\"]")
-    @AndroidFindBy(id = "1")
+    @AndroidFindBy(id = "com.RaceTrac.Common.qa:id/rewardsTutorialGotItButton")
     private MobileElement gotItBtn;
 }
