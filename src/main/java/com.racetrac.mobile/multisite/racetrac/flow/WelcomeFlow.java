@@ -5,4 +5,6 @@ public interface WelcomeFlow {
 
     boolean isHomePageOpenedAfterSignIn();
 
+    boolean isHeroLevelHelpBtnDisplayed();
+
 }

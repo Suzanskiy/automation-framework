@@ -22,4 +22,49 @@ public class AndroidPointsAndLevelFlowImpl extends BaseFlow implements PointsAnd
             LOG.warn("Points and Levels screen not opened, skipping..");
         }
     }
+
+    @Override
+    public void clickOnHeroLevelHelpBtn() {
+        getHomePage().getHeroLevelHelpBtn().click();
+    }
+
+    @Override
+    public boolean isPointsAndLevelsPageOpened() {
+        return getPointsAndLevelsPage().waitUntilIsOpened();
+    }
+
+    @Override
+    public boolean isPointsAndTiersSectionIsOpened() {
+        return getPointsAndTiersPage().waitUntilIsOpened();
+    }
+
+    @Override
+    public boolean isHowItWorksSectionIsOpened() {
+        return getHowItWorksPage().waitUntilIsOpened();
+    }
+
+    @Override
+    public boolean isTierExpirationDetailsDisplayed() {
+        return getPointsAndTiersPage().getTierExpirationDetails().isDisplayed();
+    }
+
+    @Override
+    public void clickOnDetailsBtn() {
+        getPointsAndTiersPage().getLevelDetailsBtn().click();
+    }
+
+    @Override
+    public void clickOnCloseDetailsBtn() {
+        getPointsAndTiersPage().getCloseDetailsBtn().click();
+    }
+
+    @Override
+    public void clickOnHowItWorksSectionBtn() {
+        getPointsAndLevelsPage().getHowItWorksSectionBtn().click();
+    }
+
+    @Override
+    public void clickOnCloseActivityBtn() {
+        getPointsAndLevelsPage().getCloseActivityBtn().click();
+    }
 }

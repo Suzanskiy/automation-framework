@@ -34,4 +34,13 @@ public class AndroidWelcomeFlowImpl extends BaseFlow implements WelcomeFlow {
     public boolean isHomePageOpenedAfterSignIn() {
         return getHomePage().waitUntilIsOpened();
     }
+
+    @Override
+    public boolean isHeroLevelHelpBtnDisplayed() {
+        try {
+            return getHomePage().getHeroLevelHelpBtn().isDisplayed();
+        } catch (NoSuchElementException e) {
+            return false;
+        }
+    }
 }

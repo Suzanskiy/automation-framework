@@ -21,4 +21,48 @@ public class iosPointsAndLevelFlowImpl extends BaseFlow implements PointsAndLeve
         } catch (NoSuchElementException | TimeoutException e) {
         }
     }
+
+    @Override
+    public void clickOnHeroLevelHelpBtn() {
+    }
+
+    @Override
+    public boolean isPointsAndLevelsPageOpened() {
+        return false;
+    }
+
+    @Override
+    public boolean isPointsAndTiersSectionIsOpened() {
+        return false;
+    }
+
+    @Override
+    public boolean isHowItWorksSectionIsOpened() {
+        return false;
+    }
+
+    @Override
+    public boolean isTierExpirationDetailsDisplayed() {
+        return false;
+    }
+
+    @Override
+    public void clickOnDetailsBtn() {
+
+    }
+
+    @Override
+    public void clickOnCloseDetailsBtn() {
+
+    }
+
+    @Override
+    public void clickOnHowItWorksSectionBtn() {
+
+    }
+
+    @Override
+    public void clickOnCloseActivityBtn() {
+
+    }
 }
