@@ -3,6 +3,7 @@ package com.racetrac.mobile.multisite.racetrac.api;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.racetrac.mobile.framework.Configuration;
+import lombok.extern.log4j.Log4j;
 import okhttp3.Headers;
 import okhttp3.MediaType;
 import okhttp3.OkHttpClient;
@@ -19,7 +20,6 @@ import static java.net.HttpURLConnection.HTTP_CREATED;
 import static java.net.HttpURLConnection.HTTP_NO_CONTENT;
 import static java.net.HttpURLConnection.HTTP_OK;
 import static org.springframework.test.util.AssertionErrors.assertEquals;
-
 public abstract class HttpClient {
 
     protected final MediaType JSON = MediaType.get("application/json; charset=utf-8");
