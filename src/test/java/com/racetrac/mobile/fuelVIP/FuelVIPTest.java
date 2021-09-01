@@ -71,7 +71,6 @@ public class FuelVIPTest extends BaseTest {
         locationRequestFlow.clickNotNow();
         notificationRequestFlow.clickNotNow();
         promotionalOffersFlow.skipIOSPromotions();
-        signInFlow.clickGotItBtn();
         rewardsPopupFlow.clickGotItBtn();
         pointsAndLevelsFlow.clickGotItBtn();
         assertTrue(welcomeFlow.isHomePageOpenedAfterSignIn(), "Welcome page is not opened after sign in");
