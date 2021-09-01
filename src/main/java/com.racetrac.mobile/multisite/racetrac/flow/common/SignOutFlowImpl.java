@@ -29,6 +29,7 @@ public class SignOutFlowImpl extends BaseFlow implements SignOutFlow {
 
     @Override
     public void clickOnSignOutBtn() {
+        swipeUP();
         getAccountSettingsPage().getSignOutBtn().click();
     }
 }

@@ -1,26 +1,6 @@
 package com.racetrac.mobile.multisite.racetrac.flow;
 
-import com.racetrac.mobile.multisite.racetrac.page.AccountSettingsPage;
-import com.racetrac.mobile.multisite.racetrac.page.BecomeFuelVipPage;
-import com.racetrac.mobile.multisite.racetrac.page.CardsPage;
-import com.racetrac.mobile.multisite.racetrac.page.CouponsPage;
-import com.racetrac.mobile.multisite.racetrac.page.EditEmailPage;
-import com.racetrac.mobile.multisite.racetrac.page.EditPasswordPage;
-import com.racetrac.mobile.multisite.racetrac.page.FistBumpPage;
-import com.racetrac.mobile.multisite.racetrac.page.ForgotPassPage;
-import com.racetrac.mobile.multisite.racetrac.page.FuelVipPage;
-import com.racetrac.mobile.multisite.racetrac.page.HomePage;
-import com.racetrac.mobile.multisite.racetrac.page.InboxPage;
-import com.racetrac.mobile.multisite.racetrac.page.LoginPage;
-import com.racetrac.mobile.multisite.racetrac.page.PriceDisclaimerPage;
-import com.racetrac.mobile.multisite.racetrac.page.ProfilePage;
-import com.racetrac.mobile.multisite.racetrac.page.PromotionalOffersPage;
-import com.racetrac.mobile.multisite.racetrac.page.RewardsPopupPage;
-import com.racetrac.mobile.multisite.racetrac.page.SignUpPage;
-import com.racetrac.mobile.multisite.racetrac.page.SignUpSelectorPage;
-import com.racetrac.mobile.multisite.racetrac.page.StoresPage;
-import com.racetrac.mobile.multisite.racetrac.page.TurnOnLocationPage;
-import com.racetrac.mobile.multisite.racetrac.page.TurnOnNotificationPage;
+import com.racetrac.mobile.multisite.racetrac.page.*;
 import com.racetrac.mobile.multisite.racetrac.page.chrome.ChromeAcceptTermsPage;
 import com.racetrac.mobile.multisite.racetrac.page.chrome.ChromeMainPage;
 import com.racetrac.mobile.multisite.racetrac.page.chrome.TurnOnSyncNowPage;
@@ -73,6 +53,9 @@ public class BaseFlow {
     TurnOnSyncNowPage turnOnSyncNowPage;
     ChromeMainPage chromeMainPage;
     SafariBrowserPage safariBrowserPage;
+    PointsAndLevelsPage pointsAndLevelsPage;
+    PointsAndTiersPage pointsAndTiersPage;
+    HowItWorksPage howItWorksPage;
     //    SECTIONS
     NavigationDrawer navigationDrawer;
     AndroidNavBar androidNavBar;

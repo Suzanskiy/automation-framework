@@ -5,3 +5,4 @@ test-output/
 **.ipa
 src/main/resources/appium.properties
 src/main/resources/environment.properties
+*.iml

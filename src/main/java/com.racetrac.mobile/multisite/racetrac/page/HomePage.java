@@ -31,4 +31,7 @@ public class HomePage extends BaseMobilePage {
     @iOSXCUITFindBy(iOSClassChain = "**/XCUIElementTypeButton[`label == \"VIP\"`]")
     @AndroidFindBy(accessibility = "VIP")
     private MobileElement vipSection;
+
+    @AndroidFindBy(accessibility = "Help")
+    private MobileElement heroLevelHelpBtn;
 }
