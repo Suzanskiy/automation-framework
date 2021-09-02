@@ -68,6 +68,7 @@ public class RewardsSectionMainScreenAuthorizedUser extends BaseTest {
     public void rewardsScreenForUserWithPointsTest() {
         customerDto = testData.registerNewCustomer();
         punchhPointsClient.addRedeemPoints(customerDto, AVAILABLE_POINTS);
+        assertTrue(welcomeFlow.isHomePageOpened(), "Welcome page is not opened");
         signInFlow.openLoginInPage();
         assertTrue(signInFlow.isLoginPageOpened(), "Login page is not opened");
         signInFlow.authorize(customerDto);
@@ -78,7 +79,7 @@ public class RewardsSectionMainScreenAuthorizedUser extends BaseTest {
 
         assertTrue(welcomeFlow.isHomePageOpenedAfterSignIn(), "Welcome page is not opened after sign in");
         assertTrue(welcomeFlow.isRewardsSectionForUserWithPointsDisplayed(), "Rewards section is not displayed");
-        assertEquals(welcomeFlow.availablePoints(),AVAILABLE_POINTS);
+        assertEquals(welcomeFlow.availablePoints(), AVAILABLE_POINTS);
 
         pointsAndLevelsFlow.clickOnHeroLevelHelpBtn();
         assertTrue(pointsAndLevelsFlow.isPointsAndLevelsPageOpened(), "Points & Levels page is not opened");
@@ -87,17 +88,15 @@ public class RewardsSectionMainScreenAuthorizedUser extends BaseTest {
         welcomeFlow.clickOnRedeemPointsBtn();
 
         rewardsPopupFlow.waitUntilMessageAvailable();
-        assertTrue(rewardsPopupFlow.isRedeemPopUpHintDisplayed(),"redeem Pop-Up hint is not displayed");
+        assertTrue(rewardsPopupFlow.isRedeemPopUpHintDisplayed(), "redeem Pop-Up hint is not displayed");
         rewardsPopupFlow.clickGotItBtn();
         assertTrue(rewardsCatalogFlow.isRewardsCatalogPageOpened());
-        assertEquals(rewardsCatalogFlow.availablePoints(),AVAILABLE_POINTS);
+        assertEquals(rewardsCatalogFlow.availablePoints(), AVAILABLE_POINTS);
         rewardsCatalogFlow.closeRewardsCatalog();
     }
-
 
     @AfterMethod(alwaysRun = true)
     public void logOut() {
         signOutFlow.doSignOut();
     }
-
 }
