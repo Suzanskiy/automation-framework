@@ -43,4 +43,20 @@ public class AndroidWelcomeFlowImpl extends BaseFlow implements WelcomeFlow {
             return false;
         }
     }
+
+    @Step
+    @Override
+    public boolean isRedeemPointsIsDisplayed() {
+        try {
+            return getHomePage().getRedeemPointsBtn().isDisplayed();
+        } catch (NoSuchElementException e) {
+            return false;
+        }
+    }
+
+    @Step
+    @Override
+    public void clickRedeemPointsBtn() {
+        getHomePage().getRedeemPointsBtn().click();
+    }
 }

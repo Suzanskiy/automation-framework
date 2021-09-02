@@ -1,7 +1,7 @@
 package com.racetrac.mobile.multisite.racetrac.flow;
 
 public interface NotAdultNoticeFlow {
-     String getNotAdultNoticeMessage();
+    String getNotAdultNoticeMessage();
 
     boolean isNotAdultNoticeDisplayed();
 

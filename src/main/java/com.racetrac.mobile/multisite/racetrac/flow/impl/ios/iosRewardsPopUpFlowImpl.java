@@ -13,6 +13,11 @@ import static com.racetrac.mobile.framework.constants.PlatformsConstants.IOS;
 @Component
 @Profile(IOS)
 public class iosRewardsPopUpFlowImpl extends BaseFlow implements RewardsPopupFlow {
+    @Override
+    public boolean isRewardPopupPageOpened() {
+        return false;
+    }
+
     @Step
     @Override
     public void clickGotItBtn() {

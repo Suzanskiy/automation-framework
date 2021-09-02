@@ -27,4 +27,14 @@ public class IosWelcomeFlowImpl extends BaseFlow implements WelcomeFlow {
     public boolean isHeroLevelHelpBtnDisplayed() {
         return false;
     }
+
+    @Override
+    public boolean isRedeemPointsIsDisplayed() {
+        return false;
+    }
+
+    @Override
+    public void clickRedeemPointsBtn() {
+
+    }
 }

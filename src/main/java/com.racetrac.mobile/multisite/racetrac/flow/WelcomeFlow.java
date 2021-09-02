@@ -7,4 +7,7 @@ public interface WelcomeFlow {
 
     boolean isHeroLevelHelpBtnDisplayed();
 
+    boolean isRedeemPointsIsDisplayed();
+
+    void clickRedeemPointsBtn();
 }
