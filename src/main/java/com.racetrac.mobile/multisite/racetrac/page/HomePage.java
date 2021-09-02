@@ -11,6 +11,8 @@ import org.springframework.stereotype.Component;
 @Component
 @Getter
 public class HomePage extends BaseMobilePage {
+    private static final String DESCRIPTION_TEXT_WITH_NO_POINTS = "You have no points!";
+
     @PageLoading
     @iOSXCUITFindBy(accessibility = "IconSettings blue")
     @AndroidFindBy(accessibility = "Account Settings")
@@ -35,6 +37,16 @@ public class HomePage extends BaseMobilePage {
     @iOSXCUITFindBy(accessibility = "HelpIcon")
     @AndroidFindBy(accessibility = "Help")
     private MobileElement heroLevelHelpBtn;
+
+    @AndroidFindBy(uiAutomator = "new UiSelector().text(\"" + DESCRIPTION_TEXT_WITH_NO_POINTS + "\")")
+    @iOSXCUITFindBy(accessibility = DESCRIPTION_TEXT_WITH_NO_POINTS)
+    private MobileElement descriptionTextWhenUserHasNoPoints;
+
+    @AndroidFindBy(xpath = "//android.widget.TextView[contains(@text,\"Enter phone number\")]/../android.widget.ImageView[@resource-id=\"com.RaceTrac.Common.qa:id/imageGuestInfo\"]")
+    private MobileElement rewardsSectionScreenForUserWithoutPoints;
+
+    @AndroidFindBy(id = "com.RaceTrac.Common.qa:id/rewardsPoints")
+    private MobileElement availablePoints;
 
     @iOSXCUITFindBy(xpath = "//XCUIElementTypeButton[@name=\"REDEEM POINTS\"]")
     @AndroidFindBy(id = "com.RaceTrac.Common.qa:id/redeemPointsBtn")

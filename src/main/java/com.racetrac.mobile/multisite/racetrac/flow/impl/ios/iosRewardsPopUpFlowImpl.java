@@ -28,4 +28,15 @@ public class iosRewardsPopUpFlowImpl extends BaseFlow implements RewardsPopupFlo
             LOG.warn("Unable to click got it btn on Rewards pop up");
         }
     }
+
+    @Override
+    public boolean isGotItBtnDisplayed() {
+        return false;
+    }
+
+    @Step
+    @Override
+    public boolean isRedeemPopUpBtnDisplayed() {
+        return false;
+    }
 }

@@ -34,6 +34,36 @@ public class IosWelcomeFlowImpl extends BaseFlow implements WelcomeFlow {
     }
 
     @Override
+    public boolean isZeroPointsDescriptionDisplayed() {
+        return false;
+    }
+
+    @Override
+    public boolean isRewardsScreenFOrUserWithoutPointsDisplayed() {
+        return false;
+    }
+
+    @Override
+    public int availablePoints() {
+        return 0;
+    }
+
+    @Override
+    public boolean isRedeemPointsBtnDisplayed() {
+        return false;
+    }
+
+    @Override
+    public void clickOnRedeemPointsBtn() {
+
+    }
+
+    @Override
+    public boolean isRewardsSectionForUserWithPointsDisplayed() {
+        return false;
+    }
+
+    @Override
     public boolean isRedeemPointsIsDisplayed() {
         return getHomePage().getRedeemPointsBtn().isDisplayed();
     }

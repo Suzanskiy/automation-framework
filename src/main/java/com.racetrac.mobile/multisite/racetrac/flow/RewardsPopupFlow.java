@@ -5,4 +5,7 @@ public interface RewardsPopupFlow {
     boolean isRewardPopupPageOpened();
 
     void clickGotItBtn();
+
+    boolean isGotItBtnDisplayed();
+    boolean isRedeemPopUpBtnDisplayed();
 }
