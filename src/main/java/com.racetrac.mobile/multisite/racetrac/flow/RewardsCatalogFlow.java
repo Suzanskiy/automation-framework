@@ -10,4 +10,6 @@ public interface RewardsCatalogFlow extends NavigateFlow {
 
     boolean isNumberOfPointsEnough();
 
+    boolean isRewardsCatalogPageOpened();
+
 }

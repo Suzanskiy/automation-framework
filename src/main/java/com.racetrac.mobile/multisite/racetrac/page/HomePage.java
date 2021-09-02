@@ -34,4 +34,7 @@ public class HomePage extends BaseMobilePage {
 
     @AndroidFindBy(accessibility = "Help")
     private MobileElement heroLevelHelpBtn;
+
+    @AndroidFindBy(id = "com.RaceTrac.Common.qa:id/redeemPointsBtn")
+    private MobileElement redeemPointsBtn;
 }

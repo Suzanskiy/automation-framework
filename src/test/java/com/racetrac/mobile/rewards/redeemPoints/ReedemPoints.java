@@ -1,6 +1,7 @@
 package com.racetrac.mobile.rewards.redeemPoints;
 
 import com.racetrac.mobile.BaseTest;
+import com.racetrac.mobile.multisite.racetrac.api.PunchhPointsClient;
 import com.racetrac.mobile.multisite.racetrac.data.AccountProviderImpl;
 import com.racetrac.mobile.multisite.racetrac.dto.CustomerDto;
 import com.racetrac.mobile.multisite.racetrac.flow.*;
@@ -59,7 +60,8 @@ public class ReedemPoints extends BaseTest {
 
     @Test
     public void redeemPointsWithUserHas50pointsTest() {
-        customerDto = accountProviderImpl.getCustomerWith50Points();
+        customerDto = testData.registerNewCustomer();
+        punchhPointsClient.addRedeemPoints(customerDto, 50);
         assertTrue(welcomeFlow.isHomePageOpened(), "Welcome page is not opened");
         signInFlow.openLoginInPage();
         assertTrue(signInFlow.isLoginPageOpened(), "Login page is not opened");
@@ -79,7 +81,8 @@ public class ReedemPoints extends BaseTest {
 
     @Test
     public void redeemPointsWithUserHas130pointsTest() {
-        customerDto = accountProviderImpl.getCustomerWith130Points();
+        customerDto = testData.registerNewCustomer();
+        punchhPointsClient.addRedeemPoints(customerDto, 350);
         assertTrue(welcomeFlow.isHomePageOpened(), "Welcome page is not opened");
         signInFlow.openLoginInPage();
         assertTrue(signInFlow.isLoginPageOpened(), "Login page is not opened");
@@ -95,6 +98,7 @@ public class ReedemPoints extends BaseTest {
         assertTrue(rewardsCatalogFlow.isNumberOfPointsEnough(), "The number of points is not enough to make redeem");
         rewardsCatalogFlow.clickRedeemBtn();
         rewardsCatalogFlow.clickRedeemPopupBtn();
+//        assertTrue(rewardsCatalogFlow.isRewardsCatalogPageOpened(),"Rewards Catalog page is not opened");
         assertTrue(rewardsCatalogFlow.isUnclaimedRewardsIsDisplayed(), " Unclaimed Rewards is not displayed");
         assertTrue(rewardsCatalogFlow.isNumberOfPointsEnough(), "The number of points is not enough to make redeem");
         rewardsCatalogFlow.clickRedeemBtn();

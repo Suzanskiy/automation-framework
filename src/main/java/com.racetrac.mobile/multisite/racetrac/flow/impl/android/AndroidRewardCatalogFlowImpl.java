@@ -2,6 +2,7 @@ package com.racetrac.mobile.multisite.racetrac.flow.impl.android;
 
 import com.racetrac.mobile.multisite.racetrac.flow.BaseFlow;
 import com.racetrac.mobile.multisite.racetrac.flow.RewardsCatalogFlow;
+import io.qameta.allure.Step;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.TimeoutException;
 import org.springframework.context.annotation.Profile;
@@ -16,6 +17,7 @@ public class AndroidRewardCatalogFlowImpl extends BaseFlow implements RewardsCat
 
     private static final int MINIMUM_SPENT_AMOUNT = 60;
 
+    @Step
     @Override
     public void clickRedeemBtn() {
         try {
@@ -26,23 +28,24 @@ public class AndroidRewardCatalogFlowImpl extends BaseFlow implements RewardsCat
         }
     }
 
+    @Step
     @Override
     public void clickRedeemPopupBtn() {
         try {
             getRewardsCatalogPage().refresh();
             getRewardsCatalogPage().getRedeemPopupBtn().click();
-            getRewardsCatalogPage().refresh();
+            getRewardsCatalogPage().waitUntilIsOpened();
         } catch (NoSuchElementException | TimeoutException e) {
             LOG.warn("Points screen not opened, skipping..");
         }
     }
 
-
+    @Step
     @Override
     public boolean isUnclaimedRewardsIsDisplayed() {
         try {
-            getRewardsCatalogPage().refresh();
-            getRewardsCatalogPage().waitUntilIsOpened();
+//            getRewardsCatalogPage().refresh();
+//            getRewardsCatalogPage().waitUntilIsOpened();
             return getRewardsCatalogPage().getUnclaimedRewardsLabel().isDisplayed();
         } catch (NoSuchElementException e) {
             LOG.warn("Unclaimed Rewards Label is not displayed");
@@ -50,6 +53,7 @@ public class AndroidRewardCatalogFlowImpl extends BaseFlow implements RewardsCat
         }
     }
 
+    @Step
     @Override
     public boolean isNumberOfPointsEnough() {
         try {
@@ -63,7 +67,13 @@ public class AndroidRewardCatalogFlowImpl extends BaseFlow implements RewardsCat
         return false;
     }
 
+    @Step
+    @Override
+    public boolean isRewardsCatalogPageOpened() {
+        return getRewardsCatalogPage().waitUntilIsOpened();
+    }
 
+    @Step
     @Override
     public void navigateBack() {
         pressBackBtn();

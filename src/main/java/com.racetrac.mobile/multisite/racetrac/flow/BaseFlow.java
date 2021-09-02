@@ -6,14 +6,7 @@ import com.racetrac.mobile.multisite.racetrac.page.chrome.ChromeMainPage;
 import com.racetrac.mobile.multisite.racetrac.page.chrome.TurnOnSyncNowPage;
 import com.racetrac.mobile.multisite.racetrac.page.diff.AccountSettingsPageAuthorised;
 import com.racetrac.mobile.multisite.racetrac.page.safari.SafariBrowserPage;
-import com.racetrac.mobile.multisite.racetrac.views.AndroidNavBar;
-import com.racetrac.mobile.multisite.racetrac.views.CouponsView;
-import com.racetrac.mobile.multisite.racetrac.views.ErrorMessageVIew;
-import com.racetrac.mobile.multisite.racetrac.views.FraudErrorMessageView;
-import com.racetrac.mobile.multisite.racetrac.views.IosNavBar;
-import com.racetrac.mobile.multisite.racetrac.views.NavigationDrawer;
-import com.racetrac.mobile.multisite.racetrac.views.NotAdultNotice;
-import com.racetrac.mobile.multisite.racetrac.views.PointsAndLevelsView;
+import com.racetrac.mobile.multisite.racetrac.views.*;
 import lombok.Getter;
 import lombok.Setter;
 import org.slf4j.Logger;
@@ -65,6 +58,8 @@ public class BaseFlow {
     FraudErrorMessageView fraudErrorMessageView;
     PointsAndLevelsView pointsAndLevelsView;
     NotAdultNotice notAdultNotice;
+    NoPointsNotice noPointsNotice;
     RewardsPopupPage rewardsPopupPage;
+    RewardsCatalogPage rewardsCatalogPage;
 
 }
