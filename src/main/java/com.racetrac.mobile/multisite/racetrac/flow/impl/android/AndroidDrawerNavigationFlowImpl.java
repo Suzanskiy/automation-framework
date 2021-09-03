@@ -3,6 +3,7 @@ package com.racetrac.mobile.multisite.racetrac.flow.impl.android;
 import com.racetrac.mobile.multisite.racetrac.flow.BaseFlow;
 import com.racetrac.mobile.multisite.racetrac.flow.NavigationFlow;
 import io.qameta.allure.Step;
+import org.openqa.selenium.NoSuchElementException;
 import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Component;
 
@@ -77,5 +78,19 @@ public class AndroidDrawerNavigationFlowImpl extends BaseFlow implements Navigat
     public void navigateToRewardsCards() {
         getNavigationDrawer().getDrawer().click();
         getAndroidNavBar().getRewardsCardsTab().click();
+    }
+
+    @Override
+    public boolean isRewardCatalogDisplayed() {
+        try {
+            return getAndroidNavBar().getRewardsCatalog().isDisplayed();
+        } catch (NoSuchElementException e) {
+            return false;
+        }
+    }
+
+    @Override
+    public void drawerClick() {
+        getNavigationDrawer().getDrawer().click();
     }
 }

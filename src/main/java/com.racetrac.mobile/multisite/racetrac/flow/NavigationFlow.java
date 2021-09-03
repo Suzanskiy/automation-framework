@@ -22,4 +22,8 @@ public interface NavigationFlow {
     public boolean isInboxTabOpened();
 
     public void navigateToRewardsCards();
+
+    public boolean isRewardCatalogDisplayed();
+
+    public void drawerClick();
 }

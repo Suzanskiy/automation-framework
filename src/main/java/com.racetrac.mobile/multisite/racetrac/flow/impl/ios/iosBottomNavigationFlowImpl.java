@@ -82,4 +82,14 @@ public class iosBottomNavigationFlowImpl extends BaseFlow implements NavigationF
     public void navigateToRewardsCards() {
 
     }
+
+    @Override
+    public boolean isRewardCatalogDisplayed() {
+        return false;
+    }
+
+    @Override
+    public void drawerClick() {
+
+    }
 }
