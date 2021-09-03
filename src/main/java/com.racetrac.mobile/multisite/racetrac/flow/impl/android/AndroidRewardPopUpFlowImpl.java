@@ -13,6 +13,11 @@ import static com.racetrac.mobile.framework.constants.PlatformsConstants.ANDROID
 public class AndroidRewardPopUpFlowImpl extends BaseFlow implements RewardsPopupFlow {
 
     @Override
+    public boolean isRewardPopupPageOpened() {
+        return getRewardsPopupPage().waitUntilIsOpened();
+    }
+
+    @Override
     public void clickGotItBtn() {
         try {
             getRewardsPopupPage().getGotItBtn().click();

@@ -32,6 +32,11 @@ public class HomePage extends BaseMobilePage {
     @AndroidFindBy(accessibility = "VIP")
     private MobileElement vipSection;
 
+    @iOSXCUITFindBy(accessibility = "HelpIcon")
     @AndroidFindBy(accessibility = "Help")
     private MobileElement heroLevelHelpBtn;
+
+    @iOSXCUITFindBy(xpath = "//XCUIElementTypeButton[@name=\"REDEEM POINTS\"]")
+    @AndroidFindBy(id = "com.RaceTrac.Common.qa:id/redeemPointsBtn")
+    private MobileElement redeemPointsBtn;
 }

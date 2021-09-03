@@ -13,11 +13,16 @@ import static com.racetrac.mobile.framework.constants.PlatformsConstants.IOS;
 @Component
 @Profile(IOS)
 public class iosRewardsPopUpFlowImpl extends BaseFlow implements RewardsPopupFlow {
+    @Override
+    public boolean isRewardPopupPageOpened() {
+        return getRewardsPopupPage().waitUntilIsOpened();
+    }
+
     @Step
     @Override
     public void clickGotItBtn() {
+        getRewardsPopupPage().waitUntilIsOpened();
         try {
-            getRewardsPopupPage().waitUntilIsOpened();
             getRewardsPopupPage().getGotItBtn().click();
         } catch (NoSuchElementException | TimeoutException e) {
             LOG.warn("Unable to click got it btn on Rewards pop up");

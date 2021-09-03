@@ -78,7 +78,6 @@ public class PunchhPointsClient extends HttpClient {
     @SneakyThrows
     private String calculateSignature(final String requestBody, final String uri) {
         String data = uri + requestBody;
-        System.out.println("data: " + data);
         return encodeHmacSha256(data);
     }
 
