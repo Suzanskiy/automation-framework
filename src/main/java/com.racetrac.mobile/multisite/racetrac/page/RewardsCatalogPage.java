@@ -1,5 +1,6 @@
 package com.racetrac.mobile.multisite.racetrac.page;
 
+import com.racetrac.mobile.framework.annotations.PageLoading;
 import com.racetrac.mobile.multisite.BaseMobilePage;
 import io.appium.java_client.MobileElement;
 import io.appium.java_client.pagefactory.AndroidFindBy;
@@ -10,8 +11,11 @@ import org.springframework.stereotype.Component;
 @Component
 @Getter
 public class RewardsCatalogPage extends BaseMobilePage {
+
+    @PageLoading
     @iOSXCUITFindBy(accessibility = "NavBarClose")
     private MobileElement closeBtn;
+
     @iOSXCUITFindBy(xpath = "//XCUIElementTypeButton[@name=\"REDEEM\"]")
     @AndroidFindBy(id = "com.RaceTrac.Common.qa:id/redeemButton")
     private MobileElement redeemBtn;
@@ -27,5 +31,9 @@ public class RewardsCatalogPage extends BaseMobilePage {
     @iOSXCUITFindBy(xpath = "//XCUIElementTypeApplication[@name=\"RaceTrac QA\"]/XCUIElementTypeWindow[1]/XCUIElementTypeOther/XCUIElementTypeOther[2]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeCollectionView/XCUIElementTypeCell[1]/XCUIElementTypeOther/XCUIElementTypeStaticText[1]")
     @AndroidFindBy(id = "com.RaceTrac.Common.qa:id/memberPoints")
     private MobileElement rewardsCatalogNumberOfPoints;
+
+    @PageLoading
+    @AndroidFindBy(id = "com.RaceTrac.Common.qa:id/reward_catalog_back_btn")
+    private MobileElement rewardsCatalogBackBtn;
 
 }

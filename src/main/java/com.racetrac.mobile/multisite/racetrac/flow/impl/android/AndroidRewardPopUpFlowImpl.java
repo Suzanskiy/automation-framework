@@ -2,6 +2,7 @@ package com.racetrac.mobile.multisite.racetrac.flow.impl.android;
 
 import com.racetrac.mobile.multisite.racetrac.flow.BaseFlow;
 import com.racetrac.mobile.multisite.racetrac.flow.RewardsPopupFlow;
+import com.racetrac.mobile.util.appium.AppiumWaitingUtils;
 import io.qameta.allure.Step;
 import org.openqa.selenium.NoSuchElementException;
 import org.springframework.context.annotation.Profile;
@@ -19,6 +20,7 @@ public class AndroidRewardPopUpFlowImpl extends BaseFlow implements RewardsPopup
         return getRewardsPopupPage().waitUntilIsOpened();
     }
 
+    @Step
     @Override
     public void clickGotItBtn() {
         try {
@@ -28,6 +30,7 @@ public class AndroidRewardPopUpFlowImpl extends BaseFlow implements RewardsPopup
         }
     }
 
+    @Step
     @Override
     public boolean isGotItBtnDisplayed() {
         return getRewardsPopupPage().getGotItBtn().isDisplayed();
@@ -38,4 +41,26 @@ public class AndroidRewardPopUpFlowImpl extends BaseFlow implements RewardsPopup
     public boolean isRedeemPopUpBtnDisplayed() {
         return getRewardsPopupPage().getRedeemBtn().isDisplayed();
     }
+    @Step
+    @Override
+    public boolean isTutorialArrowDisplayed() {
+        return getRewardsPopupPage().getTutorialPopUpArrow().isDisplayed();
+    }
+    @Step
+    @Override
+    public boolean isRewardsPopUpTutorialMessageDisplayed() {
+        return getRewardsPopupPage().getRewardsPopUpTutorialMessage().isDisplayed();
+    }
+    @Step
+    @Override
+    public boolean isRedeemPopUpHintDisplayed() {
+        return isRewardsPopUpTutorialMessageDisplayed() && isRedeemPopUpBtnDisplayed() &&
+                isGotItBtnDisplayed() && isTutorialArrowDisplayed();
+    }
+    @Step
+    @Override
+    public void waitUntilMessageAvailable() {
+        AppiumWaitingUtils.waitUntilIsTrue(() -> isRewardsPopUpTutorialMessageDisplayed());
+    }
+
 }

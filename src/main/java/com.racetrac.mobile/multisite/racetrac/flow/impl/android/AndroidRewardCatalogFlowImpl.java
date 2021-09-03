@@ -71,6 +71,16 @@ public class AndroidRewardCatalogFlowImpl extends BaseFlow implements RewardsCat
     public boolean isRewardsCatalogPageOpened() {
         return getRewardsCatalogPage().waitUntilIsOpened();
     }
+    @Step
+    @Override
+    public int availablePoints() {
+        return Integer.parseInt(getRewardsCatalogPage().getRewardsCatalogNumberOfPoints().getAttribute("text"));
+    }
+    @Step
+    @Override
+    public void closeRewardsCatalog() {
+        getRewardsCatalogPage().getRewardsCatalogBackBtn().click();
+    }
 
     @Step
     @Override

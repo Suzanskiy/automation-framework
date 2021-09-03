@@ -32,7 +32,8 @@ public class RewardsSectionMainScreenAuthorizedUser extends BaseTest {
     RewardsPopupFlow rewardsPopupFlow;
     @Autowired
     PunchhPointsClient punchhPointsClient;
-
+    @Autowired
+    RewardsCatalogFlow rewardsCatalogFlow;
     CustomerDto customerDto;
 
     private static final int AVAILABLE_POINTS = 100;
@@ -69,7 +70,6 @@ public class RewardsSectionMainScreenAuthorizedUser extends BaseTest {
     public void rewardsScreenForUserWithPointsTest() {
         customerDto = testData.registerNewCustomer();
         punchhPointsClient.addRedeemPoints(customerDto, AVAILABLE_POINTS);
-        assertTrue(welcomeFlow.isHomePageOpened(), "Welcome page is not opened");
         signInFlow.openLoginInPage();
         assertTrue(signInFlow.isLoginPageOpened(), "Login page is not opened");
         signInFlow.authorize(customerDto);
@@ -88,11 +88,12 @@ public class RewardsSectionMainScreenAuthorizedUser extends BaseTest {
         assertTrue(welcomeFlow.isHomePageOpenedAfterSignIn());
         welcomeFlow.clickOnRedeemPointsBtn();
 
-        assertTrue(rewardsPopupFlow.isRedeemPopUpBtnDisplayed(),"Redeem Pop-Up button is not displayed");
-
-
-
-
+        rewardsPopupFlow.waitUntilMessageAvailable();
+        assertTrue(rewardsPopupFlow.isRedeemPopUpHintDisplayed(),"redeem Pop-Up hint is not displayed");
+        rewardsPopupFlow.clickGotItBtn();
+        assertTrue(rewardsCatalogFlow.isRewardsCatalogPageOpened());
+        assertEquals(rewardsCatalogFlow.availablePoints(),AVAILABLE_POINTS);
+        rewardsCatalogFlow.closeRewardsCatalog();
     }
 
 

@@ -30,11 +30,13 @@ public class AndroidWelcomeFlowImpl extends BaseFlow implements WelcomeFlow {
         return getHomePage().waitUntilIsOpened();
     }
 
+    @Step
     @Override
     public boolean isHomePageOpenedAfterSignIn() {
         return getHomePage().waitUntilIsOpened();
     }
 
+    @Step
     @Override
     public boolean isHeroLevelHelpBtnDisplayed() {
         try {
@@ -44,31 +46,31 @@ public class AndroidWelcomeFlowImpl extends BaseFlow implements WelcomeFlow {
         }
     }
 
+    @Step
     @Override
     public boolean isZeroPointsDescriptionDisplayed() {
         return getHomePage().getDescriptionTextWhenUserHasNoPoints().isDisplayed();
     }
 
+    @Step
     @Override
     public boolean isRewardsScreenFOrUserWithoutPointsDisplayed() {
         return getHomePage().getRewardsSectionScreenForUserWithoutPoints().isDisplayed();
     }
 
+    @Step
     @Override
     public int availablePoints() {
         return Integer.parseInt(getHomePage().getAvailablePoints().getAttribute("text"));
     }
 
-    @Override
-    public boolean isRedeemPointsBtnDisplayed() {
-        return getHomePage().getRedeemPointsBtn().isDisplayed();
-    }
-
+    @Step
     @Override
     public void clickOnRedeemPointsBtn() {
         getHomePage().getRedeemPointsBtn().click();
     }
 
+    @Step
     @Override
     public boolean isRewardsSectionForUserWithPointsDisplayed() {
         return isRedeemPointsBtnDisplayed() && isHeroLevelHelpBtnDisplayed();
@@ -76,7 +78,7 @@ public class AndroidWelcomeFlowImpl extends BaseFlow implements WelcomeFlow {
 
     @Step
     @Override
-    public boolean isRedeemPointsIsDisplayed() {
+    public boolean isRedeemPointsBtnDisplayed() {
         try {
             return getHomePage().getRedeemPointsBtn().isDisplayed();
         } catch (NoSuchElementException e) {
@@ -84,9 +86,4 @@ public class AndroidWelcomeFlowImpl extends BaseFlow implements WelcomeFlow {
         }
     }
 
-    @Step
-    @Override
-    public void clickRedeemPointsBtn() {
-        getHomePage().getRedeemPointsBtn().click();
-    }
 }

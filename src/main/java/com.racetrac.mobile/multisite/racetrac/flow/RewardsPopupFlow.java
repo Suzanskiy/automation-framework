@@ -7,5 +7,15 @@ public interface RewardsPopupFlow {
     void clickGotItBtn();
 
     boolean isGotItBtnDisplayed();
+
     boolean isRedeemPopUpBtnDisplayed();
+
+    boolean isTutorialArrowDisplayed();
+
+    boolean isRewardsPopUpTutorialMessageDisplayed();
+
+    boolean isRedeemPopUpHintDisplayed();
+
+    void waitUntilMessageAvailable();
+
 }

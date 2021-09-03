@@ -59,7 +59,7 @@ public class RedeemPointsTest extends BaseTest {
         notificationRequestFlow.clickNotNow();
         signInFlow.clickGotItBtn();
         pointsAndLevelsFlow.clickGotItBtn();
-        assertFalse(welcomeFlow.isRedeemPointsIsDisplayed(), " Redeem points is displayed");
+        assertFalse(welcomeFlow.isRedeemPointsBtnDisplayed(), " Redeem points is displayed");
     }
 
     @Test
@@ -75,7 +75,7 @@ public class RedeemPointsTest extends BaseTest {
         rewardsPopupFlow.clickGotItBtn();
         pointsAndLevelsFlow.clickGotItBtn();
         assertTrue(welcomeFlow.isHomePageOpenedAfterSignIn(), "Welcome page is not opened after sign in");
-        welcomeFlow.clickRedeemPointsBtn();
+        welcomeFlow.clickOnRedeemPointsBtn();
         rewardsPopupFlow.clickGotItBtn();
         rewardsCatalogFlow.clickRedeemBtn();
         assertEquals(noPointsNoticeFlow.getNotificationMessages(), NO_POINTS_TO_EXCHANGE_TEXT);
@@ -97,7 +97,7 @@ public class RedeemPointsTest extends BaseTest {
         rewardsPopupFlow.clickGotItBtn();
         pointsAndLevelsFlow.clickGotItBtn();
         assertTrue(welcomeFlow.isHomePageOpenedAfterSignIn(), "Welcome page is not opened after sign in");
-        welcomeFlow.clickRedeemPointsBtn();
+        welcomeFlow.clickOnRedeemPointsBtn();
         assertTrue(rewardsPopupFlow.isRewardPopupPageOpened(), "Reward Popup is not opened");
         rewardsPopupFlow.clickGotItBtn();
         assertTrue(rewardsCatalogFlow.isQuantityOfPointsEnough(), "The number of points is not enough to make redeem");

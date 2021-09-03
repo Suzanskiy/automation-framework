@@ -11,6 +11,9 @@ import org.springframework.stereotype.Component;
 @Component
 @Getter
 public class RewardsPopupPage extends BaseMobilePage {
+    private static final String DESCRIPTION_REWARDS_POP_UP_MESSAGE = "Tap Redeem to add a reward to your loyalty\n" +
+            "card . Rewards expire in 24 hours and points\n" +
+            "are returned for unused rewards";
 
     @PageLoading
     @iOSXCUITFindBy(xpath = "//XCUIElementTypeButton[@name=\"GOT IT\"]")
@@ -20,5 +23,10 @@ public class RewardsPopupPage extends BaseMobilePage {
     @AndroidFindBy(id = "com.RaceTrac.Common.qa:id/redeemButton")
     private MobileElement redeemBtn;
 
+    @AndroidFindBy(id ="com.RaceTrac.Common.qa:id/rewardsTutorialArrow")
+    private MobileElement tutorialPopUpArrow;
+
+    @AndroidFindBy(uiAutomator = "new UiSelector().text(\"" + DESCRIPTION_REWARDS_POP_UP_MESSAGE + "\")")
+    private MobileElement rewardsPopUpTutorialMessage;
 
 }

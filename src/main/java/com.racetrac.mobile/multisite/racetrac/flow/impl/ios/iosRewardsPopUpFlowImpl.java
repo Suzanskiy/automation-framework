@@ -39,4 +39,25 @@ public class iosRewardsPopUpFlowImpl extends BaseFlow implements RewardsPopupFlo
     public boolean isRedeemPopUpBtnDisplayed() {
         return false;
     }
+
+    @Override
+    public boolean isTutorialArrowDisplayed() {
+        return false;
+    }
+
+    @Override
+    public boolean isRewardsPopUpTutorialMessageDisplayed() {
+        return false;
+    }
+
+    @Override
+    public boolean isRedeemPopUpHintDisplayed() {
+        return false;
+    }
+
+    @Override
+    public void waitUntilMessageAvailable() {
+
+    }
+
 }

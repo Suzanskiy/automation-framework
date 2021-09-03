@@ -13,12 +13,10 @@ public interface WelcomeFlow {
 
     int availablePoints();
 
-    boolean isRedeemPointsBtnDisplayed();
-
     void clickOnRedeemPointsBtn();
 
     boolean isRewardsSectionForUserWithPointsDisplayed();
-    boolean isRedeemPointsIsDisplayed();
 
-    void clickRedeemPointsBtn();
+    boolean isRedeemPointsBtnDisplayed();
+
 }
