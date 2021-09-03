@@ -79,7 +79,7 @@ public class RewardsSectionMainScreenAuthorizedUser extends BaseTest {
 
         assertTrue(welcomeFlow.isHomePageOpenedAfterSignIn(), "Welcome page is not opened after sign in");
         assertTrue(welcomeFlow.isRewardsSectionForUserWithPointsDisplayed(), "Rewards section is not displayed");
-        assertEquals(welcomeFlow.availablePoints(), AVAILABLE_POINTS);
+        assertEquals(welcomeFlow.availablePoints(),AVAILABLE_POINTS);
 
         pointsAndLevelsFlow.clickOnHeroLevelHelpBtn();
         assertTrue(pointsAndLevelsFlow.isPointsAndLevelsPageOpened(), "Points & Levels page is not opened");
