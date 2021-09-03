@@ -4,16 +4,25 @@ import com.racetrac.mobile.BaseTest;
 import com.racetrac.mobile.multisite.racetrac.api.PunchhPointsClient;
 import com.racetrac.mobile.multisite.racetrac.data.AccountProviderImpl;
 import com.racetrac.mobile.multisite.racetrac.dto.CustomerDto;
-import com.racetrac.mobile.multisite.racetrac.flow.*;
+import com.racetrac.mobile.multisite.racetrac.flow.LocationRequestFlow;
+import com.racetrac.mobile.multisite.racetrac.flow.NoPointsNoticeFlow;
+import com.racetrac.mobile.multisite.racetrac.flow.NotificationRequestFlow;
+import com.racetrac.mobile.multisite.racetrac.flow.PointsAndLevelsFlow;
+import com.racetrac.mobile.multisite.racetrac.flow.RewardsCatalogFlow;
+import com.racetrac.mobile.multisite.racetrac.flow.RewardsPopupFlow;
+import com.racetrac.mobile.multisite.racetrac.flow.SignInFlow;
+import com.racetrac.mobile.multisite.racetrac.flow.SignOutFlow;
+import com.racetrac.mobile.multisite.racetrac.flow.WelcomeFlow;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.testng.annotations.AfterMethod;
-import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 import static com.racetrac.mobile.multisite.racetrac.data.ComparableStrings.NO_POINTS_TO_EXCHANGE_TEXT;
-import static org.testng.Assert.*;
+import static org.testng.Assert.assertEquals;
+import static org.testng.Assert.assertFalse;
+import static org.testng.Assert.assertTrue;
 
-public class ReedemPoints extends BaseTest {
+public class RedeemPointsTest extends BaseTest {
 
     @Autowired
     WelcomeFlow welcomeFlow;
@@ -39,11 +48,6 @@ public class ReedemPoints extends BaseTest {
     @Autowired
     PunchhPointsClient punchhPointsClient;
 
-    @BeforeMethod
-    public void setUp() {
-
-    }
-
     @Test
     public void userWithoutAnyPointsTest() {
         customerDto = testData.registerNewCustomer();
@@ -68,7 +72,7 @@ public class ReedemPoints extends BaseTest {
         signInFlow.authorize(customerDto);
         locationRequestFlow.clickNotNow();
         notificationRequestFlow.clickNotNow();
-        signInFlow.clickGotItBtn();
+        rewardsPopupFlow.clickGotItBtn();
         pointsAndLevelsFlow.clickGotItBtn();
         assertTrue(welcomeFlow.isHomePageOpenedAfterSignIn(), "Welcome page is not opened after sign in");
         welcomeFlow.clickRedeemPointsBtn();
@@ -90,20 +94,21 @@ public class ReedemPoints extends BaseTest {
         locationRequestFlow.clickNotNow();
         notificationRequestFlow.clickNotNow();
         signInFlow.clickGotItBtn();
+        rewardsPopupFlow.clickGotItBtn();
         pointsAndLevelsFlow.clickGotItBtn();
         assertTrue(welcomeFlow.isHomePageOpenedAfterSignIn(), "Welcome page is not opened after sign in");
         welcomeFlow.clickRedeemPointsBtn();
         assertTrue(rewardsPopupFlow.isRewardPopupPageOpened(), "Reward Popup is not opened");
         rewardsPopupFlow.clickGotItBtn();
-        assertTrue(rewardsCatalogFlow.isNumberOfPointsEnough(), "The number of points is not enough to make redeem");
+        assertTrue(rewardsCatalogFlow.isQuantityOfPointsEnough(), "The number of points is not enough to make redeem");
         rewardsCatalogFlow.clickRedeemBtn();
-        rewardsCatalogFlow.clickRedeemPopupBtn();
-//        assertTrue(rewardsCatalogFlow.isRewardsCatalogPageOpened(),"Rewards Catalog page is not opened");
+        rewardsCatalogFlow.clickRedeemOnPopupBtn();
         assertTrue(rewardsCatalogFlow.isUnclaimedRewardsIsDisplayed(), " Unclaimed Rewards is not displayed");
-        assertTrue(rewardsCatalogFlow.isNumberOfPointsEnough(), "The number of points is not enough to make redeem");
+        assertTrue(rewardsCatalogFlow.isQuantityOfPointsEnough(), "The number of points is not enough to make redeem");
         rewardsCatalogFlow.clickRedeemBtn();
-        rewardsCatalogFlow.clickRedeemPopupBtn();
-        assertFalse(rewardsCatalogFlow.isNumberOfPointsEnough(), "The number of points is not enough to make redeem");
+        rewardsCatalogFlow.clickRedeemOnPopupBtn();
+        //Getting sad smile until Bottle of water will not returned //// FIXME: 03.09.2021
+        assertFalse(rewardsCatalogFlow.isQuantityOfPointsEnough(), "The number of points is not enough to make redeem");
         rewardsCatalogFlow.clickRedeemBtn();
         assertEquals(noPointsNoticeFlow.getNotificationMessages(), NO_POINTS_TO_EXCHANGE_TEXT);
         noPointsNoticeFlow.clickOK();

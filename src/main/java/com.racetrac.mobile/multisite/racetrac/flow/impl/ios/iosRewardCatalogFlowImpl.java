@@ -1,4 +1,4 @@
-package com.racetrac.mobile.multisite.racetrac.flow.impl.android;
+package com.racetrac.mobile.multisite.racetrac.flow.impl.ios;
 
 import com.racetrac.mobile.multisite.racetrac.flow.BaseFlow;
 import com.racetrac.mobile.multisite.racetrac.flow.RewardsCatalogFlow;
@@ -8,12 +8,11 @@ import org.openqa.selenium.TimeoutException;
 import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Component;
 
-import static com.racetrac.mobile.framework.constants.PlatformsConstants.ANDROID;
-import static com.racetrac.mobile.util.appium.AppiumDriverUtils.pressBackBtn;
+import static com.racetrac.mobile.framework.constants.PlatformsConstants.IOS;
 
-@Profile(ANDROID)
+@Profile(IOS)
 @Component
-public class AndroidRewardCatalogFlowImpl extends BaseFlow implements RewardsCatalogFlow {
+public class iosRewardCatalogFlowImpl extends BaseFlow implements RewardsCatalogFlow {
 
     private static final int MINIMUM_SPENT_AMOUNT = 60;
 
@@ -21,9 +20,8 @@ public class AndroidRewardCatalogFlowImpl extends BaseFlow implements RewardsCat
     @Override
     public void clickRedeemBtn() {
         try {
-            getRewardsPopupPage().refresh();
             getRewardsCatalogPage().getRedeemBtn().click();
-        } catch (Exception e) {
+        } catch (NoSuchElementException e) {
             LOG.warn("Unable to click btn on reward catalog redeem");
         }
     }
@@ -43,8 +41,7 @@ public class AndroidRewardCatalogFlowImpl extends BaseFlow implements RewardsCat
     @Override
     public boolean isUnclaimedRewardsIsDisplayed() {
         try {
-//            getRewardsCatalogPage().refresh();
-//            getRewardsCatalogPage().waitUntilIsOpened();
+            getRewardsCatalogPage().refresh();
             return getRewardsCatalogPage().getUnclaimedRewardsLabel().isDisplayed();
         } catch (NoSuchElementException e) {
             LOG.warn("Unclaimed Rewards Label is not displayed");
@@ -75,6 +72,6 @@ public class AndroidRewardCatalogFlowImpl extends BaseFlow implements RewardsCat
     @Step
     @Override
     public void navigateBack() {
-        pressBackBtn();
+        getRewardsCatalogPage().getCloseBtn().click();
     }
 }

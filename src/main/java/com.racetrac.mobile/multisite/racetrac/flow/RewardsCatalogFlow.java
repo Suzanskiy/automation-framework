@@ -4,11 +4,11 @@ public interface RewardsCatalogFlow extends NavigateFlow {
 
     void clickRedeemBtn();
 
-    void clickRedeemPopupBtn();
+    void clickRedeemOnPopupBtn();
 
     boolean isUnclaimedRewardsIsDisplayed();
 
-    boolean isNumberOfPointsEnough();
+    boolean isQuantityOfPointsEnough();
 
     boolean isRewardsCatalogPageOpened();
 

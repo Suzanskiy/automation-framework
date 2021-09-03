@@ -61,5 +61,6 @@ public class BaseFlow {
     NoPointsNotice noPointsNotice;
     RewardsPopupPage rewardsPopupPage;
     RewardsCatalogPage rewardsCatalogPage;
+    EnoughRedeemPointsPopUp enoughRedeemPointsPopUp;
 
 }
