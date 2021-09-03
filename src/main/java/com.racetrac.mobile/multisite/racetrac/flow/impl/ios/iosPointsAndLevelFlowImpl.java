@@ -18,51 +18,52 @@ public class iosPointsAndLevelFlowImpl extends BaseFlow implements PointsAndLeve
         try {
             getPointsAndLevelsView().waitUntilIsOpened();
             getPointsAndLevelsView().getPointsGotItBtn().click();
-        } catch (NoSuchElementException | TimeoutException e) {
+        } catch (NoSuchElementException | TimeoutException ignored) {
         }
     }
 
     @Override
     public void clickOnHeroLevelHelpBtn() {
+        getHomePage().getHeroLevelHelpBtn().click();
     }
 
     @Override
     public boolean isPointsAndLevelsPageOpened() {
-        return false;
+        return getPointsAndLevelsPage().waitUntilIsOpened();
     }
 
     @Override
     public boolean isPointsAndTiersSectionIsOpened() {
-        return false;
+        return getPointsAndTiersPage().waitUntilIsOpened();
     }
 
     @Override
     public boolean isHowItWorksSectionIsOpened() {
-        return false;
+        return getHowItWorksPage().waitUntilIsOpened();
     }
 
     @Override
     public boolean isTierExpirationDetailsDisplayed() {
-        return false;
+        return getPointsAndTiersPage().getTierExpirationDetails().isDisplayed();
     }
 
     @Override
     public void clickOnDetailsBtn() {
-
+        getPointsAndTiersPage().getLevelDetailsBtn().click();
     }
 
     @Override
     public void clickOnCloseDetailsBtn() {
-
+        getPointsAndTiersPage().getCloseDetailsBtn().click();
     }
 
     @Override
     public void clickOnHowItWorksSectionBtn() {
-
+        getPointsAndLevelsPage().getHowItWorksSectionBtn().click();
     }
 
     @Override
     public void clickOnCloseActivityBtn() {
-
+        getPointsAndLevelsPage().getCloseActivityBtn().click();
     }
 }
