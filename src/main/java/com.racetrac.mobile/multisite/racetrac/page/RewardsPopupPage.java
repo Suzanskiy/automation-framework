@@ -29,7 +29,7 @@ public class RewardsPopupPage extends BaseMobilePage {
     private MobileElement tutorialPopUpArrow;
 
     @AndroidFindBy(uiAutomator = "new UiSelector().text(\"" + DESCRIPTION_REWARDS_POP_UP_MESSAGE + "\")")
-    @iOSXCUITFindBy(xpath = "//XCUIElementTypeStaticText[contains(@name,'Tap Redeem')]")
+    @iOSXCUITFindBy(xpath = "//XCUIElementTypeStaticText[contains(@text,'Tap Redeem')]")
     private MobileElement rewardsPopUpTutorialMessage;
 
 }

@@ -8,6 +8,7 @@ import com.racetrac.mobile.multisite.racetrac.flow.LocationRequestFlow;
 import com.racetrac.mobile.multisite.racetrac.flow.NotificationRequestFlow;
 import com.racetrac.mobile.multisite.racetrac.flow.PointsAndLevelsFlow;
 import com.racetrac.mobile.multisite.racetrac.flow.ProfileFlow;
+import com.racetrac.mobile.multisite.racetrac.flow.RewardsPopupFlow;
 import com.racetrac.mobile.multisite.racetrac.flow.SignInFlow;
 import com.racetrac.mobile.multisite.racetrac.flow.SignOutFlow;
 import com.racetrac.mobile.multisite.racetrac.flow.SignUpFlow;
@@ -42,6 +43,8 @@ public class AccountSettingsChangePasswordTest extends BaseTest {
     PointsAndLevelsFlow pointsAndLevelsFlow;
     @Autowired
     EditPasswordFlow editPasswordFlow;
+    @Autowired
+    RewardsPopupFlow rewardsPopupFlow;
 
 
     CustomerDto customerDto;
@@ -58,8 +61,8 @@ public class AccountSettingsChangePasswordTest extends BaseTest {
         signInFlow.authorize(customerDto);
         locationRequestFlow.clickNotNow();
         notificationRequestFlow.clickNotNow();
-        signInFlow.clickGotItBtn();
         pointsAndLevelsFlow.clickGotItBtn();
+        rewardsPopupFlow.clickGotItBtn();
         assertTrue(welcomeFlow.isHomePageOpenedAfterSignIn(), "Welcome page is not opened after sign in");
 
         accountSettingsFlow.navigateToAccountSettings();
@@ -84,6 +87,7 @@ public class AccountSettingsChangePasswordTest extends BaseTest {
         accountSettingsFlow.navigateBack();
 
         pointsAndLevelsFlow.clickGotItBtn();
+        rewardsPopupFlow.clickGotItBtn();
         signOutFlow.doSignOut();
         locationRequestFlow.clickNotNow();
         welcomeFlow.isHomePageOpenedAfterSignIn();
@@ -92,7 +96,7 @@ public class AccountSettingsChangePasswordTest extends BaseTest {
         signInFlow.authorize(customerDto);
         locationRequestFlow.clickNotNow();
         notificationRequestFlow.clickNotNow();
-        signInFlow.clickGotItBtn();
+        rewardsPopupFlow.clickGotItBtn();
         pointsAndLevelsFlow.clickGotItBtn();
         assertTrue(welcomeFlow.isHomePageOpenedAfterSignIn(), "Welcome page is not opened after sign in");
     }

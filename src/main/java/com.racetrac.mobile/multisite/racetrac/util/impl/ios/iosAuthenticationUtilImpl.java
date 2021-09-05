@@ -1,8 +1,8 @@
-package com.racetrac.mobile.multisite.racetrac.util.impl;
+package com.racetrac.mobile.multisite.racetrac.util.impl.ios;
 
+import com.racetrac.mobile.multisite.MobilePage;
 import com.racetrac.mobile.multisite.racetrac.flow.BaseFlow;
 import com.racetrac.mobile.multisite.racetrac.flow.SignOutFlow;
-import com.racetrac.mobile.multisite.racetrac.page.HomePage;
 import com.racetrac.mobile.multisite.racetrac.page.RewardsPopupPage;
 import com.racetrac.mobile.multisite.racetrac.page.TurnOnLocationPage;
 import com.racetrac.mobile.multisite.racetrac.page.diff.AccountSettingsPageAuthorised;
@@ -14,33 +14,25 @@ import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Component;
 
 import static com.racetrac.mobile.framework.constants.PlatformsConstants.IOS;
+import static com.racetrac.mobile.util.appium.AppiumDriverUtils.getDriver;
 
 @Profile(IOS)
 @Component
 public class iosAuthenticationUtilImpl extends BaseFlow implements AuthenticationUtil {
     @Autowired
     SignOutFlow signOutFlow;
-    @Autowired
-    BaseFlow baseFlow;
 
     @Override
     public void prepareAppAfterBrokenSignOut() {
+        getDriver().launchApp();
 
-        TurnOnLocationPage turnOnLocationPage = getTurnOnLocationPage();
-        PointsAndLevelsView points = getPointsAndLevelsView();
-        RewardsPopupPage rewards = getRewardsPopupPage();
-        HomePage homePage = getHomePage();
-        AccountSettingsPageAuthorised accountSettingsPageAuthorised = getAccountSettingsPageAuthorised();
+        tryToCloseLocationPage(getTurnOnLocationPage());
+        tryToClosePointsView(getPointsAndLevelsView());
+        tryToCLoseRewardView(getRewardsPopupPage());
 
-
-        tryToCloseLocationPage(turnOnLocationPage);
-        tryToClosePointsView(points);
-        tryToCLoseRewardView(rewards);
-
-
-        if (homePage.shortWaitUntilIsOpened()) {
-            homePage.getIconSettings().click();
-            if (checkAccountSettingsPage(accountSettingsPageAuthorised)) {
+        if (getHomePage().shortWaitUntilIsOpened()) {
+            getHomePage().getIconSettings().click();
+            if (checkAccountSettingsPage(getAccountSettingsPageAuthorised())) {
                 signOutFlow.doSignOut();
             } else {
                 getAccountSettingsPage().getNavBarCloseBtn().click();
@@ -49,6 +41,7 @@ public class iosAuthenticationUtilImpl extends BaseFlow implements Authenticatio
             LOG.warn("Unable to do signout before test");
         }
     }
+
 
     private boolean checkAccountSettingsPage(final AccountSettingsPageAuthorised accountSettingsPageAuthorised) {
         try {

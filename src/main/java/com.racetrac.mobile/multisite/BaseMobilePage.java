@@ -41,10 +41,6 @@ public abstract class BaseMobilePage implements MobilePage {
         PageFactory.initElements(new AppiumFieldDecorator(getDriver()), this);
     }
 
-    public Class<? extends BaseMobilePage> getCurrentPage() {
-        return getClass();
-    }
-
     /**
      * checks if all necessary elements are displayed on the page
      *

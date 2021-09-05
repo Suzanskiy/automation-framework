@@ -33,14 +33,12 @@ public class BaseTest extends AbstractTestNGSpringContextTests {
     @Autowired
     protected TestData testData;
     @Autowired
-    AuthenticationUtil authenticationUtil;
+    protected AuthenticationUtil authenticationUtil;
 
     @BeforeMethod(alwaysRun = true)
     public void launch() {
         LOG.info("Launch application");
-
-        getDriver().launchApp();
-        authenticationUtil.prepareAppAfterBrokenSignOut();
+        authenticationUtil.prepareAppAfterBrokenSignOut(); // and launch app
     }
 
     @AfterMethod(alwaysRun = true)

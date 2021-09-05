@@ -2,6 +2,7 @@ package com.racetrac.mobile.multisite.racetrac.flow.impl.ios;
 
 import com.racetrac.mobile.multisite.racetrac.flow.BaseFlow;
 import com.racetrac.mobile.multisite.racetrac.flow.PromotionalOffersFlow;
+import com.racetrac.mobile.util.appium.AppiumWaitingUtils;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.TimeoutException;
 import org.springframework.context.annotation.Profile;
@@ -15,7 +16,7 @@ public class iosPromotionalOffersFlowImpl extends BaseFlow implements Promotiona
 
     @Override
     public void waitUntilOkBtnAvailable() {
-
+        AppiumWaitingUtils.waitUntilIsTrue(() -> !isOkFieldEditable());
     }
 
     @Override
@@ -35,47 +36,50 @@ public class iosPromotionalOffersFlowImpl extends BaseFlow implements Promotiona
 
     @Override
     public void chooseYesAlcohol() {
-        //TODO IOS Impl
+        getPromotionalOffersPage().getYesAlcohol().click();
     }
 
     @Override
     public void chooseYesTobacco() {
-        //TODO IOS Impl
+        getPromotionalOffersPage().getYesTobacco().click();
     }
 
     @Override
     public void chooseYesLottery() {
-        //TODO IOS Impl
+        getPromotionalOffersPage().getYesLottery().click();
     }
 
     @Override
     public void acceptPromotions() {
-        //TODO IOS Impl
+        chooseYesAlcohol();
+        chooseYesTobacco();
+        chooseYesLottery();
+        clickSaveBtn();
     }
 
     @Override
     public boolean isAcceptedPromotionsSaved() {
-        return false;
+        return isYesAlcoholSaved() && isYesLotterySaved() && isYesTobaccoSaved();
     }
 
     @Override
     public boolean isYesAlcoholSaved() {
-        return false;
+        return getPromotionalOffersPage().getYesAlcohol().isDisplayed();
     }
 
     @Override
     public boolean isYesLotterySaved() {
-        return false;
+        return getPromotionalOffersPage().getYesLottery().isDisplayed();
     }
 
     @Override
     public boolean isYesTobaccoSaved() {
-        return false;
+        return getPromotionalOffersPage().getYesTobacco().isDisplayed();
     }
 
     @Override
     public void clickSaveBtn() {
-        //TODO IOS Impl
+        getPromotionalOffersPage().getSaveBtn().click();
     }
 
     @Override
@@ -121,26 +125,32 @@ public class iosPromotionalOffersFlowImpl extends BaseFlow implements Promotiona
 
     @Override
     public void clickOkBtnOnTheEnterBirthdayPopUp() {
-        //TODO IOS Impl
+        getPromotionalOffersPage().getOkBirthdayPopUpFieldBtn().click();
     }
 
     @Override
     public void clickCancelBtnOnTheBirthdayPopUpField() {
-        //TODO IOS Impl
+        getPromotionalOffersPage().getCancelBirthdayPopUpFieldBtn().click();
     }
 
     @Override
     public boolean isPopUpDescriptionDisplayed() {
-        return false;
+        return getPromotionalOffersPage().getDescriptionText().isDisplayed();
     }
 
     @Override
     public boolean isOkFieldEditable() {
-        return false;
+        final String attribute = getPromotionalOffersPage().getOkBirthdayPopUpFieldBtn().getAttribute("enabled");
+        if (attribute.equals("false")) {
+            return false;
+        }
+        return true;
     }
 
     @Override
-    public void enterBirthDate(String customerBirth) {
-
+    public void enterBirthDate(final String customerBirth) {
+        getPromotionalOffersPage().getEnterBirthdayPopUpField().clear();
+        getPromotionalOffersPage().getEnterBirthdayPopUpField().setValue(customerBirth);
     }
+
 }
