@@ -21,12 +21,15 @@ public class RewardsPopupPage extends BaseMobilePage {
     private MobileElement gotItBtn;
 
     @AndroidFindBy(id = "com.RaceTrac.Common.qa:id/redeemButton")
+    @iOSXCUITFindBy(xpath = "//XCUIElementTypeButton[@name=\"REDEEM\"]")
     private MobileElement redeemBtn;
 
     @AndroidFindBy(id ="com.RaceTrac.Common.qa:id/rewardsTutorialArrow")
+    @iOSXCUITFindBy(accessibility = "RewardsLine")
     private MobileElement tutorialPopUpArrow;
 
     @AndroidFindBy(uiAutomator = "new UiSelector().text(\"" + DESCRIPTION_REWARDS_POP_UP_MESSAGE + "\")")
+    @iOSXCUITFindBy(xpath = "//XCUIElementTypeStaticText[contains(@name,'Tap Redeem')]")
     private MobileElement rewardsPopUpTutorialMessage;
 
 }

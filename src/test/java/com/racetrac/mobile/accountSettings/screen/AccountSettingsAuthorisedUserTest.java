@@ -2,23 +2,31 @@ package com.racetrac.mobile.accountSettings.screen;
 
 import com.racetrac.mobile.BaseTest;
 import com.racetrac.mobile.multisite.racetrac.dto.CustomerDto;
-import com.racetrac.mobile.multisite.racetrac.flow.*;
-import com.racetrac.mobile.util.appium.AppiumWaitingUtils;
-import io.appium.java_client.AppiumDriver;
-import io.appium.java_client.MobileElement;
+import com.racetrac.mobile.multisite.racetrac.flow.AccountSettingsFlow;
+import com.racetrac.mobile.multisite.racetrac.flow.LocationRequestFlow;
+import com.racetrac.mobile.multisite.racetrac.flow.NotAdultNoticeFlow;
+import com.racetrac.mobile.multisite.racetrac.flow.NotificationRequestFlow;
+import com.racetrac.mobile.multisite.racetrac.flow.PointsAndLevelsFlow;
+import com.racetrac.mobile.multisite.racetrac.flow.ProfileFlow;
+import com.racetrac.mobile.multisite.racetrac.flow.PromotionalOffersFlow;
+import com.racetrac.mobile.multisite.racetrac.flow.RewardsPopupFlow;
+import com.racetrac.mobile.multisite.racetrac.flow.SignInFlow;
+import com.racetrac.mobile.multisite.racetrac.flow.SignOutFlow;
+import com.racetrac.mobile.multisite.racetrac.flow.WelcomeFlow;
 import io.qameta.allure.Description;
 import io.qameta.allure.TmsLink;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
-import static com.racetrac.mobile.framework.enums.CustomerAge.*;
+import static com.racetrac.mobile.framework.enums.CustomerAge.ADULT;
+import static com.racetrac.mobile.framework.enums.CustomerAge.NOT_SPECIFIED_BIRTHDATE;
+import static com.racetrac.mobile.framework.enums.CustomerAge.UNDER_21;
 import static com.racetrac.mobile.multisite.racetrac.data.ComparableStrings.NOT_ADULT_USER_TEXT;
-import static com.racetrac.mobile.util.appium.AppiumDriverUtils.getDriver;
-import static org.testng.Assert.*;
+import static org.testng.Assert.assertEquals;
+import static org.testng.Assert.assertFalse;
+import static org.testng.Assert.assertTrue;
 
 public class AccountSettingsAuthorisedUserTest extends BaseTest {
     @Autowired
@@ -42,7 +50,8 @@ public class AccountSettingsAuthorisedUserTest extends BaseTest {
     NotAdultNoticeFlow notAdultNoticeFlow;
     @Autowired
     ProfileFlow profileFlow;
-
+    @Autowired
+    RewardsPopupFlow rewardsPopupFlow;
 
     @BeforeMethod
     public void setUp() {
@@ -62,6 +71,8 @@ public class AccountSettingsAuthorisedUserTest extends BaseTest {
 
         signInFlow.clickGotItBtn();
         pointsAndLevelsFlow.clickGotItBtn();
+        rewardsPopupFlow.clickGotItBtn();
+
         assertTrue(welcomeFlow.isHomePageOpenedAfterSignIn(), "Welcome page is not opened after sign in");
 
         accountSettingsFlow.navigateToAccountSettings();
@@ -83,6 +94,8 @@ public class AccountSettingsAuthorisedUserTest extends BaseTest {
 
         signInFlow.clickGotItBtn();
         pointsAndLevelsFlow.clickGotItBtn();
+        rewardsPopupFlow.clickGotItBtn();
+
         assertTrue(welcomeFlow.isHomePageOpenedAfterSignIn(), "Welcome page is not opened after sign in");
 
         accountSettingsFlow.navigateToAccountSettings();
@@ -107,6 +120,8 @@ public class AccountSettingsAuthorisedUserTest extends BaseTest {
 
         signInFlow.clickGotItBtn();
         pointsAndLevelsFlow.clickGotItBtn();
+        rewardsPopupFlow.clickGotItBtn();
+
         assertTrue(welcomeFlow.isHomePageOpenedAfterSignIn(), "Welcome page is not opened after sign in");
 
         accountSettingsFlow.navigateToAccountSettings();
@@ -134,6 +149,8 @@ public class AccountSettingsAuthorisedUserTest extends BaseTest {
 
         signInFlow.clickGotItBtn();
         pointsAndLevelsFlow.clickGotItBtn();
+        rewardsPopupFlow.clickGotItBtn();
+
         assertTrue(welcomeFlow.isHomePageOpenedAfterSignIn(), "Welcome page is not opened after sign in");
 
         accountSettingsFlow.navigateToAccountSettings();
@@ -164,6 +181,8 @@ public class AccountSettingsAuthorisedUserTest extends BaseTest {
 
         signInFlow.clickGotItBtn();
         pointsAndLevelsFlow.clickGotItBtn();
+        rewardsPopupFlow.clickGotItBtn();
+
         assertTrue(welcomeFlow.isHomePageOpenedAfterSignIn(), "Welcome page is not opened after sign in");
 
         accountSettingsFlow.navigateToAccountSettings();
@@ -175,7 +194,7 @@ public class AccountSettingsAuthorisedUserTest extends BaseTest {
         assertTrue(accountSettingsFlow.isAccountSettingsAuthorisedUserScreenOpened(), "Account settings screen not opened");
         accountSettingsFlow.navigateToPromotionalSettings();
         assertTrue(promotionalOffersFlow.isPromotionalOffersScreenOpened(), "Promotions Page is not opened");
-        assertTrue(promotionalOffersFlow.isAcceptedPromotionsSaved(),"Promotions \"Yes\" position is not saved");
+        assertTrue(promotionalOffersFlow.isAcceptedPromotionsSaved(), "Promotions \"Yes\" position is not saved");
         promotionalOffersFlow.navigateBack();
 
         accountSettingsFlow.navigateBack();
@@ -195,6 +214,8 @@ public class AccountSettingsAuthorisedUserTest extends BaseTest {
 
         signInFlow.clickGotItBtn();
         pointsAndLevelsFlow.clickGotItBtn();
+        rewardsPopupFlow.clickGotItBtn();
+
         assertTrue(welcomeFlow.isHomePageOpenedAfterSignIn(), "Welcome page is not opened after sign in");
 
         accountSettingsFlow.navigateToAccountSettings();

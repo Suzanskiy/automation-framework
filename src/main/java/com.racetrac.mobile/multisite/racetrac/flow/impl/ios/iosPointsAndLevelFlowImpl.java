@@ -15,8 +15,8 @@ public class iosPointsAndLevelFlowImpl extends BaseFlow implements PointsAndLeve
 
     @Override
     public void clickGotItBtn() {
-        getPointsAndLevelsView().waitUntilIsOpened();
         try {
+            getPointsAndLevelsView().waitUntilIsOpened();
             getPointsAndLevelsView().getPointsGotItBtn().click();
         } catch (NoSuchElementException | TimeoutException ignored) {
             LOG.warn("Points and Levels screen not opened, skipping..");

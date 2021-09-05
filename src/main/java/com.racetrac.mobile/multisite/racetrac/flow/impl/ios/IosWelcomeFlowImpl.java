@@ -19,11 +19,13 @@ public class IosWelcomeFlowImpl extends BaseFlow implements WelcomeFlow {
         return getHomePage().waitUntilIsOpened();
     }
 
+    @Step
     @Override
     public boolean isHomePageOpenedAfterSignIn() {
         return isHomePageOpened();
     }
 
+    @Step
     @Override
     public boolean isHeroLevelHelpBtnDisplayed() {
         try {
@@ -33,43 +35,45 @@ public class IosWelcomeFlowImpl extends BaseFlow implements WelcomeFlow {
         }
     }
 
+    @Step
     @Override
     public boolean isZeroPointsDescriptionDisplayed() {
-        return false;
+        getHomePage().refresh();
+        return getHomePage().getDescriptionTextWhenUserHasNoPoints().isEnabled();
     }
 
+    @Step
     @Override
     public boolean isRewardsScreenFOrUserWithoutPointsDisplayed() {
-        return false;
+        return getHomePage().getRewardsSectionScreenForUserWithoutPoints().isDisplayed();
     }
 
+    @Step
     @Override
     public int availablePoints() {
-        return 0;
+        getHomePage().refresh();
+        return Integer.parseInt(getHomePage().getAvailablePoints().getAttribute("value"));
     }
 
-    @Override
-    public boolean isRedeemPointsBtnDisplayed() {
-        return false;
-    }
-
+    @Step
     @Override
     public void clickOnRedeemPointsBtn() {
-
+        getHomePage().getRedeemPointsBtn().click();
     }
 
+    @Step
     @Override
     public boolean isRewardsSectionForUserWithPointsDisplayed() {
-        return false;
+        return isRedeemPointsBtnDisplayed() && isHeroLevelHelpBtnDisplayed();
     }
 
+    @Step
     @Override
-    public boolean isRedeemPointsIsDisplayed() {
-        return getHomePage().getRedeemPointsBtn().isDisplayed();
-    }
-
-    @Override
-    public void clickRedeemPointsBtn() {
-        getHomePage().getRedeemPointsBtn().click();
+    public boolean isRedeemPointsBtnDisplayed() {
+        try {
+            return getHomePage().getRedeemPointsBtn().isDisplayed();
+        } catch (NoSuchElementException e) {
+            return false;
+        }
     }
 }

@@ -5,6 +5,7 @@ import com.racetrac.mobile.multisite.racetrac.flow.RewardsPopupFlow;
 import com.racetrac.mobile.util.appium.AppiumWaitingUtils;
 import io.qameta.allure.Step;
 import org.openqa.selenium.NoSuchElementException;
+import org.openqa.selenium.TimeoutException;
 import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Component;
 
@@ -23,10 +24,11 @@ public class AndroidRewardPopUpFlowImpl extends BaseFlow implements RewardsPopup
     @Step
     @Override
     public void clickGotItBtn() {
+        getRewardsPopupPage().waitUntilIsOpened();
         try {
             getRewardsPopupPage().getGotItBtn().click();
-        } catch (NoSuchElementException e) {
-            LOG.warn("Unable to click got it btn on reward pop up");
+        } catch (NoSuchElementException | TimeoutException e) {
+            LOG.warn("Unable to click got it btn on Rewards pop up");
         }
     }
 

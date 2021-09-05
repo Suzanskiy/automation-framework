@@ -7,6 +7,7 @@ import io.appium.java_client.MobileElement;
 import io.appium.java_client.pagefactory.AppiumFieldDecorator;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.StaleElementReferenceException;
+import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.support.PageFactory;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -19,9 +20,13 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import static com.racetrac.mobile.framework.constants.TimeoutConstants.MIDDLE_TIMEOUT;
+import static com.racetrac.mobile.framework.constants.TimeoutConstants.SHORT_TIMEOUT;
 import static com.racetrac.mobile.framework.enums.Exceptions.NO_PAGE_LOADING;
-import static com.racetrac.mobile.util.appium.AppiumDriverUtils.*;
+import static com.racetrac.mobile.util.appium.AppiumDriverUtils.getDriver;
 import static com.racetrac.mobile.util.appium.AppiumDriverUtils.swipeDown;
+import static com.racetrac.mobile.util.appium.AppiumDriverUtils.swipeDownGently;
+import static com.racetrac.mobile.util.appium.AppiumDriverUtils.swipeUP;
+import static com.racetrac.mobile.util.appium.AppiumDriverUtils.swipeUPGently;
 
 public abstract class BaseMobilePage implements MobilePage {
 
@@ -36,6 +41,10 @@ public abstract class BaseMobilePage implements MobilePage {
         PageFactory.initElements(new AppiumFieldDecorator(getDriver()), this);
     }
 
+    public Class<? extends BaseMobilePage> getCurrentPage() {
+        return getClass();
+    }
+
     /**
      * checks if all necessary elements are displayed on the page
      *
@@ -44,6 +53,11 @@ public abstract class BaseMobilePage implements MobilePage {
     @Override
     public boolean waitUntilIsOpened() {
         return AppiumWaitingUtils.waitUntilIsTrue(this::checkAllElementsOfPage, MIDDLE_TIMEOUT);
+    }
+
+    @Override
+    public boolean shortWaitUntilIsOpened() {
+        return AppiumWaitingUtils.waitUntilIsTrue(this::checkAllElementsOfPage, 1);
     }
 
     private List<Field> checkElementToBeVisible(List<Field> elements) {
@@ -61,6 +75,8 @@ public abstract class BaseMobilePage implements MobilePage {
                                 LOG.info("!!!! Element [ " + field.getName() + " ] on " + getClass().getSimpleName() + " not exists !!!! ");
                             } catch (IllegalAccessException | InvocationTargetException | StaleElementReferenceException | NoSuchMethodException e) {
                                 LOG.info("---------->>>>> " + e.getMessage());
+                            } catch (TimeoutException e) {
+                                LOG.warn("---------->>>>> " + e.getMessage());
                             }
                             return false;
                         }

@@ -53,12 +53,10 @@ public class RewardsSectionMainScreenAuthorizedUser extends BaseTest {
         signInFlow.authorize(customerDto);
         locationRequestFlow.clickNotNow();
         notificationRequestFlow.clickNotNow();
-
         rewardsPopupFlow.clickGotItBtn();
         pointsAndLevelsFlow.clickGotItBtn();
         assertTrue(welcomeFlow.isHomePageOpenedAfterSignIn(), "Welcome page is not opened after sign in");
         assertTrue(welcomeFlow.isZeroPointsDescriptionDisplayed());
-
         pointsAndLevelsFlow.clickOnHeroLevelHelpBtn();
         assertTrue(pointsAndLevelsFlow.isPointsAndLevelsPageOpened(), "Points & Levels page is not opened");
         pointsAndLevelsFlow.clickOnCloseActivityBtn();

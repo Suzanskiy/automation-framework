@@ -4,6 +4,7 @@ package com.racetrac.mobile;
 import com.racetrac.mobile.framework.CustomContextInitializer;
 import com.racetrac.mobile.framework.config.MobileContextConfig;
 import com.racetrac.mobile.multisite.racetrac.data.TestData;
+import com.racetrac.mobile.multisite.racetrac.util.AuthenticationUtil;
 import com.racetrac.mobile.util.listeners.BaseTestListenerAdapter;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -17,7 +18,6 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Listeners;
 
 import java.util.Arrays;
-import java.util.concurrent.TimeUnit;
 
 import static com.racetrac.mobile.util.allure.AllureEnvironmentUtils.copyEnvPropToAllureResults;
 import static com.racetrac.mobile.util.allure.AllureEnvironmentUtils.createEnvironmentProperties;
@@ -32,12 +32,15 @@ public class BaseTest extends AbstractTestNGSpringContextTests {
 
     @Autowired
     protected TestData testData;
+    @Autowired
+    AuthenticationUtil authenticationUtil;
 
     @BeforeMethod(alwaysRun = true)
     public void launch() {
         LOG.info("Launch application");
 
         getDriver().launchApp();
+        authenticationUtil.prepareAppAfterBrokenSignOut();
     }
 
     @AfterMethod(alwaysRun = true)
