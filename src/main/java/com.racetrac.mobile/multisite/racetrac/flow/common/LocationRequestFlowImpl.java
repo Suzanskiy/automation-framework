@@ -13,6 +13,7 @@ public class LocationRequestFlowImpl extends BaseFlow implements LocationRequest
     public void clickNotNow() {
         try {
             getTurnOnLocationPage().waitUntilIsOpened();
+
             getTurnOnLocationPage().getNotNowBtn().click();
         } catch (TimeoutException | NoSuchElementException e) {
 

@@ -36,6 +36,8 @@ public class PromotionalSettingsBirthdayFieldValidationTest extends BaseTest {
     NotAdultNoticeFlow notAdultNoticeFlow;
     @Autowired
     ProfileFlow profileFlow;
+    @Autowired
+    RewardsPopupFlow rewardsPopupFlow;
 
     @DataProvider()
     public Object[] invalidBirthdayDataProvider() {
@@ -61,8 +63,8 @@ public class PromotionalSettingsBirthdayFieldValidationTest extends BaseTest {
         signInFlow.authorize(customerDto);
         locationRequestFlow.clickNotNow();
         notificationRequestFlow.clickNotNow();
-        signInFlow.clickGotItBtn();
         pointsAndLevelsFlow.clickGotItBtn();
+        rewardsPopupFlow.clickGotItBtn();
         assertTrue(welcomeFlow.isHomePageOpenedAfterSignIn(), "Welcome page is not opened after sign in");
         accountSettingsFlow.navigateToAccountSettings();
         assertTrue(accountSettingsFlow.isAccountSettingsAuthorisedUserScreenOpened(), " Account screen for Logged in User is not opened");

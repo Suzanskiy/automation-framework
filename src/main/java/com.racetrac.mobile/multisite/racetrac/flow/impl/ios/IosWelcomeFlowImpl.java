@@ -19,11 +19,13 @@ public class IosWelcomeFlowImpl extends BaseFlow implements WelcomeFlow {
         return getHomePage().waitUntilIsOpened();
     }
 
+    @Step
     @Override
     public boolean isHomePageOpenedAfterSignIn() {
         return isHomePageOpened();
     }
 
+    @Step
     @Override
     public boolean isHeroLevelHelpBtnDisplayed() {
         try {
@@ -33,13 +35,45 @@ public class IosWelcomeFlowImpl extends BaseFlow implements WelcomeFlow {
         }
     }
 
+    @Step
     @Override
-    public boolean isRedeemPointsIsDisplayed() {
-        return getHomePage().getRedeemPointsBtn().isDisplayed();
+    public boolean isZeroPointsDescriptionDisplayed() {
+        getHomePage().refresh();
+        return getHomePage().getDescriptionTextWhenUserHasNoPoints().isEnabled();
     }
 
+    @Step
     @Override
-    public void clickRedeemPointsBtn() {
+    public boolean isRewardsScreenFOrUserWithoutPointsDisplayed() {
+        return getHomePage().getRewardsSectionScreenForUserWithoutPoints().isDisplayed();
+    }
+
+    @Step
+    @Override
+    public int availablePoints() {
+        getHomePage().refresh();
+        return Integer.parseInt(getHomePage().getAvailablePoints().getAttribute("value"));
+    }
+
+    @Step
+    @Override
+    public void clickOnRedeemPointsBtn() {
         getHomePage().getRedeemPointsBtn().click();
+    }
+
+    @Step
+    @Override
+    public boolean isRewardsSectionForUserWithPointsDisplayed() {
+        return isRedeemPointsBtnDisplayed() && isHeroLevelHelpBtnDisplayed();
+    }
+
+    @Step
+    @Override
+    public boolean isRedeemPointsBtnDisplayed() {
+        try {
+            return getHomePage().getRedeemPointsBtn().isDisplayed();
+        } catch (NoSuchElementException e) {
+            return false;
+        }
     }
 }

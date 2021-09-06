@@ -21,9 +21,8 @@ public class AndroidRewardCatalogFlowImpl extends BaseFlow implements RewardsCat
     @Override
     public void clickRedeemBtn() {
         try {
-            getRewardsPopupPage().refresh();
             getRewardsCatalogPage().getRedeemBtn().click();
-        } catch (Exception e) {
+        } catch (NoSuchElementException e) {
             LOG.warn("Unable to click btn on reward catalog redeem");
         }
     }
@@ -43,8 +42,7 @@ public class AndroidRewardCatalogFlowImpl extends BaseFlow implements RewardsCat
     @Override
     public boolean isUnclaimedRewardsIsDisplayed() {
         try {
-//            getRewardsCatalogPage().refresh();
-//            getRewardsCatalogPage().waitUntilIsOpened();
+            getRewardsCatalogPage().refresh();
             return getRewardsCatalogPage().getUnclaimedRewardsLabel().isDisplayed();
         } catch (NoSuchElementException e) {
             LOG.warn("Unclaimed Rewards Label is not displayed");
@@ -70,6 +68,16 @@ public class AndroidRewardCatalogFlowImpl extends BaseFlow implements RewardsCat
     @Override
     public boolean isRewardsCatalogPageOpened() {
         return getRewardsCatalogPage().waitUntilIsOpened();
+    }
+    @Step
+    @Override
+    public int availablePoints() {
+        return Integer.parseInt(getRewardsCatalogPage().getRewardsCatalogNumberOfPoints().getAttribute("text"));
+    }
+    @Step
+    @Override
+    public void closeRewardsCatalog() {
+        getRewardsCatalogPage().getRewardsCatalogBackBtn().click();
     }
 
     @Step

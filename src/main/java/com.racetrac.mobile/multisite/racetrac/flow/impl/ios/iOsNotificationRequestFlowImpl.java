@@ -19,10 +19,11 @@ public class iOsNotificationRequestFlowImpl extends BaseFlow implements Notifica
     @Step
     @Override
     public void clickNotNow() {
+
         try {
             getTurnOnNotificationPage().waitUntilIsOpened();
-            getTurnOnNotificationPage().getNotNowBtn().click();
 
+            getTurnOnNotificationPage().getNotNowBtn().click();
         } catch (StaleElementReferenceException e) {
             LOG.warn("Page was recreated");
             getTurnOnNotificationPage().refresh();

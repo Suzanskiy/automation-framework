@@ -1,4 +1,4 @@
-package com.racetrac.mobile.multisite.racetrac.util.impl;
+package com.racetrac.mobile.multisite.racetrac.util.impl.android;
 
 import com.racetrac.mobile.multisite.racetrac.flow.BaseFlow;
 import com.racetrac.mobile.multisite.racetrac.util.ChromeBrowserHandler;
