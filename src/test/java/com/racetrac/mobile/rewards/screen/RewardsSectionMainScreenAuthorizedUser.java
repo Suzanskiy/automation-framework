@@ -76,7 +76,6 @@ public class RewardsSectionMainScreenAuthorizedUser extends BaseTest {
         notificationRequestFlow.clickNotNow();
         rewardsPopupFlow.clickGotItBtn();
         pointsAndLevelsFlow.clickGotItBtn();
-
         assertTrue(welcomeFlow.isHomePageOpenedAfterSignIn(), "Welcome page is not opened after sign in");
         assertTrue(welcomeFlow.isRewardsSectionForUserWithPointsDisplayed(), "Rewards section is not displayed");
         assertEquals(welcomeFlow.availablePoints(),AVAILABLE_POINTS);

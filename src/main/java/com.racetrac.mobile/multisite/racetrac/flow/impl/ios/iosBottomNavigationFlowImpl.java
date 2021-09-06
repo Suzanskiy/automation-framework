@@ -92,4 +92,11 @@ public class iosBottomNavigationFlowImpl extends BaseFlow implements NavigationF
     public void drawerClick() {
 
     }
+
+    @Override
+    public void rewardCatalogClick() {
+
+    }
+
 }
+

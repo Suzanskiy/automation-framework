@@ -93,4 +93,9 @@ public class AndroidDrawerNavigationFlowImpl extends BaseFlow implements Navigat
     public void drawerClick() {
         getNavigationDrawer().getDrawer().click();
     }
+
+    @Override
+    public void rewardCatalogClick() {
+        getAndroidNavBar().getRewardsCatalog().click();
+    }
 }
