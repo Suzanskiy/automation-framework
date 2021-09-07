@@ -37,6 +37,36 @@ public class SwipeScroll {
         }
 
     }
+    public void swipeScreenHard(Direction dir) {
+        System.out.println("swipeScreen(): dir: '" + dir + "'");
+        int edgeBorder = 5;
+
+        PointOption pointOptionStart, pointOptionEnd;
+        // init screen variables
+        Dimension dims = appiumDriver.manage().window().getSize();
+        switch (dir) {
+            case DOWN:
+                pointOptionStart = PointOption.point(dims.width / 2, (int) (dims.height * 0.70));// top of the footer
+                pointOptionEnd = PointOption.point(dims.width / 2, (int)(dims.height * 0.30));
+                break;
+            case UP:
+                pointOptionStart = PointOption.point(dims.width / 2, (int)(dims.height * 0.30));// down of the header
+                pointOptionEnd = PointOption.point(dims.width / 2, (int) (dims.height * 0.70));
+                break;
+            case LEFT:
+                pointOptionStart = PointOption.point((int)(dims.width * 0.05), dims.height / 2); // border of right side
+                pointOptionEnd = PointOption.point((int)(dims.width * 0.90), dims.height / 2);
+                break;
+            case RIGHT:
+                pointOptionStart = PointOption.point((int)(dims.width * 0.90), dims.height / 2); // border of right side
+                pointOptionEnd = PointOption.point((int)(dims.width * 0.05), dims.height / 2);
+                break;
+            default:
+                throw new IllegalArgumentException("swipeScreen(): dir: '" + dir + "' NOT supported");
+        }
+        swipeScreen(pointOptionStart, pointOptionEnd);
+    }
+
 
     public void swipeScreen(Direction dir) {
         System.out.println("swipeScreen(): dir: '" + dir + "'");

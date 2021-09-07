@@ -71,4 +71,11 @@ public class AndroidDrawerNavigationFlowImpl extends BaseFlow implements Navigat
     public boolean isInboxTabOpened() {
         return getInboxPage().waitUntilIsOpened();
     }
+
+    @Step
+    @Override
+    public void navigateToRewardsCards() {
+        getNavigationDrawer().getDrawer().click();
+        getAndroidNavBar().getRewardsCardsTab().click();
+    }
 }

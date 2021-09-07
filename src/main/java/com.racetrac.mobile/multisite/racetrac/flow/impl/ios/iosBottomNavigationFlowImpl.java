@@ -77,4 +77,9 @@ public class iosBottomNavigationFlowImpl extends BaseFlow implements NavigationF
     public boolean isInboxTabOpened() {
         return getInboxPage().waitUntilIsOpened();
     }
+
+    @Override
+    public void navigateToRewardsCards() {
+
+    }
 }
