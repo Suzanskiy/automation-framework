@@ -69,11 +69,18 @@ public class AndroidRewardCatalogFlowImpl extends BaseFlow implements RewardsCat
     public boolean isRewardsCatalogPageOpened() {
         return getRewardsCatalogPage().waitUntilIsOpened();
     }
+
     @Step
     @Override
     public int availablePoints() {
         return Integer.parseInt(getRewardsCatalogPage().getRewardsCatalogNumberOfPoints().getAttribute("text"));
     }
+
+    @Override
+    public int rewardPrice() {
+        return Integer.parseInt(getRewardsCatalogPage().getRewardPoints().getAttribute("text").substring(0,3));
+    }
+
     @Step
     @Override
     public void closeRewardsCatalog() {
@@ -83,6 +90,19 @@ public class AndroidRewardCatalogFlowImpl extends BaseFlow implements RewardsCat
     @Override
     public int getUnclaimedRewardsCounter() {
         return Integer.parseInt(getRewardsCatalogPage().getUnclaimedRewardsCounter().getAttribute("text"));
+    }
+
+    @Override
+    public boolean isElementsOfRewardsCatalogDisplayed() {
+        try {
+            return getRewardsCatalogPage().getRewardImage().isDisplayed() && getRewardsCatalogPage().getAvailablePointsDesc()
+                    .isDisplayed() && getRewardsCatalogPage().getRewardName().isDisplayed() && getRewardsCatalogPage()
+                    .getRewardPoints().isDisplayed() && getRewardsCatalogPage().getSortCaret().isDisplayed();
+
+        } catch (NoSuchElementException e) {
+            LOG.warn("elements of Rewards catalog are not displayed");
+            return false;
+        }
     }
 
     @Step
