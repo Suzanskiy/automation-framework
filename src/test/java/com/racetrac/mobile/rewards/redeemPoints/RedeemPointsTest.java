@@ -93,7 +93,6 @@ public class RedeemPointsTest extends BaseTest {
         signInFlow.authorize(customerDto);
         locationRequestFlow.clickNotNow();
         notificationRequestFlow.clickNotNow();
-        signInFlow.clickGotItBtn();
         rewardsPopupFlow.clickGotItBtn();
         pointsAndLevelsFlow.clickGotItBtn();
         assertTrue(welcomeFlow.isHomePageOpenedAfterSignIn(), "Welcome page is not opened after sign in");

@@ -15,4 +15,6 @@ public interface RewardsCatalogFlow extends NavigateFlow {
     int availablePoints();
 
     void closeRewardsCatalog();
+
+    int getUnclaimedRewardsCounter();
 }

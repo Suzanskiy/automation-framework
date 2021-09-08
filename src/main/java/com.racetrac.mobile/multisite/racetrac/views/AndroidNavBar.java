@@ -31,4 +31,7 @@ public class AndroidNavBar extends BaseMobilePage {
     @AndroidFindBy(xpath = "/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/androidx.drawerlayout.widget.DrawerLayout/android.widget.FrameLayout/androidx.recyclerview.widget.RecyclerView/androidx.appcompat.widget.LinearLayoutCompat[5]")
     private MobileElement inboxTab;
 
+    @AndroidFindBy (id = "com.RaceTrac.Common.qa:id/nav_rewards_card")
+    private MobileElement rewardsCardsTab;
+
 }

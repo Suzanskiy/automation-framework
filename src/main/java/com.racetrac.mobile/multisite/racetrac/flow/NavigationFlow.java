@@ -20,4 +20,6 @@ public interface NavigationFlow {
     public boolean isCardsTabOpened();
 
     public boolean isInboxTabOpened();
+
+    public void navigateToRewardsCards();
 }

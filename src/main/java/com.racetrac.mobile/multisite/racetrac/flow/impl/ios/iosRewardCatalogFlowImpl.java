@@ -79,6 +79,11 @@ public class iosRewardCatalogFlowImpl extends BaseFlow implements RewardsCatalog
         getRewardsCatalogPage().getRewardsCatalogBackBtn().click();
     }
 
+    @Override
+    public int getUnclaimedRewardsCounter() {
+        return 0;
+    }
+
     @Step
     @Override
     public void navigateBack() {

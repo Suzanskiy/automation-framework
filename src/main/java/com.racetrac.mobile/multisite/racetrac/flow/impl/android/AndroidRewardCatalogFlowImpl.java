@@ -80,6 +80,11 @@ public class AndroidRewardCatalogFlowImpl extends BaseFlow implements RewardsCat
         getRewardsCatalogPage().getRewardsCatalogBackBtn().click();
     }
 
+    @Override
+    public int getUnclaimedRewardsCounter() {
+        return Integer.parseInt(getRewardsCatalogPage().getUnclaimedRewardsCounter().getAttribute("text"));
+    }
+
     @Step
     @Override
     public void navigateBack() {

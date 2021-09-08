@@ -30,6 +30,10 @@ public class AppiumDriverUtils {
         swipeScroll.swipeScreen(SwipeScroll.Direction.DOWN);
     }
 
+    public static void swipeRightHard(){
+        swipeScroll.swipeScreenHard(SwipeScroll.Direction.RIGHT);
+    }
+
     public static void swipeDownGently() {
         swipeScroll.swipeGently(SwipeScroll.Direction.DOWN);
     }
