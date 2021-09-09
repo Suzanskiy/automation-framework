@@ -78,6 +78,36 @@ public class AndroidWelcomeFlowImpl extends BaseFlow implements WelcomeFlow {
 
     @Step
     @Override
+    public boolean isZeroPointsDescriptionDisplayed() {
+        return getHomePage().getDescriptionTextWhenUserHasNoPoints().isDisplayed();
+    }
+
+    @Step
+    @Override
+    public boolean isRewardsScreenFOrUserWithoutPointsDisplayed() {
+        return getHomePage().getRewardsSectionScreenForUserWithoutPoints().isDisplayed();
+    }
+
+    @Step
+    @Override
+    public int availablePoints() {
+        return Integer.parseInt(getHomePage().getAvailablePoints().getAttribute("text"));
+    }
+
+    @Step
+    @Override
+    public void clickOnRedeemPointsBtn() {
+        getHomePage().getRedeemPointsBtn().click();
+    }
+
+    @Step
+    @Override
+    public boolean isRewardsSectionForUserWithPointsDisplayed() {
+        return isRedeemPointsBtnDisplayed() && isHeroLevelHelpBtnDisplayed();
+    }
+
+    @Step
+    @Override
     public boolean isRedeemPointsBtnDisplayed() {
         try {
             return getHomePage().getRedeemPointsBtn().isDisplayed();

@@ -64,5 +64,4 @@ public class iosRewardsPopUpFlowImpl extends BaseFlow implements RewardsPopupFlo
     public void waitUntilMessageAvailable() {
         LOG.info("skipped");
     }
-
 }
