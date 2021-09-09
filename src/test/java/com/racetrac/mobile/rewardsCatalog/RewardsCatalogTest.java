@@ -119,7 +119,7 @@ public class RewardsCatalogTest extends BaseTest {
         assertEquals(rewardsCatalogFlow.availablePoints(), AVAILABLE_POINTS, "Invalid points are displayed");
         assertTrue(rewardsCatalogFlow.isElementsOfRewardsCatalogDisplayed(), "Elements of rewards catalog are not displayd");
         rewardsCatalogFlow.clickRedeemBtn();
-        rewardsCatalogFlow.clickRedeemPopupBtn();
+        rewardsCatalogFlow.clickRedeemOnPopupBtn();
         assertEquals(rewardsCatalogFlow.availablePoints(), AVAILABLE_POINTS - rewardsCatalogFlow.rewardPrice(), "Invalid AVAILABLE_POINTS displayed");
 
     }

@@ -34,4 +34,7 @@ public class AndroidNavBar extends BaseMobilePage {
     @AndroidFindBy (id = "com.RaceTrac.Common.qa:id/nav_rewards_card")
     private MobileElement rewardsCardsTab;
 
+    @AndroidFindBy (id = "com.RaceTrac.Common.qa:id/nav_rewards_card")
+    private MobileElement rewardsCatalog;
+
 }

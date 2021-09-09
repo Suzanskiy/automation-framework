@@ -3,7 +3,6 @@ package com.racetrac.mobile.multisite.racetrac.flow.impl.android;
 import com.racetrac.mobile.multisite.racetrac.flow.BaseFlow;
 import com.racetrac.mobile.multisite.racetrac.flow.NavigationFlow;
 import io.qameta.allure.Step;
-import org.openqa.selenium.NoSuchElementException;
 import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Component;
 
@@ -35,38 +34,45 @@ public class AndroidDrawerNavigationFlowImpl extends BaseFlow implements Navigat
         getAndroidNavBar().getCouponsTab().click();
 
     }
+
     @Step
     @Override
     public void navigateToCards() {
         getNavigationDrawer().getDrawer().click();
         getAndroidNavBar().getCardsTab().click();
     }
+
     @Step
     @Override
     public void navigateToInbox() {
         getNavigationDrawer().getDrawer().click();
         getAndroidNavBar().getInboxTab().click();
     }
+
     @Step
     @Override
     public boolean isHomeTabOpened() {
         return getHomePage().waitUntilIsOpened();
     }
+
     @Step
     @Override
     public boolean isStoresTabOpened() {
         return getStoresPage().waitUntilIsOpened();
     }
+
     @Step
     @Override
     public boolean isCouponsTabOpened() {
         return getCouponsPage().waitUntilIsOpened();
     }
+
     @Step
     @Override
     public boolean isCardsTabOpened() {
         return getCardsPage().waitUntilIsOpened();
     }
+
     @Step
     @Override
     public boolean isInboxTabOpened() {
@@ -82,16 +88,13 @@ public class AndroidDrawerNavigationFlowImpl extends BaseFlow implements Navigat
 
     @Override
     public boolean isRewardCatalogDisplayed() {
-        try {
-            return getAndroidNavBar().getRewardsCatalog().isDisplayed();
-        } catch (NoSuchElementException e) {
-            return false;
-        }
+        return getRewardsCatalogPage().waitUntilIsOpened();
     }
 
     @Override
     public void drawerClick() {
         getNavigationDrawer().getDrawer().click();
+
     }
 
     @Override
