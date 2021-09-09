@@ -13,6 +13,11 @@ import org.springframework.stereotype.Component;
 public class AccountSettingsPageAuthorised extends AccountSettingsPage {
 
     @PageLoading
+    @iOSXCUITFindBy(accessibility = "button.close")
+    @AndroidFindBy(id = "com.RaceTrac.Common.qa:id/account_close_btn")
+    private MobileElement navBarCloseBtn;
+
+    @PageLoading
     @iOSXCUITFindBy(xpath = "//XCUIElementTypeOther[@name=\"Account\"]")
     @AndroidFindBy(uiAutomator = "new UiSelector().text(\"Account\")")
     private MobileElement accountCategory;
@@ -28,6 +33,7 @@ public class AccountSettingsPageAuthorised extends AccountSettingsPage {
     @iOSXCUITFindBy(accessibility = "Purchase History")
     @AndroidFindBy(uiAutomator = "new UiSelector().text(\"Purchase History\")")
     private MobileElement purchaseHistory;
+
     @iOSXCUITFindBy(accessibility = "Promo Codes")
     @AndroidFindBy(uiAutomator = "new UiSelector().text(\"Promo Code\")")
     private MobileElement promoCodes;

@@ -16,7 +16,6 @@ public class AccountSettingsPage extends BaseMobilePage {
     @AndroidFindBy(id = "com.RaceTrac.Common.qa:id/account_close_btn")
     private MobileElement navBarCloseBtn;
 
-
     @PageLoading
     @iOSXCUITFindBy(accessibility = "text.title")
     @AndroidFindBy(id = "com.RaceTrac.Common.qa:id/account_title")
@@ -37,17 +36,14 @@ public class AccountSettingsPage extends BaseMobilePage {
     @AndroidFindBy(uiAutomator = "new UiSelector().text(\"RaceTrac App Intro\")")
     private MobileElement racetracAppIntro;
 
-    @PageLoading
     @iOSXCUITFindBy(accessibility = "Help")
     @AndroidFindBy(uiAutomator = "new UiSelector().text(\"Help\")")
     private MobileElement helpCategory;
 
-    @PageLoading
     @iOSXCUITFindBy(accessibility = "Terms & Privacy")
     @AndroidFindBy(uiAutomator = "new UiSelector().text(\"Terms & Privacy\")")
     private MobileElement termsAndPrivacy;
 
-    @PageLoading
     @iOSXCUITFindBy(accessibility = "Accessibility")
     @AndroidFindBy(uiAutomator = "new UiSelector().text(\"Accessibility\")")
     private MobileElement accessibility;

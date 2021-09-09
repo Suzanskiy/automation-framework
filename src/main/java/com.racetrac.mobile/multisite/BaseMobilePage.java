@@ -8,25 +8,30 @@ import io.appium.java_client.pagefactory.AppiumFieldDecorator;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.StaleElementReferenceException;
 import org.openqa.selenium.TimeoutException;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.FluentWait;
+import org.openqa.selenium.support.ui.Wait;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
+import java.time.Duration;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import static com.racetrac.mobile.framework.constants.TimeoutConstants.MIDDLE_TIMEOUT;
-import static com.racetrac.mobile.framework.constants.TimeoutConstants.SHORT_TIMEOUT;
 import static com.racetrac.mobile.framework.enums.Exceptions.NO_PAGE_LOADING;
 import static com.racetrac.mobile.util.appium.AppiumDriverUtils.getDriver;
 import static com.racetrac.mobile.util.appium.AppiumDriverUtils.swipeDown;
 import static com.racetrac.mobile.util.appium.AppiumDriverUtils.swipeDownGently;
 import static com.racetrac.mobile.util.appium.AppiumDriverUtils.swipeUP;
 import static com.racetrac.mobile.util.appium.AppiumDriverUtils.swipeUPGently;
+import static java.util.concurrent.TimeUnit.SECONDS;
 
 public abstract class BaseMobilePage implements MobilePage {
 
@@ -48,7 +53,40 @@ public abstract class BaseMobilePage implements MobilePage {
      */
     @Override
     public boolean waitUntilIsOpened() {
-        return AppiumWaitingUtils.waitUntilIsTrue(this::checkAllElementsOfPage, MIDDLE_TIMEOUT);
+        Wait<WebDriver> wait = new FluentWait<WebDriver>(getDriver())
+                .withTimeout(Duration.ofSeconds(10))
+                .pollingEvery(Duration.ofSeconds(1))
+                .ignoring(NoSuchElementException.class);
+
+        final List<Field> annotatedElementsList = getMobileElementsNamesWithAnnotationPageLoading();
+
+        final List<WebElement> webElements = convertFieldsToWebElements(annotatedElementsList);
+        try {
+            wait.until(ExpectedConditions.visibilityOfAllElements(webElements));
+        } catch (TimeoutException e) {
+            return false;
+        }
+        return true;
+    }
+
+
+    private List<WebElement> convertFieldsToWebElements(final List<Field> annotatedElementsList) {
+        List<WebElement> webElements = new ArrayList<>();
+        annotatedElementsList
+                .stream()
+                .forEach(element -> {
+                            final String methodName = getMethodNameByField(element);
+                            MobileElement webElement = null;
+                            try {
+                                webElement = (MobileElement) invokeGetMethodOfElement(methodName);
+                            } catch (IllegalAccessException | InvocationTargetException | NoSuchMethodException e) {
+                                e.printStackTrace();
+                            }
+                            webElements.add(webElement);
+                        }
+
+                );
+        return webElements;
     }
 
     @Override
@@ -128,7 +166,6 @@ public abstract class BaseMobilePage implements MobilePage {
         final List<Field> objects = new ArrayList<>();
         objects.addAll(Arrays.asList(getClass().getSuperclass().getDeclaredFields()));
         objects.addAll(Arrays.asList(getClass().getDeclaredFields()));
-
         if (objects.size() == 0) {
             throw new RuntimeException(NO_PAGE_LOADING.message);
         } else {

@@ -4,6 +4,7 @@ import com.racetrac.mobile.BaseTest;
 import com.racetrac.mobile.multisite.racetrac.dto.CustomerDto;
 import com.racetrac.mobile.multisite.racetrac.flow.BecomeFuelVipFlow;
 import com.racetrac.mobile.multisite.racetrac.flow.LocationRequestFlow;
+import com.racetrac.mobile.multisite.racetrac.flow.NotificationRequestFlow;
 import com.racetrac.mobile.multisite.racetrac.flow.PointsAndLevelsFlow;
 import com.racetrac.mobile.multisite.racetrac.flow.PromotionalOffersFlow;
 import com.racetrac.mobile.multisite.racetrac.flow.RewardsPopupFlow;
@@ -39,7 +40,8 @@ public class FuelVipPopUpWithDifferentAgeTest extends BaseTest {
     RewardsPopupFlow rewardsPopupFlow;
     @Autowired
     PointsAndLevelsFlow pointsAndLevelsFlow;
-
+    @Autowired
+    NotificationRequestFlow notificationRequestFlow;
     CustomerDto customerDto;
 
     @BeforeMethod(alwaysRun = true)
@@ -76,10 +78,15 @@ public class FuelVipPopUpWithDifferentAgeTest extends BaseTest {
         signUpFlow.enterCredentials(customerDto);
         signUpFlow.isFistBumpPageOpened();
         signUpFlow.clickGetStartedBtn();
-        promotionalOffersFlow.skipPromotions();
-        locationRequestFlow.clickNotNow();
+
+        notificationRequestFlow.clickNotNow();
+
+      //  promotionalOffersFlow.skipPromotions();
+      //  locationRequestFlow.clickNotNow();
         assertTrue(becomeFuelVipFlow.checkAllElementsIsLoaded(), "Elements are not loaded");
         becomeFuelVipFlow.clickNotRightNow();
+        promotionalOffersFlow.skipIOSPromotions();
+
         locationRequestFlow.clickNotNow();
         rewardsPopupFlow.clickGotItBtn();
         pointsAndLevelsFlow.clickGotItBtn();

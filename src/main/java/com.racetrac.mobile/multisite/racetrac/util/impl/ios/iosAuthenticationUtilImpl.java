@@ -1,6 +1,5 @@
 package com.racetrac.mobile.multisite.racetrac.util.impl.ios;
 
-import com.racetrac.mobile.multisite.MobilePage;
 import com.racetrac.mobile.multisite.racetrac.flow.BaseFlow;
 import com.racetrac.mobile.multisite.racetrac.flow.SignOutFlow;
 import com.racetrac.mobile.multisite.racetrac.page.RewardsPopupPage;
@@ -30,11 +29,13 @@ public class iosAuthenticationUtilImpl extends BaseFlow implements Authenticatio
         tryToClosePointsView(getPointsAndLevelsView());
         tryToCLoseRewardView(getRewardsPopupPage());
 
-        if (getHomePage().shortWaitUntilIsOpened()) {
+        if (getHomePage().waitUntilIsOpened()) {
             getHomePage().getIconSettings().click();
-            if (checkAccountSettingsPage(getAccountSettingsPageAuthorised())) {
+            if (getAccountSettingsPageAuthorised().waitUntilIsOpened()) {
+                getAccountSettingsPageAuthorised().getNavBarCloseBtn().click();
                 signOutFlow.doSignOut();
             } else {
+                getAccountSettingsPage().waitUntilIsOpened();
                 getAccountSettingsPage().getNavBarCloseBtn().click();
             }
         } else {
@@ -42,20 +43,9 @@ public class iosAuthenticationUtilImpl extends BaseFlow implements Authenticatio
         }
     }
 
-
-    private boolean checkAccountSettingsPage(final AccountSettingsPageAuthorised accountSettingsPageAuthorised) {
-        try {
-            final boolean isOpened = accountSettingsPageAuthorised.shortWaitUntilIsOpened();
-            accountSettingsPageAuthorised.getNavBarCloseBtn().click();
-            return isOpened;
-        } catch (TimeoutException e) {
-            return false;
-        }
-    }
-
     private void tryToCLoseRewardView(final RewardsPopupPage rewards) {
         try {
-            if (rewards.shortWaitUntilIsOpened()) {
+            if (rewards.waitUntilIsOpened()) {
                 rewards.getGotItBtn().click();
             }
         } catch (TimeoutException ignored) {
@@ -65,7 +55,7 @@ public class iosAuthenticationUtilImpl extends BaseFlow implements Authenticatio
     private void tryToClosePointsView(final PointsAndLevelsView points) {
 
         try {
-            if (points.shortWaitUntilIsOpened()) {
+            if (points.waitUntilIsOpened()) {
                 points.getPointsGotItBtn().click();
             }
         } catch (TimeoutException ignored) {
@@ -75,7 +65,7 @@ public class iosAuthenticationUtilImpl extends BaseFlow implements Authenticatio
     private void tryToCloseLocationPage(final TurnOnLocationPage turnOnLocationPage) {
 
         try {
-            if (turnOnLocationPage.shortWaitUntilIsOpened()) {
+            if (turnOnLocationPage.waitUntilIsOpened()) {
                 turnOnLocationPage.getNotNowBtn().click();
             }
         } catch (TimeoutException ignored) {

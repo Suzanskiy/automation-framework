@@ -24,8 +24,9 @@ public class AndroidRewardPopUpFlowImpl extends BaseFlow implements RewardsPopup
     @Step
     @Override
     public void clickGotItBtn() {
-        getRewardsPopupPage().waitUntilIsOpened();
         try {
+            getRewardsPopupPage().waitUntilIsOpened();
+
             getRewardsPopupPage().getGotItBtn().click();
         } catch (NoSuchElementException | TimeoutException e) {
             LOG.warn("Unable to click got it btn on Rewards pop up");

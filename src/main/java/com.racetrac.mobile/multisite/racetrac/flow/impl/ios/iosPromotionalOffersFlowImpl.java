@@ -3,6 +3,7 @@ package com.racetrac.mobile.multisite.racetrac.flow.impl.ios;
 import com.racetrac.mobile.multisite.racetrac.flow.BaseFlow;
 import com.racetrac.mobile.multisite.racetrac.flow.PromotionalOffersFlow;
 import com.racetrac.mobile.util.appium.AppiumWaitingUtils;
+import io.qameta.allure.Step;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.TimeoutException;
 import org.springframework.context.annotation.Profile;
@@ -87,6 +88,7 @@ public class iosPromotionalOffersFlowImpl extends BaseFlow implements Promotiona
         getPromotionalOffersPage().getNextBtn().click();
     }
 
+    @Step
     @Override
     public void skipPromotions() {
         try {
@@ -113,6 +115,7 @@ public class iosPromotionalOffersFlowImpl extends BaseFlow implements Promotiona
         return getPromotionalOffersPage().waitUntilIsOpened();
     }
 
+    @Step
     @Override
     public void skipIOSPromotions() {
         skipPromotions();

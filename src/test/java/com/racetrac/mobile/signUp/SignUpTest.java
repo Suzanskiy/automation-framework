@@ -80,7 +80,7 @@ public class SignUpTest extends BaseTest {
         promotionalOffersFlow.skipPromotions();
         locationRequestFlow.clickNotNow();
         becomeFuelVipFlow.clickNotRightNow();
-        signInFlow.clickGotItBtn();
+
         rewardsPopupFlow.clickGotItBtn();
 
         pointsAndLevelsFlow.clickGotItBtn();
