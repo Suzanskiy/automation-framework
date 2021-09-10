@@ -71,7 +71,7 @@ public class iosRewardCatalogFlowImpl extends BaseFlow implements RewardsCatalog
     @Step
     @Override
     public int availablePoints() {
-        return Integer.parseInt(getRewardsCatalogPage().getRewardsCatalogNumberOfPoints().getAttribute("text"));
+        return Integer.parseInt(getRewardsCatalogPage().getRewardsCatalogNumberOfPoints().getAttribute("value"));
     }
 
     @Override
@@ -93,9 +93,7 @@ public class iosRewardCatalogFlowImpl extends BaseFlow implements RewardsCatalog
     @Override
     public boolean isElementsOfRewardsCatalogDisplayed() {
         try {
-            return getRewardsCatalogPage().getRewardImage().isDisplayed() && getRewardsCatalogPage().getAvailablePointsDesc()
-                    .isDisplayed() && getRewardsCatalogPage().getRewardName().isDisplayed() && getRewardsCatalogPage()
-                    .getRewardPoints().isDisplayed() && getRewardsCatalogPage().getSortCaret().isDisplayed();
+            return getRewardsCatalogPage().waitUntilIsOpened();
 
         } catch (NoSuchElementException e) {
             LOG.warn("elements of Rewards catalog are not displayed");

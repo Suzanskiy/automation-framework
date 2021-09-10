@@ -29,7 +29,7 @@ public class RewardsPopupPage extends BaseMobilePage {
     private MobileElement tutorialPopUpArrow;
 
     @AndroidFindBy(uiAutomator = "new UiSelector().text(\"" + DESCRIPTION_REWARDS_POP_UP_MESSAGE + "\")")
-    @iOSXCUITFindBy(accessibility = "Redeem points for the Rewards below.")
+    @iOSXCUITFindBy(accessibility = "Tap Redeem to add a reward to your loyalty card. Rewards expire in 24 hours and points are returned for unused rewards.")
     private MobileElement rewardsPopUpTutorialMessage;
 
 }

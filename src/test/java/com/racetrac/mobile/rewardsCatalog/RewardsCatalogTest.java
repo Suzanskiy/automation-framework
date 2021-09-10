@@ -96,6 +96,7 @@ public class RewardsCatalogTest extends BaseTest {
         assertTrue(rewardsCatalogFlow.isRewardsCatalogPageOpened(), "Rewards catalog is not opened");
         assertEquals(rewardsCatalogFlow.availablePoints(), AVAILABLE_POINTS, "Invalid points are displayed");
         assertTrue(rewardsCatalogFlow.isElementsOfRewardsCatalogDisplayed(), "Elements of rewards catalog are not displayd");
+        rewardsCatalogFlow.closeRewardsCatalog();
     }
 
     @TmsLink("7303")
