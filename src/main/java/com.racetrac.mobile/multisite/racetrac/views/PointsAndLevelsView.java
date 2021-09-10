@@ -14,6 +14,6 @@ public class PointsAndLevelsView extends BaseMobilePage {
 
     @PageLoading
     @iOSXCUITFindBy(xpath = "//XCUIElementTypeButton[@name=\"GOT IT\"]")
-    @AndroidFindBy(id = "com.RaceTrac.Common.qa:id/pointsAndLevelsTutorialGotItButton")
+    @AndroidFindBy(uiAutomator = "new UiSelector().text(\"GOT IT\")")
     private MobileElement pointsGotItBtn;
 }
