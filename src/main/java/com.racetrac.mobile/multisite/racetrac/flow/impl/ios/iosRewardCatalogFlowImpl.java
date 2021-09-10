@@ -41,7 +41,7 @@ public class iosRewardCatalogFlowImpl extends BaseFlow implements RewardsCatalog
     @Override
     public boolean isUnclaimedRewardsIsDisplayed() {
         try {
-            getRewardsCatalogPage().refresh();
+            getRewardsCatalogPage().waitUntilIsOpened();
             return getRewardsCatalogPage().getUnclaimedRewardsLabel().isDisplayed();
         } catch (NoSuchElementException e) {
             LOG.warn("Unclaimed Rewards Label is not displayed");
@@ -68,6 +68,7 @@ public class iosRewardCatalogFlowImpl extends BaseFlow implements RewardsCatalog
     public boolean isRewardsCatalogPageOpened() {
         return getRewardsCatalogPage().waitUntilIsOpened();
     }
+
     @Step
     @Override
     public int availablePoints() {
@@ -76,7 +77,7 @@ public class iosRewardCatalogFlowImpl extends BaseFlow implements RewardsCatalog
 
     @Override
     public int rewardPrice() {
-        return Integer.parseInt(getRewardsCatalogPage().getRewardPoints().getAttribute("value").substring(0,3));
+        return Integer.parseInt(getRewardsCatalogPage().getRewardPoints().getAttribute("value").substring(0, 3));
     }
 
     @Step
@@ -99,6 +100,11 @@ public class iosRewardCatalogFlowImpl extends BaseFlow implements RewardsCatalog
             LOG.warn("elements of Rewards catalog are not displayed");
             return false;
         }
+    }
+
+    @Override
+    public boolean isSadSmilePopUpShown() {
+        return getSadSmileRewardCatalogView().waitUntilIsOpened();
     }
 
     @Step

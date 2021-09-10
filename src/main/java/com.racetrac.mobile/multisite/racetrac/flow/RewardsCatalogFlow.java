@@ -22,4 +22,5 @@ public interface RewardsCatalogFlow extends NavigateFlow {
 
     boolean isElementsOfRewardsCatalogDisplayed();
 
+    boolean isSadSmilePopUpShown();
 }

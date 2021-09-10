@@ -105,6 +105,11 @@ public class AndroidRewardCatalogFlowImpl extends BaseFlow implements RewardsCat
         }
     }
 
+    @Override
+    public boolean isSadSmilePopUpShown() {
+        return false;  // FIXME: 10.09.2021 add selector for sad smile
+    }
+
     @Step
     @Override
     public void navigateBack() {

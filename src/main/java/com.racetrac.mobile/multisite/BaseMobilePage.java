@@ -55,7 +55,7 @@ public abstract class BaseMobilePage implements MobilePage {
     public boolean waitUntilIsOpened() {
         Wait<WebDriver> wait = new FluentWait<WebDriver>(getDriver())
                 .withTimeout(Duration.ofSeconds(10))
-                .pollingEvery(Duration.ofSeconds(1))
+                .pollingEvery(Duration.ofSeconds(2))
                 .ignoring(NoSuchElementException.class);
 
         final List<Field> annotatedElementsList = getMobileElementsNamesWithAnnotationPageLoading();

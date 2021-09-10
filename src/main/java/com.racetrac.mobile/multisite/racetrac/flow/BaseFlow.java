@@ -66,4 +66,5 @@ public class BaseFlow {
     RewardsCatalogPage rewardsCatalogPage;
     EnoughRedeemPointsPopUp enoughRedeemPointsPopUp;
     CheckoutBtnPage checkoutBtnPage;
+    SadSmileRewardCatalogView sadSmileRewardCatalogView;
 }
