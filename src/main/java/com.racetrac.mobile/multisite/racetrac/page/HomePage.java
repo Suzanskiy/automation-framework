@@ -43,7 +43,7 @@ public class HomePage extends BaseMobilePage {
     private MobileElement descriptionTextWhenUserHasNoPoints;
 
     @AndroidFindBy(xpath = "//android.widget.TextView[contains(@text,\"Enter phone number\")]/../android.widget.ImageView[@resource-id=\"com.RaceTrac.Common.qa:id/imageGuestInfo\"]")
-    @iOSXCUITFindBy(accessibility = DESCRIPTION_TEXT_WITH_NO_POINTS)
+    @iOSXCUITFindBy(xpath = "//XCUIElementTypeButton[@name=\"REWARDS\"]")
     private MobileElement rewardsSectionScreenForUserWithoutPoints;
 
     @iOSXCUITFindBy(xpath = "//XCUIElementTypeButton[@name=\"REDEEM POINTS\"]/../XCUIElementTypeStaticText[3]")

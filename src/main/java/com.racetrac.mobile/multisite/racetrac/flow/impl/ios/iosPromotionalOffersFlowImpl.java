@@ -138,11 +138,13 @@ public class iosPromotionalOffersFlowImpl extends BaseFlow implements Promotiona
 
     @Override
     public boolean isPopUpDescriptionDisplayed() {
+        getPromotionalOffersPage().refresh();
         return getPromotionalOffersPage().getDescriptionText().isDisplayed();
     }
 
     @Override
     public boolean isOkFieldEditable() {
+        getPromotionalOffersPage().waitUntilIsOpened();
         final String attribute = getPromotionalOffersPage().getOkBirthdayPopUpFieldBtn().getAttribute("enabled");
         if (attribute.equals("false")) {
             return false;
