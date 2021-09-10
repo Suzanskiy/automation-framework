@@ -86,4 +86,9 @@ public class AndroidWelcomeFlowImpl extends BaseFlow implements WelcomeFlow {
         }
     }
 
+    @Override
+    public boolean isRedeemPointsBtnDisplayedOnMainScreen() {
+        return isRedeemPointsBtnDisplayed();
+    }
+
 }

@@ -59,7 +59,7 @@ public class RedeemPointsTest extends BaseTest {
         notificationRequestFlow.clickNotNow();
         signInFlow.clickGotItBtn();
         pointsAndLevelsFlow.clickGotItBtn();
-        assertFalse(welcomeFlow.isRedeemPointsBtnDisplayed(), " Redeem points is displayed");
+        assertFalse(welcomeFlow.isRedeemPointsBtnDisplayedOnMainScreen(), " Redeem points is displayed");
     }
 
     @Test
