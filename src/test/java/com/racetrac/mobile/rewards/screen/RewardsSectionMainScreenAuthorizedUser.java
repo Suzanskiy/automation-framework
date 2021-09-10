@@ -91,7 +91,6 @@ public class RewardsSectionMainScreenAuthorizedUser extends BaseTest {
         rewardsPopupFlow.clickGotItBtn();
         assertTrue(rewardsCatalogFlow.isRewardsCatalogPageOpened());
         assertEquals(rewardsCatalogFlow.availablePoints(), AVAILABLE_POINTS);
-        rewardsCatalogFlow.closeRewardsCatalog();
     }
 
     @AfterMethod(alwaysRun = true)

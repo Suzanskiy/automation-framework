@@ -83,7 +83,7 @@ public class iosRewardCatalogFlowImpl extends BaseFlow implements RewardsCatalog
     @Step
     @Override
     public void closeRewardsCatalog() {
-        getRewardsCatalogPage().getRewardsCatalogBackBtn().click();
+        getRewardsCatalogPage().getCloseBtn().click();
     }
 
     @Override
