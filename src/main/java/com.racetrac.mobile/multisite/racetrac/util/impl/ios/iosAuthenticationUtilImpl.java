@@ -4,7 +4,6 @@ import com.racetrac.mobile.multisite.racetrac.flow.BaseFlow;
 import com.racetrac.mobile.multisite.racetrac.flow.SignOutFlow;
 import com.racetrac.mobile.multisite.racetrac.page.RewardsPopupPage;
 import com.racetrac.mobile.multisite.racetrac.page.TurnOnLocationPage;
-import com.racetrac.mobile.multisite.racetrac.page.diff.AccountSettingsPageAuthorised;
 import com.racetrac.mobile.multisite.racetrac.util.AuthenticationUtil;
 import com.racetrac.mobile.multisite.racetrac.views.PointsAndLevelsView;
 import org.openqa.selenium.TimeoutException;
@@ -25,21 +24,11 @@ public class iosAuthenticationUtilImpl extends BaseFlow implements Authenticatio
     public void prepareAppAfterBrokenSignOut() {
         getDriver().launchApp();
 
-        tryToCloseLocationPage(getTurnOnLocationPage());
-        tryToClosePointsView(getPointsAndLevelsView());
-        tryToCLoseRewardView(getRewardsPopupPage());
-
-        if (getHomePage().waitUntilIsOpened()) {
-            getHomePage().getIconSettings().click();
-            if (getAccountSettingsPageAuthorised().waitUntilIsOpened()) {
-                getAccountSettingsPageAuthorised().getNavBarCloseBtn().click();
-                signOutFlow.doSignOut();
-            } else {
-                getAccountSettingsPage().waitUntilIsOpened();
-                getAccountSettingsPage().getNavBarCloseBtn().click();
-            }
-        } else {
-            LOG.warn("Unable to do signout before test");
+        if (!getHomePage().waitUntilIsOpened()) {
+            tryToCloseLocationPage(getTurnOnLocationPage());
+            tryToClosePointsView(getPointsAndLevelsView());
+            tryToCLoseRewardView(getRewardsPopupPage());
+            signOutFlow.doSignOut();
         }
     }
 
