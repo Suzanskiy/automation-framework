@@ -76,7 +76,7 @@ public class iosRewardCatalogFlowImpl extends BaseFlow implements RewardsCatalog
 
     @Override
     public int rewardPrice() {
-        return Integer.parseInt(getRewardsCatalogPage().getRewardPoints().getAttribute("text").substring(0,3));
+        return Integer.parseInt(getRewardsCatalogPage().getRewardPoints().getAttribute("value").substring(0,3));
     }
 
     @Step

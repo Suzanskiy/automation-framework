@@ -55,6 +55,8 @@ public class RewardsCatalogPage extends BaseMobilePage {
     private MobileElement rewardName;
 
     @AndroidFindBy(id = "com.RaceTrac.Common.qa:id/rewardPoints")
+    @iOSXCUITFindBy(xpath = "//XCUIElementTypeButton[@name=\"REDEEM\"]/../\t\n" +
+            "XCUIElementTypeStaticText[2]")
     private MobileElement rewardPoints;
 
 
