@@ -89,8 +89,8 @@ public class iosBottomNavigationFlowImpl extends BaseFlow implements NavigationF
     }
 
     @Override
-    public void drawerClick() {
-
+    public void navigateToRewardsCatalogViaDrawer() {
+        getHomePage().getRedeemPointsBtn().click();
     }
 
     @Override

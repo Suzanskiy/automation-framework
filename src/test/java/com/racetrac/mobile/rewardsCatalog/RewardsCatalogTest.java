@@ -57,7 +57,7 @@ public class RewardsCatalogTest extends BaseTest {
     @Description("\"Rewards Catalog\" is hidden from side menu for non-logged User")
     @Test
     public void hiddenRewardsCatalogTest() {
-        navigationFlow.drawerClick();
+        navigationFlow.navigateToRewardsCatalogViaDrawer();
         assertFalse(navigationFlow.isRewardCatalogDisplayed(), "Rewards catalog is diplayed");
     }
 
@@ -75,8 +75,8 @@ public class RewardsCatalogTest extends BaseTest {
         rewardsPopupFlow.clickGotItBtn();
         pointsAndLevelsFlow.clickGotItBtn();
         assertTrue(welcomeFlow.isHomePageOpenedAfterSignIn(), "Welcome page is not opened after sign in");
-        navigationFlow.drawerClick();
-        assertTrue(navigationFlow.isRewardCatalogDisplayed(), "Rewards catalog is not displayed");
+        navigationFlow.navigateToRewardsCatalogViaDrawer();
+       // assertTrue(navigationFlow.isRewardCatalogDisplayed(), "Rewards catalog is not displayed");
         navigationFlow.rewardCatalogClick();
         assertTrue(rewardsPopupFlow.isRedeemPopUpHintDisplayed(), "Redeem Popup Hint is not displayed");
         rewardsPopupFlow.clickGotItBtn();
