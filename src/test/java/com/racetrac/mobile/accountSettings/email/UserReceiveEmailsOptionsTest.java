@@ -34,7 +34,8 @@ public class UserReceiveEmailsOptionsTest extends BaseTest {
     BecomeFuelVipFlow becomeFuelVipFlow;
     @Autowired
     PointsAndLevelsFlow pointsAndLevelsFlow;
-
+@Autowired
+        RewardsPopupFlow rewardsPopupFlow;
     CustomerDto customerDto;
 
     @BeforeMethod
@@ -69,7 +70,10 @@ public class UserReceiveEmailsOptionsTest extends BaseTest {
 
         becomeFuelVipFlow.clickNotRightNow();
         signInFlow.clickGotItBtn();
+        locationRequestFlow.clickNotNow();
+        rewardsPopupFlow.clickGotItBtn();
         pointsAndLevelsFlow.clickGotItBtn();
+
         accountSettingsFlow.navigateToAccountSettings();
         accountSettingsFlow.isAccountSettingsAuthorisedUserScreenOpened();
         assertTrue(accountSettingsFlow.receiveEmailsSwitcherPosition(), "Receive Email switcher position is off");

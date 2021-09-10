@@ -49,7 +49,8 @@ public class AccountSettingsPageAuthorised extends AccountSettingsPage {
     @iOSXCUITFindBy(xpath = "//XCUIElementTypeStaticText[@name=\"Notifications\"]")
     @AndroidFindBy(uiAutomator = "new UiSelector().text(\"Notifications\")")
     private MobileElement notifications;
-
+    
+    @iOSXCUITFindBy(xpath = "//XCUIElementTypeSwitch[@name=\"Receive Emails?\"]")
     @AndroidFindBy(xpath = "//android.widget.TextView[@text=\"Receive Emails?\"]/../android.widget.Switch[@resource-id=\"com.RaceTrac.Common.qa:id/account_section_item_switch\"]")
     private MobileElement receiveEmailsSwitchBtn;
 
