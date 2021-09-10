@@ -11,6 +11,8 @@ import com.racetrac.mobile.multisite.racetrac.flow.RewardsPopupFlow;
 import com.racetrac.mobile.multisite.racetrac.flow.SignInFlow;
 import com.racetrac.mobile.multisite.racetrac.flow.SignOutFlow;
 import com.racetrac.mobile.multisite.racetrac.flow.WelcomeFlow;
+import io.qameta.allure.Description;
+import io.qameta.allure.TmsLink;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.Test;
@@ -38,7 +40,8 @@ public class PointsAndTiersTestAuthorisedUser extends BaseTest {
     PunchhPointsClient punchhPointsClient;
 
     CustomerDto customerDto;
-
+    @TmsLink("7469")
+    @Description("Points & Tiers screen for logged user")
     @Test
     public void checkAllScreensOnPointsAndLevelsWithUserHas500pointsTest() {
         customerDto = testData.registerNewCustomer();

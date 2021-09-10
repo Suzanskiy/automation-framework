@@ -81,8 +81,8 @@ public class AccountSettingsAuthorisedUserTest extends BaseTest {
         pointsAndLevelsFlow.clickGotItBtn();
     }
 
-    @TmsLink("")
-    @Description("")
+    @TmsLink("5472")
+    @Description("Promotional Settings\" is available only for 21 aged User ")
     @Test
     public void promotionsForAdultCustomerTest() {
         signInFlow.openLoginInPage();
@@ -107,8 +107,8 @@ public class AccountSettingsAuthorisedUserTest extends BaseTest {
         pointsAndLevelsFlow.clickGotItBtn();
     }
 
-    @TmsLink("")
-    @Description("")
+    @TmsLink("6224")
+    @Description("Promotional Settings\" are disabled for User younger than 21")
     @Test
     public void promotionsForUserUnder21Test() {
         signInFlow.openLoginInPage();
@@ -136,8 +136,8 @@ public class AccountSettingsAuthorisedUserTest extends BaseTest {
         accountSettingsFlow.navigateBack();
     }
 
-    @TmsLink("")
-    @Description("")
+    @TmsLink("5470")
+    @Description("Promotional Settings and birthday changes are disabled for\"  20 or less aged User")
     @Test
     public void promotionsSettingsAndBirthdayChangesAreDisabledForUserUnder21Test() {
         signInFlow.openLoginInPage();
@@ -168,7 +168,7 @@ public class AccountSettingsAuthorisedUserTest extends BaseTest {
         accountSettingsFlow.navigateBack();
     }
 
-    @TmsLink("")
+    @TmsLink("6225")
     @Description("Promotional Settings\" can be changed by User older than 21")
     @Test
     public void promotionsSettingsTapedYesBtnSavedAfterClick() {
