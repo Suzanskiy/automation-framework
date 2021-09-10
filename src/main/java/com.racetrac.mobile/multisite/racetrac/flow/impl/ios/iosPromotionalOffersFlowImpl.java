@@ -17,7 +17,7 @@ public class iosPromotionalOffersFlowImpl extends BaseFlow implements Promotiona
 
     @Override
     public void waitUntilOkBtnAvailable() {
-        AppiumWaitingUtils.waitUntilIsTrue(() -> !isOkFieldEditable());
+        AppiumWaitingUtils.waitUntilIsTrue(() -> !isOkPopUpBtnEditable());
     }
 
     @Override
@@ -143,7 +143,7 @@ public class iosPromotionalOffersFlowImpl extends BaseFlow implements Promotiona
     }
 
     @Override
-    public boolean isOkFieldEditable() {
+    public boolean isOkPopUpBtnEditable() {
         getPromotionalOffersPage().waitUntilIsOpened();
         final String attribute = getPromotionalOffersPage().getOkBirthdayPopUpFieldBtn().getAttribute("enabled");
         if (attribute.equals("false")) {

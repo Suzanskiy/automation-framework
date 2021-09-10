@@ -78,10 +78,10 @@ public class PromotionalSettingsBirthdayFieldValidationTest extends BaseTest {
     @Description("Validation of \"Birthday\" field in promotional settings section with invalid data")
     @Test(dataProvider = "invalidBirthdayDataProvider")
     public void birthdayFieldInPromotionalInvalidDataTest(String customerBirth) {
-        assertFalse(promotionalOffersFlow.isOkFieldEditable(), "Ok field is editable");
+        assertFalse(promotionalOffersFlow.isOkPopUpBtnEditable(), "Ok field is editable");
         assertTrue(promotionalOffersFlow.isPopUpDescriptionDisplayed(),"Pop-Up description is not displayed");
         promotionalOffersFlow.enterBirthDate(customerBirth);
-        assertTrue(promotionalOffersFlow.isOkFieldEditable(), "Ok field is editable");
+        assertFalse(promotionalOffersFlow.isOkPopUpBtnEditable(), "Ok field is editable");
         assertTrue(promotionalOffersFlow.isPopUpDescriptionDisplayed(),"Pop-Up description is not displayed");
 
     }

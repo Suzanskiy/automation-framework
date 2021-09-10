@@ -201,7 +201,7 @@ public class AccountSettingsAuthorisedUserTest extends BaseTest {
         accountSettingsFlow.navigateToAccountSettings();
         assertTrue(accountSettingsFlow.isAccountSettingsAuthorisedUserScreenOpened(), " Account screen for Logged in User is not opened");
         accountSettingsFlow.navigateToPromotionalSettings();
-        assertFalse(promotionalOffersFlow.isOkFieldEditable(), "Ok field is editable");
+        assertFalse(promotionalOffersFlow.isOkPopUpBtnEditable(), "Ok field is editable");
         assertTrue(promotionalOffersFlow.isPopUpDescriptionDisplayed(), "Pop up description is not displayed");
 
         String customerBirth = testData.generateDateBirth();
@@ -210,7 +210,7 @@ public class AccountSettingsAuthorisedUserTest extends BaseTest {
         assertTrue(accountSettingsFlow.isAccountSettingsAuthorisedUserScreenOpened(), "Account settings screen is not opened");
 
         accountSettingsFlow.navigateToPromotionalSettings();
-        assertFalse(promotionalOffersFlow.isOkFieldEditable(), "Ok field is editable");
+        assertFalse(promotionalOffersFlow.isOkPopUpBtnEditable(), "Ok field is editable");
         assertTrue(promotionalOffersFlow.isPopUpDescriptionDisplayed(), "Pop up description is not shown");
 
         promotionalOffersFlow.enterBirthDate(customerBirth);
