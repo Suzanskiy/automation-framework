@@ -13,6 +13,8 @@ import com.racetrac.mobile.multisite.racetrac.flow.RewardsPopupFlow;
 import com.racetrac.mobile.multisite.racetrac.flow.SignInFlow;
 import com.racetrac.mobile.multisite.racetrac.flow.SignOutFlow;
 import com.racetrac.mobile.multisite.racetrac.flow.WelcomeFlow;
+import io.qameta.allure.Description;
+import io.qameta.allure.TmsLink;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.Test;
@@ -47,7 +49,8 @@ public class RedeemPointsTest extends BaseTest {
     NoPointsNoticeFlow noPointsNoticeFlow;
     @Autowired
     PunchhPointsClient punchhPointsClient;
-
+    @TmsLink("7301")
+    @Description(" Open \"Rewards Catalog\" from \"Rewards\" tab on the \"Home\" screen")
     @Test
     public void userWithoutAnyPointsTest() {
         customerDto = testData.registerNewCustomer();
@@ -61,7 +64,8 @@ public class RedeemPointsTest extends BaseTest {
         pointsAndLevelsFlow.clickGotItBtn();
         assertFalse(welcomeFlow.isRedeemPointsBtnDisplayedOnMainScreen(), " Redeem points is displayed");
     }
-
+    @TmsLink("7640")
+    @Description("Redeem reward if user does not have enough points(50)")
     @Test
     public void redeemPointsWithUserHas50pointsTest() {
         customerDto = testData.registerNewCustomer();
@@ -82,7 +86,8 @@ public class RedeemPointsTest extends BaseTest {
         noPointsNoticeFlow.clickOK();
         rewardsCatalogFlow.navigateBack();
     }
-
+    @TmsLink("7633")
+    @Description("Redeem reward if user has enough points")
     @Test
     public void redeemPointsWithUserHas130pointsTest() {
         customerDto = testData.registerNewCustomer();
