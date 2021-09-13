@@ -8,7 +8,7 @@ properties:
   platformAndroid: &AndroidPlatform
     platformName: Android
     appPackage: com.RaceTrac.Common.qa
-    deviceName: Pixel_3a_API_30_x86
+    deviceName: Emulator
     test.profile: android
     autPackage: src/main/resources/apk
     appActivity: com.RaceTrac.ui.splash.activities.SplashScreenActivity
