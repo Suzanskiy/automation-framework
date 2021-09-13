@@ -61,6 +61,7 @@ public class PromotionalOffersPage extends BaseMobilePage {
     @iOSXCUITFindBy(xpath = "//XCUIElementTypeButton[@name=\"OK\"]")
     @AndroidFindBy(id = "com.RaceTrac.Common.qa:id/confirmBirthday")
     private MobileElement okBirthdayPopUpFieldBtn;
+
     @iOSXCUITFindBy(xpath = "//XCUIElementTypeButton[@name=\"CANCEL\"]")
     @AndroidFindBy(id = "com.RaceTrac.Common.qa:id/cancelBirthday")
     private MobileElement cancelBirthdayPopUpFieldBtn;

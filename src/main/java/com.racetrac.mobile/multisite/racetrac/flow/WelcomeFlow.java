@@ -19,4 +19,5 @@ public interface WelcomeFlow {
 
     boolean isRedeemPointsBtnDisplayed();
 
+    boolean isRedeemPointsBtnDisplayedOnMainScreen();
 }

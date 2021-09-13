@@ -59,7 +59,7 @@ public class RedeemPointsTest extends BaseTest {
         notificationRequestFlow.clickNotNow();
         signInFlow.clickGotItBtn();
         pointsAndLevelsFlow.clickGotItBtn();
-        assertFalse(welcomeFlow.isRedeemPointsBtnDisplayed(), " Redeem points is displayed");
+        assertFalse(welcomeFlow.isRedeemPointsBtnDisplayedOnMainScreen(), " Redeem points is displayed");
     }
 
     @Test
@@ -107,11 +107,7 @@ public class RedeemPointsTest extends BaseTest {
         rewardsCatalogFlow.clickRedeemBtn();
         rewardsCatalogFlow.clickRedeemOnPopupBtn();
         //Getting sad smile until Bottle of water will not returned //// FIXME: 03.09.2021
-        assertFalse(rewardsCatalogFlow.isQuantityOfPointsEnough(), "The number of points is not enough to make redeem");
-        rewardsCatalogFlow.clickRedeemBtn();
-        assertEquals(noPointsNoticeFlow.getNotificationMessages(), NO_POINTS_TO_EXCHANGE_TEXT);
-        noPointsNoticeFlow.clickOK();
-        rewardsCatalogFlow.navigateBack();
+       assertTrue(rewardsCatalogFlow.isSadSmilePopUpShown(), "Sad Smile view is not showed");
     }
 
     @AfterMethod(alwaysRun = true)

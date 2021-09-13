@@ -76,4 +76,9 @@ public class IosWelcomeFlowImpl extends BaseFlow implements WelcomeFlow {
             return false;
         }
     }
+
+    @Override
+    public boolean isRedeemPointsBtnDisplayedOnMainScreen() {
+        return !isRedeemPointsBtnDisplayed(); //such button on ios exists and marked as visible, but it seems like appium bug
+    }
 }

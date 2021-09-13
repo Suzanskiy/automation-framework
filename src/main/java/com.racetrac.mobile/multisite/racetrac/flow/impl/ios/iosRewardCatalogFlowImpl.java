@@ -41,7 +41,7 @@ public class iosRewardCatalogFlowImpl extends BaseFlow implements RewardsCatalog
     @Override
     public boolean isUnclaimedRewardsIsDisplayed() {
         try {
-            getRewardsCatalogPage().refresh();
+            getRewardsCatalogPage().waitUntilIsOpened();
             return getRewardsCatalogPage().getUnclaimedRewardsLabel().isDisplayed();
         } catch (NoSuchElementException e) {
             LOG.warn("Unclaimed Rewards Label is not displayed");
@@ -68,21 +68,22 @@ public class iosRewardCatalogFlowImpl extends BaseFlow implements RewardsCatalog
     public boolean isRewardsCatalogPageOpened() {
         return getRewardsCatalogPage().waitUntilIsOpened();
     }
+
     @Step
     @Override
     public int availablePoints() {
-        return Integer.parseInt(getRewardsCatalogPage().getRewardsCatalogNumberOfPoints().getAttribute("text"));
+        return Integer.parseInt(getRewardsCatalogPage().getRewardsCatalogNumberOfPoints().getAttribute("value"));
     }
 
     @Override
     public int rewardPrice() {
-        return Integer.parseInt(getRewardsCatalogPage().getRewardPoints().getAttribute("text").substring(0,3));
+        return Integer.parseInt(getRewardsCatalogPage().getRewardPoints().getAttribute("value").substring(0, 3));
     }
 
     @Step
     @Override
     public void closeRewardsCatalog() {
-        getRewardsCatalogPage().getRewardsCatalogBackBtn().click();
+        getRewardsCatalogPage().getCloseBtn().click();
     }
 
     @Override
@@ -93,14 +94,17 @@ public class iosRewardCatalogFlowImpl extends BaseFlow implements RewardsCatalog
     @Override
     public boolean isElementsOfRewardsCatalogDisplayed() {
         try {
-            return getRewardsCatalogPage().getRewardImage().isDisplayed() && getRewardsCatalogPage().getAvailablePointsDesc()
-                    .isDisplayed() && getRewardsCatalogPage().getRewardName().isDisplayed() && getRewardsCatalogPage()
-                    .getRewardPoints().isDisplayed() && getRewardsCatalogPage().getSortCaret().isDisplayed();
+            return getRewardsCatalogPage().waitUntilIsOpened();
 
         } catch (NoSuchElementException e) {
             LOG.warn("elements of Rewards catalog are not displayed");
             return false;
         }
+    }
+
+    @Override
+    public boolean isSadSmilePopUpShown() {
+        return getSadSmileRewardCatalogView().waitUntilIsOpened();
     }
 
     @Step

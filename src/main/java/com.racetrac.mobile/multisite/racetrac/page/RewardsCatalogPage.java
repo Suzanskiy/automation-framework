@@ -39,7 +39,6 @@ public class RewardsCatalogPage extends BaseMobilePage {
     @AndroidFindBy(id = "com.RaceTrac.Common.qa:id/memberPoints")
     private MobileElement rewardsCatalogNumberOfPoints;
 
-    @PageLoading
     @AndroidFindBy(id = "com.RaceTrac.Common.qa:id/reward_catalog_back_btn")
     private MobileElement rewardsCatalogBackBtn;
 
@@ -56,6 +55,8 @@ public class RewardsCatalogPage extends BaseMobilePage {
     private MobileElement rewardName;
 
     @AndroidFindBy(id = "com.RaceTrac.Common.qa:id/rewardPoints")
+    @iOSXCUITFindBy(xpath = "//XCUIElementTypeButton[@name=\"REDEEM\"]/../\t\n" +
+            "XCUIElementTypeStaticText[2]")
     private MobileElement rewardPoints;
 
 

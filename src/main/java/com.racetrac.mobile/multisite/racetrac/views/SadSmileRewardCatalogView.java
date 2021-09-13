@@ -10,10 +10,9 @@ import org.springframework.stereotype.Component;
 
 @Component
 @Getter
-public class PointsAndLevelsView extends BaseMobilePage {
+public class SadSmileRewardCatalogView extends BaseMobilePage {
 
     @PageLoading
-    @iOSXCUITFindBy(xpath = "//XCUIElementTypeButton[@name=\"GOT IT\"]")
-    @AndroidFindBy(uiAutomator = "new UiSelector().text(\"GOT IT\")")
-    private MobileElement pointsGotItBtn;
+    @iOSXCUITFindBy(accessibility = "Whoops! Looks like you already have this Reward in your cart. You can only redeem one Fuel Reward at a time")
+    private MobileElement sadSmileDescription;
 }

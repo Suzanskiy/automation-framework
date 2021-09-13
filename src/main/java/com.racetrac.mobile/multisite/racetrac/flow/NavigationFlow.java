@@ -25,7 +25,7 @@ public interface NavigationFlow {
 
     public boolean isRewardCatalogDisplayed();
 
-    public void drawerClick();
+    public void navigateToRewardsCatalogViaDrawer();
 
     public void rewardCatalogClick();
 }

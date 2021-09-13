@@ -43,7 +43,7 @@ public interface PromotionalOffersFlow {
 
     boolean isPopUpDescriptionDisplayed();
 
-    boolean isOkFieldEditable();
+    boolean isOkPopUpBtnEditable();
 
     void enterBirthDate(String customerBirth);
 }

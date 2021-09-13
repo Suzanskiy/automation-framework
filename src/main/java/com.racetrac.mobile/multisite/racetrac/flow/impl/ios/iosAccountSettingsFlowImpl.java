@@ -53,12 +53,18 @@ public class iosAccountSettingsFlowImpl extends BaseFlow implements AccountSetti
 
     @Override
     public boolean isReceiveEmailsDisplayed() {
-        return false;
+        try {
+            return getAccountSettingsPageAuthorised().getReceiveEmailsSwitchBtn().isDisplayed();
+        } catch (NoSuchElementException e) {
+            return false;
+        }
     }
 
     @Override
     public boolean receiveEmailsSwitcherPosition() {
-        return false;
+        final String value = getAccountSettingsPageAuthorised().
+                getReceiveEmailsSwitchBtn().getAttribute("value");
+        return !value.contains("0"); // 0 - turned off, 1 - turned on
     }
 
     @Override

@@ -17,7 +17,7 @@ public class RewardsPopupPage extends BaseMobilePage {
 
     @PageLoading
     @iOSXCUITFindBy(xpath = "//XCUIElementTypeButton[@name=\"GOT IT\"]")
-    @AndroidFindBy(id = "com.RaceTrac.Common.qa:id/rewardsTutorialGotItButton")
+    @AndroidFindBy(uiAutomator = "new UiSelector().text(\"GOT IT\")")
     private MobileElement gotItBtn;
 
     @AndroidFindBy(id = "com.RaceTrac.Common.qa:id/redeemButton")
@@ -29,7 +29,7 @@ public class RewardsPopupPage extends BaseMobilePage {
     private MobileElement tutorialPopUpArrow;
 
     @AndroidFindBy(uiAutomator = "new UiSelector().text(\"" + DESCRIPTION_REWARDS_POP_UP_MESSAGE + "\")")
-    @iOSXCUITFindBy(xpath = "//XCUIElementTypeStaticText[contains(@text,'Tap Redeem')]")
+    @iOSXCUITFindBy(accessibility = "Tap Redeem to add a reward to your loyalty card. Rewards expire in 24 hours and points are returned for unused rewards.")
     private MobileElement rewardsPopUpTutorialMessage;
 
 }

@@ -54,9 +54,13 @@ public class PromotionalSettingsBirthdayFieldValidationTest extends BaseTest {
         };
     }
 
+    @BeforeClass
+    public void beforeClass() {
+        customerDto = testData.registerNewCustomer(NOT_SPECIFIED_BIRTHDATE);
+    }
+
     @BeforeMethod(alwaysRun = true)
     public void preconditions(){
-        customerDto = testData.registerNewCustomer(NOT_SPECIFIED_BIRTHDATE);
         assertTrue(welcomeFlow.isHomePageOpened(), "Welcome page is not opened");
         signInFlow.openLoginInPage();
         assertTrue(signInFlow.isLoginPageOpened(), "Login page is not opened");
@@ -74,17 +78,12 @@ public class PromotionalSettingsBirthdayFieldValidationTest extends BaseTest {
     @Description("Validation of \"Birthday\" field in promotional settings section with invalid data")
     @Test(dataProvider = "invalidBirthdayDataProvider")
     public void birthdayFieldInPromotionalInvalidDataTest(String customerBirth) {
-        assertFalse(promotionalOffersFlow.isOkFieldEditable(), "Ok field is editable");
+        assertFalse(promotionalOffersFlow.isOkPopUpBtnEditable(), "Ok field is editable");
         assertTrue(promotionalOffersFlow.isPopUpDescriptionDisplayed(),"Pop-Up description is not displayed");
         promotionalOffersFlow.enterBirthDate(customerBirth);
-        assertFalse(promotionalOffersFlow.isOkFieldEditable(), "Ok field is editable");
+        assertFalse(promotionalOffersFlow.isOkPopUpBtnEditable(), "Ok field is editable");
         assertTrue(promotionalOffersFlow.isPopUpDescriptionDisplayed(),"Pop-Up description is not displayed");
 
     }
-    @AfterMethod(alwaysRun = true)
-    public void logOut() {
-        promotionalOffersFlow.navigateBack();
-        accountSettingsFlow.navigateBack();
-        signOutFlow.doSignOut();
-    }
+
 }
