@@ -13,4 +13,7 @@ public class NavigationDrawer extends BaseMobilePage {
     @PageLoading
     @AndroidFindBy(accessibility = "Open navigation drawer")
     private MobileElement drawer;
+
+    @AndroidFindBy(id = "com.RaceTrac.Common.qa:id/toolbar_icon_home")
+    private MobileElement drawerFromCouponsPage;
 }

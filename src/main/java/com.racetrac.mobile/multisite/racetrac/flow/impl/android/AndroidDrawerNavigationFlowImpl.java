@@ -86,19 +86,29 @@ public class AndroidDrawerNavigationFlowImpl extends BaseFlow implements Navigat
         getAndroidNavBar().getRewardsCardsTab().click();
     }
 
+    @Step
     @Override
     public boolean isRewardCatalogDisplayed() {
         return getRewardsCatalogPage().waitUntilIsOpened();
     }
 
+    @Step
     @Override
     public void navigateToRewardsCatalogViaDrawer() {
         getNavigationDrawer().getDrawer().click();
 
     }
 
+    @Step
     @Override
     public void rewardCatalogClick() {
         getAndroidNavBar().getRewardsCatalog().click();
+    }
+
+    @Step
+    @Override
+    public void navigateToHomeFromCouponsPage() {
+        getNavigationDrawer().getDrawerFromCouponsPage().click();
+        getAndroidNavBar().getHomeTab().click();
     }
 }

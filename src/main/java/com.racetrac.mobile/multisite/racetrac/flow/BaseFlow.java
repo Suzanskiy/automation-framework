@@ -52,6 +52,7 @@ public class BaseFlow {
     HowItWorksPage howItWorksPage;
     RewardsCheckoutBarcodePage rewardsCheckoutBarcodePage;
     UnclaimedRewardsCheckoutPage unclaimedRewardsCheckoutPage;
+    CouponsAuthorizedUserPage couponsAuthorizedUserPage;
     //    SECTIONS
     NavigationDrawer navigationDrawer;
     AndroidNavBar androidNavBar;
@@ -67,4 +68,8 @@ public class BaseFlow {
     EnoughRedeemPointsPopUp enoughRedeemPointsPopUp;
     CheckoutBtnPage checkoutBtnPage;
     SadSmileRewardCatalogView sadSmileRewardCatalogView;
+    CouponsPopUpPage couponsPopUpPage;
+    InputEmailForGiftCouponPage inputEmailForGiftCouponPage;
+    UserNotFoundForGiftPopUpPage userNotFoundForGiftPopUpPage;
+    SuccessfulSentGiftPopUpPage successfulSentGiftPopUpPage;
 }

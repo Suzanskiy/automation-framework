@@ -28,4 +28,6 @@ public interface NavigationFlow {
     public void navigateToRewardsCatalogViaDrawer();
 
     public void rewardCatalogClick();
+
+    public void navigateToHomeFromCouponsPage();
 }

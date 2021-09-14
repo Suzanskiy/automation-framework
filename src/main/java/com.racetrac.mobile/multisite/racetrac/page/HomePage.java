@@ -8,6 +8,8 @@ import io.appium.java_client.pagefactory.iOSXCUITFindBy;
 import lombok.Getter;
 import org.springframework.stereotype.Component;
 
+import java.util.List;
+
 @Component
 @Getter
 public class HomePage extends BaseMobilePage {
@@ -53,4 +55,20 @@ public class HomePage extends BaseMobilePage {
     @iOSXCUITFindBy(xpath = "//XCUIElementTypeButton[@name=\"REDEEM POINTS\"]")
     @AndroidFindBy(id = "com.RaceTrac.Common.qa:id/redeemPointsBtn")
     private MobileElement redeemPointsBtn;
+
+    @AndroidFindBy(id = "com.RaceTrac.Common.qa:id/couponsHeaderViewAll")
+    private MobileElement viewAllCouponsBtn;
+
+    @AndroidFindBy(id = "com.RaceTrac.Common.qa:id/getFriendBtn")
+    private MobileElement giftToAFriendBtn;
+
+    @AndroidFindBy(id = "com.RaceTrac.Common.qa:id/carouselNoOffers")
+    private MobileElement noCouponsDisplay;
+
+    @AndroidFindBy(id = "com.RaceTrac.Common.qa:id/couponsHeaderTitleGuest")
+    private MobileElement couponsGraciasInfo;
+
+    @AndroidFindBy(xpath ="//android.widget.LinearLayout[@resource-id=\"com.RaceTrac.Common.qa:id/viewPagerCountDots\"]/android.widget.ImageView")
+    private List<MobileElement> couponsCarousel;
+
 }

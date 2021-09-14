@@ -98,5 +98,10 @@ public class iosBottomNavigationFlowImpl extends BaseFlow implements NavigationF
 
     }
 
+    @Override
+    public void navigateToHomeFromCouponsPage() {
+
+    }
+
 }
 

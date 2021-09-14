@@ -20,4 +20,15 @@ public interface WelcomeFlow {
     boolean isRedeemPointsBtnDisplayed();
 
     boolean isRedeemPointsBtnDisplayedOnMainScreen();
+
+    void swipeToCouponsDisplay();
+
+    boolean isNoCouponDisplayDisplayed();
+
+    boolean isGiftToAFriendBtnClickable();
+
+    boolean isViewAllCouponsBtnDisplayed();
+
+    int couponsCarouselQuantity();
+
 }

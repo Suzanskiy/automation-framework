@@ -81,4 +81,30 @@ public class IosWelcomeFlowImpl extends BaseFlow implements WelcomeFlow {
     public boolean isRedeemPointsBtnDisplayedOnMainScreen() {
         return !isRedeemPointsBtnDisplayed(); //such button on ios exists and marked as visible, but it seems like appium bug
     }
+
+    @Override
+    public void swipeToCouponsDisplay() {
+
+    }
+
+    @Override
+    public boolean isNoCouponDisplayDisplayed() {
+        return false;
+    }
+
+    @Override
+    public boolean isGiftToAFriendBtnClickable() {
+        return false;
+    }
+
+    @Override
+    public boolean isViewAllCouponsBtnDisplayed() {
+        return false;
+    }
+
+    @Override
+    public int couponsCarouselQuantity() {
+        return 0;
+    }
+
 }

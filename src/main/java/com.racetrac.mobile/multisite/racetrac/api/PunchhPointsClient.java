@@ -60,7 +60,11 @@ public class PunchhPointsClient extends HttpClient {
                 .build();
         final Response response = checkCreatedResponse(addCouponRequest);
     }
-
+    public CustomerDto generateCouponsAmount(CustomerDto customerDto,int coupons){
+        for(int i = 0;i<coupons;i++){
+        addCoupon(customerDto);}
+        return customerDto;
+    }
     /**
      * Method creates body to request Punchh Coupon
      *
