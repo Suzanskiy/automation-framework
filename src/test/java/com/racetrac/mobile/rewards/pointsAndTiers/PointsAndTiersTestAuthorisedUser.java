@@ -45,7 +45,7 @@ public class PointsAndTiersTestAuthorisedUser extends BaseTest {
     @Test
     public void checkAllScreensOnPointsAndLevelsWithUserHas500pointsTest() {
         customerDto = testData.registerNewCustomer();
-        punchhPointsClient.addRedeemPoints(customerDto, 500);
+        punchhPointsClient.addRedeemPoints(customerDto, 2500);
         assertTrue(welcomeFlow.isHomePageOpened(), "Welcome page is not opened");
         signInFlow.openLoginInPage();
         assertTrue(signInFlow.isLoginPageOpened(), "Login page is not opened");

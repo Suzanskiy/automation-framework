@@ -60,9 +60,8 @@ public class SignUpTest extends BaseTest {
         promotionalOffersFlow.skipPromotions();
         locationRequestFlow.clickNotNow();
         becomeFuelVipFlow.clickNotRightNow();
-        signInFlow.clickGotItBtn();
-        rewardsPopupFlow.clickGotItBtn();
 
+        rewardsPopupFlow.clickGotItBtn();
         pointsAndLevelsFlow.clickGotItBtn();
         signOutFlow.doSignOut();
         assertTrue(welcomeFlow.isHomePageOpened(), "Welcome page is not opened");

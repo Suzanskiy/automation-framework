@@ -15,7 +15,7 @@ public class RewardsSectionMainScreenNotAuthorizedUser extends BaseTest {
 
     @TmsLink("7294")
     @Description(" Not authorized user can see \"Rewards\" section on the main screen")
-    @Test
+    @Test(enabled= false)
     public void RewardsSectionMainScreenNotAuthorizedUserTest() {
         assertTrue(welcomeFlow.isHomePageOpened(), "Welcome page is not opened");
         assertTrue(welcomeFlow.isRewardsScreenFOrUserWithoutPointsDisplayed(),"Rewards screen is not displayed");
