@@ -49,6 +49,6 @@ public class EmailScoreTest extends BaseTest {
     @Test(dataProvider = "emailFraudProvider")
     public void emailScoringTest(String fraudMail) {
         signUpFlow.enterSpecificCredentials(fraudMail, customerDto);
-        signUpFlow.isFraudErrorMessageShown();
+        assertTrue(signUpFlow.isFraudErrorMessageShown());
     }
 }

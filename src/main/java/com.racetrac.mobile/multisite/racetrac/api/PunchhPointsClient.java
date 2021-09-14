@@ -3,8 +3,10 @@ package com.racetrac.mobile.multisite.racetrac.api;
 import com.racetrac.mobile.multisite.racetrac.dto.CustomerDto;
 import com.racetrac.mobile.multisite.racetrac.dto.responses.punchh.request.PucnhhUserRequestDto;
 import com.racetrac.mobile.multisite.racetrac.dto.responses.punchh.request.PunchUserDTO;
+import com.racetrac.mobile.multisite.racetrac.dto.responses.punchh.request.PunchhRedeemCouponDto;
 import com.racetrac.mobile.multisite.racetrac.dto.responses.punchh.request.PunchhRedeemPointsDto;
 import com.racetrac.mobile.multisite.racetrac.dto.responses.punchh.response.CustomerLoginResponseDto;
+import io.qameta.allure.Step;
 import lombok.SneakyThrows;
 import okhttp3.Request;
 import okhttp3.RequestBody;
@@ -28,6 +30,12 @@ import static com.racetrac.mobile.multisite.racetrac.api.UrlUtils.SUPPORT_ENDPOI
 public class PunchhPointsClient extends HttpClient {
     private static final Logger LOG = LoggerFactory.getLogger(PunchhPointsClient.class);
 
+    public static final String DEFAULT_SUBJECT = "Automation tests";
+    public static final String DEFAULT_MESSAGE = "Take coupons from automation team";
+    public static final String DEFAULT_GIFT_REASON = "Do we need any reason for this good boy?";
+    public static final Integer DEFAULT_COUPON_ID = 776049;
+
+    @Step
     public void addRedeemPoints(CustomerDto customerDto, int amountOfPoints) {
         Integer punchCustomerID = requestCustomerId(customerDto); // the hardest part, require generating sign header. Returns user id
         String bodyString = generateSupportRequestBody(punchCustomerID, amountOfPoints); // request body to punchh with points amount
@@ -40,25 +48,57 @@ public class PunchhPointsClient extends HttpClient {
         final Response response = checkCreatedResponse(idRequest);
     }
 
+    @Step
+    public void addCoupon(CustomerDto customerDto) {
+        Integer punchCustomerID = requestCustomerId(customerDto);
+        String bodyString = generateSupportRequestBody(punchCustomerID); // request body to punchh with points amount
+
+        Request addCouponRequest = new Request.Builder()
+                .url(PUNCHH_URL + SUPPORT_ENDPOINT)
+                .addHeader("Authorization", "Bearer " + ADMIN_SECRET)
+                .post(createRequestBody(bodyString))
+                .build();
+        final Response response = checkCreatedResponse(addCouponRequest);
+    }
+
+    /**
+     * Method creates body to request Punchh Coupon
+     *
+     * @param punchCustomerID
+     * @return json body
+     */
+    private String generateSupportRequestBody(final Integer punchCustomerID) {
+        final PunchhRedeemCouponDto redeemCouponDto = PunchhRedeemCouponDto.builder()
+                .user_id(punchCustomerID)
+                .subject(DEFAULT_SUBJECT)
+                .message(DEFAULT_MESSAGE)
+                .gift_reason(DEFAULT_GIFT_REASON)
+                .redeemable_id(DEFAULT_COUPON_ID).build();
+        return getGson().toJson(redeemCouponDto);
+    }
+
+    /**
+     * Method generates body to redeem points from punchh API
+     *
+     * @param punchhCustomerId
+     * @param amountOfPoints
+     * @return json body
+     */
     private String generateSupportRequestBody(final Integer punchhCustomerId, final int amountOfPoints) {
         final PunchhRedeemPointsDto redeemPointsDto = PunchhRedeemPointsDto.builder()
                 .user_id(punchhCustomerId)
-                .subject("Automation tests")
+                .subject(DEFAULT_SUBJECT)
                 .message("Take points in amount " + amountOfPoints)
-                .gift_reason("Do we need any reason for this good boy?")
+                .gift_reason(DEFAULT_GIFT_REASON)
                 .gift_count(amountOfPoints).build();
         return getGson().toJson(redeemPointsDto);
     }
 
-
     private Integer requestCustomerId(CustomerDto customerDto) {
-
         final String json = getJson(customerDto);
         final RequestBody requestBody = createRequestBody(json);
         final String URI = PUNCHH_URL + LOGIN_ENDPOINT + "?client=" + PUNCH_CLIENT_ID;
-
         final String signatureHeader = calculateSignature(json, LOGIN_ENDPOINT + "?client=" + PUNCH_CLIENT_ID);
-
         Request idRequest = new Request.Builder()
                 .url(URI)
                 .addHeader("x-pch-digest", signatureHeader)
