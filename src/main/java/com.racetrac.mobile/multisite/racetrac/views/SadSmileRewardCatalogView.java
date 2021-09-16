@@ -13,6 +13,7 @@ import org.springframework.stereotype.Component;
 public class SadSmileRewardCatalogView extends BaseMobilePage {
 
     @PageLoading
+    @AndroidFindBy(id="com.RaceTrac.Common.qa:id/imageView7")
     @iOSXCUITFindBy(accessibility = "Whoops! Looks like you already have this Reward in your cart. You can only redeem one Fuel Reward at a time")
     private MobileElement sadSmileDescription;
 }

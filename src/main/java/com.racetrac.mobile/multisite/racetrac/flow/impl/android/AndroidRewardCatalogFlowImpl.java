@@ -78,7 +78,7 @@ public class AndroidRewardCatalogFlowImpl extends BaseFlow implements RewardsCat
 
     @Override
     public int rewardPrice() {
-        return Integer.parseInt(getRewardsCatalogPage().getRewardPoints().getAttribute("text").substring(0,3));
+        return Integer.parseInt(getRewardsCatalogPage().getRewardPoints().getAttribute("text").substring(0, 3));
     }
 
     @Step
@@ -107,12 +107,16 @@ public class AndroidRewardCatalogFlowImpl extends BaseFlow implements RewardsCat
 
     @Override
     public boolean isSadSmilePopUpShown() {
-        return false;  // FIXME: 10.09.2021 add selector for sad smile
+        try {
+            return getSadSmileRewardCatalogView().waitUntilIsOpened();
+        } catch (NoSuchElementException e) {
+            LOG.warn("Sad smile is not displayed");
+            return false;
+        }
     }
-
-    @Step
-    @Override
-    public void navigateBack() {
-        pressBackBtn();
+        @Step
+        @Override
+        public void navigateBack () {
+            pressBackBtn();
+        }
     }
-}
