@@ -11,7 +11,7 @@ properties:
     deviceName: Emulator
     test.profile: android
     autPackage: src/main/resources/apk
-    appActivity: com.RaceTrac.ui.splash.activities.SplashScreenActivity
+    appActivity: com.RaceTrac.ui.splash.SplashScreenActivity
     udid: emulator-5554
 
   #iOS section

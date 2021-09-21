@@ -124,6 +124,7 @@ public class RewardsCatalogTest extends BaseTest {
         pointsAndLevelsFlow.clickGotItBtn();
         assertTrue(welcomeFlow.isHomePageOpenedAfterSignIn(), "Welcome page is not opened after sign in");
         welcomeFlow.clickOnRedeemPointsBtn();
+        rewardsPopupFlow.waitUntilMessageAvailable();
         assertTrue(rewardsPopupFlow.isRedeemPopUpHintDisplayed(), "Redeem Popup Hint is not displayed");
         rewardsPopupFlow.clickGotItBtn();
         assertTrue(rewardsCatalogFlow.isRewardsCatalogPageOpened(), "Rewards catalog is not opened");
