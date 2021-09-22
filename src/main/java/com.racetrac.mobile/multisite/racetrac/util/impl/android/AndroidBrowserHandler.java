@@ -24,7 +24,7 @@ public class AndroidBrowserHandler extends BaseFlow implements ChromeBrowserHand
     public static final String COM_RACE_TRAC_COMMON_QA = "com.RaceTrac.Common.qa";
     public static final String ANDROID_FUEL_VIP_REDIRECT_DESIRED_URL_NO_SUBSCRIPTION = "https://dep-www.racetrac.com/Rewards/RaceTrac-Rewards-Vip?utm_source=app&utm_medium=VIPtab&utm_campaign=vip";
     private static final String ANDROID_FUEL_VIP_REDIRECT_DESIRED_URL_ACTIVE_SUBSCRIPTION = "https://dep-www.racetrac.com/Rewards/RaceTrac-Rewards-Vip?utm_source=app&utm_medium=VIPtab&utm_campaign=vip";
-    private static final String ANDROID_BECOME_A_VIP_LEARN_MORE_LINK = "https://dep-www.racetrac.com/Rewards/RaceTrac-Rewards-Vip?utm_source=app&utm_medium=onboarding&utm_campaign=vip";
+    private static final String ANDROID_BECOME_A_VIP_LEARN_MORE_LINK = "https://dep-www.racetrac.com/Rewards/Purchase/FuelSubscription/14?utm_source=app&utm_medium=onboarding&utm_campaign=vip";
     private static final String ANDROID_BECOME_A_VIP_GET_STARTED_LINK = "https://dep-www.racetrac.com/Rewards/Purchase/FuelSubscription/14?utm_source=app&utm_medium=onboarding&utm_campaign=vip";
 
     @Override
