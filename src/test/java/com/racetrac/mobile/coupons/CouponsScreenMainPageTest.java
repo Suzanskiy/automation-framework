@@ -91,7 +91,6 @@ public class CouponsScreenMainPageTest extends BaseTest {
         assertTrue(welcomeFlow.isNoCouponDisplayDisplayed(), "No coupons display is not displayed");
         assertFalse(welcomeFlow.isGiftToAFriendBtnClickable(), "\"Gift to a friend button\" is clickable");
         assertFalse(welcomeFlow.isViewAllCouponsBtnDisplayed(), "View all is displayed");
-        signOutFlow.doSignOut();
     }
 
     @TmsLink("9503")
@@ -112,7 +111,6 @@ public class CouponsScreenMainPageTest extends BaseTest {
         welcomeFlow.swipeToCouponsDisplay();
 
         assertFalse(welcomeFlow.isViewAllCouponsBtnDisplayed(), "View all is displayed");
-        signOutFlow.doSignOut();
     }
     @TmsLink("9503")
     @Description("\"View all\" button is displayed if there are at least ten coupons")
@@ -132,7 +130,6 @@ public class CouponsScreenMainPageTest extends BaseTest {
         welcomeFlow.swipeToCouponsDisplay();
 
         assertTrue(welcomeFlow.isViewAllCouponsBtnDisplayed(), "View all is not displayed");
-        signOutFlow.doSignOut();
     }
 
     @TmsLink("9504")
@@ -191,7 +188,6 @@ public class CouponsScreenMainPageTest extends BaseTest {
 
         assertEquals(welcomeFlow.couponsCarouselQuantity(), COUPONS_AMOUNT, "The number of available coupons and coupons in the carousel is not equal");
         assertTrue(welcomeFlow.isViewAllCouponsBtnDisplayed(), "\"View\" all is  not displayed");
-        signOutFlow.doSignOut();
     }
 }
 

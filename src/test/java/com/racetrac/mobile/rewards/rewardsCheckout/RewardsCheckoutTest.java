@@ -49,7 +49,7 @@ public class RewardsCheckoutTest extends BaseTest {
     private static final int AVAILABLE_POINTS = 200;
     private static final int UNCLAIMED_REWARDS_COUNTER = 1;
 
-    @BeforeMethod
+    @BeforeMethod(alwaysRun = true)
     public void setUp() {
         assertTrue(welcomeFlow.isHomePageOpened(), "Welcome page is not opened");
     }
@@ -69,9 +69,9 @@ public class RewardsCheckoutTest extends BaseTest {
         assertTrue(welcomeFlow.isHomePageOpenedAfterSignIn(), "Welcome page is not opened after sign in");
 
         navigationFlow.navigateToRewardsCards();
-        assertTrue(rewardsCheckoutFlow.isRewardsCheckoutBarcodePageOpen(),"Rewards checkout page is not opened");
-        rewardsCheckoutFlow.closeRewardsCheckoutPage();
+        assertTrue(rewardsCheckoutFlow.isRewardsCheckoutBarcodePageOpen(), "Rewards checkout page is not opened");
     }
+
     @TmsLink("7248")
     @Description("\"Rewards Cards\" option in the side menu redirects to the \"Checkout\" screen")
     @Test
@@ -92,33 +92,26 @@ public class RewardsCheckoutTest extends BaseTest {
         assertTrue(rewardsCatalogFlow.isQuantityOfPointsEnough(), "The number of points is not enough to make redeem");
         rewardsCatalogFlow.clickRedeemBtn();
         rewardsCatalogFlow.clickRedeemOnPopupBtn();
-        assertTrue(rewardsCatalogFlow.isRewardsCatalogPageOpened(),"Rewards catalog page is not opened");
-        assertEquals(rewardsCatalogFlow.getUnclaimedRewardsCounter(),UNCLAIMED_REWARDS_COUNTER,"Counters are not equals");
+        assertTrue(rewardsCatalogFlow.isRewardsCatalogPageOpened(), "Rewards catalog page is not opened");
+        assertEquals(rewardsCatalogFlow.getUnclaimedRewardsCounter(), UNCLAIMED_REWARDS_COUNTER, "Counters are not equals");
         rewardsCatalogFlow.closeRewardsCatalog();
 
         assertTrue(welcomeFlow.isHomePageOpenedAfterSignIn());
         assertTrue(checkoutBtnFLow.isCheckoutBtnDisplayed(), "Checkout button is not displayed");
-        assertEquals(checkoutBtnFLow.getCheckoutBtnCounter(),UNCLAIMED_REWARDS_COUNTER,"Counters are not equals");
+        assertEquals(checkoutBtnFLow.getCheckoutBtnCounter(), UNCLAIMED_REWARDS_COUNTER, "Counters are not equals");
         checkoutBtnFLow.clickOnCheckoutBtn();
 
-        assertTrue(rewardsCheckoutFlow.isRewardsCheckoutBarcodePageOpen(),"Rewards checkout page is not opened");
-        assertEquals(rewardsCheckoutFlow.getUnclaimedRewardsCounter(),UNCLAIMED_REWARDS_COUNTER,"Counters are not equals");
+        assertTrue(rewardsCheckoutFlow.isRewardsCheckoutBarcodePageOpen(), "Rewards checkout page is not opened");
+        assertEquals(rewardsCheckoutFlow.getUnclaimedRewardsCounter(), UNCLAIMED_REWARDS_COUNTER, "Counters are not equals");
         rewardsCheckoutFlow.clickOnDoneBtn();
         assertTrue(welcomeFlow.isHomePageOpenedAfterSignIn());
 
         fuelVipFlow.navigateToFuelVipSection();
         checkoutBtnFLow.clickOnCheckoutBtn();
-        assertTrue(rewardsCheckoutFlow.isRewardsCheckoutBarcodePageOpen(),"Rewards checkout page is not opened");
-        assertEquals(rewardsCheckoutFlow.getUnclaimedRewardsCounter(),UNCLAIMED_REWARDS_COUNTER,"Counters are not equals");
+        assertTrue(rewardsCheckoutFlow.isRewardsCheckoutBarcodePageOpen(), "Rewards checkout page is not opened");
+        assertEquals(rewardsCheckoutFlow.getUnclaimedRewardsCounter(), UNCLAIMED_REWARDS_COUNTER, "Counters are not equals");
         rewardsCheckoutFlow.goToUnclaimedRewardsPage();
-        assertTrue(unclaimedRewardsCheckoutFlow.isUnclaimedRewardsCheckoutPageOpen(),"Unclaimed rewards page is not opened");
-        unclaimedRewardsCheckoutFlow.closeRewardsCheckoutPage();
-        assertTrue(welcomeFlow.isHomePageOpenedAfterSignIn());
+        assertTrue(unclaimedRewardsCheckoutFlow.isUnclaimedRewardsCheckoutPageOpen(), "Unclaimed rewards page is not opened");
     }
 
-    @AfterMethod
-    public void logOut() {
-        signOutFlow.doSignOut();
-        assertTrue(welcomeFlow.isHomePageOpened(), "Welcome page is not opened");
-    }
 }

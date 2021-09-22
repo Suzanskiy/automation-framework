@@ -54,7 +54,7 @@ public class PromotionalSettingsBirthdayFieldValidationTest extends BaseTest {
         };
     }
 
-    @BeforeClass
+    @BeforeClass(alwaysRun = true)
     public void beforeClass() {
         customerDto = testData.registerNewCustomer(NOT_SPECIFIED_BIRTHDATE);
     }
@@ -83,7 +83,6 @@ public class PromotionalSettingsBirthdayFieldValidationTest extends BaseTest {
         promotionalOffersFlow.enterBirthDate(customerBirth);
         assertFalse(promotionalOffersFlow.isOkPopUpBtnEditable(), "Ok field is editable");
         assertTrue(promotionalOffersFlow.isPopUpDescriptionDisplayed(),"Pop-Up description is not displayed");
-
     }
 
 }

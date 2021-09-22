@@ -114,9 +114,4 @@ public class PopUpVipTest extends BaseTest {
         assertTrue(welcomeFlow.isHomePageOpened());
     }
 
-    @AfterMethod(alwaysRun = true)
-    public void logOut() {
-        signOutFlow.doSignOut();
-    }
-
 }

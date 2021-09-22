@@ -52,7 +52,7 @@ public class CouponsGiftTest extends BaseTest {
     CustomerDto customerDto;
     CustomerDto secondCustomerDto;
 
-    @BeforeMethod
+    @BeforeMethod(alwaysRun = true)
     public void setUp() {
         assertTrue(welcomeFlow.isHomePageOpened(), "Welcome page is not opened");
         customerDto = testData.registerNewCustomer();
@@ -84,8 +84,6 @@ public class CouponsGiftTest extends BaseTest {
         userNotFoundForGiftPopUpFlow.clickOnUserNotFoundPopUpOkBtn();
         couponsAuthorizedUserFlow.pressBackBtn();
         assertTrue(couponsAuthorizedUserFlow.isCouponsPageAuthorizedUserOpen(), "Coupons page is not opened");
-        navigationFlow.navigateToHomeFromCouponsPage();
-        assertTrue(welcomeFlow.isHomePageOpened(), "Welcome page is not opened");
     }
 
     @TmsLink("9498")
@@ -97,8 +95,6 @@ public class CouponsGiftTest extends BaseTest {
         userNotFoundForGiftPopUpFlow.clickOnUserNotFoundPopUpOkBtn();
         couponsAuthorizedUserFlow.pressBackBtn();
         assertTrue(couponsAuthorizedUserFlow.isCouponsPageAuthorizedUserOpen(), "Coupons page is not opened");
-        navigationFlow.navigateToHomeFromCouponsPage();
-        assertTrue(welcomeFlow.isHomePageOpened(), "Welcome page is not opened");
     }
 
     @TmsLink("9498")
@@ -129,13 +125,6 @@ public class CouponsGiftTest extends BaseTest {
         assertTrue(couponsPopUpFlow.isCouponsPopUpDisplayed(), "Coupons pop-up is not displayed");
         couponsPopUpFlow.clickOnCouponsPopUpGotItBtn();
         assertTrue(couponsAuthorizedUserFlow.isCouponsPageAuthorizedUserOpen(), "Coupons page is not opened");
-        navigationFlow.navigateToHomeFromCouponsPage();
-        assertTrue(welcomeFlow.isHomePageOpened(), "Welcome page is not opened");
     }
 
-    @AfterMethod
-    public void logOut() {
-        signOutFlow.doSignOut();
-        assertTrue(welcomeFlow.isHomePageOpened(), "Welcome page is not opened");
-    }
 }
