@@ -72,4 +72,9 @@ public class iosProfileFlowImpl extends BaseFlow implements ProfileFlow, Navigat
         pressBackBtn();
         getProfilePage().getButtonSave().click();
     }
+
+    @Override
+    public void waitUntilProfilePageOpened() {
+
+    }
 }

@@ -44,11 +44,12 @@ public class PointsAndTiersTestAuthorisedUser extends BaseTest {
     @Description("Points & Tiers screen for logged user")
     @Test
     public void checkAllScreensOnPointsAndLevelsWithUserHas500pointsTest() {
-        customerDto = testData.registerNewCustomer();
-        punchhPointsClient.addRedeemPoints(customerDto, 2500);
+
         assertTrue(welcomeFlow.isHomePageOpened(), "Welcome page is not opened");
         signInFlow.openLoginInPage();
         assertTrue(signInFlow.isLoginPageOpened(), "Login page is not opened");
+        customerDto = testData.registerNewCustomer();
+        punchhPointsClient.addRedeemPoints(customerDto, 2500);
         signInFlow.authorize(customerDto);
         locationRequestFlow.clickNotNow();
         notificationRequestFlow.clickNotNow();
@@ -65,10 +66,4 @@ public class PointsAndTiersTestAuthorisedUser extends BaseTest {
         //removed assert on How it works page due to unable check on Ios
     }
 
-    @AfterMethod
-    public void logOut() {
-        pointsAndLevelsFlow.clickOnCloseActivityBtn();
-        signOutFlow.doSignOut();
-        assertTrue(welcomeFlow.isHomePageOpened(), "Welcome page is not opened");
-    }
 }

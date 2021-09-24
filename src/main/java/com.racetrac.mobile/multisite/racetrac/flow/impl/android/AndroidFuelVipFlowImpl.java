@@ -4,6 +4,7 @@ import com.racetrac.mobile.multisite.racetrac.flow.AccountSettingsFlow;
 import com.racetrac.mobile.multisite.racetrac.flow.BaseFlow;
 import com.racetrac.mobile.multisite.racetrac.flow.FuelVipFlow;
 import io.qameta.allure.Step;
+import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.TimeoutException;
 import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Component;
@@ -36,7 +37,7 @@ public class AndroidFuelVipFlowImpl extends BaseFlow implements FuelVipFlow {
             getChromeAcceptTermsPage().getTermsAcceptBtn().click();
             getTurnOnSyncNowPage().waitUntilIsOpened();
             getTurnOnSyncNowPage().getNoThanksBtn().click();
-        } catch (TimeoutException e) {
+        } catch (TimeoutException| NoSuchElementException e) {
             LOG.debug("Chrome not showed first run page. Its ok");
         }
     }

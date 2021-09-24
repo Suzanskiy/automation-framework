@@ -61,8 +61,4 @@ public class FuelVipPopUpWithEmptyBirthdayTest extends BaseTest {
         pointsAndLevelsFlow.clickGotItBtn();
     }
 
-    @AfterMethod(alwaysRun = true)
-    public void logOut() {
-        signOutFlow.doSignOut();
-    }
 }

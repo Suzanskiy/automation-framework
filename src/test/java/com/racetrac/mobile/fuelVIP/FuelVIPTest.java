@@ -61,10 +61,10 @@ public class FuelVIPTest extends BaseTest {
         chromeBrowserHandler.prepareBrowser();
     }
 
-    @BeforeMethod
+    @BeforeMethod(alwaysRun = true)
     public void setUp() {
-        customerDto = testData.registerNewCustomer();
         assertTrue(welcomeFlow.isHomePageOpened(), "Welcome page is not opened");
+        customerDto = testData.registerNewCustomer();
         signInFlow.openLoginInPage();
         assertTrue(signInFlow.isLoginPageOpened(), "Login page is not opened");
         signInFlow.authorize(customerDto);
@@ -108,9 +108,4 @@ public class FuelVIPTest extends BaseTest {
         assertEquals(openedUrl, chromeBrowserHandler.getDesiredRedirectUrlActiveSubscription());
     }
 
-    @AfterMethod(alwaysRun = true)
-    public void logOut() {
-        signOutFlow.doSignOut();
-        assertTrue(welcomeFlow.isHomePageOpened(), "Welcome page is not opened");
-    }
 }

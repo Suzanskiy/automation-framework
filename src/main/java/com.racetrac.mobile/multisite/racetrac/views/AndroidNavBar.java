@@ -20,7 +20,7 @@ public class AndroidNavBar extends BaseMobilePage {
     @AndroidFindBy(id = "com.RaceTrac.Common.qa:id/nav_coupons")
     private MobileElement couponsTab;
 
-    @AndroidFindBy(id = "com.RaceTrac.Common.qa:id/nav_home")
+    @AndroidFindBy(id = "com.RaceTrac.Common.qa:id/nav_pay_with_gift_card")
     private MobileElement cardsTab;
 
     @AndroidFindBy(id = "com.RaceTrac.Common.qa:id/nav_inbox")

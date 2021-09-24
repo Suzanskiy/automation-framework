@@ -16,4 +16,6 @@ public interface ProfileFlow extends NavigateFlow {
     boolean isBirthdayFieldEditable();
 
     void enterBirthDate(String customerBirth);
+
+    void waitUntilProfilePageOpened();
 }

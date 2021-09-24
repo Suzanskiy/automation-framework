@@ -71,7 +71,7 @@ public class PromotionalSettingsBirthdayFieldValidationTest extends BaseTest {
         rewardsPopupFlow.clickGotItBtn();
         assertTrue(welcomeFlow.isHomePageOpenedAfterSignIn(), "Welcome page is not opened after sign in");
         accountSettingsFlow.navigateToAccountSettings();
-        assertTrue(accountSettingsFlow.isAccountSettingsAuthorisedUserScreenOpened(), " Account screen for Logged in User is not opened");
+        accountSettingsFlow.waitUntilAccountSettingsAuthorizedOpen();
         accountSettingsFlow.navigateToPromotionalSettings();
     }
     @TmsLink("6247")

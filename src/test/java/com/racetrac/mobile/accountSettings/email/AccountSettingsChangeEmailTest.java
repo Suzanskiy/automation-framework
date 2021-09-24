@@ -76,7 +76,7 @@ public class AccountSettingsChangeEmailTest extends BaseTest {
         final String newEmail = CommonUtils.generateEmail(EMAIL_DOMAIN);
 
         accountSettingsFlow.navigateToProfile();
-        assertTrue(accountSettingsFlow.isProfileScreenOpened(), "Profile screen is not opened");
+        profileFlow.waitUntilProfilePageOpened();
         profileFlow.navigateToEmailChange();
         assertTrue(profileFlow.isEmailChangeScreenOpened(), "Email Change screen is not opened");
 
@@ -107,7 +107,7 @@ public class AccountSettingsChangeEmailTest extends BaseTest {
         final String usedEmail = "admin@epam.com";
 
         accountSettingsFlow.navigateToProfile();
-        assertTrue(accountSettingsFlow.isProfileScreenOpened(), "Profile screen is not opened");
+        profileFlow.waitUntilProfilePageOpened();
         profileFlow.navigateToEmailChange();
         assertTrue(profileFlow.isEmailChangeScreenOpened(), "Email Change screen is not opened");
 
@@ -122,9 +122,4 @@ public class AccountSettingsChangeEmailTest extends BaseTest {
         pointsAndLevelsFlow.clickGotItBtn();
     }
 
-    @AfterMethod(alwaysRun = true)
-    public void logOut() {
-        signOutFlow.doSignOut();
-        assertTrue(welcomeFlow.isHomePageOpened(), "Welcome page is not opened");
-    }
 }

@@ -68,6 +68,11 @@ public class iosAccountSettingsFlowImpl extends BaseFlow implements AccountSetti
     }
 
     @Override
+    public void waitUntilAccountSettingsAuthorizedOpen() {
+
+    }
+
+    @Override
     public void navigateBack() {
         try {
             getAccountSettingsPage().getNavBarCloseBtn().click();
