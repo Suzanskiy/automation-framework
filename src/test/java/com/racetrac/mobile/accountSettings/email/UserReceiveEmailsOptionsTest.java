@@ -38,7 +38,7 @@ public class UserReceiveEmailsOptionsTest extends BaseTest {
         RewardsPopupFlow rewardsPopupFlow;
     CustomerDto customerDto;
 
-    @BeforeMethod
+    @BeforeMethod(alwaysRun = true)
     public void setUp() {
         assertTrue(welcomeFlow.isHomePageOpened(), "Welcome page is not opened");
     }
@@ -77,8 +77,6 @@ public class UserReceiveEmailsOptionsTest extends BaseTest {
         accountSettingsFlow.navigateToAccountSettings();
         accountSettingsFlow.isAccountSettingsAuthorisedUserScreenOpened();
         assertTrue(accountSettingsFlow.receiveEmailsSwitcherPosition(), "Receive Email switcher position is off");
-        accountSettingsFlow.navigateBack();
-        signOutFlow.doSignOut();
     }
 
     @TmsLink("6506")
@@ -103,9 +101,6 @@ public class UserReceiveEmailsOptionsTest extends BaseTest {
         accountSettingsFlow.navigateToAccountSettings();
         accountSettingsFlow.isAccountSettingsAuthorisedUserScreenOpened();
         assertFalse(accountSettingsFlow.receiveEmailsSwitcherPosition(), "Receive Email switcher position is on");
-        accountSettingsFlow.navigateBack();
-        signOutFlow.doSignOut();
     }
-
 
 }

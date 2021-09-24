@@ -3,6 +3,7 @@ package com.racetrac.mobile.multisite.racetrac.flow.impl.android;
 import com.racetrac.mobile.multisite.racetrac.flow.BaseFlow;
 import com.racetrac.mobile.multisite.racetrac.flow.NavigateFlow;
 import com.racetrac.mobile.multisite.racetrac.flow.ProfileFlow;
+import com.racetrac.mobile.util.appium.AppiumWaitingUtils;
 import io.qameta.allure.Step;
 import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Component;
@@ -68,5 +69,10 @@ public class AndroidProfileFlowImpl extends BaseFlow implements ProfileFlow, Nav
         getProfilePage().getBirthDay().setValue(customerBirth);
         pressBackBtn();
         getProfilePage().getButtonSave().click();
+    }
+
+    @Override
+    public void waitUntilProfilePageOpened() {
+        AppiumWaitingUtils.waitUntilIsTrue(()-> getProfilePage().waitUntilIsOpened());
     }
 }

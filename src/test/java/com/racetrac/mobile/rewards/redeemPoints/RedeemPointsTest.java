@@ -4,15 +4,7 @@ import com.racetrac.mobile.BaseTest;
 import com.racetrac.mobile.multisite.racetrac.api.PunchhPointsClient;
 import com.racetrac.mobile.multisite.racetrac.data.AccountProviderImpl;
 import com.racetrac.mobile.multisite.racetrac.dto.CustomerDto;
-import com.racetrac.mobile.multisite.racetrac.flow.LocationRequestFlow;
-import com.racetrac.mobile.multisite.racetrac.flow.NoPointsNoticeFlow;
-import com.racetrac.mobile.multisite.racetrac.flow.NotificationRequestFlow;
-import com.racetrac.mobile.multisite.racetrac.flow.PointsAndLevelsFlow;
-import com.racetrac.mobile.multisite.racetrac.flow.RewardsCatalogFlow;
-import com.racetrac.mobile.multisite.racetrac.flow.RewardsPopupFlow;
-import com.racetrac.mobile.multisite.racetrac.flow.SignInFlow;
-import com.racetrac.mobile.multisite.racetrac.flow.SignOutFlow;
-import com.racetrac.mobile.multisite.racetrac.flow.WelcomeFlow;
+import com.racetrac.mobile.multisite.racetrac.flow.*;
 import io.qameta.allure.Description;
 import io.qameta.allure.TmsLink;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,9 +12,7 @@ import org.testng.annotations.AfterMethod;
 import org.testng.annotations.Test;
 
 import static com.racetrac.mobile.multisite.racetrac.data.ComparableStrings.NO_POINTS_TO_EXCHANGE_TEXT;
-import static org.testng.Assert.assertEquals;
-import static org.testng.Assert.assertFalse;
-import static org.testng.Assert.assertTrue;
+import static org.testng.Assert.*;
 
 public class RedeemPointsTest extends BaseTest {
 
@@ -49,6 +39,7 @@ public class RedeemPointsTest extends BaseTest {
     NoPointsNoticeFlow noPointsNoticeFlow;
     @Autowired
     PunchhPointsClient punchhPointsClient;
+
     @TmsLink("7301")
     @Description(" Open \"Rewards Catalog\" from \"Rewards\" tab on the \"Home\" screen")
     @Test
@@ -80,11 +71,12 @@ public class RedeemPointsTest extends BaseTest {
         pointsAndLevelsFlow.clickGotItBtn();
         assertTrue(welcomeFlow.isHomePageOpenedAfterSignIn(), "Welcome page is not opened after sign in");
         welcomeFlow.clickOnRedeemPointsBtn();
+        assertTrue(rewardsPopupFlow.isRewardPopupPageOpened(), "Reward Popup is not opened");
         rewardsPopupFlow.clickGotItBtn();
         rewardsCatalogFlow.clickRedeemBtn();
+        noPointsNoticeFlow.waitUntilNoPointsNoticeShown();
         assertEquals(noPointsNoticeFlow.getNotificationMessages(), NO_POINTS_TO_EXCHANGE_TEXT);
         noPointsNoticeFlow.clickOK();
-        rewardsCatalogFlow.navigateBack();
     }
     @TmsLink("7633")
     @Description("Redeem reward if user has enough points")
@@ -112,12 +104,6 @@ public class RedeemPointsTest extends BaseTest {
         rewardsCatalogFlow.clickRedeemBtn();
         rewardsCatalogFlow.clickRedeemOnPopupBtn();
         //Getting sad smile until Bottle of water will not returned //// FIXME: 03.09.2021
-       assertTrue(rewardsCatalogFlow.isSadSmilePopUpShown(), "Sad Smile view is not showed");
-    }
-
-    @AfterMethod(alwaysRun = true)
-    public void logOut() {
-        signOutFlow.doSignOut();
-        assertTrue(welcomeFlow.isHomePageOpened(), "Welcome page is not opened");
+         assertTrue(rewardsCatalogFlow.isSadSmilePopUpShown(), "Sad Smile view is not showed");
     }
 }

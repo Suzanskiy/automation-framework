@@ -20,4 +20,6 @@ public interface AccountSettingsFlow extends NavigateFlow {
 
     boolean receiveEmailsSwitcherPosition();
 
+    void waitUntilAccountSettingsAuthorizedOpen();
+
 }

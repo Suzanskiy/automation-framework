@@ -112,7 +112,7 @@ public class AndroidWelcomeFlowImpl extends BaseFlow implements WelcomeFlow {
         swipeUP();
         getHomePage().waitUntilIsOpened();
         swipeDownHard();
-        swipeUP();
+        swipeDownHard();
     }
 
     @Step

@@ -47,7 +47,7 @@ public class RewardsCatalogTest extends BaseTest {
     PunchhPointsClient punchhPointsClient;
     CustomerDto customerDto;
 
-    @BeforeMethod
+    @BeforeMethod(alwaysRun = true)
     public void setUp() {
         assertTrue(welcomeFlow.isHomePageOpened(), "Welcome page is not opened");
 
@@ -106,7 +106,6 @@ public class RewardsCatalogTest extends BaseTest {
         assertTrue(rewardsCatalogFlow.isRewardsCatalogPageOpened(), "Rewards catalog is not opened");
         assertEquals(rewardsCatalogFlow.availablePoints(), AVAILABLE_POINTS, "Invalid points are displayed");
         assertTrue(rewardsCatalogFlow.isElementsOfRewardsCatalogDisplayed(), "Elements of rewards catalog are not displayd");
-        rewardsCatalogFlow.closeRewardsCatalog();
     }
 
     @TmsLink("7303")
@@ -124,6 +123,7 @@ public class RewardsCatalogTest extends BaseTest {
         pointsAndLevelsFlow.clickGotItBtn();
         assertTrue(welcomeFlow.isHomePageOpenedAfterSignIn(), "Welcome page is not opened after sign in");
         welcomeFlow.clickOnRedeemPointsBtn();
+        rewardsPopupFlow.waitUntilMessageAvailable();
         assertTrue(rewardsPopupFlow.isRedeemPopUpHintDisplayed(), "Redeem Popup Hint is not displayed");
         rewardsPopupFlow.clickGotItBtn();
         assertTrue(rewardsCatalogFlow.isRewardsCatalogPageOpened(), "Rewards catalog is not opened");
@@ -132,13 +132,6 @@ public class RewardsCatalogTest extends BaseTest {
         rewardsCatalogFlow.clickRedeemBtn();
         rewardsCatalogFlow.clickRedeemOnPopupBtn();
         assertEquals(rewardsCatalogFlow.availablePoints(), AVAILABLE_POINTS - rewardsCatalogFlow.rewardPrice(), "Invalid AVAILABLE_POINTS displayed");
-        rewardsCatalogFlow.closeRewardsCatalog();
     }
-
-    @AfterMethod(alwaysRun = true)
-    public void logOut() {
-        signOutFlow.doSignOut();
-    }
-
 
 }

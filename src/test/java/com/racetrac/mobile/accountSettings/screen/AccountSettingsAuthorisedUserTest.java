@@ -53,7 +53,7 @@ public class AccountSettingsAuthorisedUserTest extends BaseTest {
     @Autowired
     RewardsPopupFlow rewardsPopupFlow;
 
-    @BeforeMethod
+    @BeforeMethod(alwaysRun = true)
     public void setUp() {
         assertTrue(welcomeFlow.isHomePageOpened(), "Welcome page is not opened");
     }
@@ -73,6 +73,7 @@ public class AccountSettingsAuthorisedUserTest extends BaseTest {
         assertTrue(welcomeFlow.isHomePageOpenedAfterSignIn(), "Welcome page is not opened after sign in");
 
         accountSettingsFlow.navigateToAccountSettings();
+        accountSettingsFlow.waitUntilAccountSettingsAuthorizedOpen();
         assertTrue(accountSettingsFlow.isAccountSettingsAuthorisedUserScreenOpened(), " Account screen for Logged in User is not opened");
         accountSettingsFlow.closeAccountSettingsScreen();
         pointsAndLevelsFlow.clickGotItBtn();
@@ -93,7 +94,7 @@ public class AccountSettingsAuthorisedUserTest extends BaseTest {
         assertTrue(welcomeFlow.isHomePageOpenedAfterSignIn(), "Welcome page is not opened after sign in");
 
         accountSettingsFlow.navigateToAccountSettings();
-        assertTrue(accountSettingsFlow.isAccountSettingsAuthorisedUserScreenOpened(), " Account screen for Logged in User is not opened");
+        accountSettingsFlow.waitUntilAccountSettingsAuthorizedOpen();
         accountSettingsFlow.navigateToPromotionalSettings();
         assertTrue(promotionalOffersFlow.isPromotionalOffersScreenOpened(), "Promotions Page is not opened");
         promotionalOffersFlow.navigateBack();
@@ -116,13 +117,12 @@ public class AccountSettingsAuthorisedUserTest extends BaseTest {
         assertTrue(welcomeFlow.isHomePageOpenedAfterSignIn(), "Welcome page is not opened after sign in");
 
         accountSettingsFlow.navigateToAccountSettings();
-        assertTrue(accountSettingsFlow.isAccountSettingsAuthorisedUserScreenOpened(), " Account screen for Logged in User is not opened");
+        accountSettingsFlow.waitUntilAccountSettingsAuthorizedOpen();
         accountSettingsFlow.navigateToPromotionalSettings();
         assertTrue(notAdultNoticeFlow.isNotAdultNoticeDisplayed(), "Not adult notice not displayed");
 
         assertEquals(notAdultNoticeFlow.getNotAdultNoticeMessage(), NOT_ADULT_USER_TEXT);
         notAdultNoticeFlow.clickOK();
-        accountSettingsFlow.navigateBack();
     }
 
     @TmsLink("5470")
@@ -141,7 +141,7 @@ public class AccountSettingsAuthorisedUserTest extends BaseTest {
         assertTrue(welcomeFlow.isHomePageOpenedAfterSignIn(), "Welcome page is not opened after sign in");
 
         accountSettingsFlow.navigateToAccountSettings();
-        assertTrue(accountSettingsFlow.isAccountSettingsAuthorisedUserScreenOpened(), " Account screen for Logged in User is not opened");
+        accountSettingsFlow.waitUntilAccountSettingsAuthorizedOpen();
         accountSettingsFlow.navigateToPromotionalSettings();
 
         assertTrue(notAdultNoticeFlow.isNotAdultNoticeDisplayed(), "Not adult notice not displayed");
@@ -150,8 +150,6 @@ public class AccountSettingsAuthorisedUserTest extends BaseTest {
 
         assertTrue(profileFlow.isProfilePageOpened(), "Profile page is not opened");
         assertFalse(profileFlow.isBirthdayFieldEditable(), "Birthday Field is editable");
-
-        accountSettingsFlow.navigateBack();
     }
 
     @TmsLink("6225")
@@ -169,17 +167,16 @@ public class AccountSettingsAuthorisedUserTest extends BaseTest {
         assertTrue(welcomeFlow.isHomePageOpenedAfterSignIn(), "Welcome page is not opened after sign in");
 
         accountSettingsFlow.navigateToAccountSettings();
-        assertTrue(accountSettingsFlow.isAccountSettingsAuthorisedUserScreenOpened(), " Account screen for Logged in User is not opened");
+        accountSettingsFlow.waitUntilAccountSettingsAuthorizedOpen();
         accountSettingsFlow.navigateToPromotionalSettings();
         assertTrue(promotionalOffersFlow.isPromotionalOffersScreenOpened(), "Promotions Page is not opened");
         promotionalOffersFlow.acceptPromotions();
 
+        accountSettingsFlow.waitUntilAccountSettingsAuthorizedOpen();
         assertTrue(accountSettingsFlow.isAccountSettingsAuthorisedUserScreenOpened(), "Account settings screen not opened");
         accountSettingsFlow.navigateToPromotionalSettings();
         assertTrue(promotionalOffersFlow.isPromotionalOffersScreenOpened(), "Promotions Page is not opened");
         assertTrue(promotionalOffersFlow.isAcceptedPromotionsSaved(), "Promotions \"Yes\" position is not saved");
-        promotionalOffersFlow.navigateBack();
-        accountSettingsFlow.navigateBack();
     }
 
     @TmsLink("6245")
@@ -196,10 +193,9 @@ public class AccountSettingsAuthorisedUserTest extends BaseTest {
         rewardsPopupFlow.clickGotItBtn();
         pointsAndLevelsFlow.clickGotItBtn();
 
-
         assertTrue(welcomeFlow.isHomePageOpenedAfterSignIn(), "Welcome page is not opened after sign in");
         accountSettingsFlow.navigateToAccountSettings();
-        assertTrue(accountSettingsFlow.isAccountSettingsAuthorisedUserScreenOpened(), " Account screen for Logged in User is not opened");
+        accountSettingsFlow.waitUntilAccountSettingsAuthorizedOpen();
         accountSettingsFlow.navigateToPromotionalSettings();
         assertFalse(promotionalOffersFlow.isOkPopUpBtnEditable(), "Ok field is editable");
         assertTrue(promotionalOffersFlow.isPopUpDescriptionDisplayed(), "Pop up description is not displayed");
@@ -207,6 +203,7 @@ public class AccountSettingsAuthorisedUserTest extends BaseTest {
         String customerBirth = testData.generateDateBirth();
         promotionalOffersFlow.enterBirthDate(customerBirth);
         promotionalOffersFlow.clickCancelBtnOnTheBirthdayPopUpField();
+        accountSettingsFlow.waitUntilAccountSettingsAuthorizedOpen();
         assertTrue(accountSettingsFlow.isAccountSettingsAuthorisedUserScreenOpened(), "Account settings screen is not opened");
 
         accountSettingsFlow.navigateToPromotionalSettings();
@@ -218,6 +215,7 @@ public class AccountSettingsAuthorisedUserTest extends BaseTest {
 
         promotionalOffersFlow.waitUntilOkBtnAvailable();
         promotionalOffersFlow.clickCancelBtnOnTheBirthdayPopUpField();
+        accountSettingsFlow.waitUntilAccountSettingsAuthorizedOpen();
         assertTrue(accountSettingsFlow.isAccountSettingsAuthorisedUserScreenOpened());
         signOutFlow.clickOnSignOutBtn();
         locationRequestFlow.clickNotNow();
@@ -233,22 +231,16 @@ public class AccountSettingsAuthorisedUserTest extends BaseTest {
         assertTrue(welcomeFlow.isHomePageOpenedAfterSignIn(), "Welcome page is not opened after sign in");
 
         accountSettingsFlow.navigateToAccountSettings();
-        assertTrue(accountSettingsFlow.isAccountSettingsAuthorisedUserScreenOpened(), " Account screen for Logged in User is not opened");
+        accountSettingsFlow.waitUntilAccountSettingsAuthorizedOpen();
         accountSettingsFlow.navigateToPromotionalSettings();
 
         assertTrue(promotionalOffersFlow.isPromotionalOffersScreenOpened(), "Promotions Page is not opened");
         promotionalOffersFlow.acceptPromotions();
+        accountSettingsFlow.waitUntilAccountSettingsAuthorizedOpen();
         assertTrue(accountSettingsFlow.isAccountSettingsAuthorisedUserScreenOpened(), " Account screen for Logged in User is not opened");
 
         accountSettingsFlow.navigateToPromotionalSettings();
         assertTrue(promotionalOffersFlow.isPromotionalOffersScreenOpened(), "Promotions Page is not opened");
-        promotionalOffersFlow.navigateBack();
-
-        accountSettingsFlow.navigateBack();
     }
 
-    @AfterMethod(alwaysRun = true)
-    public void logOut() {
-        signOutFlow.doSignOut();
-    }
 }

@@ -38,7 +38,7 @@ public class RewardsSectionMainScreenAuthorizedUser extends BaseTest {
 
     private static final int AVAILABLE_POINTS = 100;
 
-    @BeforeMethod
+    @BeforeMethod(alwaysRun = true)
     public void setUp() {
         assertTrue(welcomeFlow.isHomePageOpened(), "Welcome page is not opened");
     }
@@ -94,8 +94,4 @@ public class RewardsSectionMainScreenAuthorizedUser extends BaseTest {
         rewardsCatalogFlow.closeRewardsCatalog();
     }
 
-    @AfterMethod(alwaysRun = true)
-    public void logOut() {
-        signOutFlow.doSignOut();
-    }
 }

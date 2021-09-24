@@ -5,4 +5,6 @@ public interface NoPointsNoticeFlow {
     String getNotificationMessages();
 
     void clickOK();
+
+    void waitUntilNoPointsNoticeShown();
 }

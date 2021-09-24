@@ -14,7 +14,7 @@ public class NoPointsNotice extends BaseMobilePage {
 
     @PageLoading
     @iOSXCUITFindBy(accessibility = "Sorry, you don't have enough points.")
-    @AndroidFindBy(className = "android.widget.TextView")
+    @AndroidFindBy(xpath = "//android.widget.TextView[contains(@text,\"Sorry\")]")
     private MobileElement subtitleRewardsCatalog;
 
     @PageLoading

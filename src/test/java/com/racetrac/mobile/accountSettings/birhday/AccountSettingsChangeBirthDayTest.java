@@ -48,7 +48,7 @@ public class AccountSettingsChangeBirthDayTest extends BaseTest {
     CustomerDto customerDto;
 
 
-    @BeforeMethod
+    @BeforeMethod(alwaysRun = true)
     public void setUp() {
         assertTrue(welcomeFlow.isHomePageOpened(), "Welcome page is not opened");
         signInFlow.openLoginInPage();
@@ -106,15 +106,6 @@ public class AccountSettingsChangeBirthDayTest extends BaseTest {
         profileFlow.clickOnBirthDayField();
         assertTrue(accountSettingsFlow.isProfileScreenOpened(), "Profile screen is not opened");
 
-
     }
 
-    @AfterMethod(alwaysRun = true)
-    public void logOut() {
-        profileFlow.navigateBack();
-        accountSettingsFlow.navigateBack();
-        pointsAndLevelsFlow.clickGotItBtn();
-        signOutFlow.doSignOut();
-        assertTrue(welcomeFlow.isHomePageOpened(), "Welcome page is not opened");
-    }
 }

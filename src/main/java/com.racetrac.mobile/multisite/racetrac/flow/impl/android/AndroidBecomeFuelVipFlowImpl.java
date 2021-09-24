@@ -56,7 +56,7 @@ public class AndroidBecomeFuelVipFlowImpl extends BaseFlow implements BecomeFuel
             getChromeAcceptTermsPage().getTermsAcceptBtn().click();
             getTurnOnSyncNowPage().waitUntilIsOpened();
             getTurnOnSyncNowPage().getNoThanksBtn().click();
-        } catch (TimeoutException e) {
+        } catch (TimeoutException|NoSuchElementException e) {
             LOG.debug("Chrome not showed first run page. Its ok");
         }
     }
