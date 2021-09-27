@@ -22,6 +22,7 @@ import static java.net.HttpURLConnection.HTTP_OK;
 import static org.springframework.test.util.AssertionErrors.assertEquals;
 public abstract class HttpClient {
 
+    public static final String token = "3:Fz88arXPu1w4mtDMTRW/gg==:D++TkjVoUtnoNBYtFoCO5UahR2VYLtIjXGV2E7gC8UpVXCBw9j7t2MdM9MykXJb/rRdzjQoKhG3p1RwYiF7pkWjtm2U8bHrnM4q05/m6cxze22sc1LXglhIVhuDKwqunSeV7bf5jPHXOxdku++g/SNgFy5nXHnl+djY1ST9mumZ4ygS/w08aabEu0jfqz1sbFCuVdhp+ihLpVU88jK9sTnPN1U6TreYWJCrwe/fqbJwmQgkjuK0BwPcN0EpcqHA9z0o3wlNj4HX73e/lh8r/dDZyvo4/wCQ4m5zdEdCaSjDuXHj8GmH4m6j6kyHz/JV2QAo3juj2WEXq2577g0KFVNfO4hDS/2RGbgx8lALaEWDCFghe2Z3oequ9gYSYS0LM:K4GEsQXJmnBVHGNTDCG5pdj/Ya4XdnWU9KXg/OBujts=";
     protected final MediaType JSON = MediaType.get("application/json; charset=utf-8");
     protected final MediaType TEXT_RAW = MediaType.parse("text/plain");
     protected Logger LOGGER;
@@ -31,6 +32,7 @@ public abstract class HttpClient {
         return new Headers.Builder()
                 .add("Ocp-Apim-Subscription-Key", API_SUBSCRIPTION_KEY)
                 .add("X-Platform", Configuration.getProfile())
+                .add("x-d-token", token)
                 .build();
     }
 
