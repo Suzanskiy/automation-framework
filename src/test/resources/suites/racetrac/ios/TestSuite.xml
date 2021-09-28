@@ -3,7 +3,7 @@
 <suite name="Regression" verbose="1" configfailurepolicy="continue">
     <test name="All">
         <packages>
-            <package name="com.racetrac.mobile.anonymous.bottomNavigation.*"/>
+            <package name="com.racetrac.mobile.signIn.SignInTest"/>
         </packages>
     </test>
 </suite>
