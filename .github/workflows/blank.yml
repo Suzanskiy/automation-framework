@@ -34,6 +34,8 @@ jobs:
       # Install the Appium Server
       - name: Install the Appium Server
         run: npm install -g appium
+      - name: Run Appium server
+        run: appium
       # List iOS Devices & Platforms
       - name: Execute tests
         run: mvn clean test -Dtest.config=ios
