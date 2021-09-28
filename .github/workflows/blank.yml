@@ -39,3 +39,10 @@ jobs:
       # List iOS Devices & Platforms
       - name: Execute tests
         run: mvn clean test -Dtest.config=android
+      - name: Generate report
+        run: mvn allure:report
+      - uses: actions/upload-artifact@v2
+        with:
+          name: test-report
+          path: target/site/allure-maven-plugin
+          if-no-files-found: error # 'warn' or 'ignore' are also available, defaults to `warn`

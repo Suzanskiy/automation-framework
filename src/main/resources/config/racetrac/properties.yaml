@@ -17,7 +17,7 @@ properties:
   #iOS section
   platformIos: &iOsPlatform
     platformName: ios
-    platformVersion: 14.4
+    platformVersion: 14.5
     deviceName: iPhone 11
     test.profile: ios
     bundleId: com.racetrac.QA.ams
