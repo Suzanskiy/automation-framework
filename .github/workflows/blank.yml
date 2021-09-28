@@ -1,10 +1,10 @@
 name: Test on Android and iOS
 
-on: [ push, pull_request ]
+on: [push, pull_request]
 
 jobs:
   build:
-    runs-on: ubuntu-18.04
+    runs-on: macOS-latest
     steps:
       - uses: actions/checkout@v2
       - name: Set up JDK 1.8
@@ -41,12 +41,17 @@ jobs:
         run: mvn clean test -Dtest.config=android
       - name: Generate report
         run: mvn allure:report
-      - name: Allure report
-        # You may pin to the exact commit or the version.
-        # uses: afiore/action-allure-report@e43ebd6f4f4c74b07b1eb02f042902bbe6786a19
-        uses: afiore/action-allure-report@v0.1.0
+#      - uses: actions/upload-artifact@v2
+#        with:
+#          name: test-report
+#          path: target/site/allure-maven-plugin
+#          if-no-files-found: error # 'warn' or 'ignore' are also available, defaults to `warn`
+      - name: Upload a Build Artifact
+        uses: actions/upload-artifact@v2.2.4
         with:
-          # Allure test result data dir
-          results-dir: target/allure-results
-          # Allure report target dir
-          report-dir: target/site/allure-maven-plugin
+          # Artifact name
+          name: test-report # optional, default is artifact
+          # A file, directory or wildcard pattern that describes what to upload
+          path: target/site/allure-maven-plugin
+          # The desired behavior if no files are found using the provided path.
+
