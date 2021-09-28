@@ -1,0 +1,10 @@
+[ {
+  "name" : "GitHub Actions",
+  "type" : "github",
+  "url" : "https://Suzanskiy.github.io/automation-framework",
+  "buildOrder" : 19,
+  "buildName" : "GitHub Actions Run #1283164848",
+  "buildUrl" : "https://github.com/Suzanskiy/automation-framework/actions/runs/1283164848",
+  "reportName" : "Allure Report with history",
+  "reportUrl" : "https://Suzanskiy.github.io/automation-framework/19/"
+} ]
