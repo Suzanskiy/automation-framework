@@ -1,6 +1,6 @@
 name: Test on Android and iOS
 
-on: [push, pull_request]
+on: [ push, pull_request ]
 
 jobs:
   build:
@@ -41,8 +41,8 @@ jobs:
       - name: Generate report
         run: mvn allure:report
       - name: Publish Test Report
-          uses: starburstdata/action-testng-report@v1
-          with:
-            github_token: ${{ secrets.GITHUB_TOKEN }}
+        uses: starburstdata/action-testng-report@v1
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
 
 
