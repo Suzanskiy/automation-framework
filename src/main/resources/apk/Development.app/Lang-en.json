@@ -1,0 +1,122 @@
+{
+  "Home": "Home",
+  "Stores": "Stores",
+  "Coupons": "Coupons",
+  "Game": "Game",
+  "Rewards": "Rewards",
+  "My Rewards": "My Rewards #%",
+  "Promotional Settings" : "Promotional Settings",
+  "Promotional Offers" : "Promotional Offers",
+  "save" : "SAVE",
+  "next" : "NEXT",
+  "edit" : "Edit",
+  "done" : "Done",
+  "filters": "Filters",
+  "cancel": "Cancel",
+  "account": {
+    "user": {
+      "firstNamePlaceholder": "TracFanatic",
+    },
+    "settings": "Enter an email to your account settings"
+  },
+  "unclaimed_rewards": {
+      "expired_date": "Expired",
+      "count_banner_title": "Unclaimed Rewards"
+  },
+  "signingOut": "Signing Out",
+  "links": {
+    "terms": "By creating an account, you agree to our </br> <a href=\"%\">Terms of Use & Privacy Policy</a>."
+  },
+  "information": {
+    "updateProfile": "Updating your email address will only affect how you receive emails from us. Your login information will not change. Please continue to use your original email to sign in."
+  },
+  "password": {
+    "reseted": "Thanks! If you have a RaceTrac Rewards account, you should receive an email from us explaining how to reset your password."
+  },
+  "points": {
+    "scan": "Scan your Rewards + Debit Card or enter \nyour phone number on the pinpad \nof the pump to earn points.",
+    "use": "Use your points to redeem free items \nlisted in the rewards catalog.",
+    "earn": "Earn 4 points for every $1 spent on qualifying \nproducts and 1 point for every gallon \nof fuel purchased."
+  },
+  "errors": {
+    "oopsTitle" : "Oops!",
+    "phoneInUse": "This phone number is already linked to an existing account! Try signing in or enter a different phone number.",
+    "phoneInUseLoged": "This phone number is already connected to a Rewards account! Please enter a different phone number.",
+    "emailInUse": "This email is already linked to an existing account! Try signing in or sign up using another email address.",
+    "userNotFound": "Sorry, we couldn’t find an account associated with this email address! Please create a new account or contact Guest Services at guest@racetrac.com or 1-888-636-5589.",
+    "transaction": "Sorry, the information entered is not valid. Please try again. If you need further assistance, email guest@racetrac.com.",
+    "registrationInProgress": "Registration in progress for username, please check your email.",
+    "emailLinkExpired": "Oops! This email registration link has expired. Try resetting your password again.",
+    "invalidPassword": "The email or password you entered is invalid",
+    "invalidChangePassword": "Current password is incorrect, please try again.",
+    "passwordNeedToBeNew": "That's clever, but your new password is the same as your old one. Please try again!",
+    "emailScore": "Hmm… we don't recognize this email. Please contact our Guest Engagement team at guest@racetrac.com or 1-888-636-5589 to complete the process.",
+    "invalidSessionToken": "Sorry, the information entered is not valid. Please try again. If you need further assistance, email guest@racetrac.com.",
+    "registrationInfo": "Sorry, the information entered is not valid. Please try again. If you need further assistance, email guest@racetrac.com.",
+    "appIssue": "Something went wrong, please try again.",
+    "emailAlreadyExists": "This email is already linked to an existing account! Try using another email address.",
+    "passwordRulesNotMet": "Password rules not met.",
+    "giftCouponNoSuchEmail": "User not found or user's account was created through a social network. You can only gift coupons to other RaceTrac Rewards members",
+    "unavailableReward": "Fuel rewards limit for the account exceeded.",
+    "unauthorized": {
+      "title": "Something went wrong",
+      "message": "Please log in again."
+    },
+    "invalidPhysicalCardCode": "The Rewards Card Number you entered does not match any of our records. Please check the card number.",
+    "physicalCardCodeInUse": "The Rewards Card Number you entered is already in use, please add another card.",
+    "toManyRequests": "Our system is currently busy. Please try again shortly!",
+    "giftCardsCountExceeded": "You have reached the maximum number of gift cards allowed in your app. Either reload a current card or delete a zero balance gift card.",
+    "invalidRewardCardNumber" : "The Rewards Card Number you entered does not match any of our records. Please check the card number.",
+    "rewardCardNumerInUse": "The Rewards Card Number you entered is already in use, please add another card.",
+    "emailDoesNotMatch" : "The Email you entered does not match our records. Please make sure this is the same one you used to sign up for your Zipline account."
+  },
+  "coupons": {
+    "reedem": {
+      "body": "You must be the \"cool friend\", because a RaceTrac coupon has been shared with you! To redeem, download the app, sign up using the email address that the coupon was sent to and—voila!—the coupon is beamed lightning-quick to your app's coupon section. Enjoy!",
+      "appStore": "Download RaceTrac on the <a href=\"http://appstore.com/racetrac/racetrac\">iTunes App Store</a>",
+      "googlePlay": "Download RaceTrac on <a href=\"https://play.google.com/store/apps?hl=en\">Google Play</a>"
+    }
+  },
+  "giftCards": {
+    "asOf": "as of %",
+    "purchaseReloadSuccessTitle": "Complete",
+    "purchaseSuccessMessage": "Success! Your payment has been processed. Your new gift card number is %@ with a balance of $%.2f.",
+    "reloadSuccessMessage": "Success! Your payment has been processed. Your gift card number is %@ with a balance of $%.2f.",
+    "validationMessages" : {
+        "invalidCardNumber" : "Please enter a valid card number"
+    }
+  },
+  "pz": {
+    "preprod": "aVVSbU8xTXplL2h2ckpSM0",
+    "prod": "NXlGckZjbEQwSXNOQjh6R2RQWjN4TF"
+  },
+  "ce": {
+    "preprod": "QjFFMzZB",
+    "prod": "QjFFMzZB"
+  },
+  "RewardDebitCard": {
+    "EmailNotMatched": "The Email you entered does not match our records. Please make sure this is the same one you used to sign up for your Zipline account.",
+    "addCardButtonTitle": "Add Card",
+    "rewardsCardTitle": "Rewards Card Number"
+  },
+  "inbox": {
+      "awesome" : "Awesome!",
+      "oops" : "Oops!",
+      "noMessageDescription" : "You're all caught up.",
+      "notificationDisabledDescription" : "Your notifications are turned off."
+  },
+  "redeem": {
+      "redeemDescription" : "Are you sure you want to redeem %d points for this reward? This reward will be valid for 24 hours. If you don't use it during that time, the points will be added back to your account.",
+      "inufficientFunds" : "Sorry, you don't have enough points.",
+      "fuelRewardLimitation" : "Whoops! Looks like you already have this Reward in your cart. You can only redeem one Fuel Reward at a time"
+  },
+  "stores": {
+      "sorry": "Sorry!",
+      "noRecordFound": "No results found. Tap here to clear search and filters.",
+      "storeId": "Store #:",
+      "getDirection": "Get directions from",
+      "choseProvide": "Chose your favorite provider",
+      "filtersSelected": "filters selected",
+      "filterSelected": "filter selected"
+  }
+}
