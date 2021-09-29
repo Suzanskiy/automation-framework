@@ -4,7 +4,7 @@ on: [ push, pull_request ]
 
 jobs:
   build:
-    runs-on: ubuntu-18.04
+    runs-on: macos-latest
     steps:
       - uses: actions/checkout@v2
       - name: Set up JDK 1.8
@@ -21,11 +21,13 @@ jobs:
           npm cache clean --force
           rm -rf package-lock.json
       # Run Android Emulator
-      - name: Run Android Emulator
+      - name: Create and install emulator
         run: |
           echo "y" | $ANDROID_HOME/tools/bin/sdkmanager --install 'system-images;android-28;google_apis;x86_64'
           echo "no" | $ANDROID_HOME/tools/bin/avdmanager create avd -n Emulator -k 'system-images;android-28;google_apis;x86_64' --force
           echo $ANDROID_HOME/emulator/emulator -list-avds
+      - name: Start emulator
+        run: |
           echo "Starting emulator"
           nohup $ANDROID_HOME/emulator/emulator -avd Emulator -no-snapshot > /dev/null 2>&1 &
           $ANDROID_HOME/platform-tools/adb wait-for-device shell 'while [[ -z $(getprop sys.boot_completed | tr -d '\r') ]]; do sleep 1; done; input keyevent 82'
