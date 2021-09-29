@@ -101,6 +101,7 @@ public final class AppiumConfiguration {
                 capabilities.setCapability("avd", getDeviceName());
                 capabilities.setCapability("avdLaunchTimeout", "150000");
                 capabilities.setCapability("avdReadyTimeout", "150000");
+                capabilities.setCapability("androidInstallTimeout", "150000");
                 break;
             }
             case IOS: {
