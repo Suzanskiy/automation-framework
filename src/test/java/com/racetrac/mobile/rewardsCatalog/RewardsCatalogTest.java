@@ -82,7 +82,7 @@ public class RewardsCatalogTest extends BaseTest {
         rewardsPopupFlow.clickGotItBtn();
         assertTrue(rewardsCatalogFlow.isRewardsCatalogPageOpened(), "Rewards catalog is not opened");
         assertEquals(rewardsCatalogFlow.availablePoints(), AVAILABLE_POINTS, "Invalid points are displayed");
-        assertTrue(rewardsCatalogFlow.isElementsOfRewardsCatalogDisplayed(), "Elements of rewards catalog are not displayd");
+        assertTrue(rewardsCatalogFlow.isElementsOfRewardsCatalogDisplayed(), "Elements of rewards catalog are not displayed");
     }
 
 
@@ -101,11 +101,12 @@ public class RewardsCatalogTest extends BaseTest {
         pointsAndLevelsFlow.clickGotItBtn();
         assertTrue(welcomeFlow.isHomePageOpenedAfterSignIn(), "Welcome page is not opened after sign in");
         welcomeFlow.clickOnRedeemPointsBtn();
+        rewardsPopupFlow.waitUntilMessageAvailable();
         assertTrue(rewardsPopupFlow.isRedeemPopUpHintDisplayed(), "Redeem Popup Hint is not displayed");
         rewardsPopupFlow.clickGotItBtn();
         assertTrue(rewardsCatalogFlow.isRewardsCatalogPageOpened(), "Rewards catalog is not opened");
         assertEquals(rewardsCatalogFlow.availablePoints(), AVAILABLE_POINTS, "Invalid points are displayed");
-        assertTrue(rewardsCatalogFlow.isElementsOfRewardsCatalogDisplayed(), "Elements of rewards catalog are not displayd");
+        assertTrue(rewardsCatalogFlow.isElementsOfRewardsCatalogDisplayed(), "Elements of rewards catalog are not displayed");
     }
 
     @TmsLink("7303")
@@ -128,9 +129,10 @@ public class RewardsCatalogTest extends BaseTest {
         rewardsPopupFlow.clickGotItBtn();
         assertTrue(rewardsCatalogFlow.isRewardsCatalogPageOpened(), "Rewards catalog is not opened");
         assertEquals(rewardsCatalogFlow.availablePoints(), AVAILABLE_POINTS, "Invalid points are displayed");
-        assertTrue(rewardsCatalogFlow.isElementsOfRewardsCatalogDisplayed(), "Elements of rewards catalog are not displayd");
+        assertTrue(rewardsCatalogFlow.isElementsOfRewardsCatalogDisplayed(), "Elements of rewards catalog are not displayed");
         rewardsCatalogFlow.clickRedeemBtn();
         rewardsCatalogFlow.clickRedeemOnPopupBtn();
+        assertTrue(rewardsCatalogFlow.isRewardsCatalogPageOpened(), "Rewards catalog is not opened");
         assertEquals(rewardsCatalogFlow.availablePoints(), AVAILABLE_POINTS - rewardsCatalogFlow.rewardPrice(), "Invalid AVAILABLE_POINTS displayed");
     }
 
