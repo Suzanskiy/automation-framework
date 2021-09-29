@@ -3,11 +3,16 @@ package com.racetrac.mobile.multisite.racetrac.flow.common;
 import com.racetrac.mobile.multisite.racetrac.dto.CustomerDto;
 import com.racetrac.mobile.multisite.racetrac.flow.BaseFlow;
 import com.racetrac.mobile.multisite.racetrac.flow.SignUpFlow;
+import com.racetrac.mobile.util.appium.AppiumWaitingUtils;
 import io.qameta.allure.Step;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.springframework.stereotype.Component;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+
+import static com.racetrac.mobile.util.appium.AppiumDriverUtils.getDriver;
 
 @Component
 public class SignUpFlowImpl extends BaseFlow implements SignUpFlow {
@@ -124,6 +129,11 @@ public class SignUpFlowImpl extends BaseFlow implements SignUpFlow {
     @Override
     public String getErrorMessageText() {
         return getErrorMessageVIew().getErrorMessage().getText();
+    }
+
+    @Override
+    public void waitUntilFraudErrorMessageShown() {
+        AppiumWaitingUtils.waitUntilElementClickable(getFraudErrorMessageView().getOkButton());
     }
 
     @Step
