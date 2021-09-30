@@ -1,0 +1,24 @@
+name: Test on Android and iOS
+
+on: [ push, pull_request ]
+
+jobs:
+  prepare:
+    runs-on: self-hosted
+    steps:
+      - uses: actions/checkout@v2
+  buildAndroid:
+    runs-on: self-hosted
+    needs: prepare
+    steps:
+      - name: Build Android framework
+        run: mvn clean compile -Dtest.config=android
+  buildIOS:
+    runs-on: self-hosted
+    needs: [ prepare ]
+    steps:
+      - name: Run Appium server
+        run: appium &
+      - name: Build iOS framework
+        run: mvn clean compile -Dtest.config=ios
+
