@@ -24,12 +24,12 @@ jobs:
       - name: Create and install emulator
         run: |
           echo "y" | $ANDROID_HOME/tools/bin/sdkmanager --install 'system-images;android-28;google_apis;x86_64'
-          echo "no" | $ANDROID_HOME/tools/bin/avdmanager create avd -n Emulator -k 'system-images;android-28;google_apis;x86_64' --skin 400x900 --force
+          echo "no" | $ANDROID_HOME/tools/bin/avdmanager create avd -n Emulator -k 'system-images;android-28;google_apis;x86_64' --force
           echo $ANDROID_HOME/emulator/emulator -list-avds
       - name: Start emulator
         run: |
           echo "Starting emulator"
-          nohup $ANDROID_HOME/emulator/emulator -avd Emulator -no-snapshot > /dev/null 2>&1 &
+          nohup $ANDROID_HOME/emulator/emulator -avd Emulator -no-snapshot -skin 400x800 -wipe-data > /dev/null 2>&1 &
           $ANDROID_HOME/platform-tools/adb wait-for-device shell 'while [[ -z $(getprop sys.boot_completed | tr -d '\r') ]]; do sleep 1; done; input keyevent 82'
           $ANDROID_HOME/platform-tools/adb devices
       # Install the Appium Server
