@@ -1,4 +1,4 @@
-name: Test on Android and iOS
+name: Compile project
 
 on: [ pull_request ]
 

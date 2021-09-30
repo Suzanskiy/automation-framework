@@ -47,6 +47,7 @@ public class AndroidWelcomeFlowImpl extends BaseFlow implements WelcomeFlow {
     @Step
     @Override
     public boolean isHomePageOpenedAfterSignIn() {
+        waitUntilHomePageLoaded();
         return getHomePage().waitUntilIsOpened();
     }
 
