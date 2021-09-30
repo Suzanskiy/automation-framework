@@ -4,7 +4,7 @@ on: [ push, pull_request ]
 
 jobs:
   build:
-    runs-on: macos-latest
+    runs-on: my-mac
     steps:
       - uses: actions/checkout@v2
       - name: Set up JDK 1.8
@@ -24,7 +24,7 @@ jobs:
       - name: Create and install emulator
         run: |
           echo "y" | $ANDROID_HOME/tools/bin/sdkmanager --install 'system-images;android-28;google_apis;x86_64'
-          echo "no" | $ANDROID_HOME/tools/bin/avdmanager create avd -n Emulator -k 'system-images;android-28;google_apis;x86_64' --force
+          echo "no" | $ANDROID_HOME/tools/bin/avdmanager create avd -n Emulator -k 'system-images;android-28;google_apis;x86_64' --skin 400x900 --force
           echo $ANDROID_HOME/emulator/emulator -list-avds
       - name: Start emulator
         run: |
