@@ -2,19 +2,10 @@ package com.racetrac.mobile.fuelVipPopUpWithDifferentAge;
 
 import com.racetrac.mobile.BaseTest;
 import com.racetrac.mobile.multisite.racetrac.dto.CustomerDto;
-import com.racetrac.mobile.multisite.racetrac.flow.BecomeFuelVipFlow;
-import com.racetrac.mobile.multisite.racetrac.flow.LocationRequestFlow;
-import com.racetrac.mobile.multisite.racetrac.flow.NotificationRequestFlow;
-import com.racetrac.mobile.multisite.racetrac.flow.PointsAndLevelsFlow;
-import com.racetrac.mobile.multisite.racetrac.flow.PromotionalOffersFlow;
-import com.racetrac.mobile.multisite.racetrac.flow.RewardsPopupFlow;
-import com.racetrac.mobile.multisite.racetrac.flow.SignOutFlow;
-import com.racetrac.mobile.multisite.racetrac.flow.SignUpFlow;
-import com.racetrac.mobile.multisite.racetrac.flow.WelcomeFlow;
+import com.racetrac.mobile.multisite.racetrac.flow.*;
 import io.qameta.allure.Description;
 import io.qameta.allure.TmsLink;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
@@ -29,17 +20,11 @@ public class FuelVipPopUpWithDifferentAgeTest extends BaseTest {
     @Autowired
     SignUpFlow signUpFlow;
     @Autowired
-    SignOutFlow signOutFlow;
-    @Autowired
     LocationRequestFlow locationRequestFlow;
     @Autowired
     BecomeFuelVipFlow becomeFuelVipFlow;
     @Autowired
     PromotionalOffersFlow promotionalOffersFlow;
-    @Autowired
-    RewardsPopupFlow rewardsPopupFlow;
-    @Autowired
-    PointsAndLevelsFlow pointsAndLevelsFlow;
     @Autowired
     NotificationRequestFlow notificationRequestFlow;
     CustomerDto customerDto;
@@ -62,12 +47,8 @@ public class FuelVipPopUpWithDifferentAgeTest extends BaseTest {
         signUpFlow.isFistBumpPageOpened();
         signUpFlow.clickGetStartedBtn();
         locationRequestFlow.clickNotNow();
+        becomeFuelVipFlow.waitUntilBecomeFuelVipLoaded();
         assertTrue(becomeFuelVipFlow.checkAllElementsIsLoaded(), "Elements are not loaded");
-        becomeFuelVipFlow.clickNotRightNow();
-        locationRequestFlow.clickNotNow();
-        rewardsPopupFlow.clickGotItBtn();
-        pointsAndLevelsFlow.clickGotItBtn();
-
     }
 
     @TmsLink("6414")
@@ -82,13 +63,8 @@ public class FuelVipPopUpWithDifferentAgeTest extends BaseTest {
 
         promotionalOffersFlow.skipPromotions();
         locationRequestFlow.clickNotNow();
+        becomeFuelVipFlow.waitUntilBecomeFuelVipLoaded();
         assertTrue(becomeFuelVipFlow.checkAllElementsIsLoaded(), "Elements are not loaded");
-        becomeFuelVipFlow.clickNotRightNow();
-        promotionalOffersFlow.skipIOSPromotions();
-
-        locationRequestFlow.clickNotNow();
-        rewardsPopupFlow.clickGotItBtn();
-        pointsAndLevelsFlow.clickGotItBtn();
     }
 
 }

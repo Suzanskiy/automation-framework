@@ -63,7 +63,7 @@ public class AndroidRewardPopUpFlowImpl extends BaseFlow implements RewardsPopup
     @Step
     @Override
     public void waitUntilMessageAvailable() {
-        AppiumWaitingUtils.waitUntilIsTrue(() -> isRewardsPopUpTutorialMessageDisplayed());
+        AppiumWaitingUtils.waitUntilElementClickable(getRewardsPopupPage().getGotItBtn());
     }
 
 }

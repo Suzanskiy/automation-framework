@@ -55,6 +55,7 @@ public class RedeemPointsTest extends BaseTest {
         pointsAndLevelsFlow.clickGotItBtn();
         assertFalse(welcomeFlow.isRedeemPointsBtnDisplayedOnMainScreen(), " Redeem points is displayed");
     }
+
     @TmsLink("7640")
     @Description("Redeem reward if user does not have enough points(30)")
     @Test
@@ -78,6 +79,7 @@ public class RedeemPointsTest extends BaseTest {
         assertEquals(noPointsNoticeFlow.getNotificationMessages(), NO_POINTS_TO_EXCHANGE_TEXT);
         noPointsNoticeFlow.clickOK();
     }
+
     @TmsLink("7633")
     @Description("User can only redeem one Fuel Reward in his card at a time")
     @Test
@@ -105,6 +107,7 @@ public class RedeemPointsTest extends BaseTest {
         rewardsCatalogFlow.clickRedeemBtn();
         rewardsCatalogFlow.clickRedeemOnPopupBtn();
         //Getting sad smile until Bottle of water will not returned //// FIXME: 03.09.2021
-         assertTrue(rewardsCatalogFlow.isSadSmilePopUpShown(), "Sad Smile view is not showed");
+        rewardsCatalogFlow.waitUntilSadSmilePopUpShown();
+        assertTrue(rewardsCatalogFlow.isSadSmilePopUpShown(), "Sad Smile view is not showed");
     }
 }

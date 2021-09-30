@@ -2,9 +2,11 @@ package com.racetrac.mobile.multisite.racetrac.flow.impl.android;
 
 import com.racetrac.mobile.multisite.racetrac.flow.BaseFlow;
 import com.racetrac.mobile.multisite.racetrac.flow.RewardsCatalogFlow;
+import com.racetrac.mobile.util.appium.AppiumWaitingUtils;
 import io.qameta.allure.Step;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.TimeoutException;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Component;
 
@@ -115,7 +117,13 @@ public class AndroidRewardCatalogFlowImpl extends BaseFlow implements RewardsCat
             return false;
         }
     }
-        @Step
+
+    @Override
+    public void waitUntilSadSmilePopUpShown() {
+        AppiumWaitingUtils.waitUntilElementClickable(getSadSmileRewardCatalogView().getOkSadSmileBtn());
+    }
+
+    @Step
         @Override
         public void navigateBack () {
             pressBackBtn();

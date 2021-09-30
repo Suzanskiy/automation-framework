@@ -66,7 +66,7 @@ jobs:
       - name: Start emulator
         run: |
           echo "Starting emulator"
-          nohup $ANDROID_HOME/emulator/emulator -avd Emulator -no-snapshot -skin 400x800 -wipe-data -no-window > /dev/null 2>&1 &
+          nohup $ANDROID_HOME/emulator/emulator -avd Emulator -no-snapshot -skin 400x1000 -wipe-data -no-window > /dev/null 2>&1 &
           $ANDROID_HOME/platform-tools/adb wait-for-device shell 'while [[ -z $(getprop sys.boot_completed | tr -d '\r') ]]; do sleep 1; done; input keyevent 82'
           $ANDROID_HOME/platform-tools/adb devices
       - name: Run Appium server

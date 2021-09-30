@@ -2,6 +2,7 @@ package com.racetrac.mobile.multisite.racetrac.flow.impl.android;
 
 import com.racetrac.mobile.multisite.racetrac.flow.BaseFlow;
 import com.racetrac.mobile.multisite.racetrac.flow.BecomeFuelVipFlow;
+import com.racetrac.mobile.util.appium.AppiumWaitingUtils;
 import io.qameta.allure.Step;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.TimeoutException;
@@ -48,6 +49,12 @@ public class AndroidBecomeFuelVipFlowImpl extends BaseFlow implements BecomeFuel
     @Override
     public boolean checkAllElementsIsLoaded() {
         return getBecomeFuelVipPage().waitUntilIsOpened();
+    }
+
+    @Override
+    public void waitUntilBecomeFuelVipLoaded() {
+        getBecomeFuelVipPage().refresh();
+        AppiumWaitingUtils.waitUntilElementClickable(getBecomeFuelVipPage().getNotRightNowBtn());
     }
 
     private void handleBrowserOpening() {

@@ -47,4 +47,9 @@ public class iosBecomeFuelVipFlowImpl extends BaseFlow implements BecomeFuelVipF
     public boolean checkAllElementsIsLoaded() {
         return getBecomeFuelVipPage().waitUntilIsOpened();
     }
+
+    @Override
+    public void waitUntilBecomeFuelVipLoaded() {
+
+    }
 }
