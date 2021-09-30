@@ -67,6 +67,7 @@ public class PopUpVipTest extends BaseTest {
         signUpFlow.clickGetStartedBtn();
         promotionalOffersFlow.skipPromotions();
         locationRequestFlow.clickNotNow();
+        becomeFuelVipFlow.waitUntilBecomeFuelVipLoaded();
         assertTrue(becomeFuelVipFlow.checkAllElementsIsLoaded(), "Elements are not loaded");
 
     }
