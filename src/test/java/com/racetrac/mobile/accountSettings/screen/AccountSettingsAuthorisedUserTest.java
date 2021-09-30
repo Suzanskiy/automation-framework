@@ -213,27 +213,6 @@ public class AccountSettingsAuthorisedUserTest extends BaseTest {
         promotionalOffersFlow.enterBirthDate(customerBirth);
         promotionalOffersFlow.clickOkBtnOnTheEnterBirthdayPopUp();
 
-        promotionalOffersFlow.waitUntilOkBtnAvailable();
-        promotionalOffersFlow.clickCancelBtnOnTheBirthdayPopUpField();
-        accountSettingsFlow.waitUntilAccountSettingsAuthorizedOpen();
-        assertTrue(accountSettingsFlow.isAccountSettingsAuthorisedUserScreenOpened());
-        signOutFlow.clickOnSignOutBtn();
-        locationRequestFlow.clickNotNow();
-
-        signInFlow.openLoginInPage();
-        assertTrue(signInFlow.isLoginPageOpened(), "Login page is not opened");
-        signInFlow.authorize(customerDto);
-        locationRequestFlow.clickNotNow();
-        notificationRequestFlow.clickNotNow();
-
-        signInFlow.clickGotItBtn();
-        pointsAndLevelsFlow.clickGotItBtn();
-        assertTrue(welcomeFlow.isHomePageOpenedAfterSignIn(), "Welcome page is not opened after sign in");
-
-        accountSettingsFlow.navigateToAccountSettings();
-        accountSettingsFlow.waitUntilAccountSettingsAuthorizedOpen();
-        accountSettingsFlow.navigateToPromotionalSettings();
-
         assertTrue(promotionalOffersFlow.isPromotionalOffersScreenOpened(), "Promotions Page is not opened");
         promotionalOffersFlow.acceptPromotions();
         accountSettingsFlow.waitUntilAccountSettingsAuthorizedOpen();

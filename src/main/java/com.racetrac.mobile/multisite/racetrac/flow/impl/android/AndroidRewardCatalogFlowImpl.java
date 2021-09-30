@@ -78,7 +78,8 @@ public class AndroidRewardCatalogFlowImpl extends BaseFlow implements RewardsCat
 
     @Override
     public int rewardPrice() {
-        return Integer.parseInt(getRewardsCatalogPage().getRewardPoints().getAttribute("text").substring(0, 3));
+        String pointsText = getRewardsCatalogPage().getRewardPoints().getAttribute("text");
+        return Integer.parseInt(pointsText.substring(0, pointsText.indexOf(' ')));
     }
 
     @Step

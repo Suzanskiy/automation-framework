@@ -5,6 +5,7 @@ import io.appium.java_client.functions.ExpectedCondition;
 import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.util.Arrays;
@@ -87,5 +88,8 @@ public class AppiumWaitingUtils {
     public static void waitUntil(org.openqa.selenium.support.ui.ExpectedCondition<WebElement> conditions) {
         WebDriverWait wait = new WebDriverWait(getDriver(), LONG_TIMEOUT);
         wait.until(conditions);
+    }
+    public static void waitUntilElementClickable(MobileElement element){
+        getAppiumDriverWait().until(ExpectedConditions.elementToBeClickable(element));
     }
 }
