@@ -118,6 +118,11 @@ public class AndroidRewardCatalogFlowImpl extends BaseFlow implements RewardsCat
         }
     }
 
+    @Override
+    public void waitUntilSadSmilePopUpShown() {
+        AppiumWaitingUtils.waitUntilElementClickable(getSadSmileRewardCatalogView().getOkSadSmileBtn());
+    }
+
     @Step
         @Override
         public void navigateBack () {

@@ -16,4 +16,8 @@ public class SadSmileRewardCatalogView extends BaseMobilePage {
     @AndroidFindBy(id="com.RaceTrac.Common.qa:id/imageView7")
     @iOSXCUITFindBy(accessibility = "Whoops! Looks like you already have this Reward in your cart. You can only redeem one Fuel Reward at a time")
     private MobileElement sadSmileDescription;
+
+    @PageLoading
+    @AndroidFindBy(id="com.RaceTrac.Common.qa:id/buttonOK")
+    private MobileElement okSadSmileBtn;
 }

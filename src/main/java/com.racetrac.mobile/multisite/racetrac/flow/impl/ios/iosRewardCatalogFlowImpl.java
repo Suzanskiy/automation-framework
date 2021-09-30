@@ -107,6 +107,11 @@ public class iosRewardCatalogFlowImpl extends BaseFlow implements RewardsCatalog
         return getSadSmileRewardCatalogView().waitUntilIsOpened();
     }
 
+    @Override
+    public void waitUntilSadSmilePopUpShown() {
+
+    }
+
     @Step
     @Override
     public void navigateBack() {

@@ -10,4 +10,6 @@ public interface BecomeFuelVipFlow {
     void clickNotRightNowBtn();
 
     boolean checkAllElementsIsLoaded();
+
+    void waitUntilBecomeFuelVipLoaded();
 }
