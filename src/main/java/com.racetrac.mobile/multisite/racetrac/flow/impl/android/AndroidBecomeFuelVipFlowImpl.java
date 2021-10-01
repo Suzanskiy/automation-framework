@@ -21,7 +21,7 @@ public class AndroidBecomeFuelVipFlowImpl extends BaseFlow implements BecomeFuel
         try {
             getBecomeFuelVipPage().waitUntilIsOpened();
             getBecomeFuelVipPage().getNotRightNowBtn().click();
-        } catch (NoSuchElementException| TimeoutException e) {
+        } catch (NoSuchElementException| TimeoutException|StaleElementReferenceException e) {
         LOG.warn("Unable to click NOT RIGHT NOW on Become Fuel VIP page");
         }
     }
