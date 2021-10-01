@@ -36,6 +36,7 @@ public class SignOutTest extends BaseTest {
         signInFlow.openLoginInPage();
         assertTrue(signInFlow.isLoginPageOpened(), "Login page is not opened");
         signInFlow.authorize(customerDto);
+        notificationRequestFlow.iosClickNotNow();//do not delete, since on Ios this page is earlier then on android
         locationRequestFlow.clickNotNow();
         notificationRequestFlow.clickNotNow();
 

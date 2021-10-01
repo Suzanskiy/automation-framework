@@ -14,7 +14,7 @@ import static com.racetrac.mobile.framework.constants.PlatformsConstants.IOS;
 
 @Profile(IOS)
 @Component
-public class iOsNotificationRequestFlowImpl extends BaseFlow implements NotificationRequestFlow {
+public class iosNotificationRequestFlowImpl extends BaseFlow implements NotificationRequestFlow {
 
     @Step
     @Override
@@ -22,7 +22,6 @@ public class iOsNotificationRequestFlowImpl extends BaseFlow implements Notifica
 
         try {
             getTurnOnNotificationPage().waitUntilIsOpened();
-
             getTurnOnNotificationPage().getNotNowBtn().click();
         } catch (StaleElementReferenceException e) {
             LOG.warn("Page was recreated");
@@ -36,5 +35,10 @@ public class iOsNotificationRequestFlowImpl extends BaseFlow implements Notifica
     @Override
     public void clickTurnOn() {
 
+    }
+
+    @Override
+    public void iosClickNotNow() {
+        clickNotNow();
     }
 }
