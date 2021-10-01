@@ -31,4 +31,5 @@ public interface WelcomeFlow {
 
     int couponsCarouselQuantity();
 
+    void waitUntilHomePageLoaded();
 }

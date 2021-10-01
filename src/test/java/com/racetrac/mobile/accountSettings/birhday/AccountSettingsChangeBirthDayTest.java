@@ -99,6 +99,7 @@ public class AccountSettingsChangeBirthDayTest extends BaseTest {
         String customerBirth = testData.generateDateBirth();
         profileFlow.clickOnBirthDayField();
         profileFlow.enterBirthDate(customerBirth);
+        accountSettingsFlow.waitUntilAccountSettingsAuthorizedOpen();
         assertTrue(accountSettingsFlow.isAccountSettingsAuthorisedUserScreenOpened(), " Account screen for Logged in User is not opened");
         accountSettingsFlow.navigateToProfile();
         assertTrue(accountSettingsFlow.isProfileScreenOpened(), "Profile screen is not opened");

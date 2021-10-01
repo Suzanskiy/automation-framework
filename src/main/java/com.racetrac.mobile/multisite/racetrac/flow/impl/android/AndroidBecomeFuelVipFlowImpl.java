@@ -5,6 +5,7 @@ import com.racetrac.mobile.multisite.racetrac.flow.BecomeFuelVipFlow;
 import com.racetrac.mobile.util.appium.AppiumWaitingUtils;
 import io.qameta.allure.Step;
 import org.openqa.selenium.NoSuchElementException;
+import org.openqa.selenium.StaleElementReferenceException;
 import org.openqa.selenium.TimeoutException;
 import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Component;
@@ -53,8 +54,12 @@ public class AndroidBecomeFuelVipFlowImpl extends BaseFlow implements BecomeFuel
 
     @Override
     public void waitUntilBecomeFuelVipLoaded() {
-        getBecomeFuelVipPage().refresh();
-        AppiumWaitingUtils.waitUntilElementClickable(getBecomeFuelVipPage().getNotRightNowBtn());
+        try {
+            AppiumWaitingUtils.waitUntilElementClickable(getBecomeFuelVipPage().getNotRightNowBtn());
+        }catch (StaleElementReferenceException e){
+            LOG.warn("BecomeFuelVipPage is not loaded");
+        }
+
     }
 
     private void handleBrowserOpening() {

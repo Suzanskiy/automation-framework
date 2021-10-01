@@ -107,4 +107,9 @@ public class IosWelcomeFlowImpl extends BaseFlow implements WelcomeFlow {
         return 0;
     }
 
+    @Override
+    public void waitUntilHomePageLoaded() {
+
+    }
+
 }

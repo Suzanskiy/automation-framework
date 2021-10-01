@@ -37,6 +37,7 @@ public class AndroidWelcomeFlowImpl extends BaseFlow implements WelcomeFlow {
         try {
             getTurnOnLocationPage().waitUntilIsOpened();
             getTurnOnLocationPage().getNotNowBtn().click();
+            waitUntilHomePageLoaded();
         } catch (TimeoutException | NoSuchElementException e) {
             LOG.warn("Cannot find Location page");
         }
@@ -46,6 +47,7 @@ public class AndroidWelcomeFlowImpl extends BaseFlow implements WelcomeFlow {
     @Step
     @Override
     public boolean isHomePageOpenedAfterSignIn() {
+        waitUntilHomePageLoaded();
         return getHomePage().waitUntilIsOpened();
     }
 
@@ -141,5 +143,10 @@ public class AndroidWelcomeFlowImpl extends BaseFlow implements WelcomeFlow {
     @Override
     public int couponsCarouselQuantity() {
         return getHomePage().getCouponsCarousel().size();
+    }
+
+    @Override
+    public void waitUntilHomePageLoaded() {
+        AppiumWaitingUtils.waitUntilElementClickable(getHomePage().getIconSettings());
     }
 }
