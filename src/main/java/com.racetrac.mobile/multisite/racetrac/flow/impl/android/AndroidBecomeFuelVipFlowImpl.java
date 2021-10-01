@@ -55,7 +55,7 @@ public class AndroidBecomeFuelVipFlowImpl extends BaseFlow implements BecomeFuel
     @Override
     public void waitUntilBecomeFuelVipLoaded() {
         try {
-            AppiumWaitingUtils.waitUntilElementClickable(getBecomeFuelVipPage().getNotRightNowBtn());
+            AppiumWaitingUtils.waitUntilElementClickable(getBecomeFuelVipPage().getGetStartedBtn());
         }catch (StaleElementReferenceException e){
             LOG.warn("BecomeFuelVipPage is not loaded");
         }

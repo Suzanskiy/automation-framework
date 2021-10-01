@@ -6,6 +6,7 @@ import com.racetrac.mobile.util.appium.AppiumWaitingUtils;
 import io.appium.java_client.MobileElement;
 import io.qameta.allure.Step;
 import org.openqa.selenium.NoSuchElementException;
+import org.openqa.selenium.StaleElementReferenceException;
 import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Component;
 
@@ -25,11 +26,22 @@ public class AndroidAccountSettingsFlowImpl extends BaseFlow implements AccountS
     @Step
     @Override
     public boolean isAccountSettingsAuthorisedUserScreenOpened() {
+        try {
+            AppiumWaitingUtils.waitUntilElementClickable(getAccountSettingsPageAuthorised().getProfile());
+        } catch (StaleElementReferenceException e) {
+            LOG.warn("Cannot find some element of the Account settings page");
+        }
         return getAccountSettingsPageAuthorised().waitUntilIsOpened();
     }
 
     @Override
     public boolean isProfileScreenOpened() {
+        try {
+            AppiumWaitingUtils.waitUntilElementClickable(getProfilePage().getEditEmailBtn());
+        } catch (StaleElementReferenceException e) {
+            LOG.warn("Cannot find element of the profile page");
+        }
+        ;
         return getProfilePage().waitUntilIsOpened();
     }
 
@@ -72,7 +84,7 @@ public class AndroidAccountSettingsFlowImpl extends BaseFlow implements AccountS
 
     @Override
     public void waitUntilAccountSettingsAuthorizedOpen() {
-        AppiumWaitingUtils.waitUntilIsTrue(()-> getAccountSettingsPageAuthorised().waitUntilIsOpened());
+        AppiumWaitingUtils.waitUntilIsTrue(() -> getAccountSettingsPageAuthorised().waitUntilIsOpened());
     }
 
     @Override

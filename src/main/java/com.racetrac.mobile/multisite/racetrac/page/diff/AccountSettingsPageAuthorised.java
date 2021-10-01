@@ -22,10 +22,12 @@ public class AccountSettingsPageAuthorised extends AccountSettingsPage {
     @AndroidFindBy(uiAutomator = "new UiSelector().text(\"Account\")")
     private MobileElement accountCategory;
 
+    @PageLoading
     @iOSXCUITFindBy(accessibility = "Profile")
     @AndroidFindBy(uiAutomator = "new UiSelector().text(\"Profile\")")
     private MobileElement profile;
 
+    @PageLoading
     @iOSXCUITFindBy(accessibility = "Rewards + Debit Card")
     @AndroidFindBy(uiAutomator = "new UiSelector().text(\"Rewards + Debit Card\")")
     private MobileElement rewardsAndDebitCard;
@@ -42,10 +44,12 @@ public class AccountSettingsPageAuthorised extends AccountSettingsPage {
     @AndroidFindBy(uiAutomator = "new UiSelector().text(\"Preferences\")")
     private MobileElement preferencesCategory;
 
+    @PageLoading
     @iOSXCUITFindBy(xpath = "//XCUIElementTypeStaticText[@name=\"Promotional Settings\"]")
     @AndroidFindBy(uiAutomator = "new UiSelector().text(\"Promotional Settings\")")
     private MobileElement promotionalSettings;
 
+    @PageLoading
     @iOSXCUITFindBy(xpath = "//XCUIElementTypeStaticText[@name=\"Notifications\"]")
     @AndroidFindBy(uiAutomator = "new UiSelector().text(\"Notifications\")")
     private MobileElement notifications;
