@@ -11,6 +11,8 @@ import org.springframework.stereotype.Component;
 
 import static com.racetrac.mobile.framework.constants.PlatformsConstants.IOS;
 import static com.racetrac.mobile.util.appium.AppiumDriverUtils.getDriver;
+import static com.racetrac.mobile.util.appium.AppiumWaitingUtils.waitUntilAlertIsPresent;
+import static com.racetrac.mobile.util.appium.AppiumWaitingUtils.waitUntilElementClickable;
 
 @Profile(IOS)
 @Component
@@ -19,12 +21,21 @@ public class iosLocationRequestFlowImpl extends BaseFlow implements LocationRequ
     public void clickNotNow() {
         try {
             getTurnOnLocationPage().waitUntilIsOpened();
+            waitUntilElementClickable(getTurnOnLocationPage().getNotNowBtn());
             getTurnOnLocationPage().getNotNowBtn().click();
-            getDriver().switchTo().alert().dismiss();
-        } catch (TimeoutException | NoSuchElementException | NoAlertPresentException e) {
-
+        } catch (TimeoutException | NoSuchElementException e) {
             LOG.warn("Location page is not opened here, refreshing");
         }
+
+        try {
+            waitUntilAlertIsPresent();
+            getDriver().switchTo().alert().dismiss();
+        } catch (NoAlertPresentException e) {
+            LOG.warn("unable to skip native location request");
+        } catch (TimeoutException e) {
+            LOG.info("Got timeout excpetion while waiting for native location request window");
+        }
+
     }
 
     @Step
