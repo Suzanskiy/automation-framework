@@ -30,7 +30,7 @@ public class AppiumWaitingUtils {
         return new WebDriverWait(getDriver(), timeout);
     }
 
-    private static WebDriverWait getAppiumDriverWait() {
+    public static WebDriverWait getAppiumDriverWait() {
         return getAppiumDriverWait(LONG_TIMEOUT);
     }
 
@@ -61,9 +61,9 @@ public class AppiumWaitingUtils {
         });
     }
 
-	public static Boolean waitUntilIsTrue(Action<Boolean> action) {
-		return waitUntilIsTrue(action, LONG_TIMEOUT);
-	}
+    public static Boolean waitUntilIsTrue(Action<Boolean> action) {
+        return waitUntilIsTrue(action, LONG_TIMEOUT);
+    }
 
     public static Boolean waitUntilIsTrue(Action<Boolean> action, boolean throwable) {
         return waitUntilIsTrue(action, LONG_TIMEOUT, throwable);
@@ -89,7 +89,12 @@ public class AppiumWaitingUtils {
         WebDriverWait wait = new WebDriverWait(getDriver(), LONG_TIMEOUT);
         wait.until(conditions);
     }
-    public static void waitUntilElementClickable(MobileElement element){
+
+    public static void waitUntilElementClickable(MobileElement element) {
         getAppiumDriverWait().until(ExpectedConditions.elementToBeClickable(element));
+    }
+
+    public static void waitUntilAlertIsPresent() {
+        getAppiumDriverWait().until(ExpectedConditions.alertIsPresent());
     }
 }
