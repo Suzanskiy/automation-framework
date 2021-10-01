@@ -126,6 +126,7 @@ public class AndroidPromotionalOffersFlowImpl extends BaseFlow implements Promot
 
     @Override
     public boolean isOkPopUpBtnEditable() {
+        AppiumWaitingUtils.waitUntilElementClickable(getPromotionalOffersPage().getCancelBirthdayPopUpFieldBtn());
         final String attribute = getPromotionalOffersPage().getOkBirthdayPopUpFieldBtn().getAttribute("enabled");
         if (attribute.equals("false")) {
             return false;
