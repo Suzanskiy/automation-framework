@@ -4,4 +4,6 @@ public interface NotificationRequestFlow {
     public void clickNotNow();
 
     public void clickTurnOn();
+
+    public void iosClickNotNow();
 }
