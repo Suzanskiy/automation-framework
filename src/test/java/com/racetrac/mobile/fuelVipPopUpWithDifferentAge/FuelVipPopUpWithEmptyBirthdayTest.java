@@ -4,6 +4,7 @@ import com.racetrac.mobile.BaseTest;
 import com.racetrac.mobile.multisite.racetrac.dto.CustomerDto;
 import com.racetrac.mobile.multisite.racetrac.flow.BecomeFuelVipFlow;
 import com.racetrac.mobile.multisite.racetrac.flow.LocationRequestFlow;
+import com.racetrac.mobile.multisite.racetrac.flow.NotificationRequestFlow;
 import com.racetrac.mobile.multisite.racetrac.flow.PointsAndLevelsFlow;
 import com.racetrac.mobile.multisite.racetrac.flow.RewardsPopupFlow;
 import com.racetrac.mobile.multisite.racetrac.flow.SignOutFlow;
@@ -35,6 +36,8 @@ public class FuelVipPopUpWithEmptyBirthdayTest extends BaseTest {
     PointsAndLevelsFlow pointsAndLevelsFlow;
 
     CustomerDto customerDto;
+    @Autowired
+    NotificationRequestFlow notificationRequestFlow;
 
     @BeforeMethod(alwaysRun = true)
     public void preconditions() {
@@ -53,6 +56,7 @@ public class FuelVipPopUpWithEmptyBirthdayTest extends BaseTest {
         signUpFlow.enterCredentials(customerDto);
         signUpFlow.isFistBumpPageOpened();
         signUpFlow.clickGetStartedBtn();
+        notificationRequestFlow.iosClickNotNow();
         locationRequestFlow.clickNotNow();
         assertTrue(becomeFuelVipFlow.checkAllElementsIsLoaded(), "Elements are not loaded");
         becomeFuelVipFlow.clickNotRightNow();

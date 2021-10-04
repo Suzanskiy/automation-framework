@@ -3,6 +3,7 @@ package com.racetrac.mobile.multisite.racetrac.flow.common;
 import com.racetrac.mobile.multisite.racetrac.dto.CustomerDto;
 import com.racetrac.mobile.multisite.racetrac.flow.BaseFlow;
 import com.racetrac.mobile.multisite.racetrac.flow.SignInFlow;
+import com.racetrac.mobile.util.appium.AppiumWaitingUtils;
 import io.qameta.allure.Step;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.TimeoutException;
@@ -20,6 +21,7 @@ public class SignInFlowImpl extends BaseFlow implements SignInFlow {
     @Step
     @Override
     public boolean isLoginPageOpened() {
+        AppiumWaitingUtils.waitUntilElementClickable(getLoginPage().getEmailInput());
         return getLoginPage().waitUntilIsOpened();
     }
 

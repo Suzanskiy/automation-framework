@@ -310,7 +310,7 @@
 		</data>
 		<key>Frameworks/Alamofire.framework/Alamofire</key>
 		<data>
-		rbJ/owXYVEgr/bx7eHxUteKWTfU=
+		5Wu8z4Y9u57C1RkRSMq4i5vv0u4=
 		</data>
 		<key>Frameworks/Alamofire.framework/Info.plist</key>
 		<data>
@@ -322,7 +322,7 @@
 		</data>
 		<key>Frameworks/CocoaLumberjack.framework/CocoaLumberjack</key>
 		<data>
-		GvreT+XL74aW5JQ3oor7apF0gFo=
+		5Cr9jdy9yzJq1IzXcBAgVOMFUEQ=
 		</data>
 		<key>Frameworks/CocoaLumberjack.framework/Info.plist</key>
 		<data>
@@ -334,7 +334,7 @@
 		</data>
 		<key>Frameworks/DZNEmptyDataSet.framework/DZNEmptyDataSet</key>
 		<data>
-		0LE3UktXTOojmgxtwZxUqLR7u1M=
+		9Gp0eKsrr+OcUx8FN9wZpQW3gFs=
 		</data>
 		<key>Frameworks/DZNEmptyDataSet.framework/Info.plist</key>
 		<data>
@@ -346,7 +346,7 @@
 		</data>
 		<key>Frameworks/DropDown.framework/DropDown</key>
 		<data>
-		Zj2dtlwCuhNq3DnK/RDmVSKiYCs=
+		EJz+JZev6NkIQT8V3LEfJJtjDpg=
 		</data>
 		<key>Frameworks/DropDown.framework/DropDownCell.nib</key>
 		<data>
@@ -362,7 +362,7 @@
 		</data>
 		<key>Frameworks/FBLPromises.framework/FBLPromises</key>
 		<data>
-		z98qQKCL1th0Qe5hZtKUFzhg+pU=
+		lPil1Jw/Uze0GS6dJc2upUyCsWo=
 		</data>
 		<key>Frameworks/FBLPromises.framework/Info.plist</key>
 		<data>
@@ -374,7 +374,7 @@
 		</data>
 		<key>Frameworks/FBSDKCoreKit.framework/FBSDKCoreKit</key>
 		<data>
-		h9yRFn5x6wGBeyjL86GEMn4+yNY=
+		5xcbZIQgDi/n4VF6RRB2ABWuvG4=
 		</data>
 		<key>Frameworks/FBSDKCoreKit.framework/FacebookSDKStrings.bundle/Info.plist</key>
 		<data>
@@ -806,7 +806,7 @@
 		</data>
 		<key>Frameworks/FBSDKCoreKit_Basics.framework/FBSDKCoreKit_Basics</key>
 		<data>
-		YEAa6rDWxeBTsmN68GMf0TO9ELg=
+		iuERO8ATEDQGCtIl29CjATi2fvc=
 		</data>
 		<key>Frameworks/FBSDKCoreKit_Basics.framework/Info.plist</key>
 		<data>
@@ -818,7 +818,7 @@
 		</data>
 		<key>Frameworks/FBSDKLoginKit.framework/FBSDKLoginKit</key>
 		<data>
-		bAXl5BBZbe2KK0mT7Nq/kBThLNs=
+		ZPFjbLalGbwXYTsag7jHv3Fgl5c=
 		</data>
 		<key>Frameworks/FBSDKLoginKit.framework/Info.plist</key>
 		<data>
@@ -830,7 +830,7 @@
 		</data>
 		<key>Frameworks/FirebaseABTesting.framework/FirebaseABTesting</key>
 		<data>
-		AELo2chb+W82d+uwk+RzpnQ/svE=
+		cMuCWvuN4BC6S48dNzBt/ORqEVM=
 		</data>
 		<key>Frameworks/FirebaseABTesting.framework/Info.plist</key>
 		<data>
@@ -842,7 +842,7 @@
 		</data>
 		<key>Frameworks/FirebaseCore.framework/FirebaseCore</key>
 		<data>
-		PhKZbtYP2eavtIZW1ut8wqwkKfk=
+		sUj1XoaPtqSp5lg6eyeWJjGuGD8=
 		</data>
 		<key>Frameworks/FirebaseCore.framework/Info.plist</key>
 		<data>
@@ -854,7 +854,7 @@
 		</data>
 		<key>Frameworks/FirebaseCoreDiagnostics.framework/FirebaseCoreDiagnostics</key>
 		<data>
-		QMrOvdGh0l5kUTU5CleYrWvVtcg=
+		G48rFIaROhZC8zWmK+IKE9rJA5M=
 		</data>
 		<key>Frameworks/FirebaseCoreDiagnostics.framework/Info.plist</key>
 		<data>
@@ -866,7 +866,7 @@
 		</data>
 		<key>Frameworks/FirebaseCrashlytics.framework/FirebaseCrashlytics</key>
 		<data>
-		MJqJMH0deWsamWQ+iEdG6rUnClg=
+		SIYpZC32Zdw9gUQ1YTAkryJ2Pvg=
 		</data>
 		<key>Frameworks/FirebaseCrashlytics.framework/Info.plist</key>
 		<data>
@@ -878,7 +878,7 @@
 		</data>
 		<key>Frameworks/FirebaseInstallations.framework/FirebaseInstallations</key>
 		<data>
-		xJg24q+5/okacdmnPwSs1Mq3nnI=
+		fr3NNdrpIsZYpbGnCPm/YxkthBs=
 		</data>
 		<key>Frameworks/FirebaseInstallations.framework/Info.plist</key>
 		<data>
@@ -890,7 +890,7 @@
 		</data>
 		<key>Frameworks/FirebaseRemoteConfig.framework/FirebaseRemoteConfig</key>
 		<data>
-		cTXQirTrjR73cgN9Jybtfez634U=
+		o+tPCcdgmu5kJP9G25lcfzKioVE=
 		</data>
 		<key>Frameworks/FirebaseRemoteConfig.framework/Info.plist</key>
 		<data>
@@ -902,7 +902,7 @@
 		</data>
 		<key>Frameworks/GoogleDataTransport.framework/GoogleDataTransport</key>
 		<data>
-		jXOqmu1N0wSzCCBuxSuV8kbCMsg=
+		+QVzcuu61rcBqUPNEtTsYF6TtAw=
 		</data>
 		<key>Frameworks/GoogleDataTransport.framework/Info.plist</key>
 		<data>
@@ -914,7 +914,7 @@
 		</data>
 		<key>Frameworks/GoogleUtilities.framework/GoogleUtilities</key>
 		<data>
-		Zhed0vwhIgrEWGrvQl9++MHN8yc=
+		RcH2KDAj6O9kzR0Q+B/dX+Xpkfo=
 		</data>
 		<key>Frameworks/GoogleUtilities.framework/Info.plist</key>
 		<data>
@@ -926,7 +926,7 @@
 		</data>
 		<key>Frameworks/IQKeyboardManagerSwift.framework/IQKeyboardManagerSwift</key>
 		<data>
-		Htm0FA2QgNfRGlPqhgMoXrWvoJM=
+		u+efsNs2foLQ32N3t+s/YQRRVFo=
 		</data>
 		<key>Frameworks/IQKeyboardManagerSwift.framework/Info.plist</key>
 		<data>
@@ -942,7 +942,7 @@
 		</data>
 		<key>Frameworks/InputMask.framework/InputMask</key>
 		<data>
-		GHvsw858ReuvHhaIermA77/Gs+o=
+		N2KqTbc2ZfzjRSOsWYDgzWKWbQA=
 		</data>
 		<key>Frameworks/InputMask.framework/_CodeSignature/CodeResources</key>
 		<data>
@@ -954,7 +954,7 @@
 		</data>
 		<key>Frameworks/JGProgressHUD.framework/JGProgressHUD</key>
 		<data>
-		cuaXufXTHIcEBHs0HKgm9q7OIyU=
+		rmSVIrQJdMAui4zTSR529SdoUNo=
 		</data>
 		<key>Frameworks/JGProgressHUD.framework/_CodeSignature/CodeResources</key>
 		<data>
@@ -978,7 +978,7 @@
 		</data>
 		<key>Frameworks/KeychainSwift.framework/KeychainSwift</key>
 		<data>
-		eg/3Wa9JkOZ/U/eH/HvYd3oUzeo=
+		46iwXRuagWnzhyuOunjMIpo9sSo=
 		</data>
 		<key>Frameworks/KeychainSwift.framework/_CodeSignature/CodeResources</key>
 		<data>
@@ -990,7 +990,7 @@
 		</data>
 		<key>Frameworks/Kingfisher.framework/Kingfisher</key>
 		<data>
-		U2xa7hsIcWwJKjKDOC6w6gDlvrA=
+		2VpOwagLsW0vwTPkpTA2jV0WJ0c=
 		</data>
 		<key>Frameworks/Kingfisher.framework/_CodeSignature/CodeResources</key>
 		<data>
@@ -1002,7 +1002,7 @@
 		</data>
 		<key>Frameworks/Localize.framework/Localize</key>
 		<data>
-		ogCYFIRbbRq1522ejX6HiQxqhWE=
+		hH2guDcMYnwJgHLDmZO/CzZ6wjo=
 		</data>
 		<key>Frameworks/Localize.framework/_CodeSignature/CodeResources</key>
 		<data>
@@ -1014,7 +1014,7 @@
 		</data>
 		<key>Frameworks/Material.framework/Material</key>
 		<data>
-		EgwriwUBoLAhpPau0ExSZL79dfQ=
+		bc83uVfNXJADCXOg8CEfpBSgO3s=
 		</data>
 		<key>Frameworks/Material.framework/_CodeSignature/CodeResources</key>
 		<data>
@@ -1098,7 +1098,7 @@
 		</data>
 		<key>Frameworks/Motion.framework/Motion</key>
 		<data>
-		+ZhYkLv4iI8jLX9DQYwSHpO+JVs=
+		vvyCt4j5RTeqUitZFlOQTkTQjn8=
 		</data>
 		<key>Frameworks/Motion.framework/_CodeSignature/CodeResources</key>
 		<data>
@@ -1146,7 +1146,7 @@
 		</data>
 		<key>Frameworks/SVGKit.framework/SVGKit</key>
 		<data>
-		ruhzgILxMJAZSYkTJCAqE72jhxU=
+		pabWBrE2dq43lvKKZfP/v3VeTU4=
 		</data>
 		<key>Frameworks/SVGKit.framework/_CodeSignature/CodeResources</key>
 		<data>
@@ -1158,7 +1158,7 @@
 		</data>
 		<key>Frameworks/SwiftHEXColors.framework/SwiftHEXColors</key>
 		<data>
-		Gl9UWUbakCzsDzv6bsFNn28HG0k=
+		1Av3ze70ZFhB9iegFKVzlVz4DHc=
 		</data>
 		<key>Frameworks/SwiftHEXColors.framework/_CodeSignature/CodeResources</key>
 		<data>
@@ -1170,7 +1170,7 @@
 		</data>
 		<key>Frameworks/SwiftValidator.framework/SwiftValidator</key>
 		<data>
-		rWa2CHVfU7/FLAJAp/jS0t4kJBo=
+		BXQCGVx3LDo2WxtBqqFWOn1X/m8=
 		</data>
 		<key>Frameworks/SwiftValidator.framework/_CodeSignature/CodeResources</key>
 		<data>
@@ -1182,7 +1182,7 @@
 		</data>
 		<key>Frameworks/SwiftyJSON.framework/SwiftyJSON</key>
 		<data>
-		LGt1raUAXyB/XX4f/MpRYcVfh+M=
+		J1h0x1DjhEFtMJLkXWUZIsgTJUQ=
 		</data>
 		<key>Frameworks/SwiftyJSON.framework/_CodeSignature/CodeResources</key>
 		<data>
@@ -1198,7 +1198,7 @@
 		</data>
 		<key>Frameworks/nanopb.framework/nanopb</key>
 		<data>
-		sMKiUhzHV/cB1es9DsLZQIpuGbs=
+		46bMXEaMzr7gRqyGA8pWoOijZqY=
 		</data>
 		<key>FuelSavingsBreakDown.storyboardc/FuelSavingsViewController.nib</key>
 		<data>
@@ -1246,7 +1246,7 @@
 		</data>
 		<key>Help-en.json</key>
 		<data>
-		Q361PuwoRrJ81aONgU4utQgVepg=
+		AadALPvUKoAaTTvqoPBgw6K+oUk=
 		</data>
 		<key>Help.storyboardc/HelpViewController.nib</key>
 		<data>
@@ -1370,7 +1370,7 @@
 		</data>
 		<key>Info.plist</key>
 		<data>
-		w7d2StAEvs9eOsxiTI4FRJhPjH0=
+		TZw/PORTpYceQb5Vd2AQDu3ncYc=
 		</data>
 		<key>Lang-en.json</key>
 		<data>
@@ -1626,15 +1626,15 @@
 		</data>
 		<key>PlugIns/NotificationServiceDev.appex/Info.plist</key>
 		<data>
-		Cp0Axo21HaSIQGwCEVrjruT5O/o=
+		Mzm2y+5kCK50njUNnAgVxr958UE=
 		</data>
 		<key>PlugIns/NotificationServiceDev.appex/NotificationServiceDev</key>
 		<data>
-		kUdZ3Kc0+yoIZ8QiBQeymosgJqo=
+		6UVtIEGLC1JDvu1Sukwq/5DQx1w=
 		</data>
 		<key>PlugIns/NotificationServiceDev.appex/_CodeSignature/CodeResources</key>
 		<data>
-		45x9bx1mAsLpGEkM7kmK22CUCD8=
+		fJKBXKmDxVWudbbrje/lR6qS3pM=
 		</data>
 		<key>Points.storyboardc/6lL-5L-dqR-view-B0A-Yr-Kpp.nib</key>
 		<data>
@@ -2671,7 +2671,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			KkPe4IymiYGAd4xVIO/drXg4TZF0HCa9CxGuSVqMNYk=
+			Vp6rX9Z/flsZyW3f44JCrzI+inwVyUjMTn1pEptUYxc=
 			</data>
 		</dict>
 		<key>Frameworks/Alamofire.framework/Info.plist</key>
@@ -2692,7 +2692,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			1hMAJyr+bHq87IjSwwYPZmZzeD6WxInjiVMZweRf0t0=
+			xicYgKAGyN+PV/zo7A7F1wYgnJ5nScwx+zzVdA4t5HA=
 			</data>
 		</dict>
 		<key>Frameworks/CocoaLumberjack.framework/Info.plist</key>
@@ -2713,7 +2713,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			o1tZqFdCY/qctEyjnhd/CZ5Aw+tmr5Mkhm+cEAhjPpc=
+			SFq/D0OEMQjgA08RxSD3c4BDyCgZWMh3tu5IMbB74PQ=
 			</data>
 		</dict>
 		<key>Frameworks/DZNEmptyDataSet.framework/Info.plist</key>
@@ -2734,7 +2734,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			0lR8ozgGyVOWIBRTwyk26fmxZ57dQ7+gs89OgETuw1s=
+			jnu1uiJHAxwEzHkGo4RghnAQBMPvH1fSi5j5crvGAAk=
 			</data>
 		</dict>
 		<key>Frameworks/DropDown.framework/DropDownCell.nib</key>
@@ -2762,7 +2762,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			0keS6Jwxhbu7kLevtOyuZP+qiwQ8luxUenWUabYocyE=
+			uaMFavaeNeuw673WPZsgB4wnPtRWxzN3NBe6fvJYn40=
 			</data>
 		</dict>
 		<key>Frameworks/FBLPromises.framework/Info.plist</key>
@@ -2783,7 +2783,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			oPET+uh/H3j21xTBxAj/vy6dorqrk/wWzCQ3e7u1NIQ=
+			pWGpTzPmHm7ti5d/ZJ4w7gtrc+7NnKSh+7IlbHgt7LU=
 			</data>
 		</dict>
 		<key>Frameworks/FBSDKCoreKit.framework/FacebookSDKStrings.bundle/Info.plist</key>
@@ -3242,7 +3242,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			Wp3kHHwSO+wQqzDywg3o6EWSEISdFp0T2c/ed3eJA+E=
+			wA91B2JIcuRXeGHInxCsNpCFAIoUCaz/ShgveskTjEM=
 			</data>
 		</dict>
 		<key>Frameworks/FBSDKCoreKit_Basics.framework/Info.plist</key>
@@ -3263,7 +3263,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			jbS0H9O979zkAAMgHKmVyH13M2bMhuTaO7uCuRy1pmY=
+			FToOK/FE1JlRTZffpU519tK0Id593tJpSGOrqKuUF/U=
 			</data>
 		</dict>
 		<key>Frameworks/FBSDKLoginKit.framework/Info.plist</key>
@@ -3284,7 +3284,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			8808kEcKLllV8mKA4jlELqUKQeX6rqdh3clnaoYq1LU=
+			Vxe7UFllH6yqKlXa+uVq7bfQIbTx/1SZD5D7JNMzaSw=
 			</data>
 		</dict>
 		<key>Frameworks/FirebaseABTesting.framework/Info.plist</key>
@@ -3305,7 +3305,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			lZIGU9iT+6WawHNPe7UYvmogej+6PNrzn//jQXOFtHo=
+			uttVkJoqrppyhEkJ4+Mn0Z7GrXfVc9jeEbk1MiUAVQ4=
 			</data>
 		</dict>
 		<key>Frameworks/FirebaseCore.framework/Info.plist</key>
@@ -3326,7 +3326,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			QJj4K7W6PtNJtEDM3vrtmP6FUPAtuoAjCGrOL6pmHJA=
+			zHFyVCKE3SAeM1zcbE/Z7DjTjIGwNxFA4oeJm08TE9Q=
 			</data>
 		</dict>
 		<key>Frameworks/FirebaseCoreDiagnostics.framework/Info.plist</key>
@@ -3347,7 +3347,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			09hGJ9B5qM5TyIzidMPkY90CaVDWMgcarPX+JOEGAdY=
+			9ADVV5bed9KZQyzOfyI8YYkOTvDOGzEK9PIKWCy8Gx0=
 			</data>
 		</dict>
 		<key>Frameworks/FirebaseCrashlytics.framework/Info.plist</key>
@@ -3368,7 +3368,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			97v4lHHPJTLaetYu00sBgzAB5+bCjzmRp8x5usOzCmI=
+			kblOyIiyqrhkBuaNU8166AVNLxUtQHGjST8V86d6s2Y=
 			</data>
 		</dict>
 		<key>Frameworks/FirebaseInstallations.framework/Info.plist</key>
@@ -3389,7 +3389,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			jI+oHT8M85NpoPnEF0DaSTuO9w3SkbUCso6zsTzKJvA=
+			/HrR8Q0fnRg7xJLLDBW7TsZzeRcJTi/CWzOZ/BTlb9Y=
 			</data>
 		</dict>
 		<key>Frameworks/FirebaseRemoteConfig.framework/Info.plist</key>
@@ -3410,7 +3410,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			YoXBBDw81DsQDpnoCVNLU8BHAVkI4aIapXLj7Ngxjqk=
+			rh/SRPfZy4YevQCGVfQTBUChIfczY26NiVXSp8TcPCo=
 			</data>
 		</dict>
 		<key>Frameworks/GoogleDataTransport.framework/Info.plist</key>
@@ -3431,7 +3431,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			+iCPXqg2z1dpcCuMTcdTI8SqEhcJCrdr3kxkegR6SAc=
+			B9ek0DR0G/80utjbhyuKMu8S0uhZS4GP9G/bhyI57WU=
 			</data>
 		</dict>
 		<key>Frameworks/GoogleUtilities.framework/Info.plist</key>
@@ -3452,7 +3452,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			zYiTFVO2BiAIODw9V/GXE6Yo2tTmCzBoWlt0Kx273+c=
+			w/IvPPOHaUjoxaU0SiYNXzunsKT/kmNQnw9do5+cMZE=
 			</data>
 		</dict>
 		<key>Frameworks/IQKeyboardManagerSwift.framework/Info.plist</key>
@@ -3480,7 +3480,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			0q9Ou6gdbYWDSoxQ2jDIpp98qfKj3w4XauqTZySOkIw=
+			K27jTs1+Ag0z6Gx/a41WLhtcbNux5tfKGjeUpf0K63s=
 			</data>
 		</dict>
 		<key>Frameworks/InputMask.framework/_CodeSignature/CodeResources</key>
@@ -3501,7 +3501,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			pWs0AaCAAJuRgR+wD4KlwU7Z9F+jlYAWrV/v5KHOIBE=
+			+1JWx+rwW89wV8oVsxzZiDvP3M4V032Qi402p0RwQNk=
 			</data>
 		</dict>
 		<key>Frameworks/JGProgressHUD.framework/_CodeSignature/CodeResources</key>
@@ -3543,7 +3543,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			DCEpGVWg0NIvC7ghubIOke5TQJ9Lyw0bKc6LtLi0XJc=
+			wnreoMWTUggRzQGl9sVkaZk81dBM0i/FMF5Ylks46X8=
 			</data>
 		</dict>
 		<key>Frameworks/KeychainSwift.framework/_CodeSignature/CodeResources</key>
@@ -3564,7 +3564,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			idfqlLorlWoCQjBgqVxW/7e31U4FtacmxjROQMfeyzc=
+			vWoNNtuAfXCdyilpgTBO7Odj1+ZCw178ocoy+nXAxI8=
 			</data>
 		</dict>
 		<key>Frameworks/Kingfisher.framework/_CodeSignature/CodeResources</key>
@@ -3585,7 +3585,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			12lQ4C9SRBjAW0f3lt62nM/jPn8Cx1VHKIjDADsTjJ0=
+			x6nlerfHNXlzMsKRm0RiuPb4aY3Va4L5p9o8x/P+xVI=
 			</data>
 		</dict>
 		<key>Frameworks/Localize.framework/_CodeSignature/CodeResources</key>
@@ -3606,7 +3606,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			ZEEJby+tTvsQAZlCEZrDEpoi1zWhPAkXP2NUtZ4iCks=
+			b4tDRRx5pHUQXp+EVgMMfO1AwdfeRW3iepcgOZFGpkA=
 			</data>
 		</dict>
 		<key>Frameworks/Material.framework/_CodeSignature/CodeResources</key>
@@ -3753,7 +3753,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			j7IDSEEL5JWlPAg3XM0I4DpibX8huys0PTeR1QI8frI=
+			uuiD6GzgPidBg+KLGdcHarcjECL75MlRKZuO/dhREnA=
 			</data>
 		</dict>
 		<key>Frameworks/Motion.framework/_CodeSignature/CodeResources</key>
@@ -3837,7 +3837,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			LN9TbWG2htpk384qy1JtqU3Bt+nudO1tYYmEDexieuI=
+			ix0QO7IJlF4sLQTaZiE5RA7FzZemIxZ8D7Q5C0TPv3Y=
 			</data>
 		</dict>
 		<key>Frameworks/SVGKit.framework/_CodeSignature/CodeResources</key>
@@ -3858,7 +3858,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			CCP3wqNDA/rUPgsIHODfY37B2mSDslnTSvvlknssu+k=
+			9SB3fDGaoqFmJCir9qJO1xYB9HADpSkURwmsSRshd/g=
 			</data>
 		</dict>
 		<key>Frameworks/SwiftHEXColors.framework/_CodeSignature/CodeResources</key>
@@ -3879,7 +3879,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			ufXw8xqV46iZbUsUVRbXHtDNVLyqpQLpQgQxavGZuyI=
+			+unlJzKL/HVkcxdr5afzs7ChHWf8eVwObE4LznGCtYQ=
 			</data>
 		</dict>
 		<key>Frameworks/SwiftValidator.framework/_CodeSignature/CodeResources</key>
@@ -3900,7 +3900,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			yBWSHPBC8ZJxqSMH47JAeQnVglPg+kKAEJ8U9QAafaE=
+			50VVyEGOFfGL/nMnY3gYnnb6urQKlXIQo5zTTf/s8so=
 			</data>
 		</dict>
 		<key>Frameworks/SwiftyJSON.framework/_CodeSignature/CodeResources</key>
@@ -3928,7 +3928,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			7T+b+pCy9hz3MVyoIFWEwswm+toFxNntT5S7CwcCAx4=
+			JLoHVTx3lGI1/wYEwlPEnuq09paAyOl0b3Xnf/ZmbD0=
 			</data>
 		</dict>
 		<key>FuelSavingsBreakDown.storyboardc/FuelSavingsViewController.nib</key>
@@ -4012,7 +4012,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			fGMgHR4UlqNP8PkwydTe3haje3dcI3EfybRdoCUEKs4=
+			wVWFS48/1bCYTzYfTVm/YSrO44jJ4XgDLgzML83A3js=
 			</data>
 		</dict>
 		<key>Help.storyboardc/HelpViewController.nib</key>
@@ -4663,21 +4663,21 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			Tj6j4T8aJt9F7Y88V8C/73cMSZuyx+p1zZUpp/+faqg=
+			ZbAedej4Ikf56dyp20r2wbDRqypFySR0Fpu05nvVW4U=
 			</data>
 		</dict>
 		<key>PlugIns/NotificationServiceDev.appex/NotificationServiceDev</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			+I0MQKThOVnDVPXQqlaLuE8eEneFqDLXz+ljOEekh+4=
+			FQNPQOKHofLdGSc8oTgXIQYE5tDB54Vnk2fQkMH5yg0=
 			</data>
 		</dict>
 		<key>PlugIns/NotificationServiceDev.appex/_CodeSignature/CodeResources</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			kNCersSWkr0OKlJufMESSf23GDeg7L8qxd6bUsaHLok=
+			KbfLm4wFXtZc1rmuia+41ILQlHu1vgSq9LPqmilclRU=
 			</data>
 		</dict>
 		<key>Points.storyboardc/6lL-5L-dqR-view-B0A-Yr-Kpp.nib</key>

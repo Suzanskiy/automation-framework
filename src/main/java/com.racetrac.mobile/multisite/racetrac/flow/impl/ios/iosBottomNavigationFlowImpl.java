@@ -85,7 +85,7 @@ public class iosBottomNavigationFlowImpl extends BaseFlow implements NavigationF
 
     @Override
     public boolean isRewardCatalogDisplayed() {
-        return false;
+        return getRewardsCatalogPage().waitUntilIsOpened();
     }
 
     @Override
