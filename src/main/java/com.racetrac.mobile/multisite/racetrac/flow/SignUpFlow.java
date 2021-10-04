@@ -35,4 +35,5 @@ public interface SignUpFlow {
 
     void waitUntilFraudErrorMessageShown();
 
+    void waitUntilErrorMessageShown();
 }

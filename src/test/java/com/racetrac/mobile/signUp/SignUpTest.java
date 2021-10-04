@@ -59,6 +59,7 @@ public class SignUpTest extends BaseTest {
 
         promotionalOffersFlow.skipPromotions();
         locationRequestFlow.clickNotNow();
+        becomeFuelVipFlow.waitUntilBecomeFuelVipLoaded();
         becomeFuelVipFlow.clickNotRightNow();
 
         rewardsPopupFlow.clickGotItBtn();
@@ -78,6 +79,7 @@ public class SignUpTest extends BaseTest {
         becomeFuelVipFlow.clickNotRightNow();
         promotionalOffersFlow.skipPromotions();
         locationRequestFlow.clickNotNow();
+        becomeFuelVipFlow.waitUntilBecomeFuelVipLoaded();
         becomeFuelVipFlow.clickNotRightNow();
 
         rewardsPopupFlow.clickGotItBtn();
@@ -102,6 +104,7 @@ public class SignUpTest extends BaseTest {
     @Test
     public void isErrorMessageAppearWhenEmailRegisteredByApiTest() {
         signUpFlow.enterCredentials(testData.registerNewCustomer());
+        signUpFlow.waitUntilErrorMessageShown();
         assertTrue(signUpFlow.isErrorMessageShown(), "Error message not shown");
         assertEquals(signUpFlow.getErrorMessageText(),
                 EMAIL_LINKED_MESSAGE);

@@ -50,9 +50,4 @@ public class SignInTest extends BaseTest {
         assertTrue(welcomeFlow.isHomePageOpenedAfterSignIn(), "Welcome page is not opened after sign in");
     }
 
-    @AfterMethod(alwaysRun = true)
-    public void logOut() {
-        signOutFlow.doSignOut();
-        assertTrue(welcomeFlow.isHomePageOpened(), "Welcome page is not opened");
-    }
 }

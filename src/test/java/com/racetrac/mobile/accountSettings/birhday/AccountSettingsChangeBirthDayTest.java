@@ -71,8 +71,10 @@ public class AccountSettingsChangeBirthDayTest extends BaseTest {
         // TODO: 10.08.2021 Check code above on Android, because on ios those line not needed
         assertTrue(welcomeFlow.isHomePageOpenedAfterSignIn(), "Welcome page is not opened after sign in");
         accountSettingsFlow.navigateToAccountSettings();
+        accountSettingsFlow.waitUntilAccountSettingsAuthorizedOpen();
         assertTrue(accountSettingsFlow.isAccountSettingsAuthorisedUserScreenOpened(), " Account screen for Logged in User is not opened");
         accountSettingsFlow.navigateToProfile();
+        profileFlow.waitUntilProfilePageOpened();
         assertTrue(accountSettingsFlow.isProfileScreenOpened(), "Profile screen is not opened");
         profileFlow.clickOnBirthDayField();
         assertTrue(accountSettingsFlow.isProfileScreenOpened(), "Profile screen is not opened");
@@ -93,8 +95,10 @@ public class AccountSettingsChangeBirthDayTest extends BaseTest {
         // TODO: 10.08.2021 same
         assertTrue(welcomeFlow.isHomePageOpenedAfterSignIn(), "Welcome page is not opened after sign in");
         accountSettingsFlow.navigateToAccountSettings();
+        accountSettingsFlow.waitUntilAccountSettingsAuthorizedOpen();
         assertTrue(accountSettingsFlow.isAccountSettingsAuthorisedUserScreenOpened(), " Account screen for Logged in User is not opened");
         accountSettingsFlow.navigateToProfile();
+        profileFlow.waitUntilProfilePageOpened();
         assertTrue(accountSettingsFlow.isProfileScreenOpened(), "Profile screen is not opened");
         String customerBirth = testData.generateDateBirth();
         profileFlow.clickOnBirthDayField();
@@ -102,6 +106,7 @@ public class AccountSettingsChangeBirthDayTest extends BaseTest {
         accountSettingsFlow.waitUntilAccountSettingsAuthorizedOpen();
         assertTrue(accountSettingsFlow.isAccountSettingsAuthorisedUserScreenOpened(), " Account screen for Logged in User is not opened");
         accountSettingsFlow.navigateToProfile();
+        profileFlow.waitUntilProfilePageOpened();
         assertTrue(accountSettingsFlow.isProfileScreenOpened(), "Profile screen is not opened");
 
         profileFlow.clickOnBirthDayField();

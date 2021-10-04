@@ -136,6 +136,11 @@ public class SignUpFlowImpl extends BaseFlow implements SignUpFlow {
         AppiumWaitingUtils.waitUntilElementClickable(getFraudErrorMessageView().getOkButton());
     }
 
+    @Override
+    public void waitUntilErrorMessageShown() {
+        AppiumWaitingUtils.waitUntilElementClickable(getErrorMessageVIew().getOkButton());
+    }
+
     @Step
     @Override
     public void enterSpecificCredentials(final String fraudMail, final CustomerDto customerDto) {

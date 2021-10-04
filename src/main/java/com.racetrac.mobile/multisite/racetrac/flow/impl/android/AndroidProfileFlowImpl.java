@@ -5,6 +5,7 @@ import com.racetrac.mobile.multisite.racetrac.flow.NavigateFlow;
 import com.racetrac.mobile.multisite.racetrac.flow.ProfileFlow;
 import com.racetrac.mobile.util.appium.AppiumWaitingUtils;
 import io.qameta.allure.Step;
+import org.openqa.selenium.StaleElementReferenceException;
 import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Component;
 
@@ -52,7 +53,11 @@ public class AndroidProfileFlowImpl extends BaseFlow implements ProfileFlow, Nav
     @Step
     @Override
     public void clickOnBirthDayField() {
-        getProfilePage().getBirthDay().click();
+        try {
+            getProfilePage().getBirthDay().click();
+        } catch (StaleElementReferenceException e) {
+            LOG.warn("Birthday field is not shown");
+        }
     }
 
     @Override
@@ -73,6 +78,6 @@ public class AndroidProfileFlowImpl extends BaseFlow implements ProfileFlow, Nav
 
     @Override
     public void waitUntilProfilePageOpened() {
-        AppiumWaitingUtils.waitUntilIsTrue(()-> getProfilePage().waitUntilIsOpened());
+        AppiumWaitingUtils.waitUntilIsTrue(() -> getProfilePage().waitUntilIsOpened());
     }
 }
