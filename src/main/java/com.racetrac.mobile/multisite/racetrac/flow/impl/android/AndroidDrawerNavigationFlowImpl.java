@@ -3,6 +3,7 @@ package com.racetrac.mobile.multisite.racetrac.flow.impl.android;
 import com.racetrac.mobile.multisite.racetrac.flow.BaseFlow;
 import com.racetrac.mobile.multisite.racetrac.flow.NavigationFlow;
 import io.qameta.allure.Step;
+import org.openqa.selenium.NoSuchElementException;
 import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Component;
 
@@ -89,14 +90,18 @@ public class AndroidDrawerNavigationFlowImpl extends BaseFlow implements Navigat
     @Step
     @Override
     public boolean isRewardCatalogDisplayed() {
-        return getRewardsCatalogPage().waitUntilIsOpened();
+        try {
+            return getAndroidNavBar().getRewardsCatalog().isDisplayed();
+        } catch (NoSuchElementException e) {
+            LOG.warn("Reward catalog tab is not displayed");
+            return false;
+        }
     }
 
     @Step
     @Override
     public void navigateToRewardsCatalogViaDrawer() {
         getNavigationDrawer().getDrawer().click();
-
     }
 
     @Step

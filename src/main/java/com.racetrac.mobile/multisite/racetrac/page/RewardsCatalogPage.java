@@ -35,6 +35,7 @@ public class RewardsCatalogPage extends BaseMobilePage {
     @AndroidFindBy(id = "com.RaceTrac.Common.qa:id/unclaimedRewardsCounter")
     private MobileElement unclaimedRewardsCounter;
 
+    @PageLoading
     @iOSXCUITFindBy(xpath = "//XCUIElementTypeApplication[@name=\"RaceTrac QA\"]/XCUIElementTypeWindow[1]/XCUIElementTypeOther/XCUIElementTypeOther[2]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeCollectionView/XCUIElementTypeCell[1]/XCUIElementTypeOther/XCUIElementTypeStaticText[1]")
     @AndroidFindBy(id = "com.RaceTrac.Common.qa:id/memberPoints")
     private MobileElement rewardsCatalogNumberOfPoints;
@@ -42,6 +43,7 @@ public class RewardsCatalogPage extends BaseMobilePage {
     @AndroidFindBy(id = "com.RaceTrac.Common.qa:id/reward_catalog_back_btn")
     private MobileElement rewardsCatalogBackBtn;
 
+    @PageLoading
     @AndroidFindBy(id = "com.RaceTrac.Common.qa:id/availablePointsDesc")
     private MobileElement availablePointsDesc;
 
