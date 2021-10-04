@@ -95,12 +95,10 @@ public class AndroidRewardCatalogFlowImpl extends BaseFlow implements RewardsCat
         return Integer.parseInt(getRewardsCatalogPage().getUnclaimedRewardsCounter().getAttribute("text"));
     }
 
-    @Override
+  @Override
     public boolean isElementsOfRewardsCatalogDisplayed() {
         try {
-            return getRewardsCatalogPage().getRewardImage().isDisplayed() && getRewardsCatalogPage().getAvailablePointsDesc()
-                    .isDisplayed() && getRewardsCatalogPage().getRewardName().isDisplayed() && getRewardsCatalogPage()
-                    .getRewardPoints().isDisplayed() && getRewardsCatalogPage().getSortCaret().isDisplayed();
+            return getRewardsCatalogPage().waitUntilIsOpened();
 
         } catch (NoSuchElementException e) {
             LOG.warn("elements of Rewards catalog are not displayed");
