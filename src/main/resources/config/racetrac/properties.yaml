@@ -1,8 +1,11 @@
 properties:
   #Config
 
-  appium_hub: &appium_hub
+  android_appium_hub: &android_appium_hub
     hub: http://127.0.0.1:4723/wd/hub
+
+  ios_appium_hub: &ios_appium_hub
+    hub: http://127.0.0.1:4724/wd/hub
 
   #Android section
   platformAndroid: &AndroidPlatform
@@ -25,11 +28,11 @@ properties:
 
   iosConfig: &iosConfig
     <<: *iOsPlatform
-    <<: *appium_hub
+    <<: *ios_appium_hub #port 4724
 
   AndroidConfig: &AndroidConfig
     <<: *AndroidPlatform
-    <<: *appium_hub
+    <<: *android_appium_hub #port 4723
 
   #test.config
   ios:

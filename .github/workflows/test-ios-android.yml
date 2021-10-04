@@ -2,57 +2,14 @@ name: Test on Android and iOS
 
 on:
   schedule:
-    - cron: '0 5 * * 1-5'
-    - cron: '0 13 * * 1-5'
+    - cron: '0 5 * * 1-5' #run each MONDAY till FRIDAY at 5.00 UTC ( 8am KYIV )
+    - cron: '0 13 * * 1-5' #run each MONDAY till FRIDAY at 13.00 UTC ( 4pm KYIV )
 
 jobs:
   prepare:
     runs-on: self-hosted
     steps:
       - uses: actions/checkout@v2
-      #      - name: Set up JDK 1.8
-      #        uses: actions/setup-java@v1
-      #        with:
-      #          java-version: 1.8
-      #      - name: Set up Node JS
-      #        uses: actions/setup-node@v1
-      #        with:
-      #          node-version: "12"
-      #      - name: Clean Packages
-      #        run: |
-      #          rm -rf node_modules
-      #          npm cache clean --force
-      #          rm -rf package-lock.json
-      # Run Android Emulator
-      #      - name: Create and install emulator
-      #        run: |
-      #          echo "y" | $ANDROID_HOME/tools/bin/sdkmanager --install 'system-images;android-28;google_apis;x86_64'
-      #          echo "no" | $ANDROID_HOME/tools/bin/avdmanager create avd -n Emulator -k 'system-images;android-28;google_apis;x86_64' --force
-      #          echo $ANDROID_HOME/emulator/emulator -list-avds
-      #      - name: Start emulator
-      #        run: |
-      #          echo "Starting emulator"
-      #          nohup $ANDROID_HOME/emulator/emulator -avd Emulator -no-snapshot -skin 400x800 -wipe-data -no-window > /dev/null 2>&1 &
-      #          $ANDROID_HOME/platform-tools/adb wait-for-device shell 'while [[ -z $(getprop sys.boot_completed | tr -d '\r') ]]; do sleep 1; done; input keyevent 82'
-      #          $ANDROID_HOME/platform-tools/adb devices
-      # Install the Appium Server
-      #      - name: Install the Appium Server
-      #        run: npm install -g appium
-      #      - name: Run Appium server
-      #        run: appium &
-      # List iOS Devices & Platforms
-  #      - name: Execute tests
-  #        run: mvn clean test -Dtest.config=android
-  #      - name: Generate report
-  #        run: mvn allure:report
-  #      - name: Upload a Build Artifact
-  #        uses: actions/upload-artifact@v2.2.4
-  #        with:
-  #          # Artifact name
-  #          name: test-report # optional, default is artifact
-  #          # A file, directory or wildcard pattern that describes what to upload
-  #          path: target/site/allure-maven-plugin
-  #          # The desired behavior if no files are found using the provided path.
   installEmulator:
     runs-on: self-hosted
     needs: prepare
@@ -91,7 +48,7 @@ jobs:
     needs: prepare
     steps:
       - name: Run Appium server
-        run: appium &
+        run: appium -p 4724 &
       - name: Execute tests
         run: mvn clean test -Dtest.config=ios
       - name: Generate report

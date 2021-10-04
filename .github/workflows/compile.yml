@@ -17,8 +17,6 @@ jobs:
     runs-on: self-hosted
     needs: [ prepare ]
     steps:
-      - name: Run Appium server
-        run: appium &
       - name: Build iOS framework
         run: mvn clean compile -Dtest.config=ios
 
