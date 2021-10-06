@@ -1,8 +1,8 @@
-name: Test on Android and iOS
+name: Test on Android
 
 on:
   schedule:
-    - cron: '0 5 * * 1-5' #run each MONDAY till FRIDAY at 5.00 UTC ( 8am KYIV )
+    - cron: '0 7 * * 1-5' #run each MONDAY till FRIDAY at 5.00 UTC ( 8am KYIV )
     - cron: '0 13 * * 1-5' #run each MONDAY till FRIDAY at 13.00 UTC ( 4pm KYIV )
 
 jobs:
@@ -45,22 +45,3 @@ jobs:
           # A file, directory or wildcard pattern that describes what to upload
           path: target/site/allure-maven-plugin
           # The desired behavior if no files are found using the provided path.
-  testIOS:
-    runs-on: self-hosted
-    needs: prepare
-    steps:
-      - name: Run Appium server
-        run: appium -p 4724 &
-      - name: Execute tests
-        run: mvn clean test -Dtest.config=ios
-      - name: Generate report
-        run: mvn allure:report
-      - name: Upload a Build Artifact
-        uses: actions/upload-artifact@v2.2.4
-        with:
-          # Artifact name
-          name: test-report-ios # optional, default is artifact
-          # A file, directory or wildcard pattern that describes what to upload
-          path: target/site/allure-maven-plugin
-          # The desired behavior if no files are found using the provided path.
-
