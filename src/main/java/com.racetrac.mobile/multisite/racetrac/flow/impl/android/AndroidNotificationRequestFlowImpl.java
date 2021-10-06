@@ -27,7 +27,7 @@ public class AndroidNotificationRequestFlowImpl extends BaseFlow implements Noti
             LOG.warn("Page was recreated");
             getTurnOnNotificationPage().refresh();
             clickNotNow();
-        } catch (NoSuchElementException | TimeoutException e) {
+        } catch (NoSuchElementException | TimeoutException  e) {
             LOG.warn("Nu such element location with Notification request page");
         }
     }

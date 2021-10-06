@@ -84,7 +84,7 @@ public class AndroidAccountSettingsFlowImpl extends BaseFlow implements AccountS
 
     @Override
     public void waitUntilAccountSettingsAuthorizedOpen() {
-        AppiumWaitingUtils.waitUntilIsTrue(() -> getAccountSettingsPageAuthorised().waitUntilIsOpened());
+        AppiumWaitingUtils.waitUntilElementClickable(getAccountSettingsPageAuthorised().getProfile());
     }
 
     @Override

@@ -4,6 +4,7 @@ import com.racetrac.mobile.multisite.racetrac.flow.BaseFlow;
 import com.racetrac.mobile.multisite.racetrac.flow.LocationRequestFlow;
 import io.qameta.allure.Step;
 import org.openqa.selenium.NoSuchElementException;
+import org.openqa.selenium.StaleElementReferenceException;
 import org.openqa.selenium.TimeoutException;
 import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Component;
@@ -18,7 +19,7 @@ public class AndroidLocationRequestFlowImpl extends BaseFlow implements Location
         try {
             getTurnOnLocationPage().waitUntilIsOpened();
             getTurnOnLocationPage().getNotNowBtn().click();
-        } catch (TimeoutException | NoSuchElementException e) {
+        } catch (TimeoutException | NoSuchElementException | StaleElementReferenceException e) {
 
             LOG.warn("Location page is not opened here, refreshing");
         }

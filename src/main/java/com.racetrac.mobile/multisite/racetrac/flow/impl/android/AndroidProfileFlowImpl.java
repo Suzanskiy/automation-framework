@@ -78,6 +78,6 @@ public class AndroidProfileFlowImpl extends BaseFlow implements ProfileFlow, Nav
 
     @Override
     public void waitUntilProfilePageOpened() {
-        AppiumWaitingUtils.waitUntilIsTrue(() -> getProfilePage().waitUntilIsOpened());
+        AppiumWaitingUtils.waitUntilElementClickable(getProfilePage().getEditEmailBtn());
     }
 }
