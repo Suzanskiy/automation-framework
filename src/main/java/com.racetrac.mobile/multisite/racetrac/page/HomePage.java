@@ -24,11 +24,11 @@ public class HomePage extends BaseMobilePage {
     private MobileElement drawer;
 
     @iOSXCUITFindBy(xpath = "//XCUIElementTypeButton[@name=\"LOG IN\"]")
-    @AndroidFindBy(id = "com.RaceTrac.Common.qa:id/signInButtonHomeGuest")
+    @AndroidFindBy(id = "com.RaceTrac.Common.qa:id/signInButtonHome")
     private MobileElement loginBtn;
 
     @iOSXCUITFindBy(xpath = "//XCUIElementTypeButton[@name=\"SIGN UP\"]")
-    @AndroidFindBy(id = "com.RaceTrac.Common.qa:id/signUpButtonHomeGuest")
+    @AndroidFindBy(id = "com.RaceTrac.Common.qa:id/signUpButtonHome")
     private MobileElement signUpBtn;
 
     @PageLoading
