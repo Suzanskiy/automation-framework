@@ -17,6 +17,7 @@ import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Listeners;
 
+import java.io.IOException;
 import java.util.Arrays;
 
 import static com.racetrac.mobile.util.allure.AllureEnvironmentUtils.copyEnvPropToAllureResults;
@@ -36,8 +37,11 @@ public class BaseTest extends AbstractTestNGSpringContextTests {
     protected AuthenticationUtil authenticationUtil;
 
     @BeforeMethod(alwaysRun = true)
-    public void launch() {
+    public void launch() throws IOException {
         LOG.info("Launch application");
+        Runtime.getRuntime().exec("adb shell settings put global window_animation_scale 0.0" );// turning off animation on android emulator
+        Runtime.getRuntime().exec("adb shell settings put global transition_animation_scale 0.0" );
+        Runtime.getRuntime().exec("adb shell settings put global animator_duration_scale 0.0" );
         authenticationUtil.prepareAppAfterBrokenSignOut(); // and launch app
     }
 
