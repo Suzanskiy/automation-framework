@@ -3,7 +3,6 @@ package com.racetrac.mobile.multisite.racetrac.api;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.racetrac.mobile.framework.Configuration;
-import lombok.extern.log4j.Log4j;
 import okhttp3.Headers;
 import okhttp3.MediaType;
 import okhttp3.OkHttpClient;
@@ -20,6 +19,7 @@ import static java.net.HttpURLConnection.HTTP_CREATED;
 import static java.net.HttpURLConnection.HTTP_NO_CONTENT;
 import static java.net.HttpURLConnection.HTTP_OK;
 import static org.springframework.test.util.AssertionErrors.assertEquals;
+
 public abstract class HttpClient {
 
     public static final String token = "3:Fz88arXPu1w4mtDMTRW/gg==:D++TkjVoUtnoNBYtFoCO5UahR2VYLtIjXGV2E7gC8UpVXCBw9j7t2MdM9MykXJb/rRdzjQoKhG3p1RwYiF7pkWjtm2U8bHrnM4q05/m6cxze22sc1LXglhIVhuDKwqunSeV7bf5jPHXOxdku++g/SNgFy5nXHnl+djY1ST9mumZ4ygS/w08aabEu0jfqz1sbFCuVdhp+ihLpVU88jK9sTnPN1U6TreYWJCrwe/fqbJwmQgkjuK0BwPcN0EpcqHA9z0o3wlNj4HX73e/lh8r/dDZyvo4/wCQ4m5zdEdCaSjDuXHj8GmH4m6j6kyHz/JV2QAo3juj2WEXq2577g0KFVNfO4hDS/2RGbgx8lALaEWDCFghe2Z3oequ9gYSYS0LM:K4GEsQXJmnBVHGNTDCG5pdj/Ya4XdnWU9KXg/OBujts=";
@@ -72,7 +72,7 @@ public abstract class HttpClient {
         try {
             response = getHttpClient().newCall(request).execute();
         } catch (IOException exception) {
-            LOGGER.info("Failure request execution");
+            LOGGER.info("Failure request execution: " + exception.getLocalizedMessage());
         }
         assertEquals("Request was not executed", HTTP_OK, Objects.requireNonNull(response).code());
         return response;
