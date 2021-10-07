@@ -1,7 +1,7 @@
 package com.racetrac.mobile.multisite.racetrac.flow;
 
 public interface LocationRequestFlow {
-    public void clickNotNow();
+    public void clickContinue();
 
     public void clickTurnOn();
 

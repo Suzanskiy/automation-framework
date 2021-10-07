@@ -16,7 +16,6 @@ import com.racetrac.mobile.multisite.racetrac.flow.WelcomeFlow;
 import io.qameta.allure.Description;
 import io.qameta.allure.TmsLink;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
@@ -67,7 +66,7 @@ public class AccountSettingsAuthorisedUserTest extends BaseTest {
         customerDto = testData.registerNewCustomer();
         signInFlow.authorize(customerDto);
         notificationRequestFlow.iosClickNotNow();
-        locationRequestFlow.clickNotNow();
+        locationRequestFlow.clickContinue();
         notificationRequestFlow.clickNotNow();
         rewardsPopupFlow.clickGotItBtn();
         pointsAndLevelsFlow.clickGotItBtn();
@@ -89,7 +88,7 @@ public class AccountSettingsAuthorisedUserTest extends BaseTest {
         customerDto = testData.registerNewCustomer(ADULT);
         signInFlow.authorize(customerDto);
         notificationRequestFlow.clickNotNow();
-        locationRequestFlow.clickNotNow();
+        locationRequestFlow.clickContinue();
         notificationRequestFlow.clickNotNow();
         rewardsPopupFlow.clickGotItBtn();
         pointsAndLevelsFlow.clickGotItBtn();
@@ -113,7 +112,7 @@ public class AccountSettingsAuthorisedUserTest extends BaseTest {
         customerDto = testData.registerNewCustomer(UNDER_21);
         signInFlow.authorize(customerDto);
         notificationRequestFlow.iosClickNotNow();
-        locationRequestFlow.clickNotNow();
+        locationRequestFlow.clickContinue();
         notificationRequestFlow.clickNotNow();
         rewardsPopupFlow.clickGotItBtn();
         pointsAndLevelsFlow.clickGotItBtn();
@@ -137,7 +136,7 @@ public class AccountSettingsAuthorisedUserTest extends BaseTest {
         customerDto = testData.registerNewCustomer(UNDER_21);
         signInFlow.authorize(customerDto);
         notificationRequestFlow.iosClickNotNow();
-        locationRequestFlow.clickNotNow();
+        locationRequestFlow.clickContinue();
         notificationRequestFlow.clickNotNow();
         rewardsPopupFlow.clickGotItBtn();
         pointsAndLevelsFlow.clickGotItBtn();
@@ -166,7 +165,7 @@ public class AccountSettingsAuthorisedUserTest extends BaseTest {
         signInFlow.authorize(customerDto);
         notificationRequestFlow.iosClickNotNow();
 
-        locationRequestFlow.clickNotNow();
+        locationRequestFlow.clickContinue();
         notificationRequestFlow.clickNotNow();
         rewardsPopupFlow.clickGotItBtn();
         pointsAndLevelsFlow.clickGotItBtn();
@@ -196,7 +195,7 @@ public class AccountSettingsAuthorisedUserTest extends BaseTest {
         signInFlow.authorize(customerDto);
         notificationRequestFlow.iosClickNotNow();
 
-        locationRequestFlow.clickNotNow();
+        locationRequestFlow.clickContinue();
         notificationRequestFlow.clickNotNow();
         rewardsPopupFlow.clickGotItBtn();
         pointsAndLevelsFlow.clickGotItBtn();

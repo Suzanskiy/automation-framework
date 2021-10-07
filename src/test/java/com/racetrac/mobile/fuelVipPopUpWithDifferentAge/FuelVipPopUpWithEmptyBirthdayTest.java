@@ -13,7 +13,6 @@ import com.racetrac.mobile.multisite.racetrac.flow.WelcomeFlow;
 import io.qameta.allure.Description;
 import io.qameta.allure.TmsLink;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
@@ -57,10 +56,10 @@ public class FuelVipPopUpWithEmptyBirthdayTest extends BaseTest {
         signUpFlow.isFistBumpPageOpened();
         signUpFlow.clickGetStartedBtn();
         notificationRequestFlow.iosClickNotNow();
-        locationRequestFlow.clickNotNow();
+        locationRequestFlow.clickContinue();
         assertTrue(becomeFuelVipFlow.checkAllElementsIsLoaded(), "Elements are not loaded");
         becomeFuelVipFlow.clickNotRightNow();
-        locationRequestFlow.clickNotNow();
+        locationRequestFlow.clickContinue();
         rewardsPopupFlow.clickGotItBtn();
         pointsAndLevelsFlow.clickGotItBtn();
     }

@@ -58,7 +58,7 @@ public class SignUpTest extends BaseTest {
         becomeFuelVipFlow.clickNotRightNow();
 
         promotionalOffersFlow.skipPromotions();
-        locationRequestFlow.clickNotNow();
+        locationRequestFlow.clickContinue();
         becomeFuelVipFlow.waitUntilBecomeFuelVipLoaded();
         becomeFuelVipFlow.clickNotRightNow();
 
@@ -78,7 +78,7 @@ public class SignUpTest extends BaseTest {
         notificationRequestFlow.clickNotNow();
         becomeFuelVipFlow.clickNotRightNow();
         promotionalOffersFlow.skipPromotions();
-        locationRequestFlow.clickNotNow();
+        locationRequestFlow.clickContinue();
         becomeFuelVipFlow.waitUntilBecomeFuelVipLoaded();
         becomeFuelVipFlow.clickNotRightNow();
 
@@ -86,7 +86,7 @@ public class SignUpTest extends BaseTest {
 
         pointsAndLevelsFlow.clickGotItBtn();
         signOutFlow.doSignOut();
-        locationRequestFlow.clickNotNow();
+        locationRequestFlow.clickContinue();
         assertTrue(welcomeFlow.isHomePageOpened(), "Welcome page is not opened");
         signUpFlow.openSignUpSelectorPage();
         assertTrue(signUpFlow.isSignUpSelectorPageOpened(), "SignUpSelector page is not opened");

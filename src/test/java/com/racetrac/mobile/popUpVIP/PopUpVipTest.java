@@ -15,7 +15,6 @@ import com.racetrac.mobile.multisite.racetrac.util.ChromeBrowserHandler;
 import io.qameta.allure.Description;
 import io.qameta.allure.TmsLink;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
@@ -66,7 +65,7 @@ public class PopUpVipTest extends BaseTest {
         signUpFlow.enterCredentials(customerDto);
         signUpFlow.clickGetStartedBtn();
         promotionalOffersFlow.skipPromotions();
-        locationRequestFlow.clickNotNow();
+        locationRequestFlow.clickContinue();
         becomeFuelVipFlow.waitUntilBecomeFuelVipLoaded();
         assertTrue(becomeFuelVipFlow.checkAllElementsIsLoaded(), "Elements are not loaded");
 
@@ -80,7 +79,7 @@ public class PopUpVipTest extends BaseTest {
         final String openedUrl = chromeBrowserHandler.getUrl();
         chromeBrowserHandler.returnBackToApp();
         promotionalOffersFlow.skipIOSPromotions();
-        locationRequestFlow.clickNotNow();
+        locationRequestFlow.clickContinue();
         rewardsPopupFlow.clickGotItBtn();
         pointsAndLevelsFlow.clickGotItBtn();
 
@@ -96,7 +95,7 @@ public class PopUpVipTest extends BaseTest {
         final String openedUrl = chromeBrowserHandler.getUrl();
         chromeBrowserHandler.returnBackToApp();
         promotionalOffersFlow.skipIOSPromotions();
-        locationRequestFlow.clickNotNow();
+        locationRequestFlow.clickContinue();
         rewardsPopupFlow.clickGotItBtn();
         pointsAndLevelsFlow.clickGotItBtn();
 
@@ -109,7 +108,7 @@ public class PopUpVipTest extends BaseTest {
     public void tapNotRightNowTest() {
         becomeFuelVipFlow.clickNotRightNowBtn();
         promotionalOffersFlow.skipIOSPromotions();
-        locationRequestFlow.clickNotNow();
+        locationRequestFlow.clickContinue();
         rewardsPopupFlow.clickGotItBtn();
         pointsAndLevelsFlow.clickGotItBtn();
         assertTrue(welcomeFlow.isHomePageOpened());

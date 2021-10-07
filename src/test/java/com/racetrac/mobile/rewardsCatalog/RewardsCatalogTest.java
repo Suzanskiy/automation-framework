@@ -59,7 +59,7 @@ public class RewardsCatalogTest extends BaseTest {
         signInFlow.openLoginInPage();
         assertTrue(signInFlow.isLoginPageOpened(), "Login page is not opened");
         signInFlow.authorize(customerDto);
-        locationRequestFlow.clickNotNow();
+        locationRequestFlow.clickContinue();
         notificationRequestFlow.clickNotNow();
         rewardsPopupFlow.clickGotItBtn();
         pointsAndLevelsFlow.clickGotItBtn();
@@ -84,7 +84,7 @@ public class RewardsCatalogTest extends BaseTest {
         signInFlow.openLoginInPage();
         assertTrue(signInFlow.isLoginPageOpened(), "Login page is not opened");
         signInFlow.authorize(customerDto);
-        locationRequestFlow.clickNotNow();
+        locationRequestFlow.clickContinue();
         notificationRequestFlow.clickNotNow();
         rewardsPopupFlow.clickGotItBtn();
         pointsAndLevelsFlow.clickGotItBtn();
@@ -106,7 +106,7 @@ public class RewardsCatalogTest extends BaseTest {
         signInFlow.openLoginInPage();
         assertTrue(signInFlow.isLoginPageOpened(), "Login page is not opened");
         signInFlow.authorize(customerDto);
-        locationRequestFlow.clickNotNow();
+        locationRequestFlow.clickContinue();
         notificationRequestFlow.clickNotNow();
         rewardsPopupFlow.clickGotItBtn();
         pointsAndLevelsFlow.clickGotItBtn();

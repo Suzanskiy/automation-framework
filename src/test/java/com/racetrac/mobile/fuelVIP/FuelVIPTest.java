@@ -17,7 +17,6 @@ import com.racetrac.mobile.multisite.racetrac.util.ChromeBrowserHandler;
 import io.qameta.allure.Description;
 import io.qameta.allure.TmsLink;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
@@ -69,7 +68,7 @@ public class FuelVIPTest extends BaseTest {
         assertTrue(signInFlow.isLoginPageOpened(), "Login page is not opened");
         signInFlow.authorize(customerDto);
         notificationRequestFlow.iosClickNotNow();
-        locationRequestFlow.clickNotNow();
+        locationRequestFlow.clickContinue();
         notificationRequestFlow.clickNotNow();
       //  promotionalOffersFlow.skipIOSPromotions();
         rewardsPopupFlow.clickGotItBtn();
@@ -86,7 +85,7 @@ public class FuelVIPTest extends BaseTest {
         fuelVipFlow.clickLearnMoreNoSubscription();
         final String openedUrl = chromeBrowserHandler.getUrl();
         chromeBrowserHandler.returnBackToApp();
-        locationRequestFlow.clickNotNow();
+        locationRequestFlow.clickContinue();
         rewardsPopupFlow.clickGotItBtn();
         pointsAndLevelsFlow.clickGotItBtn();
         assertEquals(openedUrl, chromeBrowserHandler.getDesiredRedirectUrlNoSubscription());
@@ -103,7 +102,7 @@ public class FuelVIPTest extends BaseTest {
         fuelVipFlow.clickVipProgramDetails();
         final String openedUrl = chromeBrowserHandler.getUrl();
         chromeBrowserHandler.returnBackToApp();
-        locationRequestFlow.clickNotNow();
+        locationRequestFlow.clickContinue();
         rewardsPopupFlow.clickGotItBtn();
         pointsAndLevelsFlow.clickGotItBtn();
         assertEquals(openedUrl, chromeBrowserHandler.getDesiredRedirectUrlActiveSubscription());

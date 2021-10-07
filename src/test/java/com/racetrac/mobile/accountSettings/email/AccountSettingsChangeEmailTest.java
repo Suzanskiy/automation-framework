@@ -16,7 +16,6 @@ import com.racetrac.mobile.multisite.racetrac.util.CommonUtils;
 import io.qameta.allure.Description;
 import io.qameta.allure.TmsLink;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
@@ -58,7 +57,7 @@ public class AccountSettingsChangeEmailTest extends BaseTest {
         assertTrue(signInFlow.isLoginPageOpened(), "Login page is not opened");
         signInFlow.authorize(customerDto);
         notificationRequestFlow.iosClickNotNow();
-        locationRequestFlow.clickNotNow();
+        locationRequestFlow.clickContinue();
         notificationRequestFlow.clickNotNow();
 
         signInFlow.clickGotItBtn();
@@ -89,13 +88,13 @@ public class AccountSettingsChangeEmailTest extends BaseTest {
 
         pointsAndLevelsFlow.clickGotItBtn();
         signOutFlow.doSignOut();
-        locationRequestFlow.clickNotNow();
+        locationRequestFlow.clickContinue();
         welcomeFlow.isHomePageOpenedAfterSignIn();
         signInFlow.openLoginInPage();
         assertTrue(signInFlow.isLoginPageOpened(), "Login page is not opened");
         signInFlow.authorize(customerDto);
         notificationRequestFlow.iosClickNotNow();
-        locationRequestFlow.clickNotNow();
+        locationRequestFlow.clickContinue();
         notificationRequestFlow.clickNotNow();
         signInFlow.clickGotItBtn();
         pointsAndLevelsFlow.clickGotItBtn();

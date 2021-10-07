@@ -12,9 +12,9 @@ import org.springframework.stereotype.Component;
 @Getter
 public class TurnOnLocationPage extends BaseMobilePage {
     @PageLoading
-    @AndroidFindBy(id = "com.RaceTrac.Common.qa:id/notNowButton")
+    @AndroidFindBy(id = "com.RaceTrac.Common.qa:id/continueButton")
     @iOSXCUITFindBy(iOSClassChain = "**/XCUIElementTypeButton[`label == \"CONTINUE\"`]")
-    private MobileElement notNowBtn; // continue btn on ios
+    private MobileElement continueBtn; // continue btn on ios
     
     @AndroidFindBy(id = "com.RaceTrac.Common.qa:id/turnOnButton")
     private MobileElement turnOnBtn;

@@ -66,7 +66,7 @@ public class PromotionalSettingsBirthdayFieldValidationTest extends BaseTest {
         assertTrue(signInFlow.isLoginPageOpened(), "Login page is not opened");
         signInFlow.authorize(customerDto);
         notificationRequestFlow.iosClickNotNow();
-        locationRequestFlow.clickNotNow();
+        locationRequestFlow.clickContinue();
         notificationRequestFlow.clickNotNow();
         pointsAndLevelsFlow.clickGotItBtn();
         rewardsPopupFlow.clickGotItBtn();

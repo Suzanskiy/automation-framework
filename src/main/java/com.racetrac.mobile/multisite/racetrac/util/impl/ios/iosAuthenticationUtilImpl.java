@@ -55,7 +55,7 @@ public class iosAuthenticationUtilImpl extends BaseFlow implements Authenticatio
 
         try {
             if (turnOnLocationPage.waitUntilIsOpened()) {
-                turnOnLocationPage.getNotNowBtn().click();
+                turnOnLocationPage.getContinueBtn().click();
             }
         } catch (TimeoutException ignored) {
         }

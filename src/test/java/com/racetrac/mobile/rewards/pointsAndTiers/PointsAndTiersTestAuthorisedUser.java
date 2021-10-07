@@ -14,7 +14,6 @@ import com.racetrac.mobile.multisite.racetrac.flow.WelcomeFlow;
 import io.qameta.allure.Description;
 import io.qameta.allure.TmsLink;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.testng.annotations.AfterMethod;
 import org.testng.annotations.Test;
 
 import static org.testng.Assert.assertTrue;
@@ -51,7 +50,7 @@ public class PointsAndTiersTestAuthorisedUser extends BaseTest {
         customerDto = testData.registerNewCustomer();
         punchhPointsClient.addRedeemPoints(customerDto, 2500);
         signInFlow.authorize(customerDto);
-        locationRequestFlow.clickNotNow();
+        locationRequestFlow.clickContinue();
         notificationRequestFlow.clickNotNow();
         rewardsPopupFlow.clickGotItBtn();
         pointsAndLevelsFlow.clickGotItBtn();

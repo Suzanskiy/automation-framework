@@ -18,11 +18,11 @@ import static com.racetrac.mobile.util.appium.AppiumWaitingUtils.waitUntilElemen
 @Component
 public class iosLocationRequestFlowImpl extends BaseFlow implements LocationRequestFlow {
     @Step
-    public void clickNotNow() {
+    public void clickContinue() {
         try {
             getTurnOnLocationPage().waitUntilIsOpened();
-            waitUntilElementClickable(getTurnOnLocationPage().getNotNowBtn());
-            getTurnOnLocationPage().getNotNowBtn().click();
+            waitUntilElementClickable(getTurnOnLocationPage().getContinueBtn());
+            getTurnOnLocationPage().getContinueBtn().click();
         } catch (TimeoutException | NoSuchElementException e) {
             LOG.warn("Location page is not opened here, refreshing");
         }

@@ -16,11 +16,9 @@ import com.racetrac.mobile.multisite.racetrac.flow.WelcomeFlow;
 import io.qameta.allure.Description;
 import io.qameta.allure.TmsLink;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
-import static com.racetrac.mobile.util.appium.AppiumDriverUtils.pressBackBtn;
 import static org.testng.Assert.assertTrue;
 
 public class AccountSettingsChangeBirthDayTest extends BaseTest {
@@ -64,7 +62,7 @@ public class AccountSettingsChangeBirthDayTest extends BaseTest {
         customerDto = testData.registerNewCustomer();
         signInFlow.authorize(customerDto);
         notificationRequestFlow.iosClickNotNow();
-        locationRequestFlow.clickNotNow();
+        locationRequestFlow.clickContinue();
         notificationRequestFlow.clickNotNow();
         signInFlow.clickGotItBtn();
         pointsAndLevelsFlow.clickGotItBtn();
@@ -90,7 +88,7 @@ public class AccountSettingsChangeBirthDayTest extends BaseTest {
 
         signInFlow.authorize(customerDto);
         notificationRequestFlow.iosClickNotNow();
-        locationRequestFlow.clickNotNow();
+        locationRequestFlow.clickContinue();
         notificationRequestFlow.clickNotNow();
         signInFlow.clickGotItBtn();
         pointsAndLevelsFlow.clickGotItBtn();

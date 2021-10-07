@@ -1,7 +1,6 @@
 package com.racetrac.mobile.accountSettings.email;
 
 import com.racetrac.mobile.BaseTest;
-import com.racetrac.mobile.framework.enums.CustomerAge;
 import com.racetrac.mobile.multisite.racetrac.dto.CustomerDto;
 import com.racetrac.mobile.multisite.racetrac.flow.*;
 import io.qameta.allure.Description;
@@ -66,13 +65,13 @@ public class UserReceiveEmailsOptionsTest extends BaseTest {
         signUpFlow.isFistBumpPageOpened();
         signUpFlow.clickGetStartedBtn();
         notificationRequestFlow.iosClickNotNow();
-        locationRequestFlow.clickNotNow();
+        locationRequestFlow.clickContinue();
         becomeFuelVipFlow.waitUntilBecomeFuelVipLoaded();
         assertTrue(becomeFuelVipFlow.checkAllElementsIsLoaded(), "Elements are not loaded");
 
         becomeFuelVipFlow.clickNotRightNow();
         signInFlow.clickGotItBtn();
-        locationRequestFlow.clickNotNow();
+        locationRequestFlow.clickContinue();
         rewardsPopupFlow.clickGotItBtn();
         pointsAndLevelsFlow.clickGotItBtn();
 
@@ -95,7 +94,7 @@ public class UserReceiveEmailsOptionsTest extends BaseTest {
         signUpFlow.isFistBumpPageOpened();
         signUpFlow.clickGetStartedBtn();
         notificationRequestFlow.iosClickNotNow();
-        locationRequestFlow.clickNotNow();
+        locationRequestFlow.clickContinue();
         becomeFuelVipFlow.waitUntilBecomeFuelVipLoaded();
         assertTrue(becomeFuelVipFlow.checkAllElementsIsLoaded(), "Elements are not loaded");
 

@@ -20,7 +20,7 @@ public class SignOutFlowImpl extends BaseFlow implements SignOutFlow {
             getAccountSettingsPage().waitUntilIsOpened();
             swipeUP();
             getAccountSettingsPage().getSignOutBtn().click();
-            getTurnOnLocationPage().getNotNowBtn().click();
+            getTurnOnLocationPage().getContinueBtn().click();
             getHomePage().waitUntilIsOpened();
 
         } catch (TimeoutException | NoSuchElementException e) {

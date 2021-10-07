@@ -60,7 +60,7 @@ public class AccountSettingsChangePasswordTest extends BaseTest {
         assertTrue(signInFlow.isLoginPageOpened(), "Login page is not opened");
         signInFlow.authorize(customerDto);
         notificationRequestFlow.iosClickNotNow();
-        locationRequestFlow.clickNotNow();
+        locationRequestFlow.clickContinue();
         notificationRequestFlow.clickNotNow();
         pointsAndLevelsFlow.clickGotItBtn();
         rewardsPopupFlow.clickGotItBtn();
@@ -90,13 +90,13 @@ public class AccountSettingsChangePasswordTest extends BaseTest {
         pointsAndLevelsFlow.clickGotItBtn();
         rewardsPopupFlow.clickGotItBtn();
         signOutFlow.doSignOut();
-        locationRequestFlow.clickNotNow();
+        locationRequestFlow.clickContinue();
         welcomeFlow.isHomePageOpenedAfterSignIn();
         signInFlow.openLoginInPage();
         assertTrue(signInFlow.isLoginPageOpened(), "Login page is not opened");
         signInFlow.authorize(customerDto);
         notificationRequestFlow.iosClickNotNow();
-        locationRequestFlow.clickNotNow();
+        locationRequestFlow.clickContinue();
         notificationRequestFlow.clickNotNow();
         rewardsPopupFlow.clickGotItBtn();
         pointsAndLevelsFlow.clickGotItBtn();
