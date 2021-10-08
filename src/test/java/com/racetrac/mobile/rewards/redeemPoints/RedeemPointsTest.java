@@ -39,6 +39,9 @@ public class RedeemPointsTest extends BaseTest {
     @Autowired
     PunchhPointsClient punchhPointsClient;
 
+    private static final int AVAILABLE_POINTS = 350;
+    private static final int NOT_ENOUGH_POINT = 30; // The minimum rewards price start from the 50c
+
     @TmsLink("7301")
     @Description(" Open \"Rewards Catalog\" from \"Rewards\" tab on the \"Home\" screen")
     @Test
@@ -60,7 +63,7 @@ public class RedeemPointsTest extends BaseTest {
     @Test
     public void redeemPointsWithUserHasNoEnoughPointsTest() {
         customerDto = testData.registerNewCustomer();
-        punchhPointsClient.addRedeemPoints(customerDto, 30);
+        punchhPointsClient.addRedeemPoints(customerDto, NOT_ENOUGH_POINT);
         assertTrue(welcomeFlow.isHomePageOpened(), "Welcome page is not opened");
         signInFlow.openLoginInPage();
         assertTrue(signInFlow.isLoginPageOpened(), "Login page is not opened");
@@ -84,7 +87,7 @@ public class RedeemPointsTest extends BaseTest {
     @Test
     public void impossibleToUseTwiceFuelRewardTest() {
         customerDto = testData.registerNewCustomer();
-        punchhPointsClient.addRedeemPoints(customerDto, 350);
+        punchhPointsClient.addRedeemPoints(customerDto, AVAILABLE_POINTS);
         assertTrue(welcomeFlow.isHomePageOpened(), "Welcome page is not opened");
         signInFlow.openLoginInPage();
         assertTrue(signInFlow.isLoginPageOpened(), "Login page is not opened");

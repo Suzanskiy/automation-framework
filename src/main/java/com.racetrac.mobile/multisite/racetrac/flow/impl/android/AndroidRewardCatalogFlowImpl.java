@@ -3,15 +3,18 @@ package com.racetrac.mobile.multisite.racetrac.flow.impl.android;
 import com.racetrac.mobile.multisite.racetrac.flow.BaseFlow;
 import com.racetrac.mobile.multisite.racetrac.flow.RewardsCatalogFlow;
 import com.racetrac.mobile.util.appium.AppiumWaitingUtils;
+import com.racetrac.mobile.util.appium.SwipeScroll;
+import io.appium.java_client.MobileElement;
 import io.qameta.allure.Step;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.TimeoutException;
-import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Component;
+import sun.print.DialogOwner;
 
 import static com.racetrac.mobile.framework.constants.PlatformsConstants.ANDROID;
-import static com.racetrac.mobile.util.appium.AppiumDriverUtils.pressBackBtn;
+import static com.racetrac.mobile.util.appium.AppiumDriverUtils.*;
+import static com.racetrac.mobile.util.appium.AppiumWaitingUtils.swipeUntilElementIsPresent;
 
 @Profile(ANDROID)
 @Component
@@ -22,7 +25,9 @@ public class AndroidRewardCatalogFlowImpl extends BaseFlow implements RewardsCat
     @Step
     @Override
     public void clickRedeemBtn() {
+
         try {
+            swipeUntilElementIsPresent(SwipeScroll.Direction.DOWN, getRewardsCatalogPage().getRedeemBtn());// swipeDownHard(); //The "UAT gal Reward" shifted down
             getRewardsCatalogPage().getRedeemBtn().click();
         } catch (NoSuchElementException e) {
             LOG.warn("Unable to click btn on reward catalog redeem");
@@ -35,6 +40,7 @@ public class AndroidRewardCatalogFlowImpl extends BaseFlow implements RewardsCat
         getEnoughRedeemPointsPopUp().waitUntilIsOpened();
         try {
             getEnoughRedeemPointsPopUp().getRedeemPopupBtn().click();
+            AppiumWaitingUtils.waitUntilElementClickable(getRewardsCatalogPage().getCloseBtn());
         } catch (NoSuchElementException | TimeoutException e) {
             LOG.warn("Points screen not opened, skipping..");
         }
@@ -69,6 +75,7 @@ public class AndroidRewardCatalogFlowImpl extends BaseFlow implements RewardsCat
     @Step
     @Override
     public boolean isRewardsCatalogPageOpened() {
+        swipeUntilElementIsPresent(SwipeScroll.Direction.UP, getRewardsCatalogPage().getRewardsCatalogNumberOfPoints());
         return getRewardsCatalogPage().waitUntilIsOpened();
     }
 
@@ -80,6 +87,7 @@ public class AndroidRewardCatalogFlowImpl extends BaseFlow implements RewardsCat
 
     @Override
     public int rewardPrice() {
+        swipeUntilElementIsPresent(SwipeScroll.Direction.DOWN,getRewardsCatalogPage().getRewardPoints());
         String pointsText = getRewardsCatalogPage().getRewardPoints().getAttribute("text");
         return Integer.parseInt(pointsText.substring(0, pointsText.indexOf(' ')));
     }
@@ -95,7 +103,7 @@ public class AndroidRewardCatalogFlowImpl extends BaseFlow implements RewardsCat
         return Integer.parseInt(getRewardsCatalogPage().getUnclaimedRewardsCounter().getAttribute("text"));
     }
 
-  @Override
+    @Override
     public boolean isElementsOfRewardsCatalogDisplayed() {
         try {
             return getRewardsCatalogPage().waitUntilIsOpened();
@@ -122,8 +130,8 @@ public class AndroidRewardCatalogFlowImpl extends BaseFlow implements RewardsCat
     }
 
     @Step
-        @Override
-        public void navigateBack () {
-            pressBackBtn();
-        }
+    @Override
+    public void navigateBack() {
+        pressBackBtn();
     }
+}

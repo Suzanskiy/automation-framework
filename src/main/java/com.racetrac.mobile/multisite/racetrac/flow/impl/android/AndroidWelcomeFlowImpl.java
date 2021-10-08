@@ -100,8 +100,8 @@ public class AndroidWelcomeFlowImpl extends BaseFlow implements WelcomeFlow {
     @Override
     public void swipeToCouponsDisplay() {
         swipeDownHard();
-        swipeUP();
-        getHomePage().waitUntilIsOpened();
+        swipeDownHard();
+        swipeDownHard();
         swipeDownHard();
         swipeDownHard();
     }
