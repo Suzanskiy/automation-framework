@@ -45,6 +45,7 @@ public class SwipeScroll {
         // init screen variables
         Dimension dims = appiumDriver.manage().window().getSize();
         switch (dir) {
+            //mirror direction of the swipeScreen
             case DOWN:
                 pointOptionStart = PointOption.point(dims.width / 2, (int) (dims.height * 0.70));// top of the footer
                 pointOptionEnd = PointOption.point(dims.width / 2, (int)(dims.height * 0.30));
