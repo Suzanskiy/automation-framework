@@ -29,5 +29,6 @@ public class NotAdultNotice extends BaseMobilePage {
 
     @PageLoading
     @AndroidFindBy(id = "com.RaceTrac.Common.qa:id/checkBirthday")
+    @iOSXCUITFindBy(iOSNsPredicate = "label == \"CHECK BIRTHDAY\" AND name == \"CHECK BIRTHDAY\" AND type == \"XCUIElementTypeButton\"")
     private MobileElement checkBirthdayBtn;
 }
