@@ -100,7 +100,10 @@ public class UserReceiveEmailsOptionsTest extends BaseTest {
 
         becomeFuelVipFlow.clickNotRightNow();
         signInFlow.clickGotItBtn();
+        locationRequestFlow.clickContinue();
+        rewardsPopupFlow.clickGotItBtn();
         pointsAndLevelsFlow.clickGotItBtn();
+
         accountSettingsFlow.navigateToAccountSettings();
         accountSettingsFlow.isAccountSettingsAuthorisedUserScreenOpened();
         assertFalse(accountSettingsFlow.receiveEmailsSwitcherPosition(), "Receive Email switcher position is on");
