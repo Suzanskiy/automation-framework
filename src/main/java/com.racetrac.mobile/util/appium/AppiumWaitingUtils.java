@@ -2,6 +2,7 @@ package com.racetrac.mobile.util.appium;
 
 import io.appium.java_client.MobileElement;
 import io.appium.java_client.functions.ExpectedCondition;
+import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -17,7 +18,6 @@ import static com.racetrac.mobile.util.appium.AppiumDriverUtils.getDriver;
 
 
 public class AppiumWaitingUtils {
-    private static final SwipeScroll swipeScroll = new SwipeScroll(getDriver());
 
     public static <T> T waitForCondition(final ExpectedCondition<T> userCondition) {
         return getAppiumDriverWait().until(userCondition);
@@ -98,12 +98,5 @@ public class AppiumWaitingUtils {
     public static void waitUntilAlertIsPresent() {
         getAppiumDriverWait().until(ExpectedConditions.alertIsPresent());
     }
-    public static void swipeUntilElementIsPresent(SwipeScroll.Direction direction, MobileElement element) {
-        int stopper = 0;
-        int maxSwipes = 10;
-        do {
-            swipeScroll.swipeScreenHard(direction);
-        }
-        while (!element.isDisplayed() && stopper++ < maxSwipes);
-    }
+
 }

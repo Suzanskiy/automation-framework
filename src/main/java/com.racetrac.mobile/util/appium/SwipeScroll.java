@@ -1,16 +1,21 @@
 package com.racetrac.mobile.util.appium;
 
 import io.appium.java_client.AppiumDriver;
+import io.appium.java_client.MobileElement;
 import io.appium.java_client.TouchAction;
 import io.appium.java_client.touch.WaitOptions;
 import io.appium.java_client.touch.offset.PointOption;
 import lombok.AllArgsConstructor;
 import org.openqa.selenium.Dimension;
+import org.openqa.selenium.NoSuchElementException;
 
 import java.time.Duration;
 
+import static com.racetrac.mobile.util.appium.AppiumDriverUtils.getDriver;
+
 @AllArgsConstructor
 public class SwipeScroll {
+    private static final SwipeScroll swipeScroll = new SwipeScroll(getDriver());
 
     final int ANIMATION_TIME = 400; // ms
     final int PRESS_TIME = 200; // ms
@@ -125,6 +130,20 @@ public class SwipeScroll {
                 throw new IllegalArgumentException("swipeScreen(): dir: '" + dir + "' NOT supported");
         }
         swipeScreen(pointOptionStart, pointOptionEnd);
+    }
+
+    public static void swipeUntilElementIsPresent(SwipeScroll.Direction direction, MobileElement element) {
+        int stopper = 0;
+        int maxSwipes = 10;
+        boolean elementIsDisplayed = false;
+        do {
+            swipeScroll.swipeScreenHard(direction);
+            try {
+                elementIsDisplayed = element.isDisplayed();
+            } catch (NoSuchElementException e) {
+                elementIsDisplayed = false;
+            }
+        } while (!elementIsDisplayed && stopper++ < maxSwipes);
     }
 
     public enum Direction {

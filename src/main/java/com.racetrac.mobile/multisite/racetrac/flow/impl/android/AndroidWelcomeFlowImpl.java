@@ -3,6 +3,7 @@ package com.racetrac.mobile.multisite.racetrac.flow.impl.android;
 import com.racetrac.mobile.multisite.racetrac.flow.BaseFlow;
 import com.racetrac.mobile.multisite.racetrac.flow.WelcomeFlow;
 import com.racetrac.mobile.util.appium.AppiumWaitingUtils;
+import com.racetrac.mobile.util.appium.SwipeScroll;
 import io.qameta.allure.Step;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.TimeoutException;
@@ -12,7 +13,7 @@ import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Component;
 
 import static com.racetrac.mobile.framework.constants.PlatformsConstants.ANDROID;
-import static com.racetrac.mobile.util.appium.AppiumDriverUtils.*;
+import static com.racetrac.mobile.util.appium.SwipeScroll.swipeUntilElementIsPresent;
 
 @Profile(ANDROID)
 @Component
@@ -99,11 +100,7 @@ public class AndroidWelcomeFlowImpl extends BaseFlow implements WelcomeFlow {
     @Step
     @Override
     public void swipeToCouponsDisplay() {
-        swipeDownHard();
-        swipeDownHard();
-        swipeDownHard();
-        swipeDownHard();
-        swipeDownHard();
+        swipeUntilElementIsPresent(SwipeScroll.Direction.DOWN, getHomePage().getGiftToAFriendBtn()); //common element for options with and without coupons
     }
 
     @Step

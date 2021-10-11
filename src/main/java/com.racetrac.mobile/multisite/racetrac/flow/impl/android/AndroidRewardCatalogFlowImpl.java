@@ -4,17 +4,15 @@ import com.racetrac.mobile.multisite.racetrac.flow.BaseFlow;
 import com.racetrac.mobile.multisite.racetrac.flow.RewardsCatalogFlow;
 import com.racetrac.mobile.util.appium.AppiumWaitingUtils;
 import com.racetrac.mobile.util.appium.SwipeScroll;
-import io.appium.java_client.MobileElement;
 import io.qameta.allure.Step;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.TimeoutException;
 import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Component;
-import sun.print.DialogOwner;
 
 import static com.racetrac.mobile.framework.constants.PlatformsConstants.ANDROID;
-import static com.racetrac.mobile.util.appium.AppiumDriverUtils.*;
-import static com.racetrac.mobile.util.appium.AppiumWaitingUtils.swipeUntilElementIsPresent;
+import static com.racetrac.mobile.util.appium.AppiumDriverUtils.pressBackBtn;
+import static com.racetrac.mobile.util.appium.SwipeScroll.swipeUntilElementIsPresent;
 
 @Profile(ANDROID)
 @Component
