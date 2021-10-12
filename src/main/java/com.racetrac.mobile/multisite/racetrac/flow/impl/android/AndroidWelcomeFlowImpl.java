@@ -12,8 +12,8 @@ import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Component;
 
 import static com.racetrac.mobile.framework.constants.PlatformsConstants.ANDROID;
-import static com.racetrac.mobile.util.appium.AppiumWaitingUtils.swipeUntilElementIsPresent;
 import static com.racetrac.mobile.util.appium.AppiumWaitingUtils.waitUntilElementClickable;
+import static com.racetrac.mobile.util.appium.SwipeScroll.swipeUntilElementIsPresent;
 
 @Profile(ANDROID)
 @Component
