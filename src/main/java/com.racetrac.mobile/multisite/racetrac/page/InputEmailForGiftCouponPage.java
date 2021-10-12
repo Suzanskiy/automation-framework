@@ -19,12 +19,13 @@ public class InputEmailForGiftCouponPage extends BaseMobilePage {
             "from your list once you tap Send.";
 
     @PageLoading
-    @iOSXCUITFindBy(xpath = "//XCUIElementTypeButton[@name=\"SEND\"]")
+    @iOSXCUITFindBy(iOSNsPredicate = "label == \"SEND\" AND name == \"SEND\" AND type == \"XCUIElementTypeButton\"")
     @AndroidFindBy(uiAutomator = "new UiSelector().text(\"SEND\")")
     private MobileElement sendBtn;
 
     @PageLoading
     @AndroidFindBy(id = "com.RaceTrac.Common.qa:id/emailInput")
+    @iOSXCUITFindBy(iOSNsPredicate = "type == \"XCUIElementTypeTextField\"")
     private MobileElement inputEmailField;
 
     @PageLoading

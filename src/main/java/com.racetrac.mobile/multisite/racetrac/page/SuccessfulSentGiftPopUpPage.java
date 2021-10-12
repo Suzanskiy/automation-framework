@@ -13,13 +13,13 @@ import org.springframework.stereotype.Component;
 public class SuccessfulSentGiftPopUpPage extends BaseMobilePage {
 
     @PageLoading
-    @iOSXCUITFindBy(xpath = "//XCUIElementTypeButton[@name=\"OK\"]")
+    @iOSXCUITFindBy(accessibility = "Ok")
     @AndroidFindBy(uiAutomator = "new UiSelector().text(\"OK\")")
     private MobileElement okBtn;
 
     @PageLoading
     @AndroidFindBy(xpath = "//android.widget.TextView[contains(@text,\"Your coupon\")]")
-    @iOSXCUITFindBy(accessibility = "Your coupon has been sent!")
+    @iOSXCUITFindBy(xpath = "//XCUIElementTypeAlert[@name=\"Your coupon has been sent\"]")
     private MobileElement successfulInformMessage;
 
 }
