@@ -19,6 +19,9 @@ public class AndroidAuthenticationUtilImpl extends BaseFlow implements Authentic
     public void prepareAppAfterBrokenSignOut() {
         try {
             Runtime.getRuntime().exec("adb shell pm clear " + RACETRAC_APP_PACKAGE);
+            Runtime.getRuntime().exec("adb shell settings put global window_animation_scale 0.0" );// turning off animation on android emulator
+            Runtime.getRuntime().exec("adb shell settings put global transition_animation_scale 0.0" );
+            Runtime.getRuntime().exec("adb shell settings put global animator_duration_scale 0.0" );
             getDriver().launchApp();
         } catch (IOException e) {
             e.printStackTrace();

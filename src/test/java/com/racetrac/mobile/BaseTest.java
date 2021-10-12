@@ -37,11 +37,8 @@ public class BaseTest extends AbstractTestNGSpringContextTests {
     protected AuthenticationUtil authenticationUtil;
 
     @BeforeMethod(alwaysRun = true)
-    public void launch() throws IOException {
+    public void launch()  {
         LOG.info("Launch application");
-        Runtime.getRuntime().exec("adb shell settings put global window_animation_scale 0.0" );// turning off animation on android emulator
-        Runtime.getRuntime().exec("adb shell settings put global transition_animation_scale 0.0" );
-        Runtime.getRuntime().exec("adb shell settings put global animator_duration_scale 0.0" );
         authenticationUtil.prepareAppAfterBrokenSignOut(); // and launch app
     }
 
