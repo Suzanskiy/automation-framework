@@ -61,6 +61,7 @@ public class CouponsGiftTest extends BaseTest {
         signInFlow.authorize(customerDto);
         locationRequestFlow.clickContinue();
         notificationRequestFlow.clickNotNow();
+        locationRequestFlow.clickContinue();
         rewardsPopupFlow.clickGotItBtn();
         pointsAndLevelsFlow.clickGotItBtn();
         assertTrue(welcomeFlow.isHomePageOpenedAfterSignIn(), "Welcome page is not opened after sign in");

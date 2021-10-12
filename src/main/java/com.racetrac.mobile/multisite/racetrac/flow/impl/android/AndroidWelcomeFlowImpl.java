@@ -2,7 +2,6 @@ package com.racetrac.mobile.multisite.racetrac.flow.impl.android;
 
 import com.racetrac.mobile.multisite.racetrac.flow.BaseFlow;
 import com.racetrac.mobile.multisite.racetrac.flow.WelcomeFlow;
-import com.racetrac.mobile.util.appium.AppiumWaitingUtils;
 import com.racetrac.mobile.util.appium.SwipeScroll;
 import io.qameta.allure.Step;
 import org.openqa.selenium.NoSuchElementException;
@@ -13,7 +12,8 @@ import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Component;
 
 import static com.racetrac.mobile.framework.constants.PlatformsConstants.ANDROID;
-import static com.racetrac.mobile.util.appium.SwipeScroll.swipeUntilElementIsPresent;
+import static com.racetrac.mobile.util.appium.AppiumWaitingUtils.swipeUntilElementIsPresent;
+import static com.racetrac.mobile.util.appium.AppiumWaitingUtils.waitUntilElementClickable;
 
 @Profile(ANDROID)
 @Component
@@ -99,14 +99,14 @@ public class AndroidWelcomeFlowImpl extends BaseFlow implements WelcomeFlow {
 
     @Step
     @Override
-    public void swipeToCouponsDisplay() {
-        swipeUntilElementIsPresent(SwipeScroll.Direction.DOWN, getHomePage().getPayWIthGiftCArdBtn()); //common element for options with and without coupons
+    public void swipeToCouponsSection() {
+        swipeUntilElementIsPresent(SwipeScroll.Direction.DOWN, getHomePage().getGiftToAFriendBtn()); //common element for options with and without coupons
     }
 
     @Step
     @Override
-    public boolean isNoCouponDisplayDisplayed() {
-        return getHomePage().getNoCouponsDisplay().isDisplayed();
+    public boolean isNoCouponsSectionDisplayed() {
+        return getHomePage().getNoCouponsDisplay().isEnabled();
     }
 
     @Step
@@ -128,12 +128,11 @@ public class AndroidWelcomeFlowImpl extends BaseFlow implements WelcomeFlow {
     @Step
     @Override
     public int couponsCarouselQuantity() {
-        swipeToCouponsDisplay();
         return getHomePage().getCouponsCarousel().size();
     }
 
     @Override
     public void waitUntilHomePageLoaded() {
-        AppiumWaitingUtils.waitUntilElementClickable(getHomePage().getIconSettings());
+        waitUntilElementClickable(getHomePage().getIconSettings());
     }
 }

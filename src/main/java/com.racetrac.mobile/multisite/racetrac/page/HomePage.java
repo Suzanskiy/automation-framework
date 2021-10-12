@@ -57,15 +57,19 @@ public class HomePage extends BaseMobilePage {
     private MobileElement redeemPointsBtn;
 
     @AndroidFindBy(id = "com.RaceTrac.Common.qa:id/couponsHeaderViewAll")
+    @iOSXCUITFindBy(iOSNsPredicate = "label == \"View All\" AND name == \"View All\" AND type == \"XCUIElementTypeButton\"")
     private MobileElement viewAllCouponsBtn;
 
     @AndroidFindBy(id = "com.RaceTrac.Common.qa:id/getFriendBtn")
+    @iOSXCUITFindBy(iOSClassChain = "**/XCUIElementTypeButton[`label == \"GIFT TO A FRIEND\"`]")
     private MobileElement giftToAFriendBtn;
 
     @AndroidFindBy(id = "com.RaceTrac.Common.qa:id/carouselNoOffers")
+    @iOSXCUITFindBy(accessibility = "empty set detail label")
     private MobileElement noCouponsDisplay;
 
     @AndroidFindBy(id = "com.RaceTrac.Common.qa:id/couponsHeaderTitleGuest")
+    @iOSXCUITFindBy(accessibility = "empty set title")
     private MobileElement couponsGraciasInfo;
 
     @AndroidFindBy(id = "com.RaceTrac.Common.qa:id/payWithGiftCardBtn")

@@ -25,6 +25,7 @@ public class iosLocationRequestFlowImpl extends BaseFlow implements LocationRequ
             getTurnOnLocationPage().getContinueBtn().click();
         } catch (TimeoutException | NoSuchElementException e) {
             LOG.warn("Location page is not opened here, refreshing");
+            return;
         }
 
         try {

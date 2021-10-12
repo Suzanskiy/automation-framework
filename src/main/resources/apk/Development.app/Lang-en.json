@@ -118,5 +118,8 @@
       "choseProvide": "Chose your favorite provider",
       "filtersSelected": "filters selected",
       "filterSelected": "filter selected"
+  },
+  "dateValidation": {
+      "formatHint": "MM/DD/YYYY"
   }
 }

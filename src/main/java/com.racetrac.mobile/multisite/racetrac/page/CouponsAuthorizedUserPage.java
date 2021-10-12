@@ -13,7 +13,7 @@ import org.springframework.stereotype.Component;
 public class CouponsAuthorizedUserPage extends BaseMobilePage {
 
     @PageLoading
-    @iOSXCUITFindBy(xpath = "//XCUIElementTypeButton[@name=\"Gift It\"]")
+    @iOSXCUITFindBy(iOSNsPredicate = "label == \"Gift It\" AND name == \"Gift It\" AND value == \"Gift It\"")
     @AndroidFindBy(uiAutomator = "new UiSelector().text(\"Gift It\")")
     private MobileElement giftItBtn;
 
@@ -24,9 +24,11 @@ public class CouponsAuthorizedUserPage extends BaseMobilePage {
 
     @PageLoading
     @AndroidFindBy(xpath = "(//android.widget.ImageView[@content-desc=\"COUPONS\"])[1]")
+    @iOSXCUITFindBy(xpath = "//XCUIElementTypeApplication[@name=\"RaceTrac QA\"]/XCUIElementTypeWindow[1]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeTable/XCUIElementTypeCell[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther")
     private MobileElement availableCoupon;
 
     @AndroidFindBy(id = "com.RaceTrac.Common.qa:id/gift_back_btn")
+    @iOSXCUITFindBy(accessibility = "NavBarClose")
     private MobileElement backBtn;
 
 }

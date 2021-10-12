@@ -82,13 +82,14 @@ public class CouponsScreenMainPageTest extends BaseTest {
         signInFlow.openLoginInPage();
         assertTrue(signInFlow.isLoginPageOpened(), "Login page is not opened");
         signInFlow.authorize(customerDto);
+        notificationRequestFlow.iosClickNotNow();
         locationRequestFlow.clickContinue();
         notificationRequestFlow.clickNotNow();
         rewardsPopupFlow.clickGotItBtn();
         pointsAndLevelsFlow.clickGotItBtn();
         assertTrue(welcomeFlow.isHomePageOpenedAfterSignIn(), "Welcome page is not opened after sign in");
-        welcomeFlow.swipeToCouponsDisplay();
-        assertTrue(welcomeFlow.isNoCouponDisplayDisplayed(), "No coupons display is not displayed");
+        welcomeFlow.swipeToCouponsSection();
+        assertTrue(welcomeFlow.isNoCouponsSectionDisplayed(), "No coupons section is not displayed");
         assertFalse(welcomeFlow.isGiftToAFriendBtnClickable(), "\"Gift to a friend button\" is clickable");
         assertFalse(welcomeFlow.isViewAllCouponsBtnDisplayed(), "View all is displayed");
     }
@@ -103,12 +104,13 @@ public class CouponsScreenMainPageTest extends BaseTest {
         signInFlow.openLoginInPage();
         assertTrue(signInFlow.isLoginPageOpened(), "Login page is not opened");
         signInFlow.authorize(customerDto);
+        notificationRequestFlow.iosClickNotNow();
         locationRequestFlow.clickContinue();
         notificationRequestFlow.clickNotNow();
         rewardsPopupFlow.clickGotItBtn();
         pointsAndLevelsFlow.clickGotItBtn();
         assertTrue(welcomeFlow.isHomePageOpenedAfterSignIn(), "Welcome page is not opened after sign in");
-        welcomeFlow.swipeToCouponsDisplay();
+        welcomeFlow.swipeToCouponsSection();
 
         assertFalse(welcomeFlow.isViewAllCouponsBtnDisplayed(), "View all is displayed");
     }
@@ -122,12 +124,13 @@ public class CouponsScreenMainPageTest extends BaseTest {
         signInFlow.openLoginInPage();
         assertTrue(signInFlow.isLoginPageOpened(), "Login page is not opened");
         signInFlow.authorize(customerDto);
+        notificationRequestFlow.iosClickNotNow();
         locationRequestFlow.clickContinue();
         notificationRequestFlow.clickNotNow();
         rewardsPopupFlow.clickGotItBtn();
         pointsAndLevelsFlow.clickGotItBtn();
         assertTrue(welcomeFlow.isHomePageOpenedAfterSignIn(), "Welcome page is not opened after sign in");
-        welcomeFlow.swipeToCouponsDisplay();
+        welcomeFlow.swipeToCouponsSection();
 
         assertTrue(welcomeFlow.isViewAllCouponsBtnDisplayed(), "View all is not displayed");
     }
@@ -142,13 +145,14 @@ public class CouponsScreenMainPageTest extends BaseTest {
         signInFlow.openLoginInPage();
         assertTrue(signInFlow.isLoginPageOpened(), "Login page is not opened");
         signInFlow.authorize(customerDto);
+        notificationRequestFlow.iosClickNotNow();
         locationRequestFlow.clickContinue();
         notificationRequestFlow.clickNotNow();
         rewardsPopupFlow.clickGotItBtn();
         pointsAndLevelsFlow.clickGotItBtn();
         assertTrue(welcomeFlow.isHomePageOpenedAfterSignIn(), "Welcome page is not opened after sign in");
 
-        welcomeFlow.swipeToCouponsDisplay();
+        welcomeFlow.swipeToCouponsSection();
         assertTrue(welcomeFlow.isGiftToAFriendBtnClickable(), "\"Gift to a friend button\" is not clickable");
         assertTrue(welcomeFlow.isViewAllCouponsBtnDisplayed(), "\"View\" all is  not displayed");
         assertEquals(welcomeFlow.couponsCarouselQuantity(), COUPONS_AMOUNT, "The number of available coupons and coupons in the carousel is not equal");
@@ -184,7 +188,7 @@ public class CouponsScreenMainPageTest extends BaseTest {
         rewardsPopupFlow.clickGotItBtn();
         pointsAndLevelsFlow.clickGotItBtn();
         assertTrue(welcomeFlow.isHomePageOpenedAfterSignIn(), "Welcome page is not opened after sign in");
-        welcomeFlow.swipeToCouponsDisplay();
+        welcomeFlow.swipeToCouponsSection();
 
         assertEquals(welcomeFlow.couponsCarouselQuantity(), COUPONS_AMOUNT, "The number of available coupons and coupons in the carousel is not equal");
         assertTrue(welcomeFlow.isViewAllCouponsBtnDisplayed(), "\"View\" all is  not displayed");

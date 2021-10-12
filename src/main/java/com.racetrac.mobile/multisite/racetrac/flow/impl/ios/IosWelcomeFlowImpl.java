@@ -8,6 +8,8 @@ import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Component;
 
 import static com.racetrac.mobile.framework.constants.PlatformsConstants.IOS;
+import static com.racetrac.mobile.util.appium.AppiumDriverUtils.swipeUP;
+import static com.racetrac.mobile.util.appium.AppiumWaitingUtils.waitUntilElementClickable;
 
 @Profile(IOS)
 @Component
@@ -22,7 +24,8 @@ public class IosWelcomeFlowImpl extends BaseFlow implements WelcomeFlow {
     @Step
     @Override
     public boolean isHomePageOpenedAfterSignIn() {
-        return isHomePageOpened();
+        waitUntilHomePageLoaded();
+        return getHomePage().waitUntilIsOpened();
     }
 
     @Step
@@ -77,39 +80,57 @@ public class IosWelcomeFlowImpl extends BaseFlow implements WelcomeFlow {
         }
     }
 
+    @Step
     @Override
     public boolean isRedeemPointsBtnDisplayedOnMainScreen() {
         return !isRedeemPointsBtnDisplayed(); //such button on ios exists and marked as visible, but it seems like appium bug
     }
 
+    @Step
     @Override
-    public void swipeToCouponsDisplay() {
-
+    public void swipeToCouponsSection() {
+        swipeUP();
+        swipeUP();
     }
 
+    @Step
     @Override
-    public boolean isNoCouponDisplayDisplayed() {
-        return false;
+    public boolean isNoCouponsSectionDisplayed() {
+        return getHomePage().getNoCouponsDisplay().isEnabled();
     }
 
+    @Step
     @Override
     public boolean isGiftToAFriendBtnClickable() {
-        return false;
+        try {
+            Boolean.parseBoolean(getHomePage().getGiftToAFriendBtn().getAttribute("enabled"));
+        } catch (NoSuchElementException e) {
+            return false;
+        }
+        return true;
     }
 
+    @Step
     @Override
     public boolean isViewAllCouponsBtnDisplayed() {
-        return false;
+        getHomePage().refresh();
+        waitUntilElementClickable(getHomePage().getViewAllCouponsBtn());
+        try {
+            return getHomePage().getViewAllCouponsBtn().isDisplayed();
+        } catch (NoSuchElementException e) {
+            return false;
+        }
     }
 
+    @Step
     @Override
     public int couponsCarouselQuantity() {
-        return 0;
+        return getHomePage().getCouponsCarousel().size();
     }
 
     @Override
     public void waitUntilHomePageLoaded() {
-
+        waitUntilElementClickable(getHomePage().getIconSettings());
     }
 
 }

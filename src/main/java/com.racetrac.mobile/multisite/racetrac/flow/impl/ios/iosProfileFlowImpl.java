@@ -27,7 +27,7 @@ public class iosProfileFlowImpl extends BaseFlow implements ProfileFlow, Navigat
 
     @Override
     public boolean isProfilePageOpened() {
-        return false;
+        return getProfilePage().waitUntilIsOpened();
     }
 
     @Step

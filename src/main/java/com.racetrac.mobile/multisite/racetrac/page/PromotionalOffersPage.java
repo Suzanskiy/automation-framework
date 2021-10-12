@@ -22,25 +22,24 @@ public class PromotionalOffersPage extends BaseMobilePage {
     @iOSXCUITFindBy(xpath = "(//XCUIElementTypeButton[@name=\"No\"])[2]")
     @AndroidFindBy(xpath = "/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.RelativeLayout/android.widget.LinearLayout[2]/android.widget.LinearLayout/androidx.recyclerview.widget.RecyclerView/android.view.ViewGroup[2]/android.widget.Button[2]")
     private MobileElement noTobacco;
+
     @PageLoading
     @iOSXCUITFindBy(xpath = "(//XCUIElementTypeButton[@name=\"No\"])[3]")
-
     @AndroidFindBy(xpath = "/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.RelativeLayout/android.widget.LinearLayout[2]/android.widget.LinearLayout/androidx.recyclerview.widget.RecyclerView/android.view.ViewGroup[3]/android.widget.Button[2]")
     private MobileElement noLottery;
 
     @PageLoading
-    @iOSXCUITFindBy(xpath = "(//XCUIElementTypeButton[@name=\"YES\"])[1]")
+    @iOSXCUITFindBy(xpath = "(//XCUIElementTypeButton[@name=\"Yes\"])[3]")
     @AndroidFindBy(xpath = "//android.widget.TextView[@text=\"Alcohol\"]/../android.widget.Button[@resource-id=\"com.RaceTrac.Common.qa:id/yesBtn\"]")
     private MobileElement yesAlcohol;
 
     @PageLoading
-    @iOSXCUITFindBy(xpath = "(//XCUIElementTypeButton[@name=\"YES\"])[2]")
+    @iOSXCUITFindBy(xpath = "(//XCUIElementTypeButton[@name=\"Yes\"])[3]")
     @AndroidFindBy(xpath = "//android.widget.TextView[@text=\"Tobacco\"]/../android.widget.Button[@resource-id=\"com.RaceTrac.Common.qa:id/yesBtn\"]")
     private MobileElement YesTobacco;
 
     @PageLoading
-    @iOSXCUITFindBy(xpath = "(//XCUIElementTypeButton[@name=\"YES\"])[3]")
-
+    @iOSXCUITFindBy(xpath = "(//XCUIElementTypeButton[@name=\"Yes\"])[3]")
     @AndroidFindBy(xpath = "//android.widget.TextView[@text=\"Lottery\"]/../android.widget.Button[@resource-id=\"com.RaceTrac.Common.qa:id/yesBtn\"]")
     private MobileElement yesLottery;
 

@@ -23,11 +23,11 @@ public class CouponsPopUpPage extends BaseMobilePage {
 
     @PageLoading
     @AndroidFindBy(uiAutomator = "new UiSelector().text(\"Coupons\")")
-    @iOSXCUITFindBy(xpath = "//XCUIElementTypeButton[@name=\"Coupons\"]")
+    @iOSXCUITFindBy(xpath = "(//XCUIElementTypeStaticText[@name=\"Coupons\"])[2]")
     private MobileElement couponsTitle;
 
     @PageLoading
     @AndroidFindBy(uiAutomator = "new UiSelector().text(\"" + DESCRIPTION_COUPONS_POP_UP_MESSAGE + "\")")
-    @iOSXCUITFindBy(accessibility = "All coupons are already added to your rewards card. Simply scan card at checkout.")
+    @iOSXCUITFindBy(xpath = "//XCUIElementTypeStaticText[@name=\"Coupons are already added to your rewards card. Simply scan card at checkout.\"]")
     private MobileElement CouponsTutorialMessage;
 }
