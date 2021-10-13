@@ -53,6 +53,7 @@ public class BaseFlow {
     RewardsCheckoutBarcodePage rewardsCheckoutBarcodePage;
     UnclaimedRewardsCheckoutPage unclaimedRewardsCheckoutPage;
     CouponsAuthorizedUserPage couponsAuthorizedUserPage;
+    HelpInformationPage helpInformationPage;
     //    SECTIONS
     NavigationDrawer navigationDrawer;
     AndroidNavBar androidNavBar;

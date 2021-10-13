@@ -22,4 +22,5 @@ public interface AccountSettingsFlow extends NavigateFlow {
 
     void waitUntilAccountSettingsAuthorizedOpen();
 
+    void navigateToHelpSection();
 }
