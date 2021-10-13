@@ -54,6 +54,7 @@ public class BaseFlow {
     UnclaimedRewardsCheckoutPage unclaimedRewardsCheckoutPage;
     CouponsAuthorizedUserPage couponsAuthorizedUserPage;
     HelpInformationPage helpInformationPage;
+    ContactUsPage contactUsPage;
     //    SECTIONS
     NavigationDrawer navigationDrawer;
     AndroidNavBar androidNavBar;
@@ -73,4 +74,5 @@ public class BaseFlow {
     InputEmailForGiftCouponPage inputEmailForGiftCouponPage;
     UserNotFoundForGiftPopUpPage userNotFoundForGiftPopUpPage;
     SuccessfulSentGiftPopUpPage successfulSentGiftPopUpPage;
+    SuccessfulSentContactUsMessagePage successfulSentContactUsMessagePage;
 }

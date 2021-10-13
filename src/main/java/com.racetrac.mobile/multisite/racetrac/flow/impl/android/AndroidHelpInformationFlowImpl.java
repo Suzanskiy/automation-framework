@@ -3,12 +3,18 @@ package com.racetrac.mobile.multisite.racetrac.flow.impl.android;
 import com.racetrac.mobile.multisite.racetrac.flow.BaseFlow;
 import com.racetrac.mobile.multisite.racetrac.flow.HelpInformationFlow;
 import com.racetrac.mobile.util.appium.AppiumWaitingUtils;
+import io.appium.java_client.TouchAction;
 import io.qameta.allure.Step;
 import org.openqa.selenium.NoSuchElementException;
+import org.openqa.selenium.Point;
 import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Component;
 
 import static com.racetrac.mobile.framework.constants.PlatformsConstants.ANDROID;
+import static com.racetrac.mobile.util.appium.AppiumDriverUtils.getDriver;
+import static io.appium.java_client.touch.WaitOptions.waitOptions;
+import static io.appium.java_client.touch.offset.PointOption.point;
+import static java.time.Duration.ofMillis;
 
 @Profile(ANDROID)
 @Component
@@ -22,7 +28,9 @@ public class AndroidHelpInformationFlowImpl extends BaseFlow implements HelpInfo
     @Step
     @Override
     public void navigateToContactUs() {
-        getHelpInformationPage().getContactUsLink().click();
+        Point contactLinkPoint = getHelpInformationPage().getContactUsLink().getCenter();
+        int elementWidth = getHelpInformationPage().getContactUsLink().getSize().width;
+        tapByCoordinates(contactLinkPoint.getX() + elementWidth/4, contactLinkPoint.getY());
     }
 
     @Override
@@ -32,5 +40,11 @@ public class AndroidHelpInformationFlowImpl extends BaseFlow implements HelpInfo
         } catch (NoSuchElementException e) {
             return false;
         }
+    }
+
+    private static void tapByCoordinates(int x, int y) {
+        new TouchAction(getDriver())
+                .tap(point(x, y))
+                .waitAction(waitOptions(ofMillis(250))).perform();
     }
 }

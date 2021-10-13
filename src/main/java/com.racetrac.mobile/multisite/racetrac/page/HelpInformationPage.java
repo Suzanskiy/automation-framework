@@ -23,6 +23,6 @@ public class HelpInformationPage extends BaseMobilePage{
     @AndroidFindBy(id = "com.RaceTrac.Common.qa:id/account_title")
     private MobileElement pageTitle;
 
-    @AndroidFindBy(id = "com.RaceTrac.Common.qa:id/contact_us_txt")
+    @AndroidFindBy(xpath= "//android.widget.TextView[contains(@text,\"Contact\")]")
     private MobileElement contactUsLink;
 }
