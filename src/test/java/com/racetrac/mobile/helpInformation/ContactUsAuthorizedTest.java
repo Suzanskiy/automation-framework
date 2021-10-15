@@ -18,6 +18,7 @@ import static org.testng.Assert.assertTrue;
 public class ContactUsAuthorizedTest extends BaseTest {
 
     private static final String TEST_MESSAGE = "This is test message from QA team";
+    private static final String PATH = "testData/text5000symbols.txt";
 
     @Autowired
     WelcomeFlow welcomeFlow;
@@ -83,7 +84,6 @@ public class ContactUsAuthorizedTest extends BaseTest {
     @Test
     public void contactUsAuthorizedUserWithoutInternetTest() {
         assertTrue(contactUsFlow.isContactUsPageOpened(), "Contact us Page is not opened");
-        assertTrue(contactUsFlow.isTollFreeCallAvailable(), "Free toll call is not clickable");
         disableConnection();
         assertTrue(noInternetConnectionFlow.isNoInternetConnectionPageOpened(),"No Internet connection page is not opened");
         noInternetConnectionFlow.tapOkBtn();
@@ -92,15 +92,18 @@ public class ContactUsAuthorizedTest extends BaseTest {
     }
 
     @TmsLink("8826")
-    @Description("")
+    @Description("Information about a successfully sent message in \"Contact Us\" is displayed when the message has 5000 symbols and more")
     @Test
     public void sentMessageWithMoreCharactersThanAllowedTest() {
         assertTrue(contactUsFlow.isContactUsPageOpened(), "Contact us Page is not opened");
-        assertTrue(contactUsFlow.isTollFreeCallAvailable(), "Free toll call is not clickable");
-        contactUsFlow.sendMessageToGeneralSubject(TestData.readFromFile("testData/text5000symbols.txt"));
+        contactUsFlow.sendMessageToGeneralSubject(TestData.readFromFile(PATH));
         assertTrue(successfulSentContactUsMessageFlow.isSuccessfulSentContactUsMessageOpened(), "The page after the sent message is not opened");
         successfulSentContactUsMessageFlow.closeSuccessfulSentContactUsMessagePage();
         assertTrue(helpInformationFlow.isHelpInformationPageOpened(), "Help information page is not opened");
+        helpInformationFlow.navigateToContactUs();
+        assertTrue(contactUsFlow.isContactUsPageOpened(), "Contact us Page is not opened");
+        contactUsFlow.sendMessageToGeneralSubject(TestData.readFromFile(PATH)+"A");
+        assertTrue(successfulSentContactUsMessageFlow.isSuccessfulSentContactUsMessageOpened(), "The page after the sent message is not opened");
     }
 
     @AfterMethod(alwaysRun = true)
