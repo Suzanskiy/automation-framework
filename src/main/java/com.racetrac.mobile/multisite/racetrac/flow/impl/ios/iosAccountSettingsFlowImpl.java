@@ -73,6 +73,11 @@ public class iosAccountSettingsFlowImpl extends BaseFlow implements AccountSetti
     }
 
     @Override
+    public void navigateToHelpSection() {
+
+    }
+
+    @Override
     public void navigateBack() {
         try {
             getAccountSettingsPage().getNavBarCloseBtn().click();

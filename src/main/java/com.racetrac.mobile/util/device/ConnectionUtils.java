@@ -25,4 +25,14 @@ public class ConnectionUtils {
                 .withDataEnabled()
                 .build());
     }
+
+    private static boolean isConnectionEnabled() {
+        return androidDriver.getConnection().isWiFiEnabled() && androidDriver.getConnection().isDataEnabled();
+    }
+
+    public static void reconnection() {
+        if (!isConnectionEnabled()) {
+            enableConnection();
+        }
+    }
 }
