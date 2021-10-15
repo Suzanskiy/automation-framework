@@ -32,7 +32,7 @@ public class AndroidHelpInformationFlowImpl extends BaseFlow implements HelpInfo
         int elementWidth = getHelpInformationPage().getContactUsLink().getSize().width;
         tapByCoordinates(contactLinkPoint.getX() + elementWidth/4, contactLinkPoint.getY());
     }
-
+    @Step
     @Override
     public boolean isContactUsDisplayed() {
         try {

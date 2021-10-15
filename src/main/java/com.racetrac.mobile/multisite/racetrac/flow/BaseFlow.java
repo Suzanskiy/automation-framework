@@ -75,4 +75,5 @@ public class BaseFlow {
     UserNotFoundForGiftPopUpPage userNotFoundForGiftPopUpPage;
     SuccessfulSentGiftPopUpPage successfulSentGiftPopUpPage;
     SuccessfulSentContactUsMessagePage successfulSentContactUsMessagePage;
+    NoInternetConnectionPage noInternetConnectionPage;
 }
