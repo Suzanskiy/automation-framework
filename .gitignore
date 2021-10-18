@@ -6,3 +6,4 @@ test-output/
 src/main/resources/appium.properties
 src/main/resources/environment.properties
 *.iml
+/.idea/
