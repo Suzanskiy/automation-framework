@@ -15,7 +15,13 @@ public class TurnOnLocationPage extends BaseMobilePage {
     @AndroidFindBy(id = "com.RaceTrac.Common.qa:id/continueButton")
     @iOSXCUITFindBy(iOSClassChain = "**/XCUIElementTypeButton[`label == \"CONTINUE\"`]")
     private MobileElement continueBtn; // continue btn on ios
-    
+
     @AndroidFindBy(id = "com.RaceTrac.Common.qa:id/turnOnButton")
     private MobileElement turnOnBtn;
+
+    @AndroidFindBy(id = "com.android.permissioncontroller:id/permission_allow_foreground_only_button")
+    private MobileElement whileUsingAppBtn;
+
+    @AndroidFindBy(id = "com.android.permissioncontroller:id/permission_allow_one_time_button")
+    private MobileElement onlyThisTimeBtn;
 }

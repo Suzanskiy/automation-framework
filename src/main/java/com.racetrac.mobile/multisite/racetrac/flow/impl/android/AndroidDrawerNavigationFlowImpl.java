@@ -116,4 +116,9 @@ public class AndroidDrawerNavigationFlowImpl extends BaseFlow implements Navigat
         getNavigationDrawer().getDrawerFromCouponsPage().click();
         getAndroidNavBar().getHomeTab().click();
     }
+    @Step
+    @Override
+    public boolean isNearestStorePageOpened() {
+        return getNearestStorePage().waitUntilIsOpened();
+    }
 }
