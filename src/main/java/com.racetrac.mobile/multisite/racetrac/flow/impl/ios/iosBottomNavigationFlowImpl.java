@@ -103,5 +103,10 @@ public class iosBottomNavigationFlowImpl extends BaseFlow implements NavigationF
         getIosNavBar().getHomeTab().click();
     }
 
+    @Override
+    public boolean isNearestStorePageOpened() {
+        return false;
+    }
+
 }
 

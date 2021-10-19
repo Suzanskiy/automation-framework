@@ -47,4 +47,16 @@ public class AndroidLocationRequestFlowImpl extends BaseFlow implements Location
     public boolean isLocationRequestOpened() {
         return getTurnOnLocationPage().waitUntilIsOpened();
     }
+
+    @Override
+    public void clickWhileUsingTheApp() {
+        getTurnOnLocationPage().getWhileUsingAppBtn().click();
+    }
+
+    @Override
+    public void clickOnlyThisTime() {
+        getTurnOnLocationPage().waitUntilIsOpened();
+        getTurnOnLocationPage().getContinueBtn().click();
+        getTurnOnLocationPage().getOnlyThisTimeBtn().click();
+    }
 }

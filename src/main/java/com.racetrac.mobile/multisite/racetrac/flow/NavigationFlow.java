@@ -1,33 +1,35 @@
 package com.racetrac.mobile.multisite.racetrac.flow;
 
 public interface NavigationFlow {
-    public void navigateToHome();
+    void navigateToHome();
 
-    public void navigateToStores();
+    void navigateToStores();
 
-    public void navigateToCoupons();
+    void navigateToCoupons();
 
-    public void navigateToCards();
+    void navigateToCards();
 
-    public void navigateToInbox();
+    void navigateToInbox();
 
-    public boolean isHomeTabOpened();
+    boolean isHomeTabOpened();
 
-    public boolean isStoresTabOpened();
+    boolean isStoresTabOpened();
 
-    public boolean isCouponsTabOpened();
+    boolean isCouponsTabOpened();
 
-    public boolean isCardsTabOpened();
+    boolean isCardsTabOpened();
 
-    public boolean isInboxTabOpened();
+    boolean isInboxTabOpened();
 
-    public void navigateToRewardsCards();
+    void navigateToRewardsCards();
 
-    public boolean isRewardCatalogDisplayed();
+    boolean isRewardCatalogDisplayed();
 
-    public void navigateToRewardsCatalogViaDrawer();
+    void navigateToRewardsCatalogViaDrawer();
 
-    public void rewardCatalogClick();
+    void rewardCatalogClick();
 
-    public void navigateToHomeFromCouponsPage();
+    void navigateToHomeFromCouponsPage();
+
+    boolean isNearestStorePageOpened();
 }
