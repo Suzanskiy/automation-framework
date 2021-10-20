@@ -57,6 +57,11 @@ public class AndroidLocationRequestFlowImpl extends BaseFlow implements Location
     public void clickOnlyThisTime() {
         getTurnOnLocationPage().waitUntilIsOpened();
         getTurnOnLocationPage().getContinueBtn().click();
-        getTurnOnLocationPage().getOnlyThisTimeBtn().click();
+        try {
+            getDriver().switchTo().alert().accept();
+            getDriver().switchTo().alert().accept();
+        } catch (NoAlertPresentException ignored) {
+
+        }
     }
 }
