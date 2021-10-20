@@ -11,8 +11,14 @@ import org.springframework.stereotype.Component;
 @Component
 @Getter
 public class PriceDisclaimerPage extends BaseMobilePage {
+
     @PageLoading
     @iOSXCUITFindBy(xpath = "//XCUIElementTypeButton[@name=\"OK\"]")
     @AndroidFindBy(id = "com.RaceTrac.Common.qa:id/close_button")
     private MobileElement okButton;
+
+    @PageLoading
+    @AndroidFindBy(xpath ="//android.widget.TextView[@text=\"Price Disclaimer\"]")
+    private MobileElement disclaimer;
+
 }

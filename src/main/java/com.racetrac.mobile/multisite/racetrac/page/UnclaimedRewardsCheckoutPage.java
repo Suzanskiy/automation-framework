@@ -18,11 +18,9 @@ public class UnclaimedRewardsCheckoutPage extends RewardsCheckoutPage {
     @AndroidFindBy(xpath = "//android.widget.TextView[contains(@text,\"added to your account\")]")
     private MobileElement unclaimedRewardsInfo;
 
-    @PageLoading
     @AndroidFindBy(id = "com.RaceTrac.Common.qa:id/tv_unclaimed_title")
     private MobileElement unclaimedRewardName;
 
-    @PageLoading
     @AndroidFindBy(id = "com.RaceTrac.Common.qa:id/tv_unclaimed_timer")
     private MobileElement unclaimedRewardTimer;
 

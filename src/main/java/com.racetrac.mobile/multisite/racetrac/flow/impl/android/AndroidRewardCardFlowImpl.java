@@ -2,6 +2,7 @@ package com.racetrac.mobile.multisite.racetrac.flow.impl.android;
 
 import com.racetrac.mobile.multisite.racetrac.flow.BaseFlow;
 import com.racetrac.mobile.multisite.racetrac.flow.RewardCardFlow;
+import com.racetrac.mobile.util.appium.AppiumWaitingUtils;
 import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Component;
 
@@ -18,6 +19,7 @@ public class AndroidRewardCardFlowImpl extends BaseFlow implements RewardCardFlo
 
     @Override
     public boolean isOrderRewardCardPageDisplayed() {
+        AppiumWaitingUtils.waitUntilElementClickable(getOrderRewardCardPage().getContinueButton());
         return getOrderRewardCardPage().waitUntilIsOpened();
     }
 
