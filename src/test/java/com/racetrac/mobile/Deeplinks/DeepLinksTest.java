@@ -40,7 +40,7 @@ public class DeepLinksTest extends BaseTest {
     @Autowired
     CouponsPopUpFlow couponsPopUpFlow;
     @Autowired
-    AndroidCouponsAuthorizedUserFlowImp androidCouponsAuthorizedUserFlowImp;
+    CouponsAuthorizedUserFlow couponsAuthorizedUserFlow;
     @Autowired
     PunchhPointsClient punchhPointsClient;
     @Autowired
@@ -126,13 +126,12 @@ public class DeepLinksTest extends BaseTest {
         locationRequestFlow.clickContinue();
         assertTrue(couponsPopUpFlow.isCouponsPopUpDisplayed(), "Coupons popUp is not displayed");
         couponsPopUpFlow.clickOnCouponsPopUpGotItBtn();
-        assertTrue(androidCouponsAuthorizedUserFlowImp.isCouponsPageAuthorizedUserOpen(), "Coupons is not opened");
+        assertTrue(couponsAuthorizedUserFlow.isCouponsPageAuthorizedUserOpen(), "Coupons is not opened");
     }
 
     @Test
     public void giftCardTest() {
         deppLinksProvider.openDeepLink(DeepLinks.GIFT_CARD);
-        ;
         assertTrue(signInFlow.isLoginPageOpened(), "Login page is not opened");
         signInFlow.authorize(customerDto);
         locationRequestFlow.clickContinue();
