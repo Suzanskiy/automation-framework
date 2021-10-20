@@ -2,6 +2,7 @@ package com.racetrac.mobile.multisite.racetrac.flow.common;
 
 import com.racetrac.mobile.multisite.racetrac.flow.BaseFlow;
 import com.racetrac.mobile.multisite.racetrac.flow.NotAdultNoticeFlow;
+import com.racetrac.mobile.util.appium.AppiumWaitingUtils;
 import io.qameta.allure.Step;
 import org.springframework.stereotype.Component;
 
@@ -15,6 +16,7 @@ public class NotAdultNoticeFlowImpl extends BaseFlow implements NotAdultNoticeFl
     @Step
     @Override
     public boolean isNotAdultNoticeDisplayed() {
+        AppiumWaitingUtils.waitUntilElementClickable(getNotAdultNotice().getOkButton());
         return getNotAdultNotice().waitUntilIsOpened();
     }
 
