@@ -97,16 +97,15 @@ public class AndroidWelcomeFlowImpl extends BaseFlow implements WelcomeFlow {
         return isRedeemPointsBtnDisplayed();
     }
 
-    @Step
     @Override
     public void swipeToCouponsSection() {
-        swipeUntilElementIsPresent(SwipeScroll.Direction.DOWN, getHomePage().getGiftToAFriendBtn()); //common element for options with and without coupons
+        swipeUntilElementIsPresent(SwipeScroll.Direction.DOWN, getHomePage().getPayWIthGiftCArdBtn()); //common element for options with and without coupons
     }
 
     @Step
     @Override
     public boolean isNoCouponsSectionDisplayed() {
-        return getHomePage().getNoCouponsDisplay().isEnabled();
+        return getHomePage().getNoCouponsDisplay().isDisplayed();
     }
 
     @Step
@@ -128,6 +127,7 @@ public class AndroidWelcomeFlowImpl extends BaseFlow implements WelcomeFlow {
     @Step
     @Override
     public int couponsCarouselQuantity() {
+        swipeToCouponsSection();
         return getHomePage().getCouponsCarousel().size();
     }
 
