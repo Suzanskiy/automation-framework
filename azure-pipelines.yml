@@ -1,4 +1,4 @@
-name: $(Date:yyyyMMdd)$(Rev:.r)
+name: $(Date:yyyy-MM-dd)$(Rev:.r) ios test run
 resources:
   repositories:
     - repository: self
@@ -7,21 +7,65 @@ resources:
       ref: master
       trigger:
         - master
-
+    - repository: ios
+      type: git
+      name: RaceTrac Portfolio/racetrac-ios-app
+      ref: release/5.0.0
+      trigger:
+        branches:
+          include:
+            - release/*
+            - master
+variables:
+  JAVA_HOME: "/Users/tfsuser/OpenJDK8U/jdk8u292-b10/Contents/Home"
+  NODE_TLS_REJECT_UNAUTHORIZED: 0
 pool:
-  name: default
+  name: MacOs
 
 stages:
-  - stage: Test_Android
+  - stage: Build
     jobs:
-      - job: Compile
+      - job: build
         steps:
-          - script: mvn clean compile -Dtest.config=android
-  
-  
+          - checkout: ios
+          - script: 'sh ./Scripts/build_distirbution/build_app_for_automation.sh'
+            displayName: 'Command Line Script'
+            timeoutInMinutes: 30
+          - task: CopyFiles@2
+            displayName: 'Copy Files to: $(build.artifactstagingdirectory)'
+            inputs:
+              SourceFolder: '$(Build.Repository.LocalPath)/build/Build/Products/Debug-iphonesimulator/Development.app'
+              Contents: |
+                **/*.*
+                **/*.app
+                **
+              TargetFolder: '$(build.artifactstagingdirectory)'
+          - task: PublishBuildArtifacts@1
+            displayName: 'Publish Artifact: build'
+            inputs:
+              PathtoPublish: '$(build.artifactstagingdirectory)'
+              ArtifactName: development.app
+
+
   - stage: Test_IOS
     jobs:
       - job: Test
         steps:
-          - script: mvn clean compile -Dtest.config=ios
-              
+          - script: xcrun simctl shutdown all
+          - task: DownloadBuildArtifacts@0
+            inputs:
+              buildType: 'current'
+              downloadType: 'single'
+              artifactName: 'Development.app'
+              downloadPath: '$(Build.Repository.LocalPath)/src/main/resources/apk/'
+          - script: appium -p 4724 & mvn clean test -Dtest.config=ios
+          - script: mvn allure:report
+          - task: PublishTestResults@2
+            inputs:
+              testResultsFormat: 'JUnit'
+              testResultsFiles: '**/TEST-*.xml'
+          - task: PublishBuildArtifacts@1
+            inputs:
+              PathtoPublish: '$(Build.Repository.LocalPath)/target/site/allure-maven-plugin'
+              ArtifactName: 'iOS report'
+              publishLocation: 'Container'
