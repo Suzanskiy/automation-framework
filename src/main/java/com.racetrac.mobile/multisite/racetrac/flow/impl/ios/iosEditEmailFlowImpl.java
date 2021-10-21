@@ -23,6 +23,11 @@ public class iosEditEmailFlowImpl extends BaseFlow implements EditEmailFlow {
     }
 
     @Override
+    public boolean IsUpdatedEmailPageDisplayed() {
+        return false;
+    }
+
+    @Override
     public void navigateBack() {
         try {
             getEditEmailPage().getBackBtn().click();

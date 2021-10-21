@@ -21,6 +21,11 @@ public class AndroidEditEmailFlowImpl extends BaseFlow implements EditEmailFlow 
     }
 
     @Override
+    public boolean IsUpdatedEmailPageDisplayed() {
+        return getUpdatedEmailPage().waitUntilIsOpened();
+    }
+
+    @Override
     public void navigateBack() {
         pressBackBtn();
     }

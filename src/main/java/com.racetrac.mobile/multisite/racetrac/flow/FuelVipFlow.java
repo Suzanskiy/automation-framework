@@ -6,4 +6,8 @@ public interface FuelVipFlow {
     void clickLearnMoreNoSubscription();
 
     void clickVipProgramDetails();
+
+    boolean isFuelVipPageDisplayed();
 }
+
+

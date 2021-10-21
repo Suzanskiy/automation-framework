@@ -48,4 +48,14 @@ public class iosLocationRequestFlowImpl extends BaseFlow implements LocationRequ
     public boolean isLocationRequestOpened() {
         return getTurnOnLocationPage().waitUntilIsOpened();
     }
+
+    @Override
+    public void clickWhileUsingTheApp() {
+
+    }
+
+    @Override
+    public void clickOnlyThisTime() {
+
+    }
 }

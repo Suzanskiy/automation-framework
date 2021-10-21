@@ -1,6 +1,5 @@
 package com.racetrac.mobile.multisite.racetrac.flow.impl.android;
 
-import com.racetrac.mobile.multisite.racetrac.flow.AccountSettingsFlow;
 import com.racetrac.mobile.multisite.racetrac.flow.BaseFlow;
 import com.racetrac.mobile.multisite.racetrac.flow.FuelVipFlow;
 import io.qameta.allure.Step;
@@ -10,7 +9,6 @@ import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Component;
 
 import static com.racetrac.mobile.framework.constants.PlatformsConstants.ANDROID;
-import static com.racetrac.mobile.util.appium.AppiumDriverUtils.pressBackBtn;
 
 @Profile(ANDROID)
 @Component
@@ -37,7 +35,7 @@ public class AndroidFuelVipFlowImpl extends BaseFlow implements FuelVipFlow {
             getChromeAcceptTermsPage().getTermsAcceptBtn().click();
             getTurnOnSyncNowPage().waitUntilIsOpened();
             getTurnOnSyncNowPage().getNoThanksBtn().click();
-        } catch (TimeoutException| NoSuchElementException e) {
+        } catch (TimeoutException | NoSuchElementException e) {
             LOG.debug("Chrome not showed first run page. Its ok");
         }
     }
@@ -47,6 +45,11 @@ public class AndroidFuelVipFlowImpl extends BaseFlow implements FuelVipFlow {
     public void clickVipProgramDetails() {
         getFuelVipPage().getFuelVIPProgramDetailsSection().click();
         handleBrowserOpening();
+    }
+
+    @Override
+    public boolean isFuelVipPageDisplayed() {
+        return getFuelVipPage().waitUntilIsOpened();
     }
 
 }

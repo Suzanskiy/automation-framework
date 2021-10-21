@@ -5,7 +5,6 @@ import com.racetrac.mobile.multisite.racetrac.page.chrome.ChromeAcceptTermsPage;
 import com.racetrac.mobile.multisite.racetrac.page.chrome.ChromeMainPage;
 import com.racetrac.mobile.multisite.racetrac.page.chrome.TurnOnSyncNowPage;
 import com.racetrac.mobile.multisite.racetrac.page.diff.AccountSettingsPageAuthorised;
-import com.racetrac.mobile.multisite.racetrac.page.RewardsCheckoutPage;
 import com.racetrac.mobile.multisite.racetrac.page.safari.SafariBrowserPage;
 import com.racetrac.mobile.multisite.racetrac.views.*;
 import lombok.Getter;
@@ -55,6 +54,15 @@ public class BaseFlow {
     CouponsAuthorizedUserPage couponsAuthorizedUserPage;
     HelpInformationPage helpInformationPage;
     ContactUsPage contactUsPage;
+    OrderRewardCardPage orderRewardCardPage;
+    GiftcardPage giftcardPage;
+    AuthorisedUserInboxPage authorisedUserInboxPage;
+    RewardsDebitCardPage rewardsDebitCardPage;
+    UpdatedEmailPage updatedEmailPage;
+    UpgradeRewardCardPage upgradeRewardCardPage;
+    NearestStorePage nearestStorePage;
+
+
     //    SECTIONS
     NavigationDrawer navigationDrawer;
     AndroidNavBar androidNavBar;

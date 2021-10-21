@@ -30,4 +30,9 @@ public class iosFuelVipFlowImpl extends BaseFlow implements FuelVipFlow {
     public void clickVipProgramDetails() {
         getFuelVipPage().getFuelVIPProgramDetailsSection().click();
     }
+
+    @Override
+    public boolean isFuelVipPageDisplayed() {
+        return false;
+    }
 }

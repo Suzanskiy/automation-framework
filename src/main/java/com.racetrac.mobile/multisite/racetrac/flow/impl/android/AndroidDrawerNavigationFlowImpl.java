@@ -2,6 +2,7 @@ package com.racetrac.mobile.multisite.racetrac.flow.impl.android;
 
 import com.racetrac.mobile.multisite.racetrac.flow.BaseFlow;
 import com.racetrac.mobile.multisite.racetrac.flow.NavigationFlow;
+import com.racetrac.mobile.util.appium.AppiumWaitingUtils;
 import io.qameta.allure.Step;
 import org.openqa.selenium.NoSuchElementException;
 import org.springframework.context.annotation.Profile;
@@ -115,5 +116,11 @@ public class AndroidDrawerNavigationFlowImpl extends BaseFlow implements Navigat
     public void navigateToHomeFromCouponsPage() {
         getNavigationDrawer().getDrawerFromCouponsPage().click();
         getAndroidNavBar().getHomeTab().click();
+    }
+    @Step
+    @Override
+    public boolean isNearestStorePageOpened() {
+        AppiumWaitingUtils.waitUntilElementClickable(getNearestStorePage().getStoreName());
+        return getNearestStorePage().waitUntilIsOpened();
     }
 }
