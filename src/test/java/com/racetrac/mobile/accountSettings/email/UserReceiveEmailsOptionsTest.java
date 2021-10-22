@@ -65,6 +65,7 @@ public class UserReceiveEmailsOptionsTest extends BaseTest {
         signUpFlow.isFistBumpPageOpened();
         signUpFlow.clickGetStartedBtn();
         locationRequestFlow.clickContinue();
+        notificationRequestFlow.clickNotNow();
         becomeFuelVipFlow.waitUntilBecomeFuelVipLoaded();
         assertTrue(becomeFuelVipFlow.checkAllElementsIsLoaded(), "Elements are not loaded");
 
@@ -93,6 +94,7 @@ public class UserReceiveEmailsOptionsTest extends BaseTest {
         signUpFlow.isFistBumpPageOpened();
         signUpFlow.clickGetStartedBtn();
         locationRequestFlow.clickContinue();
+        notificationRequestFlow.clickNotNow();
         becomeFuelVipFlow.waitUntilBecomeFuelVipLoaded();
         assertTrue(becomeFuelVipFlow.checkAllElementsIsLoaded(), "Elements are not loaded");
 
