@@ -13,7 +13,7 @@ public abstract class UrlUtils {
     public static final String SUPPORT_ENDPOINT = "/api2/dashboard/users/support";
     public static final String PUNCH_CLIENT_ID = "1533b61caecaddd0fea4303aa1f4bad8321d6d8e7a843593e4a0e0024ae0d30b";
     public static final String SECRET = "46e1c9cb272946ceacf5f0e751006355e17258c5c74cd259d433128b50a0d55e";
-    public static final String ADMIN_SECRET = "zYXxn5VNy8Zt7Z1bNa6w";
+    public static final String ADMIN_SECRET = "FhgcJa6LsD3Ubcuas9aH";
 
 
 }

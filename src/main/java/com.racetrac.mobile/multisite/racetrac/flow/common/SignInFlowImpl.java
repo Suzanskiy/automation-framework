@@ -21,7 +21,6 @@ public class SignInFlowImpl extends BaseFlow implements SignInFlow {
     @Step
     @Override
     public boolean isLoginPageOpened() {
-        AppiumWaitingUtils.waitUntilElementClickable(getLoginPage().getEmailInput());
         return getLoginPage().waitUntilIsOpened();
     }
 

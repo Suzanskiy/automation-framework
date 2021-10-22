@@ -4,6 +4,7 @@ import com.racetrac.mobile.multisite.racetrac.flow.BaseFlow;
 import com.racetrac.mobile.multisite.racetrac.flow.WelcomeFlow;
 import io.qameta.allure.Step;
 import org.openqa.selenium.NoSuchElementException;
+import org.openqa.selenium.TimeoutException;
 import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Component;
 
@@ -114,10 +115,10 @@ public class IosWelcomeFlowImpl extends BaseFlow implements WelcomeFlow {
     @Override
     public boolean isViewAllCouponsBtnDisplayed() {
         getHomePage().refresh();
-        waitUntilElementClickable(getHomePage().getViewAllCouponsBtn());
         try {
+            waitUntilElementClickable(getHomePage().getViewAllCouponsBtn());
             return getHomePage().getViewAllCouponsBtn().isDisplayed();
-        } catch (NoSuchElementException e) {
+        } catch (NoSuchElementException | TimeoutException e) {
             return false;
         }
     }

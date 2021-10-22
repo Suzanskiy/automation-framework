@@ -61,7 +61,7 @@ public class HomePage extends BaseMobilePage {
     private MobileElement viewAllCouponsBtn;
 
     @AndroidFindBy(id = "com.RaceTrac.Common.qa:id/getFriendBtn")
-    @iOSXCUITFindBy(iOSClassChain = "**/XCUIElementTypeButton[`label == \"GIFT TO A FRIEND\"`]")
+    @iOSXCUITFindBy(xpath = "//XCUIElementTypeButton[@name=\"GIFT TO A FRIEND\"]")
     private MobileElement giftToAFriendBtn;
 
     @AndroidFindBy(id = "com.RaceTrac.Common.qa:id/carouselNoOffers")
