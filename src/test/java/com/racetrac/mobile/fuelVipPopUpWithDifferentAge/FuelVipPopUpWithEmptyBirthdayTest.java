@@ -55,7 +55,6 @@ public class FuelVipPopUpWithEmptyBirthdayTest extends BaseTest {
         signUpFlow.enterCredentials(customerDto);
         signUpFlow.isFistBumpPageOpened();
         signUpFlow.clickGetStartedBtn();
-        notificationRequestFlow.iosClickNotNow();
         locationRequestFlow.clickContinue();
         assertTrue(becomeFuelVipFlow.checkAllElementsIsLoaded(), "Elements are not loaded");
         becomeFuelVipFlow.clickNotRightNow();

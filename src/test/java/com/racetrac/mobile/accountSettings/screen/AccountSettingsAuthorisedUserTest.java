@@ -65,7 +65,6 @@ public class AccountSettingsAuthorisedUserTest extends BaseTest {
         assertTrue(signInFlow.isLoginPageOpened(), "Login page is not opened");
         customerDto = testData.registerNewCustomer();
         signInFlow.authorize(customerDto);
-        notificationRequestFlow.iosClickNotNow();
         locationRequestFlow.clickContinue();
         notificationRequestFlow.clickNotNow();
         rewardsPopupFlow.clickGotItBtn();
@@ -111,7 +110,6 @@ public class AccountSettingsAuthorisedUserTest extends BaseTest {
         assertTrue(signInFlow.isLoginPageOpened(), "Login page is not opened");
         customerDto = testData.registerNewCustomer(UNDER_21);
         signInFlow.authorize(customerDto);
-        notificationRequestFlow.iosClickNotNow();
         locationRequestFlow.clickContinue();
         notificationRequestFlow.clickNotNow();
         rewardsPopupFlow.clickGotItBtn();
@@ -135,7 +133,6 @@ public class AccountSettingsAuthorisedUserTest extends BaseTest {
         assertTrue(signInFlow.isLoginPageOpened(), "Login page is not opened");
         customerDto = testData.registerNewCustomer(UNDER_21);
         signInFlow.authorize(customerDto);
-        notificationRequestFlow.iosClickNotNow();
         locationRequestFlow.clickContinue();
         notificationRequestFlow.clickNotNow();
         rewardsPopupFlow.clickGotItBtn();
@@ -163,7 +160,6 @@ public class AccountSettingsAuthorisedUserTest extends BaseTest {
         signInFlow.openLoginInPage();
         assertTrue(signInFlow.isLoginPageOpened(), "Login page is not opened");
         signInFlow.authorize(customerDto);
-        notificationRequestFlow.iosClickNotNow();
 
         locationRequestFlow.clickContinue();
         notificationRequestFlow.clickNotNow();
@@ -193,7 +189,6 @@ public class AccountSettingsAuthorisedUserTest extends BaseTest {
         signInFlow.openLoginInPage();
         assertTrue(signInFlow.isLoginPageOpened(), "Login page is not opened");
         signInFlow.authorize(customerDto);
-        notificationRequestFlow.iosClickNotNow();
 
         locationRequestFlow.clickContinue();
         notificationRequestFlow.clickNotNow();

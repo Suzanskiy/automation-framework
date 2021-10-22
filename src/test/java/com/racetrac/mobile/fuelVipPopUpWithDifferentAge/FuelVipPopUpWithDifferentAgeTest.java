@@ -46,7 +46,6 @@ public class FuelVipPopUpWithDifferentAgeTest extends BaseTest {
         signUpFlow.enterCredentials(customerDto);
         signUpFlow.isFistBumpPageOpened();
         signUpFlow.clickGetStartedBtn();
-        notificationRequestFlow.iosClickNotNow();
 
         locationRequestFlow.clickContinue();
         becomeFuelVipFlow.waitUntilBecomeFuelVipLoaded();
@@ -61,7 +60,6 @@ public class FuelVipPopUpWithDifferentAgeTest extends BaseTest {
         signUpFlow.enterCredentials(customerDto);
         signUpFlow.isFistBumpPageOpened();
         signUpFlow.clickGetStartedBtn();
-        notificationRequestFlow.iosClickNotNow();
 
         notificationRequestFlow.clickNotNow();
 

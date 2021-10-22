@@ -52,7 +52,6 @@ public class ContactUsAuthorizedTest extends BaseTest {
         assertTrue(signInFlow.isLoginPageOpened(), "Login page is not opened");
         customerDto = testData.registerNewCustomer();
         signInFlow.authorize(customerDto);
-        notificationRequestFlow.iosClickNotNow();
         locationRequestFlow.clickContinue();
         notificationRequestFlow.clickNotNow();
         rewardsPopupFlow.clickGotItBtn();

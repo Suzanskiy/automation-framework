@@ -38,8 +38,4 @@ public class AndroidNotificationRequestFlowImpl extends BaseFlow implements Noti
         getTurnOnNotificationPage().getTurnOnBtn().click();
     }
 
-    @Override
-    public void iosClickNotNow() {
-        LOG.info("Not used in android.. skip");
-    }
 }

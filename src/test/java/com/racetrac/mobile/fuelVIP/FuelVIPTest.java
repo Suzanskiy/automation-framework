@@ -67,10 +67,8 @@ public class FuelVIPTest extends BaseTest {
         signInFlow.openLoginInPage();
         assertTrue(signInFlow.isLoginPageOpened(), "Login page is not opened");
         signInFlow.authorize(customerDto);
-        notificationRequestFlow.iosClickNotNow();
         locationRequestFlow.clickContinue();
         notificationRequestFlow.clickNotNow();
-      //  promotionalOffersFlow.skipIOSPromotions();
         rewardsPopupFlow.clickGotItBtn();
         pointsAndLevelsFlow.clickGotItBtn();
         assertTrue(welcomeFlow.isHomePageOpenedAfterSignIn(), "Welcome page is not opened after sign in");

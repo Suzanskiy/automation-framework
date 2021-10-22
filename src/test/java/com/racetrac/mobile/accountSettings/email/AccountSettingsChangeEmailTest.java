@@ -56,7 +56,6 @@ public class AccountSettingsChangeEmailTest extends BaseTest {
         signInFlow.openLoginInPage();
         assertTrue(signInFlow.isLoginPageOpened(), "Login page is not opened");
         signInFlow.authorize(customerDto);
-        notificationRequestFlow.iosClickNotNow();
         locationRequestFlow.clickContinue();
         notificationRequestFlow.clickNotNow();
 
@@ -93,7 +92,6 @@ public class AccountSettingsChangeEmailTest extends BaseTest {
         signInFlow.openLoginInPage();
         assertTrue(signInFlow.isLoginPageOpened(), "Login page is not opened");
         signInFlow.authorize(customerDto);
-        notificationRequestFlow.iosClickNotNow();
         locationRequestFlow.clickContinue();
         notificationRequestFlow.clickNotNow();
         signInFlow.clickGotItBtn();

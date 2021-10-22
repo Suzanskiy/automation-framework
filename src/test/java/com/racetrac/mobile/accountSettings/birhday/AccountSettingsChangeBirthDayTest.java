@@ -61,7 +61,6 @@ public class AccountSettingsChangeBirthDayTest extends BaseTest {
 
         customerDto = testData.registerNewCustomer();
         signInFlow.authorize(customerDto);
-        notificationRequestFlow.iosClickNotNow();
         locationRequestFlow.clickContinue();
         notificationRequestFlow.clickNotNow();
         signInFlow.clickGotItBtn();
@@ -87,7 +86,6 @@ public class AccountSettingsChangeBirthDayTest extends BaseTest {
         customerDto = testData.registerNewCustomer(CustomerAge.NOT_SPECIFIED_BIRTHDATE);
 
         signInFlow.authorize(customerDto);
-        notificationRequestFlow.iosClickNotNow();
         locationRequestFlow.clickContinue();
         notificationRequestFlow.clickNotNow();
         signInFlow.clickGotItBtn();

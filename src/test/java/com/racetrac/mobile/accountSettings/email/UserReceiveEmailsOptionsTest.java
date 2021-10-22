@@ -64,7 +64,6 @@ public class UserReceiveEmailsOptionsTest extends BaseTest {
         signUpFlow.enterCredentials(customerDto);
         signUpFlow.isFistBumpPageOpened();
         signUpFlow.clickGetStartedBtn();
-        notificationRequestFlow.iosClickNotNow();
         locationRequestFlow.clickContinue();
         becomeFuelVipFlow.waitUntilBecomeFuelVipLoaded();
         assertTrue(becomeFuelVipFlow.checkAllElementsIsLoaded(), "Elements are not loaded");
@@ -93,7 +92,6 @@ public class UserReceiveEmailsOptionsTest extends BaseTest {
         signUpFlow.enterCredentialsWithoutEmailReceive(customerDto);
         signUpFlow.isFistBumpPageOpened();
         signUpFlow.clickGetStartedBtn();
-        notificationRequestFlow.iosClickNotNow();
         locationRequestFlow.clickContinue();
         becomeFuelVipFlow.waitUntilBecomeFuelVipLoaded();
         assertTrue(becomeFuelVipFlow.checkAllElementsIsLoaded(), "Elements are not loaded");

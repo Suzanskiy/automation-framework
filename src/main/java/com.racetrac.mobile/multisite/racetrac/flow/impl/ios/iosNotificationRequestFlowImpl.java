@@ -9,7 +9,6 @@ import org.openqa.selenium.TimeoutException;
 import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Component;
 
-import static com.racetrac.mobile.framework.constants.PlatformsConstants.ANDROID;
 import static com.racetrac.mobile.framework.constants.PlatformsConstants.IOS;
 
 @Profile(IOS)
@@ -37,8 +36,4 @@ public class iosNotificationRequestFlowImpl extends BaseFlow implements Notifica
 
     }
 
-    @Override
-    public void iosClickNotNow() {
-        clickNotNow();
-    }
 }
