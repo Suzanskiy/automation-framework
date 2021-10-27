@@ -27,7 +27,7 @@ public class AppiumWaitingUtils {
         return getAppiumDriverWait(timeout).until(userCondition);
     }
 
-    private static WebDriverWait getAppiumDriverWait(final long timeout) {
+    public static WebDriverWait getAppiumDriverWait(final long timeout) {
         return new WebDriverWait(getDriver(), timeout);
     }
 
