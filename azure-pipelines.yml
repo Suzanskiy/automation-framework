@@ -22,6 +22,11 @@ variables:
 pool:
   name: MacOs
 
+trigger:
+  branches:
+    include:
+      - master
+
 stages:
   - stage: Build
     jobs:
