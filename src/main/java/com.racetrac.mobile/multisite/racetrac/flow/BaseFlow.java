@@ -61,6 +61,7 @@ public class BaseFlow {
     UpdatedEmailPage updatedEmailPage;
     UpgradeRewardCardPage upgradeRewardCardPage;
     NearestStorePage nearestStorePage;
+    FAQPage faqPage;
 
 
     //    SECTIONS
