@@ -91,7 +91,7 @@ public final class AppiumConfiguration {
                 throw new IllegalArgumentException(Exceptions.WRONG_NAME.message);
             }
         }
-        capabilities.setCapability("isHeadless", true);
+       // capabilities.setCapability("isHeadless", true);
         capabilities.setCapability("app", getAppAbsolutePath());
 
         switch (getTestPlatform()) {
@@ -109,6 +109,7 @@ public final class AppiumConfiguration {
                 capabilities.setCapability(AUTOMATION_NAME, "XCUITest");
                 capabilities.setCapability(DEVICE_NAME, getDeviceName());
                 capabilities.setCapability(BUNDLE_ID, getBundleId());
+                capabilities.setCapability("useNewWDA", "true");
                 break;
             }
             default: {
