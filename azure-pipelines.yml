@@ -55,6 +55,7 @@ stages:
   - stage: Test_IOS
     jobs:
       - job: Test
+        timeoutInMinutes: 240
         steps:
           - script: xcrun simctl shutdown all
           - task: DownloadBuildArtifacts@0
