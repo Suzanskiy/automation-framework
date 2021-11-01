@@ -6,6 +6,7 @@ import com.racetrac.mobile.multisite.racetrac.page.RewardsPopupPage;
 import com.racetrac.mobile.multisite.racetrac.page.TurnOnLocationPage;
 import com.racetrac.mobile.multisite.racetrac.util.AuthenticationUtil;
 import com.racetrac.mobile.multisite.racetrac.views.PointsAndLevelsView;
+import io.qameta.allure.Step;
 import org.openqa.selenium.TimeoutException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Profile;
@@ -32,6 +33,7 @@ public class iosAuthenticationUtilImpl extends BaseFlow implements Authenticatio
         }
     }
 
+    @Step
     private void tryToCLoseRewardView(final RewardsPopupPage rewards) {
         try {
             if (rewards.waitUntilIsOpened()) {
@@ -41,6 +43,7 @@ public class iosAuthenticationUtilImpl extends BaseFlow implements Authenticatio
         }
     }
 
+    @Step
     private void tryToClosePointsView(final PointsAndLevelsView points) {
 
         try {
@@ -50,7 +53,7 @@ public class iosAuthenticationUtilImpl extends BaseFlow implements Authenticatio
         } catch (TimeoutException ignored) {
         }
     }
-
+    @Step
     private void tryToCloseLocationPage(final TurnOnLocationPage turnOnLocationPage) {
 
         try {

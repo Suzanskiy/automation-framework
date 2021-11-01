@@ -57,7 +57,7 @@ stages:
       - job: Test
         timeoutInMinutes: 240
         steps:
-          - script: xcrun simctl shutdown all
+          - script: xcrun simctl shutdown all && xcrun simctl erase all
           - task: DownloadBuildArtifacts@0
             inputs:
               buildType: 'current'

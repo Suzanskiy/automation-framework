@@ -109,7 +109,6 @@ public final class AppiumConfiguration {
                 capabilities.setCapability(AUTOMATION_NAME, "XCUITest");
                 capabilities.setCapability(DEVICE_NAME, getDeviceName());
                 capabilities.setCapability(BUNDLE_ID, getBundleId());
-                capabilities.setCapability("–session-override", true);
                 break;
             }
             default: {

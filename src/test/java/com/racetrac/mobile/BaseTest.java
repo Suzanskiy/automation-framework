@@ -17,7 +17,6 @@ import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Listeners;
 
-import java.io.IOException;
 import java.util.Arrays;
 
 import static com.racetrac.mobile.util.allure.AllureEnvironmentUtils.copyEnvPropToAllureResults;
@@ -37,7 +36,7 @@ public class BaseTest extends AbstractTestNGSpringContextTests {
     protected AuthenticationUtil authenticationUtil;
 
     @BeforeMethod(alwaysRun = true)
-    public void launch()  {
+    public void launch() {
         LOG.info("Launch application");
         authenticationUtil.prepareAppAfterBrokenSignOut(); // and launch app
     }
@@ -59,7 +58,7 @@ public class BaseTest extends AbstractTestNGSpringContextTests {
     }
 
     @AfterSuite(alwaysRun = true)
-    public void beforeSuite() {
+    public void afterSuite() {
         createEnvironmentProperties();
         copyEnvPropToAllureResults();
     }
