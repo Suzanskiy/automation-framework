@@ -16,6 +16,13 @@ resources:
           include:
             - release/*
             - master
+  pipelines:
+    - pipeline: ios-pipeline
+      source: [iOS] Validate PR
+      trigger:
+        branches:
+          - release/*
+          - master
 variables:
   JAVA_HOME: "/Users/tfsuser/OpenJDK8U/jdk8u292-b10/Contents/Home"
   NODE_TLS_REJECT_UNAUTHORIZED: 0
