@@ -23,17 +23,18 @@ public class BaseTestListenerAdapter extends TestListenerAdapter {
 
     @Override
     public void onTestFailure(ITestResult tr) {
-        super.onTestFailure(tr);
         saveScreenshotPNG();
         if (tr.getThrowable() instanceof NoSuchElementException) {
             attachSourceCode();
         }
+        super.onTestFailure(tr);
+
     }
 
     @Override
     public void onTestSkipped(ITestResult tr) {
-        super.onTestSkipped(tr);
         saveScreenshotPNG();
+        super.onTestSkipped(tr);
     }
 
     @Override

@@ -56,7 +56,8 @@ public abstract class BaseMobilePage implements MobilePage {
         Wait<WebDriver> wait = new FluentWait<WebDriver>(getDriver())
                 .withTimeout(Duration.ofSeconds(15))
                 .pollingEvery(Duration.ofSeconds(5))
-                .ignoring(NoSuchElementException.class);
+                .ignoring(NoSuchElementException.class)
+                .ignoring(StaleElementReferenceException.class);
 
         final List<Field> annotatedElementsList = getMobileElementsNamesWithAnnotationPageLoading();
 

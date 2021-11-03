@@ -21,6 +21,7 @@ public class iosAuthenticationUtilImpl extends BaseFlow implements Authenticatio
     @Autowired
     SignOutFlow signOutFlow;
 
+    @Step
     @Override
     public void prepareAppAfterBrokenSignOut() {
         getDriver().launchApp();
@@ -53,6 +54,7 @@ public class iosAuthenticationUtilImpl extends BaseFlow implements Authenticatio
         } catch (TimeoutException ignored) {
         }
     }
+
     @Step
     private void tryToCloseLocationPage(final TurnOnLocationPage turnOnLocationPage) {
 
