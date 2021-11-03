@@ -18,18 +18,13 @@ resources:
             - master
   pipelines:
     - pipeline: ios-pipeline
-      source: "[iOS] Validate PR"
+      source: "[iOS] Sandbox Testflight build"
       trigger: true
 variables:
   JAVA_HOME: "/Users/tfsuser/OpenJDK8U/jdk8u292-b10/Contents/Home"
   NODE_TLS_REJECT_UNAUTHORIZED: 0
 pool:
   name: MacOs
-
-trigger:
-  branches:
-    include:
-      - master
 
 stages:
   - stage: Build
