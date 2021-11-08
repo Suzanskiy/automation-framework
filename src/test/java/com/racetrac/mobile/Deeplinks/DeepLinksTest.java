@@ -72,7 +72,7 @@ public class DeepLinksTest extends BaseTest {
         deppLinksProvider.openDeepLink(DeepLinks.STORE_FINDER);
         assertTrue(signInFlow.isLoginPageOpened(), "Login page is not opened");
         signInFlow.authorize(customerDto);
-        locationRequestFlow.clickContinue();
+        locationRequestFlow.clickTurnOn();
         assertTrue(priceDisclaimerFlow.isPriceDisclaimerOpened(), "Price disclaimer page is not opened");
         priceDisclaimerFlow.clickOkBtn();
         assertTrue(navigationFlow.isStoresTabOpened());

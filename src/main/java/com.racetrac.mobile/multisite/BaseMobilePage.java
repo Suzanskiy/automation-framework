@@ -2,7 +2,6 @@ package com.racetrac.mobile.multisite;
 
 
 import com.racetrac.mobile.framework.annotations.PageLoading;
-import com.racetrac.mobile.util.appium.AppiumWaitingUtils;
 import io.appium.java_client.MobileElement;
 import io.appium.java_client.pagefactory.AppiumFieldDecorator;
 import org.openqa.selenium.NoSuchElementException;
@@ -27,11 +26,6 @@ import java.util.stream.Collectors;
 
 import static com.racetrac.mobile.framework.enums.Exceptions.NO_PAGE_LOADING;
 import static com.racetrac.mobile.util.appium.AppiumDriverUtils.getDriver;
-import static com.racetrac.mobile.util.appium.AppiumDriverUtils.swipeDown;
-import static com.racetrac.mobile.util.appium.AppiumDriverUtils.swipeDownGently;
-import static com.racetrac.mobile.util.appium.AppiumDriverUtils.swipeUP;
-import static com.racetrac.mobile.util.appium.AppiumDriverUtils.swipeUPGently;
-import static java.util.concurrent.TimeUnit.SECONDS;
 
 public abstract class BaseMobilePage implements MobilePage {
 
@@ -70,7 +64,6 @@ public abstract class BaseMobilePage implements MobilePage {
         return true;
     }
 
-
     private List<WebElement> convertFieldsToWebElements(final List<Field> annotatedElementsList) {
         List<WebElement> webElements = new ArrayList<>();
         annotatedElementsList
@@ -88,67 +81,6 @@ public abstract class BaseMobilePage implements MobilePage {
 
                 );
         return webElements;
-    }
-
-    @Override
-    public boolean shortWaitUntilIsOpened() {
-        return AppiumWaitingUtils.waitUntilIsTrue(this::checkAllElementsOfPage, 1);
-    }
-
-    private List<Field> checkElementToBeVisible(List<Field> elements) {
-        return elements
-                .stream()
-                .parallel()
-                .filter(field -> {
-                            MobileElement element = null;
-                            final String methodName = getMethodNameByField(field);
-                            try {
-                                element = (MobileElement) invokeGetMethodOfElement(methodName); // invoke getObject method
-                                //   LOG.info("Checking element: " + field.getName() + " ---------->>>>> " + "(" + element.isDisplayed() + ")");
-                                return element.isDisplayed();
-                            } catch (NoSuchElementException e) {
-                                LOG.info("!!!! Element [ " + field.getName() + " ] on " + getClass().getSimpleName() + " not exists !!!! ");
-                            } catch (IllegalAccessException | InvocationTargetException | StaleElementReferenceException | NoSuchMethodException e) {
-                                LOG.info("---------->>>>> " + e.getMessage());
-                            } catch (TimeoutException e) {
-                                LOG.warn("---------->>>>> " + e.getMessage());
-                            }
-                            return false;
-                        }
-                )
-                .collect(Collectors.toList());
-    }
-
-    private boolean checkAllElementsOfPage() {
-        LOG.info("Checking if page " + getClass().getSimpleName() + " is opened.");
-        List<Field> pageObjectFields = getMobileElementsNamesWithAnnotationPageLoading();
-
-        List<Field> foundItems = checkElementToBeVisible(pageObjectFields);
-        List<Field> notFoundItems = new ArrayList<>();
-
-        final List<Field> finalFoundItems = foundItems;
-        pageObjectFields.forEach(
-                x -> {
-                    if (!finalFoundItems.contains(x)) {
-                        notFoundItems.add(x);
-                    }
-                }
-        );
-
-        if (notFoundItems.size() == 1) {
-            if (pageObjectFields.size() >= 4) //if page has a lot of elements, last not found may be hidden
-            {
-                swipeUPGently();
-                swipeDownGently();
-            }
-            foundItems.addAll(checkElementToBeVisible(notFoundItems));  // recheck without scrolling
-        } else if (notFoundItems.size() >= 2) {
-            swipeUP();
-            foundItems.addAll(checkElementToBeVisible(notFoundItems));  // recheck
-            swipeDown();
-        }
-
-        return foundItems.size() == pageObjectFields.size();
     }
 
     private Object invokeGetMethodOfElement(final String methodName) throws IllegalAccessException, InvocationTargetException, NoSuchMethodException {

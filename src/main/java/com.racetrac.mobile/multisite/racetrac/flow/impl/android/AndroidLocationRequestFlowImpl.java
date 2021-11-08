@@ -3,6 +3,7 @@ package com.racetrac.mobile.multisite.racetrac.flow.impl.android;
 import com.racetrac.mobile.multisite.racetrac.flow.BaseFlow;
 import com.racetrac.mobile.multisite.racetrac.flow.LocationRequestFlow;
 import io.qameta.allure.Step;
+import org.openqa.selenium.InvalidElementStateException;
 import org.openqa.selenium.NoAlertPresentException;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.TimeoutException;
@@ -40,7 +41,24 @@ public class AndroidLocationRequestFlowImpl extends BaseFlow implements Location
 
     @Step
     public void clickTurnOn() {
-        getTurnOnLocationPage().getTurnOnBtn().click();
+        try {
+            getTurnOnLocationPage().waitUntilIsOpened();
+            waitUntilElementClickable(getTurnOnLocationPage().getContinueBtn());
+            getTurnOnLocationPage().getContinueBtn().click();
+        } catch (TimeoutException | NoSuchElementException e) {
+            LOG.warn("Location page is not opened here, refreshing");
+        }
+
+        try {
+            waitUntilAlertIsPresent();
+            getDriver().switchTo().alert().accept();
+            waitUntilAlertIsPresent();
+            getDriver().switchTo().alert().accept();
+        } catch (NoAlertPresentException | InvalidElementStateException e) {
+            LOG.warn("unable to skip native location request");
+        } catch (TimeoutException e) {
+            LOG.info("Got timeout excpetion while waiting for native location request window");
+        }
     }
 
     @Override

@@ -9,6 +9,8 @@ import java.io.File;
 import java.util.logging.Level;
 
 import static com.racetrac.mobile.framework.appium.Platform.valueOf;
+import static io.appium.java_client.remote.AndroidMobileCapabilityType.AVD_ARGS;
+import static io.appium.java_client.remote.AndroidMobileCapabilityType.DISABLE_WINDOW_ANIMATION;
 import static io.appium.java_client.remote.MobileCapabilityType.ACCEPT_SSL_CERTS;
 import static io.appium.java_client.remote.MobileCapabilityType.AUTOMATION_NAME;
 import static io.appium.java_client.remote.MobileCapabilityType.DEVICE_NAME;
@@ -76,6 +78,7 @@ public final class AppiumConfiguration {
         }
         return files[0].getAbsolutePath();
     }
+
     public static DesiredCapabilities getDesiredCapabilities() {
         final DesiredCapabilities capabilities = new DesiredCapabilities();
         capabilities.setCapability(ACCEPT_SSL_CERTS, true);
@@ -102,6 +105,8 @@ public final class AppiumConfiguration {
                 capabilities.setCapability("avdLaunchTimeout", "150000");
                 capabilities.setCapability("avdReadyTimeout", "150000");
                 capabilities.setCapability("androidInstallTimeout", "150000");
+                capabilities.setCapability(DISABLE_WINDOW_ANIMATION, true);
+                capabilities.setCapability(AVD_ARGS, "-skin 400x900 -no-audio -no-snapshot");
                 break;
             }
             case IOS: {

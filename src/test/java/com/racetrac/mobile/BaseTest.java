@@ -4,7 +4,6 @@ package com.racetrac.mobile;
 import com.racetrac.mobile.framework.CustomContextInitializer;
 import com.racetrac.mobile.framework.config.MobileContextConfig;
 import com.racetrac.mobile.multisite.racetrac.data.TestData;
-import com.racetrac.mobile.multisite.racetrac.util.AuthenticationUtil;
 import com.racetrac.mobile.util.listeners.BaseTestListenerAdapter;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -32,13 +31,11 @@ public class BaseTest extends AbstractTestNGSpringContextTests {
 
     @Autowired
     protected TestData testData;
-    @Autowired
-    protected AuthenticationUtil authenticationUtil;
 
     @BeforeMethod(alwaysRun = true)
     public void launch() {
         LOG.info("Launch application");
-        authenticationUtil.prepareAppAfterBrokenSignOut(); // and launch app
+        getDriver().launchApp();
     }
 
     @AfterMethod(alwaysRun = true)
@@ -48,7 +45,7 @@ public class BaseTest extends AbstractTestNGSpringContextTests {
     }
 
     @BeforeMethod(alwaysRun = true)
-    public void a1loggingBefore(ITestResult iTestResult) {
+    void a1loggingBefore(ITestResult iTestResult) {
         LOG.info(iTestResult.getMethod().getMethodName() + " is running");
     }
 
