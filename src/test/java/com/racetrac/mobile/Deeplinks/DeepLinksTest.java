@@ -13,6 +13,8 @@ import com.racetrac.mobile.multisite.racetrac.flow.GiftcardFlow;
 import com.racetrac.mobile.multisite.racetrac.flow.InboxFlow;
 import com.racetrac.mobile.multisite.racetrac.flow.LocationRequestFlow;
 import com.racetrac.mobile.multisite.racetrac.flow.NavigationFlow;
+import com.racetrac.mobile.multisite.racetrac.flow.NotificationRequestFlow;
+import com.racetrac.mobile.multisite.racetrac.flow.PointsAndLevelsFlow;
 import com.racetrac.mobile.multisite.racetrac.flow.PriceDisclaimerFlow;
 import com.racetrac.mobile.multisite.racetrac.flow.ProfileFlow;
 import com.racetrac.mobile.multisite.racetrac.flow.PromotionalOffersFlow;
@@ -70,12 +72,15 @@ public class DeepLinksTest extends BaseTest {
     FuelVipFlow fuelVipFlow;
     @Autowired
     DeppLinksProvider deppLinksProvider;
+    @Autowired
+    NotificationRequestFlow notificationRequestFlow;
+    @Autowired
+    PointsAndLevelsFlow pointsAndLevelsFlow;
 
 
     @BeforeMethod
     public void setUp() {
         customerDto = testData.registerNewCustomer();
-        getDriver().closeApp();
     }
 
     @Test
@@ -83,7 +88,7 @@ public class DeepLinksTest extends BaseTest {
         deppLinksProvider.openDeepLink(DeepLinks.STORE_FINDER);
         assertTrue(signInFlow.isLoginPageOpened(), "Login page is not opened");
         signInFlow.authorize(customerDto);
-        locationRequestFlow.clickTurnOn();
+closePopUps();
         assertTrue(priceDisclaimerFlow.isPriceDisclaimerOpened(), "Price disclaimer page is not opened");
         priceDisclaimerFlow.clickOkBtn();
         assertTrue(navigationFlow.isStoresTabOpened());
@@ -94,6 +99,8 @@ public class DeepLinksTest extends BaseTest {
         deppLinksProvider.openDeepLink(DeepLinks.NEAREST_STORE);
         assertTrue(signInFlow.isLoginPageOpened(), "Login page is not opened");
         signInFlow.authorize(customerDto);
+        closePopUps();
+
         locationRequestFlow.clickOnlyThisTime();
         assertTrue(navigationFlow.isNearestStorePageOpened(), "NearestStorePage is not opened");
     }
@@ -103,18 +110,17 @@ public class DeepLinksTest extends BaseTest {
         deppLinksProvider.openDeepLink(DeepLinks.AGE_RESTRICTED_OFFERS);
         assertTrue(signInFlow.isLoginPageOpened(), "Login page is not opened");
         signInFlow.authorize(customerDto);
-        locationRequestFlow.clickContinue();
+        closePopUps();
         assertTrue(promotionalOffersFlow.isPromotionalOffersScreenOpened(), "Promotional screen is not opened");
     }
+
 
     @Test
     public void rewardsCatalogTest() {
         deppLinksProvider.openDeepLink(DeepLinks.REWARDS_CATALOG);
         assertTrue(signInFlow.isLoginPageOpened(), "Login page is not opened");
         signInFlow.authorize(customerDto);
-        locationRequestFlow.clickContinue();
-        assertTrue(rewardsPopupFlow.isRewardPopupPageOpened(), "Reward popup catalog page is not opened");
-        rewardsPopupFlow.clickGotItBtn();
+        closePopUps();
         assertTrue(rewardsCatalogFlow.isRewardsCatalogPageOpened(), "Reward catalog is not opened");
     }
 
@@ -123,7 +129,7 @@ public class DeepLinksTest extends BaseTest {
         deppLinksProvider.openDeepLink(DeepLinks.EDIT_PROFILE);
         assertTrue(signInFlow.isLoginPageOpened(), "Login page is not opened");
         signInFlow.authorize(customerDto);
-        locationRequestFlow.clickContinue();
+        closePopUps();
         assertTrue(profileFlow.isProfilePageOpened(), "Profile page is not opened");
     }
 
@@ -132,20 +138,18 @@ public class DeepLinksTest extends BaseTest {
         customerDto = testData.registerNewCustomer();
         punchhPointsClient.generateCouponsAmount(customerDto, COUPONS_AMOUNT);
         deppLinksProvider.openDeepLink(DeepLinks.COUPONS);
-        assertTrue(signInFlow.isLoginPageOpened(), "Login page is not opened");
+        assertTrue(signInFlow.isLoginPageOpened(), "Login page is not opened"); // ON IOS NO NEED TO OPEN LOGIN PAGE
         signInFlow.authorize(customerDto);
-        locationRequestFlow.clickContinue();
-        assertTrue(couponsPopUpFlow.isCouponsPopUpDisplayed(), "Coupons popUp is not displayed");
-        couponsPopUpFlow.clickOnCouponsPopUpGotItBtn();
+        closePopUps();
         assertTrue(couponsAuthorizedUserFlow.isCouponsPageAuthorizedUserOpen(), "Coupons is not opened");
     }
 
     @Test
     public void giftCardTest() {
         deppLinksProvider.openDeepLink(DeepLinks.GIFT_CARD);
-        assertTrue(signInFlow.isLoginPageOpened(), "Login page is not opened");
+        assertTrue(signInFlow.isLoginPageOpened(), "Login page is not opened");// ON IOS NO NEED TO OPEN LOGIN PAGE
         signInFlow.authorize(customerDto);
-        locationRequestFlow.clickContinue();
+        closePopUps();
         assertTrue(giftcardFlow.isGiftCardPageDisplayed(), "GiftCardPage is not displayed");
     }
 
@@ -154,7 +158,7 @@ public class DeepLinksTest extends BaseTest {
         deppLinksProvider.openDeepLink(DeepLinks.CHECKOUT);
         assertTrue(signInFlow.isLoginPageOpened(), "Login page is not opened");
         signInFlow.authorize(customerDto);
-        locationRequestFlow.clickContinue();
+        closePopUps();
         assertTrue(rewardsCheckoutBarcodeFlow.isRewardsCheckoutBarcodePageOpen(), "RewardsCheckoutBarcodeFlow is not displayed");
     }
 
@@ -163,7 +167,7 @@ public class DeepLinksTest extends BaseTest {
         deppLinksProvider.openDeepLink(DeepLinks.UNCLAIMED_REWARDS);
         assertTrue(signInFlow.isLoginPageOpened(), "Login page is not opened");
         signInFlow.authorize(customerDto);
-        locationRequestFlow.clickContinue();
+        closePopUps();
         assertTrue(unclaimedRewardsCheckoutFlow.isUnclaimedRewardsCheckoutPageOpen(), "UnclaimedCheckoutPage is not displayed");
     }
 
@@ -172,16 +176,16 @@ public class DeepLinksTest extends BaseTest {
         deppLinksProvider.openDeepLink(DeepLinks.INBOX);
         assertTrue(signInFlow.isLoginPageOpened(), "Login page is not opened");
         signInFlow.authorize(customerDto);
-        locationRequestFlow.clickContinue();
+        closePopUps();
         assertTrue(inboxFlow.isAuthorisedUserInboxPageDisplayed(), "InboxPage is not displayed");
     }
 
     @Test
     public void fuelVipTabTest() {
         deppLinksProvider.openDeepLink(DeepLinks.FUEL_VIP_TAB);
-        assertTrue(signInFlow.isLoginPageOpened(), "Login page is not opened");
+        assertTrue(signInFlow.isLoginPageOpened(), "Login page is not opened"); // ON IOS NO NEED TO OPEN LOGIN PAGE
         signInFlow.authorize(customerDto);
-        locationRequestFlow.clickContinue();
+        closePopUps();
         assertTrue(fuelVipFlow.isFuelVipPageDisplayed(), "Fuel VIP page is not displayed");
     }
 
@@ -190,7 +194,7 @@ public class DeepLinksTest extends BaseTest {
         deppLinksProvider.openDeepLink(DeepLinks.EMAIL_UPDATED);
         assertTrue(signInFlow.isLoginPageOpened(), "Login page is not opened");
         signInFlow.authorize(customerDto);
-        locationRequestFlow.clickContinue();
+        closePopUps();
         assertTrue(editEmailFlow.IsUpdatedEmailPageDisplayed(), "UpdateEmailPage is not displayed");
     }
 
@@ -199,7 +203,7 @@ public class DeepLinksTest extends BaseTest {
         deppLinksProvider.openDeepLink(DeepLinks.REWARDS_DEBIT_CARD);
         assertTrue(signInFlow.isLoginPageOpened(), "Login page is not opened");
         signInFlow.authorize(customerDto);
-        locationRequestFlow.clickContinue();
+        closePopUps();
         assertTrue(rewardCardFlow.isRewardsDebitCardPageDisplayed(), "Reward + Debit card page is not displayed");
     }
 
@@ -208,7 +212,7 @@ public class DeepLinksTest extends BaseTest {
         deppLinksProvider.openDeepLink(DeepLinks.UPGRADE_REWARDS_CARD);
         assertTrue(signInFlow.isLoginPageOpened(), "Login page is not opened");
         signInFlow.authorize(customerDto);
-        locationRequestFlow.clickContinue();
+        closePopUps();
         assertTrue(rewardCardFlow.isUpgradeRewardCardPageDisplayed(), "UpgradeRewardCardPage is not displayed");
     }
 
@@ -217,7 +221,14 @@ public class DeepLinksTest extends BaseTest {
         deppLinksProvider.openDeepLink(DeepLinks.ORDER_REWARD_CARD);
         assertTrue(signInFlow.isLoginPageOpened(), "Login page is not opened");
         signInFlow.authorize(customerDto);
-        locationRequestFlow.clickContinue();
+        closePopUps();
         assertTrue(rewardCardFlow.isOrderRewardCardPageDisplayed(), "OrderRewardCardPage is not displayed");
+    }
+
+    private void closePopUps() {
+        locationRequestFlow.clickContinue();
+        notificationRequestFlow.clickNotNow();
+        rewardsPopupFlow.clickGotItBtn();
+        pointsAndLevelsFlow.clickGotItBtn();
     }
 }

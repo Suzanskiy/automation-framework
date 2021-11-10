@@ -59,6 +59,7 @@ public abstract class BaseMobilePage implements MobilePage {
         try {
             wait.until(ExpectedConditions.visibilityOfAllElements(webElements));
         } catch (TimeoutException e) {
+            LOG.warn(e.getCause().getLocalizedMessage());
             return false;
         }
         return true;

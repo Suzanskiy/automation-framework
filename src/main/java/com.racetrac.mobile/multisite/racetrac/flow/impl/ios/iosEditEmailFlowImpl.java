@@ -24,7 +24,7 @@ public class iosEditEmailFlowImpl extends BaseFlow implements EditEmailFlow {
 
     @Override
     public boolean IsUpdatedEmailPageDisplayed() {
-        return false;
+        return getUpdatedEmailPage().waitUntilIsOpened();
     }
 
     @Override

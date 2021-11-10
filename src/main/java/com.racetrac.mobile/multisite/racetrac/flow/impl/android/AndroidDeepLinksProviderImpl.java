@@ -8,6 +8,8 @@ import org.springframework.stereotype.Component;
 
 import static com.racetrac.mobile.framework.constants.PlatformsConstants.ANDROID;
 import static com.racetrac.mobile.util.appium.AppiumDriverUtils.getDriver;
+import static com.racetrac.mobile.util.appium.AppiumWaitingUtils.waitUntilAlertIsPresent;
+
 @Profile(ANDROID)
 @Component
 public class AndroidDeepLinksProviderImpl extends BaseFlow implements DeppLinksProvider {
@@ -15,6 +17,7 @@ public class AndroidDeepLinksProviderImpl extends BaseFlow implements DeppLinksP
     @Step
     @Override
     public void openDeepLink(String link) {
+getDriver().closeApp();
         getDriver().get(link);
     }
 }
