@@ -116,8 +116,7 @@ public class IosWelcomeFlowImpl extends BaseFlow implements WelcomeFlow {
     public boolean isViewAllCouponsBtnDisplayed() {
         getHomePage().refresh();
         try {
-            waitUntilElementClickable(getHomePage().getViewAllCouponsBtn());
-            return getHomePage().getViewAllCouponsBtn().isDisplayed();
+            return getHomePage().getViewAllCouponsBtn().isEnabled();
         } catch (NoSuchElementException | TimeoutException e) {
             return false;
         }
