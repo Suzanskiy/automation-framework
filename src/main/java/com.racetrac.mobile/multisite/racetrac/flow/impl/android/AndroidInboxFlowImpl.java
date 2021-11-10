@@ -1,7 +1,7 @@
 package com.racetrac.mobile.multisite.racetrac.flow.impl.android;
 
 import com.racetrac.mobile.multisite.racetrac.flow.BaseFlow;
-import com.racetrac.mobile.multisite.racetrac.flow.impl.InboxFlow;
+import com.racetrac.mobile.multisite.racetrac.flow.InboxFlow;
 import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Component;
 
