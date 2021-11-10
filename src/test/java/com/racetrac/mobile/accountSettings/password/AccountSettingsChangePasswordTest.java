@@ -11,7 +11,6 @@ import com.racetrac.mobile.multisite.racetrac.flow.ProfileFlow;
 import com.racetrac.mobile.multisite.racetrac.flow.RewardsPopupFlow;
 import com.racetrac.mobile.multisite.racetrac.flow.SignInFlow;
 import com.racetrac.mobile.multisite.racetrac.flow.SignOutFlow;
-import com.racetrac.mobile.multisite.racetrac.flow.SignUpFlow;
 import com.racetrac.mobile.multisite.racetrac.flow.WelcomeFlow;
 import io.qameta.allure.Description;
 import io.qameta.allure.TmsLink;
@@ -32,8 +31,6 @@ public class AccountSettingsChangePasswordTest extends BaseTest {
     @Autowired
     SignInFlow signInFlow;
     @Autowired
-    SignUpFlow signUpFlow;
-    @Autowired
     LocationRequestFlow locationRequestFlow;
     @Autowired
     NotificationRequestFlow notificationRequestFlow;
@@ -45,17 +42,12 @@ public class AccountSettingsChangePasswordTest extends BaseTest {
     EditPasswordFlow editPasswordFlow;
     @Autowired
     RewardsPopupFlow rewardsPopupFlow;
-
-
     CustomerDto customerDto;
-
 
     @BeforeMethod
     public void setUp() {
         assertTrue(welcomeFlow.isHomePageOpened(), "Welcome page is not opened");
-
         customerDto = testData.registerNewCustomer();
-
         signInFlow.openLoginInPage();
         assertTrue(signInFlow.isLoginPageOpened(), "Login page is not opened");
         signInFlow.authorize(customerDto);
@@ -64,7 +56,6 @@ public class AccountSettingsChangePasswordTest extends BaseTest {
         pointsAndLevelsFlow.clickGotItBtn();
         rewardsPopupFlow.clickGotItBtn();
         assertTrue(welcomeFlow.isHomePageOpenedAfterSignIn(), "Welcome page is not opened after sign in");
-
         accountSettingsFlow.navigateToAccountSettings();
         assertTrue(accountSettingsFlow.isAccountSettingsAuthorisedUserScreenOpened(), " Account screen for Logged in User is not opened");
     }
@@ -79,13 +70,10 @@ public class AccountSettingsChangePasswordTest extends BaseTest {
         assertTrue(accountSettingsFlow.isProfileScreenOpened(), "Profile screen is not opened"); // FIXME: 29.06.2021 IOS wait for selectors
         profileFlow.navigateToPasswordChange();
         assertTrue(profileFlow.isPasswordChangeScreenOpened(), "Password Change screen is not opened");
-
         this.customerDto = editPasswordFlow.editPassword(customerDto, password);
         assertTrue(accountSettingsFlow.isProfileScreenOpened(), "Profile screen is not opened");
-
         profileFlow.navigateBack();
         accountSettingsFlow.navigateBack();
-
         pointsAndLevelsFlow.clickGotItBtn();
         rewardsPopupFlow.clickGotItBtn();
         signOutFlow.doSignOut();
