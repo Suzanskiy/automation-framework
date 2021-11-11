@@ -82,9 +82,9 @@ public class PopUpVipTest extends BaseTest {
         locationRequestFlow.clickContinue();
         rewardsPopupFlow.clickGotItBtn();
         pointsAndLevelsFlow.clickGotItBtn();
-
-        assertEquals(openedUrl, chromeBrowserHandler.getLearnMoreRedirectUrl());
-
+        assertTrue(openedUrl.contains(chromeBrowserHandler.getRaceTracDomain()));
+        assertTrue(openedUrl.contains(chromeBrowserHandler.getBecomeAVipUrlEndpoint()));
+        assertTrue(openedUrl.contains(chromeBrowserHandler.getBecomeAVipUrlParameters()));
     }
 
     @TmsLink("6413")
@@ -98,8 +98,9 @@ public class PopUpVipTest extends BaseTest {
         locationRequestFlow.clickContinue();
         rewardsPopupFlow.clickGotItBtn();
         pointsAndLevelsFlow.clickGotItBtn();
-
-        assertEquals(openedUrl, chromeBrowserHandler.getGetStartedRedirectUrl());// FIXME: 10.08.2021 change url to actual
+        assertTrue(openedUrl.contains(chromeBrowserHandler.getRaceTracDomain()));
+        assertTrue(openedUrl.contains(chromeBrowserHandler.getBecomeAVipUrlEndpoint()));
+        assertTrue(openedUrl.contains(chromeBrowserHandler.getBecomeAVipUrlParameters()));
     }
 
     @TmsLink("6414")

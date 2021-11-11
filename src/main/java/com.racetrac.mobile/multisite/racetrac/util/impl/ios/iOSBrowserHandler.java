@@ -21,6 +21,10 @@ public class iOSBrowserHandler extends BaseFlow implements ChromeBrowserHandler 
     public static final String BUNDLE_ID = "com.racetrac.QA.ams";
     public static final String IOS_LEARN_MORE_REDIRECT_URL = "https://dep-www.racetrac.com/Rewards/RaceTrac-Rewards-Vip?utm_source=app&utm_campaign=vip&utm_medium=onboarding";
     public static final String HTTPS_DEP_WWW_RACETRAC_COM_REWARDS_PURCHASE_FUEL_SUBSCRIPTION_14_UTM_SOURCE_APP_UTM_CAMPAIGN_VIP_UTM_MEDIUM_ONBOARDING = "https://dep-www.racetrac.com/Rewards/Purchase/FuelSubscription/14?utm_source=app&utm_campaign=vip&utm_medium=onboarding";
+    private static final String IOS_RACE_TRAC_DOMAIN = "dep-www.racetrac.com";
+    private static final String IOS_BECOME_A_VIP_URL_ENDPOINT = "/Rewards/Purchase/FuelSubscription/";
+    private static final String IOS_BECOME_A_VIP_URL_PARAMETERS = "utm_source=app&utm_medium=onboarding&utm_campaign=vip";
+
 
     @Override
     public void prepareBrowser() throws IOException {
@@ -63,5 +67,16 @@ public class iOSBrowserHandler extends BaseFlow implements ChromeBrowserHandler 
     @Override
     public String getGetStartedRedirectUrl() {
         return HTTPS_DEP_WWW_RACETRAC_COM_REWARDS_PURCHASE_FUEL_SUBSCRIPTION_14_UTM_SOURCE_APP_UTM_CAMPAIGN_VIP_UTM_MEDIUM_ONBOARDING;
+    }
+    public String getRaceTracDomain(){
+        return IOS_RACE_TRAC_DOMAIN;
+    }
+    @Override
+    public String getBecomeAVipUrlEndpoint() {
+        return IOS_BECOME_A_VIP_URL_ENDPOINT;
+    }
+    @Override
+    public String getBecomeAVipUrlParameters() {
+        return IOS_BECOME_A_VIP_URL_PARAMETERS;
     }
 }
