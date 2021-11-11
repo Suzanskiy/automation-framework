@@ -18,4 +18,10 @@ public interface ChromeBrowserHandler {
 
     String getGetStartedRedirectUrl();
 
+    String getRaceTracDomain();
+
+    String getBecomeAVipUrlEndpoint();
+
+    String getBecomeAVipUrlParameters();
+
 }
