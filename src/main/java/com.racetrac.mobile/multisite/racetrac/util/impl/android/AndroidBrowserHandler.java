@@ -26,7 +26,9 @@ public class AndroidBrowserHandler extends BaseFlow implements ChromeBrowserHand
     private static final String ANDROID_FUEL_VIP_REDIRECT_DESIRED_URL_ACTIVE_SUBSCRIPTION = "https://dep-www.racetrac.com/Rewards/RaceTrac-Rewards-Vip?utm_source=app&utm_medium=VIPtab&utm_campaign=vip";
     private static final String ANDROID_BECOME_A_VIP_LEARN_MORE_LINK = "https://dep-www.racetrac.com/Rewards/Purchase/FuelSubscription/10?utm_source=app&utm_medium=onboarding&utm_campaign=vip";
     private static final String ANDROID_BECOME_A_VIP_GET_STARTED_LINK = "https://dep-www.racetrac.com/Rewards/Purchase/FuelSubscription/10?utm_source=app&utm_medium=onboarding&utm_campaign=vip";
-
+    private static final String RACE_TRAC_DOMAIN = "dep-www.racetrac.com";
+    private static final String ANDROID_BECOME_A_VIP_URL_ENDPOINT = "/Rewards/Purchase/FuelSubscription/";
+    private static final String ANDROID_BECOME_A_VIP_URL_PARAMETERS = "utm_source=app&utm_medium=onboarding&utm_campaign=vip";
     @Override
     public void prepareBrowser() throws IOException {
         Runtime.getRuntime().exec("adb shell pm clear " + CHROME_APP_PACKAGE);
@@ -79,5 +81,17 @@ public class AndroidBrowserHandler extends BaseFlow implements ChromeBrowserHand
     @Override
     public String getGetStartedRedirectUrl() {
         return ANDROID_BECOME_A_VIP_GET_STARTED_LINK;
+    }
+    @Override
+    public String getRaceTracDomain(){
+        return RACE_TRAC_DOMAIN;
+    }
+    @Override
+    public String getBecomeAVipUrlEndpoint() {
+        return ANDROID_BECOME_A_VIP_URL_ENDPOINT;
+    }
+    @Override
+    public String getBecomeAVipUrlParameters() {
+        return ANDROID_BECOME_A_VIP_URL_PARAMETERS;
     }
 }
