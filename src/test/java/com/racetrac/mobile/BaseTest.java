@@ -11,13 +11,17 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.testng.AbstractTestNGSpringContextTests;
 import org.testng.ITestResult;
+import org.testng.annotations.AfterClass;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.AfterSuite;
+import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Listeners;
 
 import java.util.Arrays;
 
+import static com.racetrac.mobile.framework.appium.AppiumDriverProvider.startAppiumServer;
+import static com.racetrac.mobile.framework.appium.AppiumDriverProvider.stopAppiumServer;
 import static com.racetrac.mobile.util.allure.AllureEnvironmentUtils.copyEnvPropToAllureResults;
 import static com.racetrac.mobile.util.allure.AllureEnvironmentUtils.createEnvironmentProperties;
 import static com.racetrac.mobile.util.appium.AppiumDriverUtils.getDriver;
@@ -32,6 +36,13 @@ public class BaseTest extends AbstractTestNGSpringContextTests {
     @Autowired
     protected TestData testData;
 
+    @BeforeClass(alwaysRun = true, dependsOnMethods = {"springTestContextBeforeTestClass"})
+    @Override
+    protected void springTestContextPrepareTestInstance() throws Exception {
+        startAppiumServer();
+        super.springTestContextPrepareTestInstance();
+    }
+
     @BeforeMethod(alwaysRun = true)
     public void launch() {
         LOG.info("Launch application");
@@ -42,6 +53,11 @@ public class BaseTest extends AbstractTestNGSpringContextTests {
     public void quite() {
         LOG.info("Close application");
         getDriver().closeApp();
+    }
+
+    @AfterClass
+    public void afterClass() {
+        stopAppiumServer();
     }
 
     @BeforeMethod(alwaysRun = true)
