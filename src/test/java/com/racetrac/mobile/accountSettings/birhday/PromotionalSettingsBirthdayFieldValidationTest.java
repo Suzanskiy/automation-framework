@@ -3,6 +3,7 @@ package com.racetrac.mobile.accountSettings.birhday;
 import com.racetrac.mobile.BaseTest;
 import com.racetrac.mobile.multisite.racetrac.dto.CustomerDto;
 import com.racetrac.mobile.multisite.racetrac.flow.*;
+import com.racetrac.mobile.multisite.racetrac.flow.helper.PopupCloserFlow;
 import io.qameta.allure.Description;
 import io.qameta.allure.TmsLink;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,24 +21,10 @@ public class PromotionalSettingsBirthdayFieldValidationTest extends BaseTest {
     @Autowired
     AccountSettingsFlow accountSettingsFlow;
     @Autowired
-    SignOutFlow signOutFlow;
-    @Autowired
     SignInFlow signInFlow;
     @Autowired
-    LocationRequestFlow locationRequestFlow;
-    @Autowired
-    NotificationRequestFlow notificationRequestFlow;
-    CustomerDto customerDto;
-    @Autowired
-    PointsAndLevelsFlow pointsAndLevelsFlow;
-    @Autowired
     PromotionalOffersFlow promotionalOffersFlow;
-    @Autowired
-    NotAdultNoticeFlow notAdultNoticeFlow;
-    @Autowired
-    ProfileFlow profileFlow;
-    @Autowired
-    RewardsPopupFlow rewardsPopupFlow;
+    CustomerDto customerDto;
 
     @DataProvider()
     public Object[] invalidBirthdayDataProvider() {
@@ -65,11 +52,6 @@ public class PromotionalSettingsBirthdayFieldValidationTest extends BaseTest {
         signInFlow.openLoginInPage();
         assertTrue(signInFlow.isLoginPageOpened(), "Login page is not opened");
         signInFlow.authorize(customerDto);
-        locationRequestFlow.clickContinue();
-        notificationRequestFlow.clickNotNow();
-        pointsAndLevelsFlow.clickGotItBtn();
-        rewardsPopupFlow.clickGotItBtn();
-        assertTrue(welcomeFlow.isHomePageOpenedAfterSignIn(), "Welcome page is not opened after sign in");
         accountSettingsFlow.navigateToAccountSettings();
         accountSettingsFlow.waitUntilAccountSettingsAuthorizedOpen();
         accountSettingsFlow.navigateToPromotionalSettings();

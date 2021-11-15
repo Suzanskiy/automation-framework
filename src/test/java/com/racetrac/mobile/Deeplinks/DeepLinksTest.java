@@ -28,7 +28,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
-import static com.racetrac.mobile.util.appium.AppiumDriverUtils.getDriver;
 import static org.testng.Assert.assertTrue;
 
 public class DeepLinksTest extends BaseTest {
@@ -88,7 +87,7 @@ public class DeepLinksTest extends BaseTest {
         deppLinksProvider.openDeepLink(DeepLinks.STORE_FINDER);
         assertTrue(signInFlow.isLoginPageOpened(), "Login page is not opened");
         signInFlow.authorize(customerDto);
-closePopUps();
+        closePopUps();
         assertTrue(priceDisclaimerFlow.isPriceDisclaimerOpened(), "Price disclaimer page is not opened");
         priceDisclaimerFlow.clickOkBtn();
         assertTrue(navigationFlow.isStoresTabOpened());

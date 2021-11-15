@@ -21,8 +21,6 @@ public class SignUpTest extends BaseTest {
     @Autowired
     SignOutFlow signOutFlow;
     @Autowired
-    SignInFlow signInFlow;
-    @Autowired
     LocationRequestFlow locationRequestFlow;
     @Autowired
     NotificationRequestFlow notificationRequestFlow;
@@ -85,6 +83,7 @@ public class SignUpTest extends BaseTest {
         rewardsPopupFlow.clickGotItBtn();
 
         pointsAndLevelsFlow.clickGotItBtn();
+        notificationRequestFlow.clickNotNow();
         signOutFlow.doSignOut();
         locationRequestFlow.clickContinue();
         assertTrue(welcomeFlow.isHomePageOpened(), "Welcome page is not opened");

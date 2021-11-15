@@ -33,13 +33,7 @@ public class AccountSettingsAuthorisedUserTest extends BaseTest {
     @Autowired
     AccountSettingsFlow accountSettingsFlow;
     @Autowired
-    SignOutFlow signOutFlow;
-    @Autowired
     SignInFlow signInFlow;
-    @Autowired
-    LocationRequestFlow locationRequestFlow;
-    @Autowired
-    NotificationRequestFlow notificationRequestFlow;
     CustomerDto customerDto;
     @Autowired
     PointsAndLevelsFlow pointsAndLevelsFlow;
@@ -49,8 +43,6 @@ public class AccountSettingsAuthorisedUserTest extends BaseTest {
     NotAdultNoticeFlow notAdultNoticeFlow;
     @Autowired
     ProfileFlow profileFlow;
-    @Autowired
-    RewardsPopupFlow rewardsPopupFlow;
 
     @BeforeMethod(alwaysRun = true)
     public void setUp() {
@@ -65,11 +57,6 @@ public class AccountSettingsAuthorisedUserTest extends BaseTest {
         assertTrue(signInFlow.isLoginPageOpened(), "Login page is not opened");
         customerDto = testData.registerNewCustomer();
         signInFlow.authorize(customerDto);
-        locationRequestFlow.clickContinue();
-        notificationRequestFlow.clickNotNow();
-        rewardsPopupFlow.clickGotItBtn();
-        pointsAndLevelsFlow.clickGotItBtn();
-        assertTrue(welcomeFlow.isHomePageOpenedAfterSignIn(), "Welcome page is not opened after sign in");
 
         accountSettingsFlow.navigateToAccountSettings();
         accountSettingsFlow.waitUntilAccountSettingsAuthorizedOpen();
@@ -86,13 +73,6 @@ public class AccountSettingsAuthorisedUserTest extends BaseTest {
         assertTrue(signInFlow.isLoginPageOpened(), "Login page is not opened");
         customerDto = testData.registerNewCustomer(ADULT);
         signInFlow.authorize(customerDto);
-        notificationRequestFlow.clickNotNow();
-        locationRequestFlow.clickContinue();
-        notificationRequestFlow.clickNotNow();
-        rewardsPopupFlow.clickGotItBtn();
-        pointsAndLevelsFlow.clickGotItBtn();
-        assertTrue(welcomeFlow.isHomePageOpenedAfterSignIn(), "Welcome page is not opened after sign in");
-
         accountSettingsFlow.navigateToAccountSettings();
         accountSettingsFlow.waitUntilAccountSettingsAuthorizedOpen();
         accountSettingsFlow.navigateToPromotionalSettings();
@@ -110,11 +90,6 @@ public class AccountSettingsAuthorisedUserTest extends BaseTest {
         assertTrue(signInFlow.isLoginPageOpened(), "Login page is not opened");
         customerDto = testData.registerNewCustomer(UNDER_21);
         signInFlow.authorize(customerDto);
-        locationRequestFlow.clickContinue();
-        notificationRequestFlow.clickNotNow();
-        rewardsPopupFlow.clickGotItBtn();
-        pointsAndLevelsFlow.clickGotItBtn();
-        assertTrue(welcomeFlow.isHomePageOpenedAfterSignIn(), "Welcome page is not opened after sign in");
 
         accountSettingsFlow.navigateToAccountSettings();
         accountSettingsFlow.waitUntilAccountSettingsAuthorizedOpen();
@@ -133,13 +108,6 @@ public class AccountSettingsAuthorisedUserTest extends BaseTest {
         assertTrue(signInFlow.isLoginPageOpened(), "Login page is not opened");
         customerDto = testData.registerNewCustomer(UNDER_21);
         signInFlow.authorize(customerDto);
-        locationRequestFlow.clickContinue();
-        notificationRequestFlow.clickNotNow();
-        rewardsPopupFlow.clickGotItBtn();
-        pointsAndLevelsFlow.clickGotItBtn();
-
-        assertTrue(welcomeFlow.isHomePageOpenedAfterSignIn(), "Welcome page is not opened after sign in");
-
         accountSettingsFlow.navigateToAccountSettings();
         accountSettingsFlow.waitUntilAccountSettingsAuthorizedOpen();
         accountSettingsFlow.navigateToPromotionalSettings();
@@ -160,12 +128,6 @@ public class AccountSettingsAuthorisedUserTest extends BaseTest {
         signInFlow.openLoginInPage();
         assertTrue(signInFlow.isLoginPageOpened(), "Login page is not opened");
         signInFlow.authorize(customerDto);
-
-        locationRequestFlow.clickContinue();
-        notificationRequestFlow.clickNotNow();
-        rewardsPopupFlow.clickGotItBtn();
-        pointsAndLevelsFlow.clickGotItBtn();
-        assertTrue(welcomeFlow.isHomePageOpenedAfterSignIn(), "Welcome page is not opened after sign in");
 
         accountSettingsFlow.navigateToAccountSettings();
         accountSettingsFlow.waitUntilAccountSettingsAuthorizedOpen();
@@ -189,13 +151,6 @@ public class AccountSettingsAuthorisedUserTest extends BaseTest {
         signInFlow.openLoginInPage();
         assertTrue(signInFlow.isLoginPageOpened(), "Login page is not opened");
         signInFlow.authorize(customerDto);
-
-        locationRequestFlow.clickContinue();
-        notificationRequestFlow.clickNotNow();
-        rewardsPopupFlow.clickGotItBtn();
-        pointsAndLevelsFlow.clickGotItBtn();
-
-        assertTrue(welcomeFlow.isHomePageOpenedAfterSignIn(), "Welcome page is not opened after sign in");
         accountSettingsFlow.navigateToAccountSettings();
         accountSettingsFlow.waitUntilAccountSettingsAuthorizedOpen();
         accountSettingsFlow.navigateToPromotionalSettings();

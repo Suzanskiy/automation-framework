@@ -2,7 +2,18 @@ package com.racetrac.mobile.accountSettings.email;
 
 import com.racetrac.mobile.BaseTest;
 import com.racetrac.mobile.multisite.racetrac.dto.CustomerDto;
-import com.racetrac.mobile.multisite.racetrac.flow.*;
+import com.racetrac.mobile.multisite.racetrac.flow.AccountSettingsFlow;
+import com.racetrac.mobile.multisite.racetrac.flow.BecomeFuelVipFlow;
+import com.racetrac.mobile.multisite.racetrac.flow.LocationRequestFlow;
+import com.racetrac.mobile.multisite.racetrac.flow.NotificationRequestFlow;
+import com.racetrac.mobile.multisite.racetrac.flow.PointsAndLevelsFlow;
+import com.racetrac.mobile.multisite.racetrac.flow.ProfileFlow;
+import com.racetrac.mobile.multisite.racetrac.flow.RewardsPopupFlow;
+import com.racetrac.mobile.multisite.racetrac.flow.SignInFlow;
+import com.racetrac.mobile.multisite.racetrac.flow.SignOutFlow;
+import com.racetrac.mobile.multisite.racetrac.flow.SignUpFlow;
+import com.racetrac.mobile.multisite.racetrac.flow.WelcomeFlow;
+import com.racetrac.mobile.multisite.racetrac.flow.helper.PopupCloserFlow;
 import io.qameta.allure.Description;
 import io.qameta.allure.TmsLink;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,8 +29,6 @@ public class UserReceiveEmailsOptionsTest extends BaseTest {
     @Autowired
     AccountSettingsFlow accountSettingsFlow;
     @Autowired
-    SignOutFlow signOutFlow;
-    @Autowired
     SignUpFlow signUpFlow;
     @Autowired
     SignInFlow signInFlow;
@@ -28,13 +37,13 @@ public class UserReceiveEmailsOptionsTest extends BaseTest {
     @Autowired
     NotificationRequestFlow notificationRequestFlow;
     @Autowired
-    ProfileFlow profileFlow;
-    @Autowired
     BecomeFuelVipFlow becomeFuelVipFlow;
     @Autowired
     PointsAndLevelsFlow pointsAndLevelsFlow;
-@Autowired
-        RewardsPopupFlow rewardsPopupFlow;
+    @Autowired
+    RewardsPopupFlow rewardsPopupFlow;
+    @Autowired
+    PopupCloserFlow popupCloserFlow;
     CustomerDto customerDto;
 
     @BeforeMethod(alwaysRun = true)
@@ -48,7 +57,7 @@ public class UserReceiveEmailsOptionsTest extends BaseTest {
     public void accountSettingsScreenForGuestUserTest() {
         accountSettingsFlow.navigateToAccountSettings();
         assertTrue(accountSettingsFlow.isAccountSettingsScreenOpened(), " Account screen is not opened");
-        assertFalse(accountSettingsFlow.isReceiveEmailsDisplayed()," Receive emails is displayed");
+        assertFalse(accountSettingsFlow.isReceiveEmailsDisplayed(), " Receive emails is displayed");
     }
 
     @TmsLink("6505")
@@ -64,17 +73,7 @@ public class UserReceiveEmailsOptionsTest extends BaseTest {
         signUpFlow.enterCredentials(customerDto);
         signUpFlow.isFistBumpPageOpened();
         signUpFlow.clickGetStartedBtn();
-        locationRequestFlow.clickContinue();
-        notificationRequestFlow.clickNotNow();
-        becomeFuelVipFlow.waitUntilBecomeFuelVipLoaded();
-        assertTrue(becomeFuelVipFlow.checkAllElementsIsLoaded(), "Elements are not loaded");
-
-        becomeFuelVipFlow.clickNotRightNow();
-        signInFlow.clickGotItBtn();
-        locationRequestFlow.clickContinue();
-        rewardsPopupFlow.clickGotItBtn();
-        pointsAndLevelsFlow.clickGotItBtn();
-
+        popupCloserFlow.closePopups();
         accountSettingsFlow.navigateToAccountSettings();
         accountSettingsFlow.isAccountSettingsAuthorisedUserScreenOpened();
         assertTrue(accountSettingsFlow.receiveEmailsSwitcherPosition(), "Receive Email switcher position is off");

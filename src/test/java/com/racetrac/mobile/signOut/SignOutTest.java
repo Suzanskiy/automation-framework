@@ -19,15 +19,8 @@ public class SignOutTest extends BaseTest {
     SignInFlow signInFlow;
     @Autowired
     SignOutFlow signOutFlow;
-    @Autowired
-    LocationRequestFlow locationRequestFlow;
-    @Autowired
-    NotificationRequestFlow notificationRequestFlow;
     CustomerDto customerDto;
-    @Autowired
-    PointsAndLevelsFlow pointsAndLevelsFlow;
-    @Autowired
-    RewardsPopupFlow rewardsPopupFlow;
+
 
     @BeforeMethod
     public void setUp() {
@@ -36,12 +29,6 @@ public class SignOutTest extends BaseTest {
         signInFlow.openLoginInPage();
         assertTrue(signInFlow.isLoginPageOpened(), "Login page is not opened");
         signInFlow.authorize(customerDto);
-        locationRequestFlow.clickContinue();
-        notificationRequestFlow.clickNotNow();
-
-        rewardsPopupFlow.clickGotItBtn();
-        pointsAndLevelsFlow.clickGotItBtn();
-        assertTrue(welcomeFlow.isHomePageOpenedAfterSignIn(), "Welcome page is not opened after sign in");
     }
 
     @TmsLink("5463")

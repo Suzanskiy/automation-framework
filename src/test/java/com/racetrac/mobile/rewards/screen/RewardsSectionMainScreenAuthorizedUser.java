@@ -19,12 +19,6 @@ public class RewardsSectionMainScreenAuthorizedUser extends BaseTest {
     @Autowired
     SignInFlow signInFlow;
     @Autowired
-    SignOutFlow signOutFlow;
-    @Autowired
-    LocationRequestFlow locationRequestFlow;
-    @Autowired
-    NotificationRequestFlow notificationRequestFlow;
-    @Autowired
     PointsAndLevelsFlow pointsAndLevelsFlow;
     @Autowired
     RewardsPopupFlow rewardsPopupFlow;
@@ -49,11 +43,6 @@ public class RewardsSectionMainScreenAuthorizedUser extends BaseTest {
         signInFlow.openLoginInPage();
         assertTrue(signInFlow.isLoginPageOpened(), "Login page is not opened");
         signInFlow.authorize(customerDto);
-        locationRequestFlow.clickContinue();
-        notificationRequestFlow.clickNotNow();
-        rewardsPopupFlow.clickGotItBtn();
-        pointsAndLevelsFlow.clickGotItBtn();
-        assertTrue(welcomeFlow.isHomePageOpenedAfterSignIn(), "Welcome page is not opened after sign in");
         assertTrue(welcomeFlow.isZeroPointsDescriptionDisplayed());
         pointsAndLevelsFlow.clickOnHeroLevelHelpBtn();
         assertTrue(pointsAndLevelsFlow.isPointsAndLevelsPageOpened(), "Points & Levels page is not opened");
@@ -70,11 +59,6 @@ public class RewardsSectionMainScreenAuthorizedUser extends BaseTest {
         signInFlow.openLoginInPage();
         assertTrue(signInFlow.isLoginPageOpened(), "Login page is not opened");
         signInFlow.authorize(customerDto);
-        locationRequestFlow.clickContinue();
-        notificationRequestFlow.clickNotNow();
-        rewardsPopupFlow.clickGotItBtn();
-        pointsAndLevelsFlow.clickGotItBtn();
-        assertTrue(welcomeFlow.isHomePageOpenedAfterSignIn(), "Welcome page is not opened after sign in");
         assertTrue(welcomeFlow.isRewardsSectionForUserWithPointsDisplayed(), "Rewards section is not displayed");
         assertEquals(welcomeFlow.availablePoints(),AVAILABLE_POINTS);
 

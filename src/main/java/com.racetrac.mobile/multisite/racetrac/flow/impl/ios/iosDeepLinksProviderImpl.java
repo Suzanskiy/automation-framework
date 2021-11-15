@@ -8,7 +8,7 @@ import org.springframework.stereotype.Component;
 
 import static com.racetrac.mobile.framework.constants.PlatformsConstants.IOS;
 import static com.racetrac.mobile.util.appium.AppiumDriverUtils.getDriver;
-import static com.racetrac.mobile.util.appium.AppiumWaitingUtils.waitUntilAlertIsPresent;
+import static com.racetrac.mobile.util.device.AlertUtil.acceptAlert;
 
 @Profile(IOS)
 @Component
@@ -17,6 +17,7 @@ public class iosDeepLinksProviderImpl extends BaseFlow implements DeppLinksProvi
     @Step
     @Override
     public void openDeepLink(String link) {
+        acceptAlert();
         getDriver().get(link);
     }
 }

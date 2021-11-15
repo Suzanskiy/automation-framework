@@ -9,6 +9,9 @@ import com.racetrac.mobile.multisite.racetrac.flow.RewardsPopupFlow;
 import com.racetrac.mobile.multisite.racetrac.flow.SignInFlow;
 import com.racetrac.mobile.multisite.racetrac.flow.SignOutFlow;
 import com.racetrac.mobile.multisite.racetrac.flow.WelcomeFlow;
+import com.racetrac.mobile.multisite.racetrac.flow.helper.PopupCloserFlow;
+import io.appium.java_client.service.local.AppiumDriverLocalService;
+import io.appium.java_client.service.local.AppiumServiceBuilder;
 import io.qameta.allure.Description;
 import io.qameta.allure.TmsLink;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,19 +27,11 @@ public class SignInTest extends BaseTest {
     @Autowired
     SignInFlow signInFlow;
     @Autowired
-    SignOutFlow signOutFlow;
-    @Autowired
-    LocationRequestFlow locationRequestFlow;
-    @Autowired
-    NotificationRequestFlow notificationRequestFlow;
-    @Autowired
-    PointsAndLevelsFlow pointsAndLevelsFlow;
-    @Autowired
-    RewardsPopupFlow rewardsPopupFlow;
-    CustomerDto customerDto;
+    PopupCloserFlow popupCloserFlow;
 
+    CustomerDto customerDto;
     @BeforeMethod
-    public void setUp() {
+    public void setUp(){
         customerDto = testData.registerNewCustomer();
     }
 
@@ -48,10 +43,7 @@ public class SignInTest extends BaseTest {
         signInFlow.openLoginInPage();
         assertTrue(signInFlow.isLoginPageOpened(), "Login page is not opened");
         signInFlow.authorize(customerDto);
-        locationRequestFlow.clickContinue();
-        notificationRequestFlow.clickNotNow();
-        rewardsPopupFlow.clickGotItBtn();
-        pointsAndLevelsFlow.clickGotItBtn();
+        popupCloserFlow.closePopups();
         assertTrue(welcomeFlow.isHomePageOpenedAfterSignIn(), "Welcome page is not opened after sign in");
     }
 

@@ -3,14 +3,19 @@ package com.racetrac.mobile.multisite.racetrac.flow.common;
 import com.racetrac.mobile.multisite.racetrac.dto.CustomerDto;
 import com.racetrac.mobile.multisite.racetrac.flow.BaseFlow;
 import com.racetrac.mobile.multisite.racetrac.flow.SignInFlow;
-import com.racetrac.mobile.util.appium.AppiumWaitingUtils;
+import com.racetrac.mobile.multisite.racetrac.flow.helper.PopupCloserFlow;
 import io.qameta.allure.Step;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.TimeoutException;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+
+import static org.testng.Assert.assertTrue;
 
 @Component
 public class SignInFlowImpl extends BaseFlow implements SignInFlow {
+    @Autowired
+    PopupCloserFlow popupCloserFlow;
 
     @Step
     @Override
@@ -31,12 +36,9 @@ public class SignInFlowImpl extends BaseFlow implements SignInFlow {
         getLoginPage().getPasswordInput().clear();
         getLoginPage().getPasswordInput().setValue(customerDto.getEmailAuth().getPassword());
         getLoginPage().getLoginBtn().click();
-    }
+        popupCloserFlow.closePopups();
+        assertTrue(getHomePage().waitUntilIsOpened(), "Welcome page is not opened after sign in");
 
-    @Step
-    @Override
-    public boolean isCouponsViewOpened() {
-        return getCouponsView().waitUntilIsOpened();
     }
 
     @Step

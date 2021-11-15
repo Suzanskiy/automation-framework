@@ -13,6 +13,7 @@ import com.racetrac.mobile.multisite.racetrac.flow.PromotionalOffersFlow;
 import com.racetrac.mobile.multisite.racetrac.flow.SignInFlow;
 import com.racetrac.mobile.multisite.racetrac.flow.SignOutFlow;
 import com.racetrac.mobile.multisite.racetrac.flow.WelcomeFlow;
+import com.racetrac.mobile.multisite.racetrac.flow.helper.PopupCloserFlow;
 import io.qameta.allure.Description;
 import io.qameta.allure.TmsLink;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,22 +28,9 @@ public class AccountSettingsChangeBirthDayTest extends BaseTest {
     @Autowired
     AccountSettingsFlow accountSettingsFlow;
     @Autowired
-    SignOutFlow signOutFlow;
-    @Autowired
     SignInFlow signInFlow;
     @Autowired
-    LocationRequestFlow locationRequestFlow;
-    @Autowired
-    NotificationRequestFlow notificationRequestFlow;
-    @Autowired
     ProfileFlow profileFlow;
-    @Autowired
-    PointsAndLevelsFlow pointsAndLevelsFlow;
-    @Autowired
-    BecomeFuelVipFlow becomeFuelVipFlow;
-    @Autowired
-    PromotionalOffersFlow promotionalOffersFlow;
-
     CustomerDto customerDto;
 
 
@@ -61,13 +49,6 @@ public class AccountSettingsChangeBirthDayTest extends BaseTest {
 
         customerDto = testData.registerNewCustomer();
         signInFlow.authorize(customerDto);
-        locationRequestFlow.clickContinue();
-        notificationRequestFlow.clickNotNow();
-        signInFlow.clickGotItBtn();
-        pointsAndLevelsFlow.clickGotItBtn();
-
-        // TODO: 10.08.2021 Check code above on Android, because on ios those line not needed
-        assertTrue(welcomeFlow.isHomePageOpenedAfterSignIn(), "Welcome page is not opened after sign in");
         accountSettingsFlow.navigateToAccountSettings();
         accountSettingsFlow.waitUntilAccountSettingsAuthorizedOpen();
         assertTrue(accountSettingsFlow.isAccountSettingsAuthorisedUserScreenOpened(), " Account screen for Logged in User is not opened");
@@ -86,12 +67,7 @@ public class AccountSettingsChangeBirthDayTest extends BaseTest {
         customerDto = testData.registerNewCustomer(CustomerAge.NOT_SPECIFIED_BIRTHDATE);
 
         signInFlow.authorize(customerDto);
-        locationRequestFlow.clickContinue();
-        notificationRequestFlow.clickNotNow();
-        signInFlow.clickGotItBtn();
-        pointsAndLevelsFlow.clickGotItBtn();
-        // TODO: 10.08.2021 same
-        assertTrue(welcomeFlow.isHomePageOpenedAfterSignIn(), "Welcome page is not opened after sign in");
+
         accountSettingsFlow.navigateToAccountSettings();
         accountSettingsFlow.waitUntilAccountSettingsAuthorizedOpen();
         assertTrue(accountSettingsFlow.isAccountSettingsAuthorisedUserScreenOpened(), " Account screen for Logged in User is not opened");

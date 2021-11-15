@@ -2,7 +2,13 @@ package com.racetrac.mobile.fuelVipPopUpWithDifferentAge;
 
 import com.racetrac.mobile.BaseTest;
 import com.racetrac.mobile.multisite.racetrac.dto.CustomerDto;
-import com.racetrac.mobile.multisite.racetrac.flow.*;
+import com.racetrac.mobile.multisite.racetrac.flow.BecomeFuelVipFlow;
+import com.racetrac.mobile.multisite.racetrac.flow.LocationRequestFlow;
+import com.racetrac.mobile.multisite.racetrac.flow.NotificationRequestFlow;
+import com.racetrac.mobile.multisite.racetrac.flow.PromotionalOffersFlow;
+import com.racetrac.mobile.multisite.racetrac.flow.SignUpFlow;
+import com.racetrac.mobile.multisite.racetrac.flow.WelcomeFlow;
+import com.racetrac.mobile.multisite.racetrac.flow.helper.PopupCloserFlow;
 import io.qameta.allure.Description;
 import io.qameta.allure.TmsLink;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,15 +25,9 @@ public class FuelVipPopUpWithDifferentAgeTest extends BaseTest {
     WelcomeFlow welcomeFlow;
     @Autowired
     SignUpFlow signUpFlow;
-    @Autowired
-    LocationRequestFlow locationRequestFlow;
-    @Autowired
-    BecomeFuelVipFlow becomeFuelVipFlow;
-    @Autowired
-    PromotionalOffersFlow promotionalOffersFlow;
-    @Autowired
-    NotificationRequestFlow notificationRequestFlow;
     CustomerDto customerDto;
+    @Autowired
+    PopupCloserFlow popupCloserFlow;
 
     @BeforeMethod(alwaysRun = true)
     public void preconditions() {
@@ -46,11 +46,7 @@ public class FuelVipPopUpWithDifferentAgeTest extends BaseTest {
         signUpFlow.enterCredentials(customerDto);
         signUpFlow.isFistBumpPageOpened();
         signUpFlow.clickGetStartedBtn();
-        locationRequestFlow.clickContinue();
-        notificationRequestFlow.clickNotNow();
-
-        becomeFuelVipFlow.waitUntilBecomeFuelVipLoaded();
-        assertTrue(becomeFuelVipFlow.checkAllElementsIsLoaded(), "Elements are not loaded");
+        popupCloserFlow.closePopups();
     }
 
     @TmsLink("6414")
@@ -62,13 +58,7 @@ public class FuelVipPopUpWithDifferentAgeTest extends BaseTest {
         signUpFlow.isFistBumpPageOpened();
         signUpFlow.clickGetStartedBtn();
 
-        notificationRequestFlow.clickNotNow();
-
-        promotionalOffersFlow.skipPromotions();
-        locationRequestFlow.clickContinue();
-        becomeFuelVipFlow.waitUntilBecomeFuelVipLoaded();
-        notificationRequestFlow.clickNotNow();
-        assertTrue(becomeFuelVipFlow.checkAllElementsIsLoaded(), "Elements are not loaded");
+        popupCloserFlow.closePopups();
     }
 
 }

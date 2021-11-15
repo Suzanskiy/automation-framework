@@ -31,17 +31,9 @@ public class AccountSettingsChangePasswordTest extends BaseTest {
     @Autowired
     SignInFlow signInFlow;
     @Autowired
-    LocationRequestFlow locationRequestFlow;
-    @Autowired
-    NotificationRequestFlow notificationRequestFlow;
-    @Autowired
     ProfileFlow profileFlow;
     @Autowired
-    PointsAndLevelsFlow pointsAndLevelsFlow;
-    @Autowired
     EditPasswordFlow editPasswordFlow;
-    @Autowired
-    RewardsPopupFlow rewardsPopupFlow;
     CustomerDto customerDto;
 
     @BeforeMethod
@@ -51,11 +43,6 @@ public class AccountSettingsChangePasswordTest extends BaseTest {
         signInFlow.openLoginInPage();
         assertTrue(signInFlow.isLoginPageOpened(), "Login page is not opened");
         signInFlow.authorize(customerDto);
-        locationRequestFlow.clickContinue();
-        notificationRequestFlow.clickNotNow();
-        pointsAndLevelsFlow.clickGotItBtn();
-        rewardsPopupFlow.clickGotItBtn();
-        assertTrue(welcomeFlow.isHomePageOpenedAfterSignIn(), "Welcome page is not opened after sign in");
         accountSettingsFlow.navigateToAccountSettings();
         assertTrue(accountSettingsFlow.isAccountSettingsAuthorisedUserScreenOpened(), " Account screen for Logged in User is not opened");
     }
@@ -74,24 +61,9 @@ public class AccountSettingsChangePasswordTest extends BaseTest {
         assertTrue(accountSettingsFlow.isProfileScreenOpened(), "Profile screen is not opened");
         profileFlow.navigateBack();
         accountSettingsFlow.navigateBack();
-        pointsAndLevelsFlow.clickGotItBtn();
-        rewardsPopupFlow.clickGotItBtn();
         signOutFlow.doSignOut();
-        locationRequestFlow.clickContinue();
-        welcomeFlow.isHomePageOpenedAfterSignIn();
         signInFlow.openLoginInPage();
         assertTrue(signInFlow.isLoginPageOpened(), "Login page is not opened");
         signInFlow.authorize(customerDto);
-        locationRequestFlow.clickContinue();
-        notificationRequestFlow.clickNotNow();
-        rewardsPopupFlow.clickGotItBtn();
-        pointsAndLevelsFlow.clickGotItBtn();
-        assertTrue(welcomeFlow.isHomePageOpenedAfterSignIn(), "Welcome page is not opened after sign in");
-    }
-
-    @AfterMethod(alwaysRun = true)
-    public void logOut() {
-        signOutFlow.doSignOut();
-        assertTrue(welcomeFlow.isHomePageOpened(), "Welcome page is not opened");
     }
 }

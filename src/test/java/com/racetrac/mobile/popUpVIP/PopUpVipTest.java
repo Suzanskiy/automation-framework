@@ -11,6 +11,7 @@ import com.racetrac.mobile.multisite.racetrac.flow.SignInFlow;
 import com.racetrac.mobile.multisite.racetrac.flow.SignOutFlow;
 import com.racetrac.mobile.multisite.racetrac.flow.SignUpFlow;
 import com.racetrac.mobile.multisite.racetrac.flow.WelcomeFlow;
+import com.racetrac.mobile.multisite.racetrac.flow.helper.PopupCloserFlow;
 import com.racetrac.mobile.multisite.racetrac.util.ChromeBrowserHandler;
 import io.qameta.allure.Description;
 import io.qameta.allure.TmsLink;
@@ -21,7 +22,6 @@ import org.testng.annotations.Test;
 
 import java.io.IOException;
 
-import static org.testng.Assert.assertEquals;
 import static org.testng.Assert.assertTrue;
 
 public class PopUpVipTest extends BaseTest {
@@ -30,10 +30,6 @@ public class PopUpVipTest extends BaseTest {
     WelcomeFlow welcomeFlow;
     @Autowired
     SignUpFlow signUpFlow;
-    @Autowired
-    SignInFlow signInFlow;
-    @Autowired
-    SignOutFlow signOutFlow;
     @Autowired
     LocationRequestFlow locationRequestFlow;
     @Autowired
@@ -46,7 +42,8 @@ public class PopUpVipTest extends BaseTest {
     PointsAndLevelsFlow pointsAndLevelsFlow;
     @Autowired
     RewardsPopupFlow rewardsPopupFlow;
-
+    @Autowired
+    PopupCloserFlow popupCloserFlow;
     CustomerDto customerDto;
 
     @BeforeClass(alwaysRun = true)
@@ -64,10 +61,7 @@ public class PopUpVipTest extends BaseTest {
         assertTrue(signUpFlow.isSignUpPageOpened(), "SignUp page is not opened");
         signUpFlow.enterCredentials(customerDto);
         signUpFlow.clickGetStartedBtn();
-        promotionalOffersFlow.skipPromotions();
-        locationRequestFlow.clickContinue();
-        becomeFuelVipFlow.waitUntilBecomeFuelVipLoaded();
-        assertTrue(becomeFuelVipFlow.checkAllElementsIsLoaded(), "Elements are not loaded");
+        popupCloserFlow.closePopups();
 
     }
 

@@ -27,14 +27,6 @@ public class CouponsGiftTest extends BaseTest {
     @Autowired
     SignInFlow signInFlow;
     @Autowired
-    LocationRequestFlow locationRequestFlow;
-    @Autowired
-    NotificationRequestFlow notificationRequestFlow;
-    @Autowired
-    PointsAndLevelsFlow pointsAndLevelsFlow;
-    @Autowired
-    RewardsPopupFlow rewardsPopupFlow;
-    @Autowired
     NavigationFlow navigationFlow;
     @Autowired
     CouponsPopUpFlow couponsPopUpFlow;
@@ -59,12 +51,6 @@ public class CouponsGiftTest extends BaseTest {
         signInFlow.openLoginInPage();
         assertTrue(signInFlow.isLoginPageOpened(), "Login page is not opened");
         signInFlow.authorize(customerDto);
-        locationRequestFlow.clickContinue();
-        notificationRequestFlow.clickNotNow();
-        locationRequestFlow.clickContinue();
-        rewardsPopupFlow.clickGotItBtn();
-        pointsAndLevelsFlow.clickGotItBtn();
-        assertTrue(welcomeFlow.isHomePageOpenedAfterSignIn(), "Welcome page is not opened after sign in");
         navigationFlow.navigateToCoupons();
 
         assertTrue(couponsPopUpFlow.isCouponsPopUpDisplayed(), "Coupons pop-up is not displayed");
@@ -115,11 +101,6 @@ public class CouponsGiftTest extends BaseTest {
         signInFlow.openLoginInPage();
         assertTrue(signInFlow.isLoginPageOpened(), "Login page is not opened");
         signInFlow.authorize(secondCustomerDto);
-        locationRequestFlow.clickContinue();
-        notificationRequestFlow.clickNotNow();
-        rewardsPopupFlow.clickGotItBtn();
-        pointsAndLevelsFlow.clickGotItBtn();
-        assertTrue(welcomeFlow.isHomePageOpenedAfterSignIn(), "Welcome page is not opened after sign in");
 
         navigationFlow.navigateToCoupons();
         assertTrue(couponsPopUpFlow.isCouponsPopUpDisplayed(), "Coupons pop-up is not displayed");

@@ -3,7 +3,19 @@ package com.racetrac.mobile.rewards.rewardsCheckout;
 import com.racetrac.mobile.BaseTest;
 import com.racetrac.mobile.multisite.racetrac.api.PunchhPointsClient;
 import com.racetrac.mobile.multisite.racetrac.dto.CustomerDto;
-import com.racetrac.mobile.multisite.racetrac.flow.*;
+import com.racetrac.mobile.multisite.racetrac.flow.CheckoutBtnFLow;
+import com.racetrac.mobile.multisite.racetrac.flow.FuelVipFlow;
+import com.racetrac.mobile.multisite.racetrac.flow.LocationRequestFlow;
+import com.racetrac.mobile.multisite.racetrac.flow.NavigationFlow;
+import com.racetrac.mobile.multisite.racetrac.flow.NotificationRequestFlow;
+import com.racetrac.mobile.multisite.racetrac.flow.PointsAndLevelsFlow;
+import com.racetrac.mobile.multisite.racetrac.flow.RewardsCatalogFlow;
+import com.racetrac.mobile.multisite.racetrac.flow.RewardsCheckoutBarcodeFlow;
+import com.racetrac.mobile.multisite.racetrac.flow.RewardsPopupFlow;
+import com.racetrac.mobile.multisite.racetrac.flow.SignInFlow;
+import com.racetrac.mobile.multisite.racetrac.flow.SignOutFlow;
+import com.racetrac.mobile.multisite.racetrac.flow.UnclaimedRewardsCheckoutFlow;
+import com.racetrac.mobile.multisite.racetrac.flow.WelcomeFlow;
 import io.qameta.allure.Description;
 import io.qameta.allure.TmsLink;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,15 +31,7 @@ public class RewardsCheckoutTest extends BaseTest {
     @Autowired
     SignInFlow signInFlow;
     @Autowired
-    SignOutFlow signOutFlow;
-    @Autowired
     NavigationFlow navigationFlow;
-    @Autowired
-    LocationRequestFlow locationRequestFlow;
-    @Autowired
-    NotificationRequestFlow notificationRequestFlow;
-    @Autowired
-    PointsAndLevelsFlow pointsAndLevelsFlow;
     @Autowired
     RewardsPopupFlow rewardsPopupFlow;
     @Autowired
@@ -61,12 +65,6 @@ public class RewardsCheckoutTest extends BaseTest {
         signInFlow.openLoginInPage();
         assertTrue(signInFlow.isLoginPageOpened(), "Login page is not opened");
         signInFlow.authorize(customerDto);
-        locationRequestFlow.clickContinue();
-        notificationRequestFlow.clickNotNow();
-        rewardsPopupFlow.clickGotItBtn();
-        pointsAndLevelsFlow.clickGotItBtn();
-        assertTrue(welcomeFlow.isHomePageOpenedAfterSignIn(), "Welcome page is not opened after sign in");
-
         navigationFlow.navigateToRewardsCards();
         assertTrue(rewardsCheckoutFlow.isRewardsCheckoutBarcodePageOpen(), "Rewards checkout page is not opened");
     }
@@ -80,11 +78,6 @@ public class RewardsCheckoutTest extends BaseTest {
         signInFlow.openLoginInPage();
         assertTrue(signInFlow.isLoginPageOpened(), "Login page is not opened");
         signInFlow.authorize(customerDto);
-        locationRequestFlow.clickContinue();
-        notificationRequestFlow.clickNotNow();
-        rewardsPopupFlow.clickGotItBtn();
-        pointsAndLevelsFlow.clickGotItBtn();
-
         welcomeFlow.clickOnRedeemPointsBtn();
         assertTrue(rewardsPopupFlow.isRewardPopupPageOpened(), "Reward Popup is not opened");
         rewardsPopupFlow.clickGotItBtn();

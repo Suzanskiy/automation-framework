@@ -31,28 +31,19 @@ public class FuelVIPTest extends BaseTest {
     @Autowired
     WelcomeFlow welcomeFlow;
     @Autowired
-    SignOutFlow signOutFlow;
-    @Autowired
     SignInFlow signInFlow;
     @Autowired
     LocationRequestFlow locationRequestFlow;
     @Autowired
-    NotificationRequestFlow notificationRequestFlow;
-    @Autowired
     ChromeBrowserHandler chromeBrowserHandler;
     @Autowired
     FuelVipFlow fuelVipFlow;
-    @Autowired
-    PromotionalOffersFlow promotionalOffersFlow;
     @Autowired
     SubscriptionRequestClient subscriptionRequestClient;
     @Autowired
     PointsAndLevelsFlow pointsAndLevelsFlow;
     @Autowired
     RewardsPopupFlow rewardsPopupFlow;
-    @Autowired
-    BecomeFuelVipFlow becomeFuelVipFlow;
-
     CustomerDto customerDto;
 
     @BeforeClass(alwaysRun = true)
@@ -67,11 +58,6 @@ public class FuelVIPTest extends BaseTest {
         signInFlow.openLoginInPage();
         assertTrue(signInFlow.isLoginPageOpened(), "Login page is not opened");
         signInFlow.authorize(customerDto);
-        locationRequestFlow.clickContinue();
-        notificationRequestFlow.clickNotNow();
-        rewardsPopupFlow.clickGotItBtn();
-        pointsAndLevelsFlow.clickGotItBtn();
-        assertTrue(welcomeFlow.isHomePageOpenedAfterSignIn(), "Welcome page is not opened after sign in");
     }
 
     @TmsLink("6157")

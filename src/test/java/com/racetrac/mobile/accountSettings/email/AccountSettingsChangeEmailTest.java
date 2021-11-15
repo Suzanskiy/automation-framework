@@ -12,6 +12,7 @@ import com.racetrac.mobile.multisite.racetrac.flow.SignInFlow;
 import com.racetrac.mobile.multisite.racetrac.flow.SignOutFlow;
 import com.racetrac.mobile.multisite.racetrac.flow.SignUpFlow;
 import com.racetrac.mobile.multisite.racetrac.flow.WelcomeFlow;
+import com.racetrac.mobile.multisite.racetrac.flow.helper.PopupCloserFlow;
 import com.racetrac.mobile.multisite.racetrac.util.CommonUtils;
 import io.qameta.allure.Description;
 import io.qameta.allure.TmsLink;
@@ -36,8 +37,6 @@ public class AccountSettingsChangeEmailTest extends BaseTest {
     @Autowired
     LocationRequestFlow locationRequestFlow;
     @Autowired
-    NotificationRequestFlow notificationRequestFlow;
-    @Autowired
     ProfileFlow profileFlow;
     @Autowired
     PointsAndLevelsFlow pointsAndLevelsFlow;
@@ -56,12 +55,6 @@ public class AccountSettingsChangeEmailTest extends BaseTest {
         signInFlow.openLoginInPage();
         assertTrue(signInFlow.isLoginPageOpened(), "Login page is not opened");
         signInFlow.authorize(customerDto);
-        locationRequestFlow.clickContinue();
-        notificationRequestFlow.clickNotNow();
-
-        signInFlow.clickGotItBtn();
-        pointsAndLevelsFlow.clickGotItBtn();
-        assertTrue(welcomeFlow.isHomePageOpenedAfterSignIn(), "Welcome page is not opened after sign in");
 
         accountSettingsFlow.navigateToAccountSettings();
         assertTrue(accountSettingsFlow.isAccountSettingsAuthorisedUserScreenOpened(), " Account screen for Logged in User is not opened");
@@ -92,11 +85,6 @@ public class AccountSettingsChangeEmailTest extends BaseTest {
         signInFlow.openLoginInPage();
         assertTrue(signInFlow.isLoginPageOpened(), "Login page is not opened");
         signInFlow.authorize(customerDto);
-        locationRequestFlow.clickContinue();
-        notificationRequestFlow.clickNotNow();
-        signInFlow.clickGotItBtn();
-        pointsAndLevelsFlow.clickGotItBtn();
-        assertTrue(welcomeFlow.isHomePageOpenedAfterSignIn(), "Welcome page is not opened after sign in");
     }
 
     @TmsLink("5875")
