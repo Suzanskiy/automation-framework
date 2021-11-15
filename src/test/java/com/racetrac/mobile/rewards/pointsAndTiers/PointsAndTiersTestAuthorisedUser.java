@@ -24,17 +24,7 @@ public class PointsAndTiersTestAuthorisedUser extends BaseTest {
     @Autowired
     SignInFlow signInFlow;
     @Autowired
-    SignOutFlow signOutFlow;
-    @Autowired
-    LocationRequestFlow locationRequestFlow;
-    @Autowired
-    NotificationRequestFlow notificationRequestFlow;
-    @Autowired
     PointsAndLevelsFlow pointsAndLevelsFlow;
-    @Autowired
-    RewardsPopupFlow rewardsPopupFlow;
-    @Autowired
-    AccountProvider accountProvider;
     @Autowired
     PunchhPointsClient punchhPointsClient;
 
@@ -50,11 +40,6 @@ public class PointsAndTiersTestAuthorisedUser extends BaseTest {
         customerDto = testData.registerNewCustomer();
         punchhPointsClient.addRedeemPoints(customerDto, 2500);
         signInFlow.authorize(customerDto);
-        locationRequestFlow.clickContinue();
-        notificationRequestFlow.clickNotNow();
-        rewardsPopupFlow.clickGotItBtn();
-        pointsAndLevelsFlow.clickGotItBtn();
-        assertTrue(welcomeFlow.isHomePageOpenedAfterSignIn(), "Welcome page is not opened after sign in");
         pointsAndLevelsFlow.clickOnHeroLevelHelpBtn();
         assertTrue(pointsAndLevelsFlow.isPointsAndLevelsPageOpened(), "Points & Levels page is not opened");
         assertTrue(pointsAndLevelsFlow.isPointsAndTiersSectionIsOpened(), "POINTS & TIERS section is not opened");

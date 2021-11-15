@@ -25,14 +25,6 @@ public class CouponsScreenMainPageTest extends BaseTest {
     @Autowired
     SignInFlow signInFlow;
     @Autowired
-    LocationRequestFlow locationRequestFlow;
-    @Autowired
-    NotificationRequestFlow notificationRequestFlow;
-    @Autowired
-    PointsAndLevelsFlow pointsAndLevelsFlow;
-    @Autowired
-    RewardsPopupFlow rewardsPopupFlow;
-    @Autowired
     NavigationFlow navigationFlow;
     @Autowired
     InputEmailForGiftCouponFlow inputEmailForGiftCouponFlow;
@@ -82,11 +74,6 @@ public class CouponsScreenMainPageTest extends BaseTest {
         signInFlow.openLoginInPage();
         assertTrue(signInFlow.isLoginPageOpened(), "Login page is not opened");
         signInFlow.authorize(customerDto);
-        locationRequestFlow.clickContinue();
-        notificationRequestFlow.clickNotNow();
-        rewardsPopupFlow.clickGotItBtn();
-        pointsAndLevelsFlow.clickGotItBtn();
-        assertTrue(welcomeFlow.isHomePageOpenedAfterSignIn(), "Welcome page is not opened after sign in");
         welcomeFlow.swipeToCouponsSection();
         assertTrue(welcomeFlow.isNoCouponsSectionDisplayed(), "No coupons section is not displayed");
         assertFalse(welcomeFlow.isGiftToAFriendBtnClickable(), "\"Gift to a friend button\" is clickable");
@@ -103,11 +90,6 @@ public class CouponsScreenMainPageTest extends BaseTest {
         signInFlow.openLoginInPage();
         assertTrue(signInFlow.isLoginPageOpened(), "Login page is not opened");
         signInFlow.authorize(customerDto);
-        locationRequestFlow.clickContinue();
-        notificationRequestFlow.clickNotNow();
-        rewardsPopupFlow.clickGotItBtn();
-        pointsAndLevelsFlow.clickGotItBtn();
-        assertTrue(welcomeFlow.isHomePageOpenedAfterSignIn(), "Welcome page is not opened after sign in");
         welcomeFlow.swipeToCouponsSection();
 
         assertFalse(welcomeFlow.isViewAllCouponsBtnDisplayed(), "View all is displayed");
@@ -122,11 +104,6 @@ public class CouponsScreenMainPageTest extends BaseTest {
         signInFlow.openLoginInPage();
         assertTrue(signInFlow.isLoginPageOpened(), "Login page is not opened");
         signInFlow.authorize(customerDto);
-        locationRequestFlow.clickContinue();
-        notificationRequestFlow.clickNotNow();
-        rewardsPopupFlow.clickGotItBtn();
-        pointsAndLevelsFlow.clickGotItBtn();
-        assertTrue(welcomeFlow.isHomePageOpenedAfterSignIn(), "Welcome page is not opened after sign in");
         welcomeFlow.swipeToCouponsSection();
 
         assertTrue(welcomeFlow.isViewAllCouponsBtnDisplayed(), "View all is not displayed");
@@ -142,11 +119,6 @@ public class CouponsScreenMainPageTest extends BaseTest {
         signInFlow.openLoginInPage();
         assertTrue(signInFlow.isLoginPageOpened(), "Login page is not opened");
         signInFlow.authorize(customerDto);
-        locationRequestFlow.clickContinue();
-        notificationRequestFlow.clickNotNow();
-        rewardsPopupFlow.clickGotItBtn();
-        pointsAndLevelsFlow.clickGotItBtn();
-        assertTrue(welcomeFlow.isHomePageOpenedAfterSignIn(), "Welcome page is not opened after sign in");
 
         welcomeFlow.swipeToCouponsSection();
         assertTrue(welcomeFlow.isGiftToAFriendBtnClickable(), "\"Gift to a friend button\" is not clickable");
@@ -179,11 +151,6 @@ public class CouponsScreenMainPageTest extends BaseTest {
         punchhPointsClient.generateCouponsAmount(customerDto, 2);
         assertTrue(signInFlow.isLoginPageOpened(), "Login page is not opened");
         signInFlow.authorize(customerDto);
-        locationRequestFlow.clickContinue();
-        notificationRequestFlow.clickNotNow();
-        rewardsPopupFlow.clickGotItBtn();
-        pointsAndLevelsFlow.clickGotItBtn();
-        assertTrue(welcomeFlow.isHomePageOpenedAfterSignIn(), "Welcome page is not opened after sign in");
         welcomeFlow.swipeToCouponsSection();
 
         assertEquals(welcomeFlow.couponsCarouselQuantity(), COUPONS_AMOUNT, "The number of available coupons and coupons in the carousel is not equal");

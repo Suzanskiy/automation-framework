@@ -9,7 +9,5 @@ public interface SignInFlow {
 
     void authorize(CustomerDto customerDto);
 
-    boolean isCouponsViewOpened();
-
     void clickGotItBtn();
 }

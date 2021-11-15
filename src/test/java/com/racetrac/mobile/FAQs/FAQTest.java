@@ -21,14 +21,7 @@ public class FAQTest extends BaseTest {
     AccountSettingsFlow accountSettingsFlow;
     @Autowired
     FAQFlow faqFlow;
-    @Autowired
-    LocationRequestFlow locationRequestFlow;
-    @Autowired
-    NotificationRequestFlow notificationRequestFlow;
-    @Autowired
-    RewardsPopupFlow rewardsPopupFlow;
-    @Autowired
-    PointsAndLevelsFlow pointsAndLevelsFlow;
+
 
     @TmsLink("10163")
     @Description("FAQs for unauthorised users")
@@ -53,11 +46,6 @@ public class FAQTest extends BaseTest {
         assertTrue(signInFlow.isLoginPageOpened(), "Login page is not opened");
         customerDto = testData.registerNewCustomer();
         signInFlow.authorize(customerDto);
-        locationRequestFlow.clickContinue();
-        notificationRequestFlow.clickNotNow();
-        rewardsPopupFlow.clickGotItBtn();
-        pointsAndLevelsFlow.clickGotItBtn();
-        assertTrue(welcomeFlow.isHomePageOpenedAfterSignIn(), "Welcome page is not opened after sign in");
         accountSettingsFlow.navigateToAccountSettings();
         accountSettingsFlow.waitUntilAccountSettingsAuthorizedOpen();
         assertTrue(accountSettingsFlow.isAccountSettingsAuthorisedUserScreenOpened(), "Account screen for Logged in User is not opened");

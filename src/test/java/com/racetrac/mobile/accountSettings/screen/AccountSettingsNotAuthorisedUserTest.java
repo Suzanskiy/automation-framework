@@ -27,7 +27,6 @@ public class AccountSettingsNotAuthorisedUserTest extends BaseTest {
     @Description("Account Settings screen for Guest User")
     @Test
     public void accountSettingsScreenForGuestUserTest() {
-        welcomeFlow.isHomePageOpened();
         accountSettingsFlow.navigateToAccountSettings();
         assertTrue(accountSettingsFlow.isAccountSettingsScreenOpened(), " Account screen is not opened");
     }

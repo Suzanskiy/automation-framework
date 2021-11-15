@@ -20,18 +20,8 @@ public class RedeemPointsTest extends BaseTest {
     @Autowired
     SignInFlow signInFlow;
     @Autowired
-    SignOutFlow signOutFlow;
-    @Autowired
-    LocationRequestFlow locationRequestFlow;
-    @Autowired
-    NotificationRequestFlow notificationRequestFlow;
-    @Autowired
-    PointsAndLevelsFlow pointsAndLevelsFlow;
-    @Autowired
     RewardsPopupFlow rewardsPopupFlow;
     CustomerDto customerDto;
-    @Autowired
-    AccountProviderImpl accountProviderImpl;
     @Autowired
     RewardsCatalogFlow rewardsCatalogFlow;
     @Autowired
@@ -51,10 +41,6 @@ public class RedeemPointsTest extends BaseTest {
         signInFlow.openLoginInPage();
         assertTrue(signInFlow.isLoginPageOpened(), "Login page is not opened");
         signInFlow.authorize(customerDto);
-        locationRequestFlow.clickContinue();
-        notificationRequestFlow.clickNotNow();
-        signInFlow.clickGotItBtn();
-        pointsAndLevelsFlow.clickGotItBtn();
         assertFalse(welcomeFlow.isRedeemPointsBtnDisplayedOnMainScreen(), " Redeem points is displayed");
     }
 
@@ -68,11 +54,6 @@ public class RedeemPointsTest extends BaseTest {
         signInFlow.openLoginInPage();
         assertTrue(signInFlow.isLoginPageOpened(), "Login page is not opened");
         signInFlow.authorize(customerDto);
-        locationRequestFlow.clickContinue();
-        notificationRequestFlow.clickNotNow();
-        rewardsPopupFlow.clickGotItBtn();
-        pointsAndLevelsFlow.clickGotItBtn();
-        assertTrue(welcomeFlow.isHomePageOpenedAfterSignIn(), "Welcome page is not opened after sign in");
         welcomeFlow.clickOnRedeemPointsBtn();
         assertTrue(rewardsPopupFlow.isRewardPopupPageOpened(), "Reward Popup is not opened");
         rewardsPopupFlow.clickGotItBtn();
@@ -92,11 +73,6 @@ public class RedeemPointsTest extends BaseTest {
         signInFlow.openLoginInPage();
         assertTrue(signInFlow.isLoginPageOpened(), "Login page is not opened");
         signInFlow.authorize(customerDto);
-        locationRequestFlow.clickContinue();
-        notificationRequestFlow.clickNotNow();
-        rewardsPopupFlow.clickGotItBtn();
-        pointsAndLevelsFlow.clickGotItBtn();
-        assertTrue(welcomeFlow.isHomePageOpenedAfterSignIn(), "Welcome page is not opened after sign in");
         welcomeFlow.clickOnRedeemPointsBtn();
         assertTrue(rewardsPopupFlow.isRewardPopupPageOpened(), "Reward Popup is not opened");
         rewardsPopupFlow.clickGotItBtn();

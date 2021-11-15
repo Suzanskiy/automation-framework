@@ -55,9 +55,11 @@ public class BaseTest extends AbstractTestNGSpringContextTests {
         getDriver().closeApp();
     }
 
-    @AfterClass
-    public void afterClass() {
+    @AfterClass(alwaysRun = true)
+    @Override
+    protected void springTestContextAfterTestClass() throws Exception {
         stopAppiumServer();
+        super.springTestContextAfterTestClass();
     }
 
     @BeforeMethod(alwaysRun = true)

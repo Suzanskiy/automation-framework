@@ -27,14 +27,6 @@ public class ContactUsAuthorizedTest extends BaseTest {
     @Autowired
     SignInFlow signInFlow;
     @Autowired
-    LocationRequestFlow locationRequestFlow;
-    @Autowired
-    NotificationRequestFlow notificationRequestFlow;
-    @Autowired
-    PointsAndLevelsFlow pointsAndLevelsFlow;
-    @Autowired
-    RewardsPopupFlow rewardsPopupFlow;
-    @Autowired
     HelpInformationFlow helpInformationFlow;
     @Autowired
     ContactUsFlow contactUsFlow;
@@ -52,11 +44,6 @@ public class ContactUsAuthorizedTest extends BaseTest {
         assertTrue(signInFlow.isLoginPageOpened(), "Login page is not opened");
         customerDto = testData.registerNewCustomer();
         signInFlow.authorize(customerDto);
-        locationRequestFlow.clickContinue();
-        notificationRequestFlow.clickNotNow();
-        rewardsPopupFlow.clickGotItBtn();
-        pointsAndLevelsFlow.clickGotItBtn();
-        assertTrue(welcomeFlow.isHomePageOpenedAfterSignIn(), "Welcome page is not opened after sign in");
 
         accountSettingsFlow.navigateToAccountSettings();
         accountSettingsFlow.waitUntilAccountSettingsAuthorizedOpen();
