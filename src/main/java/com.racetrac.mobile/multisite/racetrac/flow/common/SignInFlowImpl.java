@@ -37,8 +37,6 @@ public class SignInFlowImpl extends BaseFlow implements SignInFlow {
         getLoginPage().getPasswordInput().setValue(customerDto.getEmailAuth().getPassword());
         getLoginPage().getLoginBtn().click();
         popupCloserFlow.closePopups();
-        assertTrue(getHomePage().waitUntilIsOpened(), "Welcome page is not opened after sign in");
-
     }
 
     @Step

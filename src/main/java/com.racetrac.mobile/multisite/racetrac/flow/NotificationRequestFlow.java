@@ -5,4 +5,6 @@ public interface NotificationRequestFlow {
 
     public void clickTurnOn();
 
+    public boolean isNotificationRequestOpened();
+
 }

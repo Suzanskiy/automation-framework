@@ -12,11 +12,11 @@ import org.springframework.stereotype.Component;
 @Getter
 public class RewardsPopupPage extends BaseMobilePage {
 
+    @PageLoading
     @iOSXCUITFindBy(xpath = "//XCUIElementTypeButton[@name=\"GOT IT\"]")
     @AndroidFindBy(uiAutomator = "new UiSelector().text(\"GOT IT\")")
     private MobileElement gotItBtn;
 
-    @PageLoading
     @AndroidFindBy(id = "com.RaceTrac.Common.qa:id/redeemButton")
     @iOSXCUITFindBy(xpath = "//XCUIElementTypeButton[@name=\"REDEEM\"]")
     private MobileElement redeemBtn;

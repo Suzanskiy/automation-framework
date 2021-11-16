@@ -37,8 +37,12 @@ public class iosPopupCloserImpl extends BaseFlow implements PopupCloserFlow {
         if (promotionalOffersFlow.isPromotionalOffersScreenOpened()) {
             promotionalOffersFlow.skipPromotions();
         }
-        locationRequestFlow.clickContinue();
-        notificationRequestFlow.clickNotNow();
+        if (locationRequestFlow.isLocationRequestOpened()) {
+            locationRequestFlow.clickContinue();
+        }
+        if (notificationRequestFlow.isNotificationRequestOpened()) {
+            notificationRequestFlow.clickNotNow();
+        }
         if (becomeFuelVipFlow.checkAllElementsIsLoaded()) {
             becomeFuelVipFlow.clickNotRightNow();
         }

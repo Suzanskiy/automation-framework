@@ -38,4 +38,9 @@ public class AndroidNotificationRequestFlowImpl extends BaseFlow implements Noti
         getTurnOnNotificationPage().getTurnOnBtn().click();
     }
 
+    @Override
+    public boolean isNotificationRequestOpened() {
+        return getTurnOnNotificationPage().waitUntilIsOpened();
+    }
+
 }

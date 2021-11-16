@@ -2,7 +2,16 @@ package com.racetrac.mobile.signUp;
 
 import com.racetrac.mobile.BaseTest;
 import com.racetrac.mobile.multisite.racetrac.dto.CustomerDto;
-import com.racetrac.mobile.multisite.racetrac.flow.*;
+import com.racetrac.mobile.multisite.racetrac.flow.BecomeFuelVipFlow;
+import com.racetrac.mobile.multisite.racetrac.flow.LocationRequestFlow;
+import com.racetrac.mobile.multisite.racetrac.flow.NotificationRequestFlow;
+import com.racetrac.mobile.multisite.racetrac.flow.PointsAndLevelsFlow;
+import com.racetrac.mobile.multisite.racetrac.flow.PromotionalOffersFlow;
+import com.racetrac.mobile.multisite.racetrac.flow.RewardsPopupFlow;
+import com.racetrac.mobile.multisite.racetrac.flow.SignOutFlow;
+import com.racetrac.mobile.multisite.racetrac.flow.SignUpFlow;
+import com.racetrac.mobile.multisite.racetrac.flow.WelcomeFlow;
+import com.racetrac.mobile.multisite.racetrac.flow.helper.PopupCloserFlow;
 import io.qameta.allure.Description;
 import io.qameta.allure.TmsLink;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,7 +42,8 @@ public class SignUpTest extends BaseTest {
     PointsAndLevelsFlow pointsAndLevelsFlow;
     @Autowired
     RewardsPopupFlow rewardsPopupFlow;
-
+    @Autowired
+    PopupCloserFlow popupCloserFlow;
 
 
     @BeforeMethod(alwaysRun = true)
@@ -52,18 +62,9 @@ public class SignUpTest extends BaseTest {
     public void signUpTest() {
         signUpFlow.enterCredentials(customerDto);
         signUpFlow.clickGetStartedBtn();
-        notificationRequestFlow.clickNotNow();
-        becomeFuelVipFlow.clickNotRightNow();
-
-        promotionalOffersFlow.skipPromotions();
-        locationRequestFlow.clickContinue();
-        becomeFuelVipFlow.waitUntilBecomeFuelVipLoaded();
-        becomeFuelVipFlow.clickNotRightNow();
-
-        rewardsPopupFlow.clickGotItBtn();
-        pointsAndLevelsFlow.clickGotItBtn();
+        popupCloserFlow.closePopups();
         signOutFlow.doSignOut();
-        assertTrue(welcomeFlow.isHomePageOpened(), "Welcome page is not opened");
+        popupCloserFlow.closePopups();
     }
 
     @TmsLink("2715")
@@ -73,19 +74,8 @@ public class SignUpTest extends BaseTest {
         signUpFlow.enterCredentials(customerDto);
         assertTrue(signUpFlow.isFistBumpPageOpened(), "Fist Bump screen is not opened");
         signUpFlow.clickGetStartedBtn();
-        notificationRequestFlow.clickNotNow();
-        becomeFuelVipFlow.clickNotRightNow();
-        promotionalOffersFlow.skipPromotions();
-        locationRequestFlow.clickContinue();
-        becomeFuelVipFlow.waitUntilBecomeFuelVipLoaded();
-        becomeFuelVipFlow.clickNotRightNow();
-
-        rewardsPopupFlow.clickGotItBtn();
-
-        pointsAndLevelsFlow.clickGotItBtn();
-        notificationRequestFlow.clickNotNow();
+        popupCloserFlow.closePopups();
         signOutFlow.doSignOut();
-        locationRequestFlow.clickContinue();
         assertTrue(welcomeFlow.isHomePageOpened(), "Welcome page is not opened");
         signUpFlow.openSignUpSelectorPage();
         assertTrue(signUpFlow.isSignUpSelectorPageOpened(), "SignUpSelector page is not opened");
