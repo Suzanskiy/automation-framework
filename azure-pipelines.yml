@@ -22,7 +22,7 @@ resources:
       ref: develop
 
 schedules:
-  - cron: "0 3 * * Mon-Fri"
+  - cron: "0 1 * * Mon-Fri"
     displayName: Regression Run every night
     branches:
       include:
