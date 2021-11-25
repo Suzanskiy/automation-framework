@@ -40,9 +40,13 @@ stages:
     condition: or(eq(variables['Build.Reason'], 'Schedule'), eq(variables['Build.Reason'], 'Manual'))
     variables:
       JAVA_HOME: "/Users/tfsuser/OpenJDK8U/jdk8u292-b10/Contents/Home"
+      DEVELOPER_DIR: "/Applications/Xcode-13.1.app/Contents/Developer"
     jobs:
       - job: buildIos
         steps:
+          - script: xcodebuild -version
+          - script: xcode-select -p
+          - script: ls /Applications
           - checkout: ios
           - script: 'sh ./Scripts/build_distirbution/build_app_for_automation.sh'
             displayName: 'Command Line Script'
