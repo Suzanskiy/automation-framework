@@ -10,7 +10,6 @@ import com.racetrac.mobile.multisite.racetrac.flow.SignInFlow;
 import com.racetrac.mobile.multisite.racetrac.flow.SignUpFlow;
 import com.racetrac.mobile.multisite.racetrac.flow.SuccessfulSentContactUsMessageFlow;
 import com.racetrac.mobile.multisite.racetrac.flow.WelcomeFlow;
-import com.racetrac.mobile.util.constants.TestData;
 import com.racetrac.mobile.util.device.ConnectionUtils;
 import io.qameta.allure.Description;
 import io.qameta.allure.TmsLink;
@@ -27,7 +26,6 @@ import static org.testng.Assert.assertEquals;
 public class ContactUsAuthorizedTest extends BaseTest {
 
     private static final String TEST_MESSAGE = "This is test message from QA team";
-    private static final String PATH = "testData/text5000symbols.txt";
     public static final String FAILED_SUBMISSION_MESSAGE = "Your submission was not successful. Please try again.";
 
     @Autowired
@@ -88,22 +86,23 @@ public class ContactUsAuthorizedTest extends BaseTest {
         contactUsFlow.sendMessageToGeneralSubject(TEST_MESSAGE);
         assertTrue(signUpFlow.isErrorMessageShown());
         assertEquals(signUpFlow.getErrorMessageText(), FAILED_SUBMISSION_MESSAGE);
-        enableConnection();
     }
 
     @TmsLink("8826")
     @Description("Information about a successfully sent message in \"Contact Us\" is displayed when the message has 5000 symbols and more")
     @Test
     public void sentMessageWithMoreCharactersThanAllowedTest() {
+        enableConnection();
         assertTrue(contactUsFlow.isContactUsPageOpened(), "Contact us Page is not opened");
-        contactUsFlow.sendMessageToGeneralSubject(TestData.readFromFile(PATH));
+        contactUsFlow.sendMessageToGeneralSubject(testData.get4750Symbols());
         assertTrue(successfulSentContactUsMessageFlow.isSuccessfulSentContactUsMessageOpened(), "The page after the sent message is not opened");
         successfulSentContactUsMessageFlow.closeSuccessfulSentContactUsMessagePage();
         assertTrue(helpInformationFlow.isHelpInformationPageOpened(), "Help information page is not opened");
         helpInformationFlow.navigateToContactUs();
         assertTrue(contactUsFlow.isContactUsPageOpened(), "Contact us Page is not opened");
-        contactUsFlow.sendMessageToGeneralSubject(TestData.readFromFile(PATH) + "A");
-        assertTrue(successfulSentContactUsMessageFlow.isSuccessfulSentContactUsMessageOpened(), "The page after the sent message is not opened");
+        contactUsFlow.sendMessageToGeneralSubject(testData.get4750Symbols() + "A");
+        assertTrue(signUpFlow.isErrorMessageShown());
+        assertEquals(signUpFlow.getErrorMessageText(), FAILED_SUBMISSION_MESSAGE);
     }
 
     @AfterMethod(alwaysRun = true)
