@@ -13,4 +13,5 @@ public interface TestData {
     CustomerDto registerNewCustomer(CustomerAge age);
     String generateDateBirth();
     String generateDateBirthPlus(int amount, ChronoUnit unitType);
+    String get4750Symbols();
 }

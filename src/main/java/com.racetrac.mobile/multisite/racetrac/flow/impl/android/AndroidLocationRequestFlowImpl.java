@@ -6,6 +6,7 @@ import io.qameta.allure.Step;
 import org.openqa.selenium.InvalidElementStateException;
 import org.openqa.selenium.NoAlertPresentException;
 import org.openqa.selenium.NoSuchElementException;
+import org.openqa.selenium.StaleElementReferenceException;
 import org.openqa.selenium.TimeoutException;
 import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Component;
@@ -33,7 +34,7 @@ public class AndroidLocationRequestFlowImpl extends BaseFlow implements Location
             getDriver().switchTo().alert().dismiss();
         } catch (NoAlertPresentException e) {
             LOG.warn("unable to skip native location request");
-        } catch (TimeoutException e) {
+        } catch (TimeoutException | StaleElementReferenceException e) {
             LOG.info("Got timeout excpetion while waiting for native location request window");
         }
 
