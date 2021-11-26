@@ -31,6 +31,16 @@ public class iOSBrowserHandler extends BaseFlow implements ChromeBrowserHandler 
         LOG.debug("Not needed in iOS");
     }
 
+    @Override
+    public void handleBrowserOpening() {
+
+    }
+
+    @Override
+    public void switchContext() {
+
+    }
+
     @Step
     @Override
     public String getUrl() {

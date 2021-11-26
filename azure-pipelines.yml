@@ -44,9 +44,6 @@ stages:
     jobs:
       - job: buildIos
         steps:
-          - script: xcodebuild -version
-          - script: xcode-select -p
-          - script: ls /Applications
           - checkout: ios
           - script: 'sh ./Scripts/build_distirbution/build_app_for_automation.sh'
             displayName: 'Command Line Script'

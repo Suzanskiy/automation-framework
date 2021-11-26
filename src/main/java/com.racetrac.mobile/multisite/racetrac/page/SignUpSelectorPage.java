@@ -16,4 +16,7 @@ public class SignUpSelectorPage extends BaseMobilePage {
     @iOSXCUITFindBy(xpath = "//XCUIElementTypeButton[@name=\"SIGN UP WITH EMAIL\"]")
     @AndroidFindBy(id = "com.RaceTrac.Common.qa:id/emailSignupButton")
     private MobileElement signUpWithEmailBtn;
+
+    @AndroidFindBy(id = "com.RaceTrac.Common.qa:id/facebookSignupButton")
+    private MobileElement signUpWithFacebookBtn;
 }

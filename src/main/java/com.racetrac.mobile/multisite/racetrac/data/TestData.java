@@ -7,10 +7,20 @@ import java.time.temporal.ChronoUnit;
 
 public interface TestData {
     CustomerDto generateDefaultCustomer();
-    CustomerDto generateCustomer(int age);
+
+    CustomerDto generateCustomer(int var1);
+
     CustomerDto generateCustomerWithoutBirthdate();
+
     CustomerDto registerNewCustomer();
-    CustomerDto registerNewCustomer(CustomerAge age);
+
+    CustomerDto registerNewCustomer(CustomerAge var1);
+
+    CustomerDto getFacebookCustomer();
+
     String generateDateBirth();
-    String generateDateBirthPlus(int amount, ChronoUnit unitType);
+
+    String generateDateBirthPlus(int var1, ChronoUnit var2);
+
+    String get4750Symbols();
 }

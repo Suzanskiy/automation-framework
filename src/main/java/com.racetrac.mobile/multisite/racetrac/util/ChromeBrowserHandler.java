@@ -3,8 +3,11 @@ package com.racetrac.mobile.multisite.racetrac.util;
 import java.io.IOException;
 
 public interface ChromeBrowserHandler {
-
     void prepareBrowser() throws IOException;
+
+    void handleBrowserOpening();
+
+    void switchContext();
 
     String getUrl() throws InterruptedException;
 
@@ -23,5 +26,4 @@ public interface ChromeBrowserHandler {
     String getBecomeAVipUrlEndpoint();
 
     String getBecomeAVipUrlParameters();
-
 }
