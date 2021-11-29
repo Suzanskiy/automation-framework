@@ -79,12 +79,14 @@ public class PopUpVipTest extends BaseTest {
         final String openedUrl = chromeBrowserHandler.getUrl();
         chromeBrowserHandler.returnBackToApp();
         promotionalOffersFlow.skipIOSPromotions();
-        locationRequestFlow.clickContinue();
-        rewardsPopupFlow.clickGotItBtn();
-        pointsAndLevelsFlow.clickGotItBtn();
+//        locationRequestFlow.clickContinue();
+//        rewardsPopupFlow.clickGotItBtn();
+//        pointsAndLevelsFlow.clickGotItBtn();
+//        check steps above on ios
         assertTrue(openedUrl.contains(chromeBrowserHandler.getRaceTracDomain()));
-        assertTrue(openedUrl.contains(chromeBrowserHandler.getBecomeAVipUrlEndpoint()));
+        assertTrue(openedUrl.contains(chromeBrowserHandler.getRewardsEndpoint()));
         assertTrue(openedUrl.contains(chromeBrowserHandler.getBecomeAVipUrlParameters()));
+
     }
 
     @TmsLink("6413")
@@ -95,9 +97,10 @@ public class PopUpVipTest extends BaseTest {
         final String openedUrl = chromeBrowserHandler.getUrl();
         chromeBrowserHandler.returnBackToApp();
         promotionalOffersFlow.skipIOSPromotions();
-        locationRequestFlow.clickContinue();
-        rewardsPopupFlow.clickGotItBtn();
-        pointsAndLevelsFlow.clickGotItBtn();
+//        locationRequestFlow.clickContinue();
+//        rewardsPopupFlow.clickGotItBtn();
+//        pointsAndLevelsFlow.clickGotItBtn();
+//        check steps above on ios
         assertTrue(openedUrl.contains(chromeBrowserHandler.getRaceTracDomain()));
         assertTrue(openedUrl.contains(chromeBrowserHandler.getBecomeAVipUrlEndpoint()));
         assertTrue(openedUrl.contains(chromeBrowserHandler.getBecomeAVipUrlParameters()));
@@ -107,11 +110,13 @@ public class PopUpVipTest extends BaseTest {
     @Description("User is redirected to Home Page after click Not Right Now")
     @Test
     public void tapNotRightNowTest() {
+        // these steps are not mandatory. Need to check
         becomeFuelVipFlow.clickNotRightNowBtn();
         promotionalOffersFlow.skipIOSPromotions();
         locationRequestFlow.clickContinue();
         rewardsPopupFlow.clickGotItBtn();
         pointsAndLevelsFlow.clickGotItBtn();
+
         assertTrue(welcomeFlow.isHomePageOpened());
     }
 

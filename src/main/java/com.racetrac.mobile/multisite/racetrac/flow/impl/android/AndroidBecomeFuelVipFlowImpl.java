@@ -17,12 +17,12 @@ import static com.racetrac.mobile.framework.constants.PlatformsConstants.ANDROID
 public class AndroidBecomeFuelVipFlowImpl extends BaseFlow implements BecomeFuelVipFlow {
     @Step
     @Override
-    public void clickNotRightNow() {
+    public void clickNotRightNowBtn() {
         try {
             getBecomeFuelVipPage().waitUntilIsOpened();
             getBecomeFuelVipPage().getNotRightNowBtn().click();
-        } catch (NoSuchElementException| TimeoutException|StaleElementReferenceException e) {
-        LOG.warn("Unable to click NOT RIGHT NOW on Become Fuel VIP page");
+        } catch (NoSuchElementException | TimeoutException | StaleElementReferenceException e) {
+            LOG.warn("Unable to click NOT RIGHT NOW on Become Fuel VIP page");
         }
     }
 
@@ -40,11 +40,7 @@ public class AndroidBecomeFuelVipFlowImpl extends BaseFlow implements BecomeFuel
         handleBrowserOpening();
     }
 
-    @Step
-    @Override
-    public void clickNotRightNowBtn() {
-        getBecomeFuelVipPage().getNotRightNowBtn().click();
-    }
+
 
     @Step
     @Override

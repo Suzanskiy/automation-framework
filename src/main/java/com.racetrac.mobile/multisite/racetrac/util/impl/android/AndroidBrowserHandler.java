@@ -29,6 +29,7 @@ public class AndroidBrowserHandler extends BaseFlow implements ChromeBrowserHand
     private static final String RACE_TRAC_DOMAIN = "dep-www.racetrac.com";
     private static final String ANDROID_BECOME_A_VIP_URL_ENDPOINT = "/Rewards/Purchase/FuelSubscription/";
     private static final String ANDROID_BECOME_A_VIP_URL_PARAMETERS = "utm_source=app&utm_medium=onboarding&utm_campaign=vip";
+    private static final String ANDROID_REWARDS_ENDPOINT = "/Rewards/RaceTrac-Rewards-Vip";
     @Override
     public void prepareBrowser() throws IOException {
         Runtime.getRuntime().exec("adb shell pm clear " + CHROME_APP_PACKAGE);
@@ -89,6 +90,10 @@ public class AndroidBrowserHandler extends BaseFlow implements ChromeBrowserHand
     @Override
     public String getBecomeAVipUrlEndpoint() {
         return ANDROID_BECOME_A_VIP_URL_ENDPOINT;
+    }
+    @Override
+    public String getRewardsEndpoint(){
+        return ANDROID_REWARDS_ENDPOINT;
     }
     @Override
     public String getBecomeAVipUrlParameters() {

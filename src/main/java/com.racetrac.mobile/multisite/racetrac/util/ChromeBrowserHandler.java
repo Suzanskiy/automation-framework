@@ -22,6 +22,8 @@ public interface ChromeBrowserHandler {
 
     String getBecomeAVipUrlEndpoint();
 
+    String getRewardsEndpoint();
+
     String getBecomeAVipUrlParameters();
 
 }

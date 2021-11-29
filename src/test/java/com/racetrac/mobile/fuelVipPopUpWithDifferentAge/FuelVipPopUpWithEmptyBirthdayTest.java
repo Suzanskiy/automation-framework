@@ -58,7 +58,7 @@ public class FuelVipPopUpWithEmptyBirthdayTest extends BaseTest {
         notificationRequestFlow.clickNotNow();
         locationRequestFlow.clickContinue();
         assertTrue(becomeFuelVipFlow.checkAllElementsIsLoaded(), "Elements are not loaded");
-        becomeFuelVipFlow.clickNotRightNow();
+        becomeFuelVipFlow.clickNotRightNowBtn();
         locationRequestFlow.clickContinue();
         rewardsPopupFlow.clickGotItBtn();
         pointsAndLevelsFlow.clickGotItBtn();

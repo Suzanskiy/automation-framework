@@ -24,7 +24,7 @@ public class iOSBrowserHandler extends BaseFlow implements ChromeBrowserHandler 
     private static final String IOS_RACE_TRAC_DOMAIN = "dep-www.racetrac.com";
     private static final String IOS_BECOME_A_VIP_URL_ENDPOINT = "/Rewards/Purchase/FuelSubscription/";
     private static final String IOS_BECOME_A_VIP_URL_PARAMETERS = "utm_source=app&utm_medium=onboarding&utm_campaign=vip";
-
+    private static final String IOS_REWARDS_ENDPOINT = "/Rewards/RaceTrac-Rewards-Vip";
 
     @Override
     public void prepareBrowser() throws IOException {
@@ -74,6 +74,11 @@ public class iOSBrowserHandler extends BaseFlow implements ChromeBrowserHandler 
     @Override
     public String getBecomeAVipUrlEndpoint() {
         return IOS_BECOME_A_VIP_URL_ENDPOINT;
+    }
+
+    @Override
+    public String getRewardsEndpoint(){
+        return IOS_REWARDS_ENDPOINT;
     }
     @Override
     public String getBecomeAVipUrlParameters() {

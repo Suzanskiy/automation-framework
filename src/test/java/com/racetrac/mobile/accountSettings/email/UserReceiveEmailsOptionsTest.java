@@ -69,7 +69,7 @@ public class UserReceiveEmailsOptionsTest extends BaseTest {
         becomeFuelVipFlow.waitUntilBecomeFuelVipLoaded();
         assertTrue(becomeFuelVipFlow.checkAllElementsIsLoaded(), "Elements are not loaded");
 
-        becomeFuelVipFlow.clickNotRightNow();
+        becomeFuelVipFlow.clickNotRightNowBtn();
         signInFlow.clickGotItBtn();
         locationRequestFlow.clickContinue();
         rewardsPopupFlow.clickGotItBtn();
@@ -98,7 +98,7 @@ public class UserReceiveEmailsOptionsTest extends BaseTest {
         becomeFuelVipFlow.waitUntilBecomeFuelVipLoaded();
         assertTrue(becomeFuelVipFlow.checkAllElementsIsLoaded(), "Elements are not loaded");
 
-        becomeFuelVipFlow.clickNotRightNow();
+        becomeFuelVipFlow.clickNotRightNowBtn();
         signInFlow.clickGotItBtn();
         locationRequestFlow.clickContinue();
         rewardsPopupFlow.clickGotItBtn();

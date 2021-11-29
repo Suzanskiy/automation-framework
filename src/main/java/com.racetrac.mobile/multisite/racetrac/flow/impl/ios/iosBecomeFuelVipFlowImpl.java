@@ -15,7 +15,7 @@ import static com.racetrac.mobile.framework.constants.PlatformsConstants.IOS;
 public class iosBecomeFuelVipFlowImpl extends BaseFlow implements BecomeFuelVipFlow {
     @Step
     @Override
-    public void clickNotRightNow() {
+    public void clickNotRightNowBtn() {
         try {
             getBecomeFuelVipPage().waitUntilIsOpened();
             clickNotRightNowBtn();
@@ -34,12 +34,6 @@ public class iosBecomeFuelVipFlowImpl extends BaseFlow implements BecomeFuelVipF
     @Override
     public void clickGetStartedBtn() {
         getBecomeFuelVipPage().getGetStartedBtn().click();
-    }
-
-    @Step
-    @Override
-    public void clickNotRightNowBtn() {
-        getBecomeFuelVipPage().getNotRightNowBtn().click();
     }
 
     @Step

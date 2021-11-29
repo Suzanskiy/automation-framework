@@ -55,12 +55,12 @@ public class SignUpTest extends BaseTest {
         signUpFlow.enterCredentials(customerDto);
         signUpFlow.clickGetStartedBtn();
         notificationRequestFlow.clickNotNow();
-        becomeFuelVipFlow.clickNotRightNow();
+        becomeFuelVipFlow.clickNotRightNowBtn();
 
         promotionalOffersFlow.skipPromotions();
         locationRequestFlow.clickContinue();
         becomeFuelVipFlow.waitUntilBecomeFuelVipLoaded();
-        becomeFuelVipFlow.clickNotRightNow();
+        becomeFuelVipFlow.clickNotRightNowBtn();
 
         rewardsPopupFlow.clickGotItBtn();
         pointsAndLevelsFlow.clickGotItBtn();
@@ -76,11 +76,11 @@ public class SignUpTest extends BaseTest {
         assertTrue(signUpFlow.isFistBumpPageOpened(), "Fist Bump screen is not opened");
         signUpFlow.clickGetStartedBtn();
         notificationRequestFlow.clickNotNow();
-        becomeFuelVipFlow.clickNotRightNow();
+        becomeFuelVipFlow.clickNotRightNowBtn();
         promotionalOffersFlow.skipPromotions();
         locationRequestFlow.clickContinue();
         becomeFuelVipFlow.waitUntilBecomeFuelVipLoaded();
-        becomeFuelVipFlow.clickNotRightNow();
+        becomeFuelVipFlow.clickNotRightNowBtn();
 
         rewardsPopupFlow.clickGotItBtn();
 
