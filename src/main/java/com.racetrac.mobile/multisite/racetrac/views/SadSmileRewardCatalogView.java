@@ -21,3 +21,4 @@ public class SadSmileRewardCatalogView extends BaseMobilePage {
     @AndroidFindBy(id="com.RaceTrac.Common.qa:id/buttonOK")
     private MobileElement okSadSmileBtn;
 }
+

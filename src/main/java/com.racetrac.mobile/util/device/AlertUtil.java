@@ -19,7 +19,6 @@ public class AlertUtil {
         }
     }
 
-
     @Step
     public static void dismissAlert() {
         try {
