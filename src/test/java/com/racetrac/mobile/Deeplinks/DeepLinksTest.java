@@ -93,14 +93,11 @@ public class DeepLinksTest extends BaseTest {
         assertTrue(navigationFlow.isStoresTabOpened());
     }
 
-    @Test  // need to fix the link
+    @Test
     public void nearestStoreTest() {
         deppLinksProvider.openDeepLink(DeepLinks.NEAREST_STORE);
         assertTrue(signInFlow.isLoginPageOpened(), "Login page is not opened");
         signInFlow.authorize(customerDto);
-        closePopUps();
-
-        locationRequestFlow.clickOnlyThisTime();
         assertTrue(navigationFlow.isNearestStorePageOpened(), "NearestStorePage is not opened");
     }
 

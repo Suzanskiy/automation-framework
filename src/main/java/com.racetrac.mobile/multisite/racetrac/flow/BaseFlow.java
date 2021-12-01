@@ -85,4 +85,6 @@ public class BaseFlow {
     SuccessfulSentGiftPopUpPage successfulSentGiftPopUpPage;
     SuccessfulSentContactUsMessagePage successfulSentContactUsMessagePage;
     NoInternetConnectionPage noInternetConnectionPage;
+    AllowLocationPermitView allowLocationPermitView;
+
 }

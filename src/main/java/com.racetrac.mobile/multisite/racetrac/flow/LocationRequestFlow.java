@@ -6,4 +6,6 @@ public interface LocationRequestFlow {
     void clickOnlyThisTime();
 
     boolean isLocationRequestOpened();
+
+    void clickAllowButton();
 }
