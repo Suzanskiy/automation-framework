@@ -3,6 +3,7 @@ package com.racetrac.mobile.multisite.racetrac.flow.impl.android;
 import com.racetrac.mobile.multisite.racetrac.flow.BaseFlow;
 import com.racetrac.mobile.multisite.racetrac.flow.LocationRequestFlow;
 import io.qameta.allure.Step;
+import lombok.extern.java.Log;
 import org.openqa.selenium.InvalidElementStateException;
 import org.openqa.selenium.NoAlertPresentException;
 import org.openqa.selenium.NoSuchElementException;
@@ -81,7 +82,11 @@ public class AndroidLocationRequestFlowImpl extends BaseFlow implements Location
 
     @Override
     public void clickAllowButton() {
-        getAllowLocationPermitView().waitUntilIsOpened();
-        getAllowLocationPermitView().getAllowBtn().click();
+        try {
+            getAllowLocationPermitView().waitUntilIsOpened();
+            getAllowLocationPermitView().getAllowBtn().click();
+        } catch (NoSuchElementException e) {
+            LOG.info("Allow button is not appear on Location Permit view");
+        }
     }
 }
