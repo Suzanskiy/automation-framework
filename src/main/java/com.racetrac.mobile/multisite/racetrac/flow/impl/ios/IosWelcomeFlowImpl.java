@@ -133,4 +133,17 @@ public class IosWelcomeFlowImpl extends BaseFlow implements WelcomeFlow {
         waitUntilElementClickable(getHomePage().getIconSettings());
     }
 
+    @Step
+    @Override
+    public boolean isFuelSavingsBtnDisplayed(){
+        return false;
+    }
+
+    @Step
+    @Override
+    public void clickFuelSavingsBtn(){}
+
+    @Step
+    @Override
+    public void openVipSection(){}
 }

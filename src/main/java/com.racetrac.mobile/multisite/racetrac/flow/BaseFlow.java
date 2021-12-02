@@ -62,7 +62,10 @@ public class BaseFlow {
     UpgradeRewardCardPage upgradeRewardCardPage;
     NearestStorePage nearestStorePage;
     FAQPage faqPage;
-
+    FuelSavingsPage fuelSavingsPage;
+    FuelSavingsDebitCardPage fuelSavingsDebitCardPage;
+    FuelSavingsVipPage fuelSavingsVipPage;
+    FuelSavingsRewardsPage fuelSavingsRewardsPage;
 
     //    SECTIONS
     NavigationDrawer navigationDrawer;
