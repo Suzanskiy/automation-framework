@@ -1,9 +1,9 @@
 name: Test on iOS
 
-on:
-  schedule:
-    - cron: '0 7 * * 1-5' #run each MONDAY till FRIDAY at 5.00 UTC ( 10 am KYIV )
-    - cron: '0 13 * * 1-5' #run each MONDAY till FRIDAY at 13.00 UTC ( 4pm KYIV )
+#on:
+#  schedule:
+#    - cron: '0 7 * * 1-5' #run each MONDAY till FRIDAY at 5.00 UTC ( 10 am KYIV )
+#    - cron: '0 13 * * 1-5' #run each MONDAY till FRIDAY at 13.00 UTC ( 4pm KYIV )
 
 jobs:
   prepare:
