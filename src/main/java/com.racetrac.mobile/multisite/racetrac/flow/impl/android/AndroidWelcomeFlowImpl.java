@@ -135,4 +135,24 @@ public class AndroidWelcomeFlowImpl extends BaseFlow implements WelcomeFlow {
     public void waitUntilHomePageLoaded() {
         waitUntilElementClickable(getHomePage().getIconSettings());
     }
+
+    @Override
+    public boolean isFuelSavingsBtnDisplayed() {
+        try {
+            return getHomePage().getFuelSavingsBtn().isDisplayed();
+        } catch (NoSuchElementException e) {
+            return false;
+        }
+    }
+
+    @Override
+    public void clickFuelSavingsBtn() {
+        getHomePage().getFuelSavingsBtn().click();
+    }
+
+    @Override
+    public void openVipSection() {
+        getHomePage().getVipSection().click();
+    }
+
 }
