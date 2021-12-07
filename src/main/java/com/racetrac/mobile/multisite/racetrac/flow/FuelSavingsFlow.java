@@ -1,4 +1,4 @@
-package com.racetrac.mobile.multisite.racetrac.flow.impl;
+package com.racetrac.mobile.multisite.racetrac.flow;
 
 public interface FuelSavingsFlow {
 

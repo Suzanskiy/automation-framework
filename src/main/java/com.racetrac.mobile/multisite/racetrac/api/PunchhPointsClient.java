@@ -11,8 +11,6 @@ import lombok.SneakyThrows;
 import okhttp3.Request;
 import okhttp3.RequestBody;
 import okhttp3.Response;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
 
 import javax.crypto.Mac;
@@ -29,7 +27,6 @@ import static com.racetrac.mobile.multisite.racetrac.api.UrlUtils.SUPPORT_ENDPOI
 
 @Component
 public class PunchhPointsClient extends HttpClient {
-    private static final Logger LOG = LoggerFactory.getLogger(PunchhPointsClient.class);
 
     public static final String DEFAULT_SUBJECT = "Automation tests";
     public static final String DEFAULT_MESSAGE = "Take coupons from automation team";
@@ -190,6 +187,4 @@ public class PunchhPointsClient extends HttpClient {
 
         return formatter.toString();
     }
-
-
 }
