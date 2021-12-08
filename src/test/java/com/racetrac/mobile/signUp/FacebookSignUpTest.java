@@ -1,6 +1,5 @@
 package com.racetrac.mobile.signUp;
 
-import com.google.errorprone.annotations.DoNotCall;
 import com.racetrac.mobile.BaseTest;
 import com.racetrac.mobile.multisite.racetrac.api.FacebookRestClient;
 import com.racetrac.mobile.multisite.racetrac.api.PunchhPointsClient;
@@ -28,21 +27,14 @@ public class FacebookSignUpTest extends BaseTest {
     @Autowired
     SignUpFlow signUpFlow;
     @Autowired
-    SignOutFlow signOutFlow;
-    @Autowired
     PopupCloserFlow popupCloserFlow;
     @Autowired
     ChromeBrowserHandler chromeBrowserHandler;
     @Autowired
     FacebookAuthFlow facebookAuthFlow;
     @Autowired
-    PunchhPointsClient punchhPointsClient;
-    @Autowired
     FacebookRestClient facebookRestClient;
     CustomerDto customerDto;
-
-    public FacebookSignUpTest() {
-    }
 
     @BeforeMethod(alwaysRun = true)
     public void preconditions() throws IOException {
