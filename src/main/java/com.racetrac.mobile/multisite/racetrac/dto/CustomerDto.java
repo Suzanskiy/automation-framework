@@ -15,4 +15,6 @@ public class CustomerDto {
     private EmailAuthDto emailAuth;
     @JsonIgnore
     private String accessToken;
+    @JsonIgnore
+    private String fb_user_id;
 }

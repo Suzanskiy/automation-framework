@@ -20,6 +20,7 @@ import javax.crypto.spec.SecretKeySpec;
 import java.util.Formatter;
 
 import static com.racetrac.mobile.multisite.racetrac.api.UrlUtils.ADMIN_SECRET;
+import static com.racetrac.mobile.multisite.racetrac.api.UrlUtils.DEACTIVATE_ENDPOINT;
 import static com.racetrac.mobile.multisite.racetrac.api.UrlUtils.LOGIN_ENDPOINT;
 import static com.racetrac.mobile.multisite.racetrac.api.UrlUtils.PUNCHH_URL;
 import static com.racetrac.mobile.multisite.racetrac.api.UrlUtils.PUNCH_CLIENT_ID;
@@ -60,11 +61,39 @@ public class PunchhPointsClient extends HttpClient {
                 .build();
         final Response response = checkCreatedResponse(addCouponRequest);
     }
-    public CustomerDto generateCouponsAmount(CustomerDto customerDto,int coupons){
-        for(int i = 0;i<coupons;i++){
-        addCoupon(customerDto);}
+
+    public CustomerDto generateCouponsAmount(CustomerDto customerDto, int coupons) {
+        for (int i = 0; i < coupons; i++) {
+            addCoupon(customerDto);
+        }
         return customerDto;
     }
+
+    public void deactivateUser(final CustomerDto customerDto) {
+        Integer punchCustomerID = requestCustomerId(customerDto);
+        String body = generateDeactivateRequestBody(punchCustomerID);
+
+        Request deactivateUserRequest = new Request.Builder()
+                .url(PUNCHH_URL + DEACTIVATE_ENDPOINT)
+                .addHeader("Authorization", "Bearer " + ADMIN_SECRET)
+                .post(createRequestBody(body))
+                .build();
+        final Response response = checkCreatedResponse(deactivateUserRequest);
+    }
+
+    /**
+     * Method creates body to deactivate Punchh user
+     *
+     * @param punchCustomerID
+     * @return json body
+     */
+    private String generateDeactivateRequestBody(final Integer punchCustomerID) {
+        final PunchhRedeemCouponDto deactivateUserDto = PunchhRedeemCouponDto.builder()
+                .user_id(punchCustomerID)
+                .build();
+        return getGson().toJson(deactivateUserDto);
+    }
+
     /**
      * Method creates body to request Punchh Coupon
      *
@@ -161,4 +190,6 @@ public class PunchhPointsClient extends HttpClient {
 
         return formatter.toString();
     }
+
+
 }

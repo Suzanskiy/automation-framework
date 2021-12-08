@@ -1,21 +1,21 @@
-package com.racetrac.mobile.multisite.racetrac.flow.common;
+package com.racetrac.mobile.multisite.racetrac.flow.impl.ios;
 
 import com.racetrac.mobile.multisite.racetrac.dto.CustomerDto;
 import com.racetrac.mobile.multisite.racetrac.flow.BaseFlow;
 import com.racetrac.mobile.multisite.racetrac.flow.SignUpFlow;
 import com.racetrac.mobile.util.appium.AppiumWaitingUtils;
 import io.qameta.allure.Step;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
+import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Component;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
-import static com.racetrac.mobile.util.appium.AppiumDriverUtils.getDriver;
+import static com.racetrac.mobile.framework.constants.PlatformsConstants.IOS;
 
+@Profile(IOS)
 @Component
-public class SignUpFlowImpl extends BaseFlow implements SignUpFlow {
+public class iosSignUpFlowImpl extends BaseFlow implements SignUpFlow {
     private static final String BACKEND_DATE_PATTERN = "yyyy-MM-dd";
     public static final String MOBILE_DATE_PATTERN = "MM/dd/yyyy";
 
@@ -139,6 +139,24 @@ public class SignUpFlowImpl extends BaseFlow implements SignUpFlow {
     @Override
     public void waitUntilErrorMessageShown() {
         AppiumWaitingUtils.waitUntilElementClickable(getErrorMessageVIew().getOkButton());
+    }
+
+    @Override
+    public void selectSignUpWithFacebook() {
+        getSignUpSelectorPage().getSignUpWithFacebookBtn().click();
+    }
+
+    @Override
+    public boolean isJoinRacetracRewardScreenOpened() {
+        return getJoinRacetracRewardsScreen().waitUntilIsOpened();
+    }
+
+    @Override
+    public void fillJoinRacetracRewardsScreen(final CustomerDto customerDto) {
+        getJoinRacetracRewardsScreen().getBirthdayInput().sendKeys("11/23/1995");
+        getJoinRacetracRewardsScreen().getPhoneInput().sendKeys(customerDto.getPersonalInfo().getPhone());
+        getJoinRacetracRewardsScreen().getNoBtnPhysicalCard().click();
+        getJoinRacetracRewardsScreen().getSignupSocialButton().click();
     }
 
     @Step

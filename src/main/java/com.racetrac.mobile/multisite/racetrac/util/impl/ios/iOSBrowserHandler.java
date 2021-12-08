@@ -27,7 +27,17 @@ public class iOSBrowserHandler extends BaseFlow implements ChromeBrowserHandler 
 
 
     @Override
-    public void prepareBrowser() throws IOException {
+    public void prepareBrowser() {
+        LOG.debug("Not needed in iOS");
+    }
+
+    @Override
+    public void handleBrowserOpening() {
+        LOG.debug("Not needed in iOS");
+    }
+
+    @Override
+    public void switchContext() {
         LOG.debug("Not needed in iOS");
     }
 
@@ -68,13 +78,16 @@ public class iOSBrowserHandler extends BaseFlow implements ChromeBrowserHandler 
     public String getGetStartedRedirectUrl() {
         return HTTPS_DEP_WWW_RACETRAC_COM_REWARDS_PURCHASE_FUEL_SUBSCRIPTION_14_UTM_SOURCE_APP_UTM_CAMPAIGN_VIP_UTM_MEDIUM_ONBOARDING;
     }
-    public String getRaceTracDomain(){
+
+    public String getRaceTracDomain() {
         return IOS_RACE_TRAC_DOMAIN;
     }
+
     @Override
     public String getBecomeAVipUrlEndpoint() {
         return IOS_BECOME_A_VIP_URL_ENDPOINT;
     }
+
     @Override
     public String getBecomeAVipUrlParameters() {
         return IOS_BECOME_A_VIP_URL_PARAMETERS;

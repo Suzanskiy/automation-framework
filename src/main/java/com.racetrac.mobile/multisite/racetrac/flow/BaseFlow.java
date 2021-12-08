@@ -62,6 +62,9 @@ public class BaseFlow {
     UpgradeRewardCardPage upgradeRewardCardPage;
     NearestStorePage nearestStorePage;
     FAQPage faqPage;
+    FacebookLoginPage facebookLoginPage;
+    FacebookLoginStep2Page facebookLoginStep2Page;
+    JoinRacetracRewardsScreen joinRacetracRewardsScreen;
     FuelSavingsPage fuelSavingsPage;
     FuelSavingsDebitCardPage fuelSavingsDebitCardPage;
     FuelSavingsVipPage fuelSavingsVipPage;

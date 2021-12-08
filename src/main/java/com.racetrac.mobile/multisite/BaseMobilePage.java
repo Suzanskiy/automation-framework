@@ -4,15 +4,18 @@ package com.racetrac.mobile.multisite;
 import com.racetrac.mobile.framework.annotations.PageLoading;
 import io.appium.java_client.MobileElement;
 import io.appium.java_client.pagefactory.AppiumFieldDecorator;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.StaleElementReferenceException;
 import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.FluentWait;
 import org.openqa.selenium.support.ui.Wait;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -22,6 +25,7 @@ import java.time.Duration;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
 import static com.racetrac.mobile.framework.enums.Exceptions.NO_PAGE_LOADING;
@@ -47,11 +51,7 @@ public abstract class BaseMobilePage implements MobilePage {
      */
     @Override
     public boolean waitUntilIsOpened() {
-        Wait<WebDriver> wait = new FluentWait<WebDriver>(getDriver())
-                .withTimeout(Duration.ofSeconds(15))
-                .pollingEvery(Duration.ofSeconds(5))
-                .ignoring(NoSuchElementException.class)
-                .ignoring(StaleElementReferenceException.class);
+        Wait<WebDriver> wait = getWebDriverWait();
 
         final List<Field> annotatedElementsList = getMobileElementsNamesWithAnnotationPageLoading();
 
@@ -62,6 +62,14 @@ public abstract class BaseMobilePage implements MobilePage {
             return false;
         }
         return true;
+    }
+
+    private Wait<WebDriver> getWebDriverWait() {
+        return new FluentWait<WebDriver>(getDriver())
+                .withTimeout(Duration.ofSeconds(15))
+                .pollingEvery(Duration.ofSeconds(5))
+                .ignoring(NoSuchElementException.class)
+                .ignoring(StaleElementReferenceException.class);
     }
 
     private List<WebElement> convertFieldsToWebElements(final List<Field> annotatedElementsList) {

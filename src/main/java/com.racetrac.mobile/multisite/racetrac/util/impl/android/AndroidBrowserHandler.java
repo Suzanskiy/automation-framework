@@ -3,7 +3,11 @@ package com.racetrac.mobile.multisite.racetrac.util.impl.android;
 import com.racetrac.mobile.multisite.racetrac.flow.BaseFlow;
 import com.racetrac.mobile.multisite.racetrac.util.ChromeBrowserHandler;
 import com.racetrac.mobile.util.appium.Action;
+import com.racetrac.mobile.util.appium.AppiumDriverUtils;
+import com.racetrac.mobile.util.appium.AppiumWaitingUtils;
 import io.qameta.allure.Step;
+import org.openqa.selenium.NoSuchElementException;
+import org.openqa.selenium.TimeoutException;
 import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Component;
 
@@ -29,9 +33,36 @@ public class AndroidBrowserHandler extends BaseFlow implements ChromeBrowserHand
     private static final String RACE_TRAC_DOMAIN = "dep-www.racetrac.com";
     private static final String ANDROID_BECOME_A_VIP_URL_ENDPOINT = "/Rewards/Purchase/FuelSubscription/";
     private static final String ANDROID_BECOME_A_VIP_URL_PARAMETERS = "utm_source=app&utm_medium=onboarding&utm_campaign=vip";
+
     @Override
     public void prepareBrowser() throws IOException {
         Runtime.getRuntime().exec("adb shell pm clear " + CHROME_APP_PACKAGE);
+    }
+
+    @Override
+    public void handleBrowserOpening() {
+        try {
+            this.getChromeAcceptTermsPage().waitUntilIsOpened();
+            this.getChromeAcceptTermsPage().getTermsAcceptBtn().click();
+            this.getTurnOnSyncNowPage().waitUntilIsOpened();
+            this.getTurnOnSyncNowPage().getNoThanksBtn().click();
+        } catch (NoSuchElementException | TimeoutException var2) {
+            LOG.debug("Chrome not showed first run page. Its ok");
+        }
+    }
+
+
+    @Override
+    public void switchContext() {
+        if (AppiumDriverUtils.getDriver().getContext().equals(NATIVE_APP)) {
+            this.waitForChromeContextStart();
+            AppiumDriverUtils.getDriver().context(WEBVIEW_CHROME);
+        } else if (AppiumDriverUtils.getDriver().getContext().equals(WEBVIEW_CHROME))
+            AppiumDriverUtils.getDriver().context(NATIVE_APP);
+    }
+
+    private void waitForChromeContextStart() {
+        AppiumWaitingUtils.waitUntilIsTrue(this.getDriverWaitContextAction());
     }
 
     @Step
@@ -82,14 +113,17 @@ public class AndroidBrowserHandler extends BaseFlow implements ChromeBrowserHand
     public String getGetStartedRedirectUrl() {
         return ANDROID_BECOME_A_VIP_GET_STARTED_LINK;
     }
+
     @Override
-    public String getRaceTracDomain(){
+    public String getRaceTracDomain() {
         return RACE_TRAC_DOMAIN;
     }
+
     @Override
     public String getBecomeAVipUrlEndpoint() {
         return ANDROID_BECOME_A_VIP_URL_ENDPOINT;
     }
+
     @Override
     public String getBecomeAVipUrlParameters() {
         return ANDROID_BECOME_A_VIP_URL_PARAMETERS;

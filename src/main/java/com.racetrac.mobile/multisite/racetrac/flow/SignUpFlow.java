@@ -5,9 +5,9 @@ import com.racetrac.mobile.multisite.racetrac.dto.CustomerDto;
 public interface SignUpFlow {
     void openSignUpSelectorPage();
 
-    void enterCredentials(CustomerDto customerDto);
+    void enterCredentials(CustomerDto var1);
 
-    void enterCredentialsWithoutEmailReceive(final CustomerDto customerDto);
+    void enterCredentialsWithoutEmailReceive(CustomerDto var1);
 
     void clickOnReceiveEmailBtn();
 
@@ -36,4 +36,10 @@ public interface SignUpFlow {
     void waitUntilFraudErrorMessageShown();
 
     void waitUntilErrorMessageShown();
+
+    void selectSignUpWithFacebook();
+
+    boolean isJoinRacetracRewardScreenOpened();
+
+    void fillJoinRacetracRewardsScreen(CustomerDto customerDto);
 }

@@ -103,6 +103,18 @@ public class TestDataImpl implements TestData {
     }
 
     @Override
+    public CustomerDto getFacebookCustomer() {
+        final CustomerDto.CustomerDtoBuilder builder = CustomerDto.builder();
+        builder.personalInfo(PersonalInfoDto.builder()
+                .email("bscwiljppq_1633526535@tfbnw.net")
+                .birthday(computeBirthDateByAge(CUSTOMER_ADULT_AGE))
+                .phone(CommonUtils.generatePhoneNumber(DEFAULT_PHONE_NUMBER_PREFIX,
+                DEFAULT_NUMBER_OF_DIGITS_IN_MOBILE_NUMBER)).build())
+                .emailAuth(EmailAuthDto.builder().password("Landmark159!").build());
+        return builder.build();
+    }
+
+    @Override
     public String generateDateBirth() {
         return LocalDate.now().minusYears(CUSTOMER_ADULT_AGE).format(DateTimeFormatter.ofPattern(UI_BIRTHDATE_PATTERN));
     }
