@@ -7,12 +7,10 @@ import com.racetrac.mobile.multisite.racetrac.flow.LocationRequestFlow;
 import com.racetrac.mobile.multisite.racetrac.flow.PointsAndLevelsFlow;
 import com.racetrac.mobile.multisite.racetrac.flow.PromotionalOffersFlow;
 import com.racetrac.mobile.multisite.racetrac.flow.RewardsPopupFlow;
-import com.racetrac.mobile.multisite.racetrac.flow.SignInFlow;
-import com.racetrac.mobile.multisite.racetrac.flow.SignOutFlow;
 import com.racetrac.mobile.multisite.racetrac.flow.SignUpFlow;
 import com.racetrac.mobile.multisite.racetrac.flow.WelcomeFlow;
 import com.racetrac.mobile.multisite.racetrac.flow.helper.PopupCloserFlow;
-import com.racetrac.mobile.multisite.racetrac.util.ChromeBrowserHandler;
+import com.racetrac.mobile.multisite.racetrac.util.BrowserHandler;
 import io.qameta.allure.Description;
 import io.qameta.allure.TmsLink;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -35,7 +33,7 @@ public class PopUpVipTest extends BaseTest {
     @Autowired
     BecomeFuelVipFlow becomeFuelVipFlow;
     @Autowired
-    ChromeBrowserHandler chromeBrowserHandler;
+    BrowserHandler browserHandler;
     @Autowired
     PromotionalOffersFlow promotionalOffersFlow;
     @Autowired
@@ -48,7 +46,7 @@ public class PopUpVipTest extends BaseTest {
 
     @BeforeClass(alwaysRun = true)
     public void beforeClass() throws IOException {
-        chromeBrowserHandler.prepareBrowser();
+        browserHandler.prepareBrowser();
     }
 
     @BeforeMethod(alwaysRun = true)
@@ -70,15 +68,15 @@ public class PopUpVipTest extends BaseTest {
     @Test
     public void redirectionAfterLearnMoreBtn() throws InterruptedException {
         becomeFuelVipFlow.clickLearnMoreBtn();
-        final String openedUrl = chromeBrowserHandler.getUrl();
-        chromeBrowserHandler.returnBackToApp();
+        final String openedUrl = browserHandler.getUrl();
+        browserHandler.returnBackToApp();
         promotionalOffersFlow.skipIOSPromotions();
         locationRequestFlow.clickContinue();
         rewardsPopupFlow.clickGotItBtn();
         pointsAndLevelsFlow.clickGotItBtn();
-        assertTrue(openedUrl.contains(chromeBrowserHandler.getRaceTracDomain()));
-        assertTrue(openedUrl.contains(chromeBrowserHandler.getBecomeAVipUrlEndpoint()));
-        assertTrue(openedUrl.contains(chromeBrowserHandler.getBecomeAVipUrlParameters()));
+        assertTrue(openedUrl.contains(browserHandler.getRaceTracDomain()));
+        assertTrue(openedUrl.contains(browserHandler.getBecomeAVipUrlEndpoint()));
+        assertTrue(openedUrl.contains(browserHandler.getBecomeAVipUrlParameters()));
     }
 
     @TmsLink("6413")
@@ -86,15 +84,15 @@ public class PopUpVipTest extends BaseTest {
     @Test
     public void redirectionAfterGetStartBtn() throws InterruptedException {
         becomeFuelVipFlow.clickGetStartedBtn();
-        final String openedUrl = chromeBrowserHandler.getUrl();
-        chromeBrowserHandler.returnBackToApp();
+        final String openedUrl = browserHandler.getUrl();
+        browserHandler.returnBackToApp();
         promotionalOffersFlow.skipIOSPromotions();
         locationRequestFlow.clickContinue();
         rewardsPopupFlow.clickGotItBtn();
         pointsAndLevelsFlow.clickGotItBtn();
-        assertTrue(openedUrl.contains(chromeBrowserHandler.getRaceTracDomain()));
-        assertTrue(openedUrl.contains(chromeBrowserHandler.getBecomeAVipUrlEndpoint()));
-        assertTrue(openedUrl.contains(chromeBrowserHandler.getBecomeAVipUrlParameters()));
+        assertTrue(openedUrl.contains(browserHandler.getRaceTracDomain()));
+        assertTrue(openedUrl.contains(browserHandler.getBecomeAVipUrlEndpoint()));
+        assertTrue(openedUrl.contains(browserHandler.getBecomeAVipUrlParameters()));
     }
 
     @TmsLink("6414")

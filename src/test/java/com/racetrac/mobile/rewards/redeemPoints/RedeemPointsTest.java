@@ -2,7 +2,6 @@ package com.racetrac.mobile.rewards.redeemPoints;
 
 import com.racetrac.mobile.BaseTest;
 import com.racetrac.mobile.multisite.racetrac.api.PunchhPointsClient;
-import com.racetrac.mobile.multisite.racetrac.data.AccountProviderImpl;
 import com.racetrac.mobile.multisite.racetrac.dto.CustomerDto;
 import com.racetrac.mobile.multisite.racetrac.flow.*;
 import io.qameta.allure.Description;

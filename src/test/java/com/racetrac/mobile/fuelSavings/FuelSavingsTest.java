@@ -3,8 +3,8 @@ package com.racetrac.mobile.fuelSavings;
 import com.racetrac.mobile.BaseTest;
 import com.racetrac.mobile.multisite.racetrac.dto.CustomerDto;
 import com.racetrac.mobile.multisite.racetrac.flow.*;
-import com.racetrac.mobile.multisite.racetrac.flow.impl.FuelSavingsFlow;
-import com.racetrac.mobile.multisite.racetrac.util.ChromeBrowserHandler;
+import com.racetrac.mobile.multisite.racetrac.flow.FuelSavingsFlow;
+import com.racetrac.mobile.multisite.racetrac.util.BrowserHandler;
 import io.qameta.allure.Description;
 import io.qameta.allure.TmsLink;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,7 +21,7 @@ public class FuelSavingsTest extends BaseTest {
     @Autowired
     FuelSavingsFlow fuelSavingsFlow;
     @Autowired
-    ChromeBrowserHandler chromeBrowserHandler;
+    BrowserHandler browserHandler;
     CustomerDto customerDto;
 
     @TmsLink("9208")

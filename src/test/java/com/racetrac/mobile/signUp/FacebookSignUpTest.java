@@ -2,14 +2,12 @@ package com.racetrac.mobile.signUp;
 
 import com.racetrac.mobile.BaseTest;
 import com.racetrac.mobile.multisite.racetrac.api.FacebookRestClient;
-import com.racetrac.mobile.multisite.racetrac.api.PunchhPointsClient;
 import com.racetrac.mobile.multisite.racetrac.dto.CustomerDto;
 import com.racetrac.mobile.multisite.racetrac.flow.FacebookAuthFlow;
-import com.racetrac.mobile.multisite.racetrac.flow.SignOutFlow;
 import com.racetrac.mobile.multisite.racetrac.flow.SignUpFlow;
 import com.racetrac.mobile.multisite.racetrac.flow.WelcomeFlow;
 import com.racetrac.mobile.multisite.racetrac.flow.helper.PopupCloserFlow;
-import com.racetrac.mobile.multisite.racetrac.util.ChromeBrowserHandler;
+import com.racetrac.mobile.multisite.racetrac.util.BrowserHandler;
 import io.qameta.allure.Description;
 import io.qameta.allure.TmsLink;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,7 +27,7 @@ public class FacebookSignUpTest extends BaseTest {
     @Autowired
     PopupCloserFlow popupCloserFlow;
     @Autowired
-    ChromeBrowserHandler chromeBrowserHandler;
+    BrowserHandler chromeBrowserHandler;
     @Autowired
     FacebookAuthFlow facebookAuthFlow;
     @Autowired

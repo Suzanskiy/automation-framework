@@ -1,7 +1,7 @@
 package com.racetrac.mobile.multisite.racetrac.util.impl.android;
 
 import com.racetrac.mobile.multisite.racetrac.flow.BaseFlow;
-import com.racetrac.mobile.multisite.racetrac.util.ChromeBrowserHandler;
+import com.racetrac.mobile.multisite.racetrac.util.BrowserHandler;
 import com.racetrac.mobile.util.appium.Action;
 import com.racetrac.mobile.util.appium.AppiumDriverUtils;
 import com.racetrac.mobile.util.appium.AppiumWaitingUtils;
@@ -20,7 +20,7 @@ import static com.racetrac.mobile.util.appium.AppiumWaitingUtils.waitUntilIsTrue
 
 @Profile(ANDROID)
 @Component
-public class AndroidBrowserHandler extends BaseFlow implements ChromeBrowserHandler {
+public class ChromeBrowserHandler extends BaseFlow implements BrowserHandler {
 
     public static final String WEBVIEW_CHROME = "WEBVIEW_chrome";
     public static final String NATIVE_APP = "NATIVE_APP";

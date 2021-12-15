@@ -2,14 +2,9 @@ package com.racetrac.mobile.rewards.pointsAndTiers;
 
 import com.racetrac.mobile.BaseTest;
 import com.racetrac.mobile.multisite.racetrac.api.PunchhPointsClient;
-import com.racetrac.mobile.multisite.racetrac.data.AccountProvider;
 import com.racetrac.mobile.multisite.racetrac.dto.CustomerDto;
-import com.racetrac.mobile.multisite.racetrac.flow.LocationRequestFlow;
-import com.racetrac.mobile.multisite.racetrac.flow.NotificationRequestFlow;
 import com.racetrac.mobile.multisite.racetrac.flow.PointsAndLevelsFlow;
-import com.racetrac.mobile.multisite.racetrac.flow.RewardsPopupFlow;
 import com.racetrac.mobile.multisite.racetrac.flow.SignInFlow;
-import com.racetrac.mobile.multisite.racetrac.flow.SignOutFlow;
 import com.racetrac.mobile.multisite.racetrac.flow.WelcomeFlow;
 import io.qameta.allure.Description;
 import io.qameta.allure.TmsLink;

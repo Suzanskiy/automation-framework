@@ -3,17 +3,13 @@ package com.racetrac.mobile.fuelVIP;
 import com.racetrac.mobile.BaseTest;
 import com.racetrac.mobile.multisite.racetrac.api.SubscriptionRequestClient;
 import com.racetrac.mobile.multisite.racetrac.dto.CustomerDto;
-import com.racetrac.mobile.multisite.racetrac.flow.BecomeFuelVipFlow;
 import com.racetrac.mobile.multisite.racetrac.flow.FuelVipFlow;
 import com.racetrac.mobile.multisite.racetrac.flow.LocationRequestFlow;
-import com.racetrac.mobile.multisite.racetrac.flow.NotificationRequestFlow;
 import com.racetrac.mobile.multisite.racetrac.flow.PointsAndLevelsFlow;
-import com.racetrac.mobile.multisite.racetrac.flow.PromotionalOffersFlow;
 import com.racetrac.mobile.multisite.racetrac.flow.RewardsPopupFlow;
 import com.racetrac.mobile.multisite.racetrac.flow.SignInFlow;
-import com.racetrac.mobile.multisite.racetrac.flow.SignOutFlow;
 import com.racetrac.mobile.multisite.racetrac.flow.WelcomeFlow;
-import com.racetrac.mobile.multisite.racetrac.util.ChromeBrowserHandler;
+import com.racetrac.mobile.multisite.racetrac.util.BrowserHandler;
 import io.qameta.allure.Description;
 import io.qameta.allure.TmsLink;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -35,7 +31,7 @@ public class FuelVIPTest extends BaseTest {
     @Autowired
     LocationRequestFlow locationRequestFlow;
     @Autowired
-    ChromeBrowserHandler chromeBrowserHandler;
+    BrowserHandler browserHandler;
     @Autowired
     FuelVipFlow fuelVipFlow;
     @Autowired
@@ -48,7 +44,7 @@ public class FuelVIPTest extends BaseTest {
 
     @BeforeClass(alwaysRun = true)
     public void beforeClass() throws IOException {
-        chromeBrowserHandler.prepareBrowser();
+        browserHandler.prepareBrowser();
     }
 
     @BeforeMethod(alwaysRun = true)
@@ -67,12 +63,12 @@ public class FuelVIPTest extends BaseTest {
         // TODO: 06.07.2021 Change desiredRedirect url to racetrac.com when migrate
         fuelVipFlow.navigateToFuelVipSection();
         fuelVipFlow.clickLearnMoreNoSubscription();
-        final String openedUrl = chromeBrowserHandler.getUrl();
-        chromeBrowserHandler.returnBackToApp();
+        final String openedUrl = browserHandler.getUrl();
+        browserHandler.returnBackToApp();
         locationRequestFlow.clickContinue();
         rewardsPopupFlow.clickGotItBtn();
         pointsAndLevelsFlow.clickGotItBtn();
-        assertEquals(openedUrl, chromeBrowserHandler.getDesiredRedirectUrlNoSubscription());
+        assertEquals(openedUrl, browserHandler.getDesiredRedirectUrlNoSubscription());
     }
 
     @TmsLink("6200")
@@ -84,12 +80,12 @@ public class FuelVIPTest extends BaseTest {
         fuelVipFlow.navigateToFuelVipSection();
         swipeDown();//update page
         fuelVipFlow.clickVipProgramDetails();
-        final String openedUrl = chromeBrowserHandler.getUrl();
-        chromeBrowserHandler.returnBackToApp();
+        final String openedUrl = browserHandler.getUrl();
+        browserHandler.returnBackToApp();
         locationRequestFlow.clickContinue();
         rewardsPopupFlow.clickGotItBtn();
         pointsAndLevelsFlow.clickGotItBtn();
-        assertEquals(openedUrl, chromeBrowserHandler.getDesiredRedirectUrlActiveSubscription());
+        assertEquals(openedUrl, browserHandler.getDesiredRedirectUrlActiveSubscription());
     }
 
 }

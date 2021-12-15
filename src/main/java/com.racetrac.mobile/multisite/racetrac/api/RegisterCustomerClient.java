@@ -12,7 +12,8 @@ import static com.racetrac.mobile.multisite.racetrac.api.UrlUtils.API_USERS_ENDP
 
 @Component
 public class RegisterCustomerClient extends HttpClient {
-
+    
+    @Step
     public CustomerDto registerAccount(CustomerDto customerDto) {
         Request registerRequest = new Request.Builder()
                 .url(API_URL + API_USERS_ENDPOINT)

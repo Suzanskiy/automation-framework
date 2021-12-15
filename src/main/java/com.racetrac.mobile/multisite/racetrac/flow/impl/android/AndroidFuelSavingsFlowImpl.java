@@ -1,7 +1,7 @@
 package com.racetrac.mobile.multisite.racetrac.flow.impl.android;
 
 import com.racetrac.mobile.multisite.racetrac.flow.BaseFlow;
-import com.racetrac.mobile.multisite.racetrac.flow.impl.FuelSavingsFlow;
+import com.racetrac.mobile.multisite.racetrac.flow.FuelSavingsFlow;
 import io.qameta.allure.Step;
 import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Component;

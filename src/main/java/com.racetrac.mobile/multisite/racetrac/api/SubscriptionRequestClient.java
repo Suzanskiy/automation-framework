@@ -5,6 +5,7 @@ import com.racetrac.mobile.multisite.racetrac.dto.subscription.CardDto;
 import com.racetrac.mobile.multisite.racetrac.dto.subscription.ExpDto;
 import com.racetrac.mobile.multisite.racetrac.dto.subscription.PaymentMethodDto;
 import com.racetrac.mobile.multisite.racetrac.dto.subscription.SubscriptionDto;
+import io.qameta.allure.Step;
 import okhttp3.Request;
 import org.apache.http.HttpHeaders;
 import org.springframework.stereotype.Component;
@@ -14,11 +15,13 @@ import static com.racetrac.mobile.multisite.racetrac.api.UrlUtils.API_URL;
 
 @Component
 public class SubscriptionRequestClient extends HttpClient {
+
+    @Step
     public void requestDefaultSubscriptionPlan(CustomerDto customerDto) {
         Request registerRequest = new Request.Builder()
                 .url(API_URL + API_LOYALTY_SUBSCRIPTION_ENDPOINT)
                 .headers(getRequiredHttpHeaders())
-                .addHeader(HttpHeaders.AUTHORIZATION, "Bearer "+customerDto.getAccessToken())
+                .addHeader(HttpHeaders.AUTHORIZATION, "Bearer " + customerDto.getAccessToken())
                 .post(createRequestBody(getGson().toJson(getDefaultSubscriptionBody())))
                 .build();
         checkSuccessResponse(registerRequest);
