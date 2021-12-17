@@ -10,6 +10,8 @@ import org.openqa.selenium.TimeoutException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import java.util.Arrays;
+
 import static org.testng.Assert.assertTrue;
 
 @Component
@@ -32,10 +34,15 @@ public class SignInFlowImpl extends BaseFlow implements SignInFlow {
     @Step
     @Override
     public void authorize(final CustomerDto customerDto) {
-        getLoginPage().getEmailInput().setValue(customerDto.getPersonalInfo().getEmail());
-        getLoginPage().getPasswordInput().clear();
-        getLoginPage().getPasswordInput().setValue(customerDto.getEmailAuth().getPassword());
-        getLoginPage().getLoginBtn().click();
+        try {
+            getLoginPage().getEmailInput().setValue(customerDto.getPersonalInfo().getEmail());
+            getLoginPage().getPasswordInput().clear();
+            getLoginPage().getPasswordInput().setValue(customerDto.getEmailAuth().getPassword());
+            getLoginPage().getLoginBtn().click();
+        }
+        catch (NoSuchElementException noSuchElementException){
+            LOG.info(Arrays.toString(noSuchElementException.getStackTrace()));
+        }
         popupCloserFlow.closePopups();
     }
 
