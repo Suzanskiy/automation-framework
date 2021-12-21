@@ -17,14 +17,13 @@ public class CouponsAuthorizedUserPage extends BaseMobilePage {
     @AndroidFindBy(uiAutomator = "new UiSelector().text(\"Gift It\")")
     private MobileElement giftItBtn;
 
-    @PageLoading
+
     @AndroidFindBy(uiAutomator = "new UiSelector().text(\"Coupons\")")
     @iOSXCUITFindBy(xpath = "//XCUIElementTypeButton[@name=\"Coupons\"]")
     private MobileElement couponsTitle;
 
-    @PageLoading
     @AndroidFindBy(xpath = "(//android.widget.ImageView[@content-desc=\"COUPONS\"])[1]")
-    @iOSXCUITFindBy(xpath = "//XCUIElementTypeApplication[@name=\"RaceTrac QA\"]/XCUIElementTypeWindow[1]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeTable/XCUIElementTypeCell[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther")
+    @iOSXCUITFindBy(xpath = "//XCUIElementTypeTable/XCUIElementTypeCell[10]")
     private MobileElement availableCoupon;
 
     @AndroidFindBy(id = "com.RaceTrac.Common.qa:id/gift_back_btn")

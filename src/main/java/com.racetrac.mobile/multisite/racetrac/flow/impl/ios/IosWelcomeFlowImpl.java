@@ -2,6 +2,7 @@ package com.racetrac.mobile.multisite.racetrac.flow.impl.ios;
 
 import com.racetrac.mobile.multisite.racetrac.flow.BaseFlow;
 import com.racetrac.mobile.multisite.racetrac.flow.WelcomeFlow;
+import com.racetrac.mobile.util.appium.AppiumWaitingUtils;
 import io.qameta.allure.Step;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.TimeoutException;
@@ -9,6 +10,7 @@ import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Component;
 
 import static com.racetrac.mobile.framework.constants.PlatformsConstants.IOS;
+import static com.racetrac.mobile.util.appium.AppiumDriverUtils.swipeDown;
 import static com.racetrac.mobile.util.appium.AppiumDriverUtils.swipeUP;
 import static com.racetrac.mobile.util.appium.AppiumWaitingUtils.waitUntilElementClickable;
 
@@ -90,6 +92,7 @@ public class IosWelcomeFlowImpl extends BaseFlow implements WelcomeFlow {
     @Step
     @Override
     public void swipeToCouponsSection() {
+        swipeDown();
         swipeUP();
         swipeUP();
     }
@@ -104,11 +107,13 @@ public class IosWelcomeFlowImpl extends BaseFlow implements WelcomeFlow {
     @Override
     public boolean isGiftToAFriendBtnClickable() {
         try {
-            Boolean.parseBoolean(getHomePage().getGiftToAFriendBtn().getAttribute("enabled"));
+            getHomePage().getGiftToAFriendBtn().click();
+            final boolean b = getCouponsAuthorizedUserPage().waitUntilIsOpened();
+            getCouponsAuthorizedUserPage().getBackBtn().click();
+            return b;
         } catch (NoSuchElementException e) {
             return false;
         }
-        return true;
     }
 
     @Step
@@ -125,7 +130,8 @@ public class IosWelcomeFlowImpl extends BaseFlow implements WelcomeFlow {
     @Step
     @Override
     public int couponsCarouselQuantity() {
-        return getHomePage().getCouponsCarousel().size();
+        final String value = getHomePage().getCouponsCarousel().get(0).getAttribute("value");
+        return Integer.parseInt(value.substring(value.length()-2, value.length()).replace(" ", ""));
     }
 
     @Override

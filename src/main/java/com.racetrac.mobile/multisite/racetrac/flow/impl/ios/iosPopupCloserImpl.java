@@ -1,6 +1,5 @@
 package com.racetrac.mobile.multisite.racetrac.flow.impl.ios;
 
-import com.racetrac.mobile.multisite.racetrac.dto.CustomerDto;
 import com.racetrac.mobile.multisite.racetrac.flow.BaseFlow;
 import com.racetrac.mobile.multisite.racetrac.flow.BecomeFuelVipFlow;
 import com.racetrac.mobile.multisite.racetrac.flow.LocationRequestFlow;
@@ -46,8 +45,8 @@ public class iosPopupCloserImpl extends BaseFlow implements PopupCloserFlow {
         if (becomeFuelVipFlow.checkAllElementsIsLoaded()) {
             becomeFuelVipFlow.clickNotRightNow();
         }
-        rewardsPopupFlow.clickGotItBtn();
-        pointsAndLevelsFlow.clickGotItBtn();
+            rewardsPopupFlow.clickGotItBtn();
+            pointsAndLevelsFlow.clickGotItBtn();
     }
 
 // IOS:    //already registered user: locations - notifications - reward popups - points and tiers
