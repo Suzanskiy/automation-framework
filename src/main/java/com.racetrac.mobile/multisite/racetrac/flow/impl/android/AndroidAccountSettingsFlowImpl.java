@@ -2,6 +2,7 @@ package com.racetrac.mobile.multisite.racetrac.flow.impl.android;
 
 import com.racetrac.mobile.multisite.racetrac.flow.AccountSettingsFlow;
 import com.racetrac.mobile.multisite.racetrac.flow.BaseFlow;
+import com.racetrac.mobile.multisite.racetrac.page.diff.AccountSettingsPageAuthorised;
 import com.racetrac.mobile.util.appium.AppiumWaitingUtils;
 import com.racetrac.mobile.util.appium.SwipeScroll;
 import io.appium.java_client.MobileElement;
@@ -101,6 +102,11 @@ public class AndroidAccountSettingsFlowImpl extends BaseFlow implements AccountS
             swipeUntilElementIsPresent(SwipeScroll.Direction.DOWN, getAccountSettingsPage().getHelpCategory());
         }
         getAccountSettingsPage().getHelpCategory().click();
+    }
+
+    @Override
+    public String getLifeTimePointsAmount() {
+        return getAccountSettingsPageAuthorised().getLifetimePointsValue().getText();
     }
 
     @Override

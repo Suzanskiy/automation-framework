@@ -78,6 +78,11 @@ public class iosAccountSettingsFlowImpl extends BaseFlow implements AccountSetti
     }
 
     @Override
+    public String getLifeTimePointsAmount() {
+        return getAccountSettingsPageAuthorised().getLifetimePointsValue().getText();
+    }
+
+    @Override
     public void navigateBack() {
         try {
             getAccountSettingsPage().getNavBarCloseBtn().click();
