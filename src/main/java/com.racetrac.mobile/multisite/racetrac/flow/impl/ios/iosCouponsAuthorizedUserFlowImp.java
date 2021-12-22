@@ -22,8 +22,7 @@ public class iosCouponsAuthorizedUserFlowImp extends BaseFlow implements Coupons
     @Step
     @Override
     public void clickOnGiftItBtn() {
-        getCouponsAuthorizedUserPage().getGiftItBtn().click();
-        getCouponsAuthorizedUserPage().waitUntilIsOpened();
+     getHomePage().getGiftToAFriendBtn().click();
     }
 
     @Step
