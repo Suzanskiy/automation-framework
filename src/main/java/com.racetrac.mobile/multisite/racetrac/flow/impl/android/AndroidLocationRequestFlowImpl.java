@@ -24,7 +24,6 @@ public class AndroidLocationRequestFlowImpl extends BaseFlow implements Location
     public void clickContinue() {
         try {
             getTurnOnLocationPage().waitUntilIsOpened();
-            waitUntilElementClickable(getTurnOnLocationPage().getContinueBtn());
             getTurnOnLocationPage().getContinueBtn().click();
         } catch (TimeoutException | NoSuchElementException e) {
             LOG.warn("Location page is not opened here, refreshing");

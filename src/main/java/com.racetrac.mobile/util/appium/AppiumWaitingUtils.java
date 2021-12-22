@@ -14,6 +14,7 @@ import java.util.Iterator;
 import java.util.List;
 
 import static com.racetrac.mobile.framework.constants.TimeoutConstants.LONG_TIMEOUT;
+import static com.racetrac.mobile.framework.constants.TimeoutConstants.SHORT_TIMEOUT;
 import static com.racetrac.mobile.util.appium.AppiumDriverUtils.getDriver;
 
 
@@ -32,7 +33,7 @@ public class AppiumWaitingUtils {
     }
 
     public static WebDriverWait getAppiumDriverWait() {
-        return getAppiumDriverWait(LONG_TIMEOUT);
+        return getAppiumDriverWait(SHORT_TIMEOUT);
     }
 
     public static void waitForMobileElementsToBeVisible(MobileElement... list) {

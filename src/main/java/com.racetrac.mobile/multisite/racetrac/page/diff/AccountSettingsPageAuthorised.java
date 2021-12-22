@@ -61,4 +61,10 @@ public class AccountSettingsPageAuthorised extends AccountSettingsPage {
     @AndroidFindBy(id = "com.RaceTrac.Common.qa:id/account_section_item_image")
     private MobileElement settingsIcon;
 
+    @AndroidFindBy(id = "com.RaceTrac.Common.qa:id/availablePointsValue")
+    private MobileElement availablePointsValue;
+
+    @AndroidFindBy(id = "com.RaceTrac.Common.qa:id/lifetimePointsValue")
+    private MobileElement lifetimePointsValue;
+
 }

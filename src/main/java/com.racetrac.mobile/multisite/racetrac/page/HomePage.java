@@ -76,6 +76,7 @@ public class HomePage extends BaseMobilePage {
     private MobileElement payWIthGiftCArdBtn;
 
     @AndroidFindBy(xpath = "//android.widget.LinearLayout[@resource-id=\"com.RaceTrac.Common.qa:id/viewPagerCountDots\"]/android.widget.ImageView")
+    @iOSXCUITFindBy(xpath = "//XCUIElementTypePageIndicator")
     private List<MobileElement> couponsCarousel;
 
     @AndroidFindBy(id = "com.RaceTrac.Common.qa:id/breakdownSummaryView")

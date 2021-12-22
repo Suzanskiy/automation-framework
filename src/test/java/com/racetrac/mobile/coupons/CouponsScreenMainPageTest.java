@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
+import static com.racetrac.mobile.util.appium.AppiumDriverUtils.swipeDown;
 import static org.testng.Assert.*;
 
 public class CouponsScreenMainPageTest extends BaseTest {
@@ -124,11 +125,6 @@ public class CouponsScreenMainPageTest extends BaseTest {
         assertTrue(welcomeFlow.isGiftToAFriendBtnClickable(), "\"Gift to a friend button\" is not clickable");
         assertTrue(welcomeFlow.isViewAllCouponsBtnDisplayed(), "\"View\" all is  not displayed");
         assertEquals(welcomeFlow.couponsCarouselQuantity(), COUPONS_AMOUNT, "The number of available coupons and coupons in the carousel is not equal");
-        navigationFlow.navigateToCoupons();
-
-        assertTrue(couponsPopUpFlow.isCouponsPopUpDisplayed(), "Coupons pop-up is not displayed");
-        couponsPopUpFlow.clickOnCouponsPopUpGotItBtn();
-        assertTrue(couponsAuthorizedUserFlow.isCouponsPageAuthorizedUserOpen(), "Coupons page is not opened");
         couponsAuthorizedUserFlow.clickOnGiftItBtn();
         couponsAuthorizedUserFlow.selectAvailableCoupon();
         assertTrue(inputEmailForGiftCouponFlow.isInputEmailPopUpOpened(), "Input email pop-up is not opened");
@@ -138,11 +134,10 @@ public class CouponsScreenMainPageTest extends BaseTest {
         assertTrue(successfulSentGiftPopUpFlow.isSuccessfulSentGiftPopUpOpened(), "\"Gift has been sent\" pop-up is not opened");
         successfulSentGiftPopUpFlow.clickOnSuccessfulSentGiftPopUpOkBtn();
         couponsAuthorizedUserFlow.pressBackBtn();
-        assertTrue(couponsAuthorizedUserFlow.isCouponsPageAuthorizedUserOpen(), "Coupons page is not opened");
         navigationFlow.navigateToHomeFromCouponsPage();
         assertTrue(welcomeFlow.isHomePageOpened(), "Welcome page is not opened");
 
-        assertFalse(welcomeFlow.isViewAllCouponsBtnDisplayed(), "View all is displayed");
+        assertTrue(welcomeFlow.isViewAllCouponsBtnDisplayed(), "View all is displayed");
         assertEquals(welcomeFlow.couponsCarouselQuantity(), COUPONS_AMOUNT_AFTER_SENT, "The number of available coupons and coupons in the carousel is not equal");
 
         signOutFlow.doSignOut();

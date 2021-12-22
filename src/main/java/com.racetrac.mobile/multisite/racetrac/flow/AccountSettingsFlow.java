@@ -24,5 +24,7 @@ public interface AccountSettingsFlow extends NavigateFlow {
 
     void navigateToHelpSection();
 
+    String getLifeTimePointsAmount();
+
 
 }
