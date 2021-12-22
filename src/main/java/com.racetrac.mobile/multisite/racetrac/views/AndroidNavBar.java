@@ -2,7 +2,7 @@ package com.racetrac.mobile.multisite.racetrac.views;
 
 import com.racetrac.mobile.framework.annotations.PageLoading;
 import com.racetrac.mobile.multisite.BaseMobilePage;
-import io.appium.java_client.MobileElement;
+import org.openqa.selenium.WebElement;
 import io.appium.java_client.pagefactory.AndroidFindBy;
 import lombok.Getter;
 import org.springframework.stereotype.Component;
@@ -12,24 +12,24 @@ import org.springframework.stereotype.Component;
 public class AndroidNavBar extends BaseMobilePage {
     @PageLoading
     @AndroidFindBy(id = "com.RaceTrac.Common.qa:id/nav_home")
-    private MobileElement homeTab;
+    private WebElement homeTab;
 
     @AndroidFindBy(id = "com.RaceTrac.Common.qa:id/nav_stores")
-    private MobileElement storesTab;
+    private WebElement storesTab;
 
     @AndroidFindBy(id = "com.RaceTrac.Common.qa:id/nav_coupons")
-    private MobileElement couponsTab;
+    private WebElement couponsTab;
 
     @AndroidFindBy(id = "com.RaceTrac.Common.qa:id/nav_pay_with_gift_card")
-    private MobileElement cardsTab;
+    private WebElement cardsTab;
 
     @AndroidFindBy(id = "com.RaceTrac.Common.qa:id/nav_inbox")
-    private MobileElement inboxTab;
+    private WebElement inboxTab;
 
     @AndroidFindBy (id = "com.RaceTrac.Common.qa:id/nav_rewards_card")
-    private MobileElement rewardsCardsTab;
+    private WebElement rewardsCardsTab;
 
     @AndroidFindBy (id = "com.RaceTrac.Common.qa:id/nav_rewards_catalog")
-    private MobileElement rewardsCatalog;
+    private WebElement rewardsCatalog;
 
 }

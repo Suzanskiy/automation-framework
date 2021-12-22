@@ -2,7 +2,7 @@ package com.racetrac.mobile.multisite.racetrac.page;
 
 import com.racetrac.mobile.framework.annotations.PageLoading;
 import com.racetrac.mobile.multisite.BaseMobilePage;
-import io.appium.java_client.MobileElement;
+import org.openqa.selenium.WebElement;
 import io.appium.java_client.pagefactory.AndroidFindBy;
 import io.appium.java_client.pagefactory.iOSXCUITFindBy;
 import lombok.Getter;
@@ -14,10 +14,10 @@ public class FistBumpPage extends BaseMobilePage {
 
     @iOSXCUITFindBy(accessibility = "Confetti")
     @AndroidFindBy(id = "com.RaceTrac.Common.qa:id/bump_image")
-    private MobileElement confetti;
+    private WebElement confetti;
 
     @PageLoading
     @iOSXCUITFindBy(accessibility = "GET STARTED")
     @AndroidFindBy(id = "com.RaceTrac.Common.qa:id/getStartedButton")
-    private MobileElement getStartedBtn;
+    private WebElement getStartedBtn;
 }

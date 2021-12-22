@@ -27,7 +27,6 @@ public class SignOutTest extends BaseTest {
         customerDto = testData.registerNewCustomer();
         assertTrue(welcomeFlow.isHomePageOpened(), "Welcome page is not opened");
         signInFlow.openLoginInPage();
-        assertTrue(signInFlow.isLoginPageOpened(), "Login page is not opened");
         signInFlow.authorize(customerDto);
     }
 

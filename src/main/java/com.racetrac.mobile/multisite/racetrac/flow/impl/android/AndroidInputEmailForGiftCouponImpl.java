@@ -23,7 +23,7 @@ public class AndroidInputEmailForGiftCouponImpl extends BaseFlow implements Inpu
     @Override
     public void enterEmail(CustomerDto customerDto) {
         getInputEmailForGiftCouponPage().getInputEmailField().clear();
-        getInputEmailForGiftCouponPage().getInputEmailField().setValue(customerDto.getPersonalInfo().getEmail());
+        getInputEmailForGiftCouponPage().getInputEmailField().sendKeys(customerDto.getPersonalInfo().getEmail());
         getInputEmailForGiftCouponPage().getSendBtn().click();
     }
 
@@ -31,7 +31,7 @@ public class AndroidInputEmailForGiftCouponImpl extends BaseFlow implements Inpu
     @Override
     public void enterAnotherEmail(String email) {
         getInputEmailForGiftCouponPage().getInputEmailField().clear();
-        getInputEmailForGiftCouponPage().getInputEmailField().setValue(email);
+        getInputEmailForGiftCouponPage().getInputEmailField().sendKeys(email);
         getInputEmailForGiftCouponPage().getSendBtn().click();
     }
 

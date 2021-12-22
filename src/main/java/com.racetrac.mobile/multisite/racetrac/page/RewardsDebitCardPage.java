@@ -2,7 +2,7 @@ package com.racetrac.mobile.multisite.racetrac.page;
 
 import com.racetrac.mobile.framework.annotations.PageLoading;
 import com.racetrac.mobile.multisite.BaseMobilePage;
-import io.appium.java_client.MobileElement;
+import org.openqa.selenium.WebElement;
 import io.appium.java_client.pagefactory.AndroidFindBy;
 import lombok.Getter;
 import org.springframework.stereotype.Component;
@@ -12,12 +12,12 @@ import org.springframework.stereotype.Component;
 public class RewardsDebitCardPage extends BaseMobilePage {
     @PageLoading
     @AndroidFindBy(id = "com.RaceTrac.Common.qa:id/tv_title_rewards_debit_card")
-    private MobileElement rewardsDebitCardText;
+    private WebElement rewardsDebitCardText;
 
     @AndroidFindBy(id = "com.RaceTrac.Common.qa:id/tvRewardDebitCardNumber")
-    private MobileElement addCardBtn;
+    private WebElement addCardBtn;
 
     @PageLoading
     @AndroidFindBy(id = "com.RaceTrac.Common.qa:id/tvPromotionalTileCaption")
-    private MobileElement orderRewardCardButton;
+    private WebElement orderRewardCardButton;
 }

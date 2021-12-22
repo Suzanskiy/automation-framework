@@ -24,13 +24,6 @@ public class AndroidWelcomeFlowImpl extends BaseFlow implements WelcomeFlow {
     @Override
     @Step
     public boolean isHomePageOpened() {
-        try {
-            getTurnOnLocationPage().waitUntilIsOpened();
-            getTurnOnLocationPage().getContinueBtn().click();
-            waitUntilHomePageLoaded();
-        } catch (TimeoutException | NoSuchElementException e) {
-            LOG.warn("Cannot find Location page");
-        }
         return getHomePage().waitUntilIsOpened();
     }
 
@@ -99,7 +92,7 @@ public class AndroidWelcomeFlowImpl extends BaseFlow implements WelcomeFlow {
 
     @Override
     public void swipeToCouponsSection() {
-        swipeUntilElementIsPresent(SwipeScroll.Direction.DOWN, getHomePage().getPayWIthGiftCArdBtn()); //common element for options with and without coupons
+        swipeUntilElementIsPresent(SwipeScroll.Direction.UP, getHomePage().getPayWIthGiftCArdBtn()); //common element for options with and without coupons
     }
 
     @Step

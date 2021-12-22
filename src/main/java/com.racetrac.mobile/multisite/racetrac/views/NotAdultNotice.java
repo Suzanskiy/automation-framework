@@ -2,7 +2,7 @@ package com.racetrac.mobile.multisite.racetrac.views;
 
 import com.racetrac.mobile.framework.annotations.PageLoading;
 import com.racetrac.mobile.multisite.BaseMobilePage;
-import io.appium.java_client.MobileElement;
+import org.openqa.selenium.WebElement;
 import io.appium.java_client.pagefactory.AndroidFindBy;
 import io.appium.java_client.pagefactory.iOSXCUITFindBy;
 import lombok.Getter;
@@ -15,20 +15,20 @@ public class NotAdultNotice extends BaseMobilePage {
     @PageLoading
     @iOSXCUITFindBy(accessibility = "Notice")
     @AndroidFindBy(id = "com.RaceTrac.Common.qa:id/dialogHeader")
-    private MobileElement dialogHeader;
+    private WebElement dialogHeader;
 
     @PageLoading
     @iOSXCUITFindBy(accessibility = "You must be 21 or older to participate.")
     @AndroidFindBy(id = "com.RaceTrac.Common.qa:id/dialogSubtitle")
-    private MobileElement subtitle;
+    private WebElement subtitle;
 
     @PageLoading
     @iOSXCUITFindBy(xpath = "//XCUIElementTypeButton[@name=\"OK\"]")
     @AndroidFindBy(id = "com.RaceTrac.Common.qa:id/ok_button")
-    private MobileElement okButton;
+    private WebElement okButton;
 
     @PageLoading
     @AndroidFindBy(id = "com.RaceTrac.Common.qa:id/checkBirthday")
     @iOSXCUITFindBy(iOSNsPredicate = "label == \"CHECK BIRTHDAY\" AND name == \"CHECK BIRTHDAY\" AND type == \"XCUIElementTypeButton\"")
-    private MobileElement checkBirthdayBtn;
+    private WebElement checkBirthdayBtn;
 }

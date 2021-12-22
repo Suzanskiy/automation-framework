@@ -2,7 +2,7 @@ package com.racetrac.mobile.multisite.racetrac.page;
 
 import com.racetrac.mobile.framework.annotations.PageLoading;
 import com.racetrac.mobile.multisite.BaseMobilePage;
-import io.appium.java_client.MobileElement;
+import org.openqa.selenium.WebElement;
 import io.appium.java_client.pagefactory.AndroidFindBy;
 import io.appium.java_client.pagefactory.iOSXCUITFindBy;
 import lombok.Getter;
@@ -15,21 +15,21 @@ public class ForgotPassPage extends BaseMobilePage {
     @PageLoading
     @iOSXCUITFindBy(accessibility = "text.title")
     @AndroidFindBy(id = "com.RaceTrac.Common.qa:id/top_view")
-    private MobileElement textTitle;
+    private WebElement textTitle;
 
     @iOSXCUITFindBy(accessibility = "textfield.email")
     @AndroidFindBy(id = "com.RaceTrac.Common.qa:id/edt_password_reset_Email")
-    private MobileElement emailInput;
+    private WebElement emailInput;
 
     @iOSXCUITFindBy(accessibility = "button.reset_password")
     @AndroidFindBy(id = "com.RaceTrac.Common.qa:id/resetpassword_Email_Continue_Btn")
-    private MobileElement resetPassBtn;
+    private WebElement resetPassBtn;
 
     @iOSXCUITFindBy(accessibility = "text.description")
     @AndroidFindBy(id = "com.RaceTrac.Common.qa:id/resetDoneTitle")
-    private MobileElement completeMsg;
+    private WebElement completeMsg;
 
     @iOSXCUITFindBy(accessibility = "DONE")
     @AndroidFindBy(id = "com.RaceTrac.Common.qa:id/resetpasswordDone")
-    private MobileElement doneBtn;
+    private WebElement doneBtn;
 }

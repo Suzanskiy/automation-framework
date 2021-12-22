@@ -2,7 +2,7 @@ package com.racetrac.mobile.multisite.racetrac.page;
 
 import com.racetrac.mobile.framework.annotations.PageLoading;
 import com.racetrac.mobile.multisite.BaseMobilePage;
-import io.appium.java_client.MobileElement;
+import org.openqa.selenium.WebElement;
 import io.appium.java_client.pagefactory.AndroidFindBy;
 import lombok.Getter;
 import org.springframework.stereotype.Component;
@@ -14,14 +14,14 @@ import org.springframework.stereotype.Component;
 public class GiftcardPage extends BaseMobilePage {
     @PageLoading
     @AndroidFindBy(accessibility = "No Gift Cards")
-    private MobileElement noGiftCardImage;
+    private WebElement noGiftCardImage;
 
     @PageLoading
     @AndroidFindBy(id = "com.RaceTrac.Common.qa:id/giftCardNewBtnNoCards")
-    private MobileElement buyNew_button;
+    private WebElement buyNew_button;
 
     @PageLoading
     @AndroidFindBy(id = "com.RaceTrac.Common.qa:id/giftCardAddBtnNoCards")
-    private MobileElement addGiftCard_button;
+    private WebElement addGiftCard_button;
 
 }

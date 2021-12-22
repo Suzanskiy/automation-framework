@@ -6,9 +6,8 @@ import io.qameta.allure.Step;
 import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Component;
 
-import static com.racetrac.mobile.framework.constants.PlatformsConstants.ANDROID;
 import static com.racetrac.mobile.framework.constants.PlatformsConstants.IOS;
-import static com.racetrac.mobile.util.appium.AppiumDriverUtils.swipeRightHard;
+import static com.racetrac.mobile.util.appium.AppiumDriverUtils.swipeRight;
 
 @Profile(IOS)
 @Component
@@ -40,6 +39,6 @@ public class iosRewardsCheckoutBarcodeBarcodeFlowImpl extends BaseFlow implement
 
     @Override
     public void goToUnclaimedRewardsPage() {
-        swipeRightHard();
+        swipeRight();
     }
 }

@@ -17,7 +17,7 @@ public class ForgotPassImpl extends BaseFlow implements ForgotPassFlow {
     @Override
     public void enterEmail(final String email) {
         getForgotPassPage().getEmailInput().clear();
-        getForgotPassPage().getEmailInput().setValue(email);
+        getForgotPassPage().getEmailInput().sendKeys(email);
     }
 
     @Step

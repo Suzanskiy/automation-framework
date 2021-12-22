@@ -25,7 +25,7 @@ public class AndroidRewardCatalogFlowImpl extends BaseFlow implements RewardsCat
     public void clickRedeemBtn() {
 
         try {
-            swipeUntilElementIsPresent(SwipeScroll.Direction.DOWN, getRewardsCatalogPage().getRedeemBtn());// swipeDownHard(); //The "UAT gal Reward" shifted down
+            swipeUntilElementIsPresent(SwipeScroll.Direction.UP, getRewardsCatalogPage().getRedeemBtn());// swipeDownHard(); //The "UAT gal Reward" shifted down
             getRewardsCatalogPage().getRedeemBtn().click();
         } catch (NoSuchElementException e) {
             LOG.warn("Unable to click btn on reward catalog redeem");
@@ -85,7 +85,7 @@ public class AndroidRewardCatalogFlowImpl extends BaseFlow implements RewardsCat
 
     @Override
     public int rewardPrice() {
-        swipeUntilElementIsPresent(SwipeScroll.Direction.DOWN,getRewardsCatalogPage().getRewardPoints());
+        swipeUntilElementIsPresent(SwipeScroll.Direction.UP,getRewardsCatalogPage().getRewardPoints());
         String pointsText = getRewardsCatalogPage().getRewardPoints().getAttribute("text");
         return Integer.parseInt(pointsText.substring(0, pointsText.indexOf(' ')));
     }

@@ -5,6 +5,7 @@ import com.racetrac.mobile.framework.CustomContextInitializer;
 import com.racetrac.mobile.framework.config.MobileContextConfig;
 import com.racetrac.mobile.multisite.racetrac.data.TestData;
 import com.racetrac.mobile.util.listeners.BaseTestListenerAdapter;
+import io.appium.java_client.MobileCommand;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -44,21 +45,21 @@ public class BaseTest extends AbstractTestNGSpringContextTests {
     }
 
     @BeforeMethod(alwaysRun = true)
-    public void launch() {
+    public void launch()  {
         LOG.info("Launch application");
-        getDriver().launchApp();
+        getDriver().execute(MobileCommand.LAUNCH_APP);
     }
 
     @AfterMethod(alwaysRun = true)
     public void quite() {
         LOG.info("Close application");
-        getDriver().closeApp();
+        getDriver().execute(MobileCommand.CLOSE_APP);
+
     }
 
     @AfterClass(alwaysRun = true)
     @Override
     protected void springTestContextAfterTestClass() throws Exception {
-        stopAppiumServer();
         super.springTestContextAfterTestClass();
     }
 
@@ -76,6 +77,7 @@ public class BaseTest extends AbstractTestNGSpringContextTests {
     public void afterSuite() {
         createEnvironmentProperties();
         copyEnvPropToAllureResults();
+        stopAppiumServer();
     }
 
     /**

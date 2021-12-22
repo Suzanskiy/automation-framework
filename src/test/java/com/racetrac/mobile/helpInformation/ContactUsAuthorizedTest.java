@@ -107,6 +107,6 @@ public class ContactUsAuthorizedTest extends BaseTest {
 
     @AfterMethod(alwaysRun = true)
     public void reconnection() {
-        ConnectionUtils.reconnection();
+        ConnectionUtils.enableConnection();
     }
 }

@@ -2,7 +2,7 @@ package com.racetrac.mobile.multisite.racetrac.page;
 
 import com.racetrac.mobile.framework.annotations.PageLoading;
 import com.racetrac.mobile.multisite.BaseMobilePage;
-import io.appium.java_client.MobileElement;
+import org.openqa.selenium.WebElement;
 import io.appium.java_client.pagefactory.AndroidFindBy;
 import lombok.Getter;
 import org.springframework.stereotype.Component;
@@ -12,29 +12,29 @@ import org.springframework.stereotype.Component;
 public class OrderRewardCardPage extends BaseMobilePage {
     @PageLoading
     @AndroidFindBy(xpath = "//android.widget.EditText[@resource-id='Data_FirstName']")
-    private MobileElement firstname;
+    private WebElement firstname;
 
     @PageLoading
     @AndroidFindBy(xpath = "//android.widget.EditText[@resource-id='Data_LastName']")
-    private MobileElement lastName;
+    private WebElement lastName;
 
     @PageLoading
     @AndroidFindBy(xpath = "//android.widget.EditText[@resource-id='EmailAddress']")
-    private MobileElement EmailAddress;
+    private WebElement EmailAddress;
 
     @PageLoading
     @AndroidFindBy(xpath = "//android.widget.EditText[@resource-id='Data_Phone']")
-    private MobileElement DataPhone;
+    private WebElement DataPhone;
 
     @PageLoading
     @AndroidFindBy(xpath = "//android.widget.EditText[@resource-id='Birthday']")
-    private MobileElement Birthday;
+    private WebElement Birthday;
 
     @PageLoading
     @AndroidFindBy(xpath = "//android.widget.Button[@text=\"CONTINUE\"]")
-    private MobileElement ContinueButton;
+    private WebElement ContinueButton;
 
     @AndroidFindBy(xpath = "//android.view.View[@content-desc=\"CANCEL\"]")
-    private MobileElement cancelBtn;
+    private WebElement cancelBtn;
 
 }

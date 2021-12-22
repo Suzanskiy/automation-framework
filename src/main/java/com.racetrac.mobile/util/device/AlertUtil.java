@@ -5,6 +5,7 @@ import io.qameta.allure.Step;
 import lombok.extern.java.Log;
 import lombok.extern.log4j.Log4j;
 import org.openqa.selenium.NoAlertPresentException;
+import org.openqa.selenium.TimeoutException;
 
 import static com.racetrac.mobile.util.appium.AppiumDriverUtils.getDriver;
 
@@ -16,7 +17,7 @@ public class AlertUtil {
         try {
             AppiumWaitingUtils.waitUntilAlertIsPresent();
             getDriver().switchTo().alert().accept();
-        } catch (NoAlertPresentException e) {
+        } catch (NoAlertPresentException | TimeoutException e) {
             log.info("No alert is present to accept");
         }
     }

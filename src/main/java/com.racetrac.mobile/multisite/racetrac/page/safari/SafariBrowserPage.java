@@ -2,7 +2,7 @@ package com.racetrac.mobile.multisite.racetrac.page.safari;
 
 import com.racetrac.mobile.framework.annotations.PageLoading;
 import com.racetrac.mobile.multisite.BaseMobilePage;
-import io.appium.java_client.MobileElement;
+import org.openqa.selenium.WebElement;
 import io.appium.java_client.pagefactory.iOSXCUITFindBy;
 import lombok.Getter;
 import org.springframework.stereotype.Component;
@@ -12,6 +12,6 @@ import org.springframework.stereotype.Component;
 public class SafariBrowserPage extends BaseMobilePage {
     @PageLoading
     @iOSXCUITFindBy(accessibility = "URL")
-    private MobileElement url;
+    private WebElement url;
 
 }

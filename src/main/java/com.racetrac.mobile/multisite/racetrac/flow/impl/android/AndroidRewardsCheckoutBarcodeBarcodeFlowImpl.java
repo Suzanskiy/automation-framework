@@ -7,7 +7,7 @@ import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Component;
 
 import static com.racetrac.mobile.framework.constants.PlatformsConstants.ANDROID;
-import static com.racetrac.mobile.util.appium.AppiumDriverUtils.swipeRightHard;
+import static com.racetrac.mobile.util.appium.AppiumDriverUtils.swipeRight;
 
 @Profile(ANDROID)
 @Component
@@ -39,6 +39,6 @@ public class AndroidRewardsCheckoutBarcodeBarcodeFlowImpl extends BaseFlow imple
 
     @Override
     public void goToUnclaimedRewardsPage() {
-        swipeRightHard();
+        swipeRight();
     }
 }

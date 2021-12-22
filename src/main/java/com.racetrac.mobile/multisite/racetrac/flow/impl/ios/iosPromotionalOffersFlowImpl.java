@@ -152,7 +152,7 @@ public class iosPromotionalOffersFlowImpl extends BaseFlow implements Promotiona
     @Override
     public void enterBirthDate(final String customerBirth) {
         getPromotionalOffersPage().getEnterBirthdayPopUpField().clear();
-        getPromotionalOffersPage().getEnterBirthdayPopUpField().setValue(customerBirth);
+        getPromotionalOffersPage().getEnterBirthdayPopUpField().sendKeys(customerBirth);
     }
 
 }

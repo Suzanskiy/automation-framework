@@ -36,8 +36,6 @@ public class DeepLinksTest extends BaseTest {
     @Autowired
     SignInFlow signInFlow;
     @Autowired
-    LocationRequestFlow locationRequestFlow;
-    @Autowired
     NavigationFlow navigationFlow;
     @Autowired
     PriceDisclaimerFlow priceDisclaimerFlow;
@@ -46,11 +44,7 @@ public class DeepLinksTest extends BaseTest {
     @Autowired
     RewardsCatalogFlow rewardsCatalogFlow;
     @Autowired
-    RewardsPopupFlow rewardsPopupFlow;
-    @Autowired
     ProfileFlow profileFlow;
-    @Autowired
-    CouponsPopUpFlow couponsPopUpFlow;
     @Autowired
     CouponsAuthorizedUserFlow couponsAuthorizedUserFlow;
     @Autowired
@@ -71,11 +65,6 @@ public class DeepLinksTest extends BaseTest {
     FuelVipFlow fuelVipFlow;
     @Autowired
     DeppLinksProvider deppLinksProvider;
-    @Autowired
-    NotificationRequestFlow notificationRequestFlow;
-    @Autowired
-    PointsAndLevelsFlow pointsAndLevelsFlow;
-
 
     @BeforeMethod
     public void setUp() {

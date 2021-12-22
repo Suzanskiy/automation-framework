@@ -88,8 +88,18 @@
             </plugin>
         </plugins>
     </build>
+    <repositories>
+        <repository>
+            <id>jitpack.io</id>
+            <url>https://jitpack.io</url>
+        </repository>
+    </repositories>
     <dependencies>
-
+        <dependency>
+            <groupId>org.seleniumhq.selenium</groupId>
+            <artifactId>selenium-java</artifactId>
+            <version>4.0.0</version>
+        </dependency>
         <dependency>
             <groupId>commons-io</groupId>
             <artifactId>commons-io</artifactId>
@@ -200,7 +210,7 @@
         <dependency>
             <groupId>io.appium</groupId>
             <artifactId>java-client</artifactId>
-            <version>7.6.0</version>
+            <version>8.0.0-beta</version>
         </dependency>
         <dependency>
             <groupId>org.aspectj</groupId>

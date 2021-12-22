@@ -23,6 +23,7 @@ public class SignInFlowImpl extends BaseFlow implements SignInFlow {
     @Override
     public void openLoginInPage() {
         getHomePage().getLoginBtn().click();
+        getLoginPage().waitUntilIsOpened();
     }
 
     @Step
@@ -35,9 +36,9 @@ public class SignInFlowImpl extends BaseFlow implements SignInFlow {
     @Override
     public void authorize(final CustomerDto customerDto) {
         try {
-            getLoginPage().getEmailInput().setValue(customerDto.getPersonalInfo().getEmail());
+            getLoginPage().getEmailInput().sendKeys(customerDto.getPersonalInfo().getEmail());
             getLoginPage().getPasswordInput().clear();
-            getLoginPage().getPasswordInput().setValue(customerDto.getEmailAuth().getPassword());
+            getLoginPage().getPasswordInput().sendKeys(customerDto.getEmailAuth().getPassword());
             getLoginPage().getLoginBtn().click();
         }
         catch (NoSuchElementException noSuchElementException){

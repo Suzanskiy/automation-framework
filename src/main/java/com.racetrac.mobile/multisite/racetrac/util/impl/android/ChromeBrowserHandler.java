@@ -54,44 +54,44 @@ public class ChromeBrowserHandler extends BaseFlow implements BrowserHandler {
 
     @Override
     public void switchContext() {
-        if (AppiumDriverUtils.getDriver().getContext().equals(NATIVE_APP)) {
-            this.waitForChromeContextStart();
-            AppiumDriverUtils.getDriver().context(WEBVIEW_CHROME);
-        } else if (AppiumDriverUtils.getDriver().getContext().equals(WEBVIEW_CHROME))
-            AppiumDriverUtils.getDriver().context(NATIVE_APP);
+//        if (AppiumDriverUtils.getDriver().getContext().equals(NATIVE_APP)) {
+//            this.waitForChromeContextStart();
+//            AppiumDriverUtils.getDriver().context(WEBVIEW_CHROME);
+//        } else if (AppiumDriverUtils.getDriver().getContext().equals(WEBVIEW_CHROME))
+//            AppiumDriverUtils.getDriver().context(NATIVE_APP);
     }
 
     private void waitForChromeContextStart() {
-        AppiumWaitingUtils.waitUntilIsTrue(this.getDriverWaitContextAction());
+      //  AppiumWaitingUtils.waitUntilIsTrue(this.getDriverWaitContextAction());
     }
 
     @Step
     @Override
     public String getUrl() {
-        waitUntilIsTrue(getDriverWaitContextAction());
-        getDriver().context(WEBVIEW_CHROME);
+//        waitUntilIsTrue(getDriverWaitContextAction());
+//        getDriver().context(WEBVIEW_CHROME);
         final String currentUrl = getDriver().getCurrentUrl();
-        getDriver().context(NATIVE_APP);
+      //  getDriver().context(NATIVE_APP);
 
         return currentUrl;
     }
 
-    private Action<Boolean> getDriverWaitContextAction() {
-        Action<Boolean> checkBrowserContextAction;
-        checkBrowserContextAction = () -> {
-            Set<String> context;
-            do {
-                context = getDriver().getContextHandles();
-            } while (!context.contains(WEBVIEW_CHROME));
-            return true;
-        };
-        return checkBrowserContextAction;
-    }
+//    private Action<Boolean> getDriverWaitContextAction() {
+//        Action<Boolean> checkBrowserContextAction;
+//        checkBrowserContextAction = () -> {
+//            Set<String> context;
+//            do {
+//                context = getDriver().getContextHandles();
+//            } while (!context.contains(WEBVIEW_CHROME));
+//            return true;
+//        };
+//        return checkBrowserContextAction;
+//    }
 
     @Step
     @Override
     public void returnBackToApp() {
-        getDriver().activateApp(COM_RACE_TRAC_COMMON_QA);
+       // getDriver().activateApp(COM_RACE_TRAC_COMMON_QA);
     }
 
     @Override

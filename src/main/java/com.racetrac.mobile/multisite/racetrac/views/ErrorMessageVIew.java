@@ -2,7 +2,7 @@ package com.racetrac.mobile.multisite.racetrac.views;
 
 import com.racetrac.mobile.framework.annotations.PageLoading;
 import com.racetrac.mobile.multisite.BaseMobilePage;
-import io.appium.java_client.MobileElement;
+import org.openqa.selenium.WebElement;
 import io.appium.java_client.pagefactory.AndroidFindBy;
 import io.appium.java_client.pagefactory.iOSXCUITFindBy;
 import lombok.Getter;
@@ -16,10 +16,10 @@ public class ErrorMessageVIew extends BaseMobilePage {
     // @iOSXCUITFindBy(xpath = "//XCUIElementTypeAlert[@name=\"This email is already linked to an existing account! Try using another email address.\"]")
     @iOSXCUITFindBy(className = "XCUIElementTypeAlert")
     @AndroidFindBy(id = "android:id/message")
-    private MobileElement errorMessage;
+    private WebElement errorMessage;
 
     @PageLoading
     @iOSXCUITFindBy(accessibility = "Ok")
     @AndroidFindBy(id = "android:id/button1")
-    private MobileElement okButton;
+    private WebElement okButton;
 }
