@@ -43,7 +43,6 @@ public class SignInTest extends BaseTest {
         signInFlow.openLoginInPage();
         assertTrue(signInFlow.isLoginPageOpened(), "Login page is not opened");
         signInFlow.authorize(customerDto);
-        popupCloserFlow.closePopups();
         assertTrue(welcomeFlow.isHomePageOpenedAfterSignIn(), "Welcome page is not opened after sign in");
     }
 
