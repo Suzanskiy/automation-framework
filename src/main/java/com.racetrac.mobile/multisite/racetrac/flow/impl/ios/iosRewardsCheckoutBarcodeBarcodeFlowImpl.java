@@ -11,34 +11,36 @@ import static com.racetrac.mobile.util.appium.AppiumDriverUtils.swipeRight;
 
 @Profile(IOS)
 @Component
-public class iosRewardsCheckoutBarcodeBarcodeFlowImpl extends BaseFlow implements RewardsCheckoutBarcodeFlow {
+public class iosRewardsCheckoutBarcodeBarcodeFlowImpl extends BaseFlow
+    implements RewardsCheckoutBarcodeFlow {
 
-    @Step
-    @Override
-    public boolean isRewardsCheckoutBarcodePageOpen() {
-        return getRewardsCheckoutBarcodePage().waitUntilIsOpened();
-    }
+  @Step
+  @Override
+  public boolean isRewardsCheckoutBarcodePageOpened() {
+    return getRewardsCheckoutBarcodePage().waitUntilIsOpened();
+  }
 
-    @Step
-    @Override
-    public void closeRewardsCheckoutPage() {
-        getRewardsCheckoutBarcodePage().getCloseCheckoutPageBtn().click();
-    }
+  @Step
+  @Override
+  public void closeRewardsCheckoutPage() {
+    getRewardsCheckoutBarcodePage().getCloseCheckoutPageBtn().click();
+  }
 
-    @Step
-    @Override
-    public int getUnclaimedRewardsCounter() {
-        return Integer.parseInt(getRewardsCheckoutBarcodePage().getUnclaimedRewardsCounter().getAttribute("text"));
-    }
+  @Step
+  @Override
+  public int getUnclaimedRewardsCounter() {
+    return Integer.parseInt(
+        getRewardsCheckoutBarcodePage().getUnclaimedRewardsCounter().getAttribute("value"));
+  }
 
-    @Step
-    @Override
-    public void clickOnDoneBtn() {
-        getRewardsCheckoutBarcodePage().getDoneBtn().click();
-    }
+  @Step
+  @Override
+  public void clickOnDoneBtn() {
+    getRewardsCheckoutBarcodePage().getDoneBtn().click();
+  }
 
-    @Override
-    public void goToUnclaimedRewardsPage() {
-        swipeRight();
-    }
+  @Override
+  public void goToUnclaimedRewardsPage() {
+    swipeRight();
+  }
 }

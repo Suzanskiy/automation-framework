@@ -10,7 +10,7 @@ import org.testng.annotations.Test;
 import static org.testng.Assert.assertFalse;
 import static org.testng.Assert.assertTrue;
 
-public class PointsAndTiersTestNotAuthorisedUser extends BaseTest {
+public class PointsAndTiersNotAuthorisedUserTest extends BaseTest {
     @Autowired
     WelcomeFlow welcomeFlow;
     @TmsLink("7468")

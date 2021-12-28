@@ -111,7 +111,7 @@ public class AndroidPromotionalOffersFlowImpl extends BaseFlow implements Promot
 
     @Step
     @Override
-    public boolean isPromotionalOffersScreenOpened() {
+    public boolean isPromotionalOffersPageOpened() {
         return getPromotionalOffersPage().waitUntilIsOpened();
     }
 

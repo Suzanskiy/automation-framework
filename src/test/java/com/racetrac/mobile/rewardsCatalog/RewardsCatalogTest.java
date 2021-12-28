@@ -51,13 +51,10 @@ public class RewardsCatalogTest extends BaseTest {
         signInFlow.openLoginInPage();
         assertTrue(signInFlow.isLoginPageOpened(), "Login page is not opened");
         signInFlow.authorize(customerDto);
-        navigationFlow.navigateToRewardsCatalogViaDrawer();
-        assertTrue(navigationFlow.isRewardCatalogDisplayed(), "Rewards catalog is not displayed");
-        navigationFlow.rewardCatalogClick();
-        rewardsPopupFlow.waitUntilMessageAvailable();
+        welcomeFlow.clickOnRedeemPointsBtn();
         assertTrue(rewardsPopupFlow.isRedeemPopUpHintDisplayed(), "Redeem Popup Hint is not displayed");
         rewardsPopupFlow.clickGotItBtn();
-        assertTrue(rewardsCatalogFlow.isRewardsCatalogPageOpened(), "Rewards catalog is not opened");
+        assertTrue(navigationFlow.isRewardCatalogDisplayed(), "Rewards catalog is not displayed");
         assertEquals(rewardsCatalogFlow.availablePoints(), AVAILABLE_POINTS, "Invalid points are displayed");
     }
 

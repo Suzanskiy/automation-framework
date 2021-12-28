@@ -15,7 +15,7 @@ public class AndroidRewardsCheckoutBarcodeBarcodeFlowImpl extends BaseFlow imple
 
     @Step
     @Override
-    public boolean isRewardsCheckoutBarcodePageOpen() {
+    public boolean isRewardsCheckoutBarcodePageOpened() {
         return getRewardsCheckoutBarcodePage().waitUntilIsOpened();
     }
 

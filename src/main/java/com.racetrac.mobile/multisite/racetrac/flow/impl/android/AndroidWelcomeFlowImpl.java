@@ -5,7 +5,6 @@ import com.racetrac.mobile.multisite.racetrac.flow.WelcomeFlow;
 import com.racetrac.mobile.util.appium.SwipeScroll;
 import io.qameta.allure.Step;
 import org.openqa.selenium.NoSuchElementException;
-import org.openqa.selenium.TimeoutException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.context.annotation.Profile;
@@ -13,7 +12,7 @@ import org.springframework.stereotype.Component;
 
 import static com.racetrac.mobile.framework.constants.PlatformsConstants.ANDROID;
 import static com.racetrac.mobile.util.appium.AppiumWaitingUtils.waitUntilElementClickable;
-import static com.racetrac.mobile.util.appium.SwipeScroll.swipeUntilElementIsPresent;
+import static com.racetrac.mobile.util.appium.SwipeScroll.swipeToElement;
 
 @Profile(ANDROID)
 @Component
@@ -92,7 +91,7 @@ public class AndroidWelcomeFlowImpl extends BaseFlow implements WelcomeFlow {
 
     @Override
     public void swipeToCouponsSection() {
-        swipeUntilElementIsPresent(SwipeScroll.Direction.UP, getHomePage().getPayWIthGiftCArdBtn()); //common element for options with and without coupons
+        swipeToElement(SwipeScroll.Direction.UP, getHomePage().getPayWIthGiftCArdBtn()); //common element for options with and without coupons
     }
 
     @Step

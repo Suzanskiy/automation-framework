@@ -66,9 +66,9 @@ public class SwipeScroll {
         }
     }
 
-    public static void swipeUntilElementIsPresent(SwipeScroll.Direction direction, WebElement element) {
+    public static void swipeToElement(SwipeScroll.Direction direction, WebElement element) {
         int stopper = 0;
-        int maxSwipes = 10;
+        int maxSwipes = 5;
         boolean elementIsDisplayed = false;
         do {
             swipeScroll.swipeScreen(direction);

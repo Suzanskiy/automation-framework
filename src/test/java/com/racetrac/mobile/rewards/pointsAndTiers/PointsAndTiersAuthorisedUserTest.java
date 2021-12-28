@@ -13,7 +13,7 @@ import org.testng.annotations.Test;
 
 import static org.testng.Assert.assertTrue;
 
-public class PointsAndTiersTestAuthorisedUser extends BaseTest {
+public class PointsAndTiersAuthorisedUserTest extends BaseTest {
     @Autowired
     WelcomeFlow welcomeFlow;
     @Autowired

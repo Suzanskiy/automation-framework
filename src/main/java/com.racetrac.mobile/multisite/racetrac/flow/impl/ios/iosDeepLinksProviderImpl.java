@@ -17,7 +17,7 @@ public class iosDeepLinksProviderImpl extends BaseFlow implements DeppLinksProvi
     @Step
     @Override
     public void openDeepLink(String link) {
-        acceptAlert();
         getDriver().get(link);
+        acceptAlert();
     }
 }

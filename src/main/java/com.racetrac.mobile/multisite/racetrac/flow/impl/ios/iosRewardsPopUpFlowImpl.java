@@ -66,6 +66,5 @@ public class iosRewardsPopUpFlowImpl extends BaseFlow implements RewardsPopupFlo
     @Step
     @Override
     public void waitUntilMessageAvailable() {
-        AppiumWaitingUtils.waitUntilIsTrue(this::isGotItBtnDisplayed);
     }
 }

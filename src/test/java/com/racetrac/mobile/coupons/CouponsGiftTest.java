@@ -3,7 +3,15 @@ package com.racetrac.mobile.coupons;
 import com.racetrac.mobile.BaseTest;
 import com.racetrac.mobile.multisite.racetrac.api.PunchhPointsClient;
 import com.racetrac.mobile.multisite.racetrac.dto.CustomerDto;
-import com.racetrac.mobile.multisite.racetrac.flow.*;
+import com.racetrac.mobile.multisite.racetrac.flow.CouponsAuthorizedUserFlow;
+import com.racetrac.mobile.multisite.racetrac.flow.CouponsPopUpFlow;
+import com.racetrac.mobile.multisite.racetrac.flow.InputEmailForGiftCouponFlow;
+import com.racetrac.mobile.multisite.racetrac.flow.NavigationFlow;
+import com.racetrac.mobile.multisite.racetrac.flow.SignInFlow;
+import com.racetrac.mobile.multisite.racetrac.flow.SignOutFlow;
+import com.racetrac.mobile.multisite.racetrac.flow.SuccessfulSentGiftPopUpFlow;
+import com.racetrac.mobile.multisite.racetrac.flow.UserNotFoundForGiftPopUpFlow;
+import com.racetrac.mobile.multisite.racetrac.flow.WelcomeFlow;
 import io.qameta.allure.Description;
 import io.qameta.allure.TmsLink;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,98 +22,94 @@ import static org.testng.Assert.assertTrue;
 
 public class CouponsGiftTest extends BaseTest {
 
-    private static final int COUPONS_AMOUNT = 2; //Important to made more than one coupons to prevent falling
-    // @PageLoading in isCouponsPageAuthorizedUserOpen()
-    // when user can make a gift and we back to CouponsPageAuthorizedUserPage
+  private static final int COUPONS_AMOUNT = 2; // Important to made more than one coupons to prevent falling
+  // @PageLoading in isCouponsPageAuthorizedUserOpen()
+  // when user can make a gift and we back to CouponsPageAuthorizedUserPage
 
-    private static final String TEST_EMAIL = "nonmember@test.com";
+  private static final String TEST_EMAIL = "nonmember@test.com";
 
-    @Autowired
-    WelcomeFlow welcomeFlow;
-    @Autowired
-    SignOutFlow signOutFlow;
-    @Autowired
-    SignInFlow signInFlow;
-    @Autowired
-    NavigationFlow navigationFlow;
-    @Autowired
-    CouponsPopUpFlow couponsPopUpFlow;
-    @Autowired
-    CouponsAuthorizedUserFlow couponsAuthorizedUserFlow;
-    @Autowired
-    InputEmailForGiftCouponFlow inputEmailForGiftCouponFlow;
-    @Autowired
-    PunchhPointsClient punchhPointsClient;
-    @Autowired
-    SuccessfulSentGiftPopUpFlow successfulSentGiftPopUpFlow;
-    @Autowired
-    UserNotFoundForGiftPopUpFlow userNotFoundForGiftPopUpFlow;
-    CustomerDto customerDto;
-    CustomerDto secondCustomerDto;
+  @Autowired WelcomeFlow welcomeFlow;
+  @Autowired SignOutFlow signOutFlow;
+  @Autowired SignInFlow signInFlow;
+  @Autowired NavigationFlow navigationFlow;
+  @Autowired CouponsPopUpFlow couponsPopUpFlow;
+  @Autowired CouponsAuthorizedUserFlow couponsAuthorizedUserFlow;
+  @Autowired InputEmailForGiftCouponFlow inputEmailForGiftCouponFlow;
+  @Autowired PunchhPointsClient punchhPointsClient;
+  @Autowired SuccessfulSentGiftPopUpFlow successfulSentGiftPopUpFlow;
+  @Autowired UserNotFoundForGiftPopUpFlow userNotFoundForGiftPopUpFlow;
+  CustomerDto customerDto;
+  CustomerDto secondCustomerDto;
 
-    @BeforeMethod(alwaysRun = true)
-    public void setUp() {
-        assertTrue(welcomeFlow.isHomePageOpened(), "Welcome page is not opened");
-        customerDto = testData.registerNewCustomer();
-        punchhPointsClient.generateCouponsAmount(customerDto, COUPONS_AMOUNT);
-        signInFlow.openLoginInPage();
-        assertTrue(signInFlow.isLoginPageOpened(), "Login page is not opened");
-        signInFlow.authorize(customerDto);
-        navigationFlow.navigateToCoupons();
+  @BeforeMethod(alwaysRun = true)
+  public void setUp() {
+    assertTrue(welcomeFlow.isHomePageOpened(), "Welcome page is not opened");
+    customerDto = testData.registerNewCustomer();
+    punchhPointsClient.generateCouponsAmount(customerDto, COUPONS_AMOUNT);
+    signInFlow.openLoginInPage();
+    assertTrue(signInFlow.isLoginPageOpened(), "Login page is not opened");
+    signInFlow.authorize(customerDto);
+    // TODO check after Ostap's button update
+    couponsAuthorizedUserFlow.clickOnGiftItBtn();
+    couponsAuthorizedUserFlow.selectAvailableCoupon();
+    assertTrue(
+        inputEmailForGiftCouponFlow.isInputEmailPopUpOpened(), "Input email pop-up is not opened");
+  }
 
-        assertTrue(couponsPopUpFlow.isCouponsPopUpDisplayed(), "Coupons pop-up is not displayed");
-        couponsPopUpFlow.clickOnCouponsPopUpGotItBtn();
-        assertTrue(couponsAuthorizedUserFlow.isCouponsPageAuthorizedUserOpen(), "Coupons page is not opened");
-        couponsAuthorizedUserFlow.clickOnGiftItBtn();
-        couponsAuthorizedUserFlow.selectAvailableCoupon();
-        assertTrue(inputEmailForGiftCouponFlow.isInputEmailPopUpOpened(), "Input email pop-up is not opened");
-    }
+  @TmsLink("9501")
+  @Description("The user cannot make a gift to himself")
+  @Test
+  public void couponsGiftToYourselfTest() {
+    inputEmailForGiftCouponFlow.enterEmail(customerDto);
+    assertTrue(
+        userNotFoundForGiftPopUpFlow.isUserNotFoundForGiftPopUpPageOpened(),
+        "\"User not found\" pop-up is not opened");
+    userNotFoundForGiftPopUpFlow.clickOnUserNotFoundPopUpOkBtn();
+    couponsAuthorizedUserFlow.pressBackBtn();
+    assertTrue(
+        couponsAuthorizedUserFlow.isCouponsPageAuthorizedUserOpen(), "Coupons page is not opened");
+  }
 
-    @TmsLink("9501")
-    @Description("The user cannot make a gift to himself")
-    @Test
-    public void couponsGiftToYourselfTest() {
-        inputEmailForGiftCouponFlow.enterEmail(customerDto);
-        assertTrue(userNotFoundForGiftPopUpFlow.isUserNotFoundForGiftPopUpPageOpened(), "\"User not found\" pop-up is not opened");
-        userNotFoundForGiftPopUpFlow.clickOnUserNotFoundPopUpOkBtn();
-        couponsAuthorizedUserFlow.pressBackBtn();
-        assertTrue(couponsAuthorizedUserFlow.isCouponsPageAuthorizedUserOpen(), "Coupons page is not opened");
-    }
+  @TmsLink("9498")
+  @Description("The user cannot make a gift to Non-member")
+  @Test
+  public void couponsGiftToNonMemberUserTest() {
+    inputEmailForGiftCouponFlow.enterAnotherEmail(TEST_EMAIL);
+    assertTrue(
+        userNotFoundForGiftPopUpFlow.isUserNotFoundForGiftPopUpPageOpened(),
+        "\"User not found\" pop-up is not opened");
+    userNotFoundForGiftPopUpFlow.clickOnUserNotFoundPopUpOkBtn();
+    couponsAuthorizedUserFlow.pressBackBtn();
+    assertTrue(
+        couponsAuthorizedUserFlow.isCouponsPageAuthorizedUserOpen(), "Coupons page is not opened");
+  }
 
-    @TmsLink("9498")
-    @Description("The user cannot make a gift to Non-member")
-    @Test
-    public void couponsGiftToNonMemberUserTest() {
-        inputEmailForGiftCouponFlow.enterAnotherEmail(TEST_EMAIL);
-        assertTrue(userNotFoundForGiftPopUpFlow.isUserNotFoundForGiftPopUpPageOpened(), "\"User not found\" pop-up is not opened");
-        userNotFoundForGiftPopUpFlow.clickOnUserNotFoundPopUpOkBtn();
-        couponsAuthorizedUserFlow.pressBackBtn();
-        assertTrue(couponsAuthorizedUserFlow.isCouponsPageAuthorizedUserOpen(), "Coupons page is not opened");
-    }
+  @TmsLink("9498")
+  @Description("The user can make a gift to another RT Reward member")
+  @Test
+  public void couponsGiftToAnotherMemberTest() {
+    secondCustomerDto = testData.registerNewCustomer();
+    inputEmailForGiftCouponFlow.enterEmail(secondCustomerDto);
+    assertTrue(
+        successfulSentGiftPopUpFlow.isSuccessfulSentGiftPopUpOpened(),
+        "\"Gift has been sent\" pop-up is not opened");
+    successfulSentGiftPopUpFlow.clickOnSuccessfulSentGiftPopUpOkBtn();
+    couponsAuthorizedUserFlow.pressBackBtn();
+    assertTrue(
+        couponsAuthorizedUserFlow.isCouponsPageAuthorizedUserOpen(), "Coupons page is not opened");
+    navigationFlow.navigateToHomeFromCouponsPage();
+    assertTrue(welcomeFlow.isHomePageOpened(), "Welcome page is not opened");
+    signOutFlow.doSignOut();
+    assertTrue(welcomeFlow.isHomePageOpened(), "Welcome page is not opened");
 
-    @TmsLink("9498")
-    @Description("The user can make a gift to another RT Reward member")
-    @Test
-    public void couponsGiftToAnotherMemberTest() {
-        secondCustomerDto = testData.registerNewCustomer();
-        inputEmailForGiftCouponFlow.enterEmail(secondCustomerDto);
-        assertTrue(successfulSentGiftPopUpFlow.isSuccessfulSentGiftPopUpOpened(), "\"Gift has been sent\" pop-up is not opened");
-        successfulSentGiftPopUpFlow.clickOnSuccessfulSentGiftPopUpOkBtn();
-        couponsAuthorizedUserFlow.pressBackBtn();
-        assertTrue(couponsAuthorizedUserFlow.isCouponsPageAuthorizedUserOpen(), "Coupons page is not opened");
-        navigationFlow.navigateToHomeFromCouponsPage();
-        assertTrue(welcomeFlow.isHomePageOpened(), "Welcome page is not opened");
-        signOutFlow.doSignOut();
-        assertTrue(welcomeFlow.isHomePageOpened(), "Welcome page is not opened");
+    signInFlow.openLoginInPage();
+    assertTrue(signInFlow.isLoginPageOpened(), "Login page is not opened");
+    signInFlow.authorize(secondCustomerDto);
 
-        signInFlow.openLoginInPage();
-        assertTrue(signInFlow.isLoginPageOpened(), "Login page is not opened");
-        signInFlow.authorize(secondCustomerDto);
-
-        navigationFlow.navigateToCoupons();
-        assertTrue(couponsPopUpFlow.isCouponsPopUpDisplayed(), "Coupons pop-up is not displayed");
-        couponsPopUpFlow.clickOnCouponsPopUpGotItBtn();
-        assertTrue(couponsAuthorizedUserFlow.isCouponsPageAuthorizedUserOpen(), "Coupons page is not opened");
-    }
-
+    navigationFlow.navigateToCoupons();
+    assertTrue(couponsPopUpFlow.isCouponsPopUpDisplayed(), "Coupons pop-up is not displayed");
+    couponsPopUpFlow.clickOnCouponsPopUpGotItBtn();
+    assertTrue(
+        couponsAuthorizedUserFlow.isCouponsPageAuthorizedUserOpen(), "Coupons page is not opened");
+  }
 }

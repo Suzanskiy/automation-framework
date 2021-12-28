@@ -5,15 +5,11 @@ import com.racetrac.mobile.multisite.racetrac.api.PunchhPointsClient;
 import com.racetrac.mobile.multisite.racetrac.dto.CustomerDto;
 import com.racetrac.mobile.multisite.racetrac.flow.CheckoutBtnFLow;
 import com.racetrac.mobile.multisite.racetrac.flow.FuelVipFlow;
-import com.racetrac.mobile.multisite.racetrac.flow.LocationRequestFlow;
 import com.racetrac.mobile.multisite.racetrac.flow.NavigationFlow;
-import com.racetrac.mobile.multisite.racetrac.flow.NotificationRequestFlow;
-import com.racetrac.mobile.multisite.racetrac.flow.PointsAndLevelsFlow;
 import com.racetrac.mobile.multisite.racetrac.flow.RewardsCatalogFlow;
 import com.racetrac.mobile.multisite.racetrac.flow.RewardsCheckoutBarcodeFlow;
 import com.racetrac.mobile.multisite.racetrac.flow.RewardsPopupFlow;
 import com.racetrac.mobile.multisite.racetrac.flow.SignInFlow;
-import com.racetrac.mobile.multisite.racetrac.flow.SignOutFlow;
 import com.racetrac.mobile.multisite.racetrac.flow.UnclaimedRewardsCheckoutFlow;
 import com.racetrac.mobile.multisite.racetrac.flow.WelcomeFlow;
 import io.qameta.allure.Description;
@@ -65,8 +61,8 @@ public class RewardsCheckoutTest extends BaseTest {
         signInFlow.openLoginInPage();
         assertTrue(signInFlow.isLoginPageOpened(), "Login page is not opened");
         signInFlow.authorize(customerDto);
-        navigationFlow.navigateToRewardsCards();
-        assertTrue(rewardsCheckoutFlow.isRewardsCheckoutBarcodePageOpen(), "Rewards checkout page is not opened");
+        navigationFlow.navigateToCheckout();
+        assertTrue(rewardsCheckoutFlow.isRewardsCheckoutBarcodePageOpened(), "Rewards checkout page is not opened");
     }
 
     @TmsLink("7248")
@@ -93,14 +89,14 @@ public class RewardsCheckoutTest extends BaseTest {
         assertEquals(checkoutBtnFLow.getCheckoutBtnCounter(), UNCLAIMED_REWARDS_COUNTER, "Counters are not equals");
         checkoutBtnFLow.clickOnCheckoutBtn();
 
-        assertTrue(rewardsCheckoutFlow.isRewardsCheckoutBarcodePageOpen(), "Rewards checkout page is not opened");
+        assertTrue(rewardsCheckoutFlow.isRewardsCheckoutBarcodePageOpened(), "Rewards checkout page is not opened");
         assertEquals(rewardsCheckoutFlow.getUnclaimedRewardsCounter(), UNCLAIMED_REWARDS_COUNTER, "Counters are not equals");
         rewardsCheckoutFlow.clickOnDoneBtn();
         assertTrue(welcomeFlow.isHomePageOpenedAfterSignIn());
 
         fuelVipFlow.navigateToFuelVipSection();
         checkoutBtnFLow.clickOnCheckoutBtn();
-        assertTrue(rewardsCheckoutFlow.isRewardsCheckoutBarcodePageOpen(), "Rewards checkout page is not opened");
+        assertTrue(rewardsCheckoutFlow.isRewardsCheckoutBarcodePageOpened(), "Rewards checkout page is not opened");
         assertEquals(rewardsCheckoutFlow.getUnclaimedRewardsCounter(), UNCLAIMED_REWARDS_COUNTER, "Counters are not equals");
         rewardsCheckoutFlow.goToUnclaimedRewardsPage();
         assertTrue(unclaimedRewardsCheckoutFlow.isUnclaimedRewardsCheckoutPageOpen(), "Unclaimed rewards page is not opened");

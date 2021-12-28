@@ -12,7 +12,7 @@ import org.springframework.stereotype.Component;
 
 import static com.racetrac.mobile.framework.constants.PlatformsConstants.ANDROID;
 import static com.racetrac.mobile.util.appium.AppiumDriverUtils.pressBackBtn;
-import static com.racetrac.mobile.util.appium.SwipeScroll.swipeUntilElementIsPresent;
+import static com.racetrac.mobile.util.appium.SwipeScroll.swipeToElement;
 
 @Profile(ANDROID)
 @Component
@@ -97,7 +97,7 @@ public class AndroidAccountSettingsFlowImpl extends BaseFlow implements AccountS
             elementIsDisplayed = false;
         }
         if (!elementIsDisplayed) {
-            swipeUntilElementIsPresent(SwipeScroll.Direction.UP, getAccountSettingsPage().getHelpCategory());
+            swipeToElement(SwipeScroll.Direction.UP, getAccountSettingsPage().getHelpCategory());
         }
         getAccountSettingsPage().getHelpCategory().click();
     }
