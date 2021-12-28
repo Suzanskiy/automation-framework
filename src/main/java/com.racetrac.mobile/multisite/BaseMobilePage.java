@@ -66,7 +66,7 @@ public abstract class BaseMobilePage implements MobilePage {
 
     private Wait<WebDriver> getWebDriverWait() {
         return new FluentWait<WebDriver>(getDriver())
-                .withTimeout(Duration.ofSeconds(5))
+                .withTimeout(Duration.ofSeconds(10))
                 .pollingEvery(Duration.ofSeconds(1))
                 .ignoring(NoSuchElementException.class)
                 .ignoring(StaleElementReferenceException.class);
