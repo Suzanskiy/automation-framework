@@ -1,11 +1,11 @@
 package com.racetrac.mobile.framework.appium;
 
 import io.appium.java_client.AppiumDriver;
-import io.appium.java_client.MobileElement;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.ios.IOSDriver;
 import org.openqa.selenium.Capabilities;
 import org.openqa.selenium.SessionNotCreatedException;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.remote.UnreachableBrowserException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -33,20 +33,20 @@ public class AppiumDriverFactory {
         defaultHub = newDefaultHub;
     }
 
-    public static AppiumDriver<MobileElement> getDriver(final String hub, final Capabilities capabilities) {
+    public static AppiumDriver getDriver(final String hub, final Capabilities capabilities) {
         return newAppiumDriver(hub, capabilities);
     }
 
-    public static AppiumDriver<MobileElement> getDriver(final Capabilities capabilities) {
+    public static AppiumDriver getDriver(final Capabilities capabilities) {
         return getDriver(defaultHub, capabilities);
     }
 
-    private static AppiumDriver<MobileElement> newAppiumDriver(final String hub, final Capabilities capabilities) {
-        final AppiumDriver<MobileElement> driver = createRemoteDriver(hub, capabilities);
+    private static AppiumDriver newAppiumDriver(final String hub, final Capabilities capabilities) {
+        final AppiumDriver driver = createRemoteDriver(hub, capabilities);
         return driver;
     }
 
-    private static Runnable closeDriverRunnable(AppiumDriver<MobileElement> appiumDriver) {
+    private static Runnable closeDriverRunnable(AppiumDriver appiumDriver) {
         return () -> {
             LOG.info("Closing driver ->" + appiumDriver);
             appiumDriver.quit();
@@ -60,7 +60,7 @@ public class AppiumDriverFactory {
         };
     }
 
-    private static AppiumDriver<MobileElement> createRemoteDriver(final String hub, final Capabilities capabilities) {
+    private static AppiumDriver createRemoteDriver(final String hub, final Capabilities capabilities) {
         RetryTemplate template = new RetryTemplate();
         template.setRetryPolicy(new SimpleRetryPolicy(MAX_ATTEMPTS, getCaughtExceptions()));
         FixedBackOffPolicy policy = new FixedBackOffPolicy();
@@ -76,20 +76,20 @@ public class AppiumDriverFactory {
         return retryableExceptions;
     }
 
-    private static AppiumDriver<MobileElement> getAppiumDriver(String hub, Capabilities capabilities) {
+    private static AppiumDriver getAppiumDriver(String hub, Capabilities capabilities) {
         try {
-            AppiumDriver<MobileElement> driver;
+            AppiumDriver driver;
             switch (AppiumConfiguration.getTestPlatform()) {
                 case IOS: {
-                    driver = new IOSDriver<>(getURL(hub), capabilities);
+                    driver = new IOSDriver(getURL(hub), capabilities);
                     break;
                 }
                 case ANDROID: {
-                    driver = new AndroidDriver<>(getURL(hub), capabilities);
+                    driver = new AndroidDriver(getURL(hub), capabilities);
                     break;
                 }
                 default: {
-                    driver = new AppiumDriver<>(getURL(hub), capabilities);
+                    driver = new AppiumDriver(getURL(hub), capabilities);
                 }
             }
             LOG.info("Remote Appium driver is created");

@@ -37,7 +37,7 @@ public class iosNotificationRequestFlowImpl extends BaseFlow implements Notifica
     }
 
     @Override
-    public boolean isNotificationRequestOpened() {
+    public boolean isNotificationRequestPageOpened() {
         return getTurnOnNotificationPage().waitUntilIsOpened();
     }
 

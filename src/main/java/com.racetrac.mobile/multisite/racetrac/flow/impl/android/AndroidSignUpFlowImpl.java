@@ -77,14 +77,14 @@ public class AndroidSignUpFlowImpl extends BaseFlow implements SignUpFlow {
     @Step
     private void enterEmail(final String email) {
         getSignUpPage().getEmailInput().clear();
-        getSignUpPage().getEmailInput().setValue(email);
+        getSignUpPage().getEmailInput().sendKeys(email);
     }
 
 
     @Step
     private void enterBirthDay(final String birthday) {
         if (!birthday.isEmpty()) {
-            getSignUpPage().getBirthDayInput().setValue(LocalDate.parse(birthday, DateTimeFormatter.ofPattern(BACKEND_DATE_PATTERN)
+            getSignUpPage().getBirthDayInput().sendKeys(LocalDate.parse(birthday, DateTimeFormatter.ofPattern(BACKEND_DATE_PATTERN)
             ).format(DateTimeFormatter.ofPattern(MOBILE_DATE_PATTERN)));
         }
     }
@@ -92,13 +92,13 @@ public class AndroidSignUpFlowImpl extends BaseFlow implements SignUpFlow {
     @Step
     private void enterPhone(String phone) {
         getSignUpPage().getPhoneInput().clear();
-        getSignUpPage().getPhoneInput().setValue(phone);
+        getSignUpPage().getPhoneInput().sendKeys(phone);
     }
 
     @Step
     private void enterPassword(final String password) {
         getSignUpPage().getPasswordInput().clear();
-        getSignUpPage().getPasswordInput().setValue(password);
+        getSignUpPage().getPasswordInput().sendKeys(password);
     }
 
 

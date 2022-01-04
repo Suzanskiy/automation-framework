@@ -18,36 +18,30 @@ import static com.racetrac.mobile.framework.constants.PlatformsConstants.IOS;
 @Component
 public class iosPopupCloserImpl extends BaseFlow implements PopupCloserFlow {
 
-    @Autowired
-    LocationRequestFlow locationRequestFlow;
-    @Autowired
-    NotificationRequestFlow notificationRequestFlow;
-    @Autowired
-    BecomeFuelVipFlow becomeFuelVipFlow;
-    @Autowired
-    PromotionalOffersFlow promotionalOffersFlow;
-    @Autowired
-    PointsAndLevelsFlow pointsAndLevelsFlow;
-    @Autowired
-    RewardsPopupFlow rewardsPopupFlow;
+  @Autowired LocationRequestFlow locationRequestFlow;
+  @Autowired NotificationRequestFlow notificationRequestFlow;
+  @Autowired BecomeFuelVipFlow becomeFuelVipFlow;
+  @Autowired PromotionalOffersFlow promotionalOffersFlow;
+  @Autowired PointsAndLevelsFlow pointsAndLevelsFlow;
+  @Autowired RewardsPopupFlow rewardsPopupFlow;
 
-    @Override
-    public void closePopups() {
-        if (promotionalOffersFlow.isPromotionalOffersScreenOpened()) {
-            promotionalOffersFlow.skipPromotions();
-        }
-        if (locationRequestFlow.isLocationRequestOpened()) {
-            locationRequestFlow.clickContinue();
-        }
-        if (notificationRequestFlow.isNotificationRequestOpened()) {
-            notificationRequestFlow.clickNotNow();
-        }
-        if (becomeFuelVipFlow.checkAllElementsIsLoaded()) {
-            becomeFuelVipFlow.clickNotRightNow();
-        }
-            rewardsPopupFlow.clickGotItBtn();
-            pointsAndLevelsFlow.clickGotItBtn();
+  @Override
+  public void closePopups() {
+    if (promotionalOffersFlow.isPromotionalOffersPageOpened()) {
+      promotionalOffersFlow.skipPromotions();
     }
+    if (locationRequestFlow.isLocationRequestPageOpened()) {
+      locationRequestFlow.clickContinue();
+    }
+    if (notificationRequestFlow.isNotificationRequestPageOpened()) {
+      notificationRequestFlow.clickNotNow();
+    }
+    if (becomeFuelVipFlow.isBecomeFuelVipPageOpened()) {
+      becomeFuelVipFlow.clickNotRightNow();
+    }
+    rewardsPopupFlow.clickGotItBtn();
+    pointsAndLevelsFlow.clickGotItBtn();
+  }
 
-// IOS:    //already registered user: locations - notifications - reward popups - points and tiers
+  // IOS:    //already registered user: locations - notifications - reward popups - points and tiers
 }

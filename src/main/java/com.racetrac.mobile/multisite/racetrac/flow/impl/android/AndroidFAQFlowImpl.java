@@ -48,8 +48,10 @@ public class AndroidFAQFlowImpl extends BaseFlow implements FAQFlow {
         getFaqPage().getHowDoICheckTheBalanceOnMyGiftCard().click();
         swipeUP();
         getFaqPage().getHowDoIDeactiveMyAccount().click();
-        swipeDown();
-        swipeDown();
+        swipeUP();
+
+        swipeUP();
+
 
     }
 
@@ -66,13 +68,16 @@ public class AndroidFAQFlowImpl extends BaseFlow implements FAQFlow {
         boolean b = getFaqPage().getWhatIsQualifProductText().getText().equals(FAQdataProvider.WHAT_IS_A_QUALIFYING_PRODUCT);
         boolean c = getFaqPage().getWhatCanIDoWithPointsText().getText().equals(FAQdataProvider.WHAT_CAN_I_DO_WITH_MY_POINTS);
         boolean d = getFaqPage().getDoMyPointsExpireText().getText().equals(FAQdataProvider.DO_MY_POINTS_EXPIRE);
-        swipeUPGently();
+        swipeUP();
         boolean y = getFaqPage().getWhatAreTheLevelsText().getText().equals(FAQdataProvider.WHAT_ARE_THE_LEVELS);
-        swipeUPGently();
+        swipeUP();
+
         boolean e = getFaqPage().getDoesMyLevelExpireText().getText().equals(FAQdataProvider.DOES_MY_LEVEL_EXPIRE);
-        swipeUPGently();
+        swipeUP();
+
         boolean f = getFaqPage().getHowDoIredeemCouponsText().getText().equals(FAQdataProvider.HOW_DO_I_REDEEM_COUPONS);
-        swipeUPGently();
+        swipeUP();
+
         boolean g = getFaqPage().getMyPhoneNumberIsNotWorkingText().getText().equals(FAQdataProvider.MY_PHONE_NUMBER_IS_NOT_WORKING_AT_THE_PUMP);
         boolean h = getFaqPage().getHowDoIaddGiftCardToTheAppText().getText().equals(FAQdataProvider.HOW_DO_I_ADD_GIFT_CARDS_O_THE_APP);
         boolean i = getFaqPage().getHowDoIPayWithAnAppGiftcardText().getText().equals(FAQdataProvider.HOW_DO_I_PAY_WITH_AN_APP_GIFTCARD);

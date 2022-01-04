@@ -2,7 +2,7 @@ package com.racetrac.mobile.multisite.racetrac.page;
 
 import com.racetrac.mobile.framework.annotations.PageLoading;
 import com.racetrac.mobile.multisite.BaseMobilePage;
-import io.appium.java_client.MobileElement;
+import org.openqa.selenium.WebElement;
 import io.appium.java_client.pagefactory.AndroidFindBy;
 import io.appium.java_client.pagefactory.iOSXCUITFindBy;
 import lombok.Getter;
@@ -14,41 +14,41 @@ public class AccountSettingsPage extends BaseMobilePage {
     @PageLoading
     @iOSXCUITFindBy(accessibility = "button.close")
     @AndroidFindBy(id = "com.RaceTrac.Common.qa:id/account_close_btn")
-    private MobileElement navBarCloseBtn;
+    private WebElement navBarCloseBtn;
 
     @PageLoading
     @iOSXCUITFindBy(accessibility = "text.title")
     @AndroidFindBy(id = "com.RaceTrac.Common.qa:id/account_title")
-    private MobileElement title;
+    private WebElement title;
 
     @PageLoading
     @iOSXCUITFindBy(xpath = "//XCUIElementTypeSwitch[@name=\"Location Services\"]")
     @AndroidFindBy(uiAutomator = "new UiSelector().text(\"Location Services\")")
-    private MobileElement locationSwitch;
+    private WebElement locationSwitch;
 
     @PageLoading
     @iOSXCUITFindBy(xpath = "//XCUIElementTypeOther[@name=\"General\"]")
     @AndroidFindBy(uiAutomator = "new UiSelector().text(\"General\")")
-    private MobileElement generalCategory;
+    private WebElement generalCategory;
 
     @PageLoading
     @iOSXCUITFindBy(accessibility = "RaceTrac App Intro")
     @AndroidFindBy(uiAutomator = "new UiSelector().text(\"RaceTrac App Intro\")")
-    private MobileElement racetracAppIntro;
+    private WebElement racetracAppIntro;
 
     @iOSXCUITFindBy(accessibility = "Help")
     @AndroidFindBy(uiAutomator = "new UiSelector().text(\"Help\")")
-    private MobileElement helpCategory;
+    private WebElement helpCategory;
 
     @iOSXCUITFindBy(accessibility = "Terms & Privacy")
     @AndroidFindBy(uiAutomator = "new UiSelector().text(\"Terms & Privacy\")")
-    private MobileElement termsAndPrivacy;
+    private WebElement termsAndPrivacy;
 
     @iOSXCUITFindBy(accessibility = "Accessibility")
     @AndroidFindBy(uiAutomator = "new UiSelector().text(\"Accessibility\")")
-    private MobileElement accessibility;
+    private WebElement accessibility;
 
     @iOSXCUITFindBy(xpath = "//XCUIElementTypeButton[@name=\"SIGN OUT\"]")
     @AndroidFindBy(id = "com.RaceTrac.Common.qa:id/signOutButton")
-    private MobileElement signOutBtn;
+    private WebElement signOutBtn;
 }

@@ -7,10 +7,8 @@ import com.racetrac.mobile.multisite.racetrac.flow.BecomeFuelVipFlow;
 import com.racetrac.mobile.multisite.racetrac.flow.LocationRequestFlow;
 import com.racetrac.mobile.multisite.racetrac.flow.NotificationRequestFlow;
 import com.racetrac.mobile.multisite.racetrac.flow.PointsAndLevelsFlow;
-import com.racetrac.mobile.multisite.racetrac.flow.ProfileFlow;
 import com.racetrac.mobile.multisite.racetrac.flow.RewardsPopupFlow;
 import com.racetrac.mobile.multisite.racetrac.flow.SignInFlow;
-import com.racetrac.mobile.multisite.racetrac.flow.SignOutFlow;
 import com.racetrac.mobile.multisite.racetrac.flow.SignUpFlow;
 import com.racetrac.mobile.multisite.racetrac.flow.WelcomeFlow;
 import com.racetrac.mobile.multisite.racetrac.flow.helper.PopupCloserFlow;
@@ -95,7 +93,7 @@ public class UserReceiveEmailsOptionsTest extends BaseTest {
         locationRequestFlow.clickContinue();
         notificationRequestFlow.clickNotNow();
         becomeFuelVipFlow.waitUntilBecomeFuelVipLoaded();
-        assertTrue(becomeFuelVipFlow.checkAllElementsIsLoaded(), "Elements are not loaded");
+        assertTrue(becomeFuelVipFlow.isBecomeFuelVipPageOpened(), "Elements are not loaded");
 
         becomeFuelVipFlow.clickNotRightNow();
         signInFlow.clickGotItBtn();

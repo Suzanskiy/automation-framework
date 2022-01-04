@@ -2,7 +2,7 @@ package com.racetrac.mobile.multisite.racetrac.page;
 
 import com.racetrac.mobile.framework.annotations.PageLoading;
 import com.racetrac.mobile.multisite.BaseMobilePage;
-import io.appium.java_client.MobileElement;
+import org.openqa.selenium.WebElement;
 import io.appium.java_client.pagefactory.AndroidFindBy;
 import io.appium.java_client.pagefactory.iOSXCUITFindBy;
 import lombok.Getter;
@@ -14,43 +14,43 @@ public class SignUpPage extends BaseMobilePage {
 
     @iOSXCUITFindBy(accessibility = "NavBarClose")
     @AndroidFindBy(accessibility = "Navigate up")
-    private MobileElement closeBtn;
+    private WebElement closeBtn;
 
     @PageLoading
     @iOSXCUITFindBy(accessibility = "text.title")
     @AndroidFindBy(id =
             "com.RaceTrac.Common.qa:id/topView")
-    private MobileElement pageTitle;
+    private WebElement pageTitle;
 
     @iOSXCUITFindBy(accessibility = "textfield.email")
     @AndroidFindBy(id =
             "com.RaceTrac.Common.qa:id/emailField")
-    private MobileElement emailInput;
+    private WebElement emailInput;
 
     @iOSXCUITFindBy(accessibility = "textfield.password")
     @AndroidFindBy(id = "com.RaceTrac.Common.qa:id/passwordField")
-    private MobileElement passwordInput;
+    private WebElement passwordInput;
 
     @iOSXCUITFindBy(accessibility = "textfield.phone_number")
     @AndroidFindBy(id = "com.RaceTrac.Common.qa:id/phoneField")
-    private MobileElement phoneInput;
+    private WebElement phoneInput;
 
     @iOSXCUITFindBy(accessibility = "textfield.birthday")
     @AndroidFindBy(id =
             "com.RaceTrac.Common.qa:id/birthdayField")
-    private MobileElement birthDayInput;
+    private WebElement birthDayInput;
 
     @AndroidFindBy(id = "com.RaceTrac.Common.qa:id/noBtnPhysicalCard")
     @iOSXCUITFindBy(accessibility = "button.no_reward_card")
-    private MobileElement noCardButton;
+    private WebElement noCardButton;
     @AndroidFindBy(id = "com.RaceTrac.Common.qa:id/yesBtnPhysicalCard")
-    private MobileElement yesCardButton;
+    private WebElement yesCardButton;
 
     @iOSXCUITFindBy(accessibility = "button.create_account")
     @AndroidFindBy(id = "com.RaceTrac.Common.qa:id/signupDoneButton")
-    private MobileElement createAccountBtn;
+    private WebElement createAccountBtn;
 
     @AndroidFindBy(id = "com.RaceTrac.Common.qa:id/optionemailcheckbox")
     @iOSXCUITFindBy(accessibility = "button.enable_marketing_emails")
-    private MobileElement receiveEmailsConfirmationBtn;
+    private WebElement receiveEmailsConfirmationBtn;
 }

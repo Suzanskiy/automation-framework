@@ -68,7 +68,7 @@ public class iosProfileFlowImpl extends BaseFlow implements ProfileFlow, Navigat
     @Step
     @Override
     public void enterBirthDate(final String customerBirth) {
-        getProfilePage().getBirthDay().setValue(customerBirth);
+        getProfilePage().getBirthDay().sendKeys(customerBirth);
         pressBackBtn();
         getProfilePage().getButtonSave().click();
     }

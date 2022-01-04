@@ -2,7 +2,7 @@ package com.racetrac.mobile.multisite.racetrac.flow;
 
 public interface RewardsCheckoutBarcodeFlow {
 
-    boolean isRewardsCheckoutBarcodePageOpen();
+    boolean isRewardsCheckoutBarcodePageOpened();
 
     void closeRewardsCheckoutPage();
 

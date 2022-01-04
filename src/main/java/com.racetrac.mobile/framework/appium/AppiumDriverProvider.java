@@ -1,7 +1,6 @@
 package com.racetrac.mobile.framework.appium;
 
 import io.appium.java_client.AppiumDriver;
-import io.appium.java_client.MobileElement;
 import io.appium.java_client.service.local.AppiumDriverLocalService;
 import io.appium.java_client.service.local.AppiumServiceBuilder;
 import javaslang.control.Option;
@@ -13,17 +12,17 @@ import static com.racetrac.mobile.framework.appium.AppiumConfiguration.getTestPl
 public class AppiumDriverProvider {
     private static final Logger LOG = LoggerFactory.getLogger(AppiumDriverProvider.class);
     public static final AppiumDriverProvider INSTANCE = new AppiumDriverProvider();
-    private ThreadLocal<AppiumDriver<MobileElement>> DRIVER = new ThreadLocal<>();
+    private ThreadLocal<AppiumDriver> DRIVER = new ThreadLocal<>();
     private static AppiumDriverLocalService appiumLocalService;
 
     private AppiumDriverProvider() {
     }
 
-    public AppiumDriver<MobileElement> getDriverInstance() {
+    public AppiumDriver getDriverInstance() {
         return Option.of(DRIVER.get()).getOrElse(this::getAppiumDriver);
     }
 
-    private AppiumDriver<MobileElement> getAppiumDriver() {
+    private AppiumDriver getAppiumDriver() {
         DRIVER.set(AppiumDriverFactory.getDriver(AppiumConfiguration.getDesiredCapabilities()));
         LOG.info("WebDriver was created -> " + DRIVER.get());
         return DRIVER.get();

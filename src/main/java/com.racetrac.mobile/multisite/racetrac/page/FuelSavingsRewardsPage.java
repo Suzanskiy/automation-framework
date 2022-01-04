@@ -2,7 +2,7 @@ package com.racetrac.mobile.multisite.racetrac.page;
 
 import com.racetrac.mobile.framework.annotations.PageLoading;
 import com.racetrac.mobile.multisite.BaseMobilePage;
-import io.appium.java_client.MobileElement;
+import org.openqa.selenium.WebElement;
 import io.appium.java_client.pagefactory.AndroidFindBy;
 import lombok.Getter;
 import org.springframework.stereotype.Component;
@@ -12,25 +12,25 @@ import org.springframework.stereotype.Component;
 public class FuelSavingsRewardsPage extends BaseMobilePage {
 
     @AndroidFindBy(id = "com.RaceTrac.Common.qa:id/fuel_rewards_back_btn")
-    private MobileElement backBtn;
+    private WebElement backBtn;
 
     @PageLoading
     @AndroidFindBy(id = "com.RaceTrac.Common.qa:id/fuel_rewards_image")
-    private MobileElement image;
+    private WebElement image;
 
     @PageLoading
     @AndroidFindBy(id = "com.RaceTrac.Common.qa:id/fuel_rewards_title")
-    private MobileElement title;
+    private WebElement title;
 
     @PageLoading
     @AndroidFindBy(id = "com.RaceTrac.Common.qa:id/fuelRewardsDesc")
-    private MobileElement description;
+    private WebElement description;
 
     @PageLoading
     @AndroidFindBy(id = "com.RaceTrac.Common.qa:id/fuelRewardsRedeemPointsBtn")
-    private MobileElement redeemPointsBtn;
+    private WebElement redeemPointsBtn;
 
     @PageLoading
     @AndroidFindBy(id = "com.RaceTrac.Common.qa:id/tv_not_right_now")
-    private MobileElement footer;
+    private WebElement footer;
 }

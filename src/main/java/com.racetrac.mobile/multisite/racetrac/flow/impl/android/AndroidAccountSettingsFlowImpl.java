@@ -2,10 +2,8 @@ package com.racetrac.mobile.multisite.racetrac.flow.impl.android;
 
 import com.racetrac.mobile.multisite.racetrac.flow.AccountSettingsFlow;
 import com.racetrac.mobile.multisite.racetrac.flow.BaseFlow;
-import com.racetrac.mobile.multisite.racetrac.page.diff.AccountSettingsPageAuthorised;
 import com.racetrac.mobile.util.appium.AppiumWaitingUtils;
 import com.racetrac.mobile.util.appium.SwipeScroll;
-import io.appium.java_client.MobileElement;
 import io.qameta.allure.Step;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.StaleElementReferenceException;
@@ -14,7 +12,7 @@ import org.springframework.stereotype.Component;
 
 import static com.racetrac.mobile.framework.constants.PlatformsConstants.ANDROID;
 import static com.racetrac.mobile.util.appium.AppiumDriverUtils.pressBackBtn;
-import static com.racetrac.mobile.util.appium.SwipeScroll.swipeUntilElementIsPresent;
+import static com.racetrac.mobile.util.appium.SwipeScroll.swipeToElement;
 
 @Profile(ANDROID)
 @Component
@@ -99,7 +97,7 @@ public class AndroidAccountSettingsFlowImpl extends BaseFlow implements AccountS
             elementIsDisplayed = false;
         }
         if (!elementIsDisplayed) {
-            swipeUntilElementIsPresent(SwipeScroll.Direction.DOWN, getAccountSettingsPage().getHelpCategory());
+            swipeToElement(SwipeScroll.Direction.UP, getAccountSettingsPage().getHelpCategory());
         }
         getAccountSettingsPage().getHelpCategory().click();
     }

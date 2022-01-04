@@ -31,7 +31,7 @@ public class AndroidContactUsFLowImp extends BaseFlow implements ContactUsFlow {
         AppiumWaitingUtils.waitUntilElementClickable(getContactUsPage().getGeneralDropDownSubject());
         getContactUsPage().getGeneralDropDownSubject().click();
         getContactUsPage().getMessageField().click();
-        getContactUsPage().getMessageField().setValue(message);  //no less than 10 symbols to get SEND button available
+        getContactUsPage().getMessageField().sendKeys(message);  //no less than 10 symbols to get SEND button available
         getContactUsPage().getSendMessageBtn().click();
     }
 

@@ -2,7 +2,7 @@ package com.racetrac.mobile.multisite.racetrac.page.chrome;
 
 import com.racetrac.mobile.framework.annotations.PageLoading;
 import com.racetrac.mobile.multisite.BaseMobilePage;
-import io.appium.java_client.MobileElement;
+import org.openqa.selenium.WebElement;
 import io.appium.java_client.pagefactory.AndroidFindBy;
 import lombok.Getter;
 import org.springframework.stereotype.Component;
@@ -12,5 +12,5 @@ import org.springframework.stereotype.Component;
 public class ChromeAcceptTermsPage extends BaseMobilePage {
     @PageLoading
     @AndroidFindBy(id = "com.android.chrome:id/terms_accept")
-    private MobileElement termsAcceptBtn;
+    private WebElement termsAcceptBtn;
 }

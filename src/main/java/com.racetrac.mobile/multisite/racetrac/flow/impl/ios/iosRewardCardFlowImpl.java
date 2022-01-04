@@ -20,7 +20,6 @@ public class iosRewardCardFlowImpl extends BaseFlow implements RewardCardFlow {
 
     @Override
     public boolean isOrderRewardCardPageDisplayed() {
-        AppiumWaitingUtils.waitUntilElementClickable(getOrderRewardCardPage().getContinueButton());
         return getOrderRewardCardPage().waitUntilIsOpened();
     }
 

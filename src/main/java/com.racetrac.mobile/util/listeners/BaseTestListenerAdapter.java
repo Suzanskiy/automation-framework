@@ -14,7 +14,7 @@ import static com.racetrac.mobile.util.attachments.Attachments.saveScreenshotPNG
 
 public class BaseTestListenerAdapter extends TestListenerAdapter {
 
-    private static final Logger LOG = LoggerFactory.getLogger(AppiumDriverProvider.class);
+    private static final Logger LOG = LoggerFactory.getLogger(BaseTestListenerAdapter.class);
 
     @Override
     public void onTestSuccess(ITestResult tr) {
@@ -28,7 +28,6 @@ public class BaseTestListenerAdapter extends TestListenerAdapter {
             attachSourceCode();
         }
         super.onTestFailure(tr);
-
     }
 
     @Override

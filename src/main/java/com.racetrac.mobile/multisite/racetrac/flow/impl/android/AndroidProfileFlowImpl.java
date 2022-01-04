@@ -72,7 +72,7 @@ public class AndroidProfileFlowImpl extends BaseFlow implements ProfileFlow, Nav
 
     @Override
     public void enterBirthDate(final String customerBirth) {
-        getProfilePage().getBirthDay().setValue(customerBirth);
+        getProfilePage().getBirthDay().sendKeys(customerBirth);
         pressBackBtn();
         getProfilePage().getButtonSave().click();
     }

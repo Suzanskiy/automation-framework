@@ -36,14 +36,14 @@ public class AndroidPopupCloserImpl extends BaseFlow implements PopupCloserFlow 
 
     @Override
     public void closePopups() {
-        if (promotionalOffersFlow.isPromotionalOffersScreenOpened()) {
+        if (promotionalOffersFlow.isPromotionalOffersPageOpened()) {
             promotionalOffersFlow.skipPromotions();
         }
-        if (locationRequestFlow.isLocationRequestOpened()) {
+        if (locationRequestFlow.isLocationRequestPageOpened()) {
             locationRequestFlow.clickContinue();
             locationRequestFlow.clickAllowButton();
         }
-        if (becomeFuelVipFlow.checkAllElementsIsLoaded()) {
+        if (becomeFuelVipFlow.isBecomeFuelVipPageOpened()) {
             becomeFuelVipFlow.clickNotRightNow();
         }
             rewardsPopupFlow.clickGotItBtn();

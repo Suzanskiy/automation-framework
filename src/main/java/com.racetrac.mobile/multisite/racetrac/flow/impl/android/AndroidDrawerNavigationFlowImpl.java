@@ -83,7 +83,7 @@ public class AndroidDrawerNavigationFlowImpl extends BaseFlow implements Navigat
 
     @Step
     @Override
-    public void navigateToRewardsCards() {
+    public void navigateToCheckout() {
         getNavigationDrawer().getDrawer().click();
         getAndroidNavBar().getRewardsCardsTab().click();
     }

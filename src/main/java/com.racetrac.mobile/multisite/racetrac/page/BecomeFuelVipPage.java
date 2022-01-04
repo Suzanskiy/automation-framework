@@ -2,7 +2,7 @@ package com.racetrac.mobile.multisite.racetrac.page;
 
 import com.racetrac.mobile.framework.annotations.PageLoading;
 import com.racetrac.mobile.multisite.BaseMobilePage;
-import io.appium.java_client.MobileElement;
+import org.openqa.selenium.WebElement;
 import io.appium.java_client.pagefactory.AndroidFindBy;
 import io.appium.java_client.pagefactory.iOSXCUITFindBy;
 import lombok.Getter;
@@ -18,20 +18,20 @@ public class BecomeFuelVipPage extends BaseMobilePage {
     @PageLoading
     @AndroidFindBy(id = "com.RaceTrac.Common.qa:id/tv_not_right_now")
     @iOSXCUITFindBy(xpath = "//XCUIElementTypeButton[@name=\"Not right now\"]")
-    private MobileElement notRightNowBtn;
+    private WebElement notRightNowBtn;
 
     @PageLoading
     @AndroidFindBy(id = "com.RaceTrac.Common.qa:id/bt_get_started")
     @iOSXCUITFindBy(xpath = "//XCUIElementTypeButton[@name=\"GET STARTED!\"]")
-    private MobileElement getStartedBtn;
+    private WebElement getStartedBtn;
 
     @PageLoading
     @AndroidFindBy(id = "com.RaceTrac.Common.qa:id/bt_learn_more")
     @iOSXCUITFindBy(xpath = "//XCUIElementTypeButton[@name=\"LEARN MORE\"]")
-    private MobileElement learnMoreBtn;
+    private WebElement learnMoreBtn;
 
     @PageLoading
     @AndroidFindBy(uiAutomator = "new UiSelector().text(\"" + DESCRIPTION_TEXT + "\")")
     @iOSXCUITFindBy(accessibility = DESCRIPTION_TEXT)
-    private MobileElement descriptionText;
+    private WebElement descriptionText;
 }

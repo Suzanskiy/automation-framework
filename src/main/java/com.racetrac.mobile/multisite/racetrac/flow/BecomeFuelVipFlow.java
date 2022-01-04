@@ -9,7 +9,7 @@ public interface BecomeFuelVipFlow {
 
     void clickNotRightNowBtn();
 
-    boolean checkAllElementsIsLoaded();
+    boolean isBecomeFuelVipPageOpened();
 
     void waitUntilBecomeFuelVipLoaded();
 }

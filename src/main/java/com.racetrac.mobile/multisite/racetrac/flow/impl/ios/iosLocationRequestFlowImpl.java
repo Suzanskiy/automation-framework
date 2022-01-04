@@ -50,7 +50,7 @@ public class iosLocationRequestFlowImpl extends BaseFlow implements LocationRequ
     }
 
     @Override
-    public boolean isLocationRequestOpened() {
+    public boolean isLocationRequestPageOpened() {
         return getTurnOnLocationPage().waitUntilIsOpened();
     }
 

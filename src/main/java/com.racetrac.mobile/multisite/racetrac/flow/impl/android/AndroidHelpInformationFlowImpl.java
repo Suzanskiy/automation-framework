@@ -28,7 +28,7 @@ public class AndroidHelpInformationFlowImpl extends BaseFlow implements HelpInfo
     @Step
     @Override
     public void navigateToContactUs() {
-        Point contactLinkPoint = getHelpInformationPage().getContactUsLink().getCenter();
+        Point contactLinkPoint = getHelpInformationPage().getContactUsLink().getLocation();
         int elementWidth = getHelpInformationPage().getContactUsLink().getSize().width;
         tapByCoordinates(contactLinkPoint.getX() + elementWidth/4, contactLinkPoint.getY());
     }
@@ -43,8 +43,8 @@ public class AndroidHelpInformationFlowImpl extends BaseFlow implements HelpInfo
     }
 
     private static void tapByCoordinates(int x, int y) {
-        new TouchAction(getDriver())
-                .tap(point(x, y))
-                .waitAction(waitOptions(ofMillis(250))).perform();
+//        new TouchAction(getDriver())
+//                .tap(point(x, y))
+//                .waitAction(waitOptions(ofMillis(250))).perform();
     }
 }

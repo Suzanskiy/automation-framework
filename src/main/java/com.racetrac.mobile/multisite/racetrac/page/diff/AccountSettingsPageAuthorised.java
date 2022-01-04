@@ -2,7 +2,7 @@ package com.racetrac.mobile.multisite.racetrac.page.diff;
 
 import com.racetrac.mobile.framework.annotations.PageLoading;
 import com.racetrac.mobile.multisite.racetrac.page.AccountSettingsPage;
-import io.appium.java_client.MobileElement;
+import org.openqa.selenium.WebElement;
 import io.appium.java_client.pagefactory.AndroidFindBy;
 import io.appium.java_client.pagefactory.iOSXCUITFindBy;
 import lombok.Getter;
@@ -15,56 +15,56 @@ public class AccountSettingsPageAuthorised extends AccountSettingsPage {
     @PageLoading
     @iOSXCUITFindBy(accessibility = "button.close")
     @AndroidFindBy(id = "com.RaceTrac.Common.qa:id/account_close_btn")
-    private MobileElement navBarCloseBtn;
+    private WebElement navBarCloseBtn;
 
     @PageLoading
     @iOSXCUITFindBy(xpath = "//XCUIElementTypeOther[@name=\"Account\"]")
     @AndroidFindBy(uiAutomator = "new UiSelector().text(\"Account\")")
-    private MobileElement accountCategory;
+    private WebElement accountCategory;
 
     @PageLoading
     @iOSXCUITFindBy(accessibility = "Profile")
     @AndroidFindBy(uiAutomator = "new UiSelector().text(\"Profile\")")
-    private MobileElement profile;
+    private WebElement profile;
 
     @PageLoading
     @iOSXCUITFindBy(accessibility = "Rewards + Debit Card")
     @AndroidFindBy(uiAutomator = "new UiSelector().text(\"Rewards + Debit Card\")")
-    private MobileElement rewardsAndDebitCard;
+    private WebElement rewardsAndDebitCard;
 
     @iOSXCUITFindBy(accessibility = "Purchase History")
     @AndroidFindBy(uiAutomator = "new UiSelector().text(\"Purchase History\")")
-    private MobileElement purchaseHistory;
+    private WebElement purchaseHistory;
 
     @iOSXCUITFindBy(accessibility = "Promo Codes")
     @AndroidFindBy(uiAutomator = "new UiSelector().text(\"Promo Code\")")
-    private MobileElement promoCodes;
+    private WebElement promoCodes;
 
     @iOSXCUITFindBy(xpath = "//XCUIElementTypeStaticText[@name=\"Preferences\"]")
     @AndroidFindBy(uiAutomator = "new UiSelector().text(\"Preferences\")")
-    private MobileElement preferencesCategory;
+    private WebElement preferencesCategory;
 
     @PageLoading
     @iOSXCUITFindBy(xpath = "//XCUIElementTypeStaticText[@name=\"Promotional Settings\"]")
     @AndroidFindBy(uiAutomator = "new UiSelector().text(\"Promotional Settings\")")
-    private MobileElement promotionalSettings;
+    private WebElement promotionalSettings;
 
     @PageLoading
     @iOSXCUITFindBy(xpath = "//XCUIElementTypeStaticText[@name=\"Notifications\"]")
     @AndroidFindBy(uiAutomator = "new UiSelector().text(\"Notifications\")")
-    private MobileElement notifications;
+    private WebElement notifications;
     
     @iOSXCUITFindBy(xpath = "//XCUIElementTypeSwitch[@name=\"Receive Emails?\"]")
     @AndroidFindBy(xpath = "//android.widget.TextView[@text=\"Receive Emails?\"]/../android.widget.Switch[@resource-id=\"com.RaceTrac.Common.qa:id/account_section_item_switch\"]")
-    private MobileElement receiveEmailsSwitchBtn;
+    private WebElement receiveEmailsSwitchBtn;
 
     @AndroidFindBy(id = "com.RaceTrac.Common.qa:id/account_section_item_image")
-    private MobileElement settingsIcon;
+    private WebElement settingsIcon;
 
     @AndroidFindBy(id = "com.RaceTrac.Common.qa:id/availablePointsValue")
-    private MobileElement availablePointsValue;
+    private WebElement availablePointsValue;
 
     @AndroidFindBy(id = "com.RaceTrac.Common.qa:id/lifetimePointsValue")
-    private MobileElement lifetimePointsValue;
+    private WebElement lifetimePointsValue;
 
 }

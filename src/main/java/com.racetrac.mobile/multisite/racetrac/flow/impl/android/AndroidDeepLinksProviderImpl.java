@@ -2,6 +2,7 @@ package com.racetrac.mobile.multisite.racetrac.flow.impl.android;
 
 import com.racetrac.mobile.multisite.racetrac.flow.BaseFlow;
 import com.racetrac.mobile.multisite.racetrac.flow.DeppLinksProvider;
+import io.appium.java_client.MobileCommand;
 import io.qameta.allure.Step;
 import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Component;
@@ -16,7 +17,7 @@ public class AndroidDeepLinksProviderImpl extends BaseFlow implements DeppLinksP
     @Step
     @Override
     public void openDeepLink(String link) {
-        getDriver().closeApp();
+        getDriver().execute(MobileCommand.CLOSE_APP);
         getDriver().get(link);
     }
 }

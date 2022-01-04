@@ -31,7 +31,7 @@ public interface PromotionalOffersFlow {
 
     void skipPromotions();
 
-    boolean isPromotionalOffersScreenOpened();
+    boolean isPromotionalOffersPageOpened();
 
     void skipIOSPromotions();
 

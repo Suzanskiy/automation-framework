@@ -2,7 +2,7 @@ package com.racetrac.mobile.multisite.racetrac.page;
 
 import com.racetrac.mobile.framework.annotations.PageLoading;
 import com.racetrac.mobile.multisite.BaseMobilePage;
-import io.appium.java_client.MobileElement;
+import org.openqa.selenium.WebElement;
 import io.appium.java_client.pagefactory.AndroidFindBy;
 import lombok.Getter;
 import org.springframework.stereotype.Component;
@@ -13,95 +13,95 @@ public class FAQPage extends BaseMobilePage {
 
     @PageLoading
     @AndroidFindBy(xpath = "//android.widget.TextView[@text='How do I earn points?']")
-    private MobileElement howDoIearnPoints;
+    private WebElement howDoIearnPoints;
 
     @AndroidFindBy(xpath = "//android.widget.TextView[starts-with(@text,\"Before\")]")
-    private MobileElement howDoIearnPointsText;
+    private WebElement howDoIearnPointsText;
 
     @PageLoading
     @AndroidFindBy(xpath = "//android.widget.TextView[@text='What is a qualifying product?']")
-    private MobileElement whatIsQualifProduct;
+    private WebElement whatIsQualifProduct;
 
     @AndroidFindBy(xpath = "//android.widget.TextView[starts-with (@text,\"Inside\")]")
-    private MobileElement whatIsQualifProductText;
+    private WebElement whatIsQualifProductText;
 
     @PageLoading
     @AndroidFindBy(xpath = "//android.widget.TextView[@text='What can I do with my points?']")
-    private MobileElement whatCanIDoWithPoints;
+    private WebElement whatCanIDoWithPoints;
 
     @AndroidFindBy(xpath = "//android.widget.TextView[starts-with (@text,\"You can\")]")
-    private MobileElement whatCanIDoWithPointsText;
+    private WebElement whatCanIDoWithPointsText;
 
     @PageLoading
     @AndroidFindBy(xpath = "//android.widget.TextView[@text='Do my points expire?']")
-    private MobileElement doMyPointsExpire;
+    private WebElement doMyPointsExpire;
 
     @AndroidFindBy(xpath = "//android.widget.TextView[starts-with(@text,\"Any\")]")
-    private MobileElement doMyPointsExpireText;
+    private WebElement doMyPointsExpireText;
 
     @PageLoading
     @AndroidFindBy(xpath = "//android.widget.TextView[@text='What are the levels?']")
-    private MobileElement whatAreTheLevels;
+    private WebElement whatAreTheLevels;
 
     @AndroidFindBy(xpath = "//android.widget.TextView[starts-with(@text,\"As you\")]")
-    private MobileElement whatAreTheLevelsText;
+    private WebElement whatAreTheLevelsText;
 
     @PageLoading
     @AndroidFindBy(xpath = "//android.widget.TextView[@text='Does my level expire?']")
-    private MobileElement doesMyLevelExpire;
+    private WebElement doesMyLevelExpire;
 
     @AndroidFindBy(xpath = "//android.widget.TextView[starts-with(@text,\"Your tier\")]")
-    private MobileElement doesMyLevelExpireText;
+    private WebElement doesMyLevelExpireText;
 
     @PageLoading
     @AndroidFindBy(xpath = "//android.widget.TextView[@text='How do I redeem coupons?']")
-    private MobileElement howDoIredeemCoupons;
+    private WebElement howDoIredeemCoupons;
 
     @AndroidFindBy(xpath = "//android.widget.TextView[starts-with(@text,\"All coupons\")]")
-    private MobileElement howDoIredeemCouponsText;
+    private WebElement howDoIredeemCouponsText;
 
     @PageLoading
     @AndroidFindBy(xpath = "//android.widget.TextView[@text='My phone number is not working at the pump.']")
-    private MobileElement myPhoneNumberIsNotWorking;
+    private WebElement myPhoneNumberIsNotWorking;
 
     @AndroidFindBy(xpath = "//android.widget.TextView[starts-with(@text,\"Make sure\")]")
-    private MobileElement myPhoneNumberIsNotWorkingText;
+    private WebElement myPhoneNumberIsNotWorkingText;
 
     @PageLoading
     @AndroidFindBy(xpath = "//android.widget.TextView[@text='How do I add gift cards to the app?']")
-    private MobileElement howDoIaddGiftCardToTheApp;
+    private WebElement howDoIaddGiftCardToTheApp;
 
     @AndroidFindBy(xpath = "//android.widget.TextView[starts-with(@text,\"Tap on the Gift Card\")]")
-    private MobileElement howDoIaddGiftCardToTheAppText;
+    private WebElement howDoIaddGiftCardToTheAppText;
 
     @PageLoading
     @AndroidFindBy(xpath = "//android.widget.TextView[@text='How do I pay with an app gift card?']")
-    private MobileElement howDoIPayWithAnAppGiftcard;
+    private WebElement howDoIPayWithAnAppGiftcard;
 
     @AndroidFindBy(xpath = "//android.widget.TextView[starts-with(@text,\"Tap the Pay button\")]")
-    private MobileElement howDoIPayWithAnAppGiftcardText;
+    private WebElement howDoIPayWithAnAppGiftcardText;
 
     @PageLoading
     @AndroidFindBy(xpath = "//android.widget.TextView[@text='How do I check the balance on my gift card?']")
-    private MobileElement howDoICheckTheBalanceOnMyGiftCard;
+    private WebElement howDoICheckTheBalanceOnMyGiftCard;
 
     @AndroidFindBy(xpath = "//android.widget.TextView[starts-with(@text,\"Tap the Gift Card button at the bottom of the " +
             "home screen, or tap Pay\")]")
-    private MobileElement howDoICheckTheBalanceOnMyGiftCardText;
+    private WebElement howDoICheckTheBalanceOnMyGiftCardText;
 
     @PageLoading
     @AndroidFindBy(xpath = "//android.widget.TextView[@text='How do I deactivate my account?']")
-    private MobileElement howDoIDeactiveMyAccount;
+    private WebElement howDoIDeactiveMyAccount;
 
     @AndroidFindBy(xpath = "//android.widget.TextView[starts-with(@text,\"Please contact\")]")
-    private MobileElement howDoIDeactiveMyAccountText;
+    private WebElement howDoIDeactiveMyAccountText;
 
 
     @AndroidFindBy(xpath = "//android.widget.TextView[@text=\"App FAQ\'s\"]")
-    private MobileElement AppFAQs;
+    private WebElement AppFAQs;
 
     @AndroidFindBy(id = "com.RaceTrac.Common.qa:id/contact_us_txt")
-    private MobileElement ContactUsBtn;
+    private WebElement ContactUsBtn;
 }
 
 

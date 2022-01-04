@@ -1,9 +1,8 @@
 package com.racetrac.mobile.multisite;
 
-import io.appium.java_client.MobileElement;
+import org.openqa.selenium.WebElement;
 import io.appium.java_client.pagefactory.AppiumFieldDecorator;
 import io.appium.java_client.pagefactory.Widget;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
 
 public abstract class AbstractMobileSection extends Widget {
@@ -13,8 +12,8 @@ public abstract class AbstractMobileSection extends Widget {
         PageFactory.initElements(new AppiumFieldDecorator(element), this);
     }
 
-    public MobileElement getWrappedMobileElement() {
-        return (MobileElement) getWrappedElement();
+    public WebElement getWrappedMobileElement() {
+        return (WebElement) getWrappedElement();
     }
 
     public boolean isDisplayed() {

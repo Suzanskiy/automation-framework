@@ -3,6 +3,7 @@ package com.racetrac.mobile.multisite.racetrac.util.impl.ios;
 import com.racetrac.mobile.multisite.racetrac.flow.BaseFlow;
 import com.racetrac.mobile.multisite.racetrac.page.safari.SafariBrowserPage;
 import com.racetrac.mobile.multisite.racetrac.util.BrowserHandler;
+import io.appium.java_client.MobileCommand;
 import io.qameta.allure.Step;
 import org.openqa.selenium.Keys;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -48,11 +49,14 @@ public class SafariBrowserHandler extends BaseFlow implements BrowserHandler {
     @Step
     @Override
     public String getUrl() {
+        getDriver();
         safariBrowserPage.waitUntilIsOpened();
         safariBrowserPage.getUrl().click();
         safariBrowserPage.getUrl().sendKeys(Keys.ENTER);
         safariBrowserPage.refresh();
         safariBrowserPage.waitUntilIsOpened();
+        safariBrowserPage.getUrl().click();
+        safariBrowserPage.getUrl().sendKeys(Keys.ENTER);
         safariBrowserPage.getUrl().click();
         return safariBrowserPage.getUrl().getAttribute("value");
     }
@@ -60,7 +64,8 @@ public class SafariBrowserHandler extends BaseFlow implements BrowserHandler {
     @Step
     @Override
     public void returnBackToApp() {
-        getDriver().activateApp(BUNDLE_ID);
+    //    getDriver().activateApp(BUNDLE_ID);
+        getDriver().execute(MobileCommand.LAUNCH_APP);
     }
 
     @Override

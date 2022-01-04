@@ -14,16 +14,16 @@ public class AndroidCheckoutBtnFlowImpl extends BaseFlow implements CheckoutBtnF
     @Step
     @Override
     public boolean isCheckoutBtnDisplayed() {
-        return getCheckoutBtnPage().waitUntilIsOpened();
+        return getCheckoutBtnView().waitUntilIsOpened();
     }
     @Step
     @Override
     public int getCheckoutBtnCounter() {
-        return Integer.parseInt(getCheckoutBtnPage().getCheckoutCounter().getAttribute("text"));
+        return Integer.parseInt(getCheckoutBtnView().getCheckoutCounter().getAttribute("text"));
     }
     @Step
     @Override
     public void clickOnCheckoutBtn() {
-        getCheckoutBtnPage().getCheckoutBtn().click();
+        getCheckoutBtnView().getCheckoutBtn().click();
     }
 }

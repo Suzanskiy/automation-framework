@@ -106,7 +106,7 @@ public final class AppiumConfiguration {
                 capabilities.setCapability("avdReadyTimeout", 150000);
                 capabilities.setCapability("androidInstallTimeout", 150000);
                 capabilities.setCapability(DISABLE_WINDOW_ANIMATION, true);
-                capabilities.setCapability(AVD_ARGS, "-skin 400x900 -no-audio -no-snapshot");
+                capabilities.setCapability(AVD_ARGS, "-skin 400x900 -no-audio -no-snapshot-load -wipe-data");
                 break;
             }
             case IOS: {

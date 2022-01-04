@@ -48,7 +48,7 @@ public class AndroidBecomeFuelVipFlowImpl extends BaseFlow implements BecomeFuel
 
     @Step
     @Override
-    public boolean checkAllElementsIsLoaded() {
+    public boolean isBecomeFuelVipPageOpened() {
         return getBecomeFuelVipPage().waitUntilIsOpened();
     }
 

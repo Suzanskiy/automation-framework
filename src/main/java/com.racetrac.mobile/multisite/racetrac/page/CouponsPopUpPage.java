@@ -2,7 +2,7 @@ package com.racetrac.mobile.multisite.racetrac.page;
 
 import com.racetrac.mobile.framework.annotations.PageLoading;
 import com.racetrac.mobile.multisite.BaseMobilePage;
-import io.appium.java_client.MobileElement;
+import org.openqa.selenium.WebElement;
 import io.appium.java_client.pagefactory.AndroidFindBy;
 import io.appium.java_client.pagefactory.iOSXCUITFindBy;
 import lombok.Getter;
@@ -19,15 +19,15 @@ public class CouponsPopUpPage extends BaseMobilePage {
     @PageLoading
     @iOSXCUITFindBy(xpath = "//XCUIElementTypeButton[@name=\"GOT IT\"]")
     @AndroidFindBy(uiAutomator = "new UiSelector().text(\"GOT IT\")")
-    private MobileElement gotItBtn;
+    private WebElement gotItBtn;
 
     @PageLoading
     @AndroidFindBy(uiAutomator = "new UiSelector().text(\"Coupons\")")
     @iOSXCUITFindBy(xpath = "(//XCUIElementTypeStaticText[@name=\"Coupons\"])[2]")
-    private MobileElement couponsTitle;
+    private WebElement couponsTitle;
 
     @PageLoading
     @AndroidFindBy(uiAutomator = "new UiSelector().text(\"" + DESCRIPTION_COUPONS_POP_UP_MESSAGE + "\")")
     @iOSXCUITFindBy(xpath = "//XCUIElementTypeStaticText[@name=\"Coupons are already added to your rewards card. Simply scan card at checkout.\"]")
-    private MobileElement CouponsTutorialMessage;
+    private WebElement CouponsTutorialMessage;
 }

@@ -21,7 +21,7 @@ public interface NavigationFlow {
 
     boolean isInboxTabOpened();
 
-    void navigateToRewardsCards();
+    void navigateToCheckout();
 
     boolean isRewardCatalogDisplayed();
 
