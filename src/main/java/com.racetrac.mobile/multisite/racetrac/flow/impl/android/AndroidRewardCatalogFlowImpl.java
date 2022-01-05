@@ -12,6 +12,8 @@ import org.springframework.stereotype.Component;
 
 import static com.racetrac.mobile.framework.constants.PlatformsConstants.ANDROID;
 import static com.racetrac.mobile.util.appium.AppiumDriverUtils.pressBackBtn;
+import static com.racetrac.mobile.util.appium.AppiumDriverUtils.swipeDown;
+import static com.racetrac.mobile.util.appium.AppiumDriverUtils.swipeUP;
 import static com.racetrac.mobile.util.appium.SwipeScroll.swipeToElement;
 
 @Profile(ANDROID)
@@ -48,7 +50,7 @@ public class AndroidRewardCatalogFlowImpl extends BaseFlow implements RewardsCat
     @Override
     public boolean isUnclaimedRewardsIsDisplayed() {
         try {
-            getRewardsCatalogPage().refresh();
+            swipeDown();
             return getRewardsCatalogPage().getUnclaimedRewardsLabel().isDisplayed();
         } catch (NoSuchElementException e) {
             LOG.warn("Unclaimed Rewards Label is not displayed");
@@ -79,12 +81,12 @@ public class AndroidRewardCatalogFlowImpl extends BaseFlow implements RewardsCat
 
     @Step
     @Override
-    public int availablePoints() {
+    public int getAvailablePoints() {
         return Integer.parseInt(getRewardsCatalogPage().getRewardsCatalogNumberOfPoints().getAttribute("text"));
     }
 
     @Override
-    public int rewardPrice() {
+    public int getRewardPrice() {
         swipeToElement(SwipeScroll.Direction.UP,getRewardsCatalogPage().getRewardPoints());
         String pointsText = getRewardsCatalogPage().getRewardPoints().getAttribute("text");
         return Integer.parseInt(pointsText.substring(0, pointsText.indexOf(' ')));
@@ -98,6 +100,7 @@ public class AndroidRewardCatalogFlowImpl extends BaseFlow implements RewardsCat
 
     @Override
     public int getUnclaimedRewardsCounter() {
+        swipeDown();
         return Integer.parseInt(getRewardsCatalogPage().getUnclaimedRewardsCounter().getAttribute("text"));
     }
 

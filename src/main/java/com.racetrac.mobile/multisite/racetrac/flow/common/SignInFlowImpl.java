@@ -36,6 +36,7 @@ public class SignInFlowImpl extends BaseFlow implements SignInFlow {
     @Override
     public void authorize(final CustomerDto customerDto) {
         try {
+            getLoginPage().waitUntilIsOpened();
             getLoginPage().getEmailInput().sendKeys(customerDto.getPersonalInfo().getEmail());
             getLoginPage().getPasswordInput().clear();
             getLoginPage().getPasswordInput().sendKeys(customerDto.getEmailAuth().getPassword());

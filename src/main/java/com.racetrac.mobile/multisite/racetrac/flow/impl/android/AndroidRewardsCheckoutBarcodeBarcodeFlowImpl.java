@@ -39,6 +39,6 @@ public class AndroidRewardsCheckoutBarcodeBarcodeFlowImpl extends BaseFlow imple
 
     @Override
     public void goToUnclaimedRewardsPage() {
-        swipeRight();
+        getRewardsCheckoutBarcodePage().getUnclaimedRewardsCounter().click();
     }
 }

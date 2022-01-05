@@ -33,6 +33,6 @@ public class iosFuelVipFlowImpl extends BaseFlow implements FuelVipFlow {
 
     @Override
     public boolean isFuelVipPageDisplayed() {
-        return false;
+        return getFuelVipPage().waitUntilIsOpened();
     }
 }

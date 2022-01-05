@@ -1,5 +1,6 @@
 package com.racetrac.mobile.multisite.racetrac.flow.impl.ios;
 
+import com.racetrac.mobile.multisite.BaseMobilePage;
 import com.racetrac.mobile.multisite.racetrac.flow.BaseFlow;
 import com.racetrac.mobile.multisite.racetrac.flow.DeppLinksProvider;
 import io.qameta.allure.Step;

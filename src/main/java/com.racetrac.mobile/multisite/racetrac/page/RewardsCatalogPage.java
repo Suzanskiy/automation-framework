@@ -17,11 +17,12 @@ public class RewardsCatalogPage extends BaseMobilePage {
   @AndroidFindBy(id = "com.RaceTrac.Common.qa:id/reward_catalog_back_btn")
   private WebElement closeBtn;
 
-  @PageLoading
-  @iOSXCUITFindBy(xpath = "//XCUIElementTypeButton[@name=\"REDEEM\"]")
+  @iOSXCUITFindBy(
+      xpath =
+          "//XCUIElementTypeStaticText[@name=\"UAT - 10c gal Reward\"]/following-sibling::XCUIElementTypeButton")
   @AndroidFindBy(
       xpath =
-          "//android.widget.TextView[contains(@text,\"gal\")]/following-sibling::android.widget.Button")
+          "//android.widget.TextView[contains(@text,\"10c gal\")]/following-sibling::android.widget.Button")
   private WebElement redeemBtn;
 
   @AndroidFindBy(id = "com.RaceTrac.Common.qa:id/button_redeem")

@@ -2,6 +2,7 @@ package com.racetrac.mobile.multisite.racetrac.flow.impl.ios;
 
 import com.racetrac.mobile.multisite.racetrac.flow.BaseFlow;
 import com.racetrac.mobile.multisite.racetrac.flow.RewardsCatalogFlow;
+import com.racetrac.mobile.util.appium.SwipeScroll;
 import io.qameta.allure.Step;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.TimeoutException;
@@ -9,6 +10,8 @@ import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Component;
 
 import static com.racetrac.mobile.framework.constants.PlatformsConstants.IOS;
+import static com.racetrac.mobile.util.appium.AppiumDriverUtils.swipeDown;
+import static com.racetrac.mobile.util.appium.SwipeScroll.swipeToElement;
 
 @Profile(IOS)
 @Component
@@ -20,6 +23,7 @@ public class iosRewardCatalogFlowImpl extends BaseFlow implements RewardsCatalog
   @Override
   public void clickRedeemBtn() {
     try {
+      swipeToElement(SwipeScroll.Direction.UP, getRewardsCatalogPage().getRedeemBtn());// swipeDownHard(); //The "UAT gal Reward" shifted down
       getRewardsCatalogPage().getRedeemBtn().click();
     } catch (NoSuchElementException e) {
       LOG.warn("Unable to click btn on reward catalog redeem");
@@ -41,7 +45,7 @@ public class iosRewardCatalogFlowImpl extends BaseFlow implements RewardsCatalog
   @Override
   public boolean isUnclaimedRewardsIsDisplayed() {
     try {
-      getRewardsCatalogPage().waitUntilIsOpened();
+      swipeDown();
       return getRewardsCatalogPage().getUnclaimedRewardsLabel().isDisplayed();
     } catch (NoSuchElementException e) {
       LOG.warn("Unclaimed Rewards Label is not displayed");
@@ -72,13 +76,13 @@ public class iosRewardCatalogFlowImpl extends BaseFlow implements RewardsCatalog
 
   @Step
   @Override
-  public int availablePoints() {
+  public int getAvailablePoints() {
     return Integer.parseInt(
         getRewardsCatalogPage().getRewardsCatalogNumberOfPoints().getAttribute("value"));
   }
 
   @Override
-  public int rewardPrice() {
+  public int getRewardPrice() {
     return Integer.parseInt(
         getRewardsCatalogPage().getRewardPoints().getAttribute("value").split(" ")[0]);
   }

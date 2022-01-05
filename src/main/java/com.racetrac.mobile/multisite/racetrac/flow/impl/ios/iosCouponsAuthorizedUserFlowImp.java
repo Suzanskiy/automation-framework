@@ -18,7 +18,7 @@ public class iosCouponsAuthorizedUserFlowImp extends BaseFlow implements Coupons
   @Step
   @Override
   public boolean isCouponsPageAuthorizedUserOpen() {
-    return getCouponsAuthorizedUserPage().waitUntilIsOpened();
+    return getCouponsPage().waitUntilIsOpened();
   }
 
   @Step
