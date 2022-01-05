@@ -72,7 +72,7 @@ public class RewardsSectionMainScreenAuthorizedUser extends BaseTest {
         assertTrue(rewardsPopupFlow.isRedeemPopUpHintDisplayed(), "redeem Pop-Up hint is not displayed");
         rewardsPopupFlow.clickGotItBtn();
         assertTrue(rewardsCatalogFlow.isRewardsCatalogPageOpened());
-        assertEquals(rewardsCatalogFlow.availablePoints(), AVAILABLE_POINTS);
+        assertEquals(rewardsCatalogFlow.getAvailablePoints(), AVAILABLE_POINTS);
         rewardsCatalogFlow.closeRewardsCatalog();
     }
 

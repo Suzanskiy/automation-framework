@@ -19,6 +19,7 @@ import com.racetrac.mobile.multisite.racetrac.flow.RewardsCatalogFlow;
 import com.racetrac.mobile.multisite.racetrac.flow.RewardsCheckoutBarcodeFlow;
 import com.racetrac.mobile.multisite.racetrac.flow.SignInFlow;
 import com.racetrac.mobile.multisite.racetrac.flow.UnclaimedRewardsCheckoutFlow;
+import com.racetrac.mobile.multisite.racetrac.flow.WelcomeFlow;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
@@ -45,6 +46,7 @@ public class DeepLinksTest extends BaseTest {
   @Autowired FuelVipFlow fuelVipFlow;
   @Autowired DeppLinksProvider deppLinksProvider;
 
+
   @BeforeMethod
   public void setUp() {
     customerDto = testData.registerNewCustomer();
@@ -70,7 +72,6 @@ public class DeepLinksTest extends BaseTest {
   @Test
   public void ageRestrictedOffersTest() {
     deppLinksProvider.openDeepLink(DeepLinks.AGE_RESTRICTED_OFFERS);
-    assertTrue(signInFlow.isLoginPageOpened(), "Login page is not opened");
     signInFlow.authorize(customerDto);
     assertTrue(
         promotionalOffersFlow.isPromotionalOffersPageOpened(), "Promotional screen is not opened");
@@ -79,7 +80,6 @@ public class DeepLinksTest extends BaseTest {
   @Test
   public void rewardsCatalogTest() {
     deppLinksProvider.openDeepLink(DeepLinks.REWARDS_CATALOG);
-    assertTrue(signInFlow.isLoginPageOpened(), "Login page is not opened");
     signInFlow.authorize(customerDto);
     assertTrue(rewardsCatalogFlow.isRewardsCatalogPageOpened(), "Reward catalog is not opened");
   }
@@ -87,7 +87,6 @@ public class DeepLinksTest extends BaseTest {
   @Test
   public void editProfileTest() {
     deppLinksProvider.openDeepLink(DeepLinks.EDIT_PROFILE);
-    assertTrue(signInFlow.isLoginPageOpened(), "Login page is not opened");
     signInFlow.authorize(customerDto);
     assertTrue(profileFlow.isProfilePageOpened(), "Profile page is not opened");
   }

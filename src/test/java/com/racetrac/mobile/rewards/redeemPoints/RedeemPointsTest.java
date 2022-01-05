@@ -83,7 +83,6 @@ public class RedeemPointsTest extends BaseTest {
         assertTrue(rewardsCatalogFlow.isQuantityOfPointsEnough(), "The number of points is not enough to make redeem");
         rewardsCatalogFlow.clickRedeemBtn();
         rewardsCatalogFlow.clickRedeemOnPopupBtn();
-        //Getting sad smile until Bottle of water will not returned //// FIXME: 03.09.2021
         rewardsCatalogFlow.waitUntilSadSmilePopUpShown();
         assertTrue(rewardsCatalogFlow.isSadSmilePopUpShown(), "Sad Smile view is not showed");
     }

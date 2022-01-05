@@ -55,7 +55,7 @@ public class RewardsCatalogTest extends BaseTest {
         assertTrue(rewardsPopupFlow.isRedeemPopUpHintDisplayed(), "Redeem Popup Hint is not displayed");
         rewardsPopupFlow.clickGotItBtn();
         assertTrue(navigationFlow.isRewardCatalogDisplayed(), "Rewards catalog is not displayed");
-        assertEquals(rewardsCatalogFlow.availablePoints(), AVAILABLE_POINTS, "Invalid points are displayed");
+        assertEquals(rewardsCatalogFlow.getAvailablePoints(), AVAILABLE_POINTS, "Invalid points are displayed");
     }
 
 
@@ -73,7 +73,7 @@ public class RewardsCatalogTest extends BaseTest {
         assertTrue(rewardsPopupFlow.isRedeemPopUpHintDisplayed(), "Redeem Popup Hint is not displayed");
         rewardsPopupFlow.clickGotItBtn();
         assertTrue(rewardsCatalogFlow.isRewardsCatalogPageOpened(), "Rewards catalog is not opened");
-        assertEquals(rewardsCatalogFlow.availablePoints(), AVAILABLE_POINTS, "Invalid points are displayed");
+        assertEquals(rewardsCatalogFlow.getAvailablePoints(), AVAILABLE_POINTS, "Invalid points are displayed");
     }
 
     @TmsLink("7303")
@@ -90,11 +90,11 @@ public class RewardsCatalogTest extends BaseTest {
         assertTrue(rewardsPopupFlow.isRedeemPopUpHintDisplayed(), "Redeem Popup Hint is not displayed");
         rewardsPopupFlow.clickGotItBtn();
         assertTrue(rewardsCatalogFlow.isRewardsCatalogPageOpened(), "Rewards catalog is not opened");
-        assertEquals(rewardsCatalogFlow.availablePoints(), AVAILABLE_POINTS, "Invalid points are displayed");
+        assertEquals(rewardsCatalogFlow.getAvailablePoints(), AVAILABLE_POINTS, "Invalid points are displayed");
         rewardsCatalogFlow.clickRedeemBtn();
         rewardsCatalogFlow.clickRedeemOnPopupBtn();
         assertTrue(rewardsCatalogFlow.isRewardsCatalogPageOpened(), "Rewards catalog is not opened");
-        assertEquals(rewardsCatalogFlow.availablePoints(), AVAILABLE_POINTS - rewardsCatalogFlow.rewardPrice(), "Invalid AVAILABLE_POINTS displayed");
+        assertEquals(rewardsCatalogFlow.getAvailablePoints(), AVAILABLE_POINTS - rewardsCatalogFlow.getRewardPrice(), "Invalid AVAILABLE_POINTS displayed");
     }
 
 }
