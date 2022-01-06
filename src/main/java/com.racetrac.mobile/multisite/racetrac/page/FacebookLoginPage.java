@@ -2,6 +2,8 @@ package com.racetrac.mobile.multisite.racetrac.page;
 
 import com.racetrac.mobile.framework.annotations.PageLoading;
 import com.racetrac.mobile.multisite.BaseMobilePage;
+import io.appium.java_client.pagefactory.AndroidBy;
+import io.appium.java_client.pagefactory.AndroidFindBy;
 import io.appium.java_client.pagefactory.iOSXCUITFindBy;
 import lombok.Getter;
 import org.openqa.selenium.WebElement;
@@ -13,17 +15,17 @@ import org.springframework.stereotype.Component;
 public class FacebookLoginPage extends BaseMobilePage {
 
     @PageLoading
-    @FindBy(id = "m_login_email")
+   @AndroidFindBy(xpath = "//android.view.View[1]/android.widget.EditText")
     @iOSXCUITFindBy(xpath = "//XCUIElementTypeOther[@name=\"main\"]/XCUIElementTypeTextField")
     private WebElement emailInput;
 
     @PageLoading
-    @FindBy(id = "m_login_password")
+    @AndroidFindBy(xpath = "//android.view.View[2]/android.widget.EditText")
     @iOSXCUITFindBy(xpath = "//XCUIElementTypeOther[@name=\"main\"]/XCUIElementTypeSecureTextField")
     private WebElement passInput;
 
     @PageLoading
-    @FindBy(id = "login_password_step_element")
+    @AndroidFindBy(xpath = "//android.view.View[2]/android.widget.Button")
     @iOSXCUITFindBy(xpath = "//XCUIElementTypeButton[@name=\"Log In\"]")
     private WebElement loginBtn;
 

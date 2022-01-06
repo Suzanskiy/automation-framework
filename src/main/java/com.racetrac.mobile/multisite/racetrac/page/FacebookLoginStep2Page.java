@@ -2,6 +2,7 @@ package com.racetrac.mobile.multisite.racetrac.page;
 
 import com.racetrac.mobile.framework.annotations.PageLoading;
 import com.racetrac.mobile.multisite.BaseMobilePage;
+import io.appium.java_client.pagefactory.AndroidFindBy;
 import io.appium.java_client.pagefactory.iOSXCUITFindBy;
 import lombok.Getter;
 import org.openqa.selenium.WebElement;
@@ -13,7 +14,7 @@ import org.springframework.stereotype.Component;
 public class FacebookLoginStep2Page extends BaseMobilePage {
 
     @PageLoading
-    @FindBy(xpath = "//button[contains(@name,'__CONFIRM__')]")
+    @AndroidFindBy(xpath = "//android.view.View[1]/android.widget.Button")
     @iOSXCUITFindBy(xpath = "//XCUIElementTypeButton[contains(@name, 'Продолжить') or contains(@name, 'Продовжити') or contains(@name, 'Continue')]")
     private WebElement continueBtn;
 }

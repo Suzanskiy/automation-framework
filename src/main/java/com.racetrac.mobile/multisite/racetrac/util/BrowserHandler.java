@@ -4,28 +4,25 @@ import java.io.IOException;
 
 public interface BrowserHandler {
 
-    void prepareBrowser() throws IOException;
+  void prepareBrowser() throws IOException;
 
-    void handleBrowserOpening();
+  void handleBrowserOpening();
 
-    void switchContext();
+  String getUrl() throws InterruptedException;
 
-    String getUrl() throws InterruptedException;
+  void returnBackToApp();
 
-    void returnBackToApp();
+  String getDesiredRedirectUrlNoSubscription();
 
-    String getDesiredRedirectUrlNoSubscription();
+  String getDesiredRedirectUrlActiveSubscription();
 
-    String getDesiredRedirectUrlActiveSubscription();
+  String getLearnMoreRedirectUrl();
 
-    String getLearnMoreRedirectUrl();
+  String getGetStartedRedirectUrl();
 
-    String getGetStartedRedirectUrl();
+  String getRaceTracDomain();
 
-    String getRaceTracDomain();
+  String getBecomeAVipUrlEndpoint();
 
-    String getBecomeAVipUrlEndpoint();
-
-    String getBecomeAVipUrlParameters();
-
+  String getBecomeAVipUrlParameters();
 }

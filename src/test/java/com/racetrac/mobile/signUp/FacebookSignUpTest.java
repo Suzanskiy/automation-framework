@@ -42,9 +42,7 @@ public class FacebookSignUpTest extends BaseTest {
   public void isUserAbleToSignUpWithFacebook() {
     signUpFlow.selectSignUpWithFacebook();
     chromeBrowserHandler.handleBrowserOpening();
-    chromeBrowserHandler.switchContext();
     facebookAuthFlow.authorise(customerDto);
-    chromeBrowserHandler.switchContext();
     assertTrue(
         signUpFlow.isJoinRacetracRewardScreenOpened(), "JoinRacetracReward screen is not opened");
     signUpFlow.fillJoinRacetracRewardsScreen(customerDto);
