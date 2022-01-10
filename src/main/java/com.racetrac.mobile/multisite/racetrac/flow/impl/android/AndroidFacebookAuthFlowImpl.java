@@ -14,23 +14,28 @@ import static com.racetrac.mobile.util.appium.AppiumWaitingUtils.waitUntilElemen
 @Component
 public class AndroidFacebookAuthFlowImpl extends BaseFlow implements FacebookAuthFlow {
 
-  @Override
-  public void authorise(final CustomerDto customerDto) {
-    enterFacebookCredentials(customerDto);
-    clickContinueBtn();
-  }
+    @Override
+    public void authorise(final CustomerDto customerDto) {
+        enterFacebookCredentials(customerDto);
+        clickContinueBtn();
+    }
 
-  private void clickContinueBtn() {
-    getFacebookLoginStep2Page().waitUntilIsOpened();
-    final WebElement continueBtn = getFacebookLoginStep2Page().getContinueBtn();
-    waitUntilElementClickable(continueBtn);
-    continueBtn.click();
-  }
+    @Override
+    public void singInToFacebook() {
+        clickContinueBtn();
+    }
 
-  private void enterFacebookCredentials(final CustomerDto customerDto) {
-    getFacebookLoginPage().waitUntilIsOpened();
-    getFacebookLoginPage().getEmailInput().sendKeys(customerDto.getPersonalInfo().getEmail());
-    getFacebookLoginPage().getPassInput().sendKeys(customerDto.getEmailAuth().getPassword());
-    getFacebookLoginPage().getLoginBtn().click();
-  }
+    private void clickContinueBtn() {
+        getFacebookLoginStep2Page().waitUntilIsOpened();
+        final WebElement continueBtn = getFacebookLoginStep2Page().getContinueBtn();
+        waitUntilElementClickable(continueBtn);
+        continueBtn.click();
+    }
+
+    private void enterFacebookCredentials(final CustomerDto customerDto) {
+        getFacebookLoginPage().waitUntilIsOpened();
+        getFacebookLoginPage().getEmailInput().sendKeys(customerDto.getPersonalInfo().getEmail());
+        getFacebookLoginPage().getPassInput().sendKeys(customerDto.getEmailAuth().getPassword());
+        getFacebookLoginPage().getLoginBtn().click();
+    }
 }

@@ -5,6 +5,8 @@ import com.racetrac.mobile.multisite.racetrac.flow.BaseFlow;
 import com.racetrac.mobile.multisite.racetrac.flow.SignUpFlow;
 import com.racetrac.mobile.util.appium.AppiumWaitingUtils;
 import io.qameta.allure.Step;
+import lombok.extern.java.Log;
+import org.openqa.selenium.NoSuchElementException;
 import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Component;
 
@@ -153,6 +155,14 @@ public class AndroidSignUpFlowImpl extends BaseFlow implements SignUpFlow {
 
     @Override
     public void fillJoinRacetracRewardsScreen(final CustomerDto customerDto) {
+
+        try {
+            if(getJoinRacetracRewardsScreen().getEmailInput().isDisplayed())
+            getJoinRacetracRewardsScreen().getEmailInput().sendKeys(customerDto.getPersonalInfo().getEmail());
+        }
+        catch (NoSuchElementException e){
+            LOG.warn("No element email input on the page");
+        }
         getJoinRacetracRewardsScreen().getBirthdayInput().sendKeys("11231995");
         getJoinRacetracRewardsScreen().getPhoneInput().sendKeys(customerDto.getPersonalInfo().getPhone());
         getJoinRacetracRewardsScreen().getNoBtnPhysicalCard().click();
