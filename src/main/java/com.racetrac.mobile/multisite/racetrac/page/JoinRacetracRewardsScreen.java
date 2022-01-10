@@ -36,4 +36,7 @@ public class JoinRacetracRewardsScreen extends BaseMobilePage {
     @AndroidFindBy(id = "com.RaceTrac.Common.qa:id/signupSocialButton")
     @iOSXCUITFindBy(accessibility = "button.create_account")
     private WebElement signupSocialButton;
+
+    @AndroidFindBy(id = "com.RaceTrac.Common.qa:id/social_user_email_edit")
+    private WebElement emailInput;
 }

@@ -10,4 +10,6 @@ public interface SignInFlow {
     void authorize(CustomerDto customerDto);
 
     void clickGotItBtn();
+
+    void clickOnFacebookIcon();
 }

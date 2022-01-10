@@ -5,6 +5,7 @@ import com.racetrac.mobile.multisite.racetrac.flow.BaseFlow;
 import com.racetrac.mobile.multisite.racetrac.flow.SignInFlow;
 import com.racetrac.mobile.multisite.racetrac.flow.helper.PopupCloserFlow;
 import io.qameta.allure.Step;
+import lombok.extern.java.Log;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.TimeoutException;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,6 +13,7 @@ import org.springframework.stereotype.Component;
 
 import java.util.Arrays;
 
+import static com.racetrac.mobile.util.appium.AppiumWaitingUtils.waitUntilElementClickable;
 import static org.testng.Assert.assertTrue;
 
 @Component
@@ -58,4 +60,16 @@ public class SignInFlowImpl extends BaseFlow implements SignInFlow {
             LOG.warn("Unable to click got it btn, because it's not shown");
         }
     }
+
+    @Step
+    @Override
+    public void clickOnFacebookIcon(){
+        try {
+            getLoginPage().getFacebookIconBtn().click();
+        }
+        catch (TimeoutException e){
+            LOG.warn("Unable to click facebook icon btn, because it`s not shown");
+        }
+    }
+
 }

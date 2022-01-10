@@ -25,4 +25,8 @@ public class iosFacebookAuthFlowImpl extends BaseFlow implements FacebookAuthFlo
         getFacebookLoginStep2Page().waitUntilIsOpened();
         getFacebookLoginStep2Page().getContinueBtn().click();
     }
+
+    @Override
+    public void singInToFacebook() {
+    }
 }
