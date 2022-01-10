@@ -13,43 +13,43 @@ import static com.racetrac.mobile.framework.constants.PlatformsConstants.IOS;
 @Component
 @Profile(IOS)
 public class iosBecomeFuelVipFlowImpl extends BaseFlow implements BecomeFuelVipFlow {
-    @Step
-    @Override
-    public void clickNotRightNow() {
-        try {
-            getBecomeFuelVipPage().waitUntilIsOpened();
-            clickNotRightNowBtn();
-        } catch (NoSuchElementException | TimeoutException e) {
-
-        }
-    }
-
-    @Step
-    @Override
-    public void clickLearnMoreBtn() {
-        getBecomeFuelVipPage().getLearnMoreBtn().click();
-    }
-
-    @Step
-    @Override
-    public void clickGetStartedBtn() {
-        getBecomeFuelVipPage().getGetStartedBtn().click();
-    }
-
-    @Step
-    @Override
-    public void clickNotRightNowBtn() {
-        getBecomeFuelVipPage().getNotRightNowBtn().click();
-    }
-
-    @Step
-    @Override
-    public boolean isBecomeFuelVipPageOpened() {
-        return getBecomeFuelVipPage().waitUntilIsOpened();
-    }
-
-    @Override
-    public void waitUntilBecomeFuelVipLoaded() {
+  @Step
+  @Override
+  public void clickNotRightNow() {
+    try {
+      getBecomeFuelVipPage().waitUntilIsOpened();
+      clickNotRightNowBtn();
+    } catch (NoSuchElementException | TimeoutException e) {
 
     }
+  }
+
+  @Step
+  @Override
+  public void clickLearnMoreBtn() {
+    getBecomeFuelVipPage().waitUntilIsOpened();
+    getBecomeFuelVipPage().getLearnMoreBtn().click();
+  }
+
+  @Step
+  @Override
+  public void clickGetStartedBtn() {
+    getBecomeFuelVipPage().waitUntilIsOpened();
+    getBecomeFuelVipPage().getGetStartedBtn().click();
+  }
+
+  @Step
+  @Override
+  public void clickNotRightNowBtn() {
+    getBecomeFuelVipPage().getNotRightNowBtn().click();
+  }
+
+  @Step
+  @Override
+  public boolean isBecomeFuelVipPageOpened() {
+    return getBecomeFuelVipPage().waitUntilIsOpened();
+  }
+
+  @Override
+  public void waitUntilBecomeFuelVipLoaded() {}
 }

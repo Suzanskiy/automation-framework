@@ -2,12 +2,16 @@ package com.racetrac.mobile.multisite.racetrac.flow.impl.ios;
 
 import com.racetrac.mobile.multisite.racetrac.flow.BaseFlow;
 import com.racetrac.mobile.multisite.racetrac.flow.NavigationFlow;
+import com.racetrac.mobile.util.appium.AppiumDriverUtils;
+import com.racetrac.mobile.util.appium.SwipeScroll;
 import io.qameta.allure.Step;
 import org.openqa.selenium.NoSuchElementException;
 import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Component;
 
 import static com.racetrac.mobile.framework.constants.PlatformsConstants.IOS;
+import static com.racetrac.mobile.util.appium.AppiumDriverUtils.swipeDown;
+import static com.racetrac.mobile.util.appium.AppiumDriverUtils.swipeUP;
 
 @Component
 @Profile(IOS)
@@ -97,7 +101,7 @@ public class iosBottomNavigationFlowImpl extends BaseFlow implements NavigationF
 
   @Override
   public void navigateToHomeFromCouponsPage() {
-    getIosNavBar().getHomeTab().click();
+    swipeDown();
   }
 
   @Override

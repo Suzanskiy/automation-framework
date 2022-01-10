@@ -41,23 +41,13 @@ public class SafariBrowserHandler extends BaseFlow implements BrowserHandler {
         LOG.debug("Not needed in iOS");
     }
 
-    @Override
-    public void switchContext() {
-        LOG.debug("Not needed in iOS");
-    }
-
     @Step
     @Override
     public String getUrl() {
-        getDriver();
         safariBrowserPage.waitUntilIsOpened();
         safariBrowserPage.getUrl().click();
         safariBrowserPage.getUrl().sendKeys(Keys.ENTER);
-        safariBrowserPage.refresh();
         safariBrowserPage.waitUntilIsOpened();
-        safariBrowserPage.getUrl().click();
-        safariBrowserPage.getUrl().sendKeys(Keys.ENTER);
-        safariBrowserPage.getUrl().click();
         return safariBrowserPage.getUrl().getAttribute("value");
     }
 

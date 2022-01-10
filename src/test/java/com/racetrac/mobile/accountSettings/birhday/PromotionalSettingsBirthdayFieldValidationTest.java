@@ -29,7 +29,6 @@ public class PromotionalSettingsBirthdayFieldValidationTest extends BaseTest {
     @DataProvider()
     public Object[] invalidBirthdayDataProvider() {
         return new String[]{
-                testData.generateDateBirthPlus(0, ChronoUnit.DAYS),
                 testData.generateDateBirthPlus(1, ChronoUnit.DAYS),
                 testData.generateDateBirthPlus(1, ChronoUnit.MONTHS),
                 testData.generateDateBirthPlus(1, ChronoUnit.YEARS),
@@ -38,6 +37,7 @@ public class PromotionalSettingsBirthdayFieldValidationTest extends BaseTest {
                 "09/01/00000",
                 "13/11/2001",
                 "07/32/2002",
+                "077/13/2002",
         };
     }
 

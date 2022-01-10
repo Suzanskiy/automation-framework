@@ -4,6 +4,7 @@ import com.racetrac.mobile.BaseTest;
 import com.racetrac.mobile.multisite.racetrac.dto.CustomerDto;
 import com.racetrac.mobile.multisite.racetrac.flow.BecomeFuelVipFlow;
 import com.racetrac.mobile.multisite.racetrac.flow.LocationRequestFlow;
+import com.racetrac.mobile.multisite.racetrac.flow.NotificationRequestFlow;
 import com.racetrac.mobile.multisite.racetrac.flow.PointsAndLevelsFlow;
 import com.racetrac.mobile.multisite.racetrac.flow.PromotionalOffersFlow;
 import com.racetrac.mobile.multisite.racetrac.flow.RewardsPopupFlow;
@@ -43,7 +44,8 @@ public class PopUpVipTest extends BaseTest {
     @Autowired
     PopupCloserFlow popupCloserFlow;
     CustomerDto customerDto;
-
+@Autowired
+    NotificationRequestFlow notificationRequestFlow;
     @BeforeClass(alwaysRun = true)
     public void beforeClass() throws IOException {
         browserHandler.prepareBrowser();
@@ -59,7 +61,10 @@ public class PopUpVipTest extends BaseTest {
         assertTrue(signUpFlow.isSignUpPageOpened(), "SignUp page is not opened");
         signUpFlow.enterCredentials(customerDto);
         signUpFlow.clickGetStartedBtn();
-        popupCloserFlow.closePopups();
+      //  popupCloserFlow.closePopups();
+        promotionalOffersFlow.skipIOSPromotions();
+        locationRequestFlow.clickContinue();
+        notificationRequestFlow.clickNotNow();
 
     }
 
@@ -70,10 +75,6 @@ public class PopUpVipTest extends BaseTest {
         becomeFuelVipFlow.clickLearnMoreBtn();
         final String openedUrl = browserHandler.getUrl();
         browserHandler.returnBackToApp();
-        promotionalOffersFlow.skipIOSPromotions();
-        locationRequestFlow.clickContinue();
-        rewardsPopupFlow.clickGotItBtn();
-        pointsAndLevelsFlow.clickGotItBtn();
         assertTrue(openedUrl.contains(browserHandler.getRaceTracDomain()));
         assertTrue(openedUrl.contains(browserHandler.getBecomeAVipUrlEndpoint()));
         assertTrue(openedUrl.contains(browserHandler.getBecomeAVipUrlParameters()));

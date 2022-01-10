@@ -61,10 +61,15 @@ public class AccountSettingsPageAuthorised extends AccountSettingsPage {
     @AndroidFindBy(id = "com.RaceTrac.Common.qa:id/account_section_item_image")
     private WebElement settingsIcon;
 
-    @AndroidFindBy(id = "com.RaceTrac.Common.qa:id/availablePointsValue")
-    private WebElement availablePointsValue;
+  @AndroidFindBy(id = "com.RaceTrac.Common.qa:id/availablePointsValue")
+  @iOSXCUITFindBy(
+      xpath =
+          "(//XCUIElementTypeStaticText[@name=\"AVAILABLE \u2028POINTS\"])[1]/preceding-sibling::XCUIElementTypeStaticText")
+  private WebElement availablePointsValue;
 
-    @AndroidFindBy(id = "com.RaceTrac.Common.qa:id/lifetimePointsValue")
-    private WebElement lifetimePointsValue;
-
+  @AndroidFindBy(id = "com.RaceTrac.Common.qa:id/lifetimePointsValue")
+  @iOSXCUITFindBy(
+      xpath =
+          "(//XCUIElementTypeStaticText[@name=\"LIFETIME POINTS \u2028EARNED\"])[1]/preceding-sibling::XCUIElementTypeStaticText")
+  private WebElement lifetimePointsValue;
 }

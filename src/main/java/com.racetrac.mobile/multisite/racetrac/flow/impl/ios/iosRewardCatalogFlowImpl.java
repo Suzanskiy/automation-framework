@@ -6,6 +6,7 @@ import com.racetrac.mobile.util.appium.SwipeScroll;
 import io.qameta.allure.Step;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.TimeoutException;
+import org.openqa.selenium.WebElement;
 import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Component;
 
@@ -95,8 +96,10 @@ public class iosRewardCatalogFlowImpl extends BaseFlow implements RewardsCatalog
 
   @Override
   public int getUnclaimedRewardsCounter() {
+    final WebElement unclaimedRewardsCounter = getRewardsCatalogPage().getUnclaimedRewardsCounter();
+    swipeToElement(SwipeScroll.Direction.DOWN, unclaimedRewardsCounter);
     return Integer.parseInt(
-        getRewardsCatalogPage().getUnclaimedRewardsCounter().getAttribute("value"));
+        unclaimedRewardsCounter.getAttribute("value"));
   }
 
   @Override

@@ -91,13 +91,14 @@ public class iosPromotionalOffersFlowImpl extends BaseFlow implements Promotiona
   @Step
   @Override
   public void skipPromotions() {
+    getPromotionalOffersPage().waitUntilIsOpened();
     try {
       chooseNoAlcohol();
       chooseNoTobacco();
       chooseNoLottery();
       clickNextBtn();
     } catch (TimeoutException e) {
-      LOG.warn("Time out exception on skipping promotionsx");
+      LOG.warn("Time out exception on skipping promotions");
     } catch (NoSuchElementException ex) {
       // ignore
     }

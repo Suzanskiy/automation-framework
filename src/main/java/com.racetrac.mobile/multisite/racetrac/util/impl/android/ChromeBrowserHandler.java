@@ -52,20 +52,12 @@ public class ChromeBrowserHandler extends BaseFlow implements BrowserHandler {
     }
   }
 
-  @Override
-  public void switchContext() {
-
-  }
-
-
-
   @Step
   @Override
   public String getUrl() {
     final String currentUrl = getDriver().getCurrentUrl();
     return currentUrl;
   }
-
 
   @Step
   @Override

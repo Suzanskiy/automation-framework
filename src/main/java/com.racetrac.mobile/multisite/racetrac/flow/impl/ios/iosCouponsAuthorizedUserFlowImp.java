@@ -2,7 +2,6 @@ package com.racetrac.mobile.multisite.racetrac.flow.impl.ios;
 
 import com.racetrac.mobile.multisite.racetrac.flow.BaseFlow;
 import com.racetrac.mobile.multisite.racetrac.flow.CouponsAuthorizedUserFlow;
-import com.racetrac.mobile.util.appium.SwipeScroll;
 import io.qameta.allure.Step;
 import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Component;
@@ -24,7 +23,8 @@ public class iosCouponsAuthorizedUserFlowImp extends BaseFlow implements Coupons
   @Step
   @Override
   public void clickOnGiftItBtn() {
-    swipeToElement(UP, getHomePage().getGiftToAFriendBtn() );
+    getHomePage().refresh();
+    swipeToElement(UP, getHomePage().getGiftToAFriendBtn());
     getHomePage().getGiftToAFriendBtn().click();
   }
 
@@ -37,6 +37,6 @@ public class iosCouponsAuthorizedUserFlowImp extends BaseFlow implements Coupons
   @Step
   @Override
   public void pressBackBtn() {
-    getCouponsAuthorizedUserPage().getBackBtn().click();
+    // getCouponsAuthorizedUserPage().getBackBtn().click();
   }
 }

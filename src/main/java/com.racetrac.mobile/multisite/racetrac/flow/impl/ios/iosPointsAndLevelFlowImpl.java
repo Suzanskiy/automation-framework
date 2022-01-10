@@ -45,6 +45,7 @@ public class iosPointsAndLevelFlowImpl extends BaseFlow implements PointsAndLeve
 
     @Override
     public boolean isTierExpirationDetailsDisplayed() {
+        getPointsAndTiersPage().refresh();
         return getPointsAndTiersPage().getTierExpirationDetails().isDisplayed();
     }
 
