@@ -34,6 +34,7 @@ public class LoginPage extends BaseMobilePage {
 
     @PageLoading
     @AndroidFindBy(id = "com.RaceTrac.Common.qa:id/sign_in_facebook")
+    @iOSXCUITFindBy(accessibility = "button.sign_in_with_facebook")
     private WebElement facebookIconBtn;
 
 }
