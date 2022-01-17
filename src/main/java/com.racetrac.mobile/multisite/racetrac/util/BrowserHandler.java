@@ -1,6 +1,7 @@
 package com.racetrac.mobile.multisite.racetrac.util;
 
 import java.io.IOException;
+import java.net.URL;
 
 public interface BrowserHandler {
 
@@ -25,4 +26,6 @@ public interface BrowserHandler {
   String getBecomeAVipUrlEndpoint();
 
   String getBecomeAVipUrlParameters();
+
+  void openUrl(String url);
 }

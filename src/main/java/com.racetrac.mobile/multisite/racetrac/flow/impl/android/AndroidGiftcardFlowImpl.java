@@ -19,5 +19,35 @@ public class AndroidGiftcardFlowImpl extends BaseFlow implements GiftcardFlow {
         return getGiftcardPage().waitUntilIsOpened();
     }
 
+    @Override
+    public void clickBuyNewGiftCard() {
+
+    }
+
+    @Override
+    public boolean isBuyNewCardPageOpened() {
+        return false;
+    }
+
+    @Override
+    public void enterPaymentInfo() {
+
+    }
+
+    @Override
+    public void enterBillingInfo() {
+
+    }
+
+    @Override
+    public boolean isSuccessPaymentProcessedViewOpened() {
+        return false;
+    }
+
+    @Override
+    public void clickOkOnSuccessPaymentView() {
+
+    }
+
 
 }
