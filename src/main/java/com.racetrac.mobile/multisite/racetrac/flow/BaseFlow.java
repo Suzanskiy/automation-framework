@@ -70,6 +70,7 @@ public class BaseFlow {
     FuelSavingsVipPage fuelSavingsVipPage;
     FuelSavingsRewardsPage fuelSavingsRewardsPage;
     BuyNewCardPage buyNewCardPage;
+    PayWithAddedGiftCardPage payWithAddedGiftCardPage;
 
     //    SECTIONS
     NavigationDrawer navigationDrawer;

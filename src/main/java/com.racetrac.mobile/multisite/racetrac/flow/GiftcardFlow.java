@@ -1,17 +1,23 @@
 package com.racetrac.mobile.multisite.racetrac.flow;
 
 public interface GiftcardFlow {
-    boolean isGiftCardPageDisplayed();
+  boolean isGiftCardPageDisplayed();
 
-    void clickBuyNewGiftCard();
+  void clickBuyNewGiftCard();
 
-    boolean isBuyNewCardPageOpened();
+  boolean isBuyNewCardPageOpened();
 
-    void enterPaymentInfo();
+  void enterPaymentInfo();
 
-    void enterBillingInfo();
+  void enterBillingInfo();
 
-    boolean isSuccessPaymentProcessedViewOpened();
+  boolean isSuccessPaymentProcessedViewOpened();
 
-    void clickOkOnSuccessPaymentView();
+  void clickOkOnSuccessPaymentView();
+
+  boolean isPayWithGiftCardPageOpened();
+
+  void requestNewGiftCard();
+
+  int getGiftCardCount();
 }

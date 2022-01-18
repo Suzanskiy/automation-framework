@@ -49,5 +49,20 @@ public class AndroidGiftcardFlowImpl extends BaseFlow implements GiftcardFlow {
 
     }
 
+    @Override
+    public boolean isPayWithGiftCardPageOpened() {
+        return false;
+    }
+
+    @Override
+    public void requestNewGiftCard() {
+
+    }
+
+    @Override
+    public int getGiftCardCount() {
+        return 0;
+    }
+
 
 }

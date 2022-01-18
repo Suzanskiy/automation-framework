@@ -12,9 +12,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
+import static org.testng.Assert.assertEquals;
 import static org.testng.Assert.assertTrue;
 
 public class BuyGiftCardTest extends BaseTest {
+  private static final int GIFT_CARD_COUNT_2 = 2;
   CustomerDto customerDto;
   @Autowired WelcomeFlow welcomeFlow;
   @Autowired SignInFlow signInFlow;
@@ -46,5 +48,36 @@ public class BuyGiftCardTest extends BaseTest {
         giftcardFlow.isSuccessPaymentProcessedViewOpened(),
         "Success payment view is not displayed");
     giftcardFlow.clickOkOnSuccessPaymentView();
+    assertTrue(
+        giftcardFlow.isPayWithGiftCardPageOpened(),
+        "Pay screen with added Gift Card not displayed");
+  }
+
+  @TmsLink("8785")
+  @Description(
+      "Gift Card - Buy - All purchased Gift Cards displays on the \"Pay\" screen in the carousel menu")
+  @Test
+  public void allPurchasedGiftCardsDisplaysOnThePayTest() {
+    navigationFlow.navigateToCards();
+    assertTrue(giftcardFlow.isGiftCardPageDisplayed(), "Gift card page is not displayed");
+    giftcardFlow.clickBuyNewGiftCard();
+    assertTrue(giftcardFlow.isBuyNewCardPageOpened(), "Buy new card page is not displayed");
+    giftcardFlow.enterPaymentInfo();
+    giftcardFlow.enterBillingInfo();
+    assertTrue(
+            giftcardFlow.isSuccessPaymentProcessedViewOpened(),
+            "Success payment view is not displayed");
+    giftcardFlow.clickOkOnSuccessPaymentView();
+    assertTrue(
+            giftcardFlow.isPayWithGiftCardPageOpened(),
+            "Pay screen with added Gift Card not displayed");
+    giftcardFlow.requestNewGiftCard(); // means click on Buy new btn
+    giftcardFlow.enterPaymentInfo();
+    giftcardFlow.enterBillingInfo();
+    giftcardFlow.clickOkOnSuccessPaymentView();
+    assertTrue(
+            giftcardFlow.isPayWithGiftCardPageOpened(),
+            "Pay screen with added Gift Card not displayed");
+    assertEquals(    giftcardFlow.getGiftCardCount(), GIFT_CARD_COUNT_2);
   }
 }

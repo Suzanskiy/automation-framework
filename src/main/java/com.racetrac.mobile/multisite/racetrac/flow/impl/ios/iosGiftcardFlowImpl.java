@@ -4,11 +4,13 @@ import com.racetrac.mobile.multisite.racetrac.data.BillingData;
 import com.racetrac.mobile.multisite.racetrac.flow.BaseFlow;
 import com.racetrac.mobile.multisite.racetrac.flow.GiftcardFlow;
 import io.qameta.allure.Step;
+import org.openqa.selenium.WebElement;
 import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Component;
 
 import static com.racetrac.mobile.framework.constants.PlatformsConstants.IOS;
 import static com.racetrac.mobile.util.appium.AppiumDriverUtils.swipeUP;
+import static com.racetrac.mobile.util.appium.AppiumWaitingUtils.waitUntilElementClickable;
 
 @Profile(IOS)
 @Component
@@ -57,7 +59,26 @@ public class iosGiftcardFlowImpl extends BaseFlow implements GiftcardFlow {
 
   @Override
   public void clickOkOnSuccessPaymentView() {
-    getSuccessPaymentProcessedView().getOkBtn().click();
+    final WebElement okBtn = getSuccessPaymentProcessedView().getOkBtn();
+    waitUntilElementClickable(okBtn);
+    okBtn.click();
+  }
+
+  @Override
+  public boolean isPayWithGiftCardPageOpened() {
+    return getPayWithAddedGiftCardPage().waitUntilIsOpened();
+  }
+
+  @Override
+  public void requestNewGiftCard() {
+    getPayWithAddedGiftCardPage().getBuyNew().click();
+    getBuyNewCardPage().waitUntilIsOpened();
+  }
+
+  @Override
+  public int getGiftCardCount() {
+    return Integer.parseInt(getPayWithAddedGiftCardPage().getPageIndicator().getAttribute("value").replace(
+            "page 1 of ", ""));
   }
 
   private void clickDoneBtn() {
