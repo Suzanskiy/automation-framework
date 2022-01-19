@@ -8,7 +8,7 @@ public interface BrowserHandler {
 
   void handleBrowserOpening();
 
-  String getUrl() throws InterruptedException;
+  String getUrl();
 
   void returnBackToApp();
 
@@ -25,4 +25,10 @@ public interface BrowserHandler {
   String getBecomeAVipUrlEndpoint();
 
   String getBecomeAVipUrlParameters();
+
+  String getVipUrlRewardsEndpoint();
+
+  String getVipUrlRewardsParameters();
+
+  String getVipUrlRewardsUnauthorizedEndpointAdditionPart();
 }

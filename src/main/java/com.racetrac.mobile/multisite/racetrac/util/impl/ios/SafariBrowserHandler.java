@@ -41,6 +41,7 @@ public class SafariBrowserHandler extends BaseFlow implements BrowserHandler {
         LOG.debug("Not needed in iOS");
     }
 
+
     @Step
     @Override
     public String getUrl() {
@@ -90,5 +91,20 @@ public class SafariBrowserHandler extends BaseFlow implements BrowserHandler {
     @Override
     public String getBecomeAVipUrlParameters() {
         return IOS_BECOME_A_VIP_URL_PARAMETERS;
+    }
+
+    @Override
+    public String getVipUrlRewardsEndpoint() {
+        return null;
+    }
+
+    @Override
+    public String getVipUrlRewardsParameters() {
+        return null;
+    }
+
+    @Override
+    public String getVipUrlRewardsUnauthorizedEndpointAdditionPart() {
+        return null;
     }
 }

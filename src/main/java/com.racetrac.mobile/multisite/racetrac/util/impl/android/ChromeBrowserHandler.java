@@ -11,7 +11,7 @@ import org.springframework.stereotype.Component;
 import java.io.IOException;
 
 import static com.racetrac.mobile.framework.constants.PlatformsConstants.ANDROID;
-import static com.racetrac.mobile.util.appium.AppiumDriverUtils.getDriver;
+
 
 @Profile(ANDROID)
 @Component
@@ -34,6 +34,12 @@ public class ChromeBrowserHandler extends BaseFlow implements BrowserHandler {
       "/Rewards/Purchase/FuelSubscription/";
   private static final String ANDROID_BECOME_A_VIP_URL_PARAMETERS =
       "utm_source=app&utm_medium=onboarding&utm_campaign=vip";
+  private static final String ANDROID_FUEL_VIP_URL_ENDPOINT =
+          "/Rewards";
+  private static final String ANDROID_FUEL_VIP_URL_PARAMETERS =
+          "RaceTrac-Rewards-Vip&utm_source=app&utm_medium=VIPtab&utm_campaign=vip";
+  private static final String ANDROID_FUEL_VIP_URL_FOR_UNAUTHORIZED_PARAMETERS =
+          "/Account/VipMembership";
 
   @Override
   public void prepareBrowser() throws IOException {
@@ -55,8 +61,16 @@ public class ChromeBrowserHandler extends BaseFlow implements BrowserHandler {
   @Step
   @Override
   public String getUrl() {
-    final String currentUrl = getDriver().getCurrentUrl();
-    return currentUrl;
+    String newUrl = getChromeMainRaceTrackMoreInfoPage().getURLxpath().getText();
+    if(newUrl.contains("accesstoken")) {
+      String URLwithoutTokenStart = newUrl.substring(0, newUrl.indexOf("/rewards"));
+      String URLwithoutTokenEnd = newUrl.substring(newUrl.indexOf("/Rewards"));
+      URLwithoutTokenEnd = URLwithoutTokenEnd.replaceFirst("[?]", "&");
+      return URLwithoutTokenStart + URLwithoutTokenEnd;
+    }
+    else {
+      return newUrl;
+    }
   }
 
   @Step
@@ -98,5 +112,20 @@ public class ChromeBrowserHandler extends BaseFlow implements BrowserHandler {
   @Override
   public String getBecomeAVipUrlParameters() {
     return ANDROID_BECOME_A_VIP_URL_PARAMETERS;
+  }
+
+  @Override
+  public String getVipUrlRewardsEndpoint() {
+    return ANDROID_FUEL_VIP_URL_ENDPOINT;
+  }
+
+  @Override
+  public String getVipUrlRewardsParameters() {
+    return ANDROID_FUEL_VIP_URL_PARAMETERS;
+  }
+
+  @Override
+  public String getVipUrlRewardsUnauthorizedEndpointAdditionPart() {
+    return ANDROID_FUEL_VIP_URL_FOR_UNAUTHORIZED_PARAMETERS;
   }
 }
