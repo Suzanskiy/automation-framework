@@ -20,4 +20,8 @@ public interface GiftcardFlow {
   void requestNewGiftCard();
 
   int getGiftCardCount();
+
+  void reloadGiftCard();
+
+  String getGiftCardMoneyAmount();
 }

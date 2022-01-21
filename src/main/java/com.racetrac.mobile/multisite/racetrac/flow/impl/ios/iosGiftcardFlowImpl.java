@@ -22,17 +22,20 @@ public class iosGiftcardFlowImpl extends BaseFlow implements GiftcardFlow {
     return getGiftcardPage().waitUntilIsOpened();
   }
 
+  @Step
   @Override
   public void clickBuyNewGiftCard() {
     getGiftcardPage().waitUntilIsOpened();
     getGiftcardPage().getBuyNewBtn().click();
   }
 
+  @Step
   @Override
   public boolean isBuyNewCardPageOpened() {
     return getBuyNewCardPage().waitUntilIsOpened();
   }
 
+  @Step
   @Override
   public void enterPaymentInfo() {
     getBuyNewCardPage().getFirstNameOnCard().sendKeys(BillingData.FIRST_NAME);
@@ -42,6 +45,7 @@ public class iosGiftcardFlowImpl extends BaseFlow implements GiftcardFlow {
     getBuyNewCardPage().getSecurityCode().sendKeys(BillingData.SECURITY_CODE);
   }
 
+  @Step
   @Override
   public void enterBillingInfo() {
     swipeUP();
@@ -52,11 +56,13 @@ public class iosGiftcardFlowImpl extends BaseFlow implements GiftcardFlow {
     clickDoneBtn();
   }
 
+  @Step
   @Override
   public boolean isSuccessPaymentProcessedViewOpened() {
     return getSuccessPaymentProcessedView().waitUntilIsOpened();
   }
 
+  @Step
   @Override
   public void clickOkOnSuccessPaymentView() {
     final WebElement okBtn = getSuccessPaymentProcessedView().getOkBtn();
@@ -64,23 +70,41 @@ public class iosGiftcardFlowImpl extends BaseFlow implements GiftcardFlow {
     okBtn.click();
   }
 
+  @Step
   @Override
   public boolean isPayWithGiftCardPageOpened() {
     return getPayWithAddedGiftCardPage().waitUntilIsOpened();
   }
 
+  @Step
   @Override
   public void requestNewGiftCard() {
     getPayWithAddedGiftCardPage().getBuyNew().click();
     getBuyNewCardPage().waitUntilIsOpened();
   }
 
+  @Step
   @Override
   public int getGiftCardCount() {
-    return Integer.parseInt(getPayWithAddedGiftCardPage().getPageIndicator().getAttribute("value").replace(
-            "page 1 of ", ""));
+    return Integer.parseInt(
+        getPayWithAddedGiftCardPage()
+            .getPageIndicator()
+            .getAttribute("value")
+            .replace("page 1 of ", ""));
   }
 
+  @Step
+  @Override
+  public void reloadGiftCard() {
+    getPayWithAddedGiftCardPage().getReloadCard().click();
+  }
+
+    @Override
+    public String getGiftCardMoneyAmount() {
+       return getPayWithAddedGiftCardPage().getMoneyAmount().getAttribute("value");
+    }
+
+    @Step
   private void clickDoneBtn() {
     getBuyNewCardPage().getDoneBtn().click();
   }

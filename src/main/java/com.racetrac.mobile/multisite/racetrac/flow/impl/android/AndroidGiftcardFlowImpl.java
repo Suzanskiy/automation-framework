@@ -64,5 +64,15 @@ public class AndroidGiftcardFlowImpl extends BaseFlow implements GiftcardFlow {
         return 0;
     }
 
+    @Override
+    public void reloadGiftCard() {
+
+    }
+
+    @Override
+    public String getGiftCardMoneyAmount() {
+        return null;
+    }
+
 
 }
