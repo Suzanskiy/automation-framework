@@ -104,7 +104,12 @@ public class iosGiftcardFlowImpl extends BaseFlow implements GiftcardFlow {
        return getPayWithAddedGiftCardPage().getMoneyAmount().getAttribute("value");
     }
 
-    @Step
+  @Override
+  public boolean isCardPageDisplayed() {
+    return getCardsPage().waitUntilIsOpened();
+  }
+
+  @Step
   private void clickDoneBtn() {
     getBuyNewCardPage().getDoneBtn().click();
   }

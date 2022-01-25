@@ -24,4 +24,6 @@ public interface GiftcardFlow {
   void reloadGiftCard();
 
   String getGiftCardMoneyAmount();
+
+  boolean isCardPageDisplayed();
 }
