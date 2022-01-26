@@ -69,6 +69,8 @@ public class BaseFlow {
     FuelSavingsDebitCardPage fuelSavingsDebitCardPage;
     FuelSavingsVipPage fuelSavingsVipPage;
     FuelSavingsRewardsPage fuelSavingsRewardsPage;
+    BuyNewCardPage buyNewCardPage;
+    PayWithAddedGiftCardPage payWithAddedGiftCardPage;
 
     //    SECTIONS
     NavigationDrawer navigationDrawer;
@@ -92,5 +94,6 @@ public class BaseFlow {
     SuccessfulSentContactUsMessagePage successfulSentContactUsMessagePage;
     NoInternetConnectionPage noInternetConnectionPage;
     AllowLocationPermitView allowLocationPermitView;
+    SuccessPaymentProcessedView successPaymentProcessedView;
 
 }

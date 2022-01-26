@@ -4,6 +4,7 @@ import com.racetrac.mobile.multisite.racetrac.flow.BaseFlow;
 import com.racetrac.mobile.multisite.racetrac.page.safari.SafariBrowserPage;
 import com.racetrac.mobile.multisite.racetrac.util.BrowserHandler;
 import io.appium.java_client.MobileCommand;
+import io.appium.java_client.ios.IOSMobileCommandHelper;
 import io.qameta.allure.Step;
 import org.openqa.selenium.Keys;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,6 +12,11 @@ import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Component;
 
 import java.io.IOException;
+import java.net.URL;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 import static com.racetrac.mobile.framework.constants.PlatformsConstants.IOS;
 import static com.racetrac.mobile.util.appium.AppiumDriverUtils.getDriver;
@@ -58,6 +64,10 @@ public class SafariBrowserHandler extends BaseFlow implements BrowserHandler {
         getDriver().execute(MobileCommand.LAUNCH_APP);
     }
 
+    public void openSafariURL(String URL) {
+
+    }
+
     @Override
     public String getDesiredRedirectUrlNoSubscription() {
         return FUEL_VIP_REDIRECT_DESIRED_URL_NO_SUBSCRIPTION;
@@ -90,5 +100,16 @@ public class SafariBrowserHandler extends BaseFlow implements BrowserHandler {
     @Override
     public String getBecomeAVipUrlParameters() {
         return IOS_BECOME_A_VIP_URL_PARAMETERS;
+    }
+
+    @Override
+    public void openUrl(String url) {
+        List args = new ArrayList();
+        args.add(url);
+        args.add("-U");
+        Map<String, Object> params = new HashMap<>();
+        params.put("bundleId", "com.apple.mobilesafari");
+        params.put("arguments", args);
+        getDriver().execute(MobileCommand.LAUNCH_APP, params);
     }
 }

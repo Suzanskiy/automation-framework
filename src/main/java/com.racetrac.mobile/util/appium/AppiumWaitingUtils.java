@@ -14,7 +14,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import java.time.Duration;
 
 import static com.racetrac.mobile.framework.constants.TimeoutConstants.LONG_TIMEOUT;
-import static com.racetrac.mobile.framework.constants.TimeoutConstants.SHORT_TIMEOUT;
+import static com.racetrac.mobile.framework.constants.TimeoutConstants.MEDIUM_TIME_OUT;
 import static com.racetrac.mobile.util.appium.AppiumDriverUtils.getDriver;
 
 public class AppiumWaitingUtils {
@@ -41,7 +41,7 @@ public class AppiumWaitingUtils {
   }
 
   public static WebDriverWait getAppiumDriverWait() {
-    return getAppiumDriverWait(SHORT_TIMEOUT);
+    return getAppiumDriverWait(MEDIUM_TIME_OUT);
   }
 
   public static Boolean waitUntilIsTrue(Action<Boolean> action) {

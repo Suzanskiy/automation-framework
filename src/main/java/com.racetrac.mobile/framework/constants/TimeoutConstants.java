@@ -14,7 +14,7 @@ public final class TimeoutConstants {
     public static final int MIDDLE_TIMEOUT = 15;
     public static final int CLP_PRODUCT_LOAD_TIMEOUT = 60;
     public static final int ASSERT_TIMEOUT = 5;
-    public static final int LONG_ASSERT_TIMEOUT = 10;
+    public static final int MEDIUM_TIME_OUT = 10;
     public static final int WEB_ELEMENT_VISIBILITY_MEDIUM_TIMEOUT = 10;
     public static final int SHORT_TIMEOUT = 5;
     public static final int ELEMENT_AFTER_SCROLL_SHORT_CHECK_TIMEOUT = 1;
