@@ -103,13 +103,18 @@ public class SafariBrowserHandler extends BaseFlow implements BrowserHandler {
     }
 
     @Override
-    public void openUrl(String url) {
-        List args = new ArrayList();
-        args.add(url);
-        args.add("-U");
-        Map<String, Object> params = new HashMap<>();
-        params.put("bundleId", "com.apple.mobilesafari");
-        params.put("arguments", args);
-        getDriver().execute(MobileCommand.LAUNCH_APP, params);
+    public String getVipUrlRewardsEndpoint() {
+        return null;
     }
+
+    @Override
+    public String getVipUrlRewardsParameters() {
+        return null;
+    }
+
+    @Override
+    public String getVipUrlRewardsUnauthorizedEndpointAdditionPart() {
+        return null;
+    }
+
 }

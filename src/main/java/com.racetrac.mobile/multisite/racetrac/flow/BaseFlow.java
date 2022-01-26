@@ -3,6 +3,7 @@ package com.racetrac.mobile.multisite.racetrac.flow;
 import com.racetrac.mobile.multisite.racetrac.page.*;
 import com.racetrac.mobile.multisite.racetrac.page.chrome.ChromeAcceptTermsPage;
 import com.racetrac.mobile.multisite.racetrac.page.chrome.ChromeMainPage;
+import com.racetrac.mobile.multisite.racetrac.page.chrome.ChromeMainRaceTrackMoreInfoPage;
 import com.racetrac.mobile.multisite.racetrac.page.chrome.TurnOnSyncNowPage;
 import com.racetrac.mobile.multisite.racetrac.page.diff.AccountSettingsPageAuthorised;
 import com.racetrac.mobile.multisite.racetrac.page.safari.SafariBrowserPage;
@@ -45,6 +46,7 @@ public class BaseFlow {
     ChromeAcceptTermsPage chromeAcceptTermsPage;
     TurnOnSyncNowPage turnOnSyncNowPage;
     ChromeMainPage chromeMainPage;
+    ChromeMainRaceTrackMoreInfoPage chromeMainRaceTrackMoreInfoPage;
     SafariBrowserPage safariBrowserPage;
     PointsAndLevelsPage pointsAndLevelsPage;
     PointsAndTiersPage pointsAndTiersPage;

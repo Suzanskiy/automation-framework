@@ -1,7 +1,6 @@
 package com.racetrac.mobile.multisite.racetrac.util;
 
 import java.io.IOException;
-import java.net.URL;
 
 public interface BrowserHandler {
 
@@ -9,7 +8,7 @@ public interface BrowserHandler {
 
   void handleBrowserOpening();
 
-  String getUrl() throws InterruptedException;
+  String getUrl();
 
   void returnBackToApp();
 
@@ -27,5 +26,9 @@ public interface BrowserHandler {
 
   String getBecomeAVipUrlParameters();
 
-  void openUrl(String url);
+  String getVipUrlRewardsEndpoint();
+
+  String getVipUrlRewardsParameters();
+
+  String getVipUrlRewardsUnauthorizedEndpointAdditionPart();
 }

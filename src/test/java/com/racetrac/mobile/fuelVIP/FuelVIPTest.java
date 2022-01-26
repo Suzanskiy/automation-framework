@@ -15,13 +15,11 @@ import io.qameta.allure.TmsLink;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
-import org.testng.annotations.Ignore;
 import org.testng.annotations.Test;
 
 import java.io.IOException;
 
 import static com.racetrac.mobile.util.appium.AppiumDriverUtils.swipeDown;
-import static org.testng.Assert.assertEquals;
 import static org.testng.Assert.assertTrue;
 
 public class FuelVIPTest extends BaseTest {
@@ -60,36 +58,37 @@ public class FuelVIPTest extends BaseTest {
     @TmsLink("6157")
     @Description("Authorized User with no subscription")
     @Test
-    @Ignore // appium java client not supporting anymore get url method
-
-    public void redirectForAuthorisedUserWithoutSubscriptionTest() throws InterruptedException {
+    // appium java client not supporting anymore get url method that contains native in driver
+    public void redirectForAuthorisedUserWithoutSubscriptionTest() {
         // TODO: 06.07.2021 Change desiredRedirect url to racetrac.com when migrate
         fuelVipFlow.navigateToFuelVipSection();
         fuelVipFlow.clickLearnMoreNoSubscription();
-        final String openedUrl = browserHandler.getUrl();
-        browserHandler.returnBackToApp();
+        String openedUrl = browserHandler.getUrl();
         locationRequestFlow.clickContinue();
         rewardsPopupFlow.clickGotItBtn();
         pointsAndLevelsFlow.clickGotItBtn();
-        assertEquals(openedUrl, browserHandler.getDesiredRedirectUrlNoSubscription());
+        assertTrue(openedUrl.contains(browserHandler.getRaceTracDomain()));
+        assertTrue(openedUrl.contains(browserHandler.getVipUrlRewardsEndpoint()));
+        assertTrue(openedUrl.contains(browserHandler.getVipUrlRewardsParameters()));
     }
 
     @TmsLink("6200")
     @Description("Authorized User with purchased active subscription")
     @Test
-    @Ignore // appium java client not supporting anymore get url method
-    public void redirectForUnauthorisedUserWithActiveSubscriptionTest() throws InterruptedException {
-
+   // appium java client not supporting anymore get url method that contains native in driver
+    public void redirectForUnauthorisedUserWithActiveSubscriptionTest() {
         subscriptionRequestClient.requestDefaultSubscriptionPlan(customerDto);
         fuelVipFlow.navigateToFuelVipSection();
         swipeDown();//update page
         fuelVipFlow.clickVipProgramDetails();
-        final String openedUrl = browserHandler.getUrl();
+        String openedUrl = browserHandler.getUrl();
         browserHandler.returnBackToApp();
         locationRequestFlow.clickContinue();
         rewardsPopupFlow.clickGotItBtn();
         pointsAndLevelsFlow.clickGotItBtn();
-        assertEquals(openedUrl, browserHandler.getDesiredRedirectUrlActiveSubscription());
+        assertTrue(openedUrl.contains(browserHandler.getRaceTracDomain()));
+        assertTrue(openedUrl.contains(browserHandler.getVipUrlRewardsEndpoint()));
+        assertTrue(openedUrl.contains(browserHandler.getVipUrlRewardsUnauthorizedEndpointAdditionPart()));
     }
 
 }
