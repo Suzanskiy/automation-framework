@@ -5,6 +5,7 @@ import org.openqa.selenium.NoSuchElementException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.testng.ITestContext;
+import org.testng.ITestNGMethod;
 import org.testng.ITestResult;
 import org.testng.TestListenerAdapter;
 
@@ -38,6 +39,9 @@ public class BaseTestListenerAdapter extends TestListenerAdapter {
 
     @Override
     public void onStart(ITestContext testContext) {
+        for (ITestNGMethod method : testContext.getAllTestMethods()) {
+            method.setRetryAnalyzer(new IRetryAnalyzerImpl());
+        }
         super.onStart(testContext);
     }
 
