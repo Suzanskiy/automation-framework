@@ -15,17 +15,17 @@ public class PromotionalOffersPage extends BaseMobilePage {
 
     @PageLoading
     @iOSXCUITFindBy(xpath = "(//XCUIElementTypeButton[@name=\"No\"])[1]")
-    @AndroidFindBy(xpath = "/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.RelativeLayout/android.widget.LinearLayout[2]/android.widget.LinearLayout/androidx.recyclerview.widget.RecyclerView/android.view.ViewGroup[1]/android.widget.Button[2]")
+    @AndroidFindBy(xpath = "//androidx.recyclerview.widget.RecyclerView/android.view.ViewGroup[1]/android.widget.Button[2]")
     private WebElement noAlcohol;
 
     @PageLoading
     @iOSXCUITFindBy(xpath = "(//XCUIElementTypeButton[@name=\"No\"])[2]")
-    @AndroidFindBy(xpath = "/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.RelativeLayout/android.widget.LinearLayout[2]/android.widget.LinearLayout/androidx.recyclerview.widget.RecyclerView/android.view.ViewGroup[2]/android.widget.Button[2]")
+    @AndroidFindBy(xpath = "//androidx.recyclerview.widget.RecyclerView/android.view.ViewGroup[2]/android.widget.Button[2]")
     private WebElement noTobacco;
 
     @PageLoading
     @iOSXCUITFindBy(xpath = "(//XCUIElementTypeButton[@name=\"No\"])[3]")
-    @AndroidFindBy(xpath = "/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.RelativeLayout/android.widget.LinearLayout[2]/android.widget.LinearLayout/androidx.recyclerview.widget.RecyclerView/android.view.ViewGroup[3]/android.widget.Button[2]")
+    @AndroidFindBy(xpath = "//androidx.recyclerview.widget.RecyclerView/android.view.ViewGroup[3]/android.widget.Button[2]")
     private WebElement noLottery;
 
     @PageLoading
@@ -44,12 +44,12 @@ public class PromotionalOffersPage extends BaseMobilePage {
     private WebElement yesLottery;
 
     @iOSXCUITFindBy(xpath = "//XCUIElementTypeButton[@name=\"NEXT\"]")
-    @AndroidFindBy(id = "com.RaceTrac.Common.qa:id/confirmButton")
+    @AndroidFindBy(id = "com.RaceTrac.Common.qa:id/confirm_button")
     private WebElement nextBtn;
 
-    @iOSXCUITFindBy(xpath = "//XCUIElementTypeButton[@name=\"SAVE\"]")
-    @AndroidFindBy(id = "com.RaceTrac.Common.qa:id/confirmButton")
-    private WebElement saveBtn;
+  @iOSXCUITFindBy(xpath = "//XCUIElementTypeButton[@name=\"SAVE\"]")
+  @AndroidFindBy(id = "com.RaceTrac.Common.qa:id/confirm_button")
+  private WebElement saveBtn;
 
     @iOSXCUITFindBy(accessibility = "NavBarBack")
     private WebElement navigateBackBtn;

@@ -64,9 +64,6 @@ public class FuelVIPTest extends BaseTest {
         fuelVipFlow.navigateToFuelVipSection();
         fuelVipFlow.clickLearnMoreNoSubscription();
         String openedUrl = browserHandler.getUrl();
-        locationRequestFlow.clickContinue();
-        rewardsPopupFlow.clickGotItBtn();
-        pointsAndLevelsFlow.clickGotItBtn();
         assertTrue(openedUrl.contains(browserHandler.getRaceTracDomain()));
         assertTrue(openedUrl.contains(browserHandler.getVipUrlRewardsEndpoint()));
         assertTrue(openedUrl.contains(browserHandler.getVipUrlRewardsParameters()));
@@ -82,10 +79,6 @@ public class FuelVIPTest extends BaseTest {
         swipeDown();//update page
         fuelVipFlow.clickVipProgramDetails();
         String openedUrl = browserHandler.getUrl();
-        browserHandler.returnBackToApp();
-        locationRequestFlow.clickContinue();
-        rewardsPopupFlow.clickGotItBtn();
-        pointsAndLevelsFlow.clickGotItBtn();
         assertTrue(openedUrl.contains(browserHandler.getRaceTracDomain()));
         assertTrue(openedUrl.contains(browserHandler.getVipUrlRewardsEndpoint()));
         assertTrue(openedUrl.contains(browserHandler.getVipUrlRewardsUnauthorizedEndpointAdditionPart()));

@@ -41,6 +41,7 @@ public class AndroidDrawerNavigationFlowImpl extends BaseFlow implements Navigat
     @Override
     public void navigateToCards() {
         getNavigationDrawer().getDrawer().click();
+        getAndroidNavBar().waitUntilIsOpened();
         getAndroidNavBar().getCardsTab().click();
     }
 

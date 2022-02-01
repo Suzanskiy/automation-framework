@@ -76,7 +76,7 @@ public class AndroidGiftcardFlowImpl extends BaseFlow implements GiftcardFlow {
 
     @Override
     public boolean isCardPageDisplayed() {
-        return false;
+        return getCardsPage().waitUntilIsOpened();
     }
 
 
