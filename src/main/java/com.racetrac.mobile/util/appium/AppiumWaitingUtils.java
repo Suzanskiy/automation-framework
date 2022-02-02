@@ -34,7 +34,7 @@ public class AppiumWaitingUtils {
 
   public static Wait<WebDriver> getWebDriverWait() {
     return new FluentWait<WebDriver>(getDriver())
-        .withTimeout(Duration.ofSeconds(10))
+        .withTimeout(Duration.ofSeconds(15))
         .pollingEvery(Duration.ofSeconds(1))
         .ignoring(NoSuchElementException.class)
         .ignoring(StaleElementReferenceException.class);
