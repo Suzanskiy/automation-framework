@@ -10,7 +10,7 @@ resources:
     - repository: ios
       type: git
       name: RaceTrac Portfolio/racetrac-ios-app
-      ref: release/5.0.0
+      ref: feature/api_migration
       trigger:
         branches:
           include:
@@ -19,7 +19,7 @@ resources:
     - repository: android
       type: git
       name: RaceTrac Portfolio/racetrac-android-app
-      ref: develop
+      ref: feature/next_release
 
 schedules:
   - cron: "0 1 * * Mon-Fri"
