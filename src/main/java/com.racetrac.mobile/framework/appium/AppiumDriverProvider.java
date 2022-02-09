@@ -38,6 +38,7 @@ public class AppiumDriverProvider {
                 final AppiumServiceBuilder appiumServiceBuilder = new AppiumServiceBuilder().usingPort(4724);
                 appiumLocalService = AppiumDriverLocalService.buildService(appiumServiceBuilder);
                 appiumLocalService.start();
+                break;
         }
     }
 

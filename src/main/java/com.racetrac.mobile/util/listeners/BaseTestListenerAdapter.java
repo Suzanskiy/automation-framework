@@ -24,6 +24,7 @@ public class BaseTestListenerAdapter extends TestListenerAdapter {
 
     @Override
     public void onTestFailure(ITestResult tr) {
+        LOG.info(tr.getMethod().getMethodName() + "() -- " + "FAILED");
         saveScreenshotPNG();
         if (tr.getThrowable() instanceof NoSuchElementException) {
             attachSourceCode();
@@ -33,6 +34,7 @@ public class BaseTestListenerAdapter extends TestListenerAdapter {
 
     @Override
     public void onTestSkipped(ITestResult tr) {
+        LOG.info(tr.getMethod().getMethodName() + "() -- " + "SKIPPED");
         saveScreenshotPNG();
         super.onTestSkipped(tr);
     }

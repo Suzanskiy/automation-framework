@@ -32,7 +32,6 @@ public class SwipeScroll {
       case DOWN:
         args.put("direction", "up");
         args.put("top", dims.height / 2);
-
         break;
       case UP:
         args.put("top", 5);

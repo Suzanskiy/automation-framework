@@ -75,7 +75,7 @@ public class AndroidRewardCatalogFlowImpl extends BaseFlow implements RewardsCat
     @Step
     @Override
     public boolean isRewardsCatalogPageOpened() {
-        swipeToElement(SwipeScroll.Direction.UP, getRewardsCatalogPage().getRewardsCatalogNumberOfPoints());
+        swipeToElement(SwipeScroll.Direction.DOWN, getRewardsCatalogPage().getRewardsCatalogNumberOfPoints());
         return getRewardsCatalogPage().waitUntilIsOpened();
     }
 
