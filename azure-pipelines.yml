@@ -45,7 +45,7 @@ stages:
       - job: buildIos
         steps:
           - checkout: ios
-          - script: 'sh ./Scripts/build_distirbution/build_app_for_automation.sh'
+          - script: 'sh ./Scripts/build_distribution/build_app_for_automation.sh'
             displayName: 'Command Line Script'
             timeoutInMinutes: 240
           - task: CopyFiles@2
